@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F3D57D63367CACDF86E4210 /* Pods_Playmate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB42D5D33EADBFA23D4CED63 /* Pods_Playmate.framework */; };
+		2EA01D5D7CBD20EF5A0B269D /* Pods_PlaymateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9D1C81597D0C72B952444E /* Pods_PlaymateTests.framework */; };
 		3CF652A9286D036600BD5EDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652A8286D036600BD5EDB /* AppDelegate.m */; };
 		3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652AB286D036600BD5EDB /* SceneDelegate.m */; };
 		3CF652AF286D036600BD5EDB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652AE286D036600BD5EDB /* ViewController.m */; };
@@ -17,6 +19,7 @@
 		3CF652C4286D036700BD5EDB /* PlaymateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652C3286D036700BD5EDB /* PlaymateTests.m */; };
 		3CF652CE286D036700BD5EDB /* PlaymateUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652CD286D036700BD5EDB /* PlaymateUITests.m */; };
 		3CF652D0286D036700BD5EDB /* PlaymateUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652CF286D036700BD5EDB /* PlaymateUITestsLaunchTests.m */; };
+		9B1A234D849400601A32A0CB /* Pods_Playmate_PlaymateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594B01C21EB6D350487C1832 /* Pods_Playmate_PlaymateUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1059025D3CDF17E06B31BC42 /* Pods-Playmate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playmate.release.xcconfig"; path = "Target Support Files/Pods-Playmate/Pods-Playmate.release.xcconfig"; sourceTree = "<group>"; };
 		3CF652A4286D036600BD5EDB /* Playmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF652A7286D036600BD5EDB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3CF652A8286D036600BD5EDB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -54,6 +58,14 @@
 		3CF652C9286D036700BD5EDB /* PlaymateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlaymateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF652CD286D036700BD5EDB /* PlaymateUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaymateUITests.m; sourceTree = "<group>"; };
 		3CF652CF286D036700BD5EDB /* PlaymateUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaymateUITestsLaunchTests.m; sourceTree = "<group>"; };
+		594B01C21EB6D350487C1832 /* Pods_Playmate_PlaymateUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Playmate_PlaymateUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		800279DF597BBCEBA6BE453C /* Pods-Playmate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playmate.debug.xcconfig"; path = "Target Support Files/Pods-Playmate/Pods-Playmate.debug.xcconfig"; sourceTree = "<group>"; };
+		AB42D5D33EADBFA23D4CED63 /* Pods_Playmate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Playmate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD00E5429DE6806BE7940634 /* Pods-Playmate-PlaymateUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playmate-PlaymateUITests.release.xcconfig"; path = "Target Support Files/Pods-Playmate-PlaymateUITests/Pods-Playmate-PlaymateUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AD08A1F50360995E6DE4A292 /* Pods-PlaymateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaymateTests.release.xcconfig"; path = "Target Support Files/Pods-PlaymateTests/Pods-PlaymateTests.release.xcconfig"; sourceTree = "<group>"; };
+		AE9D1C81597D0C72B952444E /* Pods_PlaymateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlaymateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAD251C7853652F8ACE567BF /* Pods-Playmate-PlaymateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playmate-PlaymateUITests.debug.xcconfig"; path = "Target Support Files/Pods-Playmate-PlaymateUITests/Pods-Playmate-PlaymateUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FF2B0E1FD4D45687AF145ED9 /* Pods-PlaymateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaymateTests.debug.xcconfig"; path = "Target Support Files/Pods-PlaymateTests/Pods-PlaymateTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F3D57D63367CACDF86E4210 /* Pods_Playmate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EA01D5D7CBD20EF5A0B269D /* Pods_PlaymateTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,12 +89,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B1A234D849400601A32A0CB /* Pods_Playmate_PlaymateUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E411DE22A919BCFD4DD6F4B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AB42D5D33EADBFA23D4CED63 /* Pods_Playmate.framework */,
+				594B01C21EB6D350487C1832 /* Pods_Playmate_PlaymateUITests.framework */,
+				AE9D1C81597D0C72B952444E /* Pods_PlaymateTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		13424BD82BE37554C700EBCD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				800279DF597BBCEBA6BE453C /* Pods-Playmate.debug.xcconfig */,
+				1059025D3CDF17E06B31BC42 /* Pods-Playmate.release.xcconfig */,
+				DAD251C7853652F8ACE567BF /* Pods-Playmate-PlaymateUITests.debug.xcconfig */,
+				AD00E5429DE6806BE7940634 /* Pods-Playmate-PlaymateUITests.release.xcconfig */,
+				FF2B0E1FD4D45687AF145ED9 /* Pods-PlaymateTests.debug.xcconfig */,
+				AD08A1F50360995E6DE4A292 /* Pods-PlaymateTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		3CF6529B286D036600BD5EDB = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +127,8 @@
 				3CF652C2286D036700BD5EDB /* PlaymateTests */,
 				3CF652CC286D036700BD5EDB /* PlaymateUITests */,
 				3CF652A5286D036600BD5EDB /* Products */,
+				13424BD82BE37554C700EBCD /* Pods */,
+				0E411DE22A919BCFD4DD6F4B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,6 +184,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CF652D3286D036700BD5EDB /* Build configuration list for PBXNativeTarget "Playmate" */;
 			buildPhases = (
+				41C23EDCDDF05C7C6BEAA845 /* [CP] Check Pods Manifest.lock */,
 				3CF652A0286D036600BD5EDB /* Sources */,
 				3CF652A1286D036600BD5EDB /* Frameworks */,
 				3CF652A2286D036600BD5EDB /* Resources */,
@@ -160,6 +202,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CF652D6286D036700BD5EDB /* Build configuration list for PBXNativeTarget "PlaymateTests" */;
 			buildPhases = (
+				41F6352D6B704A16E4FB1ADB /* [CP] Check Pods Manifest.lock */,
 				3CF652BB286D036700BD5EDB /* Sources */,
 				3CF652BC286D036700BD5EDB /* Frameworks */,
 				3CF652BD286D036700BD5EDB /* Resources */,
@@ -178,6 +221,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CF652D9286D036700BD5EDB /* Build configuration list for PBXNativeTarget "PlaymateUITests" */;
 			buildPhases = (
+				4C625E825B539752D6504EE6 /* [CP] Check Pods Manifest.lock */,
 				3CF652C5286D036700BD5EDB /* Sources */,
 				3CF652C6286D036700BD5EDB /* Frameworks */,
 				3CF652C7286D036700BD5EDB /* Resources */,
@@ -260,6 +304,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		41C23EDCDDF05C7C6BEAA845 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Playmate-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		41F6352D6B704A16E4FB1ADB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PlaymateTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C625E825B539752D6504EE6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Playmate-PlaymateUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3CF652A0286D036600BD5EDB /* Sources */ = {
@@ -437,6 +550,7 @@
 		};
 		3CF652D4286D036700BD5EDB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 800279DF597BBCEBA6BE453C /* Pods-Playmate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -464,6 +578,7 @@
 		};
 		3CF652D5286D036700BD5EDB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1059025D3CDF17E06B31BC42 /* Pods-Playmate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -491,6 +606,7 @@
 		};
 		3CF652D7286D036700BD5EDB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF2B0E1FD4D45687AF145ED9 /* Pods-PlaymateTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -509,6 +625,7 @@
 		};
 		3CF652D8286D036700BD5EDB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD08A1F50360995E6DE4A292 /* Pods-PlaymateTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -527,6 +644,7 @@
 		};
 		3CF652DA286D036700BD5EDB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAD251C7853652F8ACE567BF /* Pods-Playmate-PlaymateUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -543,6 +661,7 @@
 		};
 		3CF652DB286D036700BD5EDB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD00E5429DE6806BE7940634 /* Pods-Playmate-PlaymateUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

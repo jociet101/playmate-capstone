@@ -1,0 +1,6 @@
+framework module Pods_Playmate {
+  umbrella header "Pods-Playmate-umbrella.h"
+
+  export *
+  module * { export * }
+}
