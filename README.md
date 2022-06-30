@@ -114,8 +114,8 @@ Playmate is a platform where sports players can conveniently find others to play
   | Property        | Type              | Description |
   | --------------- | ----------------- | ------------|
   | sport           | String            | Which sport players in this session will play |
-  | creator         | PFObject(Profile) | Profile of user who created the session |
-  | players         | Array(of PFUser ) | List of users who are participating in the session |
+  | creator         | Pointer to PFObject(Profile) | Profile of user who created the session |
+  | players         | Array(of pointers to PFUser ) | List of users who are participating in the session |
   | occursAt        | DateTime          | Date and time of when the session occurs |
   | location        | PFObject(Location)| Location where session occurs |
   | capacity        | Number            | Total number of people who can be part of the session |
@@ -133,8 +133,8 @@ Playmate is a platform where sports players can conveniently find others to play
 #### Profile : PFObject
   | Property        | Type              | Description |
   | --------------- | ----------------- | ------------|
-  | user            | PFUser            | User attached to this profile |
-  | profileImage    | PFFileObject      | Profile image uploaded by user |
+  | user            | Pointer to PFUser            | User attached to this profile |
+  | profileImage    | Pointer to PFFileObject      | Profile image uploaded by user |
   | name            | String            | User's name |
   | birthday        | DateTime          | User's birthday |
   | gender          | String            | User's gender |
@@ -144,8 +144,8 @@ Playmate is a platform where sports players can conveniently find others to play
 #### Message : PFObject
   | Property        | Type              | Description |
   | --------------- | ----------------- | ------------|
-  | fromUser        | PFUser            | User the message is being sent form |
-  | toUser          | PFUser            | User the message is being sent to |
+  | sender          | Pointer to PFUser            | User the message is being sent form |
+  | recipient       | Pointer to PFUser            | User the message is being sent to |
   | text            | String            | Text of the message |
   | createdAt       | DateTime          | Time the message was sent |
   
