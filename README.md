@@ -4,8 +4,6 @@ Playmate - App Design Capstone Project, MetaU 2022
 
 **Intern Manager**: Carmen Salvador
 
-[https://courses.codepath.com/courses/metau_ios/unit/2#!capstone_1]
-
 # Playmate
 
 ## Table of Contents
@@ -19,7 +17,6 @@ Playmate - App Design Capstone Project, MetaU 2022
 Playmate is a platform where sports players can conveniently find others to play with given a time and place.
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
 - **Category:** Sports social networking
 - **Mobile:** Playmate will be developed for iOS.
 - **Story:** Sports players are able to connect with others and meet up to socialize and play the sport they love.
@@ -45,12 +42,13 @@ Playmate is a platform where sports players can conveniently find others to play
 
 * [ ] User can create account and log in
 * [ ] User can customize their profile
-* [ ] User can edit location on map
+* [ ] User can set their origin location on map
 * [ ] User can see sessions on a calendar
 * [ ] User can search for sessions based on filters they set
 * [ ] User can add themself to an existing session after search
 * [ ] User can create session if no existing ones match their liking
-* [ ] User can add friends and view their profile
+* [ ] User can search for sports facility in map view for create session feature
+* [ ] User can add friends and view their profiles
 
 **Optional Nice-to-have Stories**
 
@@ -84,14 +82,15 @@ Playmate is a platform where sports players can conveniently find others to play
    * If do not have account: Create Account
    * If have account: Login Screen
 * Home
-   * Map View
    * Calendar View
       * Session Details
    * Upcoming Sessions
 * Search
    * Session Details
    * Filter Settings
+   * Map View
 * Create
+   * To select location: Map View
 * Profile
    * Past Sessions
    * Friends List
@@ -101,8 +100,9 @@ Playmate is a platform where sports players can conveniently find others to play
 
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+
+### Hand-drawn Wireframe
+
 
 ### [BONUS] Digital Wireframes & Mockups
 
@@ -110,8 +110,15 @@ Playmate is a platform where sports players can conveniently find others to play
 
 ## Schema 
 [This section will be completed in Unit 9]
+
+
 ### Models
-[Add table of models]
+
+##### Model1
+  | Property        | Type              | Description |
+  | --------------- | ----------------- | ------------|
+  | property1       | type1             | ??          |
+  
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
