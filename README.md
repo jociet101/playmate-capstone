@@ -101,6 +101,8 @@ Playmate is a platform where sports players can conveniently find others to play
 
 ## Wireframes
 
+<img width="1139" alt="wireframe" src="https://user-images.githubusercontent.com/73032138/176614780-5b500535-2992-47ae-b191-0c4eb22b798e.png">
+
 ### Hand-drawn Wireframe
 
 
