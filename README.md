@@ -26,16 +26,6 @@ Playmate is a platform where sports players can conveniently find others to play
 
 ## Product Spec
 
-**Uncategorized Brainstorming**
-* Home tab: Upcoming sessions, friends activity
-* Search for sessions tab (need a better name): user must input information in calendar and map tabs first (maybe have segues to them and bring them back once done), have filters for what type of sports session user is looking for: 
-* Calendar tab: Time blocks in different colors; times the user is open, times the user has booked sessions, etc.
-* Map tab: Places user is willing to travel to to meet up, pin on a location and have a specified radius
-    * google maps?
-    * apple maps api
-* Profile page: Profile image, male/female sports user plays, bio, (add other profile elements and for sign up), friends, friend requests
-* (STRETCH) Messaging page: users can message others to chat about upcoming session or other sports stuff
-
 ### 1. User Stories (Required and Optional)
 
 **Required Must-have Stories**
