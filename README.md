@@ -53,6 +53,7 @@ Playmate is a platform where sports players can conveniently find others to play
 **Optional Nice-to-have Stories**
 
 * [ ] User will be notified of upcoming sessions in advance, according to their preference
+* [ ] User can delete or remove themselves from sessions
 * [ ] User can message their friends and session groups
 * [ ] User can post to a feed about their past sessions
 * [ ] User will be automatically reccommended sessions based on their past activity
@@ -101,26 +102,54 @@ Playmate is a platform where sports players can conveniently find others to play
 
 ## Wireframes
 
-<img width="1139" alt="wireframe" src="https://user-images.githubusercontent.com/73032138/176614780-5b500535-2992-47ae-b191-0c4eb22b798e.png">
-
 ### Hand-drawn Wireframe
 
-
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
+<img width="1139" alt="wireframe" src="https://user-images.githubusercontent.com/73032138/176614780-5b500535-2992-47ae-b191-0c4eb22b798e.png">
 
 ## Schema 
-[This section will be completed in Unit 9]
-
 
 ### Models
 
-##### Model1
+##### Session : PFObject
   | Property        | Type              | Description |
   | --------------- | ----------------- | ------------|
-  | property1       | type1             | ??          |
+  | sport           | String            | Which sport players in this session will play |
+  | creator         | PFObject(Profile) | Profile of user who created the session |
+  | players         | Array(of PFUser ) | List of users who are participating in the session |
+  | occursAt        | DateTime          | Date and time of when the session occurs |
+  | location        | PFObject(Location)| Location where session occurs |
+  | capacity        | Number            | Total number of people who can be part of the session |
+  | occupied        | Number            | Current number of people who are part of the session |
   
+#### Location : PFObject
+  | Property        | Type              | Description |
+  | --------------- | ----------------- | ------------|
+  | longitude       | Number            | Longitude of the location on a map |
+  | latitude        | Number            | Latitude of the location on a map |
+  | name            | String            | Name of the location |
+  | city            | String            | City of the location |
+  | country         | String            | Country of the location |
+  
+#### Profile : PFObject
+  | Property        | Type              | Description |
+  | --------------- | ----------------- | ------------|
+  | user            | PFUser            | User attached to this profile |
+  | profileImage    | PFFileObject      | Profile image uploaded by user |
+  | name            | String            | User's name |
+  | birthday        | DateTime          | User's birthday |
+  | gender          | String            | User's gender |
+  | numFriends      | Number            | Number of friends user has |
+  | friendsList     | Array(of PFUser)  | List of friends |
+  
+#### Message : PFObject
+  | Property        | Type              | Description |
+  | --------------- | ----------------- | ------------|
+  | fromUser        | PFUser            | User the message is being sent form |
+  | toUser          | PFUser            | User the message is being sent to |
+  | text            | String            | Text of the message |
+  | createdAt       | DateTime          | Time the message was sent |
+  
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
