@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		0F3D57D63367CACDF86E4210 /* Pods_Playmate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB42D5D33EADBFA23D4CED63 /* Pods_Playmate.framework */; };
 		2EA01D5D7CBD20EF5A0B269D /* Pods_PlaymateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9D1C81597D0C72B952444E /* Pods_PlaymateTests.framework */; };
+		3C45B565286E64EB00EE578F /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B564286E64EB00EE578F /* WelcomeViewController.m */; };
+		3C45B5682871856500EE578F /* CreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5672871856500EE578F /* CreateViewController.m */; };
+		3C45B56B2871856E00EE578F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B56A2871856E00EE578F /* LoginViewController.m */; };
 		3CF652A9286D036600BD5EDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652A8286D036600BD5EDB /* AppDelegate.m */; };
 		3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652AB286D036600BD5EDB /* SceneDelegate.m */; };
-		3CF652AF286D036600BD5EDB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652AE286D036600BD5EDB /* ViewController.m */; };
 		3CF652B2286D036600BD5EDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF652B0286D036600BD5EDB /* Main.storyboard */; };
 		3CF652B4286D036700BD5EDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CF652B3286D036700BD5EDB /* Assets.xcassets */; };
 		3CF652B7286D036700BD5EDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF652B5286D036700BD5EDB /* LaunchScreen.storyboard */; };
@@ -41,13 +43,17 @@
 
 /* Begin PBXFileReference section */
 		1059025D3CDF17E06B31BC42 /* Pods-Playmate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playmate.release.xcconfig"; path = "Target Support Files/Pods-Playmate/Pods-Playmate.release.xcconfig"; sourceTree = "<group>"; };
+		3C45B563286E64EB00EE578F /* WelcomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		3C45B564286E64EB00EE578F /* WelcomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
+		3C45B5662871856500EE578F /* CreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateViewController.h; sourceTree = "<group>"; };
+		3C45B5672871856500EE578F /* CreateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateViewController.m; sourceTree = "<group>"; };
+		3C45B5692871856E00EE578F /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		3C45B56A2871856E00EE578F /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		3CF652A4286D036600BD5EDB /* Playmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF652A7286D036600BD5EDB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3CF652A8286D036600BD5EDB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3CF652AA286D036600BD5EDB /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		3CF652AB286D036600BD5EDB /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		3CF652AD286D036600BD5EDB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3CF652AE286D036600BD5EDB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3CF652B1286D036600BD5EDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3CF652B3286D036700BD5EDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3CF652B6286D036700BD5EDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -116,8 +122,28 @@
 				FF2B0E1FD4D45687AF145ED9 /* Pods-PlaymateTests.debug.xcconfig */,
 				AD08A1F50360995E6DE4A292 /* Pods-PlaymateTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		3C45B561286E64CB00EE578F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3C45B562286E64D700EE578F /* Registration Related */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		3C45B562286E64D700EE578F /* Registration Related */ = {
+			isa = PBXGroup;
+			children = (
+				3C45B563286E64EB00EE578F /* WelcomeViewController.h */,
+				3C45B564286E64EB00EE578F /* WelcomeViewController.m */,
+				3C45B5662871856500EE578F /* CreateViewController.h */,
+				3C45B5672871856500EE578F /* CreateViewController.m */,
+				3C45B5692871856E00EE578F /* LoginViewController.h */,
+				3C45B56A2871856E00EE578F /* LoginViewController.m */,
+			);
+			path = "Registration Related";
 			sourceTree = "<group>";
 		};
 		3CF6529B286D036600BD5EDB = {
@@ -145,12 +171,11 @@
 		3CF652A6286D036600BD5EDB /* Playmate */ = {
 			isa = PBXGroup;
 			children = (
+				3C45B561286E64CB00EE578F /* View Controllers */,
 				3CF652A7286D036600BD5EDB /* AppDelegate.h */,
 				3CF652A8286D036600BD5EDB /* AppDelegate.m */,
 				3CF652AA286D036600BD5EDB /* SceneDelegate.h */,
 				3CF652AB286D036600BD5EDB /* SceneDelegate.m */,
-				3CF652AD286D036600BD5EDB /* ViewController.h */,
-				3CF652AE286D036600BD5EDB /* ViewController.m */,
 				3CF652B0286D036600BD5EDB /* Main.storyboard */,
 				3CF652B3286D036700BD5EDB /* Assets.xcassets */,
 				3CF652B5286D036700BD5EDB /* LaunchScreen.storyboard */,
@@ -379,8 +404,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CF652AF286D036600BD5EDB /* ViewController.m in Sources */,
+				3C45B565286E64EB00EE578F /* WelcomeViewController.m in Sources */,
 				3CF652A9286D036600BD5EDB /* AppDelegate.m in Sources */,
+				3C45B56B2871856E00EE578F /* LoginViewController.m in Sources */,
+				3C45B5682871856500EE578F /* CreateViewController.m in Sources */,
 				3CF652BA286D036700BD5EDB /* main.m in Sources */,
 				3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */,
 			);
