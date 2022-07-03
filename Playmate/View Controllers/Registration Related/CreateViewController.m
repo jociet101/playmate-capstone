@@ -41,19 +41,29 @@ NSMutableArray *genders;
     [genders addObject:@"Add more"];
 }
 
+#pragma mark - Text fields
+
 // Resign keyboard if user presses done
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
+    
+    if ([textField isEqual:self.usernameField]) {
+        [self.passwordField becomeFirstResponder];
+    } else if ([textField isEqual:self.passwordField]) {
+        [self.firstNameField becomeFirstResponder];
+    } else if ([textField isEqual:self.firstNameField]) {
+        [self.lastNameField becomeFirstResponder];
+    } else if ([textField isEqual:self.lastNameField]) {
+        [self.emailField becomeFirstResponder];
+    } else {
+        [textField resignFirstResponder];
+    }
+    
     return true;
 }
 
 // Resign keyboard if user touches screen
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
-}
-
-- (IBAction)didTapProceed:(id)sender {
-    NSLog(@"did tap proceed to create account");
 }
 
 #pragma mark - Gender picker view
@@ -76,6 +86,9 @@ NSMutableArray *genders;
     NSLog(@"selected %@", genders[row]);
 }
 
+- (IBAction)didTapProceed:(id)sender {
+    NSLog(@"did tap proceed to create account");
+}
 
 /*
 #pragma mark - Navigation

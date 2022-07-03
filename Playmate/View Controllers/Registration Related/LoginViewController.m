@@ -7,11 +7,10 @@
 
 #import "LoginViewController.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
-
 
 @end
 
@@ -19,7 +18,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.usernameField.delegate = self;
+    self.passwordField.delegate = self;
+}
+
+#pragma mark - Text fields
+
+// Resign keyboard if user presses done
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    if ([textField isEqual:self.usernameField]) {
+        [self.passwordField becomeFirstResponder];
+    } else {
+        [textField resignFirstResponder];
+    }
+    
+    return true;
+}
+
+// Resign keyboard if user touches screen
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 
 - (IBAction)didTapProceed:(id)sender {
