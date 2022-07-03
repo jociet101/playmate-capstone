@@ -16,12 +16,15 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UIDatePicker *birthdayPicker;
 @property (weak, nonatomic) IBOutlet UIPickerView *genderPicker;
+@property (weak, nonatomic) IBOutlet UIView *textFieldContainer;
+@property (weak, nonatomic) IBOutlet UIView *pickerContainer;
 
 @end
 
 @implementation CreateViewController
 
 NSMutableArray *genders;
+int originalYOrigin;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,9 +42,44 @@ NSMutableArray *genders;
     [genders addObject:@"Female"];
     [genders addObject:@"Male"];
     [genders addObject:@"Add more"];
+    
+    CGRect containerFrame = self.textFieldContainer.frame;
+    originalYOrigin = containerFrame.origin.y;
 }
 
 #pragma mark - Text fields
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    if ([textField isEqual:self.usernameField]) {
+        [self moveContainerBy:-40];
+    } else if ([textField isEqual:self.passwordField]) {
+        [self moveContainerBy:-40];
+    } else if ([textField isEqual:self.firstNameField]) {
+        [self moveContainerBy:-40];
+    } else if ([textField isEqual:self.lastNameField]) {
+        [self moveContainerBy:-40];
+    } else if ([textField isEqual:self.emailField]) {
+        [self moveContainerBy:-45];
+    } else {
+        [self moveContainerBy:0];
+    }
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self moveContainerBy:0];
+}
+
+- (void)moveContainerBy:(int)amount {
+    [UIView animateWithDuration:0.5 animations:^{
+    
+        CGRect containerFrame = self.textFieldContainer.frame;
+        containerFrame.origin.y = originalYOrigin + amount;
+        
+        self.textFieldContainer.frame = containerFrame;
+    }];
+}
 
 // Resign keyboard if user presses done
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
