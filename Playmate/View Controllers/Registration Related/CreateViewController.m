@@ -25,6 +25,7 @@
 
 NSMutableArray *genders;
 int originalYOrigin;
+NSString *selectedGender;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +35,8 @@ int originalYOrigin;
     self.firstNameField.delegate = self;
     self.lastNameField.delegate = self;
     self.emailField.delegate = self;
+    
+    selectedGender = @"Female";
     
     self.genderPicker.delegate = self;
     self.genderPicker.dataSource = self;
@@ -121,7 +124,7 @@ int originalYOrigin;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    NSLog(@"selected %@", genders[row]);
+    selectedGender = genders[row];
 }
 
 #pragma mark - Registration with Parse
@@ -145,6 +148,13 @@ int originalYOrigin;
     newUser.username = self.usernameField.text;
     newUser.email = self.emailField.text;
     newUser.password = self.passwordField.text;
+    
+    [newUser addObject:self.firstNameField.text forKey:@"firstName"];
+    [newUser addObject:self.lastNameField.text forKey:@"lastName"];
+    [newUser addObject:selectedGender forKey:@"gender"];
+    
+    NSDate *date = self.birthdayPicker.date;
+    [newUser addObject:date forKey:@"birthday"];
     
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
