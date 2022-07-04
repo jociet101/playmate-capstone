@@ -124,8 +124,33 @@ int originalYOrigin;
     NSLog(@"selected %@", genders[row]);
 }
 
+#pragma mark - Registration with Parse
+
+- (void)registerUser {
+    // initialize a user object
+    PFUser *newUser = [PFUser user];
+    
+    // set user properties
+    newUser.username = self.usernameField.text;
+    newUser.email = self.emailField.text;
+    newUser.password = self.passwordField.text;
+    
+    // call sign up function on the object
+    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            NSLog(@"User registered successfully");
+            
+            // manually segue to logged in view
+        }
+    }];
+}
+
 - (IBAction)didTapProceed:(id)sender {
     NSLog(@"did tap proceed to create account");
+    
+    [self registerUser];
 }
 
 /*

@@ -6,6 +6,7 @@ target 'Playmate' do
   use_frameworks!
 
   # Pods for Playmate
+  pod 'Parse'
 
   target 'PlaymateTests' do
     inherit! :search_paths

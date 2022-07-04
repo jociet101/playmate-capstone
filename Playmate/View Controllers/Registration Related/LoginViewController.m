@@ -42,6 +42,23 @@
     [self.view endEditing:YES];
 }
 
+#pragma mark - Login user with Parse
+
+- (void)loginUser {
+    NSString *username = self.usernameField.text;
+    NSString *password = self.passwordField.text;
+    
+    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
+        if (error != nil) {
+            NSLog(@"User log in failed: %@", error.localizedDescription);
+        } else {
+            NSLog(@"User logged in successfully");
+            
+            // display view controller that needs to shown after successful login
+        }
+    }];
+}
+
 - (IBAction)didTapProceed:(id)sender {
     
     NSLog(@"tapped proceed on log in");
