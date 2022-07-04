@@ -60,8 +60,8 @@
 }
 
 - (IBAction)didTapProceed:(id)sender {
-    
     NSLog(@"tapped proceed on log in");
+    [self loginUser];
 }
 
 /*
