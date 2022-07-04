@@ -144,11 +144,12 @@ NSString *selectedGender;
     // initialize a user object
     PFUser *newUser = [PFUser user];
     
-    // set user properties
+    // set pfuser properties
     newUser.username = self.usernameField.text;
     newUser.email = self.emailField.text;
     newUser.password = self.passwordField.text;
     
+    // add non-default properties to pfuser
     [newUser addObject:self.firstNameField.text forKey:@"firstName"];
     [newUser addObject:self.lastNameField.text forKey:@"lastName"];
     [newUser addObject:selectedGender forKey:@"gender"];
@@ -163,15 +164,12 @@ NSString *selectedGender;
             [self handleAlert:error withTitle:@"Error" andOk:@"Try again"];
         } else {
             NSLog(@"User registered successfully");
-            
             [self performSegueWithIdentifier:@"createToLogin" sender:nil];
         }
     }];
 }
 
 - (IBAction)didTapProceed:(id)sender {
-    NSLog(@"did tap proceed to create account");
-    
     [self registerUser];
 }
 
