@@ -44,6 +44,17 @@
 
 #pragma mark - Login user with Parse
 
+- (void)handleAlert:(NSError *)error withTitle:(NSString *)title andOk:(NSString *)ok {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:ok style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [self viewDidLoad];
+    }];
+    
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated: YES completion: nil];
+}
+
 - (void)loginUser {
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
@@ -51,10 +62,11 @@
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
+            [self handleAlert:error withTitle:@"Error" andOk:@"Try again"];
         } else {
             NSLog(@"User logged in successfully");
             
-            // display view controller that needs to shown after successful login
+            [self performSegueWithIdentifier:@"loginToTab" sender:nil];
         }
     }];
 }
@@ -62,8 +74,6 @@
 - (IBAction)didTapProceed:(id)sender {
     NSLog(@"tapped proceed on log in");
     [self loginUser];
-    
-    [self performSegueWithIdentifier:@"loginToTab" sender:nil];
 }
 
 /*
