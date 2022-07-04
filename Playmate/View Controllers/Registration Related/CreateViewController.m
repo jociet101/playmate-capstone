@@ -126,6 +126,17 @@ int originalYOrigin;
 
 #pragma mark - Registration with Parse
 
+- (void)handleAlert:(NSError *)error withTitle:(NSString *)title andOk:(NSString *)ok {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:ok style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [self viewDidLoad];
+    }];
+    
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated: YES completion: nil];
+}
+
 - (void)registerUser {
     // initialize a user object
     PFUser *newUser = [PFUser user];
@@ -139,10 +150,11 @@ int originalYOrigin;
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
+            [self handleAlert:error withTitle:@"Error" andOk:@"Try again"];
         } else {
             NSLog(@"User registered successfully");
             
-            // manually segue to logged in view
+            [self performSegueWithIdentifier:@"createToLogin" sender:nil];
         }
     }];
 }
@@ -151,8 +163,6 @@ int originalYOrigin;
     NSLog(@"did tap proceed to create account");
     
     [self registerUser];
-    
-    [self performSegueWithIdentifier:@"createToLogin" sender:nil];
 }
 
 /*
