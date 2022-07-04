@@ -62,6 +62,8 @@
 - (IBAction)didTapProceed:(id)sender {
     NSLog(@"tapped proceed on log in");
     [self loginUser];
+    
+    [self performSegueWithIdentifier:@"loginToTab" sender:nil];
 }
 
 /*

@@ -151,6 +151,8 @@ int originalYOrigin;
     NSLog(@"did tap proceed to create account");
     
     [self registerUser];
+    
+    [self performSegueWithIdentifier:@"createToLogin" sender:nil];
 }
 
 /*
