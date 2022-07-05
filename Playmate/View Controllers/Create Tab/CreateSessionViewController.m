@@ -85,11 +85,20 @@ int numPlayers;
 
 - (IBAction)didSelectCreateSession:(id)sender {
     
-    NSArray *skillLevels = {@"Leisure", @"Amateur", @"Competitive"};
+    NSLog(@"did select create session");
+    
+    NSMutableArray *skillLevels = [[NSMutableArray alloc] init];
+    [skillLevels addObject:@"Leisure"];
+    [skillLevels addObject:@"Amateur"];
+    [skillLevels addObject:@"Competitive"];
     
     // selectedSport
     NSDate *sessionDateTime = self.dateTimePicker.date;
     NSString *skillLevel = skillLevels[self.skillLevelControl.selectedSegmentIndex];
+    
+    NSLog(@"%@", sessionDateTime);
+    NSLog(@"%@", skillLevel);
+    
 }
 
 - (IBAction)stepperValueChanged:(id)sender {

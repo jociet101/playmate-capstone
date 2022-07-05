@@ -466,6 +466,9 @@
                                 <state key="normal" title="Create Session!">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="didSelectCreateSession:" destination="vXG-Js-LgN" eventType="touchUpInside" id="6aH-tv-8pL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fW8-xr-l4O"/>
