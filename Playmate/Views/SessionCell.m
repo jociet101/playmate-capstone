@@ -31,7 +31,25 @@
     
     _session = session;
     
-    self.sportLabel.text = self.session.sport;
+    NSString *playersString = @"";
+    
+    BOOL firstPerson = YES;
+    
+    for (PFUser *player in self.session.playersList) {
+
+        [player fetchIfNeeded];
+
+        NSString *playerName = player[@"firstName"][0];
+        
+        if (firstPerson) {
+            playersString = [playersString stringByAppendingString:playerName];
+        } else {
+            playersString = [playersString stringByAppendingString:[@", " stringByAppendingString:playerName]];
+        }
+
+    }
+    
+    self.sportLabel.text = [self.session.sport stringByAppendingString:[@" w/ " stringByAppendingString:playersString]];
 }
 
 @end

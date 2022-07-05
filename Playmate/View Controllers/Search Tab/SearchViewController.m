@@ -43,13 +43,10 @@
         if (sessions != nil) {
             self.sessionList = sessions;
             
-            NSLog(@"sessions\n\n\n\n%@", sessions);
-            
             [self.tableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
-        
         [self.refreshControl endRefreshing];
     }];
 }
@@ -61,9 +58,7 @@
     SessionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SessionCell"];
         
     cell.session = self.sessionList[indexPath.row];
-    
-    NSLog(@"session for %ld: %@", indexPath.row, cell.session);
-        
+            
     return cell;
 }
 

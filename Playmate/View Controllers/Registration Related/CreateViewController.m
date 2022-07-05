@@ -152,6 +152,10 @@ NSString *selectedGender;
     // add non-default properties to pfuser
     [newUser addObject:self.firstNameField.text forKey:@"firstName"];
     [newUser addObject:self.lastNameField.text forKey:@"lastName"];
+    
+//    NSString *fullName = [self.firstNameField.text stringByAppendingString:[@" " stringByAppendingString:self.lastNameField.text]];
+//    [newUser addObject:fullName forKey:@"fullName"];
+
     [newUser addObject:selectedGender forKey:@"gender"];
     
     NSDate *date = self.birthdayPicker.date;
