@@ -51,11 +51,11 @@ int numPlayers;
     NSDate *minDate = [gregorian dateByAddingComponents:comps toDate:currentDate  options:0];
     [comps setMonth:1];
     NSDate *maxDate = [gregorian dateByAddingComponents:comps toDate:currentDate  options:0];
-//    [comps release];
 
     self.dateTimePicker.minimumDate = minDate;
     self.dateTimePicker.maximumDate = maxDate;
     
+    // configure the stepper
     self.numPlayersStepper.minimumValue = 2;
     self.numPlayersStepper.maximumValue = 10;
     self.numPlayersStepper.wraps = YES;
