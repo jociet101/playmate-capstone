@@ -103,12 +103,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aDE-0v-KBZ">
-                                <rect key="frame" x="74" y="335" width="243" height="34"/>
+                                <rect key="frame" x="73.666666666666686" y="335" width="243" height="34"/>
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0P6-p2-oce">
-                                <rect key="frame" x="74" y="394" width="243" height="34"/>
+                                <rect key="frame" x="73.666666666666686" y="394" width="243" height="34"/>
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
@@ -424,11 +424,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WRX-aV-hwD">
-                                <rect key="frame" x="16" y="208" width="358" height="159"/>
+                                <rect key="frame" x="16" y="222" width="358" height="88"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="MQ5-wk-laE">
-                                        <rect key="frame" x="49" y="36" width="309" height="123"/>
+                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="MQ5-wk-laE">
+                                        <rect key="frame" x="150" y="36" width="208" height="52"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5z-F4-HcT">
@@ -472,7 +472,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rkt-5t-gSp">
-                                <rect key="frame" x="16" y="382" width="351" height="66"/>
+                                <rect key="frame" x="16" y="338" width="351" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyy-co-hQN">
@@ -514,18 +514,9 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ab-nC-857">
-                                <rect key="frame" x="16" y="481" width="351" height="67"/>
+                                <rect key="frame" x="16" y="424" width="351" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gUv-c9-PhQ">
-                                        <rect key="frame" x="8" y="36" width="343" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <segments>
-                                            <segment title="Leisure"/>
-                                            <segment title="Amateur"/>
-                                            <segment title="Competitive"/>
-                                        </segments>
-                                    </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zk-3V-0HK">
                                         <rect key="frame" x="0.0" y="0.0" width="95" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -539,11 +530,20 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gUv-c9-PhQ">
+                                        <rect key="frame" x="8" y="54" width="343" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="Leisure"/>
+                                            <segment title="Amateur"/>
+                                            <segment title="Competitive"/>
+                                        </segments>
+                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ywY-zD-Nw2">
-                                <rect key="frame" x="16" y="576" width="351" height="68"/>
+                                <rect key="frame" x="16" y="541" width="351" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMj-5l-dKw">
@@ -583,7 +583,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmc-iR-fo5">
-                                <rect key="frame" x="97" y="669" width="197" height="46"/>
+                                <rect key="frame" x="93" y="645" width="197" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
@@ -601,6 +601,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Create" id="x8r-JX-yDt"/>
                     <connections>
+                        <outlet property="createButton" destination="hmc-iR-fo5" id="ASa-wY-FDj"/>
                         <outlet property="dateTimePicker" destination="MQ5-wk-laE" id="7Ih-Ji-WXs"/>
                         <outlet property="locationLabel" destination="Hr0-xB-DUE" id="HOE-gR-LCE"/>
                         <outlet property="numPlayersLabel" destination="uh1-Gs-6cM" id="H0G-CG-gxf"/>
@@ -932,7 +933,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zis-o5-IMS"/>
+        <segue reference="EiS-gP-Syp"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="98"/>

@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *skillLevelControl;
 @property (weak, nonatomic) IBOutlet UILabel *numPlayersLabel;
 @property (weak, nonatomic) IBOutlet UIStepper *numPlayersStepper;
+@property (weak, nonatomic) IBOutlet UIButton *createButton;
 
 @end
 
@@ -30,6 +31,8 @@ int numPlayers;
     
     self.sportPicker.delegate = self;
     self.sportPicker.dataSource = self;
+    
+    self.createButton.layer.cornerRadius = 20;
     
     numPlayers = 2;
     selectedSport = @"Tennis";
