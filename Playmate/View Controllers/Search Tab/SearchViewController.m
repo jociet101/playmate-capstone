@@ -6,8 +6,13 @@
 //
 
 #import "SearchViewController.h"
+#import "SessionCell.h"
 
-@interface SearchViewController ()
+@interface SearchViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *sessionList;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -15,7 +20,59 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    [self fetchData];
+    
+    // set up refresh control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+}
+
+- (void)fetchData {
+    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+    query.limit = 20;
+    
+    [query orderByDescending:@"createdAt"];
+
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
+        if (sessions != nil) {
+            self.sessionList = sessions;
+            
+            NSLog(@"sessions\n\n\n\n%@", sessions);
+            
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+        
+        [self.refreshControl endRefreshing];
+    }];
+}
+
+#pragma mark - Table view protocol methods
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    SessionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SessionCell"];
+        
+    cell.session = self.sessionList[indexPath.row];
+    
+    NSLog(@"session for %ld: %@", indexPath.row, cell.session);
+        
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.sessionList.count;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
 
 /*

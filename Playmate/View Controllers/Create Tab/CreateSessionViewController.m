@@ -32,6 +32,7 @@ int numPlayers;
     self.sportPicker.dataSource = self;
     
     numPlayers = 2;
+    selectedSport = @"Tennis";
     
     // Pull sports from an api later
     sports = [[NSMutableArray alloc] init];
