@@ -7,6 +7,7 @@ target 'Playmate' do
 
   # Pods for Playmate
   pod 'Parse'
+  pod 'DateTools'
 
   target 'PlaymateTests' do
     inherit! :search_paths

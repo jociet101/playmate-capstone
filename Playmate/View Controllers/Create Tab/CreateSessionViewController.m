@@ -1,17 +1,17 @@
 //
-//  CreateViewController.m
+//  CreateSessionViewController.m
 //  Playmate
 //
-//  Created by Jocelyn Tseng on 7/4/22.
+//  Created by Jocelyn Tseng on 7/5/22.
 //
 
-#import "CreateViewController.h"
+#import "CreateSessionViewController.h"
 
-@interface CreateViewController ()
+@interface CreateSessionViewController ()
 
 @end
 
-@implementation CreateViewController
+@implementation CreateSessionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

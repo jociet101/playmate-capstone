@@ -8,16 +8,40 @@
 #import "ProfileViewController.h"
 #import "WelcomeViewController.h"
 #import "SceneDelegate.h"
+#import "DateTools.h"
 
 @interface ProfileViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *genderLabel;
+@property (weak, nonatomic) IBOutlet UILabel *bioField;
+
 @end
+
+NSString *defaultBio = @"Enter a bio.";
 
 @implementation ProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    PFUser *user = [PFUser currentUser];
+    self.nameLabel.text = [user[@"firstName"][0] stringByAppendingString:[@" " stringByAppendingString:user[@"lastName"][0]]];
+    self.usernameLabel.text = [@"@" stringByAppendingString:user[@"username"]];
+    self.usernameLabel.textColor = [UIColor lightGrayColor];
+    self.genderLabel.text = user[@"gender"][0];
+    self.ageLabel.text = [@"Born " stringByAppendingString:[user[@"birthday"][0] timeAgoSinceNow]];
+    
+    if (![self.bioField.text isEqualToString:defaultBio]) {
+        self.bioField.text = user[@"bio"][0];
+    }
+    if (user[@"profileImage"] != nil) {
+        // set image stuff
+    }
+    
 }
 
 - (IBAction)didTapLogout:(id)sender {
@@ -30,6 +54,10 @@
         myDelegate.window.rootViewController = welcomeViewController;
     }];
 }
+
+- (IBAction)didTapEdit:(id)sender {
+}
+
 
 /*
 #pragma mark - Navigation

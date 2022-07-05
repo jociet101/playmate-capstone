@@ -16,8 +16,8 @@
 		3C45B57028728D4A00EE578F /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B56F28728D4A00EE578F /* Utilities.m */; };
 		3C45B574287297EB00EE578F /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B573287297EB00EE578F /* HomeViewController.m */; };
 		3C45B578287299C200EE578F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B577287299C200EE578F /* ProfileViewController.m */; };
-		3C45B58528737E5100EE578F /* CreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B58428737E5100EE578F /* CreateViewController.m */; };
 		3C45B58928737E6200EE578F /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B58828737E6200EE578F /* SearchViewController.m */; };
+		3C45B58C28749B7400EE578F /* CreateSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B58B28749B7400EE578F /* CreateSessionViewController.m */; };
 		3CF652A9286D036600BD5EDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652A8286D036600BD5EDB /* AppDelegate.m */; };
 		3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652AB286D036600BD5EDB /* SceneDelegate.m */; };
 		3CF652B2286D036600BD5EDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF652B0286D036600BD5EDB /* Main.storyboard */; };
@@ -62,10 +62,10 @@
 		3C45B573287297EB00EE578F /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		3C45B576287299C200EE578F /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		3C45B577287299C200EE578F /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		3C45B58328737E5100EE578F /* CreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateViewController.h; sourceTree = "<group>"; };
-		3C45B58428737E5100EE578F /* CreateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateViewController.m; sourceTree = "<group>"; };
 		3C45B58728737E6200EE578F /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		3C45B58828737E6200EE578F /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		3C45B58A28749B7400EE578F /* CreateSessionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateSessionViewController.h; sourceTree = "<group>"; };
+		3C45B58B28749B7400EE578F /* CreateSessionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateSessionViewController.m; sourceTree = "<group>"; };
 		3CF652A4286D036600BD5EDB /* Playmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF652A7286D036600BD5EDB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3CF652A8286D036600BD5EDB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -197,8 +197,8 @@
 		3C45B58628737E5500EE578F /* Create Tab */ = {
 			isa = PBXGroup;
 			children = (
-				3C45B58328737E5100EE578F /* CreateViewController.h */,
-				3C45B58428737E5100EE578F /* CreateViewController.m */,
+				3C45B58A28749B7400EE578F /* CreateSessionViewController.h */,
+				3C45B58B28749B7400EE578F /* CreateSessionViewController.m */,
 			);
 			path = "Create Tab";
 			sourceTree = "<group>";
@@ -503,8 +503,8 @@
 			files = (
 				3C45B565286E64EB00EE578F /* WelcomeViewController.m in Sources */,
 				3C45B578287299C200EE578F /* ProfileViewController.m in Sources */,
-				3C45B58528737E5100EE578F /* CreateViewController.m in Sources */,
 				3CF652A9286D036600BD5EDB /* AppDelegate.m in Sources */,
+				3C45B58C28749B7400EE578F /* CreateSessionViewController.m in Sources */,
 				3C45B56B2871856E00EE578F /* LoginViewController.m in Sources */,
 				3C45B5682871856500EE578F /* CreateViewController.m in Sources */,
 				3CF652BA286D036700BD5EDB /* main.m in Sources */,
