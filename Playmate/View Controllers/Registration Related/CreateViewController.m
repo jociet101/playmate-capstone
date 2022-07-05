@@ -156,7 +156,7 @@ NSString *selectedGender;
     
     NSDate *date = self.birthdayPicker.date;
     [newUser addObject:date forKey:@"birthday"];
-    [newUser addObject:nil forKey:@"profileImage"];
+//    [newUser addObject:nil forKey:@"profileImage"];
     
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
