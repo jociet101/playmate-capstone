@@ -54,9 +54,22 @@
     
     self.sportLabel.text = [self.session.sport stringByAppendingString:[@" w/ " stringByAppendingString:playersString]];
     
-//    NSString *capacityString = [[NSString stringWithFormat:@"%d", self.session.capacity - self.session.occupied] stringByAppendingString:[[NSString stringWithFormat:@"%d", self.session.capacity] stringByAppendingString:@" open slots"]];
-//    
-//    self.levelCapacityLabel.text = [self.session.skillLevel stringByAppendingString:[@", " stringByAppendingString:[[NSString stringWithFormat:@"%d", self.session.capacity - self.session.occupied]]]]
+    // Form the fraction into a string
+    NSString *capacityString = [[NSString stringWithFormat:@"%d", [self.session.capacity intValue] - [self.session.occupied intValue]] stringByAppendingString:[@"/" stringByAppendingString:[[NSString stringWithFormat:@"%@", self.session.capacity] stringByAppendingString:@" open slots"]]];
+
+    self.levelCapacityLabel.text = [self.session.skillLevel stringByAppendingString:[@", " stringByAppendingString:capacityString]];
+    
+    NSLog(@"%@", self.session.occursAt);
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"E MMM d HH:mm:ss yyyy";
+    NSString *originalDate = [formatter stringFromDate:self.session.occursAt];
+    
+    NSDate *date = [formatter dateFromString:originalDate];
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    
+    self.dateTimeLabel.text = [formatter stringFromDate:date];
 }
 
 @end
