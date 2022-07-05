@@ -6,6 +6,7 @@
 //
 
 #import "CreateSessionViewController.h"
+#import "Session.h"
 
 @interface CreateSessionViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -95,9 +96,20 @@ int numPlayers;
     // selectedSport
     NSDate *sessionDateTime = self.dateTimePicker.date;
     NSString *skillLevel = skillLevels[self.skillLevelControl.selectedSegmentIndex];
+    NSNumber *selectedNumPlayers = [NSNumber numberWithInt:numPlayers];
     
     NSLog(@"%@", sessionDateTime);
     NSLog(@"%@", skillLevel);
+    
+    
+    [Session createSession:[PFUser currentUser] withSport:selectedSport withLevel:skillLevel withDate:sessionDateTime withLocation:nil withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
+            if (error) {
+                NSLog(@"Error creating session: %@", error.localizedDescription);
+            }
+            else {
+                NSLog(@"Successfully created the session");
+            }
+    }];
     
 }
 
