@@ -11,6 +11,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UIButton *proceedButton;
 
 @end
 
@@ -21,6 +22,8 @@
     
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
+    
+    self.proceedButton.layer.cornerRadius = 20;
 }
 
 #pragma mark - Text fields
