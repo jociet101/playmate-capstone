@@ -10,6 +10,9 @@
 @interface SessionCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *sportLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *levelCapacityLabel;
 
 @end
 
@@ -50,6 +53,10 @@
     }
     
     self.sportLabel.text = [self.session.sport stringByAppendingString:[@" w/ " stringByAppendingString:playersString]];
+    
+//    NSString *capacityString = [[NSString stringWithFormat:@"%d", self.session.capacity - self.session.occupied] stringByAppendingString:[[NSString stringWithFormat:@"%d", self.session.capacity] stringByAppendingString:@" open slots"]];
+//    
+//    self.levelCapacityLabel.text = [self.session.skillLevel stringByAppendingString:[@", " stringByAppendingString:[[NSString stringWithFormat:@"%d", self.session.capacity - self.session.occupied]]]]
 }
 
 @end
