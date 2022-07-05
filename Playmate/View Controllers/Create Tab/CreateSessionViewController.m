@@ -98,19 +98,26 @@ int numPlayers;
     NSString *skillLevel = skillLevels[self.skillLevelControl.selectedSegmentIndex];
     NSNumber *selectedNumPlayers = [NSNumber numberWithInt:numPlayers];
     
-    NSLog(@"%@", sessionDateTime);
-    NSLog(@"%@", skillLevel);
+//    [Session createSession:[PFUser currentUser] withSport:selectedSport withLevel:skillLevel withDate:sessionDateTime withLocation:nil withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
+//            if (error) {
+//                NSLog(@"Error creating session: %@", error.localizedDescription);
+//            }
+//            else {
+//                NSLog(@"Successfully created the session");
+//            }
+//    }];
     
-    
-    [Session createSession:[PFUser currentUser] withSport:selectedSport withLevel:skillLevel withDate:sessionDateTime withLocation:nil withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
-            if (error) {
-                NSLog(@"Error creating session: %@", error.localizedDescription);
-            }
-            else {
-                NSLog(@"Successfully created the session");
-            }
+    [Session createSession:[PFUser currentUser] withSport:selectedSport withLevel:skillLevel withDate:sessionDateTime withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
+        
+        NSLog(@"inside create session");
+        
+        if (error) {
+            NSLog(@"Error creating session: %@", error.localizedDescription);
+        }
+        else {
+            NSLog(@"Successfully created the session");
+        }
     }];
-    
 }
 
 - (IBAction)stepperValueChanged:(id)sender {
