@@ -33,6 +33,10 @@
     [self.tableView addSubview:self.refreshControl];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self fetchData];
+}
+
 - (void)fetchData {
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
     query.limit = 20;
