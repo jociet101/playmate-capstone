@@ -16,13 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalCompressionResistancePriority="749" fixedFrame="YES" image="playmate_logo_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="Nc6-df-Flc">
-                                <rect key="frame" x="119" y="302" width="153" height="161"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalCompressionResistancePriority="749" image="playmate_logo_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="Nc6-df-Flc">
+                                <rect key="frame" x="118.66666666666669" y="296" width="153" height="161"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Playmate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqc-bX-QSB">
-                                <rect key="frame" x="121" y="459" width="148" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playmate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqc-bX-QSB">
+                                <rect key="frame" x="121" y="453" width="148" height="41"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -30,6 +28,16 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Nc6-df-Flc" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="06R-KF-a93"/>
+                            <constraint firstItem="vqc-bX-QSB" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.0485782" id="Ef4-9V-CPM"/>
+                            <constraint firstItem="Nc6-df-Flc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="252" id="G5Q-zJ-4Mm"/>
+                            <constraint firstItem="vqc-bX-QSB" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Hxx-qo-krg"/>
+                            <constraint firstItem="Nc6-df-Flc" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.190758" id="RZe-qG-i2j"/>
+                            <constraint firstItem="Nc6-df-Flc" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.392308" id="aiQ-te-FyU"/>
+                            <constraint firstItem="vqc-bX-QSB" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.379487" id="jqy-LZ-i7e"/>
+                            <constraint firstItem="vqc-bX-QSB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="409" id="zwB-F5-4xx"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
