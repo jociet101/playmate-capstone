@@ -66,7 +66,7 @@
     NSString *originalDate = [formatter stringFromDate:self.session.occursAt];
     
     NSDate *date = [formatter dateFromString:originalDate];
-    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.dateStyle = NSDateFormatterMediumStyle;
     formatter.timeStyle = NSDateFormatterShortStyle;
     
     self.dateTimeLabel.text = [formatter stringFromDate:date];

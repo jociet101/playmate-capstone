@@ -354,7 +354,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etT-oE-Y4L">
                                                     <rect key="frame" x="50" y="67" width="320" height="26"/>
                                                     <attributedString key="attributedText">
-                                                        <fragment content="Time, Date">
+                                                        <fragment content="Date at Time">
                                                             <attributes>
                                                                 <font key="NSFont" size="17" name="Avenir-Book"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
