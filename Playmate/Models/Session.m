@@ -19,7 +19,7 @@
 @dynamic occupied;
 
 + (nonnull NSString *)parseClassName {
-    return @"Session";
+    return @"SportsSession";
 }
 
 //+ (void) createSession: (PFUser * _Nullable)user withSport: (NSString * _Nullable)spt withLevel: (NSString * _Nullable)level withDate: (NSDate * _Nullable)date withLocation:(PFObject * _Nullable)loc withCapacity:(NSNumber * _Nullable)cap withCompletion: (PFBooleanResultBlock  _Nullable)completion {
