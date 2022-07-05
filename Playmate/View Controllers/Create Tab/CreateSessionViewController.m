@@ -36,6 +36,19 @@ int numPlayers;
     [sports addObject:@"Basketball"];
     [sports addObject:@"Golf"];
     
+    // setup date time picker min date to current date
+    // and max date to a month in advance
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDate *currentDate = [NSDate date];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSDate *minDate = [gregorian dateByAddingComponents:comps toDate:currentDate  options:0];
+    [comps setMonth:1];
+    NSDate *maxDate = [gregorian dateByAddingComponents:comps toDate:currentDate  options:0];
+//    [comps release];
+
+    self.dateTimePicker.minimumDate = minDate;
+    self.dateTimePicker.maximumDate = maxDate;
+    
     self.numPlayersStepper.minimumValue = 2;
     self.numPlayersStepper.maximumValue = 10;
     self.numPlayersStepper.wraps = YES;
