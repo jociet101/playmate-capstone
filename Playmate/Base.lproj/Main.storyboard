@@ -1401,8 +1401,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bXN-C0-hgV" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="yaD-yK-kPZ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WDq-vd-oEX">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="WDq-vd-oEX">
+                        <rect key="frame" x="0.0" y="44" width="390" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1417,7 +1417,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="AUb-fP-lMa"/>
-        <segue reference="mqk-g0-t3s"/>
+        <segue reference="xxD-Qo-Eh9"/>
         <segue reference="EiS-gP-Syp"/>
     </inferredMetricsTieBreakers>
     <resources>

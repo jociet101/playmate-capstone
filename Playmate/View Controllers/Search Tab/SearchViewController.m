@@ -80,7 +80,7 @@
 
 #pragma mark - Filter view controller configuration
 
-- (void)didApplyFilters {
+- (void)didApplyFilters:(Filters *)filters {
     // fetch data but with specific filters
     // plan: create model called filters and assign the values
     // then case on the values in a diff fetchData method

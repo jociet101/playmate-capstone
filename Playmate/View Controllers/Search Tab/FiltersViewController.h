@@ -6,12 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Filters.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol FiltersViewControllerDelegate
 
-- (void)didApplyFilters;
+- (void)didApplyFilters:(Filters *)filters;
 
 @end
 

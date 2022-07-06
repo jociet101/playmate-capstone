@@ -68,12 +68,16 @@ NSString *selectedSport2;
     [skillLevels addObject:@"Amateur"];
     [skillLevels addObject:@"Competitive"];
     
-    NSString *skillLevel = skillLevels[self.skillLevelControl.selectedSegmentIndex];
+    Filters *filters = [Filters new];
+    filters.sport = selectedSport2;
+    filters.skillLevel = skillLevels[self.skillLevelControl.selectedSegmentIndex];
+//    filters.originLoc =
+    filters.radius = [NSNumber numberWithInt:[self.radiusLabel.text intValue]];
     
-    // plan: call this once "apply filters" button is pressed
-    // and search view controller is automatically brought to
     NSLog(@"calling apply filters %@", self.delegate);
-    [self.delegate didApplyFilters];
+    
+    // call delegate method so filters save on search tab vc
+    [self.delegate didApplyFilters:filters];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

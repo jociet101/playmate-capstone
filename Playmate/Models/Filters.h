@@ -6,12 +6,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Location.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Filters : NSObject
 
 @property (nonatomic, strong) NSString *sport;
+@property (nonatomic, strong) Location *originLoc;
+@property (nonatomic, strong) NSString *skillLevel;
+@property (nonatomic, strong) NSNumber *radius;
 
 @end
 
