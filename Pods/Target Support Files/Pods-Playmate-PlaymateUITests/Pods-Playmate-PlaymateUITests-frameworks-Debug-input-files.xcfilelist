@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-Playmate-PlaymateUITests/Pods-Playmate-PlaymateUITests-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework
+${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework
 ${BUILT_PRODUCTS_DIR}/DateTools/DateTools.framework
 ${BUILT_PRODUCTS_DIR}/Parse/Parse.framework
