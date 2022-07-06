@@ -407,6 +407,7 @@
                                             <outlet property="levelCapacityLabel" destination="7U7-IU-ViT" id="u7b-V8-Lwg"/>
                                             <outlet property="locationLabel" destination="qln-O3-c8D" id="Shn-Zf-Zci"/>
                                             <outlet property="sportLabel" destination="REP-0I-TCf" id="vWy-mf-EwI"/>
+                                            <segue destination="FoH-rZ-204" kind="show" id="xxD-Qo-Eh9"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1228,6 +1229,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="xxD-Qo-Eh9"/>
         <segue reference="EiS-gP-Syp"/>
     </inferredMetricsTieBreakers>
     <resources>

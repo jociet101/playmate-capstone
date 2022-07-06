@@ -8,6 +8,7 @@
 #import "HomeViewController.h"
 #import "SessionCell.h"
 #import "Session.h"
+#import "SessionDetailsViewController.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -26,6 +27,11 @@
     self.tableView.dataSource = self;
     
     self.sessionList = [[NSMutableArray alloc] init];
+    
+    // set up refresh control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -42,6 +48,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
         if (sessions != nil) {
             
+            [self.sessionList removeAllObjects];
             [self filterSessions:sessions];
             
             [self.tableView reloadData];
@@ -59,20 +66,14 @@
     PFUser *currUser = [PFUser currentUser];
     [currUser fetchIfNeeded];
     
-//    NSLog(@"me %@", currUser);
-//    NSLog(@"yeet %d", tempList.count);
-    
     for (Session *sesh in tempList) {
         
         for (PFUser *user in sesh[@"playersList"]) {
             [user fetchIfNeeded];
             
             if ([currUser.username isEqualToString:user.username]) {
-                NSLog(@"equal");
                 
                 [self.sessionList addObject:sesh];
-                
-                NSLog(@"%@", self.sessionList);
                 break;
             }
         }
@@ -100,14 +101,22 @@
     return 1;
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+     // Get the new view controller using [segue destinationViewController].
+     // Pass the selected object to the new view controller.
+     
+     if ([sender isMemberOfClass:[SessionCell class]]) {
+         
+         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+         
+         Session* data = self.sessionList[indexPath.row];
+         SessionDetailsViewController *VC = [segue destinationViewController];
+         VC.sessionDeets = data;
+     }
+     
+ }
 
 @end
