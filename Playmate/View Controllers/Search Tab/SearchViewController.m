@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *sessionList;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (assign, nonatomic) BOOL appliedFilters;
+@property (nonatomic, strong) Filters * _Nullable filters;
 
 @end
 
@@ -23,6 +25,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.appliedFilters = NO;
+    self.filters = nil;
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -37,10 +42,22 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self fetchData];
+    
+    if (self.appliedFilters == YES) {
+        NSLog(@"view did appear true");
+        [self fetchDataWithFilters:self.filters];
+    } else {
+        [self fetchData];
+    }
 }
 
 - (void)fetchData {
+    
+    if (self.appliedFilters == YES) {
+        [self fetchDataWithFilters:self.filters];
+        return;
+    }
+    
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
     query.limit = 20;
     
@@ -61,6 +78,12 @@
 
 - (void)fetchDataWithFilters:(Filters *)filter {
 //    NSLog(@"%@", filter.radius);
+    
+    if (self.appliedFilters == NO) {
+        
+        self.filters = filter;
+        self.appliedFilters = YES;
+    }
     
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
     query.limit = 20;
@@ -114,6 +137,8 @@
 }
 
 - (IBAction)didTapClear:(id)sender {
+    self.filters = nil;
+    self.appliedFilters = NO;
     [self fetchData];
 }
 
