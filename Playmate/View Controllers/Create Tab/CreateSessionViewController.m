@@ -79,16 +79,9 @@ int numPlayers;
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     selectedSport = sports[row];
-    
-    // TODO: consider adding feature such that according to selected sport
-    // TODO: set default number of players
 }
 
 #pragma mark - Buttons and actions
-
-- (IBAction)didTapSelectMap:(id)sender {
-    [self performSegueWithIdentifier:@"selectOnMap" sender:nil];
-}
 
 - (IBAction)didSelectCreateSession:(id)sender {
     
