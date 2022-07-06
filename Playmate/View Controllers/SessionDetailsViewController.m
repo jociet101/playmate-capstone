@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *levelLabel;
 @property (weak, nonatomic) IBOutlet UILabel *capacityLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIButton *addMyselfButton;
 
 @end
 
@@ -24,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    NSLog(@"session deets = %@", self.sessionDeets);
+    self.addMyselfButton.layer.cornerRadius = 20;
     
     [self initializeDetails];
 }
@@ -51,6 +52,7 @@
 }
 
 - (IBAction)addMyself:(id)sender {
+    NSLog(@"adding myself");
 }
 
 

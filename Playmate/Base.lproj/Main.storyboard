@@ -527,7 +527,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Na-OS-9iP">
                                 <rect key="frame" x="17" y="340" width="348" height="306"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.13766005219999999" green="0.2672638644" blue="0.35683001889999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xoK-3m-lWk">
                                     <size key="itemSize" width="159" height="150"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -564,7 +564,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH5-Bb-Mnr">
-                                <rect key="frame" x="53" y="715" width="276" height="46"/>
+                                <rect key="frame" x="53" y="687" width="276" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
@@ -583,6 +583,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Session Details" id="uMN-T2-O2L"/>
                     <connections>
+                        <outlet property="addMyselfButton" destination="rH5-Bb-Mnr" id="yab-sk-j3w"/>
                         <outlet property="capacityLabel" destination="Sei-Tn-mKZ" id="Ngm-Mv-DVo"/>
                         <outlet property="collectionView" destination="7Na-OS-9iP" id="C05-xP-aaX"/>
                         <outlet property="dateTimeLabel" destination="wRX-IS-Z3x" id="22q-UF-4gB"/>
