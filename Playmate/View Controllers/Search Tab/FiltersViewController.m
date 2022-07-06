@@ -16,6 +16,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // plan: call this once "apply filters" button is pressed
+    // and search view controller is automatically brought to
+    NSLog(@"calling apply filters %@", self.delegate);
+    [self.delegate didApplyFilters];
 }
 
 /*

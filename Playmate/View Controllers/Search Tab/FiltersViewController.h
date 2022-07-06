@@ -9,7 +9,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol FiltersViewControllerDelegate
+
+- (void)didApplyFilters;
+
+@end
+
 @interface FiltersViewController : UIViewController
+
+@property (nonatomic, weak) id<FiltersViewControllerDelegate> delegate;
 
 @end
 

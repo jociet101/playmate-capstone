@@ -30,8 +30,6 @@
 }
 
 - (void)setSession:(Session *)session {
-    NSLog(@"set session called");
-    
     _session = session;
     
     NSString *playersString = @"";
@@ -64,9 +62,7 @@
     }
     
     self.levelCapacityLabel.text = [self.session.skillLevel stringByAppendingString:[@", " stringByAppendingString:capacityString]];
-    
-    NSLog(@"%@", self.session.occursAt);
-    
+        
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"E MMM d HH:mm:ss yyyy";
     NSString *originalDate = [formatter stringFromDate:self.session.occursAt];

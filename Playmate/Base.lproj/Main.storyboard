@@ -550,13 +550,12 @@
                     <navigationItem key="navigationItem" title="Search" id="4FJ-is-IKi">
                         <barButtonItem key="leftBarButtonItem" image="gearshape" catalog="system" id="AvR-38-9Ex">
                             <connections>
-                                <action selector="didTapFilters:" destination="rTa-eA-wIt" id="7Ti-uN-4Aj"/>
+                                <segue destination="hZR-oH-jT4" kind="show" id="kjC-Y2-I68"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="nWr-op-BUf" id="eXE-0t-lPg"/>
-                        <segue destination="hZR-oH-jT4" kind="show" identifier="toFilters" id="9Rp-q5-S4e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jiI-zl-065" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1267,7 +1266,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mqk-g0-t3s"/>
+        <segue reference="xxD-Qo-Eh9"/>
         <segue reference="EiS-gP-Syp"/>
     </inferredMetricsTieBreakers>
     <resources>

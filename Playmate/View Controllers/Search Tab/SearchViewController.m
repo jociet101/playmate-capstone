@@ -9,8 +9,9 @@
 #import "SessionCell.h"
 #import "SessionDetailsViewController.h"
 #import "Session.h"
+#import "FiltersViewController.h"
 
-@interface SearchViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface SearchViewController () <UITableViewDelegate, UITableViewDataSource, FiltersViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *sessionList;
@@ -77,11 +78,12 @@
     return 1;
 }
 
-#pragma mark - Filter settings button
+#pragma mark - Filter view controller configuration
 
-- (IBAction)didTapFilters:(id)sender {
-    
-    [self performSegueWithIdentifier:@"toFilters" sender:nil];
+- (void)didApplyFilters {
+    // fetch data but with specific filters
+    // plan: create model called filters and assign the values
+    // then case on the values in a diff fetchData method
 }
 
 #pragma mark - Navigation
@@ -96,6 +98,10 @@
         Session* data = self.sessionList[indexPath.row];
         SessionDetailsViewController *VC = [segue destinationViewController];
         VC.sessionDeets = data;
+    }
+    if ([sender isMemberOfClass:[UIBarButtonItem class]]) {
+        FiltersViewController *VC = [segue destinationViewController];
+        VC.delegate = self;
     }
     
 }
