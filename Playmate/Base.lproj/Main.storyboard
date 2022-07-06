@@ -553,6 +553,17 @@
                                 <segue destination="hZR-oH-jT4" kind="presentation" id="kjC-Y2-I68"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="cWY-AU-vad">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="hka-rk-6rR">
+                                <rect key="frame" x="259.33333333333331" y="5" width="114.66666666666669" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Clear Filters"/>
+                                <connections>
+                                    <action selector="didTapClear:" destination="rTa-eA-wIt" eventType="touchUpInside" id="MLi-LA-EXu"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="nWr-op-BUf" id="eXE-0t-lPg"/>
@@ -1417,7 +1428,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="AUb-fP-lMa"/>
-        <segue reference="xxD-Qo-Eh9"/>
+        <segue reference="mqk-g0-t3s"/>
         <segue reference="EiS-gP-Syp"/>
     </inferredMetricsTieBreakers>
     <resources>

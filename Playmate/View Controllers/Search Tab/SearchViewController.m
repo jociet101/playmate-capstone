@@ -59,6 +59,30 @@
     }];
 }
 
+- (void)fetchDataWithFilters:(Filters *)filter {
+//    NSLog(@"%@", filter.radius);
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+    query.limit = 20;
+    
+    [query orderByDescending:@"createdAt"];
+    [query whereKey:@"sport" equalTo:filter.sport];
+    [query whereKey:@"skillLevel" equalTo:filter.skillLevel];
+
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
+        if (sessions != nil) {
+            self.sessionList = sessions;
+            
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+        [self.refreshControl endRefreshing];
+    }];
+    
+}
+
 #pragma mark - Table view protocol methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -80,10 +104,12 @@
 
 #pragma mark - Filter view controller configuration
 
-- (void)didApplyFilters:(Filters *)filters {
-    // fetch data but with specific filters
-    // plan: create model called filters and assign the values
-    // then case on the values in a diff fetchData method
+- (void)didApplyFilters:(Filters *)filter {
+    [self fetchDataWithFilters:filter];
+}
+
+- (IBAction)didTapClear:(id)sender {
+    [self fetchData];
 }
 
 #pragma mark - Navigation

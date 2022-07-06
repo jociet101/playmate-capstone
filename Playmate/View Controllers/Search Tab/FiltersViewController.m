@@ -73,9 +73,7 @@ NSString *selectedSport2;
     filters.skillLevel = skillLevels[self.skillLevelControl.selectedSegmentIndex];
 //    filters.originLoc =
     filters.radius = [NSNumber numberWithInt:[self.radiusLabel.text intValue]];
-    
-    NSLog(@"calling apply filters %@", self.delegate);
-    
+        
     // call delegate method so filters save on search tab vc
     [self.delegate didApplyFilters:filters];
     
