@@ -83,12 +83,15 @@
                 break;
             }
         }
-        
     }
-    
 }
 
 #pragma mark - Empty table view protocol methods
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIImage imageNamed:@"logo_small"];
+}
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
@@ -117,7 +120,7 @@
 
 - (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
 {
-    return [UIColor colorWithRed:171 green:217 blue:237 alpha:1];
+    return [UIColor colorWithRed: 0.31 green: 0.78 blue: 0.94 alpha: 0.30];
 }
 
 #pragma mark - Table view protocol methods
