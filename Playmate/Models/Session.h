@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Session : PFObject<PFSubclassing>
 
+@property (nonatomic, strong) NSString *objectId;
 @property (nonatomic, strong) NSString *sport;
 @property (nonatomic, strong) NSString *skillLevel;
 @property (nonatomic, strong) PFUser *creator;

@@ -9,6 +9,7 @@
 
 @implementation Session
 
+@dynamic objectId;
 @dynamic sport;
 @dynamic skillLevel;
 @dynamic creator;

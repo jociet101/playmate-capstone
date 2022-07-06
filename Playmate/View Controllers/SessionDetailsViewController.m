@@ -75,6 +75,25 @@ PFUser *me;
 
 - (IBAction)addMyself:(id)sender {
     NSLog(@"adding myself");
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+
+    // Retrieve the object by id
+    [query getObjectInBackgroundWithId:self.sessionDeets.objectId
+                                 block:^(PFObject *session, NSError *error) {
+        
+        // Add myself to the session
+        NSMutableArray *oldPlayersList = (NSMutableArray *)session[@"playersList"];
+        [oldPlayersList addObject:me];
+        
+        session[@"playersList"] = (NSArray *)oldPlayersList;
+        
+        int oldOccupied = [session[@"occupied"] intValue] + 1;
+        session[@"occupied"] = [NSNumber numberWithInt:oldOccupied];
+        
+        [session saveInBackground];
+    }];
+    
 }
 
 
