@@ -22,12 +22,34 @@
 
 @implementation SessionDetailsViewController
 
+PFUser *me;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    me = [PFUser currentUser];
+    [me fetchIfNeeded];
 
     self.addMyselfButton.layer.cornerRadius = 20;
     
+    [self disableAddButton];
+    
     [self initializeDetails];
+}
+
+- (void)disableAddButton {
+    
+    for (PFUser *user in self.sessionDeets.playersList) {
+        [user fetchIfNeeded];
+        
+        if ([me.username isEqualToString:user.username]) {
+            
+            [self.addMyselfButton setEnabled:NO];
+            self.addMyselfButton.alpha = 0;
+            
+            break;
+        }
+    }
 }
 
 - (void)initializeDetails {
