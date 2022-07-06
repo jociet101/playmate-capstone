@@ -58,6 +58,11 @@
     // Form the fraction into a string
     NSString *capacityString = [[NSString stringWithFormat:@"%d", [self.session.capacity intValue] - [self.session.occupied intValue]] stringByAppendingString:[@"/" stringByAppendingString:[[NSString stringWithFormat:@"%@", self.session.capacity] stringByAppendingString:@" open slots"]]];
 
+    
+    if ([self.session.capacity isEqual:self.session.occupied]) {
+        capacityString = @"No open slots";
+    }
+    
     self.levelCapacityLabel.text = [self.session.skillLevel stringByAppendingString:[@", " stringByAppendingString:capacityString]];
     
     NSLog(@"%@", self.session.occursAt);

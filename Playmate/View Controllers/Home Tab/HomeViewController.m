@@ -9,8 +9,9 @@
 #import "SessionCell.h"
 #import "Session.h"
 #import "SessionDetailsViewController.h"
+#import "UIScrollView+EmptyDataSet.h"
 
-@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *sessionList;
@@ -25,6 +26,11 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
+    
+    self.tableView.tableFooterView = [UIView new];
     
     self.sessionList = [[NSMutableArray alloc] init];
     
@@ -80,6 +86,38 @@
         
     }
     
+}
+
+#pragma mark - Empty table view protocol methods
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"No Sessions";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"Search for a session to join or create your own session to view them here!";
+    
+    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraph.alignment = NSTextAlignmentCenter;
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraph};
+                                 
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIColor colorWithRed:171 green:217 blue:237 alpha:1];
 }
 
 #pragma mark - Table view protocol methods
