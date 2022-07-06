@@ -46,6 +46,7 @@
         
         if (firstPerson) {
             playersString = [playersString stringByAppendingString:playerName];
+            firstPerson = NO;
         } else {
             playersString = [playersString stringByAppendingString:[@", " stringByAppendingString:playerName]];
         }
