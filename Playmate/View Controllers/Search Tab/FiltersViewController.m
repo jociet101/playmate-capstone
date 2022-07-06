@@ -37,13 +37,6 @@ NSString *selectedSport2;
     [sports2 addObject:@"Tennis"];
     [sports2 addObject:@"Basketball"];
     [sports2 addObject:@"Golf"];
-    
-    NSMutableArray *skillLevels = [[NSMutableArray alloc] init];
-    [skillLevels addObject:@"Leisure"];
-    [skillLevels addObject:@"Amateur"];
-    [skillLevels addObject:@"Competitive"];
-    
-    NSString *skillLevel = skillLevels[self.skillLevelControl.selectedSegmentIndex];
 }
 
 #pragma mark - Sport picker view
@@ -69,10 +62,20 @@ NSString *selectedSport2;
 #pragma mark - Apply filters and send information to search vc
 
 - (IBAction)didTapApply:(id)sender {
+    
+    NSMutableArray *skillLevels = [[NSMutableArray alloc] init];
+    [skillLevels addObject:@"Leisure"];
+    [skillLevels addObject:@"Amateur"];
+    [skillLevels addObject:@"Competitive"];
+    
+    NSString *skillLevel = skillLevels[self.skillLevelControl.selectedSegmentIndex];
+    
     // plan: call this once "apply filters" button is pressed
     // and search view controller is automatically brought to
     NSLog(@"calling apply filters %@", self.delegate);
     [self.delegate didApplyFilters];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)sliderValueChanged:(id)sender {
