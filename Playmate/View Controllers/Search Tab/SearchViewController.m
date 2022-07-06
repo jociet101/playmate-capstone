@@ -137,9 +137,11 @@
 }
 
 - (IBAction)didTapClear:(id)sender {
-    self.filters = nil;
-    self.appliedFilters = NO;
-    [self fetchData];
+    if (self.appliedFilters == YES) {
+        self.filters = nil;
+        self.appliedFilters = NO;
+        [self fetchData];
+    }
 }
 
 #pragma mark - Navigation
