@@ -9,6 +9,8 @@
 
 @interface SessionDetailsViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *sportLabel;
+
 @end
 
 @implementation SessionDetailsViewController
