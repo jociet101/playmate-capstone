@@ -678,10 +678,23 @@
                                 <rect key="frame" x="18" y="245" width="20" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E73-V5-qVL">
+                                <rect key="frame" x="35" y="689" width="320" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Error text for button">
+                                        <attributes>
+                                            <font key="NSFont" size="22" name="Avenir-Book"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH5-Bb-Mnr">
                                 <rect key="frame" x="53" y="687" width="276" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Add myself to this Session">
@@ -702,6 +715,7 @@
                         <outlet property="capacityLabel" destination="Sei-Tn-mKZ" id="Ngm-Mv-DVo"/>
                         <outlet property="collectionView" destination="7Na-OS-9iP" id="C05-xP-aaX"/>
                         <outlet property="dateTimeLabel" destination="wRX-IS-Z3x" id="22q-UF-4gB"/>
+                        <outlet property="disabledButton" destination="E73-V5-qVL" id="0aU-XE-Jde"/>
                         <outlet property="levelLabel" destination="q5k-vB-a1m" id="1Ls-kH-VoP"/>
                         <outlet property="locationLabel" destination="ihn-hH-IMg" id="2Zq-dv-8WO"/>
                         <outlet property="sportLabel" destination="RKm-Qb-2OP" id="LcV-sE-p08"/>

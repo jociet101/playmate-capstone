@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *capacityLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIButton *addMyselfButton;
+@property (weak, nonatomic) IBOutlet UILabel *disabledButton;
 
 @end
 
@@ -44,11 +45,19 @@ PFUser *me;
         
         if ([me.username isEqualToString:user.username]) {
             
+            self.disabledButton.text = @"Already in session";
+            self.disabledButton.textColor = [UIColor redColor];
             [self.addMyselfButton setEnabled:NO];
             self.addMyselfButton.alpha = 0;
-            
             break;
         }
+    }
+    
+    if ([self.sessionDeets.occupied isEqual:self.sessionDeets.capacity]) {
+        self.disabledButton.text = @"Session is full";
+        self.disabledButton.textColor = [UIColor redColor];
+        [self.addMyselfButton setEnabled:NO];
+        self.addMyselfButton.alpha = 0;
     }
 }
 
