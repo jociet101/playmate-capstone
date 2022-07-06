@@ -125,7 +125,11 @@ int numPlayers;
         }
     }];
     
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+    self.view.window.rootViewController = homeVC;
     
+//    [self performSegueWithIdentifier:@"createdSession" sender:nil];
 }
 
 - (IBAction)stepperValueChanged:(id)sender {

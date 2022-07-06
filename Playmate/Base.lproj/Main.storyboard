@@ -297,7 +297,7 @@
         <!--Home-->
         <scene sceneID="A7g-fS-tar">
             <objects>
-                <viewController id="L1k-7T-xRK" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeVC" id="L1k-7T-xRK" customClass="HomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i3a-pi-fpX">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -479,7 +479,7 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="timer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hjB-Gw-La2">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="timer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hjB-Gw-La2">
                                                     <rect key="frame" x="21" y="70" width="20" height="19"/>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="location.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MkO-84-Rpw">
@@ -488,7 +488,7 @@
                                                         <constraint firstAttribute="height" constant="22.333333333333329" id="59R-Pv-z0u"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qda-fC-7yp">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qda-fC-7yp">
                                                     <rect key="frame" x="20" y="100" width="22" height="21"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOR-NA-ctd">
@@ -1138,6 +1138,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hAR-Vh-HfK" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="h8Q-pB-QpX"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Jjf-Nf-aV1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dRP-2K-rPc">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1229,7 +1230,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xxD-Qo-Eh9"/>
+        <segue reference="mqk-g0-t3s"/>
         <segue reference="EiS-gP-Syp"/>
     </inferredMetricsTieBreakers>
     <resources>
