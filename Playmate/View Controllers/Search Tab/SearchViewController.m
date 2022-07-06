@@ -77,6 +77,13 @@
     return 1;
 }
 
+#pragma mark - Filter settings button
+
+- (IBAction)didTapFilters:(id)sender {
+    
+    [self performSegueWithIdentifier:@"toFilters" sender:nil];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

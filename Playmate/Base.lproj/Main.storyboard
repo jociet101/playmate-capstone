@@ -547,14 +547,37 @@
                         <viewLayoutGuide key="safeArea" id="j5G-6q-w4z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Search" id="4FJ-is-IKi"/>
+                    <navigationItem key="navigationItem" title="Search" id="4FJ-is-IKi">
+                        <barButtonItem key="leftBarButtonItem" image="gearshape" catalog="system" id="AvR-38-9Ex">
+                            <connections>
+                                <action selector="didTapFilters:" destination="rTa-eA-wIt" id="7Ti-uN-4Aj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="nWr-op-BUf" id="eXE-0t-lPg"/>
+                        <segue destination="hZR-oH-jT4" kind="show" identifier="toFilters" id="9Rp-q5-S4e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jiI-zl-065" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5686" y="-712"/>
+        </scene>
+        <!--Filters View Controller-->
+        <scene sceneID="XcN-Un-c7P">
+            <objects>
+                <viewController id="hZR-oH-jT4" customClass="FiltersViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tq5-Xj-FEf">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="dvV-Jp-MgO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TmQ-z5-fSQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ySw-gI-BNY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6714" y="-712"/>
         </scene>
         <!--Session Details-->
         <scene sceneID="R2X-zK-IfK">
@@ -723,7 +746,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IkE-Z8-zAi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6864.6153846153848" y="-1057.1090047393363"/>
+            <point key="canvasLocation" x="6714" y="-1415"/>
         </scene>
         <!--Create-->
         <scene sceneID="saX-T3-Lvz">
@@ -928,7 +951,7 @@
         <!--Select Location-->
         <scene sceneID="43q-gi-Ddl">
             <objects>
-                <viewController id="9tI-s5-YSO" sceneMemberID="viewController">
+                <viewController id="9tI-s5-YSO" customClass="SelectMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UlT-mc-3y9">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -939,7 +962,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C72-lC-ikB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6620" y="-11"/>
+            <point key="canvasLocation" x="6714" y="-11"/>
         </scene>
         <!--Profile-->
         <scene sceneID="RmX-pb-hE9">
@@ -1244,12 +1267,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xxD-Qo-Eh9"/>
+        <segue reference="mqk-g0-t3s"/>
         <segue reference="EiS-gP-Syp"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="location.circle" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
