@@ -50,6 +50,10 @@
     self.dateTimeLabel.text = [formatter stringFromDate:date];
 }
 
+- (IBAction)addMyself:(id)sender {
+}
+
+
 /*
 #pragma mark - Navigation
 
