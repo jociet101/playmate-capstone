@@ -566,6 +566,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="clearFiltersButton" destination="hka-rk-6rR" id="p7H-5J-3T4"/>
                         <outlet property="tableView" destination="nWr-op-BUf" id="eXE-0t-lPg"/>
                     </connections>
                 </viewController>
@@ -724,6 +725,17 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDR-Ha-VG1">
+                                <rect key="frame" x="345" y="20" width="29" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <backgroundConfiguration key="background" image="xmark" catalog="system"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapClose:" destination="hZR-oH-jT4" eventType="touchUpInside" id="LFb-HA-L2N"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dvV-Jp-MgO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1442,6 +1454,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zG3-n3-hPh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4756.9230769230771" y="1350.7109004739336"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="foY-3B-zsd">
+            <objects>
+                <viewController id="AI2-wN-h3h" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yIZ-QO-ARg">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="fzb-kj-AfM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gYJ-ck-RQT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4647" y="3422"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

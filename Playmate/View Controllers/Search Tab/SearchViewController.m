@@ -18,6 +18,7 @@
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (assign, nonatomic) BOOL appliedFilters;
 @property (nonatomic, strong) Filters * _Nullable filters;
+@property (weak, nonatomic) IBOutlet UIButton *clearFiltersButton;
 
 @end
 
@@ -34,6 +35,9 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     [self fetchData];
+    
+    [self.clearFiltersButton setEnabled:NO];
+    self.clearFiltersButton.tintColor = [UIColor lightGrayColor];
     
     // set up refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -80,6 +84,9 @@
 //    NSLog(@"%@", filter.radius);
     
     if (self.appliedFilters == NO) {
+        
+        [self.clearFiltersButton setEnabled:YES];
+        self.clearFiltersButton.tintColor = [UIColor systemBlueColor];
         
         self.filters = filter;
         self.appliedFilters = YES;
@@ -138,6 +145,9 @@
 
 - (IBAction)didTapClear:(id)sender {
     if (self.appliedFilters == YES) {
+        [self.clearFiltersButton setEnabled:NO];
+        self.clearFiltersButton.tintColor = [UIColor lightGrayColor];
+        
         self.filters = nil;
         self.appliedFilters = NO;
         [self fetchData];
