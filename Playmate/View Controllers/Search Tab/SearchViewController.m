@@ -7,6 +7,8 @@
 
 #import "SearchViewController.h"
 #import "SessionCell.h"
+#import "SessionDetailsViewController.h"
+#import "Session.h"
 
 @interface SearchViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -75,14 +77,22 @@
     return 1;
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([sender isMemberOfClass:[SessionCell class]]) {
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        
+        Session* data = self.sessionList[indexPath.row];
+        SessionDetailsViewController *VC = [segue destinationViewController];
+        VC.sessionDeets = data;
+    }
+    
 }
-*/
 
 @end

@@ -422,6 +422,7 @@
                                             <outlet property="levelCapacityLabel" destination="AOR-NA-ctd" id="la2-6M-iXS"/>
                                             <outlet property="locationLabel" destination="g3G-yM-rCp" id="Icy-rk-iFN"/>
                                             <outlet property="sportLabel" destination="YhX-US-tzd" id="DNd-Ab-wJW"/>
+                                            <segue destination="FoH-rZ-204" kind="show" id="mqk-g0-t3s"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -437,7 +438,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jiI-zl-065" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5686.1538461538457" y="-712.32227488151659"/>
+            <point key="canvasLocation" x="5686" y="-712"/>
+        </scene>
+        <!--Session Details-->
+        <scene sceneID="R2X-zK-IfK">
+            <objects>
+                <viewController id="FoH-rZ-204" customClass="SessionDetailsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xae-LI-F9P">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="hVm-R0-OGX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Session Details" id="uMN-T2-O2L"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IkE-Z8-zAi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6865" y="-1057"/>
         </scene>
         <!--Create-->
         <scene sceneID="saX-T3-Lvz">
@@ -513,7 +530,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8r-EF-ZhB">
-                                        <rect key="frame" x="127" y="35" width="224" height="31"/>
+                                        <rect key="frame" x="210" y="35" width="141" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Select on Map"/>
@@ -639,7 +656,7 @@
             </objects>
             <point key="canvasLocation" x="5686.1538461538457" y="-11.374407582938389"/>
         </scene>
-        <!--View Controller-->
+        <!--Select Location-->
         <scene sceneID="43q-gi-Ddl">
             <objects>
                 <viewController id="9tI-s5-YSO" sceneMemberID="viewController">
@@ -649,7 +666,7 @@
                         <viewLayoutGuide key="safeArea" id="8Bz-b7-4Ls"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="QDd-CF-ePo"/>
+                    <navigationItem key="navigationItem" title="Select Location" id="QDd-CF-ePo"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C72-lC-ikB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

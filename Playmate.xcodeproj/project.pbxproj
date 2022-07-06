@@ -21,6 +21,7 @@
 		3C45B5902874BB7500EE578F /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B58F2874BB7500EE578F /* Session.m */; };
 		3C45B5932874C0ED00EE578F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5922874C0ED00EE578F /* Location.m */; };
 		3C45B59B2874D91800EE578F /* SessionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B59A2874D91800EE578F /* SessionCell.m */; };
+		3C45B59E2875060700EE578F /* SessionDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B59D2875060700EE578F /* SessionDetailsViewController.m */; };
 		3CF652A9286D036600BD5EDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652A8286D036600BD5EDB /* AppDelegate.m */; };
 		3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652AB286D036600BD5EDB /* SceneDelegate.m */; };
 		3CF652B2286D036600BD5EDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF652B0286D036600BD5EDB /* Main.storyboard */; };
@@ -75,6 +76,8 @@
 		3C45B5922874C0ED00EE578F /* Location.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		3C45B5992874D91800EE578F /* SessionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionCell.h; sourceTree = "<group>"; };
 		3C45B59A2874D91800EE578F /* SessionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionCell.m; sourceTree = "<group>"; };
+		3C45B59C2875060700EE578F /* SessionDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionDetailsViewController.h; sourceTree = "<group>"; };
+		3C45B59D2875060700EE578F /* SessionDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionDetailsViewController.m; sourceTree = "<group>"; };
 		3CF652A4286D036600BD5EDB /* Playmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF652A7286D036600BD5EDB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3CF652A8286D036600BD5EDB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -154,6 +157,8 @@
 		3C45B561286E64CB00EE578F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3C45B59C2875060700EE578F /* SessionDetailsViewController.h */,
+				3C45B59D2875060700EE578F /* SessionDetailsViewController.m */,
 				3C45B58628737E5500EE578F /* Create Tab */,
 				3C45B58228737E4400EE578F /* Search Tab */,
 				3C45B575287299B900EE578F /* Profile Tab */,
@@ -545,6 +550,7 @@
 				3C45B5902874BB7500EE578F /* Session.m in Sources */,
 				3C45B58928737E6200EE578F /* SearchViewController.m in Sources */,
 				3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */,
+				3C45B59E2875060700EE578F /* SessionDetailsViewController.m in Sources */,
 				3C45B574287297EB00EE578F /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
