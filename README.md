@@ -144,3 +144,8 @@ Playmate is a platform where sports players can conveniently find others to play
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
+
+
+### External resources
+
+- Empty Table View UI Helper [https://github.com/dzenbot/DZNEmptyDataSet]
