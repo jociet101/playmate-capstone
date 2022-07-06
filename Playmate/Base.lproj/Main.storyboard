@@ -554,7 +554,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="cWY-AU-vad">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="hka-rk-6rR">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="hka-rk-6rR">
                                 <rect key="frame" x="259.33333333333331" y="5" width="114.66666666666669" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -605,6 +605,7 @@
                                             <segment title="Leisure"/>
                                             <segment title="Amateur"/>
                                             <segment title="Competitive"/>
+                                            <segment title="All"/>
                                         </segments>
                                     </segmentedControl>
                                 </subviews>

@@ -30,10 +30,11 @@ NSString *selectedSport2;
     
     self.applyButton.layer.cornerRadius = 20;
     
-    selectedSport2 = @"Tennis";
+    selectedSport2 = @"All";
     
     // Pull sports from an api later
     sports2 = [[NSMutableArray alloc] init];
+    [sports2 addObject:@"All"];
     [sports2 addObject:@"Tennis"];
     [sports2 addObject:@"Basketball"];
     [sports2 addObject:@"Golf"];
@@ -67,13 +68,22 @@ NSString *selectedSport2;
     [skillLevels addObject:@"Leisure"];
     [skillLevels addObject:@"Amateur"];
     [skillLevels addObject:@"Competitive"];
+    [skillLevels addObject:@"All"];
     
     Filters *filters = [Filters new];
+    
     filters.sport = selectedSport2;
     filters.skillLevel = skillLevels[self.skillLevelControl.selectedSegmentIndex];
 //    filters.originLoc =
     filters.radius = [NSNumber numberWithInt:[self.radiusLabel.text intValue]];
         
+    if ([filters.sport isEqualToString:@"All"]) {
+        filters.sport = nil;
+    }
+    if ([filters.skillLevel isEqualToString:@"All"]) {
+        filters.skillLevel = nil;
+    }
+    
     // call delegate method so filters save on search tab vc
     [self.delegate didApplyFilters:filters];
     

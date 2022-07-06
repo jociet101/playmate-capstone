@@ -66,8 +66,13 @@
     query.limit = 20;
     
     [query orderByDescending:@"createdAt"];
-    [query whereKey:@"sport" equalTo:filter.sport];
-    [query whereKey:@"skillLevel" equalTo:filter.skillLevel];
+    
+    if (filter.sport != nil) {
+        [query whereKey:@"sport" equalTo:filter.sport];
+    }
+    if (filter.skillLevel != nil) {
+        [query whereKey:@"skillLevel" equalTo:filter.skillLevel];
+    }
 
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
