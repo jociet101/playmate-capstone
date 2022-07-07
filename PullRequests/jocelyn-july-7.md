@@ -1,15 +1,19 @@
 # 👩🏻‍🏫 What does this PR do?
 
-Refactoring:
+### Refactoring:
 - Created Constants.h and .m files, went through all other files and put in constants here
 - Removed unnecessary log statements and methods
 
-API/Networking:
+### API/Networking:
 - Create API Manager
 - Integrate "geoapify" API for geocoding
 
-Map view:
-- User can search for an address
+### Map view:
+- User can search for an address and pin will appear on map
+- Location data is saved to parse and will show on filters/create session view controller
+
+### Session details:
+- Location will show up on details view
 
 
 # 🧪 How can I test it?
@@ -28,8 +32,9 @@ Add any screenshots / GIFS if there are any
 # ✅ This PR is related to:
 - [ ] 🏠 Home
 - [ ] 🔍 Search
-- [] ➕ Create
+- [x] ➕ Create
 - [ ] 📷 Profile
 - [x] Map view
-- [ ] ⁉️ Other
+- [x]  Session details
+- [x] ⁉️ Other
     - [x] Refactoring

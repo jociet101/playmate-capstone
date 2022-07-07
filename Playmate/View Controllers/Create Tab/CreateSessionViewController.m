@@ -29,8 +29,6 @@
 
 @implementation CreateSessionViewController
 
-int numPlayers;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -64,13 +62,7 @@ int numPlayers;
 #pragma mark - Location map protocol method
 
 - (void)getSelectedLocation:(Location *)location {
-    
-    NSLog(@"called get selected location");
-    
-    [Location saveLocation:location];
-    
     self.locationLabel.text = location.locationName;
-    
     self.selectedLoc = location;
 }
 
@@ -101,7 +93,7 @@ int numPlayers;
     NSArray *skillLevels = [Constants skillLevelsList:NO];
     NSDate *sessionDateTime = self.dateTimePicker.date;
     NSString *skillLevel = skillLevels[self.skillLevelControl.selectedSegmentIndex];
-    NSNumber *selectedNumPlayers = [NSNumber numberWithInt:numPlayers];
+    NSNumber *selectedNumPlayers = [NSNumber numberWithInt:self.numPlayers];
     
     [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:skillLevel withDate:sessionDateTime withLocation:self.selectedLoc withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
             if (error) {
@@ -132,8 +124,8 @@ int numPlayers;
 }
 
 - (IBAction)stepperValueChanged:(id)sender {
-    numPlayers = self.numPlayersStepper.value;
-    self.numPlayersLabel.text = [NSString stringWithFormat:@"%d", numPlayers];
+    self.numPlayers = self.numPlayersStepper.value;
+    self.numPlayersLabel.text = [NSString stringWithFormat:@"%d", self.numPlayers];
 }
 
 

@@ -54,10 +54,14 @@
     
     self.sportLabel.text = [self.session.sport stringByAppendingString:[@" w/ " stringByAppendingString:playersString]];
     
+    Location *loc = self.session.location;
+    [loc fetchIfNeeded];
+    
+    self.locationLabel.text = loc.locationName;
+    
     // Form the fraction into a string
     NSString *capacityString = [Constants capacityString:self.session.occupied with:self.session.capacity];
 
-    
     if ([self.session.capacity isEqual:self.session.occupied]) {
         capacityString = [Constants noOpenSlotsErrorMsg];
     }

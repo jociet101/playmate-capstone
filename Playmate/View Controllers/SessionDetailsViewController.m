@@ -8,6 +8,7 @@
 #import "SessionDetailsViewController.h"
 #import "SessionCell.h"
 #import "Constants.h"
+#import "Location.h"
 
 @interface SessionDetailsViewController ()
 
@@ -76,6 +77,11 @@ PFUser *me;
     }
     
     self.levelLabel.text = self.sessionDeets.skillLevel;
+    
+    Location *loc = self.sessionDeets.location;
+    [loc fetchIfNeeded];
+    
+    self.locationLabel.text = loc.locationName;
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = [Constants dateFormatString];

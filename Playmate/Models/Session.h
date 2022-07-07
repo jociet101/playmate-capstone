@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
+#import "Location.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFUser *creator;
 @property (nonatomic, strong) NSArray *playersList;
 @property (nonatomic, strong) NSDate *occursAt;
-@property (nonatomic, strong) PFObject *location;
+@property (nonatomic, strong) Location *location;
 @property (nonatomic, strong) NSNumber *capacity;
 @property (nonatomic, strong) NSNumber *occupied;
 
