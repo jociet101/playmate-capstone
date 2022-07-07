@@ -9,6 +9,7 @@
 #import "WelcomeViewController.h"
 #import "SceneDelegate.h"
 #import "DateTools.h"
+#import "Constants.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate>
 
@@ -22,8 +23,6 @@
 
 @end
 
-NSString *defaultBio = @"Enter a bio.";
-
 @implementation ProfileViewController
 
 - (void)viewDidLoad {
@@ -36,7 +35,7 @@ NSString *defaultBio = @"Enter a bio.";
     self.genderLabel.text = [@"Identifies as " stringByAppendingString:user[@"gender"][0]];
     self.ageLabel.text = [@"Born " stringByAppendingString:[user[@"birthday"][0] timeAgoSinceNow]];
     
-    if (![self.bioField.text isEqualToString:defaultBio]) {
+    if (![self.bioField.text isEqualToString:[Constants defaultBio]]) {
         self.bioField.text = user[@"bio"][0];
     }
     if (user[@"profileImage"] != nil) {
@@ -113,15 +112,5 @@ NSString *defaultBio = @"Enter a bio.";
 - (IBAction)uploadProfileImage:(id)sender {
     [self initializeTaker];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

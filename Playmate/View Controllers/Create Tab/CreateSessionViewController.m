@@ -7,6 +7,7 @@
 
 #import "CreateSessionViewController.h"
 #import "Session.h"
+#import "Constants.h"
 
 @interface CreateSessionViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -32,7 +33,7 @@ int numPlayers;
     self.sportPicker.delegate = self;
     self.sportPicker.dataSource = self;
     
-    self.createButton.layer.cornerRadius = 20;
+    self.createButton.layer.cornerRadius = [Constants buttonCornerRadius];
     
     numPlayers = 2;
     selectedSport = @"Tennis";

@@ -6,6 +6,7 @@
 //
 
 #import "WelcomeViewController.h"
+#import "Constants.h"
 
 @interface WelcomeViewController ()
 
@@ -20,15 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    [self customizeUI];
-}
-
-- (void)customizeUI {
-    
-    // For Create Account button
-    self.createAccountButton.layer.cornerRadius = 20;
+    self.createAccountButton.layer.cornerRadius = [Constants buttonCornerRadius];
 }
 
 #pragma mark - Button Actions

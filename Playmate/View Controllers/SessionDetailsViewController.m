@@ -32,7 +32,7 @@ PFUser *me;
     me = [PFUser currentUser];
     [me fetchIfNeeded];
 
-    self.addMyselfButton.layer.cornerRadius = 20;
+    self.addMyselfButton.layer.cornerRadius = [Constants buttonCornerRadius];
     
     [self disableAddButton];
     

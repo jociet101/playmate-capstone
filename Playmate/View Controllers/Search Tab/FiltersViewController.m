@@ -6,6 +6,7 @@
 //
 
 #import "FiltersViewController.h"
+#import "Constants.h"
 
 @interface FiltersViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -28,7 +29,7 @@ NSString *selectedSport2;
     self.sportPicker.delegate = self;
     self.sportPicker.dataSource = self;
     
-    self.applyButton.layer.cornerRadius = 20;
+    self.applyButton.layer.cornerRadius = [Constants buttonCornerRadius];
     
     selectedSport2 = @"All";
     
