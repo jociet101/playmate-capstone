@@ -6,12 +6,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Location.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface APIManager : NSObject
 
-- (void)getGeocodedLocation:(NSString *)address WithCompletion:(void(^)(NSDictionary *addys, NSError *error))completion;
+- (void)getGeocodedLocation:(NSString *)address WithCompletion:(void(^)(Location *loc, NSError *error))completion;
 
 @end
 

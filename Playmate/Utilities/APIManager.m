@@ -6,6 +6,7 @@
 //
 
 #import "APIManager.h"
+#import "UIKit/UIKit.h"
 
 static NSString * const geoapifyBaseURLString = @"https://api.geoapify.com/v1/";
 static NSString * geoapify;
@@ -36,7 +37,7 @@ static NSString * geoapify;
     return self;
 }
 
-- (void)getGeocodedLocation:(NSString *)address WithCompletion:(void(^)(NSDictionary *addys, NSError *error))completion {
+- (void)getGeocodedLocation:(NSString *)address WithCompletion:(void(^)(Location *loc, NSError *error))completion {
     
     // Parse the address into array then into format needed for url
     NSArray *addyComponenets = [address componentsSeparatedByString:@" "];
@@ -70,11 +71,25 @@ static NSString * geoapify;
         }
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSLog(@"geocode success");
-            // The network request has completed, and succeeded.
-            // Invoke the completion block with the movies array.
-            // Think of invoking a block like calling a function with parameters
-            completion(dataDictionary, nil);
+            
+            NSLog(@"%@", dataDictionary);
+            
+            // parse dictionary
+            NSArray *results = dataDictionary[@"results"];
+            
+            if (results.count == 0) {
+                completion(nil, nil);
+            }
+            else {
+                NSDictionary *firstResult = results[0];
+                
+                Location *loc = [Location new];
+                loc.lat = [NSNumber numberWithDouble:[firstResult[@"lat"] doubleValue]];
+                loc.lng = [NSNumber numberWithDouble:[firstResult[@"lon"] doubleValue]];
+                loc.locationName = firstResult[@"formatted"];
+                
+                completion(loc, nil);
+            }
         }
         
     }];

@@ -86,8 +86,8 @@
     self.radiusLabel.text = [NSString stringWithFormat:@"%1.0f", self.radiusSlider.value];
 }
 
-- (IBAction)didTapClose:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+//- (IBAction)didTapClose:(id)sender {
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
 @end

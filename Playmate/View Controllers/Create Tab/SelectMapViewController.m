@@ -7,6 +7,7 @@
 
 #import "SelectMapViewController.h"
 #import "APIManager.h"
+#import "Location.h"
 
 @interface SelectMapViewController () <CLLocationManagerDelegate, UISearchBarDelegate>
 
@@ -48,21 +49,24 @@ BOOL firstTime;
 
 }
 
-#pragma mark - Geocode from api
-
-- (void)fetchDataTester {
-    NSLog(@"TESTING OUT API MANAGER");
+- (void)handleAlert:(NSError * _Nullable)error withTitle:(NSString *)title andOk:(NSString *)ok {
     
-    APIManager *manager = [APIManager new];
-    NSString *address = @"10727 Linda Vista Dr. 95014";
-    [manager getGeocodedLocation:address WithCompletion:^(NSDictionary *addys, NSError *error) {
-        
-        NSLog(@"adddddy\n%@", addys);
-        
+    NSString *msg = @"Please enter a more specific address.";
+    
+    if (error != nil) {
+        msg = error.localizedDescription;
+    }
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:ok style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [self viewDidLoad];
     }];
+    
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated: YES completion: nil];
 }
 
-#pragma mark - Search bar
+#pragma mark - Search bar and geocode
 
 //- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
 //
@@ -71,9 +75,24 @@ BOOL firstTime;
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     APIManager *manager = [APIManager new];
-    [manager getGeocodedLocation:searchBar.text WithCompletion:^(NSDictionary *addys, NSError *error) {
+    [manager getGeocodedLocation:searchBar.text WithCompletion:^(Location *loc, NSError *error) {
         
-        NSLog(@"adddddy\n%@", addys);
+        if (error == nil) {
+            
+            if (loc == nil) {
+                [self handleAlert:nil withTitle:@"Address not found." andOk:@"Ok"];
+            }
+            else {
+                // set location stuff!!!
+                // show on map and send back through delegate
+                NSLog(@"loc.lng = %@", loc.lng);
+                NSLog(@"loc.lat = %@", loc.lat);
+                NSLog(@"loc.name = %@", loc.locationName);
+            }
+            
+        } else {
+            [self handleAlert:error withTitle:@"Error." andOk:@"Try again."];
+        }
         
     }];
     
@@ -108,7 +127,7 @@ BOOL firstTime;
     NSLog(@"location manager failed with error: %@", error.localizedDescription);
 }
 
-//- (IBAction)didTapClose:(id)sender {
+//- (IBAction)didTapDone:(id)sender {
 //    [self dismissViewControllerAnimated:YES completion:nil];
 //}
 
