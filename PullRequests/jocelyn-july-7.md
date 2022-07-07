@@ -1,5 +1,9 @@
 # 👩🏻‍🏫 What does this PR do?
 
+Refactoring:
+- Created Constants.h and .m files, went through all other files and put in constants here
+- Removed unnecessary log statements and methods
+
 Create Tab:
 - Integrate Sport
 
@@ -10,6 +14,7 @@ Add any screenshots / GIFS if there are any
 # ✅ This PR is related to:
 - [ ] 🏠 Home
 - [ ] 🔍 Search
-- [x] ➕ Create
+- [ ] ➕ Create
 - [ ] 📷 Profile
 - [ ] ⁉️ Other
+    - [x] Refactoring
