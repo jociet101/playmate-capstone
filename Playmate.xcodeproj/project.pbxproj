@@ -25,6 +25,7 @@
 		3C45B5A1287606C500EE578F /* FiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5A0287606C500EE578F /* FiltersViewController.m */; };
 		3C45B5A4287606EF00EE578F /* SelectMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5A3287606EF00EE578F /* SelectMapViewController.m */; };
 		3C45B5A728760C1E00EE578F /* Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5A628760C1E00EE578F /* Filters.m */; };
+		3CF4186428765585009741FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF4186328765585009741FF /* MapKit.framework */; };
 		3CF652A9286D036600BD5EDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652A8286D036600BD5EDB /* AppDelegate.m */; };
 		3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652AB286D036600BD5EDB /* SceneDelegate.m */; };
 		3CF652B2286D036600BD5EDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF652B0286D036600BD5EDB /* Main.storyboard */; };
@@ -87,6 +88,7 @@
 		3C45B5A3287606EF00EE578F /* SelectMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectMapViewController.m; sourceTree = "<group>"; };
 		3C45B5A528760C1E00EE578F /* Filters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Filters.h; sourceTree = "<group>"; };
 		3C45B5A628760C1E00EE578F /* Filters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Filters.m; sourceTree = "<group>"; };
+		3CF4186328765585009741FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3CF652A4286D036600BD5EDB /* Playmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF652A7286D036600BD5EDB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3CF652A8286D036600BD5EDB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CF4186428765585009741FF /* MapKit.framework in Frameworks */,
 				0F3D57D63367CACDF86E4210 /* Pods_Playmate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,6 +146,7 @@
 		0E411DE22A919BCFD4DD6F4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3CF4186328765585009741FF /* MapKit.framework */,
 				AB42D5D33EADBFA23D4CED63 /* Pods_Playmate.framework */,
 				594B01C21EB6D350487C1832 /* Pods_Playmate_PlaymateUITests.framework */,
 				AE9D1C81597D0C72B952444E /* Pods_PlaymateTests.framework */,

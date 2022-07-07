@@ -68,7 +68,12 @@ PFUser *me;
     // Form the fraction into a string
     NSString *capacityString = [[NSString stringWithFormat:@"%d", [self.sessionDeets.capacity intValue] - [self.sessionDeets.occupied intValue]] stringByAppendingString:[@"/" stringByAppendingString:[[NSString stringWithFormat:@"%@", self.sessionDeets.capacity] stringByAppendingString:@" open slots"]]];
     
-    self.capacityLabel.text = capacityString;
+    if ([self.sessionDeets.capacity isEqual:self.sessionDeets.occupied]) {
+        self.capacityLabel.text = @"No open slots";
+    } else {
+        self.capacityLabel.text = capacityString;
+    }
+    
     self.levelLabel.text = self.sessionDeets.skillLevel;
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
