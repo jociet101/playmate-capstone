@@ -6,6 +6,7 @@
 //
 
 #import "SelectMapViewController.h"
+#import "APIManager.h"
 
 @interface SelectMapViewController () <CLLocationManagerDelegate>
 
@@ -21,6 +22,7 @@ BOOL firstTime;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     
     firstTime = YES;
     
