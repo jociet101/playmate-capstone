@@ -72,8 +72,6 @@ static NSString * geoapify;
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             
-            NSLog(@"%@", dataDictionary);
-            
             // parse dictionary
             NSArray *results = dataDictionary[@"results"];
             

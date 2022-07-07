@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *lng;
 @property (nonatomic, strong) NSString *locationName;
 
++ (void)saveLocation:(Location *)location;
+
 @end
 
 NS_ASSUME_NONNULL_END

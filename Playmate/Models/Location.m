@@ -17,4 +17,9 @@
     return @"Location";
 }
 
++ (void)saveLocation:(Location *)location {
+    
+    [location saveInBackground];
+}
+
 @end

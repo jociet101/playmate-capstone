@@ -8,8 +8,10 @@
 #import "CreateSessionViewController.h"
 #import "Session.h"
 #import "Constants.h"
+#import "SelectMapViewController.h"
+#import "Location.h"
 
-@interface CreateSessionViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface CreateSessionViewController () <UIPickerViewDelegate, UIPickerViewDataSource, SelectMapViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPickerView *sportPicker;
 @property (weak, nonatomic) IBOutlet UIDatePicker *dateTimePicker;
@@ -20,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *createButton;
 @property (nonatomic, strong) NSArray *sports;
 @property (nonatomic, strong) NSString *selectedSport;
+@property (nonatomic, strong) Location *selectedLoc;
 @property (nonatomic, assign) int numPlayers;
 
 @end
@@ -58,6 +61,19 @@ int numPlayers;
     self.numPlayersStepper.wraps = YES;
 }
 
+#pragma mark - Location map protocol method
+
+- (void)getSelectedLocation:(Location *)location {
+    
+    NSLog(@"called get selected location");
+    
+    [Location saveLocation:location];
+    
+    self.locationLabel.text = location.locationName;
+    
+    self.selectedLoc = location;
+}
+
 #pragma mark - Sport picker view
 
 // returns the number of 'columns' to display
@@ -87,26 +103,26 @@ int numPlayers;
     NSString *skillLevel = skillLevels[self.skillLevelControl.selectedSegmentIndex];
     NSNumber *selectedNumPlayers = [NSNumber numberWithInt:numPlayers];
     
-//    [Session createSession:[PFUser currentUser] withSport:selectedSport withLevel:skillLevel withDate:sessionDateTime withLocation:nil withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
-//            if (error) {
-//                NSLog(@"Error creating session: %@", error.localizedDescription);
-//            }
-//            else {
-//                NSLog(@"Successfully created the session");
-//            }
-//    }];
-    
-    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:skillLevel withDate:sessionDateTime withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
-        
-        NSLog(@"inside create session");
-        
-        if (error) {
-            NSLog(@"Error creating session: %@", error.localizedDescription);
-        }
-        else {
-            NSLog(@"Successfully created the session");
-        }
+    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:skillLevel withDate:sessionDateTime withLocation:self.selectedLoc withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
+            if (error) {
+                NSLog(@"Error creating session: %@", error.localizedDescription);
+            }
+            else {
+                NSLog(@"Successfully created the session");
+            }
     }];
+    
+//    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:skillLevel withDate:sessionDateTime withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
+//
+//        NSLog(@"inside create session");
+//
+//        if (error) {
+//            NSLog(@"Error creating session: %@", error.localizedDescription);
+//        }
+//        else {
+//            NSLog(@"Successfully created the session");
+//        }
+//    }];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
@@ -121,14 +137,15 @@ int numPlayers;
 }
 
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"toSelectLocation"]) {
+        SelectMapViewController *vc = segue.destinationViewController;
+        vc.delegate = self;
+    }
 }
-*/
 
 @end

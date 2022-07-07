@@ -95,6 +95,9 @@ BOOL firstTime;
                 [annotation setCoordinate:centerCoord];
                 [annotation setTitle:loc.locationName];
                 [self.mapView addAnnotation:annotation];
+                
+                // send location back to filters or create view controller
+                [self.delegate getSelectedLocation:loc];
             }
             
         } else {
@@ -105,33 +108,6 @@ BOOL firstTime;
     
     [searchBar resignFirstResponder];
 }
-
-#pragma mark - Map view and annotating
-
-//- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id < MKAnnotation >)annotation {
-//    MKPointAnnotation *pinView = [[MKPointAnnotation alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
-//    [pinView setAnimatesDrop:YES];
-//    [pinView setCanShowCallout:NO];
-//
-//    [pinView setCoordinat]
-//
-//    return pinView;
-//}
-
-
-//- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-//
-//    MKPinAnnotationView *annotationView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
-//    if (annotationView == nil) {
-//        annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
-//        annotationView.canShowCallout = true;
-//        annotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
-//    }
-//
-//    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-//
-//    return annotationView;
-// }
 
 #pragma mark - Location manager delegate methods
 
