@@ -23,6 +23,9 @@ BOOL firstTime;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSLog(@"TESTING OUT API MANAGER");
+    
+    [self fetchData];
     
     firstTime = YES;
     
@@ -43,6 +46,16 @@ BOOL firstTime;
     //Get best possible accuracy
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 
+}
+
+- (void)fetchData {
+    APIManager *manager = [APIManager new];
+    NSString *address = @"10727 Linda Vista Dr. 95014";
+    [manager getGeocodedLocation:address WithCompletion:^(NSDictionary *addys, NSError *error) {
+        
+        NSLog(@"adddddy\n%@", addys);
+        
+    }];
 }
 
 #pragma mark - Location manager delegate methods
