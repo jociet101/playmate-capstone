@@ -15,13 +15,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *applyButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *skillLevelControl;
 @property (weak, nonatomic) IBOutlet UILabel *radiusLabel;
+@property (nonatomic, strong) NSArray *sports;
+@property (nonatomic, strong) NSString *selectedSport;
 
 @end
 
 @implementation FiltersViewController
-
-NSMutableArray *sports2;
-NSString *selectedSport2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,14 +30,10 @@ NSString *selectedSport2;
     
     self.applyButton.layer.cornerRadius = [Constants buttonCornerRadius];
     
-    selectedSport2 = @"All";
+    self.selectedSport = [Constants defaultAll];
+    self.sports = [Constants sportsList:YES];
     
-    // Pull sports from an api later
-    sports2 = [[NSMutableArray alloc] init];
-    [sports2 addObject:@"All"];
-    [sports2 addObject:@"Tennis"];
-    [sports2 addObject:@"Basketball"];
-    [sports2 addObject:@"Golf"];
+    self.skillLevelControl.selectedSegmentIndex = [Constants defaultSkillPickerIndex];
 }
 
 #pragma mark - Sport picker view
@@ -50,30 +45,26 @@ NSString *selectedSport2;
 
 // returns the # of rows in each component
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return sports2.count;
+    return self.sports.count;
 }
 
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return sports2[row];
+    return self.sports[row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    selectedSport2 = sports2[row];
+    self.selectedSport = self.sports[row];
 }
 
 #pragma mark - Apply filters and send information to search vc
 
 - (IBAction)didTapApply:(id)sender {
     
-    NSMutableArray *skillLevels = [[NSMutableArray alloc] init];
-    [skillLevels addObject:@"Leisure"];
-    [skillLevels addObject:@"Amateur"];
-    [skillLevels addObject:@"Competitive"];
-    [skillLevels addObject:@"All"];
+    NSArray *skillLevels = [Constants skillLevelsList:YES];
     
     Filters *filters = [Filters new];
     
-    filters.sport = selectedSport2;
+    filters.sport = self.selectedSport;
     filters.skillLevel = skillLevels[self.skillLevelControl.selectedSegmentIndex];
 //    filters.originLoc =
     filters.radius = [NSNumber numberWithInt:[self.radiusLabel.text intValue]];

@@ -14,7 +14,6 @@
 		3C45B5682871856500EE578F /* CreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5672871856500EE578F /* CreateViewController.m */; };
 		3C45B56B2871856E00EE578F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B56A2871856E00EE578F /* LoginViewController.m */; };
 		3C45B56D287285AC00EE578F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C45B56C287285AC00EE578F /* Keys.plist */; };
-		3C45B57028728D4A00EE578F /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B56F28728D4A00EE578F /* Utilities.m */; };
 		3C45B574287297EB00EE578F /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B573287297EB00EE578F /* HomeViewController.m */; };
 		3C45B578287299C200EE578F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B577287299C200EE578F /* ProfileViewController.m */; };
 		3C45B58928737E6200EE578F /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B58828737E6200EE578F /* SearchViewController.m */; };
@@ -67,8 +66,6 @@
 		3C45B5692871856E00EE578F /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		3C45B56A2871856E00EE578F /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		3C45B56C287285AC00EE578F /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
-		3C45B56E28728D4A00EE578F /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
-		3C45B56F28728D4A00EE578F /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		3C45B572287297EB00EE578F /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		3C45B573287297EB00EE578F /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		3C45B576287299C200EE578F /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -287,20 +284,18 @@
 				3C45B561286E64CB00EE578F /* View Controllers */,
 				3C45B5952874D80F00EE578F /* Views */,
 				3C45B58D2874BB6400EE578F /* Models */,
+				3CF652B9286D036700BD5EDB /* main.m */,
 				3CF652A7286D036600BD5EDB /* AppDelegate.h */,
 				3CF652A8286D036600BD5EDB /* AppDelegate.m */,
 				3CF652AA286D036600BD5EDB /* SceneDelegate.h */,
 				3CF652AB286D036600BD5EDB /* SceneDelegate.m */,
-				3C45B56C287285AC00EE578F /* Keys.plist */,
-				3CF652B3286D036700BD5EDB /* Assets.xcassets */,
-				3CF652B5286D036700BD5EDB /* LaunchScreen.storyboard */,
-				3CF652B8286D036700BD5EDB /* Info.plist */,
-				3CF652B0286D036600BD5EDB /* Main.storyboard */,
-				3CF652B9286D036700BD5EDB /* main.m */,
-				3C45B56E28728D4A00EE578F /* Utilities.h */,
-				3C45B56F28728D4A00EE578F /* Utilities.m */,
 				3C383FD32877416D00BC9B55 /* Constants.h */,
 				3C383FD42877416D00BC9B55 /* Constants.m */,
+				3CF652B5286D036700BD5EDB /* LaunchScreen.storyboard */,
+				3CF652B0286D036600BD5EDB /* Main.storyboard */,
+				3CF652B8286D036700BD5EDB /* Info.plist */,
+				3C45B56C287285AC00EE578F /* Keys.plist */,
+				3CF652B3286D036700BD5EDB /* Assets.xcassets */,
 			);
 			path = Playmate;
 			sourceTree = "<group>";
@@ -571,7 +566,6 @@
 				3C45B59B2874D91800EE578F /* SessionCell.m in Sources */,
 				3C45B5682871856500EE578F /* CreateViewController.m in Sources */,
 				3CF652BA286D036700BD5EDB /* main.m in Sources */,
-				3C45B57028728D4A00EE578F /* Utilities.m in Sources */,
 				3C45B5A1287606C500EE578F /* FiltersViewController.m in Sources */,
 				3C45B5902874BB7500EE578F /* Session.m in Sources */,
 				3C45B58928737E6200EE578F /* SearchViewController.m in Sources */,

@@ -28,6 +28,14 @@ NS_ASSUME_NONNULL_BEGIN
 // Information for profile tab
 + (NSString *)defaultBio;
 
+// Information for filters and create
++ (NSString *)defaultAll;
++ (NSString *)defaultSport;
++ (NSArray *)sportsList:(BOOL)needAll;
++ (NSArray *)skillLevelsList:(BOOL)needAll;
++ (int)defaultNumPlayers;
++ (int)defaultSkillPickerIndex;
+
 // Some numbers
 + (int)buttonCornerRadius;
 

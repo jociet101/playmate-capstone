@@ -18,13 +18,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *numPlayersLabel;
 @property (weak, nonatomic) IBOutlet UIStepper *numPlayersStepper;
 @property (weak, nonatomic) IBOutlet UIButton *createButton;
+@property (nonatomic, strong) NSArray *sports;
+@property (nonatomic, strong) NSString *selectedSport;
+@property (nonatomic, assign) int numPlayers;
 
 @end
 
 @implementation CreateSessionViewController
 
-NSMutableArray *sports;
-NSString *selectedSport;
 int numPlayers;
 
 - (void)viewDidLoad {
@@ -35,14 +36,9 @@ int numPlayers;
     
     self.createButton.layer.cornerRadius = [Constants buttonCornerRadius];
     
-    numPlayers = 2;
-    selectedSport = @"Tennis";
-    
-    // Pull sports from an api later
-    sports = [[NSMutableArray alloc] init];
-    [sports addObject:@"Tennis"];
-    [sports addObject:@"Basketball"];
-    [sports addObject:@"Golf"];
+    self.numPlayers = [Constants defaultNumPlayers];
+    self.selectedSport = [Constants defaultSport];
+    self.sports = [Constants sportsList:NO];
     
     // setup date time picker min date to current date
     // and max date to a month in advance
@@ -71,29 +67,22 @@ int numPlayers;
 
 // returns the # of rows in each component
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return sports.count;
+    return self.sports.count;
 }
 
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return sports[row];
+    return self.sports[row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    selectedSport = sports[row];
+    self.selectedSport = self.sports[row];
 }
 
 #pragma mark - Buttons and actions
 
 - (IBAction)didSelectCreateSession:(id)sender {
     
-    NSLog(@"did select create session");
-    
-    NSMutableArray *skillLevels = [[NSMutableArray alloc] init];
-    [skillLevels addObject:@"Leisure"];
-    [skillLevels addObject:@"Amateur"];
-    [skillLevels addObject:@"Competitive"];
-    
-    // selectedSport
+    NSArray *skillLevels = [Constants skillLevelsList:NO];
     NSDate *sessionDateTime = self.dateTimePicker.date;
     NSString *skillLevel = skillLevels[self.skillLevelControl.selectedSegmentIndex];
     NSNumber *selectedNumPlayers = [NSNumber numberWithInt:numPlayers];
@@ -107,7 +96,7 @@ int numPlayers;
 //            }
 //    }];
     
-    [Session createSession:[PFUser currentUser] withSport:selectedSport withLevel:skillLevel withDate:sessionDateTime withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
+    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:skillLevel withDate:sessionDateTime withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
         
         NSLog(@"inside create session");
         
