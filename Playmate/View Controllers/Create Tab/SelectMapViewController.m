@@ -25,11 +25,6 @@ BOOL firstTime;
     firstTime = YES;
     
     [CLLocationManager locationServicesEnabled];
-//    self.locManager = [[CLLocationManager alloc] init];
-//    self.locManager.delegate = self;
-//    self.locManager.desiredAccuracy = kCLLocationAccuracyBest;
-//    [self.locManager requestWhenInUseAuthorization];
-//    [self.locManager requestLocation];
     
     //Create location manager
     locationManager = [[CLLocationManager alloc] init];
