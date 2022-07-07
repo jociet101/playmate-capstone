@@ -9,7 +9,7 @@
 #import "APIManager.h"
 #import "Location.h"
 
-@interface SelectMapViewController () <CLLocationManagerDelegate, UISearchBarDelegate>
+@interface SelectMapViewController () <CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -83,11 +83,18 @@ BOOL firstTime;
                 [self handleAlert:nil withTitle:@"Address not found." andOk:@"Ok"];
             }
             else {
-                // set location stuff!!!
-                // show on map and send back through delegate
-                NSLog(@"loc.lng = %@", loc.lng);
-                NSLog(@"loc.lat = %@", loc.lat);
-                NSLog(@"loc.name = %@", loc.locationName);
+                // extract information from Location object
+                // recenter map and put pin
+                
+                CLLocationCoordinate2D centerCoord = CLLocationCoordinate2DMake([loc.lat doubleValue], [loc.lng doubleValue]);
+                
+                MKCoordinateRegion region = MKCoordinateRegionMake(centerCoord, MKCoordinateSpanMake(0.1, 0.1));
+                [self.mapView setRegion:region animated:false];
+                
+                MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+                [annotation setCoordinate:centerCoord];
+                [annotation setTitle:loc.locationName];
+                [self.mapView addAnnotation:annotation];
             }
             
         } else {
@@ -98,6 +105,33 @@ BOOL firstTime;
     
     [searchBar resignFirstResponder];
 }
+
+#pragma mark - Map view and annotating
+
+//- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id < MKAnnotation >)annotation {
+//    MKPointAnnotation *pinView = [[MKPointAnnotation alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
+//    [pinView setAnimatesDrop:YES];
+//    [pinView setCanShowCallout:NO];
+//
+//    [pinView setCoordinat]
+//
+//    return pinView;
+//}
+
+
+//- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+//
+//    MKPinAnnotationView *annotationView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
+//    if (annotationView == nil) {
+//        annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
+//        annotationView.canShowCallout = true;
+//        annotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
+//    }
+//
+//    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//
+//    return annotationView;
+// }
 
 #pragma mark - Location manager delegate methods
 
