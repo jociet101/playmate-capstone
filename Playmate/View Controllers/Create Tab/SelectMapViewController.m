@@ -8,10 +8,10 @@
 #import "SelectMapViewController.h"
 #import "APIManager.h"
 
-@interface SelectMapViewController () <CLLocationManagerDelegate>
+@interface SelectMapViewController () <CLLocationManagerDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-//@property (weak, nonatomic) CLLocationManager *locManager;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -23,9 +23,9 @@ BOOL firstTime;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"TESTING OUT API MANAGER");
+//    [self fetchDataTester];
     
-    [self fetchData];
+    self.searchBar.delegate = self;
     
     firstTime = YES;
     
@@ -48,7 +48,11 @@ BOOL firstTime;
 
 }
 
-- (void)fetchData {
+#pragma mark - Geocode from api
+
+- (void)fetchDataTester {
+    NSLog(@"TESTING OUT API MANAGER");
+    
     APIManager *manager = [APIManager new];
     NSString *address = @"10727 Linda Vista Dr. 95014";
     [manager getGeocodedLocation:address WithCompletion:^(NSDictionary *addys, NSError *error) {
@@ -56,6 +60,24 @@ BOOL firstTime;
         NSLog(@"adddddy\n%@", addys);
         
     }];
+}
+
+#pragma mark - Search bar
+
+//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+//
+//}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    APIManager *manager = [APIManager new];
+    [manager getGeocodedLocation:searchBar.text WithCompletion:^(NSDictionary *addys, NSError *error) {
+        
+        NSLog(@"adddddy\n%@", addys);
+        
+    }];
+    
+    [searchBar resignFirstResponder];
 }
 
 #pragma mark - Location manager delegate methods
@@ -86,9 +108,9 @@ BOOL firstTime;
     NSLog(@"location manager failed with error: %@", error.localizedDescription);
 }
 
-- (IBAction)didTapClose:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+//- (IBAction)didTapClose:(id)sender {
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
 /*
 #pragma mark - Navigation
