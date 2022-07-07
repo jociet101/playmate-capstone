@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *createButton;
 @property (nonatomic, strong) NSArray *sports;
 @property (nonatomic, strong) NSString *selectedSport;
-@property (nonatomic, strong) Location *selectedLoc;
+@property (nonatomic, strong) Location * _Nullable selectedLoc;
 @property (nonatomic, assign) int numPlayers;
 
 @end
@@ -40,6 +40,8 @@
     self.numPlayers = [Constants defaultNumPlayers];
     self.selectedSport = [Constants defaultSport];
     self.sports = [Constants sportsList:NO];
+    
+    self.selectedLoc = nil;
     
     // setup date time picker min date to current date
     // and max date to a month in advance
@@ -88,7 +90,29 @@
 
 #pragma mark - Buttons and actions
 
+- (void)handleAlert:(NSError * _Nullable)error withTitle:(NSString *)title andOk:(NSString *)ok {
+    
+    NSString *msg = @"Please select a location on map.";
+    
+    if (error != nil) {
+        msg = error.localizedDescription;
+    }
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:ok style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [self viewDidLoad];
+    }];
+    
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated: YES completion: nil];
+}
+
 - (IBAction)didSelectCreateSession:(id)sender {
+    
+    if (self.selectedLoc == nil) {
+        [self handleAlert:nil withTitle:@"No location" andOk:@"Ok"];
+        return;
+    }
     
     NSArray *skillLevels = [Constants skillLevelsList:NO];
     NSDate *sessionDateTime = self.dateTimePicker.date;

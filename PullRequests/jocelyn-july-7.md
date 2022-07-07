@@ -21,9 +21,9 @@
 Map:
 - Desired behavior: User can search address into Search bar on map view and the map should show a pin and center at that location
     - How to test:
-        - Copy repo to local
+        - Copy repo to local, go through create account and login process too
         - Run app and go to create tab
-        - Click "select on map" button and search for an address
+        - Click "select on map" button and search for an address (Feel free to customize other fields too!)
         - Once the user returns to the create tab, the location should show accordingly
         - Try for multiple addresses!
 
@@ -35,6 +35,6 @@ Add any screenshots / GIFS if there are any
 - [x] ➕ Create
 - [ ] 📷 Profile
 - [x] Map view
-- [x]  Session details
+- [x] Session details
 - [x] ⁉️ Other
     - [x] Refactoring
