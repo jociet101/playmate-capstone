@@ -10,7 +10,6 @@ target 'Playmate' do
   pod 'DateTools'
   pod 'DZNEmptyDataSet'
   pod 'AFNetworking'
-  pod 'BDBOAuth1Manager'
 
   target 'PlaymateTests' do
     inherit! :search_paths

@@ -14,8 +14,6 @@ PODS:
   - AFNetworking/Serialization (3.0.4)
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
-  - BDBOAuth1Manager (2.0.0):
-    - AFNetworking/NSURLSession (~> 3.0.0)
   - Bolts/Tasks (1.9.1)
   - DateTools (2.0.0)
   - DZNEmptyDataSet (1.8.1)
@@ -26,7 +24,6 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - BDBOAuth1Manager
   - DateTools
   - DZNEmptyDataSet
   - Parse
@@ -34,7 +31,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AFNetworking
-    - BDBOAuth1Manager
     - Bolts
     - DateTools
     - DZNEmptyDataSet
@@ -42,12 +38,11 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
-  BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
 
-PODFILE CHECKSUM: 97c805b004c7556207fcb8179b32edcec83112c6
+PODFILE CHECKSUM: 839b7a98554280c0a6efe9b431036f3b4076bb70
 
 COCOAPODS: 1.11.3
