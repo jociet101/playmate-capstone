@@ -10,6 +10,7 @@
 #import "SceneDelegate.h"
 #import "DateTools.h"
 #import "Constants.h"
+#import "EditProfileViewController.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate>
 
@@ -107,6 +108,7 @@
 }
 
 - (IBAction)didTapEdit:(id)sender {
+    [self performSegueWithIdentifier:@"toEditProfile" sender:nil];
 }
 
 - (IBAction)uploadProfileImage:(id)sender {

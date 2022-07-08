@@ -56,7 +56,7 @@
 
 // Information for profile tab
 + (NSString *)defaultBio {
-    return @"Enter a bio.";
+    return @"Edit profile to enter a bio!";
 }
 
 // Information for filters and create
