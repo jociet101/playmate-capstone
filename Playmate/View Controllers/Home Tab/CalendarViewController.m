@@ -6,10 +6,12 @@
 //
 
 #import "CalendarViewController.h"
+#import "FSCalendar.h"
 
-@interface CalendarViewController ()
+@interface CalendarViewController () <FSCalendarDelegate, FSCalendarDataSource>
 
-//@property (weak, nonatomic) CKCalendarView *calendarView;
+@property (weak, nonatomic) IBOutlet FSCalendar *calendarView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarHeightConstraint;
 
 @end
 
@@ -18,7 +20,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.calendarView.delegate = self;
+    self.calendarView.dataSource = self;
+    
+    // make calendar view scroll vertically
+    self.calendarView.scrollDirection = FSCalendarScrollDirectionVertical;
 }
+
+#pragma mark - Calendar view methods
+
+//- (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated
+//{
+//    self.calendarHeightConstraint.constant = CGRectGetHeight(bounds);
+//    // Do other updates here
+//    [self.view layoutIfNeeded];
+//}
 
 /*
 #pragma mark - Navigation
