@@ -45,6 +45,18 @@
     return [[NSString stringWithFormat:@"%d", [capacity intValue] - [occupied intValue]] stringByAppendingString:[@"/" stringByAppendingString:[[NSString stringWithFormat:@"%@", capacity] stringByAppendingString:@" open slots"]]];
 }
 
++ (NSString *)formatDate:(NSDate *)original {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = [Constants dateFormatString];
+    NSString *originalDate = [formatter stringFromDate:original];
+    
+    NSDate *date = [formatter dateFromString:originalDate];
+    formatter.dateStyle = NSDateFormatterMediumStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    
+    return [formatter stringFromDate:date];
+}
+
 // Information for home tab
 + (NSString *)emptyTablePlaceholderMsg {
     return @"Search for a session to join or create your own session to view them here!";

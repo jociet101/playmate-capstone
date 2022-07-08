@@ -802,7 +802,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKm-Qb-2OP">
-                                <rect key="frame" x="17" y="106" width="133" height="35"/>
+                                <rect key="frame" x="17" y="106" width="265" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Basketball">
@@ -827,7 +827,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Na-OS-9iP">
-                                <rect key="frame" x="17" y="340" width="348" height="306"/>
+                                <rect key="frame" x="17" y="340" width="348" height="280"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.13766005219999999" green="0.2672638644" blue="0.35683001889999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xoK-3m-lWk">
@@ -892,6 +892,19 @@
                                     <action selector="didSelectCreateSession:" destination="vXG-Js-LgN" eventType="touchUpInside" id="7LR-1L-wCm"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJ4-dX-YM6">
+                                <rect key="frame" x="26" y="628" width="330" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Updated at">
+                                        <attributes>
+                                            <font key="NSFont" size="17" name="Avenir-Book"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hVm-R0-OGX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -901,6 +914,7 @@
                         <outlet property="addMyselfButton" destination="rH5-Bb-Mnr" id="yab-sk-j3w"/>
                         <outlet property="capacityLabel" destination="Sei-Tn-mKZ" id="Ngm-Mv-DVo"/>
                         <outlet property="collectionView" destination="7Na-OS-9iP" id="C05-xP-aaX"/>
+                        <outlet property="createdDateLabel" destination="BJ4-dX-YM6" id="KMD-Ng-EWL"/>
                         <outlet property="dateTimeLabel" destination="wRX-IS-Z3x" id="22q-UF-4gB"/>
                         <outlet property="disabledButton" destination="E73-V5-qVL" id="0aU-XE-Jde"/>
                         <outlet property="levelLabel" destination="q5k-vB-a1m" id="1Ls-kH-VoP"/>
@@ -910,7 +924,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IkE-Z8-zAi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6714" y="-1415"/>
+            <point key="canvasLocation" x="6713.8461538461534" y="-1415.4028436018957"/>
         </scene>
         <!--Create-->
         <scene sceneID="saX-T3-Lvz">

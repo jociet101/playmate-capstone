@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 // Information for session details
 + (NSString *)dateFormatString;
 + (NSString *)capacityString:(NSNumber *)occupied with:(NSNumber *)capacity;
++ (NSString *)formatDate:(NSDate *)original;
 
 // Information for home tab
 + (NSString *)emptyTablePlaceholderMsg;
