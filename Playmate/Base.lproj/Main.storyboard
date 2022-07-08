@@ -1402,7 +1402,6 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="didSelectCreateSession:" destination="vXG-Js-LgN" eventType="touchUpInside" id="9Kf-aN-WjD"/>
                                     <action selector="didTapSave:" destination="2xh-jN-HTr" eventType="touchUpInside" id="ybK-tD-sOu"/>
                                 </connections>
                             </button>

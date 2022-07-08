@@ -33,7 +33,7 @@
     
     self.firstNameView.text = user[@"firstName"][0];
     self.lastNameView.text = user[@"lastName"][0];
-    self.bioView.text = user[@"bio"];
+    self.bioView.text = user[@"biography"][0];
     
 }
 
@@ -52,13 +52,28 @@
     [self.bioView becomeFirstResponder];
 }
 
-- (void)textViewDidEndEditing:(UITextView *)textView {
-    
-}
-
 - (IBAction)didTapSave:(id)sender {
     
+    PFUser *user = [PFUser currentUser];
+    [user fetchIfNeeded];
     
+    [user removeObjectForKey:@"firstName"];
+    [user addObject:self.firstNameView.text forKey:@"firstName"];
+    
+    [user removeObjectForKey:@"lastName"];
+    [user addObject:self.lastNameView.text forKey:@"lastName"];
+    
+    if ([user objectForKey:@"biography"] != nil) {
+        [user removeObjectForKey:@"biography"];
+    }
+    
+    [user addObject:self.bioView.text forKey:@"biography"];
+    
+    NSLog(@"%@", self.firstNameView.text);
+    
+    [user saveInBackground];
+    
+    NSLog(@"saved edit profile");
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -67,6 +82,7 @@
     
     if ([text isEqualToString:@"\n"]) {
         [textView resignFirstResponder];
+        textView.editable = NO;
         return true;
     }
     
