@@ -78,8 +78,10 @@
         for (PFUser *user in sesh[@"playersList"]) {
             [user fetchIfNeeded];
             
-            if ([currUser.username isEqualToString:user.username]) {
-                
+            NSDate *now = [NSDate date];
+            NSComparisonResult result = [now compare:sesh.occursAt];
+            
+            if ([currUser.username isEqualToString:user.username] && result == NSOrderedAscending) {
                 [self.sessionList addObject:sesh];
                 break;
             }
