@@ -10,7 +10,7 @@ target 'Playmate' do
   pod 'DateTools'
   pod 'DZNEmptyDataSet'
   pod 'AFNetworking'
-  pod 'MBCalendarKit'
+  pod 'FSCalendar'
 
   target 'PlaymateTests' do
     inherit! :search_paths

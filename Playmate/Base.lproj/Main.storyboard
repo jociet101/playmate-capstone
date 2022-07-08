@@ -434,7 +434,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="biG-ev-HzV">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="a6G-na-PD2">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="sug-bi-Ct0">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="sug-bi-Ct0">
                                 <rect key="frame" x="281.66666666666669" y="5" width="92.333333333333314" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
