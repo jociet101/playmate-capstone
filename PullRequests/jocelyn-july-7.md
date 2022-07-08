@@ -7,6 +7,7 @@
 ### API/Networking:
 - Create API Manager
 - Integrate "geoapify" API for geocoding
+- Integrate decathalon API for sports list
 
 ### Map view:
 - User can search for an address and pin will appear on map
@@ -14,6 +15,9 @@
 
 ### Session details:
 - Location will show up on details view
+
+### Create tab:
+- Retrieve sports list from Decathalon api
 
 
 # 🧪 How can I test it?
