@@ -79,8 +79,70 @@
     }];
 }
 
+#pragma mark - Table view protocol methods
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    SessionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SessionCell"];
+        
+    cell.session = self.sessionList[indexPath.row];
+            
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.sessionList.count;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+#pragma mark - Filter view controller configuration
+
+- (void)didApplyFilters:(Filters *)filter {
+    [self fetchDataWithFilters:filter];
+    [self.navigationController popToViewController:self
+                                                  animated:YES];
+}
+
+- (float)euclideanDistanceBetween:(Location *)location1 and:(Location *)location2 {
+    
+    [location1 fetchIfNeeded];
+    [location2 fetchIfNeeded];
+    
+    float latitude1 = [location1.lat floatValue];
+    float latitude2 = [location2.lat floatValue];
+    float longitude1 = [location1.lng floatValue];
+    float longitude2 = [location2.lng floatValue];
+    
+    float sumSquaredDifferences = pow(latitude1-latitude2, 2) + pow(longitude1-longitude2, 2);
+    
+    return pow(sumSquaredDifferences, 0.5);
+}
+
+- (NSArray *)filterSessions:(NSArray *)sessions withLocation:(Location *)location andRadius:(NSNumber *)radiusInMiles {
+    
+    NSLog(@"filtering by location w radius %@", radiusInMiles);
+    
+    float radiusInUnits = [radiusInMiles floatValue]/69;
+    
+    NSMutableArray *filteredSessions = [[NSMutableArray alloc] init];
+    
+    for (Session *session in sessions) {
+        float distance = [self euclideanDistanceBetween:location and:session.location];
+        
+        NSLog(@"%f", distance);
+        
+        if (distance <= radiusInUnits) {
+            [filteredSessions addObject:session];
+        }
+    }
+    
+    return (NSArray *)filteredSessions;
+}
+
 - (void)fetchDataWithFilters:(Filters *)filter {
-//    NSLog(@"%@", filter.radius);
     
     if (self.appliedFilters == NO) {
         
@@ -106,7 +168,7 @@
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
         if (sessions != nil) {
-            self.sessionList = sessions;
+            self.sessionList = [self filterSessions:sessions withLocation:filter.location andRadius:filter.radius];
             
             [self.tableView reloadData];
         } else {
@@ -115,31 +177,6 @@
         [self.refreshControl endRefreshing];
     }];
     
-}
-
-#pragma mark - Table view protocol methods
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    SessionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SessionCell"];
-        
-    cell.session = self.sessionList[indexPath.row];
-            
-    return cell;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.sessionList.count;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-#pragma mark - Filter view controller configuration
-
-- (void)didApplyFilters:(Filters *)filter {
-    [self fetchDataWithFilters:filter];
 }
 
 - (IBAction)didTapClear:(id)sender {

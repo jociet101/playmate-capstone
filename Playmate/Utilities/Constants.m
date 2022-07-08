@@ -93,15 +93,16 @@
         }
     }];
 
+    NSLog(@"%@", sports);
+    */
+    
     if (needAll) {
         [sports addObject:@"All"];
     }
-
-    NSLog(@"%@", sports);
-     */
-     
+    
     [sports addObject:@"Tennis"];
     [sports addObject:@"Basketball"];
+    [sports addObject:@"Golf"];
     return (NSArray *)sports;
 }
 

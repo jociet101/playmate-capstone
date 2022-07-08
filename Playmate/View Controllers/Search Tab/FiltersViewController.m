@@ -79,7 +79,6 @@
     filters.location = self.selectedLoc;
     filters.sport = self.selectedSport;
     filters.skillLevel = skillLevels[self.skillLevelControl.selectedSegmentIndex];
-//    filters.originLoc =
     filters.radius = [NSNumber numberWithInt:[self.radiusLabel.text intValue]];
         
     if ([filters.sport isEqualToString:@"All"]) {
