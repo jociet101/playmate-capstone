@@ -7,6 +7,7 @@
 
 #import "CalendarViewController.h"
 #import "FSCalendar.h"
+#import "Constants.h"
 
 @interface CalendarViewController () <FSCalendarDelegate, FSCalendarDataSource>
 
@@ -20,14 +21,55 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupCalendar];
+}
+
+#pragma mark - Calendar view methods
+
+- (void)setupCalendar {
+    
     self.calendarView.delegate = self;
     self.calendarView.dataSource = self;
     
     // make calendar view scroll vertically
-    self.calendarView.scrollDirection = FSCalendarScrollDirectionVertical;
+//    self.calendarView.scrollDirection = FSCalendarScrollDirectionVertical;
+    
+    // make calendar view weekly when scrolled
+//    self.calendarView.scope = FSCalendarScopeWeek;
+    
+//    self.calendarView.scope =
+    
+    self.calendarView.swipeToChooseGesture.enabled = YES;
+    
+    UIPanGestureRecognizer *scopeGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self.calendarView action:@selector(handleScopeGesture:)];
+    [self.calendarView addGestureRecognizer:scopeGesture];
+    
+    // TODO: decide if i want to use event label
+//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.calendarView.frame)+10, self.view.frame.size.width, 50)];
+//    label.textAlignment = NSTextAlignmentCenter;
+//    label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+//    [self.view addSubview:label];
+//    self.eventLabel = label;
+    
 }
 
-#pragma mark - Calendar view methods
+- (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated
+{
+    calendar.frame = (CGRect){calendar.frame.origin,bounds.size};
+    
+    // TODO: decide if i want to keep event label
+//    self.eventLabel.frame = CGRectMake(0, CGRectGetMaxY(calendar.frame)+10, self.view.frame.size.width, 50);
+}
+
+- (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
+{
+    NSLog(@"did select date %@",[Constants formatDate:date]);
+}
+
+- (BOOL)calendar:(FSCalendar *)calendar hasEventForDate:(NSDate *)date
+{
+    return YES;
+}
 
 //- (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated
 //{
