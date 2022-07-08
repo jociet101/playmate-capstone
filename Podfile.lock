@@ -17,6 +17,7 @@ PODS:
   - Bolts/Tasks (1.9.1)
   - DateTools (2.0.0)
   - DZNEmptyDataSet (1.8.1)
+  - MBCalendarKit (5.1.0)
   - Parse (1.19.3):
     - Parse/Core (= 1.19.3)
   - Parse/Core (1.19.3):
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - AFNetworking
   - DateTools
   - DZNEmptyDataSet
+  - MBCalendarKit
   - Parse
 
 SPEC REPOS:
@@ -34,6 +36,7 @@ SPEC REPOS:
     - Bolts
     - DateTools
     - DZNEmptyDataSet
+    - MBCalendarKit
     - Parse
 
 SPEC CHECKSUMS:
@@ -41,8 +44,9 @@ SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  MBCalendarKit: d5bf07cddd24ff26b79ddf37d6f960df623d66e9
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
 
-PODFILE CHECKSUM: 839b7a98554280c0a6efe9b431036f3b4076bb70
+PODFILE CHECKSUM: 90c5fd4c8266d2e20ff183b3adf51af422c2be46
 
 COCOAPODS: 1.11.3

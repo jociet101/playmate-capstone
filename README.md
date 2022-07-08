@@ -150,3 +150,4 @@ Playmate is a platform where sports players can conveniently find others to play
 
 - Empty Table View UI [https://github.com/dzenbot/DZNEmptyDataSet]
 - Geocoding API [https://www.geoapify.com/places-api]
+- Decathalon API [https://developers.decathlon.com/products/sports]

@@ -294,6 +294,22 @@
             </objects>
             <point key="canvasLocation" x="2004.6153846153845" y="-161.37440758293837"/>
         </scene>
+        <!--Calendar-->
+        <scene sceneID="OC4-cM-Qxo">
+            <objects>
+                <viewController id="gNp-hx-eex" customClass="CalendarViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ypQ-Ki-W9l">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="qoz-bY-Mur"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Calendar" id="7CT-Rm-Vwk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y8E-cB-I7c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6714" y="-2148"/>
+        </scene>
         <!--Home-->
         <scene sceneID="A7g-fS-tar">
             <objects>
@@ -416,7 +432,19 @@
                         <viewLayoutGuide key="safeArea" id="UEK-el-5Pu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="biG-ev-HzV"/>
+                    <navigationItem key="navigationItem" title="Home" id="biG-ev-HzV">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="a6G-na-PD2">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="sug-bi-Ct0">
+                                <rect key="frame" x="281.66666666666669" y="5" width="92.333333333333314" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Calendar"/>
+                                <connections>
+                                    <segue destination="gNp-hx-eex" kind="show" id="60y-Zp-2ju"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="7nC-pP-sWH" id="rVa-f9-PTV"/>
                     </connections>
@@ -1617,9 +1645,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mDp-I2-Odr"/>
+        <segue reference="AUb-fP-lMa"/>
         <segue reference="xxD-Qo-Eh9"/>
-        <segue reference="EiS-gP-Syp"/>
+        <segue reference="zis-o5-IMS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
