@@ -75,7 +75,7 @@ BOOL firstTime;
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     APIManager *manager = [APIManager new];
-    [manager getGeocodedLocation:searchBar.text WithCompletion:^(Location *loc, NSError *error) {
+    [manager getGeocodedLocation:searchBar.text withCompletion:^(Location *loc, NSError *error) {
         
         if (error == nil) {
             

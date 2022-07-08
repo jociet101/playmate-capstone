@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *createButton;
 @property (nonatomic, strong) NSArray *sports;
 @property (nonatomic, strong) NSString *selectedSport;
-@property (nonatomic, strong) Location * _Nullable selectedLoc;
+@property (nonatomic, strong) Location * _Nullable selectedLocation;
 @property (nonatomic, assign) int numPlayers;
 
 @end
@@ -41,7 +41,7 @@
     self.selectedSport = [Constants defaultSport];
     self.sports = [Constants sportsList:NO];
     
-    self.selectedLoc = nil;
+    self.selectedLocation = nil;
     
     // setup date time picker min date to current date
     // and max date to a month in advance
@@ -65,7 +65,7 @@
 
 - (void)getSelectedLocation:(Location *)location {
     self.locationLabel.text = location.locationName;
-    self.selectedLoc = location;
+    self.selectedLocation = location;
 }
 
 #pragma mark - Sport picker view
@@ -109,7 +109,7 @@
 
 - (IBAction)didSelectCreateSession:(id)sender {
     
-    if (self.selectedLoc == nil) {
+    if (self.selectedLocation == nil) {
         [self handleAlert:nil withTitle:@"No location" andOk:@"Ok"];
         return;
     }
@@ -119,7 +119,7 @@
     NSString *skillLevel = skillLevels[self.skillLevelControl.selectedSegmentIndex];
     NSNumber *selectedNumPlayers = [NSNumber numberWithInt:self.numPlayers];
     
-    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:skillLevel withDate:sessionDateTime withLocation:self.selectedLoc withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
+    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:skillLevel withDate:sessionDateTime withLocation:self.selectedLocation withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
             if (error) {
                 NSLog(@"Error creating session: %@", error.localizedDescription);
             }

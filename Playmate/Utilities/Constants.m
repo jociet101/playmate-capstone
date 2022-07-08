@@ -14,6 +14,15 @@
 
 @implementation Constants
 
+// For API
++ (NSString *)geoapifyBaseURLString {
+    return @"https://api.geoapify.com/v1/";
+}
+
++ (NSString *)decathalonSportsListString {
+    return @"https://sports.api.decathlon.com/sports";
+}
+
 // Error messages for session details
 + (NSString *)fullSessionErrorMsg {
     return @"Session is full";
@@ -63,30 +72,34 @@
     
     NSMutableArray *sports = [[NSMutableArray alloc] init];
     
-//    APIManager *manager = [APIManager new];
-//    [manager getSportsListWithCompletion:^(NSDictionary *list, NSError *error) {
-//        if (error != nil) {
-//            NSLog(@"%@", error.localizedDescription);
-//        } else {
-//            NSArray *data = list[@"data"];
-//
-//            for (NSDictionary *datum in data) {
-//                NSString *sport = [NSString stringWithString:datum[@"attributes"][@"name"]];
-//
-//                NSString *sportType = [NSString stringWithFormat:@"%@", [sport class]];
-//
-//                if ([sportType isEqualToString:@"NSTaggedPointerString"]) {
-//                    [sports addObject:sport];
-//                }
-//            }
-//        }
-//    }];
-//
-//    if (needAll) {
-//        [sports addObject:@"All"];
-//    }
-//
-//    NSLog(@"%@", sports);
+    // TODO: Need to debug this for getting all sports later
+    /*
+    APIManager *manager = [APIManager new];
+    [manager getSportsListWithCompletion:^(NSDictionary *list, NSError *error) {
+        if (error != nil) {
+            NSLog(@"%@", error.localizedDescription);
+        } else {
+            NSArray *data = list[@"data"];
+
+            for (NSDictionary *datum in data) {
+                NSString *sport = [NSString stringWithString:datum[@"attributes"][@"name"]];
+
+                NSString *sportType = [NSString stringWithFormat:@"%@", [sport class]];
+
+                if ([sportType isEqualToString:@"NSTaggedPointerString"]) {
+                    [sports addObject:sport];
+                }
+            }
+        }
+    }];
+
+    if (needAll) {
+        [sports addObject:@"All"];
+    }
+
+    NSLog(@"%@", sports);
+     */
+     
     [sports addObject:@"Tennis"];
     [sports addObject:@"Basketball"];
     return (NSArray *)sports;

@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Constants : NSObject
 
+// For API
++ (NSString *)geoapifyBaseURLString;
++ (NSString *)decathalonSportsListString;
+
 // Error messages for session details
 + (NSString *)fullSessionErrorMsg;
 + (NSString *)alreadyInSessionErrorMsg;

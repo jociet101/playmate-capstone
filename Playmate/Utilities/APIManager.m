@@ -8,8 +8,8 @@
 #import "APIManager.h"
 #import "UIKit/UIKit.h"
 #import "AFHTTPSessionManager.h"
+#import "Constants.h"
 
-static NSString * const geoapifyBaseURLString = @"https://api.geoapify.com/v1/";
 static NSString * geoapify;
 
 @interface APIManager()
@@ -43,14 +43,14 @@ static NSString * geoapify;
 - (void)getSportsListWithCompletion:(void(^)(NSDictionary *list, NSError *error))completion {
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:@"https://sports.api.decathlon.com/sports"  parameters:nil progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *list) {
+    [manager GET:[Constants decathalonSportsListString]  parameters:nil progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *list) {
         completion(list, nil);
     } failure:^(NSURLSessionDataTask * task, NSError *error) {
         completion(nil, error);
     }];
 }
 
-- (void)getGeocodedLocation:(NSString *)address WithCompletion:(void(^)(Location *loc, NSError *error))completion {
+- (void)getGeocodedLocation:(NSString *)address withCompletion:(void(^)(Location *loc, NSError *error))completion {
     
     // Parse the address into array then into format needed for url
     NSArray *addyComponenets = [address componentsSeparatedByString:@" "];
@@ -69,7 +69,7 @@ static NSString * geoapify;
         }
     }
     
-    NSString *queryString = [NSString stringWithFormat:@"%@/geocode/search?text=%@&format=json&apiKey=%@", geoapifyBaseURLString, craftedLink, geoapify];
+    NSString *queryString = [NSString stringWithFormat:@"%@/geocode/search?text=%@&format=json&apiKey=%@", [Constants geoapifyBaseURLString], craftedLink, geoapify];
     NSURL *url = [NSURL URLWithString:queryString];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
