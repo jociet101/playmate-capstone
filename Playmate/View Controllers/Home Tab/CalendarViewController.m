@@ -8,11 +8,14 @@
 #import "CalendarViewController.h"
 #import "FSCalendar.h"
 #import "Constants.h"
+#import "SessionCell.h"
+#import "Session.h"
 
-@interface CalendarViewController () <FSCalendarDelegate, FSCalendarDataSource>
+@interface CalendarViewController () <FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet FSCalendar *calendarView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarHeightConstraint;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *sessionList;
 
 @end
 
@@ -22,6 +25,85 @@
     [super viewDidLoad];
     
     [self setupCalendar];
+    [self setupEventTable];
+}
+
+#pragma mark - Event Table view methods and fetch data
+
+- (void)fetchData:(NSDate *)selectedDate {
+    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+    query.limit = 20;
+    
+    [query orderByAscending:@"occursAt"];
+
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
+        if (sessions != nil) {
+            
+//            [self filterSessions:sessions forDate:selectedDate];
+            self.sessionList = (NSMutableArray *)sessions;
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
+- (void)filterSessions:(NSArray *)sessions forDate:(NSDate *)date {
+    
+    NSMutableArray *tempList = (NSMutableArray *)sessions;
+    PFUser *currUser = [PFUser currentUser];
+    [currUser fetchIfNeeded];
+    
+    for (Session *sesh in tempList) {
+        
+//        NSLog(@"session %@", sesh);
+        
+        for (PFUser *user in sesh[@"playersList"]) {
+            [user fetchIfNeeded];
+            
+            NSDate *sessionDate = [Constants dateWithHour:12 minute:0 second:0 fromDate:sesh.occursAt];
+            
+            NSComparisonResult result = [date compare:sessionDate];
+            
+//            NSLog(@"comparison result %ld", result);
+            
+//            if ([currUser.username isEqualToString:user.username] && result == NSOrderedSame) {
+                if ([currUser.username isEqualToString:user.username]) {
+                [self.sessionList addObject:sesh];
+                break;
+            }
+        }
+    }
+}
+
+- (void)setupEventTable {
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    [self fetchData:[NSDate now]];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSLog(@"bloop");
+    
+    SessionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SessionCell"];
+        
+    cell.session = self.sessionList[indexPath.row];
+            
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    NSLog(@"size %lu", self.sessionList.count);
+    
+    return self.sessionList.count;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
 
 #pragma mark - Calendar view methods
@@ -31,39 +113,22 @@
     self.calendarView.delegate = self;
     self.calendarView.dataSource = self;
     
-    // make calendar view scroll vertically
-//    self.calendarView.scrollDirection = FSCalendarScrollDirectionVertical;
-    
-    // make calendar view weekly when scrolled
-//    self.calendarView.scope = FSCalendarScopeWeek;
-    
-//    self.calendarView.scope =
-    
     self.calendarView.swipeToChooseGesture.enabled = YES;
     
     UIPanGestureRecognizer *scopeGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self.calendarView action:@selector(handleScopeGesture:)];
     [self.calendarView addGestureRecognizer:scopeGesture];
-    
-    // TODO: decide if i want to use event label
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.calendarView.frame)+10, self.view.frame.size.width, 50)];
-//    label.textAlignment = NSTextAlignmentCenter;
-//    label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
-//    [self.view addSubview:label];
-//    self.eventLabel = label;
     
 }
 
 - (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated
 {
     calendar.frame = (CGRect){calendar.frame.origin,bounds.size};
-    
-    // TODO: decide if i want to keep event label
-//    self.eventLabel.frame = CGRectMake(0, CGRectGetMaxY(calendar.frame)+10, self.view.frame.size.width, 50);
 }
 
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
 {
     NSLog(@"did select date %@",[Constants formatDate:date]);
+    [self fetchData:date];
 }
 
 - (BOOL)calendar:(FSCalendar *)calendar hasEventForDate:(NSDate *)date

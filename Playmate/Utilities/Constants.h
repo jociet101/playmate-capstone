@@ -16,6 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)geoapifyBaseURLString;
 + (NSString *)decathalonSportsListString;
 
+// For calendar
++ (NSDate *) dateWithHour:(NSInteger)hour
+                  minute:(NSInteger)minute
+                  second:(NSInteger)second
+                 fromDate:(NSDate *)date;
+
 // Error messages for session details
 + (NSString *)fullSessionErrorMsg;
 + (NSString *)alreadyInSessionErrorMsg;

@@ -331,6 +331,115 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cld-2g-AHh">
+                                <rect key="frame" x="0.0" y="378" width="390" height="383"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionCell" rowHeight="133" id="NI1-la-hpO" customClass="SessionCell">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="133"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NI1-la-hpO" id="fM6-ce-sLF">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="133"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g50-Fl-m5C">
+                                                    <rect key="frame" x="20" y="10.999999999999998" width="350" height="23.333333333333329"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Basketball w/ Jocelyn, Jonathan, Michelle">
+                                                            <attributes>
+                                                                <font key="NSFont" size="17" name="Avenir-Medium"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5C-Rq-8pN">
+                                                    <rect key="frame" x="50" y="40" width="320" height="22"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Location">
+                                                            <attributes>
+                                                                <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcf-ML-b6T">
+                                                    <rect key="frame" x="50" y="67" width="320" height="26"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Date at Time">
+                                                            <attributes>
+                                                                <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="timer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Yrs-Bc-aWd">
+                                                    <rect key="frame" x="21" y="70" width="20" height="19"/>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="location.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gq3-9a-o2n">
+                                                    <rect key="frame" x="21" y="41" width="20" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22.333333333333329" id="2r2-mQ-212"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IEd-Eo-HbY">
+                                                    <rect key="frame" x="20" y="100" width="22" height="21"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvO-sp-T5l">
+                                                    <rect key="frame" x="49" y="98" width="321" height="24"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Competitive, 5/6 open slots">
+                                                            <attributes>
+                                                                <font key="NSFont" size="17" name="Avenir-Book"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kvO-sp-T5l" firstAttribute="width" secondItem="fM6-ce-sLF" secondAttribute="width" multiplier="0.823077" id="0dI-hD-yTQ"/>
+                                                <constraint firstItem="kvO-sp-T5l" firstAttribute="top" secondItem="pcf-ML-b6T" secondAttribute="bottom" constant="5" id="4sW-4y-XUp"/>
+                                                <constraint firstAttribute="bottom" secondItem="kvO-sp-T5l" secondAttribute="bottom" constant="11" id="66K-fn-3Gb"/>
+                                                <constraint firstAttribute="trailing" secondItem="pcf-ML-b6T" secondAttribute="trailing" constant="20" symbolic="YES" id="6uv-mh-SH5"/>
+                                                <constraint firstItem="pcf-ML-b6T" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Yrs-Bc-aWd" secondAttribute="trailing" constant="8" symbolic="YES" id="EAb-xi-5Y4"/>
+                                                <constraint firstItem="IEd-Eo-HbY" firstAttribute="top" secondItem="Yrs-Bc-aWd" secondAttribute="bottom" constant="10.666666666666671" id="F9L-PC-aSn"/>
+                                                <constraint firstItem="IEd-Eo-HbY" firstAttribute="leading" secondItem="fM6-ce-sLF" secondAttribute="leading" constant="20" symbolic="YES" id="Ksc-KK-JWc"/>
+                                                <constraint firstItem="f5C-Rq-8pN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gq3-9a-o2n" secondAttribute="trailing" constant="8" symbolic="YES" id="LAX-Wh-TiT"/>
+                                                <constraint firstItem="Yrs-Bc-aWd" firstAttribute="leading" secondItem="fM6-ce-sLF" secondAttribute="leading" constant="21" id="PHO-n7-QiK"/>
+                                                <constraint firstItem="g50-Fl-m5C" firstAttribute="leading" secondItem="fM6-ce-sLF" secondAttribute="leading" constant="20" symbolic="YES" id="Qx3-g4-YqJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="kvO-sp-T5l" secondAttribute="trailing" constant="20" symbolic="YES" id="V9p-fD-osr"/>
+                                                <constraint firstItem="pcf-ML-b6T" firstAttribute="top" secondItem="f5C-Rq-8pN" secondAttribute="bottom" constant="5" id="VER-Jr-ESa"/>
+                                                <constraint firstAttribute="trailing" secondItem="g50-Fl-m5C" secondAttribute="trailing" constant="20" symbolic="YES" id="VXD-R1-KHj"/>
+                                                <constraint firstItem="Yrs-Bc-aWd" firstAttribute="top" secondItem="gq3-9a-o2n" secondAttribute="bottom" constant="6.6666666666666714" id="XzW-0J-JTc"/>
+                                                <constraint firstAttribute="trailing" secondItem="f5C-Rq-8pN" secondAttribute="trailing" constant="20" symbolic="YES" id="Z6X-PF-TiT"/>
+                                                <constraint firstItem="kvO-sp-T5l" firstAttribute="height" secondItem="fM6-ce-sLF" secondAttribute="height" multiplier="0.180451" id="Zrf-pZ-Sfj"/>
+                                                <constraint firstItem="gq3-9a-o2n" firstAttribute="top" secondItem="g50-Fl-m5C" secondAttribute="bottom" constant="5.6666666666666714" id="eUS-0t-7Yz"/>
+                                                <constraint firstItem="pcf-ML-b6T" firstAttribute="height" secondItem="fM6-ce-sLF" secondAttribute="height" multiplier="0.195489" id="fS5-zc-YTu"/>
+                                                <constraint firstItem="f5C-Rq-8pN" firstAttribute="width" secondItem="fM6-ce-sLF" secondAttribute="width" multiplier="0.820513" id="gx9-BV-T13"/>
+                                                <constraint firstItem="kvO-sp-T5l" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IEd-Eo-HbY" secondAttribute="trailing" constant="7" id="kvS-Mg-d4d"/>
+                                                <constraint firstItem="f5C-Rq-8pN" firstAttribute="top" secondItem="g50-Fl-m5C" secondAttribute="bottom" constant="5.6666666666666714" id="lbm-LR-rf4"/>
+                                                <constraint firstItem="g50-Fl-m5C" firstAttribute="top" secondItem="fM6-ce-sLF" secondAttribute="top" constant="10.999999999999998" id="ltS-w6-xf4"/>
+                                                <constraint firstItem="gq3-9a-o2n" firstAttribute="leading" secondItem="fM6-ce-sLF" secondAttribute="leading" constant="21" id="mXy-aF-8Ur"/>
+                                                <constraint firstItem="f5C-Rq-8pN" firstAttribute="height" secondItem="fM6-ce-sLF" secondAttribute="height" multiplier="0.165414" id="oF2-go-ifv"/>
+                                                <constraint firstItem="pcf-ML-b6T" firstAttribute="width" secondItem="fM6-ce-sLF" secondAttribute="width" multiplier="0.820513" id="uxo-Wt-cGO"/>
+                                                <constraint firstAttribute="bottom" secondItem="IEd-Eo-HbY" secondAttribute="bottom" constant="12.333333333333343" id="zU2-nQ-8wz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateTimeLabel" destination="pcf-ML-b6T" id="Chg-Om-F3G"/>
+                                            <outlet property="levelCapacityLabel" destination="kvO-sp-T5l" id="m8j-wH-9qe"/>
+                                            <outlet property="locationLabel" destination="f5C-Rq-8pN" id="xZ0-Fl-Vpc"/>
+                                            <outlet property="sportLabel" destination="g50-Fl-m5C" id="r44-Su-zgu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qoz-bY-Mur"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -338,6 +447,7 @@
                     <navigationItem key="navigationItem" title="Calendar" id="7CT-Rm-Vwk"/>
                     <connections>
                         <outlet property="calendarView" destination="wAf-6e-Bwt" id="gPk-oI-U1B"/>
+                        <outlet property="tableView" destination="cld-2g-AHh" id="9NH-rq-KyI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8E-cB-I7c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

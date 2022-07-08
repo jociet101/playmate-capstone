@@ -23,6 +23,25 @@
     return @"https://sports.api.decathlon.com/sports";
 }
 
+// For calendar
+
++ (NSDate *) dateWithHour:(NSInteger)hour
+                  minute:(NSInteger)minute
+                  second:(NSInteger)second
+                 fromDate:(NSDate *)date
+{
+   NSCalendar *calendar = [NSCalendar currentCalendar];
+   NSDateComponents *components = [calendar components: NSCalendarUnitYear|
+                                                         NSCalendarUnitMonth|
+                                                         NSCalendarUnitDay
+                                               fromDate:date];
+    [components setHour:hour];
+    [components setMinute:minute];
+    [components setSecond:second];
+    NSDate *newDate = [calendar dateFromComponents:components];
+    return newDate;
+}
+
 // Error messages for session details
 + (NSString *)fullSessionErrorMsg {
     return @"Session is full";

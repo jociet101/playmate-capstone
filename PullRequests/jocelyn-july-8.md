@@ -8,8 +8,10 @@
 - Search and home tabs
     - [x] Implemented filtering sessions to only show ones in the future
 
-
 # 🧪 How can I test it?
 Describe how a reviewer can test your work
-# 💅🏽 Are there any screenshots / GIF ?
-Add any screenshots / GIFS if there are any
+# Note
+
+- Please ignore the DIYExampleViewController and DIYCalendarCell files; I am using them for reference and will remove them promptly after I finish the calendar view
+
+
