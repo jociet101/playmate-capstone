@@ -69,7 +69,20 @@
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
         if (sessions != nil) {
-            self.sessionList = sessions;
+            
+            NSMutableArray *filteredSessions = [[NSMutableArray alloc] init];
+            
+            for (Session *session in sessions) {
+                NSDate *now = [NSDate date];
+                NSComparisonResult result = [now compare:session.occursAt];
+                
+                if (result == NSOrderedAscending) {
+                    [filteredSessions addObject:session];
+                }
+            }
+            
+            
+            self.sessionList = (NSArray *)filteredSessions;
             
             [self.tableView reloadData];
         } else {
@@ -134,7 +147,10 @@
         
         NSLog(@"%f", distance);
         
-        if (distance <= radiusInUnits) {
+        NSDate *now = [NSDate date];
+        NSComparisonResult result = [now compare:session.occursAt];
+        
+        if (distance <= radiusInUnits && result == NSOrderedAscending) {
             [filteredSessions addObject:session];
         }
     }
@@ -168,6 +184,7 @@
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
         if (sessions != nil) {
+            
             self.sessionList = [self filterSessions:sessions withLocation:filter.location andRadius:filter.radius];
             
             [self.tableView reloadData];
