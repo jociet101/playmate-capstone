@@ -73,7 +73,7 @@
             for (NSDictionary *datum in data) {
                 [sports addObject:datum[@"attributes"][@"name"]];
             }
-            
+
         }
     }];
     
