@@ -7,8 +7,11 @@
 
 #import "CreateSessionViewController.h"
 #import "Session.h"
+#import "Constants.h"
+#import "SelectMapViewController.h"
+#import "Location.h"
 
-@interface CreateSessionViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface CreateSessionViewController () <UIPickerViewDelegate, UIPickerViewDataSource, SelectMapViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPickerView *sportPicker;
 @property (weak, nonatomic) IBOutlet UIDatePicker *dateTimePicker;
@@ -17,14 +20,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *numPlayersLabel;
 @property (weak, nonatomic) IBOutlet UIStepper *numPlayersStepper;
 @property (weak, nonatomic) IBOutlet UIButton *createButton;
+@property (nonatomic, strong) NSArray *sports;
+@property (nonatomic, strong) NSString *selectedSport;
+@property (nonatomic, strong) Location * _Nullable selectedLoc;
+@property (nonatomic, assign) int numPlayers;
 
 @end
 
 @implementation CreateSessionViewController
-
-NSMutableArray *sports;
-NSString *selectedSport;
-int numPlayers;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,16 +35,13 @@ int numPlayers;
     self.sportPicker.delegate = self;
     self.sportPicker.dataSource = self;
     
-    self.createButton.layer.cornerRadius = 20;
+    self.createButton.layer.cornerRadius = [Constants buttonCornerRadius];
     
-    numPlayers = 2;
-    selectedSport = @"Tennis";
+    self.numPlayers = [Constants defaultNumPlayers];
+    self.selectedSport = [Constants defaultSport];
+    self.sports = [Constants sportsList:NO];
     
-    // Pull sports from an api later
-    sports = [[NSMutableArray alloc] init];
-    [sports addObject:@"Tennis"];
-    [sports addObject:@"Basketball"];
-    [sports addObject:@"Golf"];
+    self.selectedLoc = nil;
     
     // setup date time picker min date to current date
     // and max date to a month in advance
@@ -61,6 +61,13 @@ int numPlayers;
     self.numPlayersStepper.wraps = YES;
 }
 
+#pragma mark - Location map protocol method
+
+- (void)getSelectedLocation:(Location *)location {
+    self.locationLabel.text = location.locationName;
+    self.selectedLoc = location;
+}
+
 #pragma mark - Sport picker view
 
 // returns the number of 'columns' to display
@@ -70,53 +77,68 @@ int numPlayers;
 
 // returns the # of rows in each component
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return sports.count;
+    return self.sports.count;
 }
 
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return sports[row];
+    return self.sports[row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    selectedSport = sports[row];
+    self.selectedSport = self.sports[row];
 }
 
 #pragma mark - Buttons and actions
 
+- (void)handleAlert:(NSError * _Nullable)error withTitle:(NSString *)title andOk:(NSString *)ok {
+    
+    NSString *msg = @"Please select a location on map.";
+    
+    if (error != nil) {
+        msg = error.localizedDescription;
+    }
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:ok style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [self viewDidLoad];
+    }];
+    
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated: YES completion: nil];
+}
+
 - (IBAction)didSelectCreateSession:(id)sender {
     
-    NSLog(@"did select create session");
+    if (self.selectedLoc == nil) {
+        [self handleAlert:nil withTitle:@"No location" andOk:@"Ok"];
+        return;
+    }
     
-    NSMutableArray *skillLevels = [[NSMutableArray alloc] init];
-    [skillLevels addObject:@"Leisure"];
-    [skillLevels addObject:@"Amateur"];
-    [skillLevels addObject:@"Competitive"];
-    
-    // selectedSport
+    NSArray *skillLevels = [Constants skillLevelsList:NO];
     NSDate *sessionDateTime = self.dateTimePicker.date;
     NSString *skillLevel = skillLevels[self.skillLevelControl.selectedSegmentIndex];
-    NSNumber *selectedNumPlayers = [NSNumber numberWithInt:numPlayers];
+    NSNumber *selectedNumPlayers = [NSNumber numberWithInt:self.numPlayers];
     
-//    [Session createSession:[PFUser currentUser] withSport:selectedSport withLevel:skillLevel withDate:sessionDateTime withLocation:nil withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
-//            if (error) {
-//                NSLog(@"Error creating session: %@", error.localizedDescription);
-//            }
-//            else {
-//                NSLog(@"Successfully created the session");
-//            }
-//    }];
-    
-    [Session createSession:[PFUser currentUser] withSport:selectedSport withLevel:skillLevel withDate:sessionDateTime withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
-        
-        NSLog(@"inside create session");
-        
-        if (error) {
-            NSLog(@"Error creating session: %@", error.localizedDescription);
-        }
-        else {
-            NSLog(@"Successfully created the session");
-        }
+    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:skillLevel withDate:sessionDateTime withLocation:self.selectedLoc withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
+            if (error) {
+                NSLog(@"Error creating session: %@", error.localizedDescription);
+            }
+            else {
+                NSLog(@"Successfully created the session");
+            }
     }];
+    
+//    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:skillLevel withDate:sessionDateTime withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
+//
+//        NSLog(@"inside create session");
+//
+//        if (error) {
+//            NSLog(@"Error creating session: %@", error.localizedDescription);
+//        }
+//        else {
+//            NSLog(@"Successfully created the session");
+//        }
+//    }];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
@@ -126,19 +148,20 @@ int numPlayers;
 }
 
 - (IBAction)stepperValueChanged:(id)sender {
-    numPlayers = self.numPlayersStepper.value;
-    self.numPlayersLabel.text = [NSString stringWithFormat:@"%d", numPlayers];
+    self.numPlayers = self.numPlayersStepper.value;
+    self.numPlayersLabel.text = [NSString stringWithFormat:@"%d", self.numPlayers];
 }
 
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"toSelectLocation"]) {
+        SelectMapViewController *vc = segue.destinationViewController;
+        vc.delegate = self;
+    }
 }
-*/
 
 @end

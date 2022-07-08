@@ -152,15 +152,10 @@ NSString *selectedGender;
     // add non-default properties to pfuser
     [newUser addObject:self.firstNameField.text forKey:@"firstName"];
     [newUser addObject:self.lastNameField.text forKey:@"lastName"];
-    
-//    NSString *fullName = [self.firstNameField.text stringByAppendingString:[@" " stringByAppendingString:self.lastNameField.text]];
-//    [newUser addObject:fullName forKey:@"fullName"];
-
     [newUser addObject:selectedGender forKey:@"gender"];
     
     NSDate *date = self.birthdayPicker.date;
     [newUser addObject:date forKey:@"birthday"];
-//    [newUser addObject:nil forKey:@"profileImage"];
     
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
@@ -177,15 +172,5 @@ NSString *selectedGender;
 - (IBAction)didTapProceed:(id)sender {
     [self registerUser];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

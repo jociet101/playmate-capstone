@@ -10,6 +10,7 @@
 #import "Session.h"
 #import "SessionDetailsViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "Constants.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -95,7 +96,7 @@
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
-    NSString *text = @"No Sessions";
+    NSString *text = [Constants emptyTablePlaceholderTitle];
     
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
                                  NSForegroundColorAttributeName: [UIColor darkGrayColor]};
@@ -105,7 +106,7 @@
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
 {
-    NSString *text = @"Search for a session to join or create your own session to view them here!";
+    NSString *text = [Constants emptyTablePlaceholderMsg];
     
     NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
     paragraph.lineBreakMode = NSLineBreakByWordWrapping;
@@ -120,7 +121,7 @@
 
 - (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
 {
-    return [UIColor colorWithRed: 0.31 green: 0.78 blue: 0.94 alpha: 0.30];
+    return [Constants playmateBlue];
 }
 
 #pragma mark - Table view protocol methods
@@ -146,8 +147,6 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-     // Get the new view controller using [segue destinationViewController].
-     // Pass the selected object to the new view controller.
      
      if ([sender isMemberOfClass:[SessionCell class]]) {
          

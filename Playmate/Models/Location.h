@@ -9,7 +9,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Location : PFObject
+@interface Location : PFObject<PFSubclassing>
+
+@property (nonatomic, strong) NSNumber *lat;
+@property (nonatomic, strong) NSNumber *lng;
+@property (nonatomic, strong) NSString *locationName;
+
++ (void)saveLocation:(Location *)location;
 
 @end
 

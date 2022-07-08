@@ -6,6 +6,7 @@
 //
 
 #import "LoginViewController.h"
+#import "Constants.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 
@@ -23,7 +24,7 @@
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
     
-    self.proceedButton.layer.cornerRadius = 20;
+    self.proceedButton.layer.cornerRadius = [Constants buttonCornerRadius];
 }
 
 #pragma mark - Text fields
@@ -68,25 +69,13 @@
             [self handleAlert:error withTitle:@"Error" andOk:@"Try again"];
         } else {
             NSLog(@"User logged in successfully");
-            
             [self performSegueWithIdentifier:@"loginToTab" sender:nil];
         }
     }];
 }
 
 - (IBAction)didTapProceed:(id)sender {
-    NSLog(@"tapped proceed on log in");
     [self loginUser];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

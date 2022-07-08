@@ -7,6 +7,8 @@
 
 #import "SessionDetailsViewController.h"
 #import "SessionCell.h"
+#import "Constants.h"
+#import "Location.h"
 
 @interface SessionDetailsViewController ()
 
@@ -31,7 +33,7 @@ PFUser *me;
     me = [PFUser currentUser];
     [me fetchIfNeeded];
 
-    self.addMyselfButton.layer.cornerRadius = 20;
+    self.addMyselfButton.layer.cornerRadius = [Constants buttonCornerRadius];
     
     [self disableAddButton];
     
@@ -45,7 +47,7 @@ PFUser *me;
         
         if ([me.username isEqualToString:user.username]) {
             
-            self.disabledButton.text = @"Already in session";
+            self.disabledButton.text = [Constants alreadyInSessionErrorMsg];
             self.disabledButton.textColor = [UIColor redColor];
             [self.addMyselfButton setEnabled:NO];
             self.addMyselfButton.alpha = 0;
@@ -54,7 +56,7 @@ PFUser *me;
     }
     
     if ([self.sessionDeets.occupied isEqual:self.sessionDeets.capacity]) {
-        self.disabledButton.text = @"Session is full";
+        self.disabledButton.text = [Constants fullSessionErrorMsg];
         self.disabledButton.textColor = [UIColor redColor];
         [self.addMyselfButton setEnabled:NO];
         self.addMyselfButton.alpha = 0;
@@ -66,18 +68,23 @@ PFUser *me;
     self.sportLabel.text = self.sessionDeets.sport;
     
     // Form the fraction into a string
-    NSString *capacityString = [[NSString stringWithFormat:@"%d", [self.sessionDeets.capacity intValue] - [self.sessionDeets.occupied intValue]] stringByAppendingString:[@"/" stringByAppendingString:[[NSString stringWithFormat:@"%@", self.sessionDeets.capacity] stringByAppendingString:@" open slots"]]];
+    NSString *capacityString = [Constants capacityString:self.sessionDeets.occupied with:self.sessionDeets.capacity];
     
     if ([self.sessionDeets.capacity isEqual:self.sessionDeets.occupied]) {
-        self.capacityLabel.text = @"No open slots";
+        self.capacityLabel.text = [Constants noOpenSlotsErrorMsg];
     } else {
         self.capacityLabel.text = capacityString;
     }
     
     self.levelLabel.text = self.sessionDeets.skillLevel;
     
+    Location *loc = self.sessionDeets.location;
+    [loc fetchIfNeeded];
+    
+    self.locationLabel.text = loc.locationName;
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"E MMM d HH:mm:ss yyyy";
+    formatter.dateFormat = [Constants dateFormatString];
     NSString *originalDate = [formatter stringFromDate:self.sessionDeets.occursAt];
     
     NSDate *date = [formatter dateFromString:originalDate];
@@ -88,7 +95,6 @@ PFUser *me;
 }
 
 - (IBAction)addMyself:(id)sender {
-    NSLog(@"adding myself");
     
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
 
@@ -109,16 +115,5 @@ PFUser *me;
     }];
     
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

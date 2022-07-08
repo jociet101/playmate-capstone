@@ -6,6 +6,7 @@
 //
 
 #import "SessionCell.h"
+#import "Constants.h"
 
 @interface SessionCell ()
 
@@ -53,18 +54,22 @@
     
     self.sportLabel.text = [self.session.sport stringByAppendingString:[@" w/ " stringByAppendingString:playersString]];
     
-    // Form the fraction into a string
-    NSString *capacityString = [[NSString stringWithFormat:@"%d", [self.session.capacity intValue] - [self.session.occupied intValue]] stringByAppendingString:[@"/" stringByAppendingString:[[NSString stringWithFormat:@"%@", self.session.capacity] stringByAppendingString:@" open slots"]]];
-
+    Location *loc = self.session.location;
+    [loc fetchIfNeeded];
     
+    self.locationLabel.text = loc.locationName;
+    
+    // Form the fraction into a string
+    NSString *capacityString = [Constants capacityString:self.session.occupied with:self.session.capacity];
+
     if ([self.session.capacity isEqual:self.session.occupied]) {
-        capacityString = @"No open slots";
+        capacityString = [Constants noOpenSlotsErrorMsg];
     }
     
     self.levelCapacityLabel.text = [self.session.skillLevel stringByAppendingString:[@", " stringByAppendingString:capacityString]];
         
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"E MMM d HH:mm:ss yyyy";
+    formatter.dateFormat = [Constants dateFormatString];
     NSString *originalDate = [formatter stringFromDate:self.session.occursAt];
     
     NSDate *date = [formatter dateFromString:originalDate];

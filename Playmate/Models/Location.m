@@ -9,4 +9,17 @@
 
 @implementation Location
 
+@dynamic lat;
+@dynamic lng;
+@dynamic locationName;
+
++ (nonnull NSString *)parseClassName {
+    return @"Location";
+}
+
++ (void)saveLocation:(Location *)location {
+    
+    [location saveInBackground];
+}
+
 @end

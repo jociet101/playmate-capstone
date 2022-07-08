@@ -48,7 +48,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     
     if (self.appliedFilters == YES) {
-        NSLog(@"view did appear true");
         [self fetchDataWithFilters:self.filters];
     } else {
         [self fetchData];

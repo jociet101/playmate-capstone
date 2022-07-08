@@ -9,6 +9,7 @@ target 'Playmate' do
   pod 'Parse'
   pod 'DateTools'
   pod 'DZNEmptyDataSet'
+  pod 'AFNetworking'
 
   target 'PlaymateTests' do
     inherit! :search_paths
