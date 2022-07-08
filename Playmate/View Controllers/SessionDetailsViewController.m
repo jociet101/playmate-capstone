@@ -96,6 +96,8 @@ PFUser *me;
 
 - (IBAction)addMyself:(id)sender {
     
+    [self.navigationController popViewControllerAnimated:YES];
+    
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
 
     // Retrieve the object by id
