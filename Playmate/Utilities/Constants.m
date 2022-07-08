@@ -6,6 +6,11 @@
 //
 
 #import "Constants.h"
+#import "APIManager.h"
+
+@interface Constants ()
+
+@end
 
 @implementation Constants
 
@@ -56,14 +61,21 @@
 
 + (NSArray *)sportsList:(BOOL)needAll {
     
-    // Pull sports from an api later?
-    
     NSMutableArray *sports = [[NSMutableArray alloc] init];
     
-    if (needAll) [sports addObject:@"All"];
-    [sports addObject:@"Tennis"];
-    [sports addObject:@"Basketball"];
-    [sports addObject:@"Golf"];
+    APIManager *manager = [APIManager new];
+    [manager getSportsListWithCompletion:^(NSDictionary *list, NSError *error) {
+        if (error != nil) {
+            NSLog(@"%@", error.localizedDescription);
+        } else {
+            NSArray *data = list[@"data"];
+            
+            for (NSDictionary *datum in data) {
+                [sports addObject:datum[@"attributes"][@"name"]];
+            }
+            
+        }
+    }];
     
     return (NSArray *)sports;
 }

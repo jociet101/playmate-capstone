@@ -7,6 +7,7 @@
 
 #import "APIManager.h"
 #import "UIKit/UIKit.h"
+#import "AFHTTPSessionManager.h"
 
 static NSString * const geoapifyBaseURLString = @"https://api.geoapify.com/v1/";
 static NSString * geoapify;
@@ -35,6 +36,18 @@ static NSString * geoapify;
     }
     
     return self;
+}
+
+// GET https://sports.api.decathlon.com/sports
+
+- (void)getSportsListWithCompletion:(void(^)(NSDictionary *list, NSError *error))completion {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:@"https://sports.api.decathlon.com/sports"  parameters:nil progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *list) {
+        completion(list, nil);
+    } failure:^(NSURLSessionDataTask * task, NSError *error) {
+        completion(nil, error);
+    }];
 }
 
 - (void)getGeocodedLocation:(NSString *)address WithCompletion:(void(^)(Location *loc, NSError *error))completion {
