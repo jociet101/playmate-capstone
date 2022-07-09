@@ -41,24 +41,6 @@
     NSArray *filteredSessions = [self filterSessions:self.rawSessionList forDate:selectedDate];
     self.sessionList = (NSMutableArray *)filteredSessions;
     [self.tableView reloadData];
-    
-//    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
-//    query.limit = 20;
-//
-//    [query orderByAscending:@"occursAt"];
-//
-//    // fetch data asynchronously
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
-//        if (sessions != nil) {
-//
-//            NSArray *filteredSessions = [self filterSessions:sessions forDate:selectedDate];
-//            self.sessionList = (NSMutableArray *)filteredSessions;
-//            [self.tableView reloadData];
-//
-//        } else {
-//            NSLog(@"%@", error.localizedDescription);
-//        }
-//    }];
 }
 
 - (NSArray *)filterSessions:(NSArray *)sessions forDate:(NSDate *)date {
@@ -147,11 +129,6 @@
     NSLog(@"did select date %@",[Constants formatDate:date]);
     [self fetchData:date];
 }
-
-//- (BOOL)calendar:(FSCalendar *)calendar hasEventForDate:(NSDate *)date
-//{
-//    return YES;
-//}
 
 - (NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date {
     

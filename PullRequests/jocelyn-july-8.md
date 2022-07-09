@@ -7,11 +7,7 @@
     - [x] Implemented filtering based on location and maximum radius from it
 - Search and home tabs
     - [x] Implemented filtering sessions to only show ones in the future
-
-# 🧪 How can I test it?
-Describe how a reviewer can test your work
-# Note
-
-- Please ignore the DIYExampleViewController and DIYCalendarCell files; I am using them for reference and will remove them promptly after I finish the calendar view
-
-
+- Home tab calendar view
+    - [x] Implement calendar view for own user's sessions
+    - [x] Added event table view to display that day's sessions when user clicks on calendar
+    - [x] Customized UI of calendar, including adding a dot below the days which there is a session
