@@ -310,7 +310,7 @@
             </objects>
             <point key="canvasLocation" x="5956" y="-2459"/>
         </scene>
-        <!--Calendar-->
+        <!--My Sessions-->
         <scene sceneID="OC4-cM-Qxo">
             <objects>
                 <viewController id="gNp-hx-eex" customClass="CalendarViewController" sceneMemberID="viewController">
@@ -436,6 +436,7 @@
                                             <outlet property="levelCapacityLabel" destination="kvO-sp-T5l" id="m8j-wH-9qe"/>
                                             <outlet property="locationLabel" destination="f5C-Rq-8pN" id="xZ0-Fl-Vpc"/>
                                             <outlet property="sportLabel" destination="g50-Fl-m5C" id="r44-Su-zgu"/>
+                                            <segue destination="FoH-rZ-204" kind="show" id="rNL-Fb-mXA"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -444,7 +445,7 @@
                         <viewLayoutGuide key="safeArea" id="qoz-bY-Mur"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Calendar" id="7CT-Rm-Vwk"/>
+                    <navigationItem key="navigationItem" title="My Sessions" id="7CT-Rm-Vwk"/>
                     <connections>
                         <outlet property="calendarView" destination="wAf-6e-Bwt" id="gPk-oI-U1B"/>
                         <outlet property="tableView" destination="cld-2g-AHh" id="9NH-rq-KyI"/>
@@ -1790,7 +1791,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="AUb-fP-lMa"/>
-        <segue reference="xxD-Qo-Eh9"/>
+        <segue reference="rNL-Fb-mXA"/>
         <segue reference="zis-o5-IMS"/>
     </inferredMetricsTieBreakers>
     <resources>

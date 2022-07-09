@@ -10,6 +10,7 @@
 #import "Constants.h"
 #import "SessionCell.h"
 #import "Session.h"
+#import "SessionDetailsViewController.h"
 
 @interface CalendarViewController () <FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource>
 
@@ -28,53 +29,67 @@
     [self setupEventTable];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [self fetchData:[NSDate now]];
+}
+
 #pragma mark - Event Table view methods and fetch data
 
 - (void)fetchData:(NSDate *)selectedDate {
-    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
-    query.limit = 20;
     
-    [query orderByAscending:@"occursAt"];
-
-    // fetch data asynchronously
-    [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
-        if (sessions != nil) {
-            
-//            [self filterSessions:sessions forDate:selectedDate];
-            self.sessionList = (NSMutableArray *)sessions;
-            [self.tableView reloadData];
-        } else {
-            NSLog(@"%@", error.localizedDescription);
-        }
-    }];
+    NSArray *filteredSessions = [self filterSessions:self.rawSessionList forDate:selectedDate];
+    self.sessionList = (NSMutableArray *)filteredSessions;
+    [self.tableView reloadData];
+    
+//    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+//    query.limit = 20;
+//
+//    [query orderByAscending:@"occursAt"];
+//
+//    // fetch data asynchronously
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
+//        if (sessions != nil) {
+//
+//            NSArray *filteredSessions = [self filterSessions:sessions forDate:selectedDate];
+//            self.sessionList = (NSMutableArray *)filteredSessions;
+//            [self.tableView reloadData];
+//
+//        } else {
+//            NSLog(@"%@", error.localizedDescription);
+//        }
+//    }];
 }
 
-- (void)filterSessions:(NSArray *)sessions forDate:(NSDate *)date {
+- (NSArray *)filterSessions:(NSArray *)sessions forDate:(NSDate *)date {
     
-    NSMutableArray *tempList = (NSMutableArray *)sessions;
+    NSMutableArray *filteredSessions = [[NSMutableArray alloc] init];
     PFUser *currUser = [PFUser currentUser];
     [currUser fetchIfNeeded];
     
-    for (Session *sesh in tempList) {
+    for (Session *sesh in sessions) {
+
+        NSDate *sessionDate = [Constants dateWithHour:0 minute:0 second:0 fromDate:sesh.occursAt];
         
-//        NSLog(@"session %@", sesh);
-        
-        for (PFUser *user in sesh[@"playersList"]) {
-            [user fetchIfNeeded];
-            
-            NSDate *sessionDate = [Constants dateWithHour:12 minute:0 second:0 fromDate:sesh.occursAt];
-            
-            NSComparisonResult result = [date compare:sessionDate];
-            
-//            NSLog(@"comparison result %ld", result);
-            
-//            if ([currUser.username isEqualToString:user.username] && result == NSOrderedSame) {
+        NSComparisonResult result = [date compare:sessionDate];
+
+        if (result == NSOrderedSame) {
+            [self.sessionList addObject:sesh];
+
+            for (PFUser *user in sesh[@"playersList"]) {
+                [user fetchIfNeeded];
+
                 if ([currUser.username isEqualToString:user.username]) {
-                [self.sessionList addObject:sesh];
-                break;
+                    [filteredSessions addObject:sesh];
+                    break;
+                }
             }
         }
     }
+    
+    NSLog(@"ASLKDFJALSDKFJASDLKJF %ld", filteredSessions.count);
+    
+    return (NSArray *)filteredSessions;
 }
 
 - (void)setupEventTable {
@@ -123,6 +138,8 @@
 - (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated
 {
     calendar.frame = (CGRect){calendar.frame.origin,bounds.size};
+    
+//    self.tableView.topAnchor
 }
 
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
@@ -131,26 +148,35 @@
     [self fetchData:date];
 }
 
-- (BOOL)calendar:(FSCalendar *)calendar hasEventForDate:(NSDate *)date
-{
-    return YES;
-}
-
-//- (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated
+//- (BOOL)calendar:(FSCalendar *)calendar hasEventForDate:(NSDate *)date
 //{
-//    self.calendarHeightConstraint.constant = CGRectGetHeight(bounds);
-//    // Do other updates here
-//    [self.view layoutIfNeeded];
+//    return YES;
 //}
 
-/*
+- (NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date {
+    
+    if ([self filterSessions:self.rawSessionList forDate:date].count != 0) {
+        return 1;
+    }
+    
+    return 0;
+    
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+     
+     if ([sender isMemberOfClass:[SessionCell class]]) {
+         
+         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+         
+         Session* data = self.sessionList[indexPath.row];
+         SessionDetailsViewController *VC = [segue destinationViewController];
+         VC.sessionDeets = data;
+     }
+     
+ }
 
 @end

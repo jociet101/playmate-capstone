@@ -11,6 +11,7 @@
 #import "SessionDetailsViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
+#import "CalendarViewController.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -157,6 +158,11 @@
          Session* data = self.sessionList[indexPath.row];
          SessionDetailsViewController *VC = [segue destinationViewController];
          VC.sessionDeets = data;
+     }
+     
+     if ([sender isMemberOfClass:[UIButton class]]) {
+         CalendarViewController *VC = [segue destinationViewController];
+         VC.rawSessionList = self.sessionList;
      }
      
  }
