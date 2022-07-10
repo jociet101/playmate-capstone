@@ -164,7 +164,7 @@
     return (NSArray *)durations;
 }
 
-+ (NSArray *)durationKeyToInteger:(int)key {
++ (NSNumber *)durationKeyToInteger:(int)key {
     NSMutableArray *durations = [[NSMutableArray alloc] init];
     
     [durations addObject:@(0.5)];

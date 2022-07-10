@@ -15,6 +15,7 @@
 @dynamic creator;
 @dynamic playersList;
 @dynamic occursAt;
+@dynamic duration;
 @dynamic location;
 @dynamic capacity;
 @dynamic occupied;
@@ -23,7 +24,7 @@
     return @"SportsSession";
 }
 
-+ (void) createSession: (PFUser * _Nullable)user withSport: (NSString * _Nullable)spt withLevel: (NSString * _Nullable)level withDate: (NSDate * _Nullable)date withLocation:(PFObject * _Nullable)loc withCapacity:(NSNumber * _Nullable)cap withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (void) createSession: (PFUser * _Nullable)user withSport: (NSString * _Nullable)spt withLevel: (NSString * _Nullable)level withDate: (NSDate * _Nullable)date withDuration: (NSNumber * _Nullable)duration withLocation:(PFObject * _Nullable)loc withCapacity:(NSNumber * _Nullable)cap withCompletion: (PFBooleanResultBlock  _Nullable)completion {
 //+ (void) createSession: (PFUser * _Nullable)user withSport: (NSString * _Nullable)spt withLevel: (NSString * _Nullable)level withDate: (NSDate * _Nullable)date withCapacity:(NSNumber * _Nullable)cap withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     NSLog(@"creating session");
@@ -36,6 +37,7 @@
     [tempList addObject:[PFUser currentUser]];
     newSession.playersList = (NSArray *)tempList;
     newSession.occursAt = date;
+    newSession.duration = duration;
     newSession.location = loc;
     newSession.capacity = cap;
     newSession.occupied = @(1);

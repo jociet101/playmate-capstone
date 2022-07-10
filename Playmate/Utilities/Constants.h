@@ -44,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)createMenuTitle:(int)row;
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row;
 + (NSArray *)durationListShort;
-+ (NSArray *)durationKeyToInteger:(int)key;
++ (NSNumber *)durationKeyToInteger:(int)key;
 
 + (NSString *)defaultAll;
 + (NSString *)defaultSport;

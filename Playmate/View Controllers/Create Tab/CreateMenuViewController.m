@@ -8,6 +8,8 @@
 #import "CreateMenuViewController.h"
 #import "MenuPickerCell.h"
 #import "Constants.h"
+#import "Location.h"
+#import "Session.h"
 
 @interface CreateMenuViewController () <UITableViewDelegate, UITableViewDataSource, MenuPickerCellDelegate>
 
@@ -20,6 +22,7 @@
 @property (nonatomic, assign) NSInteger *selectedDurationKey;
 @property (nonatomic, strong) NSString *selectedSkillLevel;
 @property (nonatomic, assign) NSInteger *selectedNumPlayers;
+@property (nonatomic, strong) Location *selectedLocation;
 
 @end
 
@@ -91,8 +94,46 @@
     [self.view endEditing:YES];
 }
 
-- (IBAction)didTapCreateSession:(id)sender {
+#pragma mark - Create session action
+
+- (void)handleAlert:(NSError * _Nullable)error withTitle:(NSString *)title andOk:(NSString *)ok {
     
+    NSString *msg = @"Please select a location on map.";
+    
+    if (error != nil) {
+        msg = error.localizedDescription;
+    }
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:ok style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [self viewDidLoad];
+    }];
+    
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated: YES completion: nil];
+}
+
+- (IBAction)didTapCreateSession:(id)sender {
+    if (self.selectedLocation == nil) {
+        [self handleAlert:nil withTitle:@"No location" andOk:@"Ok"];
+        return;
+    }
+    
+    NSNumber *selectedDuration = [Constants durationKeyToInteger:(int)*(self.selectedDurationKey)];
+    
+    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:self.selectedSkillLevel withDate:self.selectedDateTime withDuration:selectedDuration withLocation:self.selectedLocation withCapacity:[NSNumber numberWithLong:*(self.selectedNumPlayers)] withCompletion:^(BOOL succeeded, NSError* error) {
+        
+            if (error) {
+                NSLog(@"Error creating session: %@", error.localizedDescription);
+            }
+            else {
+                NSLog(@"Successfully created the session");
+            }
+    }];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+    self.view.window.rootViewController = homeVC;
 }
 
 /*

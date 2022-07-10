@@ -119,14 +119,14 @@
     NSString *skillLevel = skillLevels[self.skillLevelControl.selectedSegmentIndex];
     NSNumber *selectedNumPlayers = [NSNumber numberWithInt:self.numPlayers];
     
-    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:skillLevel withDate:sessionDateTime withLocation:self.selectedLocation withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
-            if (error) {
-                NSLog(@"Error creating session: %@", error.localizedDescription);
-            }
-            else {
-                NSLog(@"Successfully created the session");
-            }
-    }];
+//    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:skillLevel withDate:sessionDateTime withLocation:self.selectedLocation withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
+//            if (error) {
+//                NSLog(@"Error creating session: %@", error.localizedDescription);
+//            }
+//            else {
+//                NSLog(@"Successfully created the session");
+//            }
+//    }];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
