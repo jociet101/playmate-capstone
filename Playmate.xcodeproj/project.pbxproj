@@ -28,6 +28,8 @@
 		3CF4186428765585009741FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF4186328765585009741FF /* MapKit.framework */; };
 		3CF4A58A2878AA1A000C5E7D /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */; };
 		3CF4A58D2878DFA6000C5E7D /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A58C2878DFA6000C5E7D /* CalendarViewController.m */; };
+		3CF4A596287A6088000C5E7D /* CreateMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A595287A6088000C5E7D /* CreateMenuViewController.m */; };
+		3CF4A59C287A60F0000C5E7D /* MenuPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A59B287A60F0000C5E7D /* MenuPickerCell.m */; };
 		3CF652A9286D036600BD5EDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652A8286D036600BD5EDB /* AppDelegate.m */; };
 		3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652AB286D036600BD5EDB /* SceneDelegate.m */; };
 		3CF652B2286D036600BD5EDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF652B0286D036600BD5EDB /* Main.storyboard */; };
@@ -100,6 +102,10 @@
 		3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		3CF4A58B2878DFA6000C5E7D /* CalendarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		3CF4A58C2878DFA6000C5E7D /* CalendarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		3CF4A594287A6088000C5E7D /* CreateMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateMenuViewController.h; sourceTree = "<group>"; };
+		3CF4A595287A6088000C5E7D /* CreateMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateMenuViewController.m; sourceTree = "<group>"; };
+		3CF4A59A287A60F0000C5E7D /* MenuPickerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuPickerCell.h; sourceTree = "<group>"; };
+		3CF4A59B287A60F0000C5E7D /* MenuPickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuPickerCell.m; sourceTree = "<group>"; };
 		3CF652A4286D036600BD5EDB /* Playmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF652A7286D036600BD5EDB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3CF652A8286D036600BD5EDB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -254,6 +260,8 @@
 				3C45B58B28749B7400EE578F /* CreateSessionViewController.m */,
 				3C45B5A2287606EF00EE578F /* SelectMapViewController.h */,
 				3C45B5A3287606EF00EE578F /* SelectMapViewController.m */,
+				3CF4A594287A6088000C5E7D /* CreateMenuViewController.h */,
+				3CF4A595287A6088000C5E7D /* CreateMenuViewController.m */,
 			);
 			path = "Create Tab";
 			sourceTree = "<group>";
@@ -276,6 +284,8 @@
 			children = (
 				3C45B5992874D91800EE578F /* SessionCell.h */,
 				3C45B59A2874D91800EE578F /* SessionCell.m */,
+				3CF4A59A287A60F0000C5E7D /* MenuPickerCell.h */,
+				3CF4A59B287A60F0000C5E7D /* MenuPickerCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -588,6 +598,7 @@
 				3C45B58C28749B7400EE578F /* CreateSessionViewController.m in Sources */,
 				3C45B56B2871856E00EE578F /* LoginViewController.m in Sources */,
 				3C45B59B2874D91800EE578F /* SessionCell.m in Sources */,
+				3CF4A596287A6088000C5E7D /* CreateMenuViewController.m in Sources */,
 				3C45B5682871856500EE578F /* CreateViewController.m in Sources */,
 				3CF652BA286D036700BD5EDB /* main.m in Sources */,
 				3C45B5A1287606C500EE578F /* FiltersViewController.m in Sources */,
@@ -598,6 +609,7 @@
 				3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */,
 				3C45B59E2875060700EE578F /* SessionDetailsViewController.m in Sources */,
 				3C45B574287297EB00EE578F /* HomeViewController.m in Sources */,
+				3CF4A59C287A60F0000C5E7D /* MenuPickerCell.m in Sources */,
 				3C45B5A4287606EF00EE578F /* SelectMapViewController.m in Sources */,
 				3C383FD52877416D00BC9B55 /* Constants.m in Sources */,
 			);

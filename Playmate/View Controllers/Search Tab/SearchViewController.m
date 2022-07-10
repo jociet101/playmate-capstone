@@ -10,7 +10,7 @@
 #import "SessionDetailsViewController.h"
 #import "Session.h"
 #import "FiltersViewController.h"
-//testing
+
 @interface SearchViewController () <UITableViewDelegate, UITableViewDataSource, FiltersViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
