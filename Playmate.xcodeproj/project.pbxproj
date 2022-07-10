@@ -17,7 +17,6 @@
 		3C45B574287297EB00EE578F /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B573287297EB00EE578F /* HomeViewController.m */; };
 		3C45B578287299C200EE578F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B577287299C200EE578F /* ProfileViewController.m */; };
 		3C45B58928737E6200EE578F /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B58828737E6200EE578F /* SearchViewController.m */; };
-		3C45B58C28749B7400EE578F /* CreateSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B58B28749B7400EE578F /* CreateSessionViewController.m */; };
 		3C45B5902874BB7500EE578F /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B58F2874BB7500EE578F /* Session.m */; };
 		3C45B5932874C0ED00EE578F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5922874C0ED00EE578F /* Location.m */; };
 		3C45B59B2874D91800EE578F /* SessionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B59A2874D91800EE578F /* SessionCell.m */; };
@@ -31,6 +30,8 @@
 		3CF4A596287A6088000C5E7D /* CreateMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A595287A6088000C5E7D /* CreateMenuViewController.m */; };
 		3CF4A59C287A60F0000C5E7D /* MenuPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A59B287A60F0000C5E7D /* MenuPickerCell.m */; };
 		3CF4A59F287A991E000C5E7D /* LocationPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A59E287A991E000C5E7D /* LocationPickerCell.m */; };
+		3CF4A5A5287B6647000C5E7D /* FiltersMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5A4287B6647000C5E7D /* FiltersMenuViewController.m */; };
+		3CF4A5A8287B67B4000C5E7D /* FiltersMenuPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5A7287B67B4000C5E7D /* FiltersMenuPickerCell.m */; };
 		3CF652A9286D036600BD5EDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652A8286D036600BD5EDB /* AppDelegate.m */; };
 		3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652AB286D036600BD5EDB /* SceneDelegate.m */; };
 		3CF652B2286D036600BD5EDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF652B0286D036600BD5EDB /* Main.storyboard */; };
@@ -82,8 +83,6 @@
 		3C45B577287299C200EE578F /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		3C45B58728737E6200EE578F /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		3C45B58828737E6200EE578F /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
-		3C45B58A28749B7400EE578F /* CreateSessionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateSessionViewController.h; sourceTree = "<group>"; };
-		3C45B58B28749B7400EE578F /* CreateSessionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateSessionViewController.m; sourceTree = "<group>"; };
 		3C45B58E2874BB7500EE578F /* Session.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
 		3C45B58F2874BB7500EE578F /* Session.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
 		3C45B5912874C0ED00EE578F /* Location.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
@@ -109,6 +108,10 @@
 		3CF4A59B287A60F0000C5E7D /* MenuPickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuPickerCell.m; sourceTree = "<group>"; };
 		3CF4A59D287A991E000C5E7D /* LocationPickerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationPickerCell.h; sourceTree = "<group>"; };
 		3CF4A59E287A991E000C5E7D /* LocationPickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationPickerCell.m; sourceTree = "<group>"; };
+		3CF4A5A3287B6647000C5E7D /* FiltersMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FiltersMenuViewController.h; sourceTree = "<group>"; };
+		3CF4A5A4287B6647000C5E7D /* FiltersMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FiltersMenuViewController.m; sourceTree = "<group>"; };
+		3CF4A5A6287B67B4000C5E7D /* FiltersMenuPickerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FiltersMenuPickerCell.h; sourceTree = "<group>"; };
+		3CF4A5A7287B67B4000C5E7D /* FiltersMenuPickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FiltersMenuPickerCell.m; sourceTree = "<group>"; };
 		3CF652A4286D036600BD5EDB /* Playmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF652A7286D036600BD5EDB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3CF652A8286D036600BD5EDB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -252,6 +255,8 @@
 				3C45B58828737E6200EE578F /* SearchViewController.m */,
 				3C45B59F287606C500EE578F /* FiltersViewController.h */,
 				3C45B5A0287606C500EE578F /* FiltersViewController.m */,
+				3CF4A5A3287B6647000C5E7D /* FiltersMenuViewController.h */,
+				3CF4A5A4287B6647000C5E7D /* FiltersMenuViewController.m */,
 			);
 			path = "Search Tab";
 			sourceTree = "<group>";
@@ -259,8 +264,6 @@
 		3C45B58628737E5500EE578F /* Create Tab */ = {
 			isa = PBXGroup;
 			children = (
-				3C45B58A28749B7400EE578F /* CreateSessionViewController.h */,
-				3C45B58B28749B7400EE578F /* CreateSessionViewController.m */,
 				3C45B5A2287606EF00EE578F /* SelectMapViewController.h */,
 				3C45B5A3287606EF00EE578F /* SelectMapViewController.m */,
 				3CF4A594287A6088000C5E7D /* CreateMenuViewController.h */,
@@ -291,6 +294,8 @@
 				3CF4A59B287A60F0000C5E7D /* MenuPickerCell.m */,
 				3CF4A59D287A991E000C5E7D /* LocationPickerCell.h */,
 				3CF4A59E287A991E000C5E7D /* LocationPickerCell.m */,
+				3CF4A5A6287B67B4000C5E7D /* FiltersMenuPickerCell.h */,
+				3CF4A5A7287B67B4000C5E7D /* FiltersMenuPickerCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -600,7 +605,6 @@
 				3C45B5932874C0ED00EE578F /* Location.m in Sources */,
 				3C45B578287299C200EE578F /* ProfileViewController.m in Sources */,
 				3CF652A9286D036600BD5EDB /* AppDelegate.m in Sources */,
-				3C45B58C28749B7400EE578F /* CreateSessionViewController.m in Sources */,
 				3C45B56B2871856E00EE578F /* LoginViewController.m in Sources */,
 				3C45B59B2874D91800EE578F /* SessionCell.m in Sources */,
 				3CF4A596287A6088000C5E7D /* CreateMenuViewController.m in Sources */,
@@ -614,9 +618,11 @@
 				3C45B58928737E6200EE578F /* SearchViewController.m in Sources */,
 				3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */,
 				3C45B59E2875060700EE578F /* SessionDetailsViewController.m in Sources */,
+				3CF4A5A5287B6647000C5E7D /* FiltersMenuViewController.m in Sources */,
 				3C45B574287297EB00EE578F /* HomeViewController.m in Sources */,
 				3CF4A59C287A60F0000C5E7D /* MenuPickerCell.m in Sources */,
 				3C45B5A4287606EF00EE578F /* SelectMapViewController.m in Sources */,
+				3CF4A5A8287B67B4000C5E7D /* FiltersMenuPickerCell.m in Sources */,
 				3C383FD52877416D00BC9B55 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
