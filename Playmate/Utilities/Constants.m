@@ -91,6 +91,31 @@
 }
 
 // Information for filters and create
++ (NSString *)createMenuTitle:(int)row {
+    NSMutableArray *titles = [[NSMutableArray alloc] init];
+    
+    [titles addObject:@"Sport"];
+    [titles addObject:@"Date and Time"];
+    [titles addObject:@"Duration"];
+    [titles addObject:@"Skill Level"];
+    [titles addObject:@"Number of Players"];
+    [titles addObject:@"Location"];
+    
+    return titles[row];
+}
+
++ (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row {
+    
+    return [Constants sportsList:needAll];
+    
+//    if (row == 0) {
+//        return [Constants sportsList:needAll];
+//    } else if (row == 3) {
+//        return [Constants skillLevelsList:needAll];
+//    }
+//    return nil;
+}
+
 + (NSString *)defaultAll {
     return @"All";
 }

@@ -11,6 +11,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MenuPickerCell : UITableViewCell
 
+@property (nonatomic, strong) NSNumber *rowNumber;
+
+- (void)setRowNumber:(NSNumber *)rowNumber;
+
 @end
 
 NS_ASSUME_NONNULL_END

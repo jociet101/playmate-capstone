@@ -12,6 +12,7 @@
 @interface CreateMenuViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *createMenuIdentifiers;\
 
 @end
 
@@ -22,8 +23,11 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
+    self.tableView.rowHeight = 60;
+
     self.tableView.layer.cornerRadius = [Constants buttonCornerRadius];
+    
+    self.createMenuIdentifiers = [Constants sportsList:NO];
 }
 
 #pragma mark - Table view protocol methods
@@ -34,13 +38,14 @@
 //        // TODO: location cell
 //    }
     MenuPickerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuPickerCell"];
-                
+    
+    cell.rowNumber = [NSNumber numberWithLong:indexPath.row];
+        
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return 7;
-    return 20;
+    return 6;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

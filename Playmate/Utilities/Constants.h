@@ -40,6 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)defaultBio;
 
 // Information for filters and create
++ (NSString *)createMenuTitle:(int)row;
++ (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row;
+
 + (NSString *)defaultAll;
 + (NSString *)defaultSport;
 + (NSArray *)sportsList:(BOOL)needAll;
