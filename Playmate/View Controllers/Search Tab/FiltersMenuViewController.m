@@ -95,7 +95,7 @@
 
 - (void)handleAlert:(NSError * _Nullable)error withTitle:(NSString *)title andOk:(NSString *)ok {
     
-    NSString *msg = @"Please select a location on map.";
+    NSString *msg = [Constants selectLocationPlease];
     
     if (error != nil) {
         msg = error.localizedDescription;
@@ -118,6 +118,8 @@
     }
 
     Filters *filters = [Filters new];
+    
+    
     
     filters.location = self.selectedLocation;
     filters.sport = self.selectedSport;

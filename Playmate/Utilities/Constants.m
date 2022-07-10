@@ -127,6 +127,10 @@
     return titles[row];
 }
 
++ (NSString *)selectLocationPlease {
+    return @"Please select a location on map.";
+}
+
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row {
         
     if (row == 0) {

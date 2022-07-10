@@ -110,12 +110,12 @@
 
 #pragma mark - Text field delegate method
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    NSLog(@"did end editing");
     if (self.thisRow == 3) {
         [self.delegate setRadius:[NSNumber numberWithInt:[self.pickerField.text intValue]]];
         [self.pickerField endEditing:YES];
     }
-    return YES;
 }
 
 @end

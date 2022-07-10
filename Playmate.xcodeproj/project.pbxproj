@@ -21,7 +21,6 @@
 		3C45B5932874C0ED00EE578F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5922874C0ED00EE578F /* Location.m */; };
 		3C45B59B2874D91800EE578F /* SessionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B59A2874D91800EE578F /* SessionCell.m */; };
 		3C45B59E2875060700EE578F /* SessionDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B59D2875060700EE578F /* SessionDetailsViewController.m */; };
-		3C45B5A1287606C500EE578F /* FiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5A0287606C500EE578F /* FiltersViewController.m */; };
 		3C45B5A4287606EF00EE578F /* SelectMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5A3287606EF00EE578F /* SelectMapViewController.m */; };
 		3C45B5A728760C1E00EE578F /* Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5A628760C1E00EE578F /* Filters.m */; };
 		3CF4186428765585009741FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF4186328765585009741FF /* MapKit.framework */; };
@@ -91,8 +90,6 @@
 		3C45B59A2874D91800EE578F /* SessionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionCell.m; sourceTree = "<group>"; };
 		3C45B59C2875060700EE578F /* SessionDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionDetailsViewController.h; sourceTree = "<group>"; };
 		3C45B59D2875060700EE578F /* SessionDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionDetailsViewController.m; sourceTree = "<group>"; };
-		3C45B59F287606C500EE578F /* FiltersViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FiltersViewController.h; sourceTree = "<group>"; };
-		3C45B5A0287606C500EE578F /* FiltersViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FiltersViewController.m; sourceTree = "<group>"; };
 		3C45B5A2287606EF00EE578F /* SelectMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectMapViewController.h; sourceTree = "<group>"; };
 		3C45B5A3287606EF00EE578F /* SelectMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectMapViewController.m; sourceTree = "<group>"; };
 		3C45B5A528760C1E00EE578F /* Filters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Filters.h; sourceTree = "<group>"; };
@@ -253,8 +250,6 @@
 			children = (
 				3C45B58728737E6200EE578F /* SearchViewController.h */,
 				3C45B58828737E6200EE578F /* SearchViewController.m */,
-				3C45B59F287606C500EE578F /* FiltersViewController.h */,
-				3C45B5A0287606C500EE578F /* FiltersViewController.m */,
 				3CF4A5A3287B6647000C5E7D /* FiltersMenuViewController.h */,
 				3CF4A5A4287B6647000C5E7D /* FiltersMenuViewController.m */,
 			);
@@ -610,7 +605,6 @@
 				3CF4A596287A6088000C5E7D /* CreateMenuViewController.m in Sources */,
 				3C45B5682871856500EE578F /* CreateViewController.m in Sources */,
 				3CF652BA286D036700BD5EDB /* main.m in Sources */,
-				3C45B5A1287606C500EE578F /* FiltersViewController.m in Sources */,
 				3CF4A58A2878AA1A000C5E7D /* EditProfileViewController.m in Sources */,
 				3CF4A59F287A991E000C5E7D /* LocationPickerCell.m in Sources */,
 				3CF4A58D2878DFA6000C5E7D /* CalendarViewController.m in Sources */,
