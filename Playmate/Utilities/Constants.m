@@ -105,15 +105,51 @@
 }
 
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row {
+        
+    if (row == 0) {
+        return [Constants sportsList:needAll];
+    }  else if (row == 2) {
+        return [Constants durationList];
+    } else if (row == 3) {
+        return [Constants skillLevelsList:needAll];
+    }
+    return nil;
+}
+
++ (NSArray *)durationList {
+    NSMutableArray *durations = [[NSMutableArray alloc] init];
     
-    return [Constants sportsList:needAll];
+    [durations addObject:@"30 minutes"];
+    [durations addObject:@"45 minutes"];
+    [durations addObject:@"1 hour"];
+    [durations addObject:@"1 hour, 15 minutes"];
+    [durations addObject:@"1 hour, 30 minutes"];
+    [durations addObject:@"1 hour, 45 minutes"];
+    [durations addObject:@"2 hours"];
+    [durations addObject:@"2 hours, 15 minutes"];
+    [durations addObject:@"2 hours, 30 minutes"];
+    [durations addObject:@"2 hours, 45 minutes"];
+    [durations addObject:@"3 hours"];
     
-//    if (row == 0) {
-//        return [Constants sportsList:needAll];
-//    } else if (row == 3) {
-//        return [Constants skillLevelsList:needAll];
-//    }
-//    return nil;
+    return (NSArray *)durations;
+}
+
++ (NSArray *)durationListShort {
+    NSMutableArray *durations = [[NSMutableArray alloc] init];
+    
+    [durations addObject:@"30m"];
+    [durations addObject:@"45m"];
+    [durations addObject:@"1hr"];
+    [durations addObject:@"1hr 15m"];
+    [durations addObject:@"1hr 30m"];
+    [durations addObject:@"1hr 45m"];
+    [durations addObject:@"2hr"];
+    [durations addObject:@"2hr 15m"];
+    [durations addObject:@"2hr 30m"];
+    [durations addObject:@"2hr 145m"];
+    [durations addObject:@"3hr"];
+    
+    return (NSArray *)durations;
 }
 
 + (NSString *)defaultAll {

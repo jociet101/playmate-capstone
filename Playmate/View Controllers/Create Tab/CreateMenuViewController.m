@@ -13,7 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *createMenuIdentifiers;
-@property (nonatomic, strong) NSMutableArray *menuCells;
 
 @end
 
@@ -29,17 +28,12 @@
     self.tableView.layer.cornerRadius = [Constants buttonCornerRadius];
     
     self.createMenuIdentifiers = [Constants sportsList:NO];
-    
-    self.menuCells = [[NSMutableArray alloc] init];
+
 }
 
 #pragma mark - Table view protocol methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (indexPath.row == 0) {
-        [self.menuCells removeAllObjects];
-    }
     
 //    if (indexPath.row == 6) {
 //        // TODO: location cell
@@ -47,18 +41,9 @@
     MenuPickerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuPickerCell"];
     
     cell.rowNumber = [NSNumber numberWithLong:indexPath.row];
-    
-    [self.menuCells addObject:cell];
-    
+        
     return cell;
 }
-
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//
-//    MenuPickerCell *thisCell = self.menuCells[indexPath.row];
-//
-//
-//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 6;

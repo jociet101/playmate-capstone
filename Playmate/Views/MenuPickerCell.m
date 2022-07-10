@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *menuLabel;
 @property (nonatomic, strong) NSArray *pickerData;
 @property (nonatomic, strong) NSString *selectedData;
+@property (assign, nonatomic) int thisRow;
 
 @end
 
@@ -33,21 +34,53 @@
 - (void)setRowNumber:(NSNumber *)rowNumber {
     
     self.layer.cornerRadius = [Constants buttonCornerRadius];
+    self.thisRow = [rowNumber intValue];
     
     _rowNumber = rowNumber;
     
+    /*
+     [titles addObject:@"Sport"];
+     [titles addObject:@"Date and Time"];
+     [titles addObject:@"Duration"];
+     [titles addObject:@"Skill Level"];
+     [titles addObject:@"Number of Players"];
+     [titles addObject:@"Location"];
+     */
+    
+    self.menuLabel.text = [Constants createMenuTitle:self.thisRow];
+    
+    switch (self.thisRow) {
+        case 1: // date and time
+            [self dateTimePickerSetup];
+            break;
+        case 4: // number of players
+            [self numPlayersSetup];
+            break;
+        default: // sport, duration, skill level
+            [self pickerViewSetup];
+        }
+}
+
+- (void)numPlayersSetup {
+    
+}
+
+- (void)dateTimePickerSetup {
+    UIDatePicker *pickerView = [UIDatePicker new];
+    [pickerView setPreferredDatePickerStyle:UIDatePickerStyleWheels];
+    self.pickerField.inputView = pickerView;
+}
+
+#pragma mark - Picker view methods
+
+- (void)pickerViewSetup {
     UIPickerView *pickerView = [UIPickerView new];
     self.pickerField.inputView = pickerView;
     pickerView.delegate = self;
     pickerView.dataSource = self;
     
-    self.menuLabel.text = [Constants createMenuTitle:[rowNumber intValue]];
-    self.pickerData = [Constants getData:NO forRow:[rowNumber intValue]];
-    
-    NSLog(@"self.pickerdata %@", self.pickerData);
+    self.pickerData = [Constants getData:NO forRow:self.thisRow];
 }
-
-#pragma mark - Picker view methods
 
 // returns the number of 'columns' to display
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -56,8 +89,6 @@
 
 // returns the # of rows in each component
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    NSLog(@"is this called");
-    
     return self.pickerData.count;
 }
 
