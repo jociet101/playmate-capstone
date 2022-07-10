@@ -128,18 +128,6 @@
             }
     }];
     
-//    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:skillLevel withDate:sessionDateTime withCapacity:selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
-//
-//        NSLog(@"inside create session");
-//
-//        if (error) {
-//            NSLog(@"Error creating session: %@", error.localizedDescription);
-//        }
-//        else {
-//            NSLog(@"Successfully created the session");
-//        }
-//    }];
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
     self.view.window.rootViewController = homeVC;

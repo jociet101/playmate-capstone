@@ -76,6 +76,18 @@
     return [formatter stringFromDate:date];
 }
 
++ (NSString *)formatDateShort:(NSDate *)original {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = [Constants dateFormatString];
+    NSString *originalDate = [formatter stringFromDate:original];
+    
+    NSDate *date = [formatter dateFromString:originalDate];
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    
+    return [formatter stringFromDate:date];
+}
+
 // Information for home tab
 + (NSString *)emptyTablePlaceholderMsg {
     return @"Search for a session to join or create your own session to view them here!";
@@ -137,17 +149,17 @@
 + (NSArray *)durationListShort {
     NSMutableArray *durations = [[NSMutableArray alloc] init];
     
-    [durations addObject:@"30m"];
-    [durations addObject:@"45m"];
-    [durations addObject:@"1hr"];
-    [durations addObject:@"1hr 15m"];
-    [durations addObject:@"1hr 30m"];
-    [durations addObject:@"1hr 45m"];
-    [durations addObject:@"2hr"];
-    [durations addObject:@"2hr 15m"];
-    [durations addObject:@"2hr 30m"];
-    [durations addObject:@"2hr 145m"];
-    [durations addObject:@"3hr"];
+    [durations addObject:@"30 min"];
+    [durations addObject:@"45 min"];
+    [durations addObject:@"1 hr"];
+    [durations addObject:@"1 hr, 15 min"];
+    [durations addObject:@"1 hr, 30 min"];
+    [durations addObject:@"1 hr, 45 min"];
+    [durations addObject:@"2 hr"];
+    [durations addObject:@"2 hr, 15 min"];
+    [durations addObject:@"2 hr, 30 min"];
+    [durations addObject:@"2 hr, 45 min"];
+    [durations addObject:@"3 hr"];
     
     return (NSArray *)durations;
 }

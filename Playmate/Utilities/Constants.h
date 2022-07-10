@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)dateFormatString;
 + (NSString *)capacityString:(NSNumber *)occupied with:(NSNumber *)capacity;
 + (NSString *)formatDate:(NSDate *)original;
++ (NSString *)formatDateShort:(NSDate *)original;
 
 // Information for home tab
 + (NSString *)emptyTablePlaceholderMsg;
