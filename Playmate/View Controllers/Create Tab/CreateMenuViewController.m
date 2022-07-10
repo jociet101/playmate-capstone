@@ -17,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *createMenuIdentifiers;
+@property (nonatomic, strong) NSMutableArray *tableCells;
 
 // selected session details
 @property (nonatomic, strong) NSString *selectedSport;
@@ -25,6 +26,7 @@
 @property (nonatomic, strong) NSString *selectedSkillLevel;
 @property (nonatomic, assign) NSNumber *selectedNumPlayers;
 @property (nonatomic, strong) Location *selectedLocation;
+@property (nonatomic, strong) UIButton * _Nullable selectLocationButton;
 
 @end
 
@@ -41,40 +43,35 @@
     
     self.createMenuIdentifiers = [Constants sportsList:NO];
 
+    self.tableCells = [[NSMutableArray alloc] init];
+    self.selectLocationButton = nil;
 }
 
 #pragma mark - Menu Picker Cell and Location Picker Cell protocol methods
 
 - (void)setSport:(NSString *)sport {
     self.selectedSport = sport;
-    NSLog(@"called selected sport");
 }
 
 - (void)setDateTime:(NSDate *)date {
     self.selectedDateTime = date;
-    NSLog(@"called selected datettime");
 }
 
 - (void)setDuration:(NSNumber *)duration {
-    
-    NSLog(@"duration key = %@", duration);
-    
     self.selectedDuration = duration;
 }
 
 - (void)setSkillLevel:(NSString *)level {
     self.selectedSkillLevel = level;
-    NSLog(@"called selected skill level");
 }
 
 - (void)setNumberPlayers:(NSNumber *)players {
     self.selectedNumPlayers = players;
-    NSLog(@"called selected nnumbplayers %@", players);
 }
 
 - (void)getSelectedLocation:(Location *)location {
-    NSLog(@"YAHOOOO");
     self.selectedLocation = location;
+    [self.selectLocationButton setTitle:@"Selected Location" forState:UIControlStateNormal];
 }
 
 #pragma mark - Table view protocol methods
@@ -83,12 +80,12 @@
     
     if (indexPath.row == 5) {
         LocationPickerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LocationPickerCell"];
-        cell.rowNumber = [NSNumber numberWithLong:indexPath.row];
         return cell;
     }
     
     MenuPickerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuPickerCell"];
     cell.rowNumber = [NSNumber numberWithLong:indexPath.row];
+    [self.tableCells addObject:cell];
     cell.delegate = self;
     return cell;
 }
@@ -134,9 +131,7 @@
         return;
     }
     
-    NSNumber *duration = [Constants durationKeyToInteger:[self.selectedDuration intValue]];
-    
-    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:self.selectedSkillLevel withDate:self.selectedDateTime withDuration:duration withLocation:self.selectedLocation withCapacity:self.selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
+    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:self.selectedSkillLevel withDate:self.selectedDateTime withDuration:self.selectedDuration withLocation:self.selectedLocation withCapacity:self.selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
         
             if (error) {
                 NSLog(@"Error creating session: %@", error.localizedDescription);
@@ -151,16 +146,29 @@
     self.view.window.rootViewController = homeVC;
 }
 
+- (IBAction)didTapCancel:(id)sender {
+    
+    if (self.selectLocationButton != nil) {
+        self.selectedLocation = nil;
+        [self.selectLocationButton setTitle:@"Select Location" forState:UIControlStateNormal];
+    }
+    
+    // reset text fields
+    for (MenuPickerCell *cell in self.tableCells) {
+        cell.pickerField.text = @"";
+    }
+    
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    NSLog(@"CALLED PREPARE FOR SEGUE IN LOCATION PICKER CELL");
-    
+        
     if ([segue.identifier isEqualToString:@"toSelectLocation"]) {
         SelectMapViewController *vc = segue.destinationViewController;
         vc.delegate = self;
-        NSLog(@"location picker cell set vc delegate to be self");
+        
+        self.selectLocationButton = sender;
     }
 }
 

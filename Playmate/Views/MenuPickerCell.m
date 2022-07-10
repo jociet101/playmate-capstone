@@ -10,7 +10,6 @@
 
 @interface MenuPickerCell () <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *pickerField;
 @property (weak, nonatomic) IBOutlet UILabel *menuLabel;
 @property (nonatomic, strong) NSArray *pickerData;
 @property (nonatomic, strong) NSString *selectedData;
@@ -149,7 +148,6 @@
 #pragma mark - Text field delegate method
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSLog(@"%d heheh", self.thisRow);
     if (self.thisRow == 4) {
         [self.delegate setNumberPlayers:[NSNumber numberWithInt:[self.pickerField.text intValue]]];
         [self.pickerField endEditing:YES];

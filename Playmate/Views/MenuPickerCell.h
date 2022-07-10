@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MenuPickerCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UITextField *pickerField;
 @property (nonatomic, strong) NSNumber *rowNumber;
 
 - (void)setRowNumber:(NSNumber *)rowNumber;

@@ -10,8 +10,6 @@
 
 @interface LocationPickerCell ()
 
-// will appear if user selected location
-@property (weak, nonatomic) IBOutlet UIImageView *checkmark;
 @property (nonatomic, strong) Location * _Nullable selectedLocation;
 
 @end
@@ -27,16 +25,6 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-}
-
-- (void)setRowNumber:(NSNumber *)rowNumber {
-    self.checkmark.alpha = 0;
-}
-
-#pragma mark - Select map vc protocol method
-
-- (IBAction)didTapSelectLocation:(id)sender {
-    NSLog(@"DID TAP SELECtlkajsd ");
 }
 
 @end
