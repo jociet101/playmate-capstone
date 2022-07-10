@@ -38,9 +38,13 @@
     
     UIPickerView *pickerView = [UIPickerView new];
     self.pickerField.inputView = pickerView;
+    pickerView.delegate = self;
+    pickerView.dataSource = self;
     
     self.menuLabel.text = [Constants createMenuTitle:[rowNumber intValue]];
     self.pickerData = [Constants getData:NO forRow:[rowNumber intValue]];
+    
+    NSLog(@"self.pickerdata %@", self.pickerData);
 }
 
 #pragma mark - Picker view methods
@@ -68,7 +72,8 @@
 #pragma mark - Text field delegate method
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    
+    UIPickerView *pickerView = [UIPickerView new];
+    textField.inputView = pickerView;
 }
 
 @end
