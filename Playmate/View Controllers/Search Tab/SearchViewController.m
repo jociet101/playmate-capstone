@@ -9,9 +9,9 @@
 #import "SessionCell.h"
 #import "SessionDetailsViewController.h"
 #import "Session.h"
-#import "FiltersViewController.h"
+#import "FiltersMenuViewController.h"
 
-@interface SearchViewController () <UITableViewDelegate, UITableViewDataSource, FiltersViewControllerDelegate>
+@interface SearchViewController () <UITableViewDelegate, UITableViewDataSource, FiltersMenuViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *sessionList;
@@ -135,18 +135,14 @@
 }
 
 - (NSArray *)filterSessions:(NSArray *)sessions withLocation:(Location *)location andRadius:(NSNumber *)radiusInMiles {
-    
-    NSLog(@"filtering by location w radius %@", radiusInMiles);
-    
+        
     float radiusInUnits = [radiusInMiles floatValue]/69;
     
     NSMutableArray *filteredSessions = [[NSMutableArray alloc] init];
     
     for (Session *session in sessions) {
         float distance = [self euclideanDistanceBetween:location and:session.location];
-        
-        NSLog(@"%f", distance);
-        
+                
         NSDate *now = [NSDate date];
         NSComparisonResult result = [now compare:session.occursAt];
         
@@ -221,8 +217,10 @@
         VC.sessionDeets = data;
     }
     if ([sender isMemberOfClass:[UIBarButtonItem class]]) {
-        FiltersViewController *VC = [segue destinationViewController];
+        FiltersMenuViewController *VC = [segue destinationViewController];
         VC.delegate = self;
+//        FiltersViewController *VC = [segue destinationViewController];
+//        VC.delegate = self;
     }
     
 }

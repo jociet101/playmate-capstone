@@ -9,7 +9,22 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol FiltersMenuPickerCellDelegate
+
+- (void)setSport:(NSString *)sport;
+- (void)setSkillLevel:(NSString *)level;
+- (void)setRadius:(NSNumber *)radius;
+
+@end
+
 @interface FiltersMenuPickerCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UITextField *pickerField;
+@property (nonatomic, strong) NSNumber *rowNumber;
+
+- (void)setRowNumber:(NSNumber *)rowNumber;
+
+@property (nonatomic, weak) id<FiltersMenuPickerCellDelegate> delegate;
 
 @end
 

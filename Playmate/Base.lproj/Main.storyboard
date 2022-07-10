@@ -855,7 +855,7 @@
                     <navigationItem key="navigationItem" title="Search" id="4FJ-is-IKi">
                         <barButtonItem key="leftBarButtonItem" image="gearshape" catalog="system" id="AvR-38-9Ex">
                             <connections>
-                                <segue destination="hZR-oH-jT4" kind="show" id="kjC-Y2-I68"/>
+                                <segue destination="A3D-b9-PHu" kind="show" id="Mzl-ju-Esa"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="cWY-AU-vad">
@@ -946,9 +946,6 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Select on Map"/>
-                                        <connections>
-                                            <segue destination="9tI-s5-YSO" kind="show" identifier="toSelectLocation" id="AUb-fP-lMa"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1035,9 +1032,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Filters buttotnotnotnotn"/>
-                                <connections>
-                                    <segue destination="A3D-b9-PHu" kind="show" id="3e7-nd-pcy"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dvV-Jp-MgO"/>
@@ -1055,7 +1049,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySw-gI-BNY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6713.8461538461534" y="-712.32227488151659"/>
+            <point key="canvasLocation" x="7629" y="-1656"/>
         </scene>
         <!--Session Details-->
         <scene sceneID="R2X-zK-IfK">
@@ -1722,25 +1716,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="playmate_logo_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="ygu-1f-Vlr">
-                                <rect key="frame" x="127" y="100" width="137" height="125"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjb-By-cVk">
-                                <rect key="frame" x="90" y="662" width="211" height="46"/>
+                                <rect key="frame" x="90" y="646" width="211" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Create Session">
+                                <state key="normal" title="Apply Filters">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTapCreateSession:" destination="A3D-b9-PHu" eventType="touchUpInside" id="0Ma-GS-bb9"/>
+                                    <action selector="didTapApply:" destination="A3D-b9-PHu" eventType="touchUpInside" id="q73-O5-RMb"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Oi6-pY-8wM">
-                                <rect key="frame" x="16" y="233" width="358" height="360"/>
+                                <rect key="frame" x="16" y="284" width="358" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
@@ -1810,7 +1800,7 @@
                                                         </attributedString>
                                                     </buttonConfiguration>
                                                     <connections>
-                                                        <segue destination="9tI-s5-YSO" kind="show" id="Nu6-4T-TEp"/>
+                                                        <segue destination="9tI-s5-YSO" kind="show" identifier="toSelectLocation" id="Nu6-4T-TEp"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1826,22 +1816,15 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="playmate_logo_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="ygu-1f-Vlr">
+                                <rect key="frame" x="127" y="113" width="137" height="125"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hQa-Hl-H9p"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Filters" id="Uza-Cp-hMM">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="cVh-YX-wrt">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="qVW-6U-IQx">
-                                <rect key="frame" x="16" y="5" width="86" height="34.333333333333336"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
-                                <connections>
-                                    <action selector="didTapCancel:" destination="A3D-b9-PHu" eventType="touchUpInside" id="tft-e3-ycq"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="BP8-T9-2DJ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="V6g-AN-ijy">
                                 <rect key="frame" x="288" y="5" width="86" height="34.333333333333336"/>
@@ -1860,12 +1843,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDx-Tb-7Eq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7466" y="-712"/>
+            <point key="canvasLocation" x="6713.8461538461534" y="-712.32227488151659"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jcx-uQ-feG"/>
-        <segue reference="rNL-Fb-mXA"/>
+        <segue reference="Nu6-4T-TEp"/>
+        <segue reference="mqk-g0-t3s"/>
         <segue reference="zis-o5-IMS"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -116,6 +116,17 @@
     return titles[row];
 }
 
++ (NSString *)createFiltersMenuTitle:(int)row {
+    NSMutableArray *titles = [[NSMutableArray alloc] init];
+    
+    [titles addObject:@"Sport"];
+    [titles addObject:@"Skill Level"];
+    [titles addObject:@"Location"];
+    [titles addObject:@"Radius (in miles)"];
+    
+    return titles[row];
+}
+
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row {
         
     if (row == 0) {
@@ -123,6 +134,16 @@
     }  else if (row == 2) {
         return [Constants durationList];
     } else if (row == 3) {
+        return [Constants skillLevelsList:needAll];
+    }
+    return nil;
+}
+
++ (NSArray * _Nullable)getFilterData:(BOOL)needAll forRow:(int)row {
+        
+    if (row == 0) {
+        return [Constants sportsList:needAll];
+    } else if (row == 1) {
         return [Constants skillLevelsList:needAll];
     }
     return nil;
