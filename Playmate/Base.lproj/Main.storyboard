@@ -307,7 +307,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuPickerCell" rowHeight="80" id="2H3-Jm-95N" customClass="MenuPickerCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MenuPickerCell" rowHeight="80" id="2H3-Jm-95N" customClass="MenuPickerCell">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="358" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2H3-Jm-95N" id="Use-jx-Fw7">
@@ -336,6 +336,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="tintColor"/>
                                         <connections>
                                             <outlet property="menuLabel" destination="gdM-Xp-aLg" id="4OD-GX-iah"/>
                                             <outlet property="pickerField" destination="KfU-W8-Bgp" id="n5j-LO-Cdf"/>
@@ -382,7 +383,19 @@
                         <viewLayoutGuide key="safeArea" id="nJs-qh-FDH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Create" id="keR-ap-y6v"/>
+                    <navigationItem key="navigationItem" title="Create" id="keR-ap-y6v">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="uDH-Pv-KwL">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="MAf-xw-stf">
+                                <rect key="frame" x="288" y="5" width="86" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Done"/>
+                                <connections>
+                                    <action selector="didTapDone:" destination="fRy-pi-diO" eventType="touchUpInside" id="36F-YH-zxV"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="CQU-7a-IKv" id="o5f-Kp-gJd"/>
                     </connections>

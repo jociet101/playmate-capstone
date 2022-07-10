@@ -52,6 +52,15 @@
     return 1;
 }
 
+- (IBAction)didTapDone:(id)sender {
+    NSLog(@"huh");
+    [self.view endEditing:YES];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
 /*
 #pragma mark - Navigation
 
