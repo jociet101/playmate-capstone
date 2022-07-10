@@ -7,11 +7,12 @@
 
 #import "CreateMenuViewController.h"
 #import "MenuPickerCell.h"
+#import "LocationPickerCell.h"
 #import "Constants.h"
 #import "Location.h"
 #import "Session.h"
 
-@interface CreateMenuViewController () <UITableViewDelegate, UITableViewDataSource, MenuPickerCellDelegate>
+@interface CreateMenuViewController () <UITableViewDelegate, UITableViewDataSource, MenuPickerCellDelegate, LocationPickerCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *createMenuIdentifiers;
@@ -19,9 +20,9 @@
 // selected session details
 @property (nonatomic, strong) NSString *selectedSport;
 @property (nonatomic, strong) NSDate *selectedDateTime;
-@property (nonatomic, assign) NSInteger *selectedDurationKey;
+@property (nonatomic, assign) NSNumber *selectedDurationKey;
 @property (nonatomic, strong) NSString *selectedSkillLevel;
-@property (nonatomic, assign) NSInteger *selectedNumPlayers;
+@property (nonatomic, assign) NSNumber *selectedNumPlayers;
 @property (nonatomic, strong) Location *selectedLocation;
 
 @end
@@ -41,17 +42,18 @@
 
 }
 
-#pragma mark - Menu Picker Cell protocol methods
+#pragma mark - Menu Picker Cell and Location Picker Cell protocol methods
 
 - (void)setSport:(NSString *)sport {
     self.selectedSport = sport;
+    NSLog(@"ASLKDJFALSKJDF called selected sport");
 }
 
 - (void)setDateTime:(NSDate *)date {
     self.selectedDateTime = date;
 }
 
-- (void)setDuration:(NSInteger *)durationKey {
+- (void)setDuration:(NSNumber *)durationKey {
     self.selectedDurationKey = durationKey;
 }
 
@@ -59,22 +61,28 @@
     self.selectedSkillLevel = level;
 }
 
-- (void)setNumberPlayers:(NSInteger *)players {
+- (void)setNumberPlayers:(NSNumber *)players {
     self.selectedNumPlayers = players;
 }
 
+- (void)setLocation:(Location *)location {
+    self.selectedLocation = location;
+}
 
 #pragma mark - Table view protocol methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-//    if (indexPath.row == 6) {
-//        // TODO: location cell
-//    }
-    MenuPickerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuPickerCell"];
+    if (indexPath.row == 5) {
+        LocationPickerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LocationPickerCell"];
+        cell.rowNumber = [NSNumber numberWithLong:indexPath.row];
+        cell.delegate = self;
+        return cell;
+    }
     
+    MenuPickerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuPickerCell"];
     cell.rowNumber = [NSNumber numberWithLong:indexPath.row];
-        
+    cell.delegate = self;
     return cell;
 }
 
@@ -119,9 +127,9 @@
         return;
     }
     
-    NSNumber *selectedDuration = [Constants durationKeyToInteger:(int)*(self.selectedDurationKey)];
+    NSNumber *selectedDuration = [Constants durationKeyToInteger:[self.selectedDurationKey intValue]];
     
-    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:self.selectedSkillLevel withDate:self.selectedDateTime withDuration:selectedDuration withLocation:self.selectedLocation withCapacity:[NSNumber numberWithLong:*(self.selectedNumPlayers)] withCompletion:^(BOOL succeeded, NSError* error) {
+    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:self.selectedSkillLevel withDate:self.selectedDateTime withDuration:selectedDuration withLocation:self.selectedLocation withCapacity:self.selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
         
             if (error) {
                 NSLog(@"Error creating session: %@", error.localizedDescription);

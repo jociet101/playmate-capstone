@@ -360,7 +360,7 @@
                                             <outlet property="pickerField" destination="KfU-W8-Bgp" id="n5j-LO-Cdf"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationPickerCell" rowHeight="80" id="Ui0-Ea-k3w" customClass="MenuPickerCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationPickerCell" rowHeight="80" id="Ui0-Ea-k3w" customClass="LocationPickerCell">
                                         <rect key="frame" x="0.0" y="124.66666603088379" width="358" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ui0-Ea-k3w" id="FOg-qu-Abe">
@@ -373,13 +373,45 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5E5-Qq-hVE">
+                                                    <rect key="frame" x="164" y="14" width="194" height="52"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="194" id="UQD-ry-vo7"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain">
+                                                        <attributedString key="attributedTitle">
+                                                            <fragment content="Select Location">
+                                                                <attributes>
+                                                                    <font key="NSFont" size="22" name="Helvetica"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="didTapSelectLocation:" destination="Ui0-Ea-k3w" eventType="touchUpInside" id="Qou-TG-HS3"/>
+                                                        <segue destination="9tI-s5-YSO" kind="show" identifier="toSelectLocation" id="jcx-uQ-feG"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="checkmark.square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="2Mo-dl-eXr">
+                                                    <rect key="frame" x="108.66666666666667" y="31.666666666666657" width="19.333333333333329" height="17.333333333333343"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="5E5-Qq-hVE" secondAttribute="trailing" constant="-20" id="1AH-UM-vsY"/>
+                                                <constraint firstItem="5E5-Qq-hVE" firstAttribute="centerY" secondItem="2Mo-dl-eXr" secondAttribute="centerY" id="28j-9X-TzR"/>
+                                                <constraint firstItem="5E5-Qq-hVE" firstAttribute="leading" secondItem="2Mo-dl-eXr" secondAttribute="trailing" constant="36" id="33X-Xg-BUy"/>
                                                 <constraint firstItem="cfu-r1-9GA" firstAttribute="leading" secondItem="FOg-qu-Abe" secondAttribute="leading" constant="13" id="78n-hg-h4e"/>
+                                                <constraint firstItem="5E5-Qq-hVE" firstAttribute="top" secondItem="FOg-qu-Abe" secondAttribute="topMargin" constant="3" id="iEM-fM-JAT"/>
                                                 <constraint firstItem="cfu-r1-9GA" firstAttribute="centerY" secondItem="FOg-qu-Abe" secondAttribute="centerY" id="tg6-D8-mcZ"/>
+                                                <constraint firstItem="5E5-Qq-hVE" firstAttribute="centerY" secondItem="FOg-qu-Abe" secondAttribute="centerY" id="wHU-YT-W3H"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <outlet property="checkmark" destination="2Mo-dl-eXr" id="2N5-hc-mYY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1882,12 +1914,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mDp-I2-Odr"/>
+        <segue reference="jcx-uQ-feG"/>
         <segue reference="rNL-Fb-mXA"/>
         <segue reference="zis-o5-IMS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
+        <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="house" catalog="system" width="128" height="106"/>

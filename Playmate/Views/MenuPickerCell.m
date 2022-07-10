@@ -82,6 +82,8 @@
     
     NSDate *selectedDate = picker.date;
     self.pickerField.text = [Constants formatDateShort:selectedDate];
+    
+    [self.delegate setDateTime:picker.date];
 }
 
 #pragma mark - Picker view methods
@@ -124,11 +126,19 @@
     
     self.selectedData = self.pickerData[row-1];
     
-    if (self.thisRow == 2) {
-        self.pickerField.text = [Constants durationListShort][row-1];
-        
-    } else {
-        self.pickerField.text = self.selectedData;
+    switch (self.thisRow) {
+        case 2:
+            self.pickerField.text = [Constants durationListShort][row-1];
+            [self.delegate setDuration:[Constants durationKeyToInteger:(row-1)]];
+            break;
+        case 3:
+            [self.delegate setSkillLevel:self.selectedData];
+            self.pickerField.text = self.selectedData;
+            break;
+        case 0:
+            [self.delegate setSport:self.selectedData];
+            self.pickerField.text = self.selectedData;
+            break;
     }
 }
 

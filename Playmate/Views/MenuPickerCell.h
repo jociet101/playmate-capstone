@@ -9,13 +9,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol MenuPickerCellDelegate <NSObject>
+@protocol MenuPickerCellDelegate
 
 - (void)setSport:(NSString *)sport;
 - (void)setDateTime:(NSDate *)date;
-- (void)setDuration:(NSInteger *)durationKey;
+- (void)setDuration:(NSNumber *)durationKey;
 - (void)setSkillLevel:(NSString *)level;
-- (void)setNumberPlayers:(NSInteger *)players;
+- (void)setNumberPlayers:(NSNumber *)players;
 
 @end
 
@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *rowNumber;
 
 - (void)setRowNumber:(NSNumber *)rowNumber;
+
+@property (nonatomic, weak) id<MenuPickerCellDelegate> delegate;
 
 @end
 
