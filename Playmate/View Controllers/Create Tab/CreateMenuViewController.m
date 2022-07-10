@@ -9,10 +9,17 @@
 #import "MenuPickerCell.h"
 #import "Constants.h"
 
-@interface CreateMenuViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface CreateMenuViewController () <UITableViewDelegate, UITableViewDataSource, MenuPickerCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *createMenuIdentifiers;
+
+// selected session details
+@property (nonatomic, strong) NSString *selectedSport;
+@property (nonatomic, strong) NSDate *selectedDateTime;
+@property (nonatomic, assign) NSInteger *selectedDurationKey;
+@property (nonatomic, strong) NSString *selectedSkillLevel;
+@property (nonatomic, assign) NSInteger *selectedNumPlayers;
 
 @end
 
@@ -30,6 +37,29 @@
     self.createMenuIdentifiers = [Constants sportsList:NO];
 
 }
+
+#pragma mark - Menu Picker Cell protocol methods
+
+- (void)setSport:(NSString *)sport {
+    self.selectedSport = sport;
+}
+
+- (void)setDateTime:(NSDate *)date {
+    self.selectedDateTime = date;
+}
+
+- (void)setDuration:(NSInteger *)durationKey {
+    self.selectedDurationKey = durationKey;
+}
+
+- (void)setSkillLevel:(NSString *)level {
+    self.selectedSkillLevel = level;
+}
+
+- (void)setNumberPlayers:(NSInteger *)players {
+    self.selectedNumPlayers = players;
+}
+
 
 #pragma mark - Table view protocol methods
 
@@ -59,6 +89,10 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
+}
+
+- (IBAction)didTapCreateSession:(id)sender {
+    
 }
 
 /*

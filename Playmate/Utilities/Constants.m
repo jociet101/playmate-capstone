@@ -164,6 +164,24 @@
     return (NSArray *)durations;
 }
 
++ (NSArray *)durationKeyToInteger:(int)key {
+    NSMutableArray *durations = [[NSMutableArray alloc] init];
+    
+    [durations addObject:@(0.5)];
+    [durations addObject:@(0.75)];
+    [durations addObject:@(1)];
+    [durations addObject:@(1.25)];
+    [durations addObject:@(1.5)];
+    [durations addObject:@(1.75)];
+    [durations addObject:@(2)];
+    [durations addObject:@(2.25)];
+    [durations addObject:@(2.5)];
+    [durations addObject:@(2.75)];
+    [durations addObject:@(3)];
+    
+    return durations[key];
+}
+
 + (NSString *)defaultAll {
     return @"All";
 }
