@@ -52,6 +52,7 @@
     self.pickerField.tintColor = [UIColor lightGrayColor];
     self.pickerField.returnKeyType = UIReturnKeyDone;
     self.pickerField.delegate = self;
+    [self.pickerField setKeyboardType:UIKeyboardTypeNumberPad];
 }
 
 #pragma mark - Picker view methods
