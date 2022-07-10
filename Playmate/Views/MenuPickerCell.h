@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setSport:(NSString *)sport;
 - (void)setDateTime:(NSDate *)date;
-- (void)setDuration:(NSNumber *)durationKey;
+- (void)setDuration:(NSNumber *)duration;
 - (void)setSkillLevel:(NSString *)level;
 - (void)setNumberPlayers:(NSNumber *)players;
 

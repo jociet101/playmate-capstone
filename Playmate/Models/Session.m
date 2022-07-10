@@ -6,6 +6,7 @@
 //
 
 #import "Session.h"
+#import "Location.h"
 
 @implementation Session
 
@@ -38,7 +39,7 @@
     newSession.playersList = (NSArray *)tempList;
     newSession.occursAt = date;
     newSession.duration = duration;
-    newSession.location = loc;
+    newSession.location = (Location *)loc;
     newSession.capacity = cap;
     newSession.occupied = @(1);
     

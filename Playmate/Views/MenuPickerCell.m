@@ -38,15 +38,6 @@
     
     _rowNumber = rowNumber;
     
-    /*
-     [titles addObject:@"Sport"];
-     [titles addObject:@"Date and Time"];
-     [titles addObject:@"Duration"];
-     [titles addObject:@"Skill Level"];
-     [titles addObject:@"Number of Players"];
-     [titles addObject:@"Location"];
-     */
-    
     self.menuLabel.text = [Constants createMenuTitle:self.thisRow];
     
     switch (self.thisRow) {
@@ -63,12 +54,25 @@
 
 - (void)numPlayersSetup {
     self.pickerField.tintColor = [UIColor lightGrayColor];
+    self.pickerField.returnKeyType = UIReturnKeyDone;
+    self.pickerField.delegate = self;
 }
 
 - (void)dateTimePickerSetup {
     UIDatePicker *pickerView = [UIDatePicker new];
     [pickerView setPreferredDatePickerStyle:UIDatePickerStyleWheels];
     [pickerView setMinuteInterval:15];
+    
+    // set minimum and maximum dates for picker
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDate *currentDate = [NSDate date];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSDate *minDate = [gregorian dateByAddingComponents:comps toDate:currentDate  options:0];
+    [comps setMonth:1];
+    NSDate *maxDate = [gregorian dateByAddingComponents:comps toDate:currentDate  options:0];
+
+    pickerView.minimumDate = minDate;
+    pickerView.maximumDate = maxDate;
     
     // setup detection in change of value
     [pickerView addTarget:self action:@selector(dateIsSelected:) forControlEvents:UIControlEventValueChanged];
@@ -129,7 +133,7 @@
     switch (self.thisRow) {
         case 2:
             self.pickerField.text = [Constants durationListShort][row-1];
-            [self.delegate setDuration:[Constants durationKeyToInteger:(row-1)]];
+            [self.delegate setDuration:[Constants durationKeyToInteger:(int)(row-1)]];
             break;
         case 3:
             [self.delegate setSkillLevel:self.selectedData];
@@ -144,9 +148,13 @@
 
 #pragma mark - Text field delegate method
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    UIPickerView *pickerView = [UIPickerView new];
-    textField.inputView = pickerView;
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    NSLog(@"%d heheh", self.thisRow);
+    if (self.thisRow == 4) {
+        [self.delegate setNumberPlayers:[NSNumber numberWithInt:[self.pickerField.text intValue]]];
+        [self.pickerField endEditing:YES];
+    }
+    return YES;
 }
 
 @end

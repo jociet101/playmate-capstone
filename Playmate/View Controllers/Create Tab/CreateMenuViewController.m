@@ -13,7 +13,7 @@
 #import "Session.h"
 #import "SelectMapViewController.h"
 
-@interface CreateMenuViewController () <UITableViewDelegate, UITableViewDataSource, MenuPickerCellDelegate, LocationPickerCellDelegate, SelectMapViewControllerDelegate>
+@interface CreateMenuViewController () <UITableViewDelegate, UITableViewDataSource, MenuPickerCellDelegate, SelectMapViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *createMenuIdentifiers;
@@ -21,7 +21,7 @@
 // selected session details
 @property (nonatomic, strong) NSString *selectedSport;
 @property (nonatomic, strong) NSDate *selectedDateTime;
-@property (nonatomic, assign) NSNumber *selectedDurationKey;
+@property (nonatomic, assign) NSNumber *selectedDuration;
 @property (nonatomic, strong) NSString *selectedSkillLevel;
 @property (nonatomic, assign) NSNumber *selectedNumPlayers;
 @property (nonatomic, strong) Location *selectedLocation;
@@ -47,28 +47,30 @@
 
 - (void)setSport:(NSString *)sport {
     self.selectedSport = sport;
-    NSLog(@"ASLKDJFALSKJDF called selected sport");
+    NSLog(@"called selected sport");
 }
 
 - (void)setDateTime:(NSDate *)date {
     self.selectedDateTime = date;
+    NSLog(@"called selected datettime");
 }
 
-- (void)setDuration:(NSNumber *)durationKey {
-    self.selectedDurationKey = durationKey;
+- (void)setDuration:(NSNumber *)duration {
+    
+    NSLog(@"duration key = %@", duration);
+    
+    self.selectedDuration = duration;
 }
 
 - (void)setSkillLevel:(NSString *)level {
     self.selectedSkillLevel = level;
+    NSLog(@"called selected skill level");
 }
 
 - (void)setNumberPlayers:(NSNumber *)players {
     self.selectedNumPlayers = players;
+    NSLog(@"called selected nnumbplayers %@", players);
 }
-
-//- (void)setLocation:(Location *)location {
-//    self.selectedLocation = location;
-//}
 
 - (void)getSelectedLocation:(Location *)location {
     NSLog(@"YAHOOOO");
@@ -82,7 +84,6 @@
     if (indexPath.row == 5) {
         LocationPickerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LocationPickerCell"];
         cell.rowNumber = [NSNumber numberWithLong:indexPath.row];
-        cell.delegate = self;
         return cell;
     }
     
@@ -133,9 +134,9 @@
         return;
     }
     
-    NSNumber *selectedDuration = [Constants durationKeyToInteger:[self.selectedDurationKey intValue]];
+    NSNumber *duration = [Constants durationKeyToInteger:[self.selectedDuration intValue]];
     
-    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:self.selectedSkillLevel withDate:self.selectedDateTime withDuration:selectedDuration withLocation:self.selectedLocation withCapacity:self.selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
+    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:self.selectedSkillLevel withDate:self.selectedDateTime withDuration:duration withLocation:self.selectedLocation withCapacity:self.selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
         
             if (error) {
                 NSLog(@"Error creating session: %@", error.localizedDescription);

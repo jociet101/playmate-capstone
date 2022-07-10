@@ -10,19 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol LocationPickerCellDelegate
-
-//- (void)setLocation:(Location *)location;
-
-@end
-
 @interface LocationPickerCell : UITableViewCell
 
 @property (nonatomic, strong) NSNumber *rowNumber;
 
 - (void)setRowNumber:(NSNumber *)rowNumber;
-
-@property (nonatomic, weak) id<LocationPickerCellDelegate> delegate;
 
 @end
 
