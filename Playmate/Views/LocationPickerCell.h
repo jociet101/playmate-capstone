@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol LocationPickerCellDelegate
 
-- (void)setLocation:(Location *)location;
+//- (void)setLocation:(Location *)location;
 
 @end
 

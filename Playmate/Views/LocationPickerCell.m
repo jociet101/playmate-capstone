@@ -8,7 +8,7 @@
 #import "LocationPickerCell.h"
 #import "SelectMapViewController.h"
 
-@interface LocationPickerCell () <SelectMapViewControllerDelegate>
+@interface LocationPickerCell ()
 
 // will appear if user selected location
 @property (weak, nonatomic) IBOutlet UIImageView *checkmark;
@@ -35,21 +35,8 @@
 
 #pragma mark - Select map vc protocol method
 
-- (void)getSelectedLocation:(Location *)location {
-    self.selectedLocation = location;
-    self.checkmark.alpha = 1;
-}
-
 - (IBAction)didTapSelectLocation:(id)sender {
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    if ([segue.identifier isEqualToString:@"toSelectLocation"]) {
-        SelectMapViewController *vc = segue.destinationViewController;
-        vc.delegate = self;
-        NSLog(@"location picker cell set vc delegate to be self");
-    }
+    NSLog(@"DID TAP SELECtlkajsd ");
 }
 
 @end

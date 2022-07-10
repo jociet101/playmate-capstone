@@ -11,8 +11,9 @@
 #import "Constants.h"
 #import "Location.h"
 #import "Session.h"
+#import "SelectMapViewController.h"
 
-@interface CreateMenuViewController () <UITableViewDelegate, UITableViewDataSource, MenuPickerCellDelegate, LocationPickerCellDelegate>
+@interface CreateMenuViewController () <UITableViewDelegate, UITableViewDataSource, MenuPickerCellDelegate, LocationPickerCellDelegate, SelectMapViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *createMenuIdentifiers;
@@ -65,7 +66,12 @@
     self.selectedNumPlayers = players;
 }
 
-- (void)setLocation:(Location *)location {
+//- (void)setLocation:(Location *)location {
+//    self.selectedLocation = location;
+//}
+
+- (void)getSelectedLocation:(Location *)location {
+    NSLog(@"YAHOOOO");
     self.selectedLocation = location;
 }
 
@@ -144,14 +150,17 @@
     self.view.window.rootViewController = homeVC;
 }
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    NSLog(@"CALLED PREPARE FOR SEGUE IN LOCATION PICKER CELL");
+    
+    if ([segue.identifier isEqualToString:@"toSelectLocation"]) {
+        SelectMapViewController *vc = segue.destinationViewController;
+        vc.delegate = self;
+        NSLog(@"location picker cell set vc delegate to be self");
+    }
 }
-*/
 
 @end
