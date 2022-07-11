@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *ageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *genderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bioField;
+@property (weak, nonatomic) IBOutlet UIButton *addFriendButton;
 
 @end
 
@@ -23,6 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self manageFriendButtonUI];
     
     self.nameLabel.text = [Constants concatenateFirstName:self.user[@"firstName"][0] andLast:self.user[@"lastName"][0]];
     self.usernameLabel.text = [@"@" stringByAppendingString:self.user[@"username"]];
@@ -48,6 +51,17 @@
     }
     
 }
+
+-(void)manageFriendButtonUI {
+    self.addFriendButton.layer.cornerRadius = [Constants buttonCornerRadius];
+    
+    // if current user is friends w this person, set title "Remove Friend"
+}
+
+- (IBAction)didTapFriend:(id)sender {
+    
+}
+
 
 /*
 #pragma mark - Navigation

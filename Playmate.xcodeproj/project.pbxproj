@@ -35,6 +35,7 @@
 		3CF4A5AF287CA9D1000C5E7D /* PlayerProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5AE287CA9D1000C5E7D /* PlayerProfileViewController.m */; };
 		3CF4A5B2287CD65D000C5E7D /* FriendRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5B1287CD65D000C5E7D /* FriendRequest.m */; };
 		3CF4A5B8287CD963000C5E7D /* PlayerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5B7287CD963000C5E7D /* PlayerConnection.m */; };
+		3CF4A5BB287CE3A9000C5E7D /* FriendRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5BA287CE3A9000C5E7D /* FriendRequestsViewController.m */; };
 		3CF652A9286D036600BD5EDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652A8286D036600BD5EDB /* AppDelegate.m */; };
 		3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652AB286D036600BD5EDB /* SceneDelegate.m */; };
 		3CF652B2286D036600BD5EDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF652B0286D036600BD5EDB /* Main.storyboard */; };
@@ -121,6 +122,8 @@
 		3CF4A5B1287CD65D000C5E7D /* FriendRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendRequest.m; sourceTree = "<group>"; };
 		3CF4A5B6287CD963000C5E7D /* PlayerConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerConnection.h; sourceTree = "<group>"; };
 		3CF4A5B7287CD963000C5E7D /* PlayerConnection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerConnection.m; sourceTree = "<group>"; };
+		3CF4A5B9287CE3A9000C5E7D /* FriendRequestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendRequestsViewController.h; sourceTree = "<group>"; };
+		3CF4A5BA287CE3A9000C5E7D /* FriendRequestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendRequestsViewController.m; sourceTree = "<group>"; };
 		3CF652A4286D036600BD5EDB /* Playmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF652A7286D036600BD5EDB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3CF652A8286D036600BD5EDB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -252,6 +255,8 @@
 				3C45B577287299C200EE578F /* ProfileViewController.m */,
 				3CF4A5882878AA1A000C5E7D /* EditProfileViewController.h */,
 				3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */,
+				3CF4A5B9287CE3A9000C5E7D /* FriendRequestsViewController.h */,
+				3CF4A5BA287CE3A9000C5E7D /* FriendRequestsViewController.m */,
 			);
 			path = "Profile Tab";
 			sourceTree = "<group>";
@@ -649,6 +654,7 @@
 				3C45B5A4287606EF00EE578F /* SelectMapViewController.m in Sources */,
 				3CF4A5A8287B67B4000C5E7D /* FiltersMenuPickerCell.m in Sources */,
 				3CF4A5B8287CD963000C5E7D /* PlayerConnection.m in Sources */,
+				3CF4A5BB287CE3A9000C5E7D /* FriendRequestsViewController.m in Sources */,
 				3C383FD52877416D00BC9B55 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

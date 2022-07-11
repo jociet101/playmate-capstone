@@ -128,4 +128,8 @@
     [self initializeTaker];
 }
 
+- (IBAction)viewFriendRequests:(id)sender {
+    [self performSegueWithIdentifier:@"viewFriendRequests" sender:nil];
+}
+
 @end
