@@ -106,6 +106,13 @@
     return [first stringByAppendingString:[@" " stringByAppendingString:last]];
 }
 
++ (NSString *)getAgeInYears:(NSDate *)date {
+    NSString *rawYears = [date timeAgoSinceNow];
+    NSArray *parsed = [rawYears componentsSeparatedByString:@" "];
+    NSString *year = parsed[0];
+    return year;
+}
+
 // Information for filters and create
 + (NSString *)createMenuTitle:(int)row {
     NSMutableArray *titles = [[NSMutableArray alloc] init];

@@ -949,49 +949,90 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJi-gL-U58">
-                                <rect key="frame" x="16" y="293" width="141" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Player Profiles">
-                                        <attributes>
-                                            <font key="NSFont" size="22" name="Avenir-Medium"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Na-OS-9iP">
-                                <rect key="frame" x="17" y="340" width="348" height="273"/>
+                                <rect key="frame" x="17" y="340" width="348" height="270"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xoK-3m-lWk">
-                                    <size key="itemSize" width="146" height="194"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xoK-3m-lWk">
+                                    <size key="itemSize" width="194" height="254"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlayerProfileCollectionCell" id="Ja7-8n-OLL" customClass="PlayerProfileCollectionCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="146" height="194"/>
+                                        <rect key="frame" x="0.0" y="8" width="194" height="254"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HYo-pv-qG3">
-                                            <rect key="frame" x="0.0" y="0.0" width="146" height="194"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="194" height="254"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMF-rw-iij">
-                                                    <rect key="frame" x="8" y="24" width="115" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMF-rw-iij">
+                                                    <rect key="frame" x="14.666666666666671" y="145" width="165" height="24"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Jocelyn Tseng">
+                                                            <attributes>
+                                                                <font key="NSFont" size="17" name="AvenirNext-Medium"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMa-qU-3j5">
+                                                    <rect key="frame" x="14.666666666666671" y="174" width="165" height="24"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="@jociet101">
+                                                            <attributes>
+                                                                <font key="NSFont" size="17" name="AvenirNext-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZj-W9-dLh">
+                                                    <rect key="frame" x="14.666666666666671" y="206" width="165" height="24"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="19 yo, Female">
+                                                            <attributes>
+                                                                <font key="NSFont" size="17" name="AvenirNext-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hb8-CW-4kA">
+                                                    <rect key="frame" x="40" y="16" width="114" height="114"/>
+                                                </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hb8-CW-4kA" firstAttribute="centerX" secondItem="HYo-pv-qG3" secondAttribute="centerX" id="1wd-mn-rIy"/>
+                                                <constraint firstItem="gMF-rw-iij" firstAttribute="centerX" secondItem="HYo-pv-qG3" secondAttribute="centerX" id="53n-jv-ukY"/>
+                                                <constraint firstItem="gMF-rw-iij" firstAttribute="height" secondItem="HYo-pv-qG3" secondAttribute="height" multiplier="0.0944882" id="7yQ-n9-ihj"/>
+                                                <constraint firstItem="mMa-qU-3j5" firstAttribute="height" secondItem="HYo-pv-qG3" secondAttribute="height" multiplier="0.0944882" id="EKI-6E-aO8"/>
+                                                <constraint firstItem="FZj-W9-dLh" firstAttribute="centerX" secondItem="HYo-pv-qG3" secondAttribute="centerX" id="KC9-bp-jHF"/>
+                                                <constraint firstItem="hb8-CW-4kA" firstAttribute="width" secondItem="HYo-pv-qG3" secondAttribute="width" multiplier="0.587629" id="LyB-86-4jK"/>
+                                                <constraint firstItem="mMa-qU-3j5" firstAttribute="centerX" secondItem="HYo-pv-qG3" secondAttribute="centerX" id="MZJ-98-ktI"/>
+                                                <constraint firstItem="gMF-rw-iij" firstAttribute="width" secondItem="HYo-pv-qG3" secondAttribute="width" multiplier="0.850515" id="NPf-tC-VOJ"/>
+                                                <constraint firstItem="FZj-W9-dLh" firstAttribute="top" secondItem="mMa-qU-3j5" secondAttribute="bottom" constant="8" symbolic="YES" id="Soa-HT-4bg"/>
+                                                <constraint firstItem="hb8-CW-4kA" firstAttribute="height" secondItem="HYo-pv-qG3" secondAttribute="height" multiplier="0.448819" id="Zct-Ks-SnS"/>
+                                                <constraint firstItem="mMa-qU-3j5" firstAttribute="width" secondItem="HYo-pv-qG3" secondAttribute="width" multiplier="0.850515" id="kld-57-vtu"/>
+                                                <constraint firstAttribute="bottom" secondItem="FZj-W9-dLh" secondAttribute="bottom" constant="24" id="nRA-ub-0OV"/>
+                                                <constraint firstItem="FZj-W9-dLh" firstAttribute="height" secondItem="HYo-pv-qG3" secondAttribute="height" multiplier="0.0944882" id="qB4-oq-Whv"/>
+                                                <constraint firstItem="hb8-CW-4kA" firstAttribute="top" secondItem="HYo-pv-qG3" secondAttribute="top" constant="16" id="spf-lX-hiE"/>
+                                                <constraint firstItem="FZj-W9-dLh" firstAttribute="width" secondItem="HYo-pv-qG3" secondAttribute="width" multiplier="0.850515" id="uhX-bD-et6"/>
+                                                <constraint firstItem="gMF-rw-iij" firstAttribute="top" secondItem="hb8-CW-4kA" secondAttribute="bottom" constant="15" id="yED-nS-dqd"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="146" height="194"/>
+                                        <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <size key="customSize" width="194" height="254"/>
                                         <connections>
+                                            <outlet property="detailsLabel" destination="FZj-W9-dLh" id="7Tb-9l-ane"/>
                                             <outlet property="nameLabel" destination="gMF-rw-iij" id="q0o-pH-zNl"/>
+                                            <outlet property="profileImageView" destination="hb8-CW-4kA" id="3ZJ-BQ-js2"/>
+                                            <outlet property="usernameLabel" destination="mMa-qU-3j5" id="Q3Z-rX-R8h"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1047,6 +1088,19 @@
                                         <attributes>
                                             <font key="NSFont" size="17" name="Avenir-Book"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJi-gL-U58">
+                                <rect key="frame" x="17" y="293" width="141" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Player Profiles">
+                                        <attributes>
+                                            <font key="NSFont" size="22" name="Avenir-Medium"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -1688,7 +1742,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Nu6-4T-TEp"/>
-        <segue reference="mqk-g0-t3s"/>
+        <segue reference="rNL-Fb-mXA"/>
         <segue reference="zis-o5-IMS"/>
     </inferredMetricsTieBreakers>
     <resources>
