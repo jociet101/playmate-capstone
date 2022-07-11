@@ -81,24 +81,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSLog(@"bloop");
-    
     SessionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SessionCell"];
         
-    cell.session = self.sessionList[indexPath.row];
+    cell.session = self.sessionList[indexPath.section];
             
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    NSLog(@"size %lu", self.sessionList.count);
-    
-    return self.sessionList.count;
+    return 1;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.sessionList.count;
 }
 
 #pragma mark - Calendar view methods

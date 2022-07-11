@@ -463,20 +463,20 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cld-2g-AHh">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cld-2g-AHh">
                                 <rect key="frame" x="0.0" y="378" width="390" height="383"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionCell" rowHeight="133" id="NI1-la-hpO" customClass="SessionCell">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="133"/>
+                                        <rect key="frame" x="20" y="49" width="350" height="133"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NI1-la-hpO" id="fM6-ce-sLF">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="133"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="133"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g50-Fl-m5C">
-                                                    <rect key="frame" x="20" y="10.999999999999998" width="350" height="23.333333333333329"/>
+                                                    <rect key="frame" x="20" y="10.999999999999998" width="310" height="23.333333333333329"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Basketball w/ Jocelyn, Jonathan, Michelle">
                                                             <attributes>
@@ -487,7 +487,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5C-Rq-8pN">
-                                                    <rect key="frame" x="50" y="40" width="320" height="22"/>
+                                                    <rect key="frame" x="42.666666666666657" y="40" width="287.33333333333337" height="22"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Location">
                                                             <attributes>
@@ -498,7 +498,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcf-ML-b6T">
-                                                    <rect key="frame" x="50" y="67" width="320" height="26"/>
+                                                    <rect key="frame" x="42.666666666666657" y="67" width="287.33333333333337" height="26"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Date at Time">
                                                             <attributes>
@@ -510,19 +510,19 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="timer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Yrs-Bc-aWd">
-                                                    <rect key="frame" x="21" y="70" width="20" height="19"/>
+                                                    <rect key="frame" x="21" y="70" width="13.666666666666664" height="19"/>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="location.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gq3-9a-o2n">
-                                                    <rect key="frame" x="21" y="41" width="20" height="21"/>
+                                                    <rect key="frame" x="21" y="41" width="13.666666666666664" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22.333333333333329" id="2r2-mQ-212"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IEd-Eo-HbY">
-                                                    <rect key="frame" x="20" y="100" width="22" height="21"/>
+                                                    <rect key="frame" x="20" y="100" width="15" height="21"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvO-sp-T5l">
-                                                    <rect key="frame" x="49" y="98" width="321" height="24"/>
+                                                    <rect key="frame" x="42" y="98" width="288" height="24"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Competitive, 5/6 open slots">
                                                             <attributes>
@@ -534,6 +534,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstItem="kvO-sp-T5l" firstAttribute="width" secondItem="fM6-ce-sLF" secondAttribute="width" multiplier="0.823077" id="0dI-hD-yTQ"/>
                                                 <constraint firstItem="kvO-sp-T5l" firstAttribute="top" secondItem="pcf-ML-b6T" secondAttribute="bottom" constant="5" id="4sW-4y-XUp"/>
@@ -595,20 +596,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7nC-pP-sWH">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7nC-pP-sWH">
                                 <rect key="frame" x="0.0" y="88" width="390" height="673"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionCell" rowHeight="133" id="JSo-cg-vwq" customClass="SessionCell">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="133"/>
+                                        <rect key="frame" x="20" y="49" width="350" height="133"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JSo-cg-vwq" id="8OV-lt-CB4">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="133"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="133"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REP-0I-TCf">
-                                                    <rect key="frame" x="20" y="10.999999999999998" width="350" height="23.333333333333329"/>
+                                                    <rect key="frame" x="20" y="10.999999999999998" width="310" height="23.333333333333329"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Basketball w/ Jocelyn, Jonathan, Michelle">
                                                             <attributes>
@@ -619,7 +620,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qln-O3-c8D">
-                                                    <rect key="frame" x="50" y="40" width="320" height="22"/>
+                                                    <rect key="frame" x="42.666666666666657" y="40" width="287.33333333333337" height="22"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Location">
                                                             <attributes>
@@ -630,7 +631,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMx-oh-pSX">
-                                                    <rect key="frame" x="50" y="67" width="320" height="26"/>
+                                                    <rect key="frame" x="42.666666666666657" y="67" width="287.33333333333337" height="26"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Date at Time">
                                                             <attributes>
@@ -642,19 +643,19 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="timer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lra-wh-quf">
-                                                    <rect key="frame" x="21" y="70" width="20" height="19"/>
+                                                    <rect key="frame" x="21" y="70" width="13.666666666666664" height="19"/>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="location.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="H7l-au-f4H">
-                                                    <rect key="frame" x="21" y="41" width="20" height="21"/>
+                                                    <rect key="frame" x="21" y="41" width="13.666666666666664" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22.333333333333329" id="Czx-wt-Fvs"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Lvg-kE-FRC">
-                                                    <rect key="frame" x="20" y="100" width="22" height="21"/>
+                                                    <rect key="frame" x="20" y="100" width="15" height="21"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7U7-IU-ViT">
-                                                    <rect key="frame" x="49" y="98" width="321" height="24"/>
+                                                    <rect key="frame" x="42" y="98" width="288" height="24"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Competitive, 5/6 open slots">
                                                             <attributes>
@@ -695,6 +696,7 @@
                                                 <constraint firstItem="Lvg-kE-FRC" firstAttribute="top" secondItem="lra-wh-quf" secondAttribute="bottom" constant="10.666666666666671" id="vDy-z1-k5T"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="dateTimeLabel" destination="fMx-oh-pSX" id="BEc-kZ-kpX"/>
                                             <outlet property="levelCapacityLabel" destination="7U7-IU-ViT" id="u7b-V8-Lwg"/>
@@ -738,20 +740,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nWr-op-BUf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nWr-op-BUf">
                                 <rect key="frame" x="0.0" y="88" width="390" height="756"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionCell" rowHeight="133" id="qPr-0z-ErX" customClass="SessionCell">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="133"/>
+                                        <rect key="frame" x="20" y="49" width="350" height="133"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qPr-0z-ErX" id="DDS-Nc-Tfg">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="133"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="133"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhX-US-tzd">
-                                                    <rect key="frame" x="20" y="10.999999999999998" width="350" height="23.333333333333329"/>
+                                                    <rect key="frame" x="20" y="10.999999999999998" width="310" height="23.333333333333329"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Basketball w/ Jocelyn, Jonathan, Michelle">
                                                             <attributes>
@@ -762,7 +764,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3G-yM-rCp">
-                                                    <rect key="frame" x="50" y="40" width="320" height="22"/>
+                                                    <rect key="frame" x="42.666666666666657" y="40" width="287.33333333333337" height="22"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Location">
                                                             <attributes>
@@ -773,7 +775,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etT-oE-Y4L">
-                                                    <rect key="frame" x="50" y="67" width="320" height="26"/>
+                                                    <rect key="frame" x="42.666666666666657" y="67" width="287.33333333333337" height="26"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Date at Time">
                                                             <attributes>
@@ -785,19 +787,19 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="timer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hjB-Gw-La2">
-                                                    <rect key="frame" x="21" y="70" width="20" height="19"/>
+                                                    <rect key="frame" x="21" y="70" width="13.666666666666664" height="19"/>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="location.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MkO-84-Rpw">
-                                                    <rect key="frame" x="21" y="41" width="20" height="21"/>
+                                                    <rect key="frame" x="21" y="41" width="13.666666666666664" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22.333333333333329" id="59R-Pv-z0u"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qda-fC-7yp">
-                                                    <rect key="frame" x="20" y="100" width="22" height="21"/>
+                                                    <rect key="frame" x="20" y="100" width="15" height="21"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOR-NA-ctd">
-                                                    <rect key="frame" x="49" y="98" width="321" height="24"/>
+                                                    <rect key="frame" x="42" y="98" width="288" height="24"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Competitive, 5/6 open slots">
                                                             <attributes>
@@ -838,6 +840,7 @@
                                                 <constraint firstItem="g3G-yM-rCp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MkO-84-Rpw" secondAttribute="trailing" constant="8" symbolic="YES" id="xtf-TN-RAa"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="dateTimeLabel" destination="etT-oE-Y4L" id="9Gf-2S-yLe"/>
                                             <outlet property="levelCapacityLabel" destination="AOR-NA-ctd" id="la2-6M-iXS"/>

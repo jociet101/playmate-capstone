@@ -98,17 +98,17 @@
     
     SessionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SessionCell"];
         
-    cell.session = self.sessionList[indexPath.row];
+    cell.session = self.sessionList[indexPath.section];
             
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.sessionList.count;
+    return 1;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.sessionList.count;
 }
 
 #pragma mark - Filter view controller configuration
