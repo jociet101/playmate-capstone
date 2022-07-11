@@ -38,7 +38,6 @@
     self.usernameLabel.text = [@"@" stringByAppendingString:user[@"username"]];
     self.usernameLabel.textColor = [UIColor lightGrayColor];
     self.genderLabel.text = [@"Identifies as " stringByAppendingString:user[@"gender"][0]];
-//    self.ageLabel.text = [@"Born " stringByAppendingString:[user[@"birthday"][0] timeAgoSinceNow]];
     self.ageLabel.text = [[Constants getAgeInYears:user[@"birthday"][0]] stringByAppendingString:@" years old"];
     
     if ([user objectForKey:@"biography"] != nil) {
@@ -50,6 +49,8 @@
         [self.profileImageView setImage:img];
         self.profileImagePlaceholder.alpha = 0;
     }
+    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
+    self.profileImagePlaceholder.layer.cornerRadius = self.profileImagePlaceholder.frame.size.width/2.0f;
 }
 
 #pragma mark - Uploading or taking profile image

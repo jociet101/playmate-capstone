@@ -50,6 +50,10 @@
         UIImage* img = [UIImage imageWithData:[user[@"profileImage"] getData]];
         [self.profileImageView setImage:[self resizeImage:img]];
     }
+    else {
+        UIImage* img = [UIImage imageNamed:@"playmate_logo_transparent.png"];
+        [self.profileImageView setImage:[self resizeImage:img]];
+    }
     
     // make profile image view a circle
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
