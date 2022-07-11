@@ -9,7 +9,8 @@
 
 @implementation FriendRequest
 
-@dynamic requester;
+@dynamic toObjectId;
+@dynamic requestFrom;
 
 + (nonnull NSString *)parseClassName {
     return @"FriendRequest";

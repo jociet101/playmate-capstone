@@ -11,7 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FriendRequest : PFObject<PFSubclassing>
 
-@property (nonatomic, strong) PFUser *requester;
+@property (nonatomic, strong) NSString *toObjectId;
+@property (nonatomic, strong) PFUser *requestFrom;
 
 @end
 
