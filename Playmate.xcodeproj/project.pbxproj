@@ -32,6 +32,7 @@
 		3CF4A5A5287B6647000C5E7D /* FiltersMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5A4287B6647000C5E7D /* FiltersMenuViewController.m */; };
 		3CF4A5A8287B67B4000C5E7D /* FiltersMenuPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5A7287B67B4000C5E7D /* FiltersMenuPickerCell.m */; };
 		3CF4A5AB287C962D000C5E7D /* PlayerProfileCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5AA287C962D000C5E7D /* PlayerProfileCollectionCell.m */; };
+		3CF4A5AF287CA9D1000C5E7D /* PlayerProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5AE287CA9D1000C5E7D /* PlayerProfileViewController.m */; };
 		3CF652A9286D036600BD5EDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652A8286D036600BD5EDB /* AppDelegate.m */; };
 		3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652AB286D036600BD5EDB /* SceneDelegate.m */; };
 		3CF652B2286D036600BD5EDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF652B0286D036600BD5EDB /* Main.storyboard */; };
@@ -112,6 +113,8 @@
 		3CF4A5A7287B67B4000C5E7D /* FiltersMenuPickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FiltersMenuPickerCell.m; sourceTree = "<group>"; };
 		3CF4A5A9287C962D000C5E7D /* PlayerProfileCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerProfileCollectionCell.h; sourceTree = "<group>"; };
 		3CF4A5AA287C962D000C5E7D /* PlayerProfileCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerProfileCollectionCell.m; sourceTree = "<group>"; };
+		3CF4A5AD287CA9D1000C5E7D /* PlayerProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerProfileViewController.h; sourceTree = "<group>"; };
+		3CF4A5AE287CA9D1000C5E7D /* PlayerProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerProfileViewController.m; sourceTree = "<group>"; };
 		3CF652A4286D036600BD5EDB /* Playmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF652A7286D036600BD5EDB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3CF652A8286D036600BD5EDB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -202,12 +205,11 @@
 		3C45B561286E64CB00EE578F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3C45B59C2875060700EE578F /* SessionDetailsViewController.h */,
-				3C45B59D2875060700EE578F /* SessionDetailsViewController.m */,
+				3C45B571287297C800EE578F /* Home Tab */,
+				3CF4A5AC287CA9B6000C5E7D /* Session Details View */,
 				3C45B58628737E5500EE578F /* Create Tab */,
 				3C45B58228737E4400EE578F /* Search Tab */,
 				3C45B575287299B900EE578F /* Profile Tab */,
-				3C45B571287297C800EE578F /* Home Tab */,
 				3C45B562286E64D700EE578F /* Registration Related */,
 			);
 			path = "View Controllers";
@@ -298,6 +300,17 @@
 				3CF4A5AA287C962D000C5E7D /* PlayerProfileCollectionCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3CF4A5AC287CA9B6000C5E7D /* Session Details View */ = {
+			isa = PBXGroup;
+			children = (
+				3C45B59C2875060700EE578F /* SessionDetailsViewController.h */,
+				3C45B59D2875060700EE578F /* SessionDetailsViewController.m */,
+				3CF4A5AD287CA9D1000C5E7D /* PlayerProfileViewController.h */,
+				3CF4A5AE287CA9D1000C5E7D /* PlayerProfileViewController.m */,
+			);
+			path = "Session Details View";
 			sourceTree = "<group>";
 		};
 		3CF6529B286D036600BD5EDB = {
@@ -600,6 +613,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C45B565286E64EB00EE578F /* WelcomeViewController.m in Sources */,
+				3CF4A5AF287CA9D1000C5E7D /* PlayerProfileViewController.m in Sources */,
 				3C383FDD28775D2A00BC9B55 /* APIManager.m in Sources */,
 				3C45B5A728760C1E00EE578F /* Filters.m in Sources */,
 				3C45B5932874C0ED00EE578F /* Location.m in Sources */,

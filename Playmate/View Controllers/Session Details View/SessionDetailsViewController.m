@@ -10,6 +10,7 @@
 #import "Constants.h"
 #import "Location.h"
 #import "PlayerProfileCollectionCell.h"
+#import "PlayerProfileViewController.h"
 
 @interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -140,8 +141,12 @@ PFUser *me;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    
-    
+    if ([sender isMemberOfClass:[PlayerProfileCollectionCell class]]) {
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
+        PFUser* data = self.sessionDetails.playersList[indexPath.row];
+        PlayerProfileViewController *VC = [segue destinationViewController];
+        VC.user = data;
+    }
 }
 
 @end

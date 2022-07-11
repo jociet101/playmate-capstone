@@ -219,8 +219,6 @@
     if ([sender isMemberOfClass:[UIBarButtonItem class]]) {
         FiltersMenuViewController *VC = [segue destinationViewController];
         VC.delegate = self;
-//        FiltersViewController *VC = [segue destinationViewController];
-//        VC.delegate = self;
     }
     
 }
