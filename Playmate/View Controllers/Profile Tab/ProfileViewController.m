@@ -10,6 +10,7 @@
 #import "SceneDelegate.h"
 #import "DateTools.h"
 #import "Constants.h"
+#import "EditProfileViewController.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate>
 
@@ -28,6 +29,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
     PFUser *user = [PFUser currentUser];
     self.nameLabel.text = [user[@"firstName"][0] stringByAppendingString:[@" " stringByAppendingString:user[@"lastName"][0]]];
     self.usernameLabel.text = [@"@" stringByAppendingString:user[@"username"]];
@@ -35,8 +40,8 @@
     self.genderLabel.text = [@"Identifies as " stringByAppendingString:user[@"gender"][0]];
     self.ageLabel.text = [@"Born " stringByAppendingString:[user[@"birthday"][0] timeAgoSinceNow]];
     
-    if (![self.bioField.text isEqualToString:[Constants defaultBio]]) {
-        self.bioField.text = user[@"bio"][0];
+    if ([user objectForKey:@"biography"] != nil) {
+        self.bioField.text = user[@"biography"][0];
     }
     if (user[@"profileImage"] != nil) {
         // set image stuff
@@ -44,7 +49,6 @@
         [self.profileImageView setImage:img];
         self.profileImagePlaceholder.alpha = 0;
     }
-    
 }
 
 #pragma mark - Uploading or taking profile image
@@ -107,6 +111,7 @@
 }
 
 - (IBAction)didTapEdit:(id)sender {
+    [self performSegueWithIdentifier:@"toEditProfile" sender:nil];
 }
 
 - (IBAction)uploadProfileImage:(id)sender {

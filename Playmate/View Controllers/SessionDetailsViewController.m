@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIButton *addMyselfButton;
 @property (weak, nonatomic) IBOutlet UILabel *disabledButton;
+@property (weak, nonatomic) IBOutlet UILabel *createdDateLabel;
 
 @end
 
@@ -83,18 +84,13 @@ PFUser *me;
     
     self.locationLabel.text = loc.locationName;
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = [Constants dateFormatString];
-    NSString *originalDate = [formatter stringFromDate:self.sessionDeets.occursAt];
-    
-    NSDate *date = [formatter dateFromString:originalDate];
-    formatter.dateStyle = NSDateFormatterMediumStyle;
-    formatter.timeStyle = NSDateFormatterShortStyle;
-    
-    self.dateTimeLabel.text = [formatter stringFromDate:date];
+    self.dateTimeLabel.text = [Constants formatDate:self.sessionDeets.occursAt];
+    self.createdDateLabel.text = [@"Created at: " stringByAppendingString:[Constants formatDate:self.sessionDeets.updatedAt]];
 }
 
 - (IBAction)addMyself:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
     
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
 

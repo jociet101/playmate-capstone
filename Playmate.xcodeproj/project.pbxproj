@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		134EE2AFB65877B5D468740F /* Pods_Playmate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA334546FC096A14CF4094C /* Pods_Playmate.framework */; };
+		08F3A736C04B199B7D2918A8 /* Pods_Playmate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FD77B182A0096E02A5A865 /* Pods_Playmate.framework */; };
 		3C383FD52877416D00BC9B55 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C383FD42877416D00BC9B55 /* Constants.m */; };
 		3C383FDD28775D2A00BC9B55 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C383FDC28775D2A00BC9B55 /* APIManager.m */; };
 		3C45B565286E64EB00EE578F /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B564286E64EB00EE578F /* WelcomeViewController.m */; };
@@ -17,15 +17,20 @@
 		3C45B574287297EB00EE578F /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B573287297EB00EE578F /* HomeViewController.m */; };
 		3C45B578287299C200EE578F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B577287299C200EE578F /* ProfileViewController.m */; };
 		3C45B58928737E6200EE578F /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B58828737E6200EE578F /* SearchViewController.m */; };
-		3C45B58C28749B7400EE578F /* CreateSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B58B28749B7400EE578F /* CreateSessionViewController.m */; };
 		3C45B5902874BB7500EE578F /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B58F2874BB7500EE578F /* Session.m */; };
 		3C45B5932874C0ED00EE578F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5922874C0ED00EE578F /* Location.m */; };
 		3C45B59B2874D91800EE578F /* SessionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B59A2874D91800EE578F /* SessionCell.m */; };
 		3C45B59E2875060700EE578F /* SessionDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B59D2875060700EE578F /* SessionDetailsViewController.m */; };
-		3C45B5A1287606C500EE578F /* FiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5A0287606C500EE578F /* FiltersViewController.m */; };
 		3C45B5A4287606EF00EE578F /* SelectMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5A3287606EF00EE578F /* SelectMapViewController.m */; };
 		3C45B5A728760C1E00EE578F /* Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5A628760C1E00EE578F /* Filters.m */; };
 		3CF4186428765585009741FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF4186328765585009741FF /* MapKit.framework */; };
+		3CF4A58A2878AA1A000C5E7D /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */; };
+		3CF4A58D2878DFA6000C5E7D /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A58C2878DFA6000C5E7D /* CalendarViewController.m */; };
+		3CF4A596287A6088000C5E7D /* CreateMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A595287A6088000C5E7D /* CreateMenuViewController.m */; };
+		3CF4A59C287A60F0000C5E7D /* MenuPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A59B287A60F0000C5E7D /* MenuPickerCell.m */; };
+		3CF4A59F287A991E000C5E7D /* LocationPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A59E287A991E000C5E7D /* LocationPickerCell.m */; };
+		3CF4A5A5287B6647000C5E7D /* FiltersMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5A4287B6647000C5E7D /* FiltersMenuViewController.m */; };
+		3CF4A5A8287B67B4000C5E7D /* FiltersMenuPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5A7287B67B4000C5E7D /* FiltersMenuPickerCell.m */; };
 		3CF652A9286D036600BD5EDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652A8286D036600BD5EDB /* AppDelegate.m */; };
 		3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652AB286D036600BD5EDB /* SceneDelegate.m */; };
 		3CF652B2286D036600BD5EDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF652B0286D036600BD5EDB /* Main.storyboard */; };
@@ -35,8 +40,8 @@
 		3CF652C4286D036700BD5EDB /* PlaymateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652C3286D036700BD5EDB /* PlaymateTests.m */; };
 		3CF652CE286D036700BD5EDB /* PlaymateUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652CD286D036700BD5EDB /* PlaymateUITests.m */; };
 		3CF652D0286D036700BD5EDB /* PlaymateUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652CF286D036700BD5EDB /* PlaymateUITestsLaunchTests.m */; };
-		6BBC369975053FD629AB3526 /* Pods_PlaymateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1133823373F916A25172813A /* Pods_PlaymateTests.framework */; };
-		C274A2931E89C238F9A05198 /* Pods_Playmate_PlaymateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA48A6017BA755A163E76F0 /* Pods_Playmate_PlaymateUITests.framework */; };
+		D2D69269F70D6564CC66B8A1 /* Pods_Playmate_PlaymateUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1B6F79117AE56A6A59A2541 /* Pods_Playmate_PlaymateUITests.framework */; };
+		DA3C9AA342AAB87145C3FFCC /* Pods_PlaymateTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FAAD0A3E2A9D73FAA33A956 /* Pods_PlaymateTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +62,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1133823373F916A25172813A /* Pods_PlaymateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlaymateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F08B4C5AAC0CC577A7B178F /* Pods-Playmate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playmate.release.xcconfig"; path = "Target Support Files/Pods-Playmate/Pods-Playmate.release.xcconfig"; sourceTree = "<group>"; };
+		10B5CDD850AA6D824EFB0D44 /* Pods-PlaymateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaymateTests.debug.xcconfig"; path = "Target Support Files/Pods-PlaymateTests/Pods-PlaymateTests.debug.xcconfig"; sourceTree = "<group>"; };
+		14FD77B182A0096E02A5A865 /* Pods_Playmate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Playmate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		356830720495914AEBE45D47 /* Pods-PlaymateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaymateTests.release.xcconfig"; path = "Target Support Files/Pods-PlaymateTests/Pods-PlaymateTests.release.xcconfig"; sourceTree = "<group>"; };
 		3C383FD32877416D00BC9B55 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		3C383FD42877416D00BC9B55 /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		3C383FDB28775D2A00BC9B55 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
@@ -76,8 +82,6 @@
 		3C45B577287299C200EE578F /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		3C45B58728737E6200EE578F /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		3C45B58828737E6200EE578F /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
-		3C45B58A28749B7400EE578F /* CreateSessionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateSessionViewController.h; sourceTree = "<group>"; };
-		3C45B58B28749B7400EE578F /* CreateSessionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateSessionViewController.m; sourceTree = "<group>"; };
 		3C45B58E2874BB7500EE578F /* Session.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
 		3C45B58F2874BB7500EE578F /* Session.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
 		3C45B5912874C0ED00EE578F /* Location.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
@@ -86,13 +90,25 @@
 		3C45B59A2874D91800EE578F /* SessionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionCell.m; sourceTree = "<group>"; };
 		3C45B59C2875060700EE578F /* SessionDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionDetailsViewController.h; sourceTree = "<group>"; };
 		3C45B59D2875060700EE578F /* SessionDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionDetailsViewController.m; sourceTree = "<group>"; };
-		3C45B59F287606C500EE578F /* FiltersViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FiltersViewController.h; sourceTree = "<group>"; };
-		3C45B5A0287606C500EE578F /* FiltersViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FiltersViewController.m; sourceTree = "<group>"; };
 		3C45B5A2287606EF00EE578F /* SelectMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectMapViewController.h; sourceTree = "<group>"; };
 		3C45B5A3287606EF00EE578F /* SelectMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectMapViewController.m; sourceTree = "<group>"; };
 		3C45B5A528760C1E00EE578F /* Filters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Filters.h; sourceTree = "<group>"; };
 		3C45B5A628760C1E00EE578F /* Filters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Filters.m; sourceTree = "<group>"; };
 		3CF4186328765585009741FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3CF4A5882878AA1A000C5E7D /* EditProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
+		3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
+		3CF4A58B2878DFA6000C5E7D /* CalendarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		3CF4A58C2878DFA6000C5E7D /* CalendarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		3CF4A594287A6088000C5E7D /* CreateMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateMenuViewController.h; sourceTree = "<group>"; };
+		3CF4A595287A6088000C5E7D /* CreateMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateMenuViewController.m; sourceTree = "<group>"; };
+		3CF4A59A287A60F0000C5E7D /* MenuPickerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuPickerCell.h; sourceTree = "<group>"; };
+		3CF4A59B287A60F0000C5E7D /* MenuPickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuPickerCell.m; sourceTree = "<group>"; };
+		3CF4A59D287A991E000C5E7D /* LocationPickerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationPickerCell.h; sourceTree = "<group>"; };
+		3CF4A59E287A991E000C5E7D /* LocationPickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationPickerCell.m; sourceTree = "<group>"; };
+		3CF4A5A3287B6647000C5E7D /* FiltersMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FiltersMenuViewController.h; sourceTree = "<group>"; };
+		3CF4A5A4287B6647000C5E7D /* FiltersMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FiltersMenuViewController.m; sourceTree = "<group>"; };
+		3CF4A5A6287B67B4000C5E7D /* FiltersMenuPickerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FiltersMenuPickerCell.h; sourceTree = "<group>"; };
+		3CF4A5A7287B67B4000C5E7D /* FiltersMenuPickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FiltersMenuPickerCell.m; sourceTree = "<group>"; };
 		3CF652A4286D036600BD5EDB /* Playmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF652A7286D036600BD5EDB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3CF652A8286D036600BD5EDB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -108,13 +124,12 @@
 		3CF652C9286D036700BD5EDB /* PlaymateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlaymateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF652CD286D036700BD5EDB /* PlaymateUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaymateUITests.m; sourceTree = "<group>"; };
 		3CF652CF286D036700BD5EDB /* PlaymateUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaymateUITestsLaunchTests.m; sourceTree = "<group>"; };
-		3EA48A6017BA755A163E76F0 /* Pods_Playmate_PlaymateUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Playmate_PlaymateUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A2B55A7C56420D9BF3C981A /* Pods-Playmate-PlaymateUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playmate-PlaymateUITests.release.xcconfig"; path = "Target Support Files/Pods-Playmate-PlaymateUITests/Pods-Playmate-PlaymateUITests.release.xcconfig"; sourceTree = "<group>"; };
-		7C2CA0A70F4296F03EBCC88B /* Pods-Playmate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playmate.debug.xcconfig"; path = "Target Support Files/Pods-Playmate/Pods-Playmate.debug.xcconfig"; sourceTree = "<group>"; };
-		8DB00DB719D990073248F4F4 /* Pods-PlaymateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaymateTests.debug.xcconfig"; path = "Target Support Files/Pods-PlaymateTests/Pods-PlaymateTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9FB0B53C64775F26A98FD7EB /* Pods-Playmate-PlaymateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playmate-PlaymateUITests.debug.xcconfig"; path = "Target Support Files/Pods-Playmate-PlaymateUITests/Pods-Playmate-PlaymateUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		EEA334546FC096A14CF4094C /* Pods_Playmate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Playmate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F262668F0FC64A4409D7143B /* Pods-PlaymateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaymateTests.release.xcconfig"; path = "Target Support Files/Pods-PlaymateTests/Pods-PlaymateTests.release.xcconfig"; sourceTree = "<group>"; };
+		5910F865C5DBE0629E4E80BD /* Pods-Playmate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playmate.release.xcconfig"; path = "Target Support Files/Pods-Playmate/Pods-Playmate.release.xcconfig"; sourceTree = "<group>"; };
+		6A80661838BCF7987E688EB5 /* Pods-Playmate-PlaymateUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playmate-PlaymateUITests.release.xcconfig"; path = "Target Support Files/Pods-Playmate-PlaymateUITests/Pods-Playmate-PlaymateUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8FAAD0A3E2A9D73FAA33A956 /* Pods_PlaymateTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlaymateTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A67C29E7FD820C1251BE4756 /* Pods-Playmate-PlaymateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playmate-PlaymateUITests.debug.xcconfig"; path = "Target Support Files/Pods-Playmate-PlaymateUITests/Pods-Playmate-PlaymateUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B1B6F79117AE56A6A59A2541 /* Pods_Playmate_PlaymateUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Playmate_PlaymateUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E918DD12B0B849BCC2792183 /* Pods-Playmate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Playmate.debug.xcconfig"; path = "Target Support Files/Pods-Playmate/Pods-Playmate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CF4186428765585009741FF /* MapKit.framework in Frameworks */,
-				134EE2AFB65877B5D468740F /* Pods_Playmate.framework in Frameworks */,
+				08F3A736C04B199B7D2918A8 /* Pods_Playmate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BBC369975053FD629AB3526 /* Pods_PlaymateTests.framework in Frameworks */,
+				DA3C9AA342AAB87145C3FFCC /* Pods_PlaymateTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C274A2931E89C238F9A05198 /* Pods_Playmate_PlaymateUITests.framework in Frameworks */,
+				D2D69269F70D6564CC66B8A1 /* Pods_Playmate_PlaymateUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,9 +165,9 @@
 			isa = PBXGroup;
 			children = (
 				3CF4186328765585009741FF /* MapKit.framework */,
-				EEA334546FC096A14CF4094C /* Pods_Playmate.framework */,
-				3EA48A6017BA755A163E76F0 /* Pods_Playmate_PlaymateUITests.framework */,
-				1133823373F916A25172813A /* Pods_PlaymateTests.framework */,
+				14FD77B182A0096E02A5A865 /* Pods_Playmate.framework */,
+				B1B6F79117AE56A6A59A2541 /* Pods_Playmate_PlaymateUITests.framework */,
+				8FAAD0A3E2A9D73FAA33A956 /* Pods_PlaymateTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -160,12 +175,12 @@
 		13424BD82BE37554C700EBCD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7C2CA0A70F4296F03EBCC88B /* Pods-Playmate.debug.xcconfig */,
-				2F08B4C5AAC0CC577A7B178F /* Pods-Playmate.release.xcconfig */,
-				9FB0B53C64775F26A98FD7EB /* Pods-Playmate-PlaymateUITests.debug.xcconfig */,
-				5A2B55A7C56420D9BF3C981A /* Pods-Playmate-PlaymateUITests.release.xcconfig */,
-				8DB00DB719D990073248F4F4 /* Pods-PlaymateTests.debug.xcconfig */,
-				F262668F0FC64A4409D7143B /* Pods-PlaymateTests.release.xcconfig */,
+				E918DD12B0B849BCC2792183 /* Pods-Playmate.debug.xcconfig */,
+				5910F865C5DBE0629E4E80BD /* Pods-Playmate.release.xcconfig */,
+				A67C29E7FD820C1251BE4756 /* Pods-Playmate-PlaymateUITests.debug.xcconfig */,
+				6A80661838BCF7987E688EB5 /* Pods-Playmate-PlaymateUITests.release.xcconfig */,
+				10B5CDD850AA6D824EFB0D44 /* Pods-PlaymateTests.debug.xcconfig */,
+				356830720495914AEBE45D47 /* Pods-PlaymateTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -213,6 +228,8 @@
 			children = (
 				3C45B572287297EB00EE578F /* HomeViewController.h */,
 				3C45B573287297EB00EE578F /* HomeViewController.m */,
+				3CF4A58B2878DFA6000C5E7D /* CalendarViewController.h */,
+				3CF4A58C2878DFA6000C5E7D /* CalendarViewController.m */,
 			);
 			path = "Home Tab";
 			sourceTree = "<group>";
@@ -222,6 +239,8 @@
 			children = (
 				3C45B576287299C200EE578F /* ProfileViewController.h */,
 				3C45B577287299C200EE578F /* ProfileViewController.m */,
+				3CF4A5882878AA1A000C5E7D /* EditProfileViewController.h */,
+				3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */,
 			);
 			path = "Profile Tab";
 			sourceTree = "<group>";
@@ -231,8 +250,8 @@
 			children = (
 				3C45B58728737E6200EE578F /* SearchViewController.h */,
 				3C45B58828737E6200EE578F /* SearchViewController.m */,
-				3C45B59F287606C500EE578F /* FiltersViewController.h */,
-				3C45B5A0287606C500EE578F /* FiltersViewController.m */,
+				3CF4A5A3287B6647000C5E7D /* FiltersMenuViewController.h */,
+				3CF4A5A4287B6647000C5E7D /* FiltersMenuViewController.m */,
 			);
 			path = "Search Tab";
 			sourceTree = "<group>";
@@ -240,10 +259,10 @@
 		3C45B58628737E5500EE578F /* Create Tab */ = {
 			isa = PBXGroup;
 			children = (
-				3C45B58A28749B7400EE578F /* CreateSessionViewController.h */,
-				3C45B58B28749B7400EE578F /* CreateSessionViewController.m */,
 				3C45B5A2287606EF00EE578F /* SelectMapViewController.h */,
 				3C45B5A3287606EF00EE578F /* SelectMapViewController.m */,
+				3CF4A594287A6088000C5E7D /* CreateMenuViewController.h */,
+				3CF4A595287A6088000C5E7D /* CreateMenuViewController.m */,
 			);
 			path = "Create Tab";
 			sourceTree = "<group>";
@@ -266,6 +285,12 @@
 			children = (
 				3C45B5992874D91800EE578F /* SessionCell.h */,
 				3C45B59A2874D91800EE578F /* SessionCell.m */,
+				3CF4A59A287A60F0000C5E7D /* MenuPickerCell.h */,
+				3CF4A59B287A60F0000C5E7D /* MenuPickerCell.m */,
+				3CF4A59D287A991E000C5E7D /* LocationPickerCell.h */,
+				3CF4A59E287A991E000C5E7D /* LocationPickerCell.m */,
+				3CF4A5A6287B67B4000C5E7D /* FiltersMenuPickerCell.h */,
+				3CF4A5A7287B67B4000C5E7D /* FiltersMenuPickerCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -337,11 +362,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CF652D3286D036700BD5EDB /* Build configuration list for PBXNativeTarget "Playmate" */;
 			buildPhases = (
-				7676FCDF8DA20AD4B765A34A /* [CP] Check Pods Manifest.lock */,
+				3C2AA276AB6797E6C7889E15 /* [CP] Check Pods Manifest.lock */,
 				3CF652A0286D036600BD5EDB /* Sources */,
 				3CF652A1286D036600BD5EDB /* Frameworks */,
 				3CF652A2286D036600BD5EDB /* Resources */,
-				36CC4ABEF0FA70557D691688 /* [CP] Embed Pods Frameworks */,
+				905D4D97654A25CE9C681199 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -356,7 +381,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CF652D6286D036700BD5EDB /* Build configuration list for PBXNativeTarget "PlaymateTests" */;
 			buildPhases = (
-				27A5BBFF2601103D84D68EF3 /* [CP] Check Pods Manifest.lock */,
+				0B394872EB9DA1AC173114D8 /* [CP] Check Pods Manifest.lock */,
 				3CF652BB286D036700BD5EDB /* Sources */,
 				3CF652BC286D036700BD5EDB /* Frameworks */,
 				3CF652BD286D036700BD5EDB /* Resources */,
@@ -375,11 +400,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CF652D9286D036700BD5EDB /* Build configuration list for PBXNativeTarget "PlaymateUITests" */;
 			buildPhases = (
-				6E42F5085645F80728D8B3F4 /* [CP] Check Pods Manifest.lock */,
+				3C4E53D4A09399A359E56FF7 /* [CP] Check Pods Manifest.lock */,
 				3CF652C5286D036700BD5EDB /* Sources */,
 				3CF652C6286D036700BD5EDB /* Frameworks */,
 				3CF652C7286D036700BD5EDB /* Resources */,
-				55A774BAF67F53EB1B66F55C /* [CP] Embed Pods Frameworks */,
+				06701FDE14FB58BEF3ACD887 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -462,7 +487,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		27A5BBFF2601103D84D68EF3 /* [CP] Check Pods Manifest.lock */ = {
+		06701FDE14FB58BEF3ACD887 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Playmate-PlaymateUITests/Pods-Playmate-PlaymateUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Playmate-PlaymateUITests/Pods-Playmate-PlaymateUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Playmate-PlaymateUITests/Pods-Playmate-PlaymateUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0B394872EB9DA1AC173114D8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -484,63 +526,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		36CC4ABEF0FA70557D691688 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Playmate/Pods-Playmate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Playmate/Pods-Playmate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Playmate/Pods-Playmate-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		55A774BAF67F53EB1B66F55C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Playmate-PlaymateUITests/Pods-Playmate-PlaymateUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Playmate-PlaymateUITests/Pods-Playmate-PlaymateUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Playmate-PlaymateUITests/Pods-Playmate-PlaymateUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6E42F5085645F80728D8B3F4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Playmate-PlaymateUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7676FCDF8DA20AD4B765A34A /* [CP] Check Pods Manifest.lock */ = {
+		3C2AA276AB6797E6C7889E15 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -562,6 +548,45 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3C4E53D4A09399A359E56FF7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Playmate-PlaymateUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		905D4D97654A25CE9C681199 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Playmate/Pods-Playmate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Playmate/Pods-Playmate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Playmate/Pods-Playmate-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -575,18 +600,23 @@
 				3C45B5932874C0ED00EE578F /* Location.m in Sources */,
 				3C45B578287299C200EE578F /* ProfileViewController.m in Sources */,
 				3CF652A9286D036600BD5EDB /* AppDelegate.m in Sources */,
-				3C45B58C28749B7400EE578F /* CreateSessionViewController.m in Sources */,
 				3C45B56B2871856E00EE578F /* LoginViewController.m in Sources */,
 				3C45B59B2874D91800EE578F /* SessionCell.m in Sources */,
+				3CF4A596287A6088000C5E7D /* CreateMenuViewController.m in Sources */,
 				3C45B5682871856500EE578F /* CreateViewController.m in Sources */,
 				3CF652BA286D036700BD5EDB /* main.m in Sources */,
-				3C45B5A1287606C500EE578F /* FiltersViewController.m in Sources */,
+				3CF4A58A2878AA1A000C5E7D /* EditProfileViewController.m in Sources */,
+				3CF4A59F287A991E000C5E7D /* LocationPickerCell.m in Sources */,
+				3CF4A58D2878DFA6000C5E7D /* CalendarViewController.m in Sources */,
 				3C45B5902874BB7500EE578F /* Session.m in Sources */,
 				3C45B58928737E6200EE578F /* SearchViewController.m in Sources */,
 				3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */,
 				3C45B59E2875060700EE578F /* SessionDetailsViewController.m in Sources */,
+				3CF4A5A5287B6647000C5E7D /* FiltersMenuViewController.m in Sources */,
 				3C45B574287297EB00EE578F /* HomeViewController.m in Sources */,
+				3CF4A59C287A60F0000C5E7D /* MenuPickerCell.m in Sources */,
 				3C45B5A4287606EF00EE578F /* SelectMapViewController.m in Sources */,
+				3CF4A5A8287B67B4000C5E7D /* FiltersMenuPickerCell.m in Sources */,
 				3C383FD52877416D00BC9B55 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -755,7 +785,7 @@
 		};
 		3CF652D4286D036700BD5EDB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C2CA0A70F4296F03EBCC88B /* Pods-Playmate.debug.xcconfig */;
+			baseConfigurationReference = E918DD12B0B849BCC2792183 /* Pods-Playmate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -783,7 +813,7 @@
 		};
 		3CF652D5286D036700BD5EDB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F08B4C5AAC0CC577A7B178F /* Pods-Playmate.release.xcconfig */;
+			baseConfigurationReference = 5910F865C5DBE0629E4E80BD /* Pods-Playmate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -811,7 +841,7 @@
 		};
 		3CF652D7286D036700BD5EDB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8DB00DB719D990073248F4F4 /* Pods-PlaymateTests.debug.xcconfig */;
+			baseConfigurationReference = 10B5CDD850AA6D824EFB0D44 /* Pods-PlaymateTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -830,7 +860,7 @@
 		};
 		3CF652D8286D036700BD5EDB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F262668F0FC64A4409D7143B /* Pods-PlaymateTests.release.xcconfig */;
+			baseConfigurationReference = 356830720495914AEBE45D47 /* Pods-PlaymateTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -849,7 +879,7 @@
 		};
 		3CF652DA286D036700BD5EDB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9FB0B53C64775F26A98FD7EB /* Pods-Playmate-PlaymateUITests.debug.xcconfig */;
+			baseConfigurationReference = A67C29E7FD820C1251BE4756 /* Pods-Playmate-PlaymateUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -866,7 +896,7 @@
 		};
 		3CF652DB286D036700BD5EDB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5A2B55A7C56420D9BF3C981A /* Pods-Playmate-PlaymateUITests.release.xcconfig */;
+			baseConfigurationReference = 6A80661838BCF7987E688EB5 /* Pods-Playmate-PlaymateUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

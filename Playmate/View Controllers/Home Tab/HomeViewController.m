@@ -11,6 +11,7 @@
 #import "SessionDetailsViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
+#import "CalendarViewController.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -78,8 +79,10 @@
         for (PFUser *user in sesh[@"playersList"]) {
             [user fetchIfNeeded];
             
-            if ([currUser.username isEqualToString:user.username]) {
-                
+            NSDate *now = [NSDate date];
+            NSComparisonResult result = [now compare:sesh.occursAt];
+            
+            if ([currUser.username isEqualToString:user.username] && result == NSOrderedAscending) {
                 [self.sessionList addObject:sesh];
                 break;
             }
@@ -155,6 +158,11 @@
          Session* data = self.sessionList[indexPath.row];
          SessionDetailsViewController *VC = [segue destinationViewController];
          VC.sessionDeets = data;
+     }
+     
+     if ([sender isMemberOfClass:[UIButton class]]) {
+         CalendarViewController *VC = [segue destinationViewController];
+         VC.rawSessionList = self.sessionList;
      }
      
  }

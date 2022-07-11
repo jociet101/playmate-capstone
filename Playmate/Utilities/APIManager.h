@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface APIManager : NSObject
 
 - (void)getSportsListWithCompletion:(void(^)(NSDictionary *list, NSError *error))completion;
-- (void)getGeocodedLocation:(NSString *)address WithCompletion:(void(^)(Location *loc, NSError *error))completion;
+- (void)getGeocodedLocation:(NSString *)address withCompletion:(void(^)(Location *loc, NSError *error))completion;
 
 @end
 
