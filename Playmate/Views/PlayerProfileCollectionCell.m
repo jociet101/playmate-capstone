@@ -41,7 +41,6 @@
     
     [user fetchIfNeeded];
     self.nameLabel.text = [Constants concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
-    NSLog(@"name %@", self.nameLabel.text);
     self.usernameLabel.text = [@"@" stringByAppendingString:user[@"username"]];
     self.detailsLabel.text = [[[Constants getAgeInYears:user[@"birthday"][0]] stringByAppendingString:@" yo "] stringByAppendingString:user[@"gender"][0]];
     

@@ -609,7 +609,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REP-0I-TCf">
-                                                    <rect key="frame" x="8" y="11" width="335" height="23"/>
+                                                    <rect key="frame" x="8" y="10.999999999999998" width="335" height="23.333333333333329"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Basketball w/ Jocelyn, Jonathan, Michelle">
                                                             <attributes>
@@ -1862,7 +1862,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="jcx-uQ-feG"/>
-        <segue reference="mqk-g0-t3s"/>
+        <segue reference="xxD-Qo-Eh9"/>
         <segue reference="zis-o5-IMS"/>
     </inferredMetricsTieBreakers>
     <resources>

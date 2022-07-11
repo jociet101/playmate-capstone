@@ -59,9 +59,7 @@
 }
 
 - (void)setDuration:(NSNumber *)duration {
-    NSLog(@"duration = %@", duration);
     self.selectedDuration = duration;
-    NSLog(@"selected duration = %@", self.selectedDuration);
 }
 
 - (void)setSkillLevel:(NSString *)level {
