@@ -91,7 +91,7 @@ PFUser *me;
     self.locationLabel.text = loc.locationName;
     
     self.dateTimeLabel.text = [Constants formatDate:self.sessionDetails.occursAt];
-    self.createdDateLabel.text = [@"Created at: " stringByAppendingString:[Constants formatDate:self.sessionDetails.updatedAt]];
+    self.createdDateLabel.text = [@"Session created at: " stringByAppendingString:[Constants formatDate:self.sessionDetails.updatedAt]];
 }
 
 - (IBAction)addMyself:(id)sender {
@@ -119,7 +119,7 @@ PFUser *me;
 
 #pragma mark - Collection view protocol methods
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {    
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.sessionDetails.playersList.count;
 }
 
@@ -134,6 +134,14 @@ PFUser *me;
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    
+    
 }
 
 @end

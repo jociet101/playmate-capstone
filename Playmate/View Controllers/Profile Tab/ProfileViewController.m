@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *genderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bioField;
 @property (weak, nonatomic) IBOutlet UILabel *profileImagePlaceholder;
+@property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
 
 @end
 
@@ -49,8 +50,15 @@
         [self.profileImageView setImage:img];
         self.profileImagePlaceholder.alpha = 0;
     }
-    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
-    self.profileImagePlaceholder.layer.cornerRadius = self.profileImagePlaceholder.frame.size.width/2.0f;
+    if (user[@"backdropImage"] != nil) {
+        // set image stuff
+        UIImage* img = [UIImage imageWithData:[user[@"backdropImage"] getData]];
+        [self.backdropImageView setImage:img];
+    }
+    else {
+        UIImage* img = [UIImage imageNamed:@"playmate_backdrop.png"];
+        [self.backdropImageView setImage:img];
+    }
 }
 
 #pragma mark - Uploading or taking profile image
