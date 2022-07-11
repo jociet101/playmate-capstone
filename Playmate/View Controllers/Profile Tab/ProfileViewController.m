@@ -34,7 +34,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     PFUser *user = [PFUser currentUser];
-    self.nameLabel.text = [user[@"firstName"][0] stringByAppendingString:[@" " stringByAppendingString:user[@"lastName"][0]]];
+    self.nameLabel.text = [Constants concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
     self.usernameLabel.text = [@"@" stringByAppendingString:user[@"username"]];
     self.usernameLabel.textColor = [UIColor lightGrayColor];
     self.genderLabel.text = [@"Identifies as " stringByAppendingString:user[@"gender"][0]];

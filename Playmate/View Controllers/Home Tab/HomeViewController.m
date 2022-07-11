@@ -157,7 +157,7 @@
          
          Session* data = self.sessionList[indexPath.row];
          SessionDetailsViewController *VC = [segue destinationViewController];
-         VC.sessionDeets = data;
+         VC.sessionDetails = data;
      }
      
      if ([sender isMemberOfClass:[UIButton class]]) {

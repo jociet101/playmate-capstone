@@ -39,6 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Information for profile tab
 + (NSString *)defaultBio;
++ (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last;
 
 // Information for filters and create
 + (NSString *)createMenuTitle:(int)row;

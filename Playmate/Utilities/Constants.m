@@ -102,6 +102,10 @@
     return @"Edit profile to enter a bio!";
 }
 
++ (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last {
+    return [first stringByAppendingString:[@" " stringByAppendingString:last]];
+}
+
 // Information for filters and create
 + (NSString *)createMenuTitle:(int)row {
     NSMutableArray *titles = [[NSMutableArray alloc] init];
