@@ -49,27 +49,25 @@
     PFUser *currUser = [PFUser currentUser];
     [currUser fetchIfNeeded];
     
-    for (Session *sesh in sessions) {
+    for (Session *session in sessions) {
 
-        NSDate *sessionDate = [Constants dateWithHour:0 minute:0 second:0 fromDate:sesh.occursAt];
+        NSDate *sessionDate = [Constants dateWithHour:0 minute:0 second:0 fromDate:session.occursAt];
         
         NSComparisonResult result = [date compare:sessionDate];
 
         if (result == NSOrderedSame) {
-            [self.sessionList addObject:sesh];
+            [self.sessionList addObject:session];
 
-            for (PFUser *user in sesh[@"playersList"]) {
+            for (PFUser *user in session[@"playersList"]) {
                 [user fetchIfNeeded];
 
                 if ([currUser.username isEqualToString:user.username]) {
-                    [filteredSessions addObject:sesh];
+                    [filteredSessions addObject:session];
                     break;
                 }
             }
         }
     }
-    
-    NSLog(@"ASLKDFJALSDKFJASDLKJF %ld", filteredSessions.count);
     
     return (NSArray *)filteredSessions;
 }

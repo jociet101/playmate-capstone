@@ -190,8 +190,9 @@
 }
 
 + (NSNumber *)durationKeyToInteger:(int)key {
+//    return @(((float)key)/4 + 0.5);
     NSMutableArray *durations = [[NSMutableArray alloc] init];
-    
+
     [durations addObject:@(0.5)];
     [durations addObject:@(0.75)];
     [durations addObject:@(1)];
@@ -203,7 +204,7 @@
     [durations addObject:@(2.5)];
     [durations addObject:@(2.75)];
     [durations addObject:@(3)];
-    
+
     return durations[key];
 }
 

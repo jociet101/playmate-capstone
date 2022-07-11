@@ -59,7 +59,9 @@
 }
 
 - (void)setDuration:(NSNumber *)duration {
+    NSLog(@"duration = %@", duration);
     self.selectedDuration = duration;
+    NSLog(@"selected duration = %@", self.selectedDuration);
 }
 
 - (void)setSkillLevel:(NSString *)level {
@@ -131,7 +133,7 @@
         [self handleAlert:nil withTitle:@"No location" andOk:@"Ok"];
         return;
     }
-    
+
     [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:self.selectedSkillLevel withDate:self.selectedDateTime withDuration:self.selectedDuration withLocation:self.selectedLocation withCapacity:self.selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
         
             if (error) {
