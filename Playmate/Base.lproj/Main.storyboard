@@ -609,7 +609,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REP-0I-TCf">
-                                                    <rect key="frame" x="20" y="10.999999999999998" width="310" height="23.333333333333329"/>
+                                                    <rect key="frame" x="8" y="11" width="335" height="23"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Basketball w/ Jocelyn, Jonathan, Michelle">
                                                             <attributes>
@@ -675,9 +675,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="7U7-IU-ViT" secondAttribute="bottom" constant="11" id="8mf-Um-I46"/>
                                                 <constraint firstItem="7U7-IU-ViT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Lvg-kE-FRC" secondAttribute="trailing" constant="7" id="ACd-qp-FwL"/>
                                                 <constraint firstItem="H7l-au-f4H" firstAttribute="top" secondItem="REP-0I-TCf" secondAttribute="bottom" constant="5.6666666666666714" id="BHz-ZW-TOW"/>
-                                                <constraint firstAttribute="trailing" secondItem="REP-0I-TCf" secondAttribute="trailing" constant="20" symbolic="YES" id="BXR-fK-cDE"/>
+                                                <constraint firstAttribute="trailing" secondItem="REP-0I-TCf" secondAttribute="trailing" constant="7" id="BXR-fK-cDE"/>
                                                 <constraint firstItem="lra-wh-quf" firstAttribute="top" secondItem="H7l-au-f4H" secondAttribute="bottom" constant="6.6666666666666714" id="CGl-iV-6dY"/>
-                                                <constraint firstItem="REP-0I-TCf" firstAttribute="leading" secondItem="8OV-lt-CB4" secondAttribute="leading" constant="20" symbolic="YES" id="CMC-Hd-iFm"/>
+                                                <constraint firstItem="REP-0I-TCf" firstAttribute="leading" secondItem="8OV-lt-CB4" secondAttribute="leading" constant="8" id="CMC-Hd-iFm"/>
                                                 <constraint firstAttribute="trailing" secondItem="fMx-oh-pSX" secondAttribute="trailing" constant="20" symbolic="YES" id="XyH-UI-a6D"/>
                                                 <constraint firstItem="fMx-oh-pSX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lra-wh-quf" secondAttribute="trailing" constant="8" symbolic="YES" id="YRM-mU-bYT"/>
                                                 <constraint firstItem="7U7-IU-ViT" firstAttribute="height" secondItem="8OV-lt-CB4" secondAttribute="height" multiplier="0.180451" id="YxD-5V-uWZ"/>
@@ -1862,7 +1862,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="jcx-uQ-feG"/>
-        <segue reference="rNL-Fb-mXA"/>
+        <segue reference="mqk-g0-t3s"/>
         <segue reference="zis-o5-IMS"/>
     </inferredMetricsTieBreakers>
     <resources>
