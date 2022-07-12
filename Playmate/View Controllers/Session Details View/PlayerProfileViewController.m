@@ -72,16 +72,28 @@
     PFQuery *query = [PFQuery queryWithClassName:@"PlayerConnection"];
     [query whereKey:@"userObjectId" equalTo:me.objectId];
     PlayerConnection *pc = [query getFirstObject];
+    [pc fetchIfNeeded];
     
     // if current user is friends w this person, set title "Remove Friend"
     if (pc != nil) {
-        [self.addFriendButton setTitle:@"Remove Friend" forState:UIControlStateNormal];
+        NSLog(@"pc not nil, pending list %@", pc.pendingList);
+        if ([pc.friendsList containsObject:self.user.username]) {
+            [self.addFriendButton setTitle:@"Remove Friend" forState:UIControlStateNormal];
+        } else if ([pc.pendingList containsObject:self.user.username]) {
+            [self setRequestPendingAsState];
+        }
     }
 }
 
 - (void)disableFriendButton {
     [self.addFriendButton setEnabled:NO];
     self.addFriendButton.alpha = 0;
+}
+
+- (void)setRequestPendingAsState {
+    [self.addFriendButton setTitle:@"Request Pending" forState:UIControlStateNormal];
+    [self.addFriendButton setEnabled:NO];
+    self.addFriendButton.backgroundColor = [UIColor lightGrayColor];
 }
 
 - (IBAction)didTapFriend:(id)sender {
@@ -93,25 +105,30 @@
     
     // Create FriendRequest from me to other
     [FriendRequest saveFriendRequestTo:self.user.objectId];
-    PlayerConnection *connection;
+    PlayerConnection *pc;
     
     if ([user objectForKey:@"playerConnection"] == nil) {
-        connection = [PlayerConnection initializePlayerConnection];
+        pc = [PlayerConnection initializePlayerConnection];
     } else {
-        connection = user[@"playerConnection"];
+        pc = user[@"playerConnection"];
         [user removeObjectForKey:@"playerConnection"];
     }
     
+    [pc saveInBackground];
+    
     // Add pending friend connection from me to other
     
-//  TODO: save content to connection
-//  [connection saveMyConnectionTo:self.user.objectId withStatus:YES andWeight:1];
+    NSMutableArray *tempPendingList = (NSMutableArray *)pc[@"pendingList"];
+    [tempPendingList addObject:self.user.objectId];
+    pc[@"pendingList"] = (NSArray *)tempPendingList;
     
-    [connection.pendingList addObject:self.user.objectId];
-    NSLog(@"pending list %@", connection.pendingList);
-    [user addObject:connection forKey:@"playerConnection"];
+    [pc saveInBackground];
     
-    [self.addFriendButton setTitle:@"Remove Friend" forState:UIControlStateNormal];
+    [user addObject:pc forKey:@"playerConnection"];
+    
+    [user saveInBackground];
+    
+    [self setRequestPendingAsState];
     
     // TODO: if remove friend
 }

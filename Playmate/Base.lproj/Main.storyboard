@@ -1098,7 +1098,7 @@
                                 <attributedString key="attributedText">
                                     <fragment content="Session created at">
                                         <attributes>
-                                            <font key="NSFont" size="17" name="Avenir-Book"/>
+                                            <font key="NSFont" size="14" name="Avenir-Book"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -1233,7 +1233,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cW7-cT-o66">
-                                <rect key="frame" x="130" y="364" width="130" height="31"/>
+                                <rect key="frame" x="113" y="364" width="165" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2001,7 +2001,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="jcx-uQ-feG"/>
-        <segue reference="lMt-QE-YDG"/>
+        <segue reference="pJ2-Zv-0xr"/>
         <segue reference="xxD-Qo-Eh9"/>
         <segue reference="zis-o5-IMS"/>
     </inferredMetricsTieBreakers>

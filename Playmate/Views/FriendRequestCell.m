@@ -96,16 +96,43 @@
     
     if ([user objectForKey:@"playerConnection"] == nil) {
         connection = [PlayerConnection initializePlayerConnection];
+        [user addObject:connection forKey:@"playerConnection"];
+        [user saveInBackground];
     } else {
         connection = user[@"playerConnection"];
-        [user removeObjectForKey:@"playerConnection"];
     }
     
-    [connection saveMyConnectionTo:self.requestInfo.requestFromId withStatus:YES andWeight:1];
+//    [self saveMyConnectionToThem:user];
+//    [self saveTheirConnectionToMe:user];
+    
+    [PlayerConnection saveMyConnectionTo:self.requestInfo.requestFromId withStatus:YES andWeight:1];
     [PlayerConnection savePlayer:self.requestInfo.requestFromId ConnectionToMeWithStatus:YES andWeight:1];
     
     [self deleteThisRequest];
 }
+
+//- (void)saveMyConnectionToThem:(PFUser *)me {
+//
+//    PlayerConnection *pc = me[@"playerConnection"];
+//
+//    NSLog(@"player connection %@", pc);
+//    NSLog(@"friends list %@", pc.friendsList);
+//    NSLog(@"pending list %@", pc.pendingList);
+//
+//    [pc.friendsList addObject:self.requestInfo.requestFromId];
+//    [pc.pendingList removeObject:self.requestInfo.requestFromId];
+//}
+//
+//- (void)saveTheirConnectionToMe:(PFUser *)me {
+//
+//    PFQuery *query = [PFQuery queryWithClassName:@"PlayerConnection"];
+//    [query whereKey:@"userObjectId" equalTo:self.requestInfo.requestFromId];
+//
+//    PlayerConnection *pc = [query getFirstObject];
+//
+//    [pc.friendsList addObject:me.objectId];
+//    [pc.pendingList removeObject:me.objectId];
+//}
 
 - (IBAction)didTapDeny:(id)sender {
     

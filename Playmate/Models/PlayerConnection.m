@@ -41,18 +41,32 @@
 }
 
 // for saving own(A) connection to someone(B) else; Save B in A's dictionary (A is me)
-- (void)saveMyConnectionTo:(NSString *)otherObjectId withStatus:(BOOL)areFriends andWeight:(int)weight {
++ (void)saveMyConnectionTo:(NSString *)otherObjectId withStatus:(BOOL)areFriends andWeight:(int)weight {
     
-    ConnectionState *cs = [ConnectionState new];
-    cs.areFriends = areFriends;
-    cs.relationshipWeight = weight;
+//    ConnectionState *cs = [ConnectionState new];
+//    cs.areFriends = areFriends;
+//    cs.relationshipWeight = weight;
+    
+    PFUser *me = [PFUser currentUser];
+    [me fetchIfNeeded];
+    
+    PlayerConnection *pc = me[@"playerConnection"][0];
+    [pc fetchIfNeeded];
 
-    [self.connections setObject:cs forKey:otherObjectId];
+//    [pc.connections setObject:cs forKey:otherObjectId];
+    NSLog(@"pc = %@", pc[@"friendsList"]);
 
     if (areFriends) {
-        [self.friendsList addObject:otherObjectId];
-        [self.pendingList removeObject:otherObjectId];
+        NSMutableArray *tempFriendsList = (NSMutableArray *)pc[@"friendsList"];
+        [tempFriendsList addObject:me.objectId];
+        pc[@"friendsList"] = (NSArray *)tempFriendsList;
+        
+        NSMutableArray *tempPendingList = (NSMutableArray *)pc[@"pendingList"];
+        [tempPendingList addObject:me.objectId];
+        pc[@"pendingList"] = (NSArray *)tempPendingList;
     }
+    
+    [pc saveInBackground];
 }
 
 // for saving someone(B) else's connection to self(A); Save A in B's dictionary (A is me)
@@ -65,17 +79,26 @@
     [query whereKey:@"userObjectId" equalTo:otherObjectId];
     
     PlayerConnection *pc = [query getFirstObject];
+    [pc fetchIfNeeded];
     
-    ConnectionState *cs = [ConnectionState new];
-    cs.areFriends = areFriends;
-    cs.relationshipWeight = weight;
+//    ConnectionState *cs = [ConnectionState new];
+//    cs.areFriends = areFriends;
+//    cs.relationshipWeight = weight;
 
-    [pc.connections setObject:cs forKey:me.objectId];
+//    [pc.connections setObject:cs forKey:me.objectId];
 
     if (areFriends) {
-        [pc.friendsList addObject:me.objectId];
-        [pc.pendingList removeObject:me.objectId];
+        
+        NSMutableArray *tempFriendsList = (NSMutableArray *)pc[@"friendsList"];
+        [tempFriendsList addObject:me.objectId];
+        pc[@"friendsList"] = (NSArray *)tempFriendsList;
+        
+        NSMutableArray *tempPendingList = (NSMutableArray *)pc[@"pendingList"];
+        [tempPendingList removeObject:me.objectId];
+        pc[@"pendingList"] = (NSArray *)tempPendingList;
     }
+    
+    [pc saveInBackground];
 }
 
 // if I deny someone else's friend request
@@ -87,7 +110,12 @@
     [query whereKey:@"userObjectId" equalTo:otherObjectId];
     
     PlayerConnection *pc = [query getFirstObject];
-    [pc.pendingList removeObject:me.objectId];
+    
+    NSMutableArray *tempPendingList = (NSMutableArray *)pc[@"pendingList"];
+    [tempPendingList removeObject:me.objectId];
+    pc[@"pendingList"] = (NSArray *)tempPendingList;
+    
+    [pc saveInBackground];
 }
 
 @end
