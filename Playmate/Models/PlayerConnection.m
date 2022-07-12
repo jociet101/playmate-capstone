@@ -16,8 +16,12 @@
     return @"PlayerConnection";
 }
 
-+ (void)savePlayerConnection:(PlayerConnection *)connection {
-    [connection saveInBackground];
++ (void)savePlayer:(NSString *)objectId withConnections:(NSDictionary *)connect {
+    PlayerConnection *pc = [PlayerConnection new];
+    pc.userObjectId = objectId;
+    pc.connections = connect;
+    
+    [pc saveInBackground];
 }
 
 @end

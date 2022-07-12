@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *userObjectId;
 @property (nonatomic, strong) NSDictionary *connections;
 
-+ (void)savePlayerConnection:(PlayerConnection *)connection;
++ (void)savePlayer:(NSString *)objectId withConnections:(NSDictionary *)connect;
 
 @end
 

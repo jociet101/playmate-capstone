@@ -1240,6 +1240,9 @@
                                         </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapFriend:" destination="hNf-lE-ZKe" eventType="touchUpInside" id="DOd-ud-pht"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="daK-s0-vby"/>

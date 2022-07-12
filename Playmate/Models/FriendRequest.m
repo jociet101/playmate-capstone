@@ -16,7 +16,11 @@
     return @"FriendRequest";
 }
 
-+ (void)saveFriendRequest:(FriendRequest *)request {
++ (void)saveFriendRequest:(NSString *)objectId from:user {
+    FriendRequest *request = [FriendRequest new];
+    request.toObjectId = objectId;
+    request.requestFrom = user;
+    
     [request saveInBackground];
 }
 

@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *toObjectId;
 @property (nonatomic, strong) PFUser *requestFrom;
 
++ (void)saveFriendRequest:(NSString *)objectId from:user;
+
 @end
 
 NS_ASSUME_NONNULL_END

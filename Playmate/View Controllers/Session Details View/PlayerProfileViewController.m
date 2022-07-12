@@ -7,6 +7,8 @@
 
 #import "PlayerProfileViewController.h"
 #import "Constants.h"
+#import "FriendRequest.h"
+#import "PlayerConnection.h"
 
 @interface PlayerProfileViewController ()
 
@@ -60,6 +62,10 @@
 
 - (IBAction)didTapFriend:(id)sender {
     
+    // if add friend
+    [FriendRequest saveFriendRequest:self.user[@"objectId"] from:[PFUser currentUser]];
+    
+    // TODO: if remove friend
 }
 
 
