@@ -106,16 +106,20 @@
     
     if ([user objectForKey:@"playerConnection"] == nil) {
         pc = [PlayerConnection initializePlayerConnection];
+        
+        NSMutableArray *tempPendingList = (NSMutableArray *)pc.pendingList;
+        [tempPendingList addObject:self.user.objectId];
+        pc.pendingList = (NSArray *)tempPendingList;
     } else {
-        pc = user[@"playerConnection"];
-        [user removeObjectForKey:@"playerConnection"];
+        pc = user[@"playerConnection"][0];
+        [pc fetchIfNeeded];
+        
+        NSMutableArray *tempPendingList = (NSMutableArray *)pc[@"pendingList"];
+        [tempPendingList addObject:self.user.objectId];
+        pc[@"pendingList"] = (NSArray *)tempPendingList;
     }
     
     // Add pending friend connection from me to other
-    
-    NSMutableArray *tempPendingList = (NSMutableArray *)pc[@"pendingList"];
-    [tempPendingList addObject:self.user.objectId];
-    pc[@"pendingList"] = (NSArray *)tempPendingList;
     
     [pc saveInBackground];
     
