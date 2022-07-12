@@ -38,7 +38,7 @@
     PFUser *user = [PFUser currentUser];
     [user fetchIfNeeded];
 
-    [query whereKey:@"userObjectId" equalTo:user.objectId];
+    [query whereKey:@"requestToId" equalTo:user.objectId];
 
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *requests, NSError *error) {

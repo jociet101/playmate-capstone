@@ -59,17 +59,18 @@
 
 - (void)setRequestInfo:(FriendRequest *)requestInfo {
     
-    PFUser *requester = requestInfo.requestFrom;
-    [requester fetchIfNeeded];
-    self.requester = requester;
+    PFQuery *query = [PFUser query];
+    self.requester = [query getObjectWithId:requestInfo.requestToId];
+    
+    NSLog(@"self.requester %@", self.requester);
         
-    NSString *requesterName = [Constants concatenateFirstName:requester[@"firstName"][0] andLast:requester[@"lastName"][0]];
+    NSString *requesterName = [Constants concatenateFirstName:self.requester[@"firstName"][0] andLast:self.requester[@"lastName"][0]];
     self.titleLabel.text = [requesterName stringByAppendingString:@" wants to be friends."];
     self.acceptButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
     self.denyButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
-    if (requester[@"profileImage"] != nil) {
-        UIImage* img = [UIImage imageWithData:[requester[@"profileImage"] getData]];
+    if (self.requester[@"profileImage"] != nil) {
+        UIImage* img = [UIImage imageWithData:[self.requester[@"profileImage"] getData]];
         [self.profileImageView setImage:[self resizeImage:img]];
     }
     else {

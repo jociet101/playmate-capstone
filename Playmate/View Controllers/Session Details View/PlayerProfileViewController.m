@@ -65,7 +65,7 @@
 - (IBAction)didTapFriend:(id)sender {
     
     // if add friend
-    [FriendRequest saveFriendRequest:self.user.objectId from:[PFUser currentUser]];
+    [FriendRequest saveFriendRequestTo:self.user.objectId];
     
     // TODO: if remove friend
 }
