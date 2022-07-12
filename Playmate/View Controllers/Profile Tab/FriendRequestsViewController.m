@@ -33,11 +33,14 @@
     
     // fetch data for friend request list
     PFQuery *query = [PFQuery queryWithClassName:@"FriendRequest"];
-    query.limit = 1;
+    query.limit = 20;
     
     PFUser *user = [PFUser currentUser];
     [user fetchIfNeeded];
-//    [query whereKey:@"userObjectId" equalTo:user.objectId];
+    
+    NSLog(@"MY OBJECT ID: %@", user.objectId);
+    
+    [query whereKey:@"userObjectId" equalTo:user.objectId];
 
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *requests, NSError *error) {
@@ -71,7 +74,7 @@
     
     FriendRequestCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendRequestCell"];
         
-    cell.requestInfo = self.friendRequestList[indexPath.section];
+    cell.requestInfo = self.friendRequestList[indexPath.row];
             
     return cell;
 }

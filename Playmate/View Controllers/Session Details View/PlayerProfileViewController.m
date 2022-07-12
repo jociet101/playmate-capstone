@@ -57,6 +57,7 @@
 -(void)manageFriendButtonUI {
     self.addFriendButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
+    // TODO: below
     // if this profile belongs to current user, disable the button
     // if current user is friends w this person, set title "Remove Friend"
 }
@@ -65,7 +66,6 @@
     
     // if add friend
     [FriendRequest saveFriendRequest:self.user.objectId from:[PFUser currentUser]];
-//    [PlayerConnection ]
     
     // TODO: if remove friend
 }
