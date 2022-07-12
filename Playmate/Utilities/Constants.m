@@ -288,6 +288,10 @@
     return 20;
 }
 
++ (int)smallButtonCornerRadius {
+    return 12;
+}
+
 // some colors
 + (UIColor *)playmateBlue {
     return [UIColor colorWithRed: 0.31 green: 0.78 blue: 0.94 alpha: 0.30];

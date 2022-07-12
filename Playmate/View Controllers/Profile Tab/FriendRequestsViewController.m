@@ -22,29 +22,47 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
     [self fetchData];
+    
 }
 
 - (void)fetchData {
     
     // fetch data for friend request list
     PFQuery *query = [PFQuery queryWithClassName:@"FriendRequest"];
-    query.limit = 20;
+    query.limit = 1;
     
     PFUser *user = [PFUser currentUser];
     [user fetchIfNeeded];
-    [query whereKey:@"toObjectId" equalTo:user[@"objectId"]];
+//    [query whereKey:@"userObjectId" equalTo:user.objectId];
 
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *requests, NSError *error) {
         if (requests != nil) {
-            self.friendRequestList = requests;
+            
+            NSLog(@"requests %@", [requests class]);
+            
+            self.friendRequestList = [self copyArray:requests];
             
             [self.tableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+}
+
+- (NSArray *)copyArray:(NSArray *)array {
+    NSMutableArray *copyTo = [[NSMutableArray alloc] init];
+    
+    for (FriendRequest *item in array) {
+        [copyTo addObject:item];
+    }
+    
+    return (NSArray *)copyTo;
+    
 }
 
 #pragma mark - Table view protocol methods
@@ -59,11 +77,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    NSLog(@"friend request list count %ld", self.friendRequestList.count);
+    return self.friendRequestList.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.friendRequestList.count;
+    return 1;
 }
 
 #pragma mark - Friend Request cell delegate method

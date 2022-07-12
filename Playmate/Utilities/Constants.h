@@ -61,6 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Some numbers
 + (int)buttonCornerRadius;
++ (int)smallButtonCornerRadius;
 
 // Some colors
 + (UIColor *)playmateBlue;

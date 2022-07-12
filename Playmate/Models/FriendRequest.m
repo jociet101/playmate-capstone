@@ -9,16 +9,20 @@
 
 @implementation FriendRequest
 
-@dynamic toObjectId;
+@dynamic userObjectId;
 @dynamic requestFrom;
 
 + (nonnull NSString *)parseClassName {
     return @"FriendRequest";
 }
 
-+ (void)saveFriendRequest:(NSString *)objectId from:user {
++ (void)saveFriendRequest:(NSString *)objectId from:(PFUser *)user {
+    
     FriendRequest *request = [FriendRequest new];
-    request.toObjectId = objectId;
+    
+    NSLog(@"object id = %@", objectId);
+    
+    request.userObjectId = objectId;
     request.requestFrom = user;
     
     [request saveInBackground];

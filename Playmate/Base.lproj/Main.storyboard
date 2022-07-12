@@ -1637,14 +1637,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="129"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Exm-7V-oDG">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Exm-7V-oDG">
                                                     <rect key="frame" x="20" y="23" width="83" height="83"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <gestureRecognizers/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Erb-CX-4fj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Erb-CX-4fj">
                                                     <rect key="frame" x="111" y="23" width="259" height="46"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Billy bob wants to be friends.">
                                                             <attributes>
@@ -1654,10 +1652,13 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hak-GG-LgI">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hak-GG-LgI">
                                                     <rect key="frame" x="111" y="78" width="122" height="27"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="27" id="OU1-TV-UpR"/>
+                                                        <constraint firstAttribute="width" constant="122" id="fx9-W1-Tt3"/>
+                                                    </constraints>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Accept"/>
@@ -1665,9 +1666,8 @@
                                                         <action selector="didTapAccept:" destination="NxP-eE-zBw" eventType="touchUpInside" id="EB1-Ba-Ppq"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCS-is-C4o">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCS-is-C4o">
                                                     <rect key="frame" x="248" y="77" width="122" height="28"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Button"/>
@@ -1677,6 +1677,22 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Exm-7V-oDG" firstAttribute="width" secondItem="oWs-Ek-IpQ" secondAttribute="width" multiplier="0.212821" id="4xa-5d-eHJ"/>
+                                                <constraint firstItem="Exm-7V-oDG" firstAttribute="leading" secondItem="oWs-Ek-IpQ" secondAttribute="leading" constant="20" symbolic="YES" id="70T-MI-MVE"/>
+                                                <constraint firstAttribute="trailing" secondItem="Erb-CX-4fj" secondAttribute="trailing" constant="20" symbolic="YES" id="7Eo-4t-rU3"/>
+                                                <constraint firstItem="Exm-7V-oDG" firstAttribute="height" secondItem="oWs-Ek-IpQ" secondAttribute="height" multiplier="0.643411" id="E8G-EM-k8o"/>
+                                                <constraint firstItem="Erb-CX-4fj" firstAttribute="top" secondItem="oWs-Ek-IpQ" secondAttribute="top" constant="23" id="QaP-ee-MMs"/>
+                                                <constraint firstItem="hak-GG-LgI" firstAttribute="leading" secondItem="oWs-Ek-IpQ" secondAttribute="leading" constant="111" id="Qyw-gW-Dfy"/>
+                                                <constraint firstItem="Erb-CX-4fj" firstAttribute="leading" secondItem="Exm-7V-oDG" secondAttribute="trailing" constant="8" symbolic="YES" id="SkY-yV-r2J"/>
+                                                <constraint firstItem="mCS-is-C4o" firstAttribute="top" secondItem="Erb-CX-4fj" secondAttribute="bottom" constant="8" symbolic="YES" id="Ux2-UA-I6k"/>
+                                                <constraint firstAttribute="trailing" secondItem="mCS-is-C4o" secondAttribute="trailing" constant="20" symbolic="YES" id="ekI-yA-7Dc"/>
+                                                <constraint firstAttribute="bottom" secondItem="mCS-is-C4o" secondAttribute="bottom" constant="24" id="kmI-XB-EBj"/>
+                                                <constraint firstAttribute="bottom" secondItem="hak-GG-LgI" secondAttribute="bottom" constant="24" id="lGo-LG-MEo"/>
+                                                <constraint firstItem="mCS-is-C4o" firstAttribute="leading" secondItem="hak-GG-LgI" secondAttribute="trailing" constant="15" id="tWJ-lh-FSr"/>
+                                                <constraint firstItem="hak-GG-LgI" firstAttribute="top" secondItem="Erb-CX-4fj" secondAttribute="bottom" constant="9" id="uy4-rR-iSo"/>
+                                                <constraint firstItem="Exm-7V-oDG" firstAttribute="centerY" secondItem="oWs-Ek-IpQ" secondAttribute="centerY" id="zFx-6I-HfU"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="acceptButton" destination="hak-GG-LgI" id="mB3-zN-mKF"/>

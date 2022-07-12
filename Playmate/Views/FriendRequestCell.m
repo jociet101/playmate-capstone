@@ -61,11 +61,11 @@
     PFUser *requester = requestInfo.requestFrom;
     [requester fetchIfNeeded];
     self.requester = requester;
-    NSString *requesterName = [Constants concatenateFirstName:requester[@"firstName"] andLast:requester[@"lastName"]];
-    
+        
+    NSString *requesterName = [Constants concatenateFirstName:requester[@"firstName"][0] andLast:requester[@"lastName"][0]];
     self.titleLabel.text = [requesterName stringByAppendingString:@" wants to be friends."];
-    self.acceptButton.layer.cornerRadius = [Constants buttonCornerRadius];
-    self.denyButton.layer.cornerRadius = [Constants buttonCornerRadius];
+    self.acceptButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
+    self.denyButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
     if (requester[@"profileImage"] != nil) {
         UIImage* img = [UIImage imageWithData:[requester[@"profileImage"] getData]];
