@@ -60,9 +60,6 @@
     PFUser *me = [PFUser currentUser];
     [me fetchIfNeeded];
     
-    NSLog(@"me username %@", me[@"username"]);
-    NSLog(@"self username %@", self.user.username);
-    
     // if this profile belongs to current user, disable the button
     if ([me[@"username"] isEqualToString:self.user.username]) {
         [self disableFriendButton];
