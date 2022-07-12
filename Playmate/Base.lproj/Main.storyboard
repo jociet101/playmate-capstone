@@ -1637,6 +1637,7 @@
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Exm-7V-oDG">
                                                     <rect key="frame" x="20" y="23" width="83" height="83"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <gestureRecognizers/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Erb-CX-4fj">
                                                     <rect key="frame" x="111" y="23" width="259" height="46"/>
@@ -1690,6 +1691,7 @@
                     <navigationItem key="navigationItem" title="Friend Requests" id="rKk-5L-Tsx"/>
                     <connections>
                         <outlet property="tableView" destination="mMV-cl-fKy" id="PK6-4x-w1S"/>
+                        <segue destination="hNf-lE-ZKe" kind="show" identifier="toProfile" id="lMt-QE-YDG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ldg-yM-6Gf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1972,6 +1974,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="jcx-uQ-feG"/>
+        <segue reference="lMt-QE-YDG"/>
         <segue reference="xxD-Qo-Eh9"/>
         <segue reference="zis-o5-IMS"/>
     </inferredMetricsTieBreakers>
