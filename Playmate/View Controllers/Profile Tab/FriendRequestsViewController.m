@@ -70,7 +70,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     FriendRequestCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendRequestCell"];
-        
+    NSLog(@"friend request list, %@", self.friendRequestList);
     cell.requestInfo = self.friendRequestList[indexPath.row];
             
     return cell;
