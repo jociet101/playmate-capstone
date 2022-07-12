@@ -9,6 +9,7 @@
 #import "FriendRequest.h"
 #import "FriendRequestCell.h"
 #import "PlayerProfileViewController.h"
+#import "PlayerConnection.h"
 
 @interface FriendRequestsViewController () <UITableViewDelegate, UITableViewDataSource, FriendRequestCellDelegate>
 

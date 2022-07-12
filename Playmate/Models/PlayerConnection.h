@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *userObjectId;
 // dictionary of ConnectionStates
-@property (nonatomic, strong) NSDictionary *connections;
+@property (nonatomic, strong) NSMutableDictionary *connections;
 @property (nonatomic, strong) NSMutableArray *friendsList;
 @property (nonatomic, strong) NSMutableArray *pendingList;
 
@@ -26,9 +26,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)saveMyConnectionTo:(NSString *)otherObjectId withStatus:(BOOL)areFriends andWeight:(int)weight;
 
 // for saving someone(B) else's connection to self(A); Save A in B's dictionary (A is me)
-- (void)savePlayer:(NSString *)otherObjectId ConnectionToMewithStatus:(BOOL)areFriends andWeight:(int)weight;
++ (void)savePlayer:(NSString *)otherObjectId ConnectionToMeWithStatus:(BOOL)areFriends andWeight:(int)weight;
 
-- (void)removeSelfFromPendingOf:(NSString *)otherObjectId;
++ (void)removeSelfFromPendingOf:(NSString *)otherObjectId;
 
 @end
 

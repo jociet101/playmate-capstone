@@ -60,7 +60,7 @@
 - (void)setRequestInfo:(FriendRequest *)requestInfo {
     
     PFQuery *query = [PFUser query];
-    self.requester = [query getObjectWithId:requestInfo.requestToId];
+    self.requester = [query getObjectWithId:requestInfo.requestFromId];
     
     NSLog(@"requester username %@", self.requester[@"username"]);
         
