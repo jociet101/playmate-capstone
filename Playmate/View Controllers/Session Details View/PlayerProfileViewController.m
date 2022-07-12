@@ -77,9 +77,9 @@
     // if current user is friends w this person, set title "Remove Friend"
     if (pc != nil) {
         NSLog(@"pc not nil, pending list %@", pc.pendingList);
-        if ([pc.friendsList containsObject:self.user.username]) {
+        if ([pc.friendsList containsObject:self.user.objectId]) {
             [self.addFriendButton setTitle:@"Remove Friend" forState:UIControlStateNormal];
-        } else if ([pc.pendingList containsObject:self.user.username]) {
+        } else if ([pc.pendingList containsObject:self.user.objectId]) {
             [self setRequestPendingAsState];
         }
     }
@@ -113,8 +113,6 @@
         pc = user[@"playerConnection"];
         [user removeObjectForKey:@"playerConnection"];
     }
-    
-    [pc saveInBackground];
     
     // Add pending friend connection from me to other
     

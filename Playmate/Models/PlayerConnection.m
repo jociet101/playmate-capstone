@@ -58,12 +58,8 @@
 
     if (areFriends) {
         NSMutableArray *tempFriendsList = (NSMutableArray *)pc[@"friendsList"];
-        [tempFriendsList addObject:me.objectId];
+        [tempFriendsList addObject:otherObjectId];
         pc[@"friendsList"] = (NSArray *)tempFriendsList;
-        
-        NSMutableArray *tempPendingList = (NSMutableArray *)pc[@"pendingList"];
-        [tempPendingList addObject:me.objectId];
-        pc[@"pendingList"] = (NSArray *)tempPendingList;
     }
     
     [pc saveInBackground];
@@ -80,6 +76,8 @@
     
     PlayerConnection *pc = [query getFirstObject];
     [pc fetchIfNeeded];
+    
+    NSLog(@"pc %@ for %@", pc, otherObjectId);
     
 //    ConnectionState *cs = [ConnectionState new];
 //    cs.areFriends = areFriends;
