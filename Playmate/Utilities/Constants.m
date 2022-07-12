@@ -102,6 +102,17 @@
     return @"Edit profile to enter a bio!";
 }
 
++ (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last {
+    return [first stringByAppendingString:[@" " stringByAppendingString:last]];
+}
+
++ (NSString *)getAgeInYears:(NSDate *)date {
+    NSString *rawYears = [date timeAgoSinceNow];
+    NSArray *parsed = [rawYears componentsSeparatedByString:@" "];
+    NSString *year = parsed[0];
+    return year;
+}
+
 // Information for filters and create
 + (NSString *)createMenuTitle:(int)row {
     NSMutableArray *titles = [[NSMutableArray alloc] init];
@@ -275,6 +286,10 @@
 // Some numbers
 + (int)buttonCornerRadius {
     return 20;
+}
+
++ (int)smallButtonCornerRadius {
+    return 12;
 }
 
 // some colors

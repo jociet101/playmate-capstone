@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SessionDetailsViewController : UIViewController
 
-@property (nonatomic, strong) Session* sessionDeets;
+@property (nonatomic, strong) Session* sessionDetails;
 
 @end
 

@@ -9,8 +9,10 @@
 #import "SessionCell.h"
 #import "Constants.h"
 #import "Location.h"
+#import "PlayerProfileCollectionCell.h"
+#import "PlayerProfileViewController.h"
 
-@interface SessionDetailsViewController ()
+@interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UILabel *sportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
@@ -39,11 +41,16 @@ PFUser *me;
     [self disableAddButton];
     
     [self initializeDetails];
+    
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    
+    [self.collectionView reloadData];
 }
 
 - (void)disableAddButton {
     
-    for (PFUser *user in self.sessionDeets.playersList) {
+    for (PFUser *user in self.sessionDetails.playersList) {
         [user fetchIfNeeded];
         
         if ([me.username isEqualToString:user.username]) {
@@ -56,7 +63,7 @@ PFUser *me;
         }
     }
     
-    if ([self.sessionDeets.occupied isEqual:self.sessionDeets.capacity]) {
+    if ([self.sessionDetails.occupied isEqual:self.sessionDetails.capacity]) {
         self.disabledButton.text = [Constants fullSessionErrorMsg];
         self.disabledButton.textColor = [UIColor redColor];
         [self.addMyselfButton setEnabled:NO];
@@ -66,26 +73,26 @@ PFUser *me;
 
 - (void)initializeDetails {
     
-    self.sportLabel.text = self.sessionDeets.sport;
+    self.sportLabel.text = self.sessionDetails.sport;
     
     // Form the fraction into a string
-    NSString *capacityString = [Constants capacityString:self.sessionDeets.occupied with:self.sessionDeets.capacity];
+    NSString *capacityString = [Constants capacityString:self.sessionDetails.occupied with:self.sessionDetails.capacity];
     
-    if ([self.sessionDeets.capacity isEqual:self.sessionDeets.occupied]) {
+    if ([self.sessionDetails.capacity isEqual:self.sessionDetails.occupied]) {
         self.capacityLabel.text = [Constants noOpenSlotsErrorMsg];
     } else {
         self.capacityLabel.text = capacityString;
     }
     
-    self.levelLabel.text = self.sessionDeets.skillLevel;
+    self.levelLabel.text = self.sessionDetails.skillLevel;
     
-    Location *loc = self.sessionDeets.location;
+    Location *loc = self.sessionDetails.location;
     [loc fetchIfNeeded];
     
     self.locationLabel.text = loc.locationName;
     
-    self.dateTimeLabel.text = [Constants formatDate:self.sessionDeets.occursAt];
-    self.createdDateLabel.text = [@"Created at: " stringByAppendingString:[Constants formatDate:self.sessionDeets.updatedAt]];
+    self.dateTimeLabel.text = [Constants formatDate:self.sessionDetails.occursAt];
+    self.createdDateLabel.text = [@"Session created at: " stringByAppendingString:[Constants formatDate:self.sessionDetails.updatedAt]];
 }
 
 - (IBAction)addMyself:(id)sender {
@@ -95,7 +102,7 @@ PFUser *me;
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
 
     // Retrieve the object by id
-    [query getObjectInBackgroundWithId:self.sessionDeets.objectId
+    [query getObjectInBackgroundWithId:self.sessionDetails.objectId
                                  block:^(PFObject *session, NSError *error) {
         
         // Add myself to the session
@@ -109,7 +116,37 @@ PFUser *me;
         
         [session saveInBackground];
     }];
+}
+
+#pragma mark - Collection view protocol methods
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.sessionDetails.playersList.count;
+}
+
+- (nonnull __kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    PlayerProfileCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayerProfileCollectionCell" forIndexPath:indexPath];
+    
+    cell.userProfile = self.sessionDetails.playersList[indexPath.row];
+    
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([sender isMemberOfClass:[PlayerProfileCollectionCell class]]) {
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
+        PFUser* data = self.sessionDetails.playersList[indexPath.row];
+        PlayerProfileViewController *VC = [segue destinationViewController];
+        VC.user = data;
+    }
 }
 
 @end

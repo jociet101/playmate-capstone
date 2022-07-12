@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "DateTools.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -39,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Information for profile tab
 + (NSString *)defaultBio;
++ (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last;
++ (NSString *)getAgeInYears:(NSDate *)date;
 
 // Information for filters and create
 + (NSString *)createMenuTitle:(int)row;
@@ -58,6 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Some numbers
 + (int)buttonCornerRadius;
++ (int)smallButtonCornerRadius;
 
 // Some colors
 + (UIColor *)playmateBlue;

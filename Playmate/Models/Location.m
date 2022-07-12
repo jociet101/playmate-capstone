@@ -18,7 +18,6 @@
 }
 
 + (void)saveLocation:(Location *)location {
-    
     [location saveInBackground];
 }
 

@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *genderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bioField;
 @property (weak, nonatomic) IBOutlet UILabel *profileImagePlaceholder;
+@property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
 
 @end
 
@@ -34,11 +35,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     PFUser *user = [PFUser currentUser];
-    self.nameLabel.text = [user[@"firstName"][0] stringByAppendingString:[@" " stringByAppendingString:user[@"lastName"][0]]];
+    self.nameLabel.text = [Constants concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
     self.usernameLabel.text = [@"@" stringByAppendingString:user[@"username"]];
     self.usernameLabel.textColor = [UIColor lightGrayColor];
     self.genderLabel.text = [@"Identifies as " stringByAppendingString:user[@"gender"][0]];
-    self.ageLabel.text = [@"Born " stringByAppendingString:[user[@"birthday"][0] timeAgoSinceNow]];
+    self.ageLabel.text = [[Constants getAgeInYears:user[@"birthday"][0]] stringByAppendingString:@" years old"];
     
     if ([user objectForKey:@"biography"] != nil) {
         self.bioField.text = user[@"biography"][0];
@@ -48,6 +49,15 @@
         UIImage* img = [UIImage imageWithData:[user[@"profileImage"] getData]];
         [self.profileImageView setImage:img];
         self.profileImagePlaceholder.alpha = 0;
+    }
+    if (user[@"backdropImage"] != nil) {
+        // set image stuff
+        UIImage* img = [UIImage imageWithData:[user[@"backdropImage"] getData]];
+        [self.backdropImageView setImage:img];
+    }
+    else {
+        UIImage* img = [UIImage imageNamed:@"playmate_backdrop.png"];
+        [self.backdropImageView setImage:img];
     }
 }
 
@@ -116,6 +126,10 @@
 
 - (IBAction)uploadProfileImage:(id)sender {
     [self initializeTaker];
+}
+
+- (IBAction)viewFriendRequests:(id)sender {
+    [self performSegueWithIdentifier:@"viewFriendRequests" sender:nil];
 }
 
 @end

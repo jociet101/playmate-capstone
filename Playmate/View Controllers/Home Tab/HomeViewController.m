@@ -133,17 +133,37 @@
     
     SessionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SessionCell"];
         
-    cell.session = self.sessionList[indexPath.row];
+    cell.session = self.sessionList[indexPath.section];
             
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.sessionList.count;
+    return 1;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.sessionList.count;
+}
+
+- (CGFloat)tableView:(UITableView*)tableView
+           heightForHeaderInSection:(NSInteger)section {
+    return 5.0;
+}
+
+- (CGFloat)tableView:(UITableView*)tableView
+           heightForFooterInSection:(NSInteger)section {
+    return 5.0;
+}
+
+- (UIView*)tableView:(UITableView*)tableView
+           viewForHeaderInSection:(NSInteger)section {
+    return [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+- (UIView*)tableView:(UITableView*)tableView
+           viewForFooterInSection:(NSInteger)section {
+    return [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 #pragma mark - Navigation
@@ -155,9 +175,9 @@
          
          NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
          
-         Session* data = self.sessionList[indexPath.row];
+         Session* data = self.sessionList[indexPath.section];
          SessionDetailsViewController *VC = [segue destinationViewController];
-         VC.sessionDeets = data;
+         VC.sessionDetails = data;
      }
      
      if ([sender isMemberOfClass:[UIButton class]]) {

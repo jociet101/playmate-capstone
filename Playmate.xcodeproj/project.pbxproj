@@ -31,6 +31,12 @@
 		3CF4A59F287A991E000C5E7D /* LocationPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A59E287A991E000C5E7D /* LocationPickerCell.m */; };
 		3CF4A5A5287B6647000C5E7D /* FiltersMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5A4287B6647000C5E7D /* FiltersMenuViewController.m */; };
 		3CF4A5A8287B67B4000C5E7D /* FiltersMenuPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5A7287B67B4000C5E7D /* FiltersMenuPickerCell.m */; };
+		3CF4A5AB287C962D000C5E7D /* PlayerProfileCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5AA287C962D000C5E7D /* PlayerProfileCollectionCell.m */; };
+		3CF4A5AF287CA9D1000C5E7D /* PlayerProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5AE287CA9D1000C5E7D /* PlayerProfileViewController.m */; };
+		3CF4A5B2287CD65D000C5E7D /* FriendRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5B1287CD65D000C5E7D /* FriendRequest.m */; };
+		3CF4A5B8287CD963000C5E7D /* PlayerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5B7287CD963000C5E7D /* PlayerConnection.m */; };
+		3CF4A5BB287CE3A9000C5E7D /* FriendRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5BA287CE3A9000C5E7D /* FriendRequestsViewController.m */; };
+		3CF4A5BE287CE7C8000C5E7D /* FriendRequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5BD287CE7C8000C5E7D /* FriendRequestCell.m */; };
 		3CF652A9286D036600BD5EDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652A8286D036600BD5EDB /* AppDelegate.m */; };
 		3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652AB286D036600BD5EDB /* SceneDelegate.m */; };
 		3CF652B2286D036600BD5EDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF652B0286D036600BD5EDB /* Main.storyboard */; };
@@ -109,6 +115,18 @@
 		3CF4A5A4287B6647000C5E7D /* FiltersMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FiltersMenuViewController.m; sourceTree = "<group>"; };
 		3CF4A5A6287B67B4000C5E7D /* FiltersMenuPickerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FiltersMenuPickerCell.h; sourceTree = "<group>"; };
 		3CF4A5A7287B67B4000C5E7D /* FiltersMenuPickerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FiltersMenuPickerCell.m; sourceTree = "<group>"; };
+		3CF4A5A9287C962D000C5E7D /* PlayerProfileCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerProfileCollectionCell.h; sourceTree = "<group>"; };
+		3CF4A5AA287C962D000C5E7D /* PlayerProfileCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerProfileCollectionCell.m; sourceTree = "<group>"; };
+		3CF4A5AD287CA9D1000C5E7D /* PlayerProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerProfileViewController.h; sourceTree = "<group>"; };
+		3CF4A5AE287CA9D1000C5E7D /* PlayerProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerProfileViewController.m; sourceTree = "<group>"; };
+		3CF4A5B0287CD65D000C5E7D /* FriendRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendRequest.h; sourceTree = "<group>"; };
+		3CF4A5B1287CD65D000C5E7D /* FriendRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendRequest.m; sourceTree = "<group>"; };
+		3CF4A5B6287CD963000C5E7D /* PlayerConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerConnection.h; sourceTree = "<group>"; };
+		3CF4A5B7287CD963000C5E7D /* PlayerConnection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerConnection.m; sourceTree = "<group>"; };
+		3CF4A5B9287CE3A9000C5E7D /* FriendRequestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendRequestsViewController.h; sourceTree = "<group>"; };
+		3CF4A5BA287CE3A9000C5E7D /* FriendRequestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendRequestsViewController.m; sourceTree = "<group>"; };
+		3CF4A5BC287CE7C8000C5E7D /* FriendRequestCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendRequestCell.h; sourceTree = "<group>"; };
+		3CF4A5BD287CE7C8000C5E7D /* FriendRequestCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendRequestCell.m; sourceTree = "<group>"; };
 		3CF652A4286D036600BD5EDB /* Playmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF652A7286D036600BD5EDB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3CF652A8286D036600BD5EDB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -199,12 +217,11 @@
 		3C45B561286E64CB00EE578F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3C45B59C2875060700EE578F /* SessionDetailsViewController.h */,
-				3C45B59D2875060700EE578F /* SessionDetailsViewController.m */,
+				3C45B571287297C800EE578F /* Home Tab */,
+				3CF4A5AC287CA9B6000C5E7D /* Session Details View */,
 				3C45B58628737E5500EE578F /* Create Tab */,
 				3C45B58228737E4400EE578F /* Search Tab */,
 				3C45B575287299B900EE578F /* Profile Tab */,
-				3C45B571287297C800EE578F /* Home Tab */,
 				3C45B562286E64D700EE578F /* Registration Related */,
 			);
 			path = "View Controllers";
@@ -241,6 +258,8 @@
 				3C45B577287299C200EE578F /* ProfileViewController.m */,
 				3CF4A5882878AA1A000C5E7D /* EditProfileViewController.h */,
 				3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */,
+				3CF4A5B9287CE3A9000C5E7D /* FriendRequestsViewController.h */,
+				3CF4A5BA287CE3A9000C5E7D /* FriendRequestsViewController.m */,
 			);
 			path = "Profile Tab";
 			sourceTree = "<group>";
@@ -276,6 +295,10 @@
 				3C45B5922874C0ED00EE578F /* Location.m */,
 				3C45B5A528760C1E00EE578F /* Filters.h */,
 				3C45B5A628760C1E00EE578F /* Filters.m */,
+				3CF4A5B0287CD65D000C5E7D /* FriendRequest.h */,
+				3CF4A5B1287CD65D000C5E7D /* FriendRequest.m */,
+				3CF4A5B6287CD963000C5E7D /* PlayerConnection.h */,
+				3CF4A5B7287CD963000C5E7D /* PlayerConnection.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -291,8 +314,23 @@
 				3CF4A59E287A991E000C5E7D /* LocationPickerCell.m */,
 				3CF4A5A6287B67B4000C5E7D /* FiltersMenuPickerCell.h */,
 				3CF4A5A7287B67B4000C5E7D /* FiltersMenuPickerCell.m */,
+				3CF4A5A9287C962D000C5E7D /* PlayerProfileCollectionCell.h */,
+				3CF4A5AA287C962D000C5E7D /* PlayerProfileCollectionCell.m */,
+				3CF4A5BC287CE7C8000C5E7D /* FriendRequestCell.h */,
+				3CF4A5BD287CE7C8000C5E7D /* FriendRequestCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3CF4A5AC287CA9B6000C5E7D /* Session Details View */ = {
+			isa = PBXGroup;
+			children = (
+				3C45B59C2875060700EE578F /* SessionDetailsViewController.h */,
+				3C45B59D2875060700EE578F /* SessionDetailsViewController.m */,
+				3CF4A5AD287CA9D1000C5E7D /* PlayerProfileViewController.h */,
+				3CF4A5AE287CA9D1000C5E7D /* PlayerProfileViewController.m */,
+			);
+			path = "Session Details View";
 			sourceTree = "<group>";
 		};
 		3CF6529B286D036600BD5EDB = {
@@ -595,7 +633,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C45B565286E64EB00EE578F /* WelcomeViewController.m in Sources */,
+				3CF4A5AF287CA9D1000C5E7D /* PlayerProfileViewController.m in Sources */,
 				3C383FDD28775D2A00BC9B55 /* APIManager.m in Sources */,
+				3CF4A5B2287CD65D000C5E7D /* FriendRequest.m in Sources */,
 				3C45B5A728760C1E00EE578F /* Filters.m in Sources */,
 				3C45B5932874C0ED00EE578F /* Location.m in Sources */,
 				3C45B578287299C200EE578F /* ProfileViewController.m in Sources */,
@@ -606,6 +646,7 @@
 				3C45B5682871856500EE578F /* CreateViewController.m in Sources */,
 				3CF652BA286D036700BD5EDB /* main.m in Sources */,
 				3CF4A58A2878AA1A000C5E7D /* EditProfileViewController.m in Sources */,
+				3CF4A5AB287C962D000C5E7D /* PlayerProfileCollectionCell.m in Sources */,
 				3CF4A59F287A991E000C5E7D /* LocationPickerCell.m in Sources */,
 				3CF4A58D2878DFA6000C5E7D /* CalendarViewController.m in Sources */,
 				3C45B5902874BB7500EE578F /* Session.m in Sources */,
@@ -614,9 +655,12 @@
 				3C45B59E2875060700EE578F /* SessionDetailsViewController.m in Sources */,
 				3CF4A5A5287B6647000C5E7D /* FiltersMenuViewController.m in Sources */,
 				3C45B574287297EB00EE578F /* HomeViewController.m in Sources */,
+				3CF4A5BE287CE7C8000C5E7D /* FriendRequestCell.m in Sources */,
 				3CF4A59C287A60F0000C5E7D /* MenuPickerCell.m in Sources */,
 				3C45B5A4287606EF00EE578F /* SelectMapViewController.m in Sources */,
 				3CF4A5A8287B67B4000C5E7D /* FiltersMenuPickerCell.m in Sources */,
+				3CF4A5B8287CD963000C5E7D /* PlayerConnection.m in Sources */,
+				3CF4A5BB287CE3A9000C5E7D /* FriendRequestsViewController.m in Sources */,
 				3C383FD52877416D00BC9B55 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
