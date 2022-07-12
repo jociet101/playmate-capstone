@@ -6,15 +6,29 @@
 //
 
 #import <Parse/Parse.h>
+#import "ConnectionState.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PlayerConnection : PFObject<PFSubclassing>
 
 @property (nonatomic, strong) NSString *userObjectId;
+// dictionary of ConnectionStates
 @property (nonatomic, strong) NSDictionary *connections;
+@property (nonatomic, strong) NSMutableArray *friendsList;
+@property (nonatomic, strong) NSMutableArray *pendingList;
 
-+ (void)savePlayer:(NSString *)objectId withConnections:(NSDictionary *)connect;
+// methods
+
++ (PlayerConnection *)initializePlayerConnection;
+
+// for saving own(A) connection to someone(B) else; Save B in A's dictionary (A is me)
+- (void)saveMyConnectionTo:(NSString *)otherObjectId withStatus:(BOOL)areFriends andWeight:(int)weight;
+
+// for saving someone(B) else's connection to self(A); Save A in B's dictionary (A is me)
+- (void)savePlayer:(NSString *)otherObjectId ConnectionToMewithStatus:(BOOL)areFriends andWeight:(int)weight;
+
+- (void)removeSelfFromPendingOf:(NSString *)otherObjectId;
 
 @end
 

@@ -67,6 +67,9 @@
     // if add friend
     [FriendRequest saveFriendRequestTo:self.user.objectId];
     
+    PlayerConnection *connection = [PlayerConnection initializePlayerConnection];
+    [connection saveMyConnectionTo:self.user.objectId withStatus:YES andWeight:1];
+    
     // TODO: if remove friend
 }
 

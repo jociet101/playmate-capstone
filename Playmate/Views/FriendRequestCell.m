@@ -62,7 +62,7 @@
     PFQuery *query = [PFUser query];
     self.requester = [query getObjectWithId:requestInfo.requestToId];
     
-    NSLog(@"self.requester %@", self.requester);
+    NSLog(@"requester username %@", self.requester[@"username"]);
         
     NSString *requesterName = [Constants concatenateFirstName:self.requester[@"firstName"][0] andLast:self.requester[@"lastName"][0]];
     self.titleLabel.text = [requesterName stringByAppendingString:@" wants to be friends."];
