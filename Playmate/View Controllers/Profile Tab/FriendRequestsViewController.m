@@ -37,18 +37,14 @@
     
     PFUser *user = [PFUser currentUser];
     [user fetchIfNeeded];
-    
-    NSLog(@"MY OBJECT ID: %@", user.objectId);
-    
+
     [query whereKey:@"userObjectId" equalTo:user.objectId];
 
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *requests, NSError *error) {
         if (requests != nil) {
             
-            NSLog(@"requests %@", [requests class]);
-            
-            self.friendRequestList = [self copyArray:requests];
+            self.friendRequestList = requests;
             
             [self.tableView reloadData];
         } else {
@@ -80,7 +76,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"friend request list count %ld", self.friendRequestList.count);
     return self.friendRequestList.count;
 }
 
@@ -103,7 +98,6 @@
         PlayerProfileViewController *profileVC = [segue destinationViewController];
         profileVC.user = sender;
     }
-    
 }
 
 @end
