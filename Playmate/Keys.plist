@@ -2,15 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>client_key</key>
+	<key>client_key_2</key>
 	<string>u3MFZjBAhIDtwPYTEoPsxvhSnHHMQXKteiZeIywR</string>
-	<key>app_id</key>
+	<key>app_id_2</key>
 	<string>dW5Os8n9F30fvSCloxtvUIqOMe7bZQj9mMvhzyVP</string>
 	<key>geoapify_key</key>
 	<string>aad3a6adc8774685828dba9b8b6832aa</string>
-	<key>app_id_1</key>
+	<key>app_id</key>
 	<string>nJyHXnhpOfymI931A4wfFOf3VA8cNr2PNJx4CG3F</string>
-	<key>client_key_1</key>
+	<key>client_key</key>
 	<string>4eqLyQjncIB2wDq1IBdH3o0Bh4s14kvQI9vOfFDO</string>
 </dict>
 </plist>
