@@ -59,6 +59,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (int)defaultNumPlayers;
 + (int)defaultSkillPickerIndex;
 
+// Information for friend requests vc
++ (NSString *)emptyRequestsPlaceholderMsg;
++ (NSString *)emptyRequestsPlaceholderTitle;
+
 // Some numbers
 + (int)buttonCornerRadius;
 + (int)smallButtonCornerRadius;
