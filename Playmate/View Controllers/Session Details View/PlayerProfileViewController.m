@@ -153,6 +153,7 @@
         
         [self resetAddFriendButton];
                 
+        self.isMyFriend = NO;
     } else {
         // if add friend
         // Create FriendRequest from me to other
@@ -182,6 +183,8 @@
         [user saveInBackground];
         
         [self setRequestPendingAsState];
+        
+        self.isMyFriend = YES;
     }
 }
 

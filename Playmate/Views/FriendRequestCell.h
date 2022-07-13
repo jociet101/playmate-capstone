@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol FriendRequestCellDelegate
 
 - (void)didTap:(FriendRequestCell *)cell profileImage:(PFUser *)user;
+- (void)didRespondToRequest;
 
 @end
 

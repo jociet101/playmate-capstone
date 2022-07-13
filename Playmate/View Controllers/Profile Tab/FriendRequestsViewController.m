@@ -143,11 +143,15 @@
     return [UIColor clearColor];
 }
 
-#pragma mark - Friend Request cell delegate method
+#pragma mark - Friend Request cell delegate methods
 
 - (void)didTap:(FriendRequestCell *)cell profileImage:(PFUser *)user {
     
     [self performSegueWithIdentifier:@"toProfile" sender:user];
+}
+
+- (void)didRespondToRequest {
+    [self.tableView reloadData];
 }
 
 #pragma mark - Navigation

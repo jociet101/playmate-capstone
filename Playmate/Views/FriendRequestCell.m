@@ -8,6 +8,7 @@
 #import "FriendRequestCell.h"
 #import "Constants.h"
 #import "PlayerConnection.h"
+#import "DateTools.h"
 
 @interface FriendRequestCell ()
 
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *acceptButton;
 @property (weak, nonatomic) IBOutlet UIButton *denyButton;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *timeAgoLabel;
 
 @property (nonatomic, strong) PFUser *requester;
 
@@ -32,9 +34,7 @@
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
 }
 
-- (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
-    NSLog(@"did tap user profile");
-    
+- (void)didTapUserProfile:(UITapGestureRecognizer *)sender{
     [self.delegate didTap:self profileImage:self.requester];
 }
 
@@ -82,6 +82,9 @@
         UIImage* img = [UIImage imageNamed:@"playmate_logo_transparent.png"];
         [self.profileImageView setImage:[self resizeImage:img]];
     }
+    
+    // set time ago timestamp
+    self.timeAgoLabel.text = [[requestInfo.updatedAt shortTimeAgoSinceNow] stringByAppendingString:@" ago"];
 }
 
 - (void)deleteThisRequest {
@@ -108,6 +111,8 @@
     [PlayerConnection savePlayer:self.requestInfo.requestFromId ConnectionToMeWithStatus:YES andWeight:1];
     
     [self deleteThisRequest];
+    
+    [self.delegate didRespondToRequest];
 }
 
 - (IBAction)didTapDeny:(id)sender {
@@ -115,6 +120,8 @@
     [PlayerConnection removeSelfFromPendingOf:self.requestInfo.requestFromId];
     
     [self deleteThisRequest];
+    
+    [self.delegate didRespondToRequest];
 }
 
 @end
