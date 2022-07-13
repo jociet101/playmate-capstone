@@ -11,7 +11,7 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
 
-@interface OutgoingRequestsViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface OutgoingRequestsViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, OutgoingRequestCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *outgoingRequestList;
@@ -56,7 +56,7 @@
 
     OutgoingRequestCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OutgoingRequestCell"];
     cell.userObjectId = self.outgoingRequestList[indexPath.row];
-
+    cell.delegate = self;
     return cell;
 }
 
@@ -70,7 +70,6 @@
 
 #pragma mark - Empty table view protocol methods
 
-// TODO: add a notifications placeholder image
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
     return [Constants resizeImage:[UIImage imageNamed:@"empty_friend_request"] withDimension:80];
@@ -89,6 +88,12 @@
 - (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
 {
     return [UIColor clearColor];
+}
+
+#pragma mark - Outgoing Request cell delegate methods
+
+- (void)didCancelRequest {
+    [self.tableView reloadData];
 }
 
 @end

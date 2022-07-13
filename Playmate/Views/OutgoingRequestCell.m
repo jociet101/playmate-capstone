@@ -66,6 +66,8 @@
     connection[@"pendingList"] = (NSArray *)tempPendingList;
     
     [connection saveInBackground];
+    
+    [self.delegate didCancelRequest];
 }
 
 @end

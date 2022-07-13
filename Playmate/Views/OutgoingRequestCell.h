@@ -10,11 +10,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol OutgoingRequestCellDelegate;
+
 @interface OutgoingRequestCell : UITableViewCell
 
 @property (nonatomic, strong) NSString *userObjectId;
 
 - (void)setUserObjectId:(NSString *)userObjectId;
+
+@property (nonatomic, weak) id<OutgoingRequestCellDelegate> delegate;
+
+@end
+
+@protocol OutgoingRequestCellDelegate
+
+- (void)didCancelRequest;
 
 @end
 
