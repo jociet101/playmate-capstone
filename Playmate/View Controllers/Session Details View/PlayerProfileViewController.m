@@ -75,7 +75,6 @@
     [pc fetchIfNeeded];
     
     if (pc != nil) {
-        NSLog(@"pc not nil, pending list %@", pc.pendingList);
         // if current user is friends w this person, set title "Remove Friend"
         if ([pc.friendsList containsObject:self.user.objectId]) {
             self.isMyFriend = YES;
@@ -128,7 +127,6 @@
     
     if (self.isMyFriend) {
         // if removing friend
-        NSLog(@"was my friend");
         
         PFUser *me = [PFUser currentUser];
         [me fetchIfNeeded];
@@ -154,14 +152,9 @@
         [theirPc saveInBackground];
         
         [self resetAddFriendButton];
-        
-        NSLog(@"finished removing friends");
-        
+                
     } else {
         // if add friend
-        
-        NSLog(@"was not my friend");
-        
         // Create FriendRequest from me to other
         [FriendRequest saveFriendRequestTo:self.user.objectId];
         PlayerConnection *pc;
@@ -182,9 +175,6 @@
         }
         
         // Add pending friend connection from me to other
-        
-        NSLog(@"did tap friend and created %@ pc %@", user.objectId, pc);
-        
         [pc saveInBackground];
         
         [user addObject:pc forKey:@"playerConnection"];

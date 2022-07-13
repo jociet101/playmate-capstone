@@ -18,14 +18,6 @@
     return @"PlayerConnection";
 }
 
-//+ (void)savePlayer:(NSString *)objectId withConnections:(NSDictionary *)connect {
-//    PlayerConnection *pc = [PlayerConnection new];
-//    pc.userObjectId = objectId;
-//    pc.connections = connect;
-//
-//    [pc saveInBackground];
-//}
-
 + (PlayerConnection *)initializePlayerConnection {
     
     PlayerConnection *pc = [PlayerConnection new];
@@ -42,7 +34,8 @@
 
 // for saving own(A) connection to someone(B) else; Save B in A's dictionary (A is me)
 + (void)saveMyConnectionTo:(NSString *)otherObjectId withStatus:(BOOL)areFriends andWeight:(int)weight {
-    
+
+    // TODO: use for recommender system later
 //    ConnectionState *cs = [ConnectionState new];
 //    cs.areFriends = areFriends;
 //    cs.relationshipWeight = weight;
@@ -54,7 +47,6 @@
     [pc fetchIfNeeded];
 
 //    [pc.connections setObject:cs forKey:otherObjectId];
-    NSLog(@"pc = %@", pc[@"friendsList"]);
 
     if (areFriends) {
         NSMutableArray *tempFriendsList = (NSMutableArray *)pc[@"friendsList"];
@@ -77,8 +69,7 @@
     PlayerConnection *pc = [query getFirstObject];
     [pc fetchIfNeeded];
     
-    NSLog(@"pc %@ for %@", pc, otherObjectId);
-    
+    // TODO: use for recommender system later
 //    ConnectionState *cs = [ConnectionState new];
 //    cs.areFriends = areFriends;
 //    cs.relationshipWeight = weight;
