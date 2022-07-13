@@ -139,7 +139,7 @@
 
 - (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
 {
-    return [UIColor lightGrayColor];
+    return [UIColor clearColor];
 }
 
 #pragma mark - Friend Request cell delegate method
