@@ -1268,7 +1268,7 @@
                                     </attributedString>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="PE5-R2-Lql" kind="show" id="rqC-KX-Pok"/>
+                                    <segue destination="PE5-R2-Lql" kind="show" identifier="toFriendsList" id="rqC-KX-Pok"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1685,11 +1685,11 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OsE-i7-RTF">
                                                     <rect key="frame" x="32" y="8.6666666666666643" width="40" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="59.999999999999993" id="w8A-iF-Ji3"/>
+                                                        <constraint firstAttribute="height" constant="40" id="xJx-uH-zSc"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSF-fz-KDC">
-                                                    <rect key="frame" x="80" y="18" width="290" height="21"/>
+                                                    <rect key="frame" x="87" y="18" width="283" height="21"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1699,8 +1699,8 @@
                                                 <constraint firstItem="RSF-fz-KDC" firstAttribute="centerY" secondItem="c5j-cf-RxC" secondAttribute="centerY" id="7Ma-Gh-d04"/>
                                                 <constraint firstItem="OsE-i7-RTF" firstAttribute="width" secondItem="c5j-cf-RxC" secondAttribute="width" multiplier="0.102564" id="CUh-t5-F7r"/>
                                                 <constraint firstItem="OsE-i7-RTF" firstAttribute="leading" secondItem="c5j-cf-RxC" secondAttribute="leading" constant="32" id="G9m-XD-V6M"/>
-                                                <constraint firstItem="RSF-fz-KDC" firstAttribute="width" secondItem="c5j-cf-RxC" secondAttribute="width" multiplier="0.74359" id="Kfd-ea-TuX"/>
-                                                <constraint firstItem="RSF-fz-KDC" firstAttribute="leading" secondItem="OsE-i7-RTF" secondAttribute="trailing" constant="8" symbolic="YES" id="R6Q-gu-uO9"/>
+                                                <constraint firstItem="RSF-fz-KDC" firstAttribute="width" secondItem="c5j-cf-RxC" secondAttribute="width" multiplier="0.74359" constant="-7" id="Kfd-ea-TuX"/>
+                                                <constraint firstItem="RSF-fz-KDC" firstAttribute="leading" secondItem="OsE-i7-RTF" secondAttribute="trailing" constant="15" id="R6Q-gu-uO9"/>
                                                 <constraint firstAttribute="trailing" secondItem="RSF-fz-KDC" secondAttribute="trailing" constant="20" symbolic="YES" id="jLC-LI-EZr"/>
                                                 <constraint firstItem="OsE-i7-RTF" firstAttribute="centerY" secondItem="c5j-cf-RxC" secondAttribute="centerY" id="uPT-2E-KME"/>
                                                 <constraint firstItem="RSF-fz-KDC" firstAttribute="height" secondItem="c5j-cf-RxC" secondAttribute="height" multiplier="0.368421" id="yAY-5v-XrO"/>

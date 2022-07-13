@@ -44,7 +44,7 @@
     }
     else {
         UIImage* img = [UIImage imageNamed:@"playmate_logo_transparent.png"];
-        [self.profileImageView setImage:[Constants resizeImage:img withDimension:50]];
+        [self.profileImageView setImage:[Constants resizeImage:img withDimension:40]];
     }
     
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
