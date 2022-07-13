@@ -44,22 +44,6 @@
     // Configure the view for the selected state
 }
 
-- (UIImage *)resizeImage:(UIImage *)image {
-    
-    CGSize size = CGSizeMake(83, 83);
-    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 83, 83)];
-    
-    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
-    resizeImageView.image = image;
-    
-    UIGraphicsBeginImageContext(size);
-    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
-
 - (void)setRequestInfo:(FriendRequest *)requestInfo {
     
     _requestInfo = requestInfo;
@@ -76,11 +60,11 @@
     
     if (self.requester[@"profileImage"] != nil) {
         UIImage* img = [UIImage imageWithData:[self.requester[@"profileImage"] getData]];
-        [self.profileImageView setImage:[self resizeImage:img]];
+        [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
     }
     else {
         UIImage* img = [UIImage imageNamed:@"playmate_logo_transparent.png"];
-        [self.profileImageView setImage:[self resizeImage:img]];
+        [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
     }
     
     // set time ago timestamp

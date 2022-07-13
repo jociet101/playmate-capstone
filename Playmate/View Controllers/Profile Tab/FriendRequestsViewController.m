@@ -92,27 +92,11 @@
 
 #pragma mark - Empty table view protocol methods
 
-- (UIImage *)resizeImage:(UIImage *)image {
-    
-    CGSize size = CGSizeMake(80, 80);
-    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 80, 80)];
-    
-    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
-    resizeImageView.image = image;
-    
-    UIGraphicsBeginImageContext(size);
-    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
-
 // TODO: add a notifications placeholder image
-//- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
-//{
-//    return [self resizeImage:[UIImage imageNamed:@"empty_friend_request"]];
-//}
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [Constants resizeImage:[UIImage imageNamed:@"empty_friend_request"] withDimension:80];
+}
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {

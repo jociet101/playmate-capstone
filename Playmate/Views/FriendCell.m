@@ -6,10 +6,12 @@
 //
 
 #import "FriendCell.h"
+#import "Constants.h"
 
 @interface FriendCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
 @end
 
@@ -35,6 +37,15 @@
     [thisUser fetchIfNeeded];
     
     self.nameLabel.text = thisUser.username;
+    
+    if (thisUser[@"profileImage"] != nil) {
+        UIImage* img = [UIImage imageWithData:[thisUser[@"profileImage"] getData]];
+        [self.profileImageView setImage:[Constants resizeImage:img withDimension:60]];
+    }
+    else {
+        UIImage* img = [UIImage imageNamed:@"playmate_logo_transparent.png"];
+        [self.profileImageView setImage:[Constants resizeImage:img withDimension:60]];
+    }
 }
 
 @end

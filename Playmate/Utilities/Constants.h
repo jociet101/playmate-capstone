@@ -74,6 +74,9 @@ NS_ASSUME_NONNULL_BEGIN
 // Some colors
 + (UIColor *)playmateBlue;
 
+// resize image
++ (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension;
+
 @end
 
 NS_ASSUME_NONNULL_END
