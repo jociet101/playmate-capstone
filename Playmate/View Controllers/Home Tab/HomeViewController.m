@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *sessionList;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 
 @end
 
@@ -35,6 +36,12 @@
     self.tableView.tableFooterView = [UIView new];
     
     self.sessionList = [[NSMutableArray alloc] init];
+    
+    PFUser *me = [PFUser currentUser];
+    [me fetchIfNeeded];
+    
+    NSString *greeting = @"Welcome, ";
+    self.welcomeLabel.text = [greeting stringByAppendingString:me[@"firstName"][0]];
     
     // set up refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];

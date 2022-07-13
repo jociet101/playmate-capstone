@@ -283,6 +283,15 @@
     return 3;
 }
 
+// Information for friend requests vc
++ (NSString *)emptyRequestsPlaceholderMsg {
+    return @"Join or create sessions to get to know your Playmates!";
+}
+
++ (NSString *)emptyRequestsPlaceholderTitle {
+    return @"No Friend Requests";
+}
+
 // Some numbers
 + (int)buttonCornerRadius {
     return 20;

@@ -7,6 +7,7 @@
 
 #import "FriendRequestCell.h"
 #import "Constants.h"
+#import "PlayerConnection.h"
 
 @interface FriendRequestCell ()
 
@@ -59,17 +60,20 @@
 
 - (void)setRequestInfo:(FriendRequest *)requestInfo {
     
-    PFUser *requester = requestInfo.requestFrom;
-    [requester fetchIfNeeded];
-    self.requester = requester;
+    _requestInfo = requestInfo;
+    
+    PFQuery *query = [PFUser query];
+    self.requester = [query getObjectWithId:requestInfo.requestFromId];
+    
+    NSLog(@"requester username %@", self.requester[@"username"]);
         
-    NSString *requesterName = [Constants concatenateFirstName:requester[@"firstName"][0] andLast:requester[@"lastName"][0]];
+    NSString *requesterName = [Constants concatenateFirstName:self.requester[@"firstName"][0] andLast:self.requester[@"lastName"][0]];
     self.titleLabel.text = [requesterName stringByAppendingString:@" wants to be friends."];
     self.acceptButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
     self.denyButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
-    if (requester[@"profileImage"] != nil) {
-        UIImage* img = [UIImage imageWithData:[requester[@"profileImage"] getData]];
+    if (self.requester[@"profileImage"] != nil) {
+        UIImage* img = [UIImage imageWithData:[self.requester[@"profileImage"] getData]];
         [self.profileImageView setImage:[self resizeImage:img]];
     }
     else {
@@ -79,19 +83,36 @@
 }
 
 - (void)deleteThisRequest {
-    
+    [self.requestInfo deleteInBackground];
 }
 
 - (IBAction)didTapAccept:(id)sender {
-    [self deleteThisRequest];
+    
+    PFUser *user = [PFUser currentUser];
+    [user fetchIfNeeded];
     
     // add a connection from this person's side
+    PlayerConnection *connection;
+    
+    if ([user objectForKey:@"playerConnection"] == nil) {
+        connection = [PlayerConnection initializePlayerConnection];
+        [user addObject:connection forKey:@"playerConnection"];
+        [user saveInBackground];
+    } else {
+        connection = user[@"playerConnection"];
+    }
+    
+    [PlayerConnection saveMyConnectionTo:self.requestInfo.requestFromId withStatus:YES andWeight:1];
+    [PlayerConnection savePlayer:self.requestInfo.requestFromId ConnectionToMeWithStatus:YES andWeight:1];
+    
+    [self deleteThisRequest];
 }
 
 - (IBAction)didTapDeny:(id)sender {
-    [self deleteThisRequest];
     
-    // do not add a connection
+    [PlayerConnection removeSelfFromPendingOf:self.requestInfo.requestFromId];
+    
+    [self deleteThisRequest];
 }
 
 @end

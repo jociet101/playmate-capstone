@@ -1,21 +1,13 @@
-# July 11 PR
+# July 12 PR
 
 # 👩🏻‍🏫 What does this PR do?
 
-Home, Search, Calendar View Controllers
-- [x] Redo UI of table view cells
-
-Session details
-- [x] Configured collection view for player profiles
-- [x] Created player profile view controller to show player details to others
-
-Profile
-- [x] Reorganize UI of profile page
-
 Friends feature
-- [x] Created Friend Request and Friend Connection models
-- [x] Added Button for adding friend
-- [x] Added view controller for viewing friend requests and configured table view
+- [x] Implemented add and remove friend features
+- [x] Implemented approve or denying a friend request
+- [x] Implemented table view to see friend requests and used pod for improved empty table view ui
 
 
 # Screenshots:
+
+
