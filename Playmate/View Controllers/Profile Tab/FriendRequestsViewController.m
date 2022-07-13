@@ -77,6 +77,7 @@
     FriendRequestCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendRequestCell"];
     NSLog(@"friend request list, %@", self.friendRequestList);
     cell.requestInfo = self.friendRequestList[indexPath.row];
+    cell.delegate = self;
             
     return cell;
 }

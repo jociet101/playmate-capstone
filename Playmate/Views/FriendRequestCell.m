@@ -33,6 +33,8 @@
 }
 
 - (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
+    NSLog(@"did tap user profile");
+    
     [self.delegate didTap:self profileImage:self.requester];
 }
 
