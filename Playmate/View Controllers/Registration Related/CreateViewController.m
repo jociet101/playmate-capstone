@@ -44,7 +44,8 @@ NSString *selectedGender;
     genders = [[NSMutableArray alloc] init];
     [genders addObject:@"Female"];
     [genders addObject:@"Male"];
-    [genders addObject:@"Add more"];
+    [genders addObject:@"Other"];
+    [genders addObject:@"Prefer Not to Say"];
     
     CGRect containerFrame = self.textFieldContainer.frame;
     originalYOrigin = containerFrame.origin.y;

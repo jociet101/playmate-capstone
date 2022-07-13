@@ -71,20 +71,38 @@
     PlayerConnection *pc = [query getFirstObject];
     [pc fetchIfNeeded];
     
-    // if current user is friends w this person, set title "Remove Friend"
     if (pc != nil) {
         NSLog(@"pc not nil, pending list %@", pc.pendingList);
+        // if current user is friends w this person, set title "Remove Friend"
         if ([pc.friendsList containsObject:self.user.objectId]) {
             [self.addFriendButton setTitle:@"Remove Friend" forState:UIControlStateNormal];
-        } else if ([pc.pendingList containsObject:self.user.objectId]) {
+        }
+        // if current user sent unseen request to this person, set as "Request Pending"
+        else if ([pc.pendingList containsObject:self.user.objectId]) {
             [self setRequestPendingAsState];
         }
+    }
+    
+    [query whereKey:@"userObjectId" equalTo:self.user.objectId];
+    pc = [query getFirstObject];
+    [pc fetchIfNeeded];
+    
+    // if current user has request from this person, set as "Sent you a request"
+    if (pc != nil && [pc.pendingList containsObject:me.objectId]) {
+        [self setSendRequestToYouAsState];
     }
 }
 
 - (void)disableFriendButton {
+    [self.addFriendButton setTitle:@"You" forState:UIControlStateNormal];
     [self.addFriendButton setEnabled:NO];
-    self.addFriendButton.alpha = 0;
+    self.addFriendButton.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)setSendRequestToYouAsState {
+    [self.addFriendButton setTitle:@"Sent You Request" forState:UIControlStateNormal];
+    [self.addFriendButton setEnabled:NO];
+    self.addFriendButton.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)setRequestPendingAsState {
@@ -120,6 +138,8 @@
     }
     
     // Add pending friend connection from me to other
+    
+    NSLog(@"did tap friend and created %@ pc %@", user.objectId, pc);
     
     [pc saveInBackground];
     
