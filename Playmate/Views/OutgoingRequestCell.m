@@ -7,6 +7,7 @@
 
 #import "OutgoingRequestCell.h"
 #import "Constants.h"
+#import "PlayerConnection.h"
 
 @interface OutgoingRequestCell ()
 
@@ -50,6 +51,21 @@
         [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
     }
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
+}
+
+- (IBAction)cancelOutgoingRequest:(id)sender {
+    
+    PFUser *user = [PFUser currentUser];
+    [user fetchIfNeeded];
+    
+    // add a connection from this person's side
+    PlayerConnection *connection = user[@"playerConnection"][0];
+    
+    NSMutableArray *tempPendingList = (NSMutableArray *)connection[@"pendingList"];
+    [tempPendingList removeObject:self.userObjectId];
+    connection[@"pendingList"] = (NSArray *)tempPendingList;
+    
+    [connection saveInBackground];
 }
 
 @end
