@@ -1,5 +1,5 @@
 //
-//  FriendRequestsViewController.h
+//  OutgoingRequestsViewController.h
 //  Playmate
 //
 //  Created by Jocelyn Tseng on 7/13/22.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FriendRequestsViewController : UIViewController
+@interface OutgoingRequestsViewController : UIViewController
 
 @end
 
