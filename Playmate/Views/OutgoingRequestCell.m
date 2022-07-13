@@ -6,12 +6,12 @@
 //
 
 #import "OutgoingRequestCell.h"
+#import "Constants.h"
 
 @interface OutgoingRequestCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
-@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeAgoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @end
@@ -31,6 +31,25 @@
 
 - (void)setUserObjectId:(NSString *)userObjectId {
     _userObjectId = userObjectId;
+    
+    PFQuery *query = [PFUser query];
+    PFUser *user = [query getObjectWithId:userObjectId];
+    [user fetchIfNeeded];
+    
+    NSString *name = [Constants concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
+    self.titleLabel.text = [@"You requested to be friends with " stringByAppendingString:name];
+    
+    self.cancelButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
+    
+    if (user[@"profileImage"] != nil) {
+        UIImage* img = [UIImage imageWithData:[user[@"profileImage"] getData]];
+        [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
+    }
+    else {
+        UIImage* img = [UIImage imageNamed:@"playmate_logo_transparent.png"];
+        [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
+    }
+    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
 }
 
 @end

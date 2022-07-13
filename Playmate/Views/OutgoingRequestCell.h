@@ -18,26 +18,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-
-/*
- @protocol FriendRequestCellDelegate;
-
- @interface FriendRequestCell : UITableViewCell
-
- @property (nonatomic, strong) FriendRequest *requestInfo;
-
- - (void)setRequestInfo:(FriendRequest *)requestInfo;
-
- @property (nonatomic, weak) id<FriendRequestCellDelegate> delegate;
-
- @end
-
- @protocol FriendRequestCellDelegate
-
- - (void)didTap:(FriendRequestCell *)cell profileImage:(PFUser *)user;
- - (void)didRespondToRequest;
-
- @end
- */
-
 NS_ASSUME_NONNULL_END
