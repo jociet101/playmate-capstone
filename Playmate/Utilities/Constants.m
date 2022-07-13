@@ -289,7 +289,7 @@
 }
 
 + (NSString *)emptyRequestsPlaceholderTitle {
-    return @"No Notifications";
+    return @"No Incoming Friend Requests";
 }
 
 // Information for friend list vc
@@ -299,6 +299,10 @@
 
 + (NSString *)emptyListPlaceholderTitle {
     return @"No Friends";
+}
+
++ (NSString *)emptyOutgoingRequestsPlaceholderTitle {
+    return @"No Outgoing Friend Requests";
 }
 
 // Some numbers

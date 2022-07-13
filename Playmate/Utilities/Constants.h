@@ -63,6 +63,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)emptyRequestsPlaceholderMsg;
 + (NSString *)emptyRequestsPlaceholderTitle;
 
++ (NSString *)emptyOutgoingRequestsPlaceholderTitle;
+
 // Information for friend list vc
 + (NSString *)emptyListPlaceholderMsg;
 + (NSString *)emptyListPlaceholderTitle;

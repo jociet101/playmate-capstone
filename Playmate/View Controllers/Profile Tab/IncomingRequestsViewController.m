@@ -27,7 +27,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"incoming requests view did load");
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -78,7 +77,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     FriendRequestCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendRequestCell"];
-    NSLog(@"friend request list, %@", self.friendRequestList);
     cell.requestInfo = self.friendRequestList[indexPath.row];
     cell.delegate = self;
             
@@ -86,8 +84,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"called number of rows in section");
-    
     return self.friendRequestList.count;
 }
 

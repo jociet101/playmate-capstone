@@ -8,8 +8,10 @@
 #import "OutgoingRequestsViewController.h"
 #import "OutgoingRequestCell.h"
 #import "PlayerConnection.h"
+#import "UIScrollView+EmptyDataSet.h"
+#import "Constants.h"
 
-@interface OutgoingRequestsViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface OutgoingRequestsViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *outgoingRequestList;
@@ -30,8 +32,8 @@
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-//    self.tableView.emptyDataSetSource = self;
-//    self.tableView.emptyDataSetDelegate = self;
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
     
     [self fetchData];
 }
@@ -66,14 +68,27 @@
     return 1;
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Empty table view protocol methods
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+// TODO: add a notifications placeholder image
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [Constants resizeImage:[UIImage imageNamed:@"empty_friend_request"] withDimension:80];
 }
-*/
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = [Constants emptyOutgoingRequestsPlaceholderTitle];
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIColor clearColor];
+}
 
 @end
