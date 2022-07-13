@@ -91,9 +91,25 @@
 
 #pragma mark - Empty table view protocol methods
 
+- (UIImage *)resizeImage:(UIImage *)image {
+    
+    CGSize size = CGSizeMake(80, 80);
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 80, 80)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
-    return [UIImage imageNamed:@"logo_small"];
+    return [self resizeImage:[UIImage imageNamed:@"empty_friend_request"]];
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
@@ -123,7 +139,7 @@
 
 - (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
 {
-    return [Constants playmateBlue];
+    return [UIColor lightGrayColor];
 }
 
 #pragma mark - Friend Request cell delegate method

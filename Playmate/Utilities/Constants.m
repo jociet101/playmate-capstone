@@ -285,7 +285,7 @@
 
 // Information for friend requests vc
 + (NSString *)emptyRequestsPlaceholderMsg {
-    return @"Join or create sessions to get to know other Playmaters!";
+    return @"Join or create sessions to get to know your Playmates!";
 }
 
 + (NSString *)emptyRequestsPlaceholderTitle {
