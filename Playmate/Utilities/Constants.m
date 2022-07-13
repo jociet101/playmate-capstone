@@ -285,11 +285,20 @@
 
 // Information for friend requests vc
 + (NSString *)emptyRequestsPlaceholderMsg {
-    return @"Join or create sessions to get to know your Playmates!";
+    return @"";
 }
 
 + (NSString *)emptyRequestsPlaceholderTitle {
-    return @"No Friend Requests";
+    return @"No Notifications";
+}
+
+// Information for friend list vc
++ (NSString *)emptyListPlaceholderMsg {
+    return @"Create or join sessions to meet your Playmates!";
+}
+
++ (NSString *)emptyListPlaceholderTitle {
+    return @"No Friends";
 }
 
 // Some numbers

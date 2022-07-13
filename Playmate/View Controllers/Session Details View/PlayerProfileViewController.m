@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *genderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bioField;
 @property (weak, nonatomic) IBOutlet UIButton *addFriendButton;
+@property (weak, nonatomic) IBOutlet UIButton *numberOfFriendsButton;
 
 @property (nonatomic, assign) BOOL isMyFriend;
 
@@ -54,6 +55,12 @@
         [self.profileImageView setImage:img];
     }
     
+    PlayerConnection *thisPc = self.user[@"playerConnection"];
+    [thisPc fetchIfNeeded];
+    
+    unsigned long numFriends = ((NSArray *)thisPc[@"friendList"]).count;
+    
+    [self.numberOfFriendsButton setTitle:[NSString stringWithFormat:@"%ld friends", numFriends] forState:UIControlStateNormal];
 }
 
 -(void)manageFriendButtonUI {

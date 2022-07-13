@@ -11,6 +11,7 @@
 #import "DateTools.h"
 #import "Constants.h"
 #import "EditProfileViewController.h"
+#import "PlayerConnection.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate>
 
@@ -22,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *bioField;
 @property (weak, nonatomic) IBOutlet UILabel *profileImagePlaceholder;
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
+@property (weak, nonatomic) IBOutlet UIButton *numberOfFriendsButton;
 
 @end
 
@@ -59,6 +61,13 @@
         UIImage* img = [UIImage imageNamed:@"playmate_backdrop.png"];
         [self.backdropImageView setImage:img];
     }
+    
+    PlayerConnection *myPc = user[@"playerConnection"];
+    [myPc fetchIfNeeded];
+    
+    unsigned long numFriends = ((NSArray *)myPc[@"friendList"]).count;
+    
+    [self.numberOfFriendsButton setTitle:[NSString stringWithFormat:@"%ld friends", numFriends] forState:UIControlStateNormal];
 }
 
 #pragma mark - Uploading or taking profile image

@@ -63,6 +63,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)emptyRequestsPlaceholderMsg;
 + (NSString *)emptyRequestsPlaceholderTitle;
 
+// Information for friend list vc
++ (NSString *)emptyListPlaceholderMsg;
++ (NSString *)emptyListPlaceholderTitle;
+
 // Some numbers
 + (int)buttonCornerRadius;
 + (int)smallButtonCornerRadius;
