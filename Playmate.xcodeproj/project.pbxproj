@@ -27,6 +27,7 @@
 		3C8E5392287F362B0087498B /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E5391287F362B0087498B /* FriendCell.m */; };
 		3C8E5395287F683D0087498B /* FriendRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E5394287F683D0087498B /* FriendRequestsViewController.m */; };
 		3C8E5399287F69170087498B /* OutgoingRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E5398287F69170087498B /* OutgoingRequestsViewController.m */; };
+		3C8E539C287F7A8D0087498B /* OutgoingRequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E539B287F7A8D0087498B /* OutgoingRequestCell.m */; };
 		3CA1A199287DF02E00BBDB69 /* ConnectionState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1A198287DF02E00BBDB69 /* ConnectionState.m */; };
 		3CF4186428765585009741FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF4186328765585009741FF /* MapKit.framework */; };
 		3CF4A58A2878AA1A000C5E7D /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */; };
@@ -113,6 +114,8 @@
 		3C8E5394287F683D0087498B /* FriendRequestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendRequestsViewController.m; sourceTree = "<group>"; };
 		3C8E5397287F69170087498B /* OutgoingRequestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutgoingRequestsViewController.h; sourceTree = "<group>"; };
 		3C8E5398287F69170087498B /* OutgoingRequestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutgoingRequestsViewController.m; sourceTree = "<group>"; };
+		3C8E539A287F7A8D0087498B /* OutgoingRequestCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutgoingRequestCell.h; sourceTree = "<group>"; };
+		3C8E539B287F7A8D0087498B /* OutgoingRequestCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutgoingRequestCell.m; sourceTree = "<group>"; };
 		3CA1A197287DF02E00BBDB69 /* ConnectionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionState.h; sourceTree = "<group>"; };
 		3CA1A198287DF02E00BBDB69 /* ConnectionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectionState.m; sourceTree = "<group>"; };
 		3CF4186328765585009741FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -344,6 +347,8 @@
 				3CF4A5BD287CE7C8000C5E7D /* FriendRequestCell.m */,
 				3C8E5390287F362B0087498B /* FriendCell.h */,
 				3C8E5391287F362B0087498B /* FriendCell.m */,
+				3C8E539A287F7A8D0087498B /* OutgoingRequestCell.h */,
+				3C8E539B287F7A8D0087498B /* OutgoingRequestCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -666,6 +671,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C45B565286E64EB00EE578F /* WelcomeViewController.m in Sources */,
+				3C8E539C287F7A8D0087498B /* OutgoingRequestCell.m in Sources */,
 				3CF4A5AF287CA9D1000C5E7D /* PlayerProfileViewController.m in Sources */,
 				3C383FDD28775D2A00BC9B55 /* APIManager.m in Sources */,
 				3CF4A5B2287CD65D000C5E7D /* FriendRequest.m in Sources */,

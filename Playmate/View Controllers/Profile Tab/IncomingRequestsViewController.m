@@ -55,8 +55,6 @@
             
             self.friendRequestList = requests;
             
-            NSLog(@"requests list %@", requests);
-            
             [self.tableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);

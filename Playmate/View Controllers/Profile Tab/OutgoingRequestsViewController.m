@@ -6,11 +6,13 @@
 //
 
 #import "OutgoingRequestsViewController.h"
+#import "OutgoingRequestCell.h"
+#import "PlayerConnection.h"
 
-@interface OutgoingRequestsViewController ()
-//UITableViewDelegate, UITableViewDataSource>
+@interface OutgoingRequestsViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *outgoingRequestList;
 
 @end
 
@@ -23,29 +25,44 @@
 - (void)viewWillAppear:(BOOL)animated {
     NSLog(@"outgoing requests view did load");
     
-//    self.tableView.delegate = self;
-//    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+//    self.tableView.emptyDataSetSource = self;
+//    self.tableView.emptyDataSetDelegate = self;
+    
+    [self fetchData];
+}
+
+- (void)fetchData {
+    
+    // fetch data for outoing request list
+    PFUser *user = [PFUser currentUser];
+    [user fetchIfNeeded];
+    
+    PlayerConnection *myPc = user[@"playerConnection"][0];
+    [myPc fetchIfNeeded];
+    
+    self.outgoingRequestList = myPc[@"pendingList"];
 }
 
 #pragma mark - Table view protocol methods
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//
-//    FriendRequestCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendRequestCell"];
-//    NSLog(@"friend request list, %@", self.friendRequestList);
-//    cell.requestInfo = self.friendRequestList[indexPath.row];
-//    cell.delegate = self;
-//
-//    return cell;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return 2;
-//}
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return 1;
-//}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    OutgoingRequestCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OutgoingRequestCell"];
+    cell.userObjectId = self.outgoingRequestList[indexPath.row];
+
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.outgoingRequestList.count;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
 
 /*
 #pragma mark - Navigation
