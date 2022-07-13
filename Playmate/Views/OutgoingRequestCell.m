@@ -8,6 +8,7 @@
 #import "OutgoingRequestCell.h"
 #import "Constants.h"
 #import "PlayerConnection.h"
+#import "FriendRequest.h"
 
 @interface OutgoingRequestCell ()
 
@@ -58,7 +59,7 @@
     PFUser *user = [PFUser currentUser];
     [user fetchIfNeeded];
     
-    // add a connection from this person's side
+    // remove user from my pending list
     PlayerConnection *connection = user[@"playerConnection"][0];
     
     NSMutableArray *tempPendingList = (NSMutableArray *)connection[@"pendingList"];
@@ -66,6 +67,14 @@
     connection[@"pendingList"] = (NSArray *)tempPendingList;
     
     [connection saveInBackground];
+    
+    // delete the friend request object
+    PFQuery *query = [PFQuery queryWithClassName:@"FriendRequest"];
+    [query whereKey:@"requestFromId" equalTo:user.objectId];
+    [query whereKey:@"requestToId" equalTo:self.userObjectId];
+    
+    FriendRequest *request = [query getFirstObject];
+    [request deleteInBackground];
     
     [self.delegate didCancelRequest];
 }
