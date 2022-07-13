@@ -86,7 +86,6 @@
             self.isMyFriend = NO;
             [self setRequestPendingAsState];
         }
-        return;
     }
     
     [query whereKey:@"userObjectId" equalTo:self.user.objectId];
@@ -97,7 +96,6 @@
     if (pc != nil && [pc.pendingList containsObject:me.objectId]) {
         self.isMyFriend = NO;
         [self setSendRequestToYouAsState];
-        return;
     }
 }
 
