@@ -68,6 +68,8 @@
     
     unsigned long numFriends = ((NSArray *)myPc[@"friendsList"]).count;
     
+    // TODO: find out how to make font bold, look like a button
+//    [self.numberOfFriendsButton.titleLabel setFont:[UIFont fontWithName:@"Avenir" size:16.0]];
     [self.numberOfFriendsButton setTitle:[NSString stringWithFormat:@"%ld friends", numFriends] forState:UIControlStateNormal];
 }
 

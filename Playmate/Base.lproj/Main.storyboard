@@ -1252,8 +1252,8 @@
                                     <action selector="didTapFriend:" destination="hNf-lE-ZKe" eventType="touchUpInside" id="DOd-ud-pht"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQH-Cr-mDU">
-                                <rect key="frame" x="149" y="360" width="92" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQH-Cr-mDU">
+                                <rect key="frame" x="148" y="360" width="95" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -1261,7 +1261,7 @@
                                     <attributedString key="attributedTitle">
                                         <fragment content="# Friends">
                                             <attributes>
-                                                <font key="NSFont" size="16" name="AvenirNext-DemiBold"/>
+                                                <font key="NSFont" size="16" name="AvenirNext-Bold"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
@@ -1436,7 +1436,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qH9-45-caq">
-                                <rect key="frame" x="149" y="362" width="92" height="36"/>
+                                <rect key="frame" x="148" y="362" width="95" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -1444,8 +1444,8 @@
                                     <attributedString key="attributedTitle">
                                         <fragment content="# Friends">
                                             <attributes>
-                                                <font key="NSFont" size="16" name="AvenirNext-DemiBold"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                <font key="NSFont" size="16" name="AvenirNext-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
@@ -2110,7 +2110,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rqC-KX-Pok"/>
+        <segue reference="pbU-9p-1Qp"/>
         <segue reference="jcx-uQ-feG"/>
         <segue reference="lMt-QE-YDG"/>
         <segue reference="rNL-Fb-mXA"/>
