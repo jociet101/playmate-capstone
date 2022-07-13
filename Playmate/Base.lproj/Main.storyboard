@@ -1451,7 +1451,7 @@
                                     </attributedString>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="PE5-R2-Lql" kind="show" id="pbU-9p-1Qp"/>
+                                    <segue destination="PE5-R2-Lql" kind="show" identifier="toFriendsList" id="pbU-9p-1Qp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1675,7 +1675,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="F8E-fV-trJ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendCell" rowHeight="100" id="F8E-fV-trJ" customClass="FriendCell">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F8E-fV-trJ" id="c5j-cf-RxC">
@@ -1691,6 +1691,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="RSF-fz-KDC" id="RE9-Tp-qis"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -2090,7 +2093,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pbU-9p-1Qp"/>
+        <segue reference="rqC-KX-Pok"/>
         <segue reference="jcx-uQ-feG"/>
         <segue reference="lMt-QE-YDG"/>
         <segue reference="rNL-Fb-mXA"/>

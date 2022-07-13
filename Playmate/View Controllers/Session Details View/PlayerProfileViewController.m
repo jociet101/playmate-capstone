@@ -9,6 +9,7 @@
 #import "Constants.h"
 #import "FriendRequest.h"
 #import "PlayerConnection.h"
+#import "FriendsListViewController.h"
 
 @interface PlayerProfileViewController ()
 
@@ -55,10 +56,10 @@
         [self.profileImageView setImage:img];
     }
     
-    PlayerConnection *thisPc = self.user[@"playerConnection"];
+    PlayerConnection *thisPc = self.user[@"playerConnection"][0];
     [thisPc fetchIfNeeded];
     
-    unsigned long numFriends = ((NSArray *)thisPc[@"friendList"]).count;
+    unsigned long numFriends = ((NSArray *)thisPc[@"friendsList"]).count;
     
     [self.numberOfFriendsButton setTitle:[NSString stringWithFormat:@"%ld friends", numFriends] forState:UIControlStateNormal];
 }
@@ -195,15 +196,13 @@
     }
 }
 
-
-/*
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"toFriendsList"]) {
+        FriendsListViewController *vc = [segue destinationViewController];
+        vc.thisUser = self.user;
+    }
 }
-*/
 
 @end

@@ -12,6 +12,7 @@
 #import "Constants.h"
 #import "EditProfileViewController.h"
 #import "PlayerConnection.h"
+#import "FriendsListViewController.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate>
 
@@ -62,10 +63,10 @@
         [self.backdropImageView setImage:img];
     }
     
-    PlayerConnection *myPc = user[@"playerConnection"];
+    PlayerConnection *myPc = user[@"playerConnection"][0];
     [myPc fetchIfNeeded];
     
-    unsigned long numFriends = ((NSArray *)myPc[@"friendList"]).count;
+    unsigned long numFriends = ((NSArray *)myPc[@"friendsList"]).count;
     
     [self.numberOfFriendsButton setTitle:[NSString stringWithFormat:@"%ld friends", numFriends] forState:UIControlStateNormal];
 }
@@ -139,6 +140,14 @@
 
 - (IBAction)viewFriendRequests:(id)sender {
     [self performSegueWithIdentifier:@"viewFriendRequests" sender:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"toFriendsList"]) {
+        FriendsListViewController *vc = [segue destinationViewController];
+        vc.thisUser = [PFUser currentUser];
+    }
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
 #import "PlayerConnection.h"
+#import "FriendCell.h"
 
 @interface FriendsListViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -29,16 +30,24 @@
     self.tableView.emptyDataSetDelegate = self;
     
     [self.thisUser fetchIfNeeded];
-    PlayerConnection *thisPc = self.thisUser[@"playerConnection"];
+    PlayerConnection *thisPc = self.thisUser[@"playerConnection"][0];
     [thisPc fetchIfNeeded];
     
     self.friendsList = thisPc[@"friendsList"];
+    
+    NSLog(@"%@", self.friendsList);
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view protocol methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"self.friendsList %@", self.friendsList);
     
+    FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendCell"];
+    cell.thisUserId = self.friendsList[indexPath.row];
+    return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

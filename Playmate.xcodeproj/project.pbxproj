@@ -24,6 +24,7 @@
 		3C45B5A4287606EF00EE578F /* SelectMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5A3287606EF00EE578F /* SelectMapViewController.m */; };
 		3C45B5A728760C1E00EE578F /* Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5A628760C1E00EE578F /* Filters.m */; };
 		3C8E538F287F2D200087498B /* FriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E538E287F2D200087498B /* FriendsListViewController.m */; };
+		3C8E5392287F362B0087498B /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E5391287F362B0087498B /* FriendCell.m */; };
 		3CA1A199287DF02E00BBDB69 /* ConnectionState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1A198287DF02E00BBDB69 /* ConnectionState.m */; };
 		3CF4186428765585009741FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF4186328765585009741FF /* MapKit.framework */; };
 		3CF4A58A2878AA1A000C5E7D /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */; };
@@ -104,6 +105,8 @@
 		3C45B5A628760C1E00EE578F /* Filters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Filters.m; sourceTree = "<group>"; };
 		3C8E538D287F2D200087498B /* FriendsListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsListViewController.h; sourceTree = "<group>"; };
 		3C8E538E287F2D200087498B /* FriendsListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsListViewController.m; sourceTree = "<group>"; };
+		3C8E5390287F362B0087498B /* FriendCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
+		3C8E5391287F362B0087498B /* FriendCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
 		3CA1A197287DF02E00BBDB69 /* ConnectionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionState.h; sourceTree = "<group>"; };
 		3CA1A198287DF02E00BBDB69 /* ConnectionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectionState.m; sourceTree = "<group>"; };
 		3CF4186328765585009741FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -328,6 +331,8 @@
 				3CF4A5AA287C962D000C5E7D /* PlayerProfileCollectionCell.m */,
 				3CF4A5BC287CE7C8000C5E7D /* FriendRequestCell.h */,
 				3CF4A5BD287CE7C8000C5E7D /* FriendRequestCell.m */,
+				3C8E5390287F362B0087498B /* FriendCell.h */,
+				3C8E5391287F362B0087498B /* FriendCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -663,6 +668,7 @@
 				3C45B58928737E6200EE578F /* SearchViewController.m in Sources */,
 				3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */,
 				3C45B59E2875060700EE578F /* SessionDetailsViewController.m in Sources */,
+				3C8E5392287F362B0087498B /* FriendCell.m in Sources */,
 				3CF4A5A5287B6647000C5E7D /* FiltersMenuViewController.m in Sources */,
 				3C45B574287297EB00EE578F /* HomeViewController.m in Sources */,
 				3CF4A5BE287CE7C8000C5E7D /* FriendRequestCell.m in Sources */,
