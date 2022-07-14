@@ -19,22 +19,6 @@
 
 @implementation PlayerProfileCollectionCell
 
-- (UIImage *)resizeImage:(UIImage *)image {
-    
-    CGSize size = CGSizeMake(114, 114);
-    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 114, 114)];
-    
-    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
-    resizeImageView.image = image;
-    
-    UIGraphicsBeginImageContext(size);
-    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
-
 - (void)setUserProfile:(PFUser *)user {
     
     self.layer.cornerRadius = [Constants buttonCornerRadius];
@@ -47,11 +31,11 @@
     if (user[@"profileImage"] != nil) {
         // set image stuff
         UIImage* img = [UIImage imageWithData:[user[@"profileImage"] getData]];
-        [self.profileImageView setImage:[self resizeImage:img]];
+        [self.profileImageView setImage:[Constants resizeImage:img withDimension:114]];
     }
     else {
         UIImage* img = [UIImage imageNamed:@"playmate_logo_transparent.png"];
-        [self.profileImageView setImage:[self resizeImage:img]];
+        [self.profileImageView setImage:[Constants resizeImage:img withDimension:114]];
     }
     
     // make profile image view a circle

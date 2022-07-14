@@ -68,13 +68,9 @@
     }
     
     [user addObject:self.bioView.text forKey:@"biography"];
-    
-    NSLog(@"%@", self.firstNameView.text);
-    
+        
     [user saveInBackground];
-    
-    NSLog(@"saved edit profile");
-    
+        
     [self.navigationController popViewControllerAnimated:YES];
 }
 

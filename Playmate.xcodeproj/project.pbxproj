@@ -23,6 +23,11 @@
 		3C45B59E2875060700EE578F /* SessionDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B59D2875060700EE578F /* SessionDetailsViewController.m */; };
 		3C45B5A4287606EF00EE578F /* SelectMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5A3287606EF00EE578F /* SelectMapViewController.m */; };
 		3C45B5A728760C1E00EE578F /* Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5A628760C1E00EE578F /* Filters.m */; };
+		3C8E538F287F2D200087498B /* FriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E538E287F2D200087498B /* FriendsListViewController.m */; };
+		3C8E5392287F362B0087498B /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E5391287F362B0087498B /* FriendCell.m */; };
+		3C8E5395287F683D0087498B /* FriendRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E5394287F683D0087498B /* FriendRequestsViewController.m */; };
+		3C8E5399287F69170087498B /* OutgoingRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E5398287F69170087498B /* OutgoingRequestsViewController.m */; };
+		3C8E539C287F7A8D0087498B /* OutgoingRequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E539B287F7A8D0087498B /* OutgoingRequestCell.m */; };
 		3CA1A199287DF02E00BBDB69 /* ConnectionState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1A198287DF02E00BBDB69 /* ConnectionState.m */; };
 		3CF4186428765585009741FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF4186328765585009741FF /* MapKit.framework */; };
 		3CF4A58A2878AA1A000C5E7D /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */; };
@@ -36,7 +41,7 @@
 		3CF4A5AF287CA9D1000C5E7D /* PlayerProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5AE287CA9D1000C5E7D /* PlayerProfileViewController.m */; };
 		3CF4A5B2287CD65D000C5E7D /* FriendRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5B1287CD65D000C5E7D /* FriendRequest.m */; };
 		3CF4A5B8287CD963000C5E7D /* PlayerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5B7287CD963000C5E7D /* PlayerConnection.m */; };
-		3CF4A5BB287CE3A9000C5E7D /* FriendRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5BA287CE3A9000C5E7D /* FriendRequestsViewController.m */; };
+		3CF4A5BB287CE3A9000C5E7D /* IncomingRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5BA287CE3A9000C5E7D /* IncomingRequestsViewController.m */; };
 		3CF4A5BE287CE7C8000C5E7D /* FriendRequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5BD287CE7C8000C5E7D /* FriendRequestCell.m */; };
 		3CF652A9286D036600BD5EDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652A8286D036600BD5EDB /* AppDelegate.m */; };
 		3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF652AB286D036600BD5EDB /* SceneDelegate.m */; };
@@ -101,6 +106,16 @@
 		3C45B5A3287606EF00EE578F /* SelectMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectMapViewController.m; sourceTree = "<group>"; };
 		3C45B5A528760C1E00EE578F /* Filters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Filters.h; sourceTree = "<group>"; };
 		3C45B5A628760C1E00EE578F /* Filters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Filters.m; sourceTree = "<group>"; };
+		3C8E538D287F2D200087498B /* FriendsListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsListViewController.h; sourceTree = "<group>"; };
+		3C8E538E287F2D200087498B /* FriendsListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsListViewController.m; sourceTree = "<group>"; };
+		3C8E5390287F362B0087498B /* FriendCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
+		3C8E5391287F362B0087498B /* FriendCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
+		3C8E5393287F683D0087498B /* FriendRequestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendRequestsViewController.h; sourceTree = "<group>"; };
+		3C8E5394287F683D0087498B /* FriendRequestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendRequestsViewController.m; sourceTree = "<group>"; };
+		3C8E5397287F69170087498B /* OutgoingRequestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutgoingRequestsViewController.h; sourceTree = "<group>"; };
+		3C8E5398287F69170087498B /* OutgoingRequestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutgoingRequestsViewController.m; sourceTree = "<group>"; };
+		3C8E539A287F7A8D0087498B /* OutgoingRequestCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutgoingRequestCell.h; sourceTree = "<group>"; };
+		3C8E539B287F7A8D0087498B /* OutgoingRequestCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutgoingRequestCell.m; sourceTree = "<group>"; };
 		3CA1A197287DF02E00BBDB69 /* ConnectionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionState.h; sourceTree = "<group>"; };
 		3CA1A198287DF02E00BBDB69 /* ConnectionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectionState.m; sourceTree = "<group>"; };
 		3CF4186328765585009741FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -126,8 +141,8 @@
 		3CF4A5B1287CD65D000C5E7D /* FriendRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendRequest.m; sourceTree = "<group>"; };
 		3CF4A5B6287CD963000C5E7D /* PlayerConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerConnection.h; sourceTree = "<group>"; };
 		3CF4A5B7287CD963000C5E7D /* PlayerConnection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerConnection.m; sourceTree = "<group>"; };
-		3CF4A5B9287CE3A9000C5E7D /* FriendRequestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendRequestsViewController.h; sourceTree = "<group>"; };
-		3CF4A5BA287CE3A9000C5E7D /* FriendRequestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendRequestsViewController.m; sourceTree = "<group>"; };
+		3CF4A5B9287CE3A9000C5E7D /* IncomingRequestsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncomingRequestsViewController.h; sourceTree = "<group>"; };
+		3CF4A5BA287CE3A9000C5E7D /* IncomingRequestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IncomingRequestsViewController.m; sourceTree = "<group>"; };
 		3CF4A5BC287CE7C8000C5E7D /* FriendRequestCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendRequestCell.h; sourceTree = "<group>"; };
 		3CF4A5BD287CE7C8000C5E7D /* FriendRequestCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendRequestCell.m; sourceTree = "<group>"; };
 		3CF652A4286D036600BD5EDB /* Playmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -257,12 +272,19 @@
 		3C45B575287299B900EE578F /* Profile Tab */ = {
 			isa = PBXGroup;
 			children = (
+				3C8E5396287F68F60087498B /* Friends */,
+				3C8E538D287F2D200087498B /* FriendsListViewController.h */,
+				3C8E538E287F2D200087498B /* FriendsListViewController.m */,
+				3C8E5393287F683D0087498B /* FriendRequestsViewController.h */,
+				3C8E5394287F683D0087498B /* FriendRequestsViewController.m */,
+				3CF4A5B9287CE3A9000C5E7D /* IncomingRequestsViewController.h */,
+				3CF4A5BA287CE3A9000C5E7D /* IncomingRequestsViewController.m */,
+				3C8E5397287F69170087498B /* OutgoingRequestsViewController.h */,
+				3C8E5398287F69170087498B /* OutgoingRequestsViewController.m */,
 				3C45B576287299C200EE578F /* ProfileViewController.h */,
 				3C45B577287299C200EE578F /* ProfileViewController.m */,
 				3CF4A5882878AA1A000C5E7D /* EditProfileViewController.h */,
 				3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */,
-				3CF4A5B9287CE3A9000C5E7D /* FriendRequestsViewController.h */,
-				3CF4A5BA287CE3A9000C5E7D /* FriendRequestsViewController.m */,
 			);
 			path = "Profile Tab";
 			sourceTree = "<group>";
@@ -323,8 +345,19 @@
 				3CF4A5AA287C962D000C5E7D /* PlayerProfileCollectionCell.m */,
 				3CF4A5BC287CE7C8000C5E7D /* FriendRequestCell.h */,
 				3CF4A5BD287CE7C8000C5E7D /* FriendRequestCell.m */,
+				3C8E5390287F362B0087498B /* FriendCell.h */,
+				3C8E5391287F362B0087498B /* FriendCell.m */,
+				3C8E539A287F7A8D0087498B /* OutgoingRequestCell.h */,
+				3C8E539B287F7A8D0087498B /* OutgoingRequestCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3C8E5396287F68F60087498B /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Friends;
 			sourceTree = "<group>";
 		};
 		3CF4A5AC287CA9B6000C5E7D /* Session Details View */ = {
@@ -638,6 +671,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C45B565286E64EB00EE578F /* WelcomeViewController.m in Sources */,
+				3C8E539C287F7A8D0087498B /* OutgoingRequestCell.m in Sources */,
 				3CF4A5AF287CA9D1000C5E7D /* PlayerProfileViewController.m in Sources */,
 				3C383FDD28775D2A00BC9B55 /* APIManager.m in Sources */,
 				3CF4A5B2287CD65D000C5E7D /* FriendRequest.m in Sources */,
@@ -658,6 +692,7 @@
 				3C45B58928737E6200EE578F /* SearchViewController.m in Sources */,
 				3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */,
 				3C45B59E2875060700EE578F /* SessionDetailsViewController.m in Sources */,
+				3C8E5392287F362B0087498B /* FriendCell.m in Sources */,
 				3CF4A5A5287B6647000C5E7D /* FiltersMenuViewController.m in Sources */,
 				3C45B574287297EB00EE578F /* HomeViewController.m in Sources */,
 				3CF4A5BE287CE7C8000C5E7D /* FriendRequestCell.m in Sources */,
@@ -665,8 +700,11 @@
 				3C45B5A4287606EF00EE578F /* SelectMapViewController.m in Sources */,
 				3CF4A5A8287B67B4000C5E7D /* FiltersMenuPickerCell.m in Sources */,
 				3CA1A199287DF02E00BBDB69 /* ConnectionState.m in Sources */,
+				3C8E5399287F69170087498B /* OutgoingRequestsViewController.m in Sources */,
+				3C8E538F287F2D200087498B /* FriendsListViewController.m in Sources */,
 				3CF4A5B8287CD963000C5E7D /* PlayerConnection.m in Sources */,
-				3CF4A5BB287CE3A9000C5E7D /* FriendRequestsViewController.m in Sources */,
+				3CF4A5BB287CE3A9000C5E7D /* IncomingRequestsViewController.m in Sources */,
+				3C8E5395287F683D0087498B /* FriendRequestsViewController.m in Sources */,
 				3C383FD52877416D00BC9B55 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

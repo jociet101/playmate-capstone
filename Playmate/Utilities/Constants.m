@@ -285,11 +285,24 @@
 
 // Information for friend requests vc
 + (NSString *)emptyRequestsPlaceholderMsg {
-    return @"Join or create sessions to get to know your Playmates!";
+    return @"";
 }
 
 + (NSString *)emptyRequestsPlaceholderTitle {
-    return @"No Friend Requests";
+    return @"No Incoming Friend Requests";
+}
+
+// Information for friend list vc
++ (NSString *)emptyListPlaceholderMsg {
+    return @"Create or join sessions to meet your Playmates!";
+}
+
++ (NSString *)emptyListPlaceholderTitle {
+    return @"No Friends";
+}
+
++ (NSString *)emptyOutgoingRequestsPlaceholderTitle {
+    return @"No Outgoing Friend Requests";
 }
 
 // Some numbers
@@ -306,5 +319,22 @@
     return [UIColor colorWithRed: 0.31 green: 0.78 blue: 0.94 alpha: 0.30];
 }
 
+// for resizing images
+
++ (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension {
+    
+    CGSize size = CGSizeMake(dimension, dimension);
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, dimension, dimension)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
 
 @end

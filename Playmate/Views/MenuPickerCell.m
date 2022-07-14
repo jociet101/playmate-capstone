@@ -149,7 +149,6 @@
 #pragma mark - Text field delegate method
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    NSLog(@"did end editing");
     if (self.thisRow == 4) {
         [self.delegate setNumberPlayers:[NSNumber numberWithInt:[self.pickerField.text intValue]]];
         [self.pickerField endEditing:YES];

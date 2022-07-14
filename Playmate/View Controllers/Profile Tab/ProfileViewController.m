@@ -11,6 +11,8 @@
 #import "DateTools.h"
 #import "Constants.h"
 #import "EditProfileViewController.h"
+#import "PlayerConnection.h"
+#import "FriendsListViewController.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate>
 
@@ -22,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *bioField;
 @property (weak, nonatomic) IBOutlet UILabel *profileImagePlaceholder;
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
+@property (weak, nonatomic) IBOutlet UIButton *numberOfFriendsButton;
 
 @end
 
@@ -59,6 +62,15 @@
         UIImage* img = [UIImage imageNamed:@"playmate_backdrop.png"];
         [self.backdropImageView setImage:img];
     }
+    
+    PlayerConnection *myPc = user[@"playerConnection"][0];
+    [myPc fetchIfNeeded];
+    
+    unsigned long numFriends = ((NSArray *)myPc[@"friendsList"]).count;
+    
+    // TODO: find out how to make font bold, look like a button
+//    [self.numberOfFriendsButton.titleLabel setFont:[UIFont fontWithName:@"Avenir" size:16.0]];
+    [self.numberOfFriendsButton setTitle:[NSString stringWithFormat:@"%ld friends", numFriends] forState:UIControlStateNormal];
 }
 
 #pragma mark - Uploading or taking profile image
@@ -130,6 +142,14 @@
 
 - (IBAction)viewFriendRequests:(id)sender {
     [self performSegueWithIdentifier:@"viewFriendRequests" sender:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"toFriendsList"]) {
+        FriendsListViewController *vc = [segue destinationViewController];
+        vc.thisUser = [PFUser currentUser];
+    }
 }
 
 @end

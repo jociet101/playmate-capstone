@@ -112,14 +112,11 @@ BOOL firstTime;
 #pragma mark - Location manager delegate methods
 
 - (void)locationManagerDidChangeAuthorization:(CLLocationManager *)manager {
-    NSLog(@"did change authorization");
     [locationManager requestLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    
-    NSLog(@"did update locations");
     
     if (firstTime == YES) {
         firstTime = NO;
@@ -134,21 +131,6 @@ BOOL firstTime;
 
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error {
-    NSLog(@"location manager failed with error: %@", error.localizedDescription);
 }
-
-//- (IBAction)didTapDone:(id)sender {
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

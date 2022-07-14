@@ -8,6 +8,7 @@
 #import "FriendRequestCell.h"
 #import "Constants.h"
 #import "PlayerConnection.h"
+#import "DateTools.h"
 
 @interface FriendRequestCell ()
 
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *acceptButton;
 @property (weak, nonatomic) IBOutlet UIButton *denyButton;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *timeAgoLabel;
 
 @property (nonatomic, strong) PFUser *requester;
 
@@ -32,7 +34,7 @@
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
 }
 
-- (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
+- (void)didTapUserProfile:(UITapGestureRecognizer *)sender{
     [self.delegate didTap:self profileImage:self.requester];
 }
 
@@ -42,31 +44,13 @@
     // Configure the view for the selected state
 }
 
-- (UIImage *)resizeImage:(UIImage *)image {
-    
-    CGSize size = CGSizeMake(83, 83);
-    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 83, 83)];
-    
-    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
-    resizeImageView.image = image;
-    
-    UIGraphicsBeginImageContext(size);
-    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
-
 - (void)setRequestInfo:(FriendRequest *)requestInfo {
     
     _requestInfo = requestInfo;
     
     PFQuery *query = [PFUser query];
     self.requester = [query getObjectWithId:requestInfo.requestFromId];
-    
-    NSLog(@"requester username %@", self.requester[@"username"]);
-        
+            
     NSString *requesterName = [Constants concatenateFirstName:self.requester[@"firstName"][0] andLast:self.requester[@"lastName"][0]];
     self.titleLabel.text = [requesterName stringByAppendingString:@" wants to be friends."];
     self.acceptButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
@@ -74,12 +58,15 @@
     
     if (self.requester[@"profileImage"] != nil) {
         UIImage* img = [UIImage imageWithData:[self.requester[@"profileImage"] getData]];
-        [self.profileImageView setImage:[self resizeImage:img]];
+        [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
     }
     else {
         UIImage* img = [UIImage imageNamed:@"playmate_logo_transparent.png"];
-        [self.profileImageView setImage:[self resizeImage:img]];
+        [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
     }
+    
+    // set time ago timestamp
+    self.timeAgoLabel.text = [[requestInfo.updatedAt shortTimeAgoSinceNow] stringByAppendingString:@" ago"];
 }
 
 - (void)deleteThisRequest {
@@ -106,6 +93,8 @@
     [PlayerConnection savePlayer:self.requestInfo.requestFromId ConnectionToMeWithStatus:YES andWeight:1];
     
     [self deleteThisRequest];
+    
+    [self.delegate didRespondToRequest];
 }
 
 - (IBAction)didTapDeny:(id)sender {
@@ -113,6 +102,8 @@
     [PlayerConnection removeSelfFromPendingOf:self.requestInfo.requestFromId];
     
     [self deleteThisRequest];
+    
+    [self.delegate didRespondToRequest];
 }
 
 @end

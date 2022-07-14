@@ -9,6 +9,7 @@
 #import "Constants.h"
 #import "FriendRequest.h"
 #import "PlayerConnection.h"
+#import "FriendsListViewController.h"
 
 @interface PlayerProfileViewController ()
 
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *genderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bioField;
 @property (weak, nonatomic) IBOutlet UIButton *addFriendButton;
+@property (weak, nonatomic) IBOutlet UIButton *numberOfFriendsButton;
 
 @property (nonatomic, assign) BOOL isMyFriend;
 
@@ -54,6 +56,12 @@
         [self.profileImageView setImage:img];
     }
     
+    PlayerConnection *thisPc = self.user[@"playerConnection"][0];
+    [thisPc fetchIfNeeded];
+    
+    unsigned long numFriends = ((NSArray *)thisPc[@"friendsList"]).count;
+    
+    [self.numberOfFriendsButton setTitle:[NSString stringWithFormat:@"%ld friends", numFriends] forState:UIControlStateNormal];
 }
 
 -(void)manageFriendButtonUI {
@@ -75,7 +83,6 @@
     [pc fetchIfNeeded];
     
     if (pc != nil) {
-        NSLog(@"pc not nil, pending list %@", pc.pendingList);
         // if current user is friends w this person, set title "Remove Friend"
         if ([pc.friendsList containsObject:self.user.objectId]) {
             self.isMyFriend = YES;
@@ -86,7 +93,6 @@
             self.isMyFriend = NO;
             [self setRequestPendingAsState];
         }
-        return;
     }
     
     [query whereKey:@"userObjectId" equalTo:self.user.objectId];
@@ -97,7 +103,6 @@
     if (pc != nil && [pc.pendingList containsObject:me.objectId]) {
         self.isMyFriend = NO;
         [self setSendRequestToYouAsState];
-        return;
     }
 }
 
@@ -130,7 +135,6 @@
     
     if (self.isMyFriend) {
         // if removing friend
-        NSLog(@"was my friend");
         
         PFUser *me = [PFUser currentUser];
         [me fetchIfNeeded];
@@ -156,14 +160,10 @@
         [theirPc saveInBackground];
         
         [self resetAddFriendButton];
-        
-        NSLog(@"finished removing friends");
-        
+                
+        self.isMyFriend = NO;
     } else {
         // if add friend
-        
-        NSLog(@"was not my friend");
-        
         // Create FriendRequest from me to other
         [FriendRequest saveFriendRequestTo:self.user.objectId];
         PlayerConnection *pc;
@@ -184,9 +184,6 @@
         }
         
         // Add pending friend connection from me to other
-        
-        NSLog(@"did tap friend and created %@ pc %@", user.objectId, pc);
-        
         [pc saveInBackground];
         
         [user addObject:pc forKey:@"playerConnection"];
@@ -194,18 +191,18 @@
         [user saveInBackground];
         
         [self setRequestPendingAsState];
+        
+        self.isMyFriend = YES;
     }
 }
 
-
-/*
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"toFriendsList"]) {
+        FriendsListViewController *vc = [segue destinationViewController];
+        vc.thisUser = self.user;
+    }
 }
-*/
 
 @end

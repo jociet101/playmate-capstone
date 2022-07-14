@@ -63,12 +63,21 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)emptyRequestsPlaceholderMsg;
 + (NSString *)emptyRequestsPlaceholderTitle;
 
++ (NSString *)emptyOutgoingRequestsPlaceholderTitle;
+
+// Information for friend list vc
++ (NSString *)emptyListPlaceholderMsg;
++ (NSString *)emptyListPlaceholderTitle;
+
 // Some numbers
 + (int)buttonCornerRadius;
 + (int)smallButtonCornerRadius;
 
 // Some colors
 + (UIColor *)playmateBlue;
+
+// resize image
++ (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension;
 
 @end
 
