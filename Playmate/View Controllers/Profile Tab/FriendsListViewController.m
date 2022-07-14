@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *friendsList;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -36,8 +37,16 @@
     [thisPc fetchIfNeeded];
     
     self.friendsList = thisPc[@"friendsList"];
-        
+    
+    // set up refresh control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+}
+
+- (void)fetchData {
     [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
 }
 
 #pragma mark - Table view protocol methods

@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *outgoingRequestList;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -34,6 +35,11 @@
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
     
+    // set up refresh control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+    
     [self fetchData];
 }
 
@@ -47,6 +53,8 @@
     [myPc fetchIfNeeded];
     
     self.outgoingRequestList = myPc[@"pendingList"];
+    
+    [self.refreshControl endRefreshing];
 }
 
 #pragma mark - Table view protocol methods

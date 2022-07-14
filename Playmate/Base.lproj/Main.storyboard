@@ -1146,7 +1146,7 @@
             <objects>
                 <viewController id="hNf-lE-ZKe" customClass="PlayerProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fFY-gZ-QLq">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="580"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gvt-Un-Kxs">
@@ -2247,7 +2247,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="pbU-9p-1Qp"/>
         <segue reference="Nu6-4T-TEp"/>
-        <segue reference="rXg-Fz-rtS"/>
+        <segue reference="Kdh-do-hzm"/>
         <segue reference="mqk-g0-t3s"/>
         <segue reference="zis-o5-IMS"/>
     </inferredMetricsTieBreakers>
