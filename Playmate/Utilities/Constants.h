@@ -34,10 +34,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)formatDate:(NSDate *)original;
 + (NSString *)formatDateShort:(NSDate *)original;
 
-// Information for home tab
-+ (NSString *)emptyTablePlaceholderMsg;
-+ (NSString *)emptyTablePlaceholderTitle;
-
 // Information for profile tab
 + (NSString *)defaultBio;
 + (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last;
@@ -59,16 +55,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (int)defaultNumPlayers;
 + (int)defaultSkillPickerIndex;
 
-// Information for friend requests vc
-+ (NSString *)emptyRequestsPlaceholderMsg;
-+ (NSString *)emptyRequestsPlaceholderTitle;
-
-+ (NSString *)emptyOutgoingRequestsPlaceholderTitle;
-
-// Information for friend list vc
-+ (NSString *)emptyListPlaceholderMsg;
-+ (NSString *)emptyListPlaceholderTitle;
-
 // Some numbers
 + (int)buttonCornerRadius;
 + (int)smallButtonCornerRadius;
@@ -78,6 +64,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 // resize image
 + (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension;
+
+// for empty table views
++ (NSString *)emptyTablePlaceholderMsg;
++ (NSString *)emptyTablePlaceholderTitle;
+
++ (NSString *)emptySearchPlaceholderMsg;
+
++ (NSString *)emptyListPlaceholderMsg;
++ (NSString *)emptyListPlaceholderTitle;
+
++ (NSString *)emptyRequestsPlaceholderMsg;
++ (NSString *)emptyRequestsPlaceholderTitle;
++ (NSString *)emptyOutgoingRequestsPlaceholderTitle;
 
 @end
 
