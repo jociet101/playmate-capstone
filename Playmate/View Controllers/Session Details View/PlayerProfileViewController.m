@@ -160,7 +160,7 @@
         [theirPc saveInBackground];
         
         [self resetAddFriendButton];
-                
+                 
         self.isMyFriend = NO;
     } else {
         // if add friend

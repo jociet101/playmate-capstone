@@ -11,6 +11,7 @@
 #import "Location.h"
 #import "PlayerProfileCollectionCell.h"
 #import "PlayerProfileViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -32,6 +33,8 @@ PFUser *me;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self createLayer];
     
     me = [PFUser currentUser];
     [me fetchIfNeeded];
@@ -118,9 +121,33 @@ PFUser *me;
     self.dateTimeLabel.text = [dateString stringByAppendingFormat:@", %@ to %@", startTimeString, endTimeString];
 }
 
+#pragma mark - Animating confetti
+
+- (void)createLayer {
+    
+    CAEmitterLayer *confettiLayer = [CAEmitterLayer layer];
+    confettiLayer.emitterPosition = CGPointMake(self.view.center.x, self.view.center.y);
+    confettiLayer.emitterSize = CGSizeMake(self.view.bounds.size.width, 0);
+    
+    CAEmitterCell *cell = [CAEmitterCell emitterCell];
+    cell.scale = 0.1;
+    cell.emissionRange = (CGFloat)M_PI_2;
+    cell.lifetime = 5.0;
+    cell.birthRate = 100;
+    cell.velocity = 100;
+    
+    cell.contents = (id)[[UIImage imageNamed:@"red_confetti"] CGImage];
+    confettiLayer.emitterCells = [NSArray arrayWithObject:cell];
+    [self.view.layer addSublayer:confettiLayer];
+}
+
+#pragma mark - Add to session button action
+
 - (IBAction)addMyself:(id)sender {
     
-    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
+    
+    // TODO: CONFETTI!!!!
     
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
 
