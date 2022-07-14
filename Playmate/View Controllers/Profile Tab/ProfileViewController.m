@@ -79,14 +79,14 @@
 - (void)configureSettingsMenu {
     
     // create uiactions for menu dropdown
-    UIAction *logout = [UIAction actionWithTitle:@"Logout" image:nil identifier:nil handler:^(__kindof UIAction * _Nonnull action) {
-        [self didTapLogout];
-    }];
     UIAction *editProfile = [UIAction actionWithTitle:@"Edit Profile" image:nil identifier:nil handler:^(__kindof UIAction * _Nonnull action) {
         [self didTapEdit];
     }];
+    UIAction *logout = [UIAction actionWithTitle:@"Logout" image:nil identifier:nil handler:^(__kindof UIAction * _Nonnull action) {
+        [self didTapLogout];
+    }];
     
-    UIMenu *menu = [[UIMenu alloc] menuByReplacingChildren:[NSArray arrayWithObjects:logout, editProfile, nil]];
+    UIMenu *menu = [UIMenu menuWithTitle:@"Options" children:[NSArray arrayWithObjects:editProfile, logout, nil]];
     
     // set menu dropdown
     self.settingsMenuButton.menu = menu;
