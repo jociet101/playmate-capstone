@@ -91,8 +91,31 @@ PFUser *me;
     
     self.locationLabel.text = loc.locationName;
     
-    self.dateTimeLabel.text = [Constants formatDate:self.sessionDetails.occursAt];
+    [self setDate];
+    
     self.createdDateLabel.text = [@"Session created at: " stringByAppendingString:[Constants formatDate:self.sessionDetails.updatedAt]];
+}
+
+- (void)setDate {
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDate *startTime = self.sessionDetails.occursAt;
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setMinute:60*[self.sessionDetails.duration intValue]];
+    NSDate *endTime = [gregorian dateByAddingComponents:comps toDate:startTime  options:0];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = [Constants dateFormatString];
+    
+    formatter.dateStyle = NSDateFormatterMediumStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    NSString *dateString = [formatter stringFromDate:startTime];
+    
+    formatter.dateStyle = NSDateFormatterNoStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    NSString *startTimeString = [formatter stringFromDate:startTime];
+    NSString *endTimeString = [formatter stringFromDate:endTime];
+    
+    self.dateTimeLabel.text = [dateString stringByAppendingFormat:@", %@ to %@", startTimeString, endTimeString];
 }
 
 - (IBAction)addMyself:(id)sender {
