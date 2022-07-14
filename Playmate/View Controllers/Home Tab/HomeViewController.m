@@ -12,6 +12,7 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
 #import "CalendarViewController.h"
+#import "ProfileViewController.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -196,11 +197,18 @@
          VC.sessionDetails = data;
      }
      
-     if ([sender isMemberOfClass:[UIButton class]]) {
+     if ([segue.identifier isEqualToString:@"toCalendar"]) {
          CalendarViewController *VC = [segue destinationViewController];
          VC.rawSessionList = self.sessionList;
      }
      
  }
+
+- (IBAction)goToProfile:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UITabBarController *tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+    [tabBarController setSelectedIndex:3];
+    self.view.window.rootViewController = tabBarController;
+}
 
 @end
