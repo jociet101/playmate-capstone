@@ -34,8 +34,6 @@ PFUser *me;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self createLayer];
-    
     me = [PFUser currentUser];
     [me fetchIfNeeded];
 
@@ -123,21 +121,30 @@ PFUser *me;
 
 #pragma mark - Animating confetti
 
-- (void)createLayer {
+- (void)showConfetti {
     
     CAEmitterLayer *confettiLayer = [CAEmitterLayer layer];
-    confettiLayer.emitterPosition = CGPointMake(self.view.center.x, self.view.center.y);
+    confettiLayer.emitterPosition = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.origin.y);
     confettiLayer.emitterSize = CGSizeMake(self.view.bounds.size.width, 0);
     
-    CAEmitterCell *cell = [CAEmitterCell emitterCell];
-    cell.scale = 0.1;
-    cell.emissionRange = (CGFloat)M_PI_2;
-    cell.lifetime = 5.0;
-    cell.birthRate = 100;
-    cell.velocity = 100;
     
-    cell.contents = (id)[[UIImage imageNamed:@"red_confetti"] CGImage];
-    confettiLayer.emitterCells = [NSArray arrayWithObject:cell];
+    NSArray *colors = [NSArray arrayWithObjects:[UIColor systemPinkColor], [UIColor systemRedColor], [UIColor systemBlueColor], [UIColor systemCyanColor], [UIColor systemMintColor], [UIColor systemGreenColor], [UIColor systemOrangeColor], [UIColor systemPurpleColor], [UIColor systemYellowColor], [UIColor systemGrayColor], nil];
+    
+    NSMutableArray *cells = [NSMutableArray arrayWithCapacity:colors.count];
+    
+    [colors enumerateObjectsUsingBlock:^(UIColor *color, NSUInteger idx, BOOL *stop) {
+        CAEmitterCell *cell = [CAEmitterCell emitterCell];
+        cell.scale = 0.1;
+        cell.emissionRange = M_PI * 2;
+        cell.lifetime = 5.0;
+        cell.birthRate = 20;
+        cell.velocity = 200;
+        cell.color = [color CGColor];
+        cell.contents = (id)[[UIImage imageNamed:@"confetti"] CGImage];
+        [cells addObject:cell];
+    }];
+        
+    confettiLayer.emitterCells = (NSArray *)cells;
     [self.view.layer addSublayer:confettiLayer];
 }
 
@@ -148,6 +155,9 @@ PFUser *me;
 //    [self.navigationController popViewControllerAnimated:YES];
     
     // TODO: CONFETTI!!!!
+    [self showConfetti];
+    
+    [self disableAddButton];
     
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
 
