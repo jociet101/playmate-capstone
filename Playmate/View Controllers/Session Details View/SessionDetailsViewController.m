@@ -25,6 +25,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *disabledButton;
 @property (weak, nonatomic) IBOutlet UILabel *createdDateLabel;
 
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) CAEmitterLayer *confettiLayer;
+
 @end
 
 @implementation SessionDetailsViewController
@@ -123,9 +126,9 @@ PFUser *me;
 
 - (void)showConfetti {
     
-    CAEmitterLayer *confettiLayer = [CAEmitterLayer layer];
-    confettiLayer.emitterPosition = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.origin.y);
-    confettiLayer.emitterSize = CGSizeMake(self.view.bounds.size.width, 0);
+    self.confettiLayer = [CAEmitterLayer layer];
+    self.confettiLayer.emitterPosition = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.origin.y);
+    self.confettiLayer.emitterSize = CGSizeMake(self.view.bounds.size.width, 0);
     
     
     NSArray *colors = [NSArray arrayWithObjects:[UIColor systemPinkColor], [UIColor systemRedColor], [UIColor systemBlueColor], [UIColor systemCyanColor], [UIColor systemMintColor], [UIColor systemGreenColor], [UIColor systemOrangeColor], [UIColor systemPurpleColor], [UIColor systemYellowColor], [UIColor systemGrayColor], nil];
@@ -139,25 +142,28 @@ PFUser *me;
         cell.lifetime = 5.0;
         cell.birthRate = 20;
         cell.velocity = 200;
+        cell.xAcceleration = -20;
+        cell.yAcceleration = -20;
+        cell.zAcceleration = -20;
         cell.color = [color CGColor];
         cell.contents = (id)[[UIImage imageNamed:@"confetti"] CGImage];
         [cells addObject:cell];
     }];
         
-    confettiLayer.emitterCells = (NSArray *)cells;
-    [self.view.layer addSublayer:confettiLayer];
+    self.confettiLayer.emitterCells = (NSArray *)cells;
+    [self.view.layer addSublayer:self.confettiLayer];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(stopConfetti) userInfo:nil repeats:NO];
+}
+
+- (void)stopConfetti {
+    [self.confettiLayer removeFromSuperlayer];
 }
 
 #pragma mark - Add to session button action
 
 - (IBAction)addMyself:(id)sender {
-    
-//    [self.navigationController popViewControllerAnimated:YES];
-    
-    // TODO: CONFETTI!!!!
     [self showConfetti];
-    
-    [self disableAddButton];
     
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
 
@@ -175,6 +181,8 @@ PFUser *me;
         session[@"occupied"] = [NSNumber numberWithInt:oldOccupied];
         
         [session saveInBackground];
+        
+        [self disableAddButton];
     }];
 }
 
