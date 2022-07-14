@@ -40,7 +40,16 @@
     PFUser *me = [PFUser currentUser];
     [me fetchIfNeeded];
     
-    NSString *greeting = @"Welcome, ";
+    NSString *greeting;
+    NSDate *now = [NSDate now];
+    if ([now hour] >= 17) {
+        greeting = @"Good Evening, ";
+    } else if ([now hour] >= 12) {
+        greeting = @"Good Afternoon, ";
+    } else {
+        greeting = @"Good Morning, ";
+    }
+    
     self.welcomeLabel.text = [greeting stringByAppendingString:me[@"firstName"][0]];
     
     // set up refresh control
