@@ -36,17 +36,13 @@
     [thisPc fetchIfNeeded];
     
     self.friendsList = thisPc[@"friendsList"];
-    
-    NSLog(@"%@", self.friendsList);
-    
+        
     [self.tableView reloadData];
 }
 
 #pragma mark - Table view protocol methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"self.friendsList %@", self.friendsList);
-    
     FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendCell"];
     cell.thisUserId = self.friendsList[indexPath.row];
     return cell;

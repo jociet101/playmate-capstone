@@ -25,7 +25,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"outgoing requests view did load");
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

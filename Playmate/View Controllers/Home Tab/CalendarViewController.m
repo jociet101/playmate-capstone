@@ -140,7 +140,6 @@
 
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
 {
-    NSLog(@"did select date %@",[Constants formatDate:date]);
     [self fetchData:date];
 }
 
