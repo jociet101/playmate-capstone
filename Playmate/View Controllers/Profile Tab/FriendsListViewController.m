@@ -10,6 +10,7 @@
 #import "Constants.h"
 #import "PlayerConnection.h"
 #import "FriendCell.h"
+#import "PlayerProfileViewController.h"
 
 @interface FriendsListViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -96,14 +97,18 @@
     return [UIColor clearColor];
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"toProfile"]) {
+        PlayerProfileViewController *vc = [segue destinationViewController];
+        PFQuery *query = [PFUser query];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        PFUser *theFriend = [query getObjectWithId:self.friendsList[indexPath.row]];
+        vc.user = theFriend;
+    }
 }
-*/
 
 @end
