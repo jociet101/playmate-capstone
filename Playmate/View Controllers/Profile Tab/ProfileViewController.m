@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *profileImagePlaceholder;
 @property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
 @property (weak, nonatomic) IBOutlet UIButton *numberOfFriendsButton;
+@property (weak, nonatomic) IBOutlet UIButton *settingsMenuButton;
 
 @end
 
@@ -32,7 +33,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -70,7 +70,27 @@
     
     // TODO: find out how to make font bold, look like a button
 //    [self.numberOfFriendsButton.titleLabel setFont:[UIFont fontWithName:@"Avenir" size:16.0]];
+    
     [self.numberOfFriendsButton setTitle:[NSString stringWithFormat:@"%ld friends", numFriends] forState:UIControlStateNormal];
+    
+    [self configureSettingsMenu];
+}
+
+- (void)configureSettingsMenu {
+    
+    // create uiactions for menu dropdown
+    UIAction *logout = [UIAction actionWithTitle:@"Logout" image:nil identifier:nil handler:^(__kindof UIAction * _Nonnull action) {
+        [self didTapLogout];
+    }];
+    UIAction *editProfile = [UIAction actionWithTitle:@"Edit Profile" image:nil identifier:nil handler:^(__kindof UIAction * _Nonnull action) {
+        [self didTapEdit];
+    }];
+    
+    UIMenu *menu = [[UIMenu alloc] menuByReplacingChildren:[NSArray arrayWithObjects:logout, editProfile, nil]];
+    
+    // set menu dropdown
+    self.settingsMenuButton.menu = menu;
+    self.settingsMenuButton.showsMenuAsPrimaryAction = YES;
 }
 
 #pragma mark - Uploading or taking profile image
@@ -121,7 +141,7 @@
 
 #pragma mark - Handling button or gesture actions
 
-- (IBAction)didTapLogout:(id)sender {
+- (void)didTapLogout {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
 
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -132,7 +152,7 @@
     }];
 }
 
-- (IBAction)didTapEdit:(id)sender {
+- (void)didTapEdit {
     [self performSegueWithIdentifier:@"toEditProfile" sender:nil];
 }
 
