@@ -132,8 +132,8 @@ BOOL firstTime;
 }
 
 - (void)dropPinOnMapAt:(CLLocationCoordinate2D)coordinate withName:(NSString *)locationName {
-    MKCoordinateRegion region = MKCoordinateRegionMake(coordinate, MKCoordinateSpanMake(0.1, 0.1));
-    [self.mapView setRegion:region animated:false];
+    MKCoordinateRegion region = MKCoordinateRegionMake(coordinate, MKCoordinateSpanMake(0.02, 0.02));
+    [self.mapView setRegion:region animated:YES];
     
     [self.selectedLocationAnnotation setCoordinate:coordinate];
     [self.selectedLocationAnnotation setTitle:locationName];
@@ -173,16 +173,13 @@ BOOL firstTime;
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    
     self.currentLocation = [locations lastObject];
     
     if (firstTime == YES) {
         firstTime = NO;
-        
         CLLocation *loc = [locations firstObject];
-        
         MKCoordinateRegion region = MKCoordinateRegionMake([loc coordinate], MKCoordinateSpanMake(0.1, 0.1));
-        [self.mapView setRegion:region animated:false];
+        [self.mapView setRegion:region animated:YES];
     }
 }
 
