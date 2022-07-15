@@ -46,7 +46,9 @@
     
     // set up refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self
+                         action:@selector(fetchData)
+                         forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
 }
 
@@ -257,12 +259,12 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         
         Session* data = self.sessionList[indexPath.section];
-        SessionDetailsViewController *VC = [segue destinationViewController];
-        VC.sessionDetails = data;
+        SessionDetailsViewController *vc = [segue destinationViewController];
+        vc.sessionDetails = data;
     }
     if ([sender isMemberOfClass:[UIBarButtonItem class]]) {
-        FiltersMenuViewController *VC = [segue destinationViewController];
-        VC.delegate = self;
+        FiltersMenuViewController *vc = [segue destinationViewController];
+        vc.delegate = self;
     }
     
 }

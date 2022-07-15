@@ -124,11 +124,8 @@
     
     if (self.isMyFriend) {
         // if removing friend
-        
-        PFUser *me = [[PFUser currentUser] fetchIfNeeded];
-        
         // remove self.user.objectId from my friends list
-        PlayerConnection *myPlayerConnection = [me[@"playerConnection"][0] fetchIfNeeded];
+        PlayerConnection *myPlayerConnection = [user[@"playerConnection"][0] fetchIfNeeded];
         
         NSMutableArray *tempFriendsList = (NSMutableArray *)myPlayerConnection.friendsList;
         [tempFriendsList removeObject:self.user.objectId];
@@ -136,17 +133,16 @@
         
         [myPlayerConnection saveInBackground];
         
-        // remove me.objectId from self.user.playerconnect friends list
+        // remove user.objectId from self.user.playerconnect friends list
         PlayerConnection *theirPlayerConnection = [self.user[@"playerConnection"][0] fetchIfNeeded];
         
         tempFriendsList = (NSMutableArray *)theirPlayerConnection[@"friendsList"];
-        [tempFriendsList removeObject:me.objectId];
+        [tempFriendsList removeObject:user.objectId];
         theirPlayerConnection[@"friendsList"] = (NSArray *)tempFriendsList;
         
         [theirPlayerConnection saveInBackground];
         
         [self resetAddFriendButton];
-                 
         self.isMyFriend = NO;
     } else {
         // if add friend

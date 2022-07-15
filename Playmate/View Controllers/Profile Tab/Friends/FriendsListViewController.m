@@ -41,7 +41,9 @@
     
     // set up refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self
+                         action:@selector(fetchData)
+                         forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
 }
 
@@ -89,7 +91,6 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     if ([segue.identifier isEqualToString:@"toProfile"]) {
         PlayerProfileViewController *vc = [segue destinationViewController];
         PFQuery *query = [PFUser query];

@@ -54,8 +54,10 @@
 
 	// set up refresh control
 	self.refreshControl = [[UIRefreshControl alloc] init];
-	[self.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
-	[self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self
+                         action:@selector(fetchData)
+                         forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -128,7 +130,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	SessionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SessionCell"];
-
 	cell.session = self.sessionList[indexPath.section];
 
 	return cell;
@@ -166,17 +167,16 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([sender isMemberOfClass:[SessionCell class]]) {
-
 		NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
 
 		Session* data = self.sessionList[indexPath.section];
-		SessionDetailsViewController *VC = [segue destinationViewController];
-		VC.sessionDetails = data;
+		SessionDetailsViewController *vc = [segue destinationViewController];
+		vc.sessionDetails = data;
 	}
 
 	if ([segue.identifier isEqualToString:@"toCalendar"]) {
-		CalendarViewController *VC = [segue destinationViewController];
-		VC.rawSessionList = self.sessionList;
+		CalendarViewController *vc = [segue destinationViewController];
+		vc.rawSessionList = self.sessionList;
 	}
 
 }

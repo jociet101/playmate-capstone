@@ -210,8 +210,8 @@ PFUser *me;
     if ([sender isMemberOfClass:[PlayerProfileCollectionCell class]]) {
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
         PFUser* data = self.sessionDetails.playersList[indexPath.row];
-        PlayerProfileViewController *VC = [segue destinationViewController];
-        VC.user = data;
+        PlayerProfileViewController *vc = [segue destinationViewController];
+        vc.user = data;
     }
 }
 

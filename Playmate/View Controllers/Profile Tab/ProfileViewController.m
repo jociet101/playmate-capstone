@@ -68,10 +68,16 @@
 - (void)configureSettingsMenu {
     
     // create uiactions for menu dropdown
-    UIAction *editProfile = [UIAction actionWithTitle:@"Edit Profile" image:nil identifier:nil handler:^(__kindof UIAction * _Nonnull action) {
+    UIAction *editProfile = [UIAction actionWithTitle:@"Edit Profile"
+                                      image:nil
+                                      identifier:nil
+                                      handler:^(__kindof UIAction * _Nonnull action) {
         [self didTapEdit];
     }];
-    UIAction *logout = [UIAction actionWithTitle:@"Logout" image:nil identifier:nil handler:^(__kindof UIAction * _Nonnull action) {
+    UIAction *logout = [UIAction actionWithTitle:@"Logout"
+                                 image:nil
+                                 identifier:nil
+                                 handler:^(__kindof UIAction * _Nonnull action) {
         [self didTapLogout];
     }];
     

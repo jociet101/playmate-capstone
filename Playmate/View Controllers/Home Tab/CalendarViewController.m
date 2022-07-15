@@ -161,8 +161,8 @@
          NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
          
          Session* data = self.sessionList[indexPath.section];
-         SessionDetailsViewController *VC = [segue destinationViewController];
-         VC.sessionDetails = data;
+         SessionDetailsViewController *vc = [segue destinationViewController];
+         vc.sessionDetails = data;
      }
      
  }
