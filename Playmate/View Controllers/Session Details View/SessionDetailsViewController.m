@@ -82,17 +82,12 @@ PFUser *me;
 }
 
 - (void)initializeDetails {
-    
     self.sportLabel.text = self.sessionDetails.sport;
     
-    // Form the fraction into a string
-    NSString *capacityString = [Constants capacityString:self.sessionDetails.occupied with:self.sessionDetails.capacity];
-    
-    if ([self.sessionDetails.capacity isEqual:self.sessionDetails.occupied]) {
-        self.capacityLabel.text = [Constants noOpenSlotsErrorMsg];
-    } else {
-        self.capacityLabel.text = capacityString;
-    }
+    const BOOL sessionIsFull = [self.sessionDetails.capacity isEqual:self.sessionDetails.occupied];
+    self.capacityLabel.text = sessionIsFull ? [Constants noOpenSlotsErrorMsg]
+                                            : [Constants capacityString:self.sessionDetails.occupied
+                                                         with:self.sessionDetails.capacity];
     
     self.levelLabel.text = self.sessionDetails.skillLevel;
     
@@ -112,7 +107,6 @@ PFUser *me;
     self.confettiLayer = [CAEmitterLayer layer];
     self.confettiLayer.emitterPosition = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.origin.y);
     self.confettiLayer.emitterSize = CGSizeMake(self.view.bounds.size.width, 0);
-    
     
     NSArray *colors = [Constants listOfSystemColors];
     
@@ -154,7 +148,6 @@ PFUser *me;
     // Retrieve the object by id
     [query getObjectInBackgroundWithId:self.sessionDetails.objectId
                                  block:^(PFObject *session, NSError *error) {
-        
         // Add myself to the session
         NSMutableArray *oldPlayersList = (NSMutableArray *)session[@"playersList"];
         [oldPlayersList addObject:me];
@@ -175,7 +168,6 @@ PFUser *me;
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     PlayerProfileCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayerProfileCollectionCell" forIndexPath:indexPath];
     
     cell.userProfile = self.sessionDetails.playersList[indexPath.row];

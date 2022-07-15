@@ -59,12 +59,10 @@
     
     self.locationLabel.text = loc.locationName;
     
-    // Form the fraction into a string
-    NSString *capacityString = [Constants capacityString:self.session.occupied with:self.session.capacity];
-
-    if ([self.session.capacity isEqual:self.session.occupied]) {
-        capacityString = [Constants noOpenSlotsErrorMsg];
-    }
+    const BOOL sessionIsFull = [self.session.capacity isEqual:self.session.occupied];
+    NSString *capacityString = sessionIsFull ? [Constants noOpenSlotsErrorMsg]
+                                             : [Constants capacityString:self.session.occupied
+                                                          with:self.session.capacity];
     
     self.levelCapacityLabel.text = [self.session.skillLevel stringByAppendingString:[@", " stringByAppendingString:capacityString]];
     
