@@ -1044,7 +1044,7 @@ static int const PFOfflineStoreMaximumSQLVariablesCount = 999;
     }
 }
 
-void PFOfflineStoreReplaceExisingObject() {}
+void PFOfflineStoreReplaceExisingObject(void) {}
 
 - (NSString *)_generateKeyForClassName:(NSString *)className
                               objectId:(NSString *)objectId {
