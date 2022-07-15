@@ -24,8 +24,6 @@ BOOL firstTime;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self fetchDataTester];
-    
     self.searchBar.delegate = self;
     
     firstTime = YES;
@@ -67,10 +65,6 @@ BOOL firstTime;
 }
 
 #pragma mark - Search bar and geocode
-
-//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-//
-//}
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
@@ -117,7 +111,6 @@ BOOL firstTime;
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    
     if (firstTime == YES) {
         firstTime = NO;
         
@@ -126,7 +119,6 @@ BOOL firstTime;
         MKCoordinateRegion region = MKCoordinateRegionMake([loc coordinate], MKCoordinateSpanMake(0.1, 0.1));
         [self.mapView setRegion:region animated:false];
     }
-    
 }
 
 - (void)locationManager:(CLLocationManager *)manager
