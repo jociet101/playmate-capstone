@@ -46,18 +46,11 @@
         self.bioField.text = @"No biography";
     }
     
-    if (self.user[@"profileImage"] != nil) {
-        // set image stuff
-        UIImage* img = [UIImage imageWithData:[self.user[@"profileImage"] getData]];
-        [self.profileImageView setImage:img];
-    }
-    else {
-        UIImage* img = [UIImage imageNamed:@"playmate_logo_transparent.png"];
-        [self.profileImageView setImage:img];
-    }
+    const BOOL hasProfileImage = (self.user[@"profileImage"] != nil);
+    UIImage *img = hasProfileImage ? [UIImage imageWithData:[self.user[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
+    [self.profileImageView setImage:img];
     
-    PlayerConnection *thisPc = self.user[@"playerConnection"][0];
-    [thisPc fetchIfNeeded];
+    PlayerConnection *thisPc = [self.user[@"playerConnection"][0] fetchIfNeeded];
     
     unsigned long numFriends = ((NSArray *)thisPc[@"friendsList"]).count;
     
@@ -67,8 +60,7 @@
 -(void)manageFriendButtonUI {
     self.addFriendButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
-    PFUser *me = [PFUser currentUser];
-    [me fetchIfNeeded];
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     
     // if this profile belongs to current user, disable the button
     if ([me[@"username"] isEqualToString:self.user.username]) {
@@ -79,8 +71,7 @@
     
     PFQuery *query = [PFQuery queryWithClassName:@"PlayerConnection"];
     [query whereKey:@"userObjectId" equalTo:me.objectId];
-    PlayerConnection *pc = [query getFirstObject];
-    [pc fetchIfNeeded];
+    PlayerConnection *pc = [[query getFirstObject] fetchIfNeeded];
     
     if (pc != nil) {
         // if current user is friends w this person, set title "Remove Friend"
@@ -96,8 +87,7 @@
     }
     
     [query whereKey:@"userObjectId" equalTo:self.user.objectId];
-    pc = [query getFirstObject];
-    [pc fetchIfNeeded];
+    pc = [[query getFirstObject] fetchIfNeeded];
     
     // if current user has request from this person, set as "Sent you a request"
     if (pc != nil && [pc.pendingList containsObject:me.objectId]) {
@@ -130,18 +120,15 @@
 
 - (IBAction)didTapFriend:(id)sender {
     
-    PFUser *user = [PFUser currentUser];
-    [user fetchIfNeeded];
+    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
     if (self.isMyFriend) {
         // if removing friend
         
-        PFUser *me = [PFUser currentUser];
-        [me fetchIfNeeded];
+        PFUser *me = [[PFUser currentUser] fetchIfNeeded];
         
         // remove self.user.objectId from my friends list
-        PlayerConnection *myPc = me[@"playerConnection"][0];
-        [myPc fetchIfNeeded];
+        PlayerConnection *myPc = [me[@"playerConnection"][0] fetchIfNeeded];
         
         NSMutableArray *tempFriendsList = (NSMutableArray *)myPc.friendsList;
         [tempFriendsList removeObject:self.user.objectId];
@@ -150,8 +137,7 @@
         [myPc saveInBackground];
         
         // remove me.objectId from self.user.pc friends list
-        PlayerConnection *theirPc = self.user[@"playerConnection"][0];
-        [theirPc fetchIfNeeded];
+        PlayerConnection *theirPc = [self.user[@"playerConnection"][0] fetchIfNeeded];
         
         tempFriendsList = (NSMutableArray *)theirPc[@"friendsList"];
         [tempFriendsList removeObject:me.objectId];
@@ -160,7 +146,7 @@
         [theirPc saveInBackground];
         
         [self resetAddFriendButton];
-                
+                 
         self.isMyFriend = NO;
     } else {
         // if add friend
@@ -175,8 +161,7 @@
             [tempPendingList addObject:self.user.objectId];
             pc.pendingList = (NSArray *)tempPendingList;
         } else {
-            pc = user[@"playerConnection"][0];
-            [pc fetchIfNeeded];
+            pc = [user[@"playerConnection"][0] fetchIfNeeded];
             
             NSMutableArray *tempPendingList = (NSMutableArray *)pc[@"pendingList"];
             [tempPendingList addObject:self.user.objectId];

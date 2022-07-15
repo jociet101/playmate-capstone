@@ -54,8 +54,7 @@
     
     self.sportLabel.text = [self.session.sport stringByAppendingString:[@" w/ " stringByAppendingString:playersString]];
     
-    Location *loc = self.session.location;
-    [loc fetchIfNeeded];
+    Location *loc = [self.session.location fetchIfNeeded];
     
     self.locationLabel.text = loc.locationName;
     
@@ -67,16 +66,30 @@
     }
     
     self.levelCapacityLabel.text = [self.session.skillLevel stringByAppendingString:[@", " stringByAppendingString:capacityString]];
-        
+    
+    [self setDate];
+}
+
+- (void)setDate {
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDate *startTime = self.session.occursAt;
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setMinute:60*[self.session.duration intValue]];
+    NSDate *endTime = [gregorian dateByAddingComponents:comps toDate:startTime  options:0];
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = [Constants dateFormatString];
-    NSString *originalDate = [formatter stringFromDate:self.session.occursAt];
     
-    NSDate *date = [formatter dateFromString:originalDate];
     formatter.dateStyle = NSDateFormatterMediumStyle;
-    formatter.timeStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    NSString *dateString = [formatter stringFromDate:startTime];
     
-    self.dateTimeLabel.text = [formatter stringFromDate:date];
+    formatter.dateStyle = NSDateFormatterNoStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    NSString *startTimeString = [formatter stringFromDate:startTime];
+    NSString *endTimeString = [formatter stringFromDate:endTime];
+    
+    self.dateTimeLabel.text = [dateString stringByAppendingFormat:@", %@ to %@", startTimeString, endTimeString];
 }
 
 @end

@@ -11,6 +11,7 @@
 #import "Location.h"
 #import "PlayerProfileCollectionCell.h"
 #import "PlayerProfileViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -24,6 +25,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *disabledButton;
 @property (weak, nonatomic) IBOutlet UILabel *createdDateLabel;
 
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) CAEmitterLayer *confettiLayer;
+
 @end
 
 @implementation SessionDetailsViewController
@@ -33,8 +37,7 @@ PFUser *me;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    me = [PFUser currentUser];
-    [me fetchIfNeeded];
+    me = [[PFUser currentUser] fetchIfNeeded];
 
     self.addMyselfButton.layer.cornerRadius = [Constants buttonCornerRadius];
     
@@ -86,18 +89,79 @@ PFUser *me;
     
     self.levelLabel.text = self.sessionDetails.skillLevel;
     
-    Location *loc = self.sessionDetails.location;
-    [loc fetchIfNeeded];
+    Location *loc = [self.sessionDetails.location fetchIfNeeded];
     
     self.locationLabel.text = loc.locationName;
     
-    self.dateTimeLabel.text = [Constants formatDate:self.sessionDetails.occursAt];
+    [self setDate];
+    
     self.createdDateLabel.text = [@"Session created at: " stringByAppendingString:[Constants formatDate:self.sessionDetails.updatedAt]];
 }
 
-- (IBAction)addMyself:(id)sender {
+- (void)setDate {
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDate *startTime = self.sessionDetails.occursAt;
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setMinute:60*[self.sessionDetails.duration intValue]];
+    NSDate *endTime = [gregorian dateByAddingComponents:comps toDate:startTime  options:0];
     
-    [self.navigationController popViewControllerAnimated:YES];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = [Constants dateFormatString];
+    
+    formatter.dateStyle = NSDateFormatterMediumStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    NSString *dateString = [formatter stringFromDate:startTime];
+    
+    formatter.dateStyle = NSDateFormatterNoStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    NSString *startTimeString = [formatter stringFromDate:startTime];
+    NSString *endTimeString = [formatter stringFromDate:endTime];
+    
+    self.dateTimeLabel.text = [dateString stringByAppendingFormat:@", %@ to %@", startTimeString, endTimeString];
+}
+
+#pragma mark - Animating confetti
+
+- (void)showConfetti {
+    
+    self.confettiLayer = [CAEmitterLayer layer];
+    self.confettiLayer.emitterPosition = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.origin.y);
+    self.confettiLayer.emitterSize = CGSizeMake(self.view.bounds.size.width, 0);
+    
+    
+    NSArray *colors = [NSArray arrayWithObjects:[UIColor systemPinkColor], [UIColor systemRedColor], [UIColor systemBlueColor], [UIColor systemCyanColor], [UIColor systemMintColor], [UIColor systemGreenColor], [UIColor systemOrangeColor], [UIColor systemPurpleColor], [UIColor systemYellowColor], [UIColor systemGrayColor], nil];
+    
+    NSMutableArray *cells = [NSMutableArray arrayWithCapacity:colors.count];
+    
+    [colors enumerateObjectsUsingBlock:^(UIColor *color, NSUInteger idx, BOOL *stop) {
+        CAEmitterCell *cell = [CAEmitterCell emitterCell];
+        cell.scale = 0.1;
+        cell.emissionRange = M_PI * 2;
+        cell.lifetime = 5.0;
+        cell.birthRate = 20;
+        cell.velocity = 200;
+        cell.xAcceleration = -20;
+        cell.yAcceleration = -20;
+        cell.zAcceleration = -20;
+        cell.color = [color CGColor];
+        cell.contents = (id)[[UIImage imageNamed:@"confetti"] CGImage];
+        [cells addObject:cell];
+    }];
+        
+    self.confettiLayer.emitterCells = (NSArray *)cells;
+    [self.view.layer addSublayer:self.confettiLayer];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(stopConfetti) userInfo:nil repeats:NO];
+}
+
+- (void)stopConfetti {
+    [self.confettiLayer removeFromSuperlayer];
+}
+
+#pragma mark - Add to session button action
+
+- (IBAction)addMyself:(id)sender {
+    [self showConfetti];
     
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
 
@@ -115,6 +179,8 @@ PFUser *me;
         session[@"occupied"] = [NSNumber numberWithInt:oldOccupied];
         
         [session saveInBackground];
+        
+        [self disableAddButton];
     }];
 }
 

@@ -22,8 +22,7 @@
     
     request.requestToId = objectId;
     
-    PFUser *requester = [PFUser currentUser];
-    [requester fetchIfNeeded];
+    PFUser *requester = [[PFUser currentUser] fetchIfNeeded];
     
     request.requestFromId = requester.objectId;
     

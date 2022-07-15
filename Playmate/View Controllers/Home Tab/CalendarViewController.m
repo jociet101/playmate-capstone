@@ -46,8 +46,7 @@
 - (NSArray *)filterSessions:(NSArray *)sessions forDate:(NSDate *)date {
     
     NSMutableArray *filteredSessions = [[NSMutableArray alloc] init];
-    PFUser *currUser = [PFUser currentUser];
-    [currUser fetchIfNeeded];
+    PFUser *currUser = [[PFUser currentUser] fetchIfNeeded];
     
     for (Session *session in sessions) {
 

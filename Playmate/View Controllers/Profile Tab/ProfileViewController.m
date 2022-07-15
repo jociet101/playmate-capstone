@@ -23,8 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *genderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bioField;
 @property (weak, nonatomic) IBOutlet UILabel *profileImagePlaceholder;
-@property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
 @property (weak, nonatomic) IBOutlet UIButton *numberOfFriendsButton;
+@property (weak, nonatomic) IBOutlet UIButton *settingsMenuButton;
 
 @end
 
@@ -32,7 +32,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -53,24 +52,34 @@
         [self.profileImageView setImage:img];
         self.profileImagePlaceholder.alpha = 0;
     }
-    if (user[@"backdropImage"] != nil) {
-        // set image stuff
-        UIImage* img = [UIImage imageWithData:[user[@"backdropImage"] getData]];
-        [self.backdropImageView setImage:img];
-    }
-    else {
-        UIImage* img = [UIImage imageNamed:@"playmate_backdrop.png"];
-        [self.backdropImageView setImage:img];
-    }
     
-    PlayerConnection *myPc = user[@"playerConnection"][0];
-    [myPc fetchIfNeeded];
+    PlayerConnection *myPc = [user[@"playerConnection"][0] fetchIfNeeded];
     
     unsigned long numFriends = ((NSArray *)myPc[@"friendsList"]).count;
     
     // TODO: find out how to make font bold, look like a button
 //    [self.numberOfFriendsButton.titleLabel setFont:[UIFont fontWithName:@"Avenir" size:16.0]];
+    
     [self.numberOfFriendsButton setTitle:[NSString stringWithFormat:@"%ld friends", numFriends] forState:UIControlStateNormal];
+    
+    [self configureSettingsMenu];
+}
+
+- (void)configureSettingsMenu {
+    
+    // create uiactions for menu dropdown
+    UIAction *editProfile = [UIAction actionWithTitle:@"Edit Profile" image:nil identifier:nil handler:^(__kindof UIAction * _Nonnull action) {
+        [self didTapEdit];
+    }];
+    UIAction *logout = [UIAction actionWithTitle:@"Logout" image:nil identifier:nil handler:^(__kindof UIAction * _Nonnull action) {
+        [self didTapLogout];
+    }];
+    
+    UIMenu *menu = [UIMenu menuWithTitle:@"Options" children:[NSArray arrayWithObjects:editProfile, logout, nil]];
+    
+    // set menu dropdown
+    self.settingsMenuButton.menu = menu;
+    self.settingsMenuButton.showsMenuAsPrimaryAction = YES;
 }
 
 #pragma mark - Uploading or taking profile image
@@ -121,7 +130,7 @@
 
 #pragma mark - Handling button or gesture actions
 
-- (IBAction)didTapLogout:(id)sender {
+- (void)didTapLogout {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
 
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -132,7 +141,7 @@
     }];
 }
 
-- (IBAction)didTapEdit:(id)sender {
+- (void)didTapEdit {
     [self performSegueWithIdentifier:@"toEditProfile" sender:nil];
 }
 

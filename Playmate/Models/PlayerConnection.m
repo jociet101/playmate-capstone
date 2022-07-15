@@ -40,11 +40,9 @@
 //    cs.areFriends = areFriends;
 //    cs.relationshipWeight = weight;
     
-    PFUser *me = [PFUser currentUser];
-    [me fetchIfNeeded];
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     
-    PlayerConnection *pc = me[@"playerConnection"][0];
-    [pc fetchIfNeeded];
+    PlayerConnection *pc = [me[@"playerConnection"][0] fetchIfNeeded];
 
 //    [pc.connections setObject:cs forKey:otherObjectId];
 
@@ -60,14 +58,12 @@
 // for saving someone(B) else's connection to self(A); Save A in B's dictionary (A is me)
 + (void)savePlayer:(NSString *)otherObjectId ConnectionToMeWithStatus:(BOOL)areFriends andWeight:(int)weight {
     
-    PFUser *me = [PFUser currentUser];
-    [me fetchIfNeeded];
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     
     PFQuery *query = [PFQuery queryWithClassName:@"PlayerConnection"];
     [query whereKey:@"userObjectId" equalTo:otherObjectId];
     
-    PlayerConnection *pc = [query getFirstObject];
-    [pc fetchIfNeeded];
+    PlayerConnection *pc = [[query getFirstObject] fetchIfNeeded];
     
     // TODO: use for recommender system later
 //    ConnectionState *cs = [ConnectionState new];
@@ -92,8 +88,7 @@
 
 // if I deny someone else's friend request
 + (void)removeSelfFromPendingOf:(NSString *)otherObjectId {
-    PFUser *me = [PFUser currentUser];
-    [me fetchIfNeeded];
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     
     PFQuery *query = [PFQuery queryWithClassName:@"PlayerConnection"];
     [query whereKey:@"userObjectId" equalTo:otherObjectId];

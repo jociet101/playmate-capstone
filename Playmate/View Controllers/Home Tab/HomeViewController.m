@@ -12,6 +12,7 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
 #import "CalendarViewController.h"
+#import "ProfileViewController.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -37,10 +38,18 @@
     
     self.sessionList = [[NSMutableArray alloc] init];
     
-    PFUser *me = [PFUser currentUser];
-    [me fetchIfNeeded];
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     
-    NSString *greeting = @"Welcome, ";
+    NSString *greeting;
+    NSDate *now = [NSDate now];
+    if ([now hour] >= 17) {
+        greeting = @"Good Evening, ";
+    } else if ([now hour] >= 12) {
+        greeting = @"Good Afternoon, ";
+    } else {
+        greeting = @"Good Morning, ";
+    }
+    
     self.welcomeLabel.text = [greeting stringByAppendingString:me[@"firstName"][0]];
     
     // set up refresh control
@@ -78,8 +87,7 @@
 - (void)filterSessions:(NSArray *)sessions {
     
     NSMutableArray *tempList = (NSMutableArray *)sessions;
-    PFUser *currUser = [PFUser currentUser];
-    [currUser fetchIfNeeded];
+    PFUser *currUser = [[PFUser currentUser] fetchIfNeeded];
     
     for (Session *sesh in tempList) {
         
@@ -187,11 +195,18 @@
          VC.sessionDetails = data;
      }
      
-     if ([sender isMemberOfClass:[UIButton class]]) {
+     if ([segue.identifier isEqualToString:@"toCalendar"]) {
          CalendarViewController *VC = [segue destinationViewController];
          VC.rawSessionList = self.sessionList;
      }
      
  }
+
+- (IBAction)goToProfile:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UITabBarController *tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+    [tabBarController setSelectedIndex:3];
+    self.view.window.rootViewController = tabBarController;
+}
 
 @end

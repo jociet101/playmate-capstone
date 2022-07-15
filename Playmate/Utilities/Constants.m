@@ -88,15 +88,6 @@
     return [formatter stringFromDate:date];
 }
 
-// Information for home tab
-+ (NSString *)emptyTablePlaceholderMsg {
-    return @"Search for a session to join or create your own session to view them here!";
-}
-
-+ (NSString *)emptyTablePlaceholderTitle {
-    return @"No Sessions";
-}
-
 // Information for profile tab
 + (NSString *)defaultBio {
     return @"Edit profile to enter a bio!";
@@ -283,28 +274,6 @@
     return 3;
 }
 
-// Information for friend requests vc
-+ (NSString *)emptyRequestsPlaceholderMsg {
-    return @"";
-}
-
-+ (NSString *)emptyRequestsPlaceholderTitle {
-    return @"No Incoming Friend Requests";
-}
-
-// Information for friend list vc
-+ (NSString *)emptyListPlaceholderMsg {
-    return @"Create or join sessions to meet your Playmates!";
-}
-
-+ (NSString *)emptyListPlaceholderTitle {
-    return @"No Friends";
-}
-
-+ (NSString *)emptyOutgoingRequestsPlaceholderTitle {
-    return @"No Outgoing Friend Requests";
-}
-
 // Some numbers
 + (int)buttonCornerRadius {
     return 20;
@@ -335,6 +304,46 @@
     UIGraphicsEndImageContext();
     
     return newImage;
+}
+
+// playmate logo placeholder profile image
+
++ (UIImage *)profileImagePlaceholder {
+    return [UIImage imageNamed:@"playmate_logo_transparent"];
+}
+
+// for empty table view
+
++ (NSString *)emptyTablePlaceholderMsg {
+    return @"Search for a session to join or create your own session to view them here!";
+}
+
++ (NSString *)emptyTablePlaceholderTitle {
+    return @"No Sessions";
+}
+
++ (NSString *)emptySearchPlaceholderMsg {
+    return @"No sessions match your search. Adjust the filters or create your own session!";
+}
+
++ (NSString *)emptyListPlaceholderMsg {
+    return @"Create or join sessions to meet your Playmates!";
+}
+
++ (NSString *)emptyListPlaceholderTitle {
+    return @"No Friends";
+}
+
++ (NSString *)emptyRequestsPlaceholderMsg {
+    return @"";
+}
+
++ (NSString *)emptyRequestsPlaceholderTitle {
+    return @"No Incoming Friend Requests";
+}
+
++ (NSString *)emptyOutgoingRequestsPlaceholderTitle {
+    return @"No Outgoing Friend Requests";
 }
 
 @end

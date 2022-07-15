@@ -17,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *friendRequestList;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -34,6 +35,11 @@
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
     
+    // set up refresh control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+    
     [self fetchData];
 }
 
@@ -43,8 +49,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"FriendRequest"];
     query.limit = 20;
     
-    PFUser *user = [PFUser currentUser];
-    [user fetchIfNeeded];
+    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
 
     [query whereKey:@"requestToId" equalTo:user.objectId];
 
@@ -58,7 +63,9 @@
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
+        [self.refreshControl endRefreshing];
     }];
+    
 }
 
 - (NSArray *)copyArray:(NSArray *)array {

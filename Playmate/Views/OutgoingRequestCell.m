@@ -35,29 +35,23 @@
     _userObjectId = userObjectId;
     
     PFQuery *query = [PFUser query];
-    PFUser *user = [query getObjectWithId:userObjectId];
-    [user fetchIfNeeded];
+    PFUser *user = [[query getObjectWithId:userObjectId] fetchIfNeeded];
     
     NSString *name = [Constants concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
     self.titleLabel.text = [@"You requested to be friends with " stringByAppendingString:name];
     
     self.cancelButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
-    if (user[@"profileImage"] != nil) {
-        UIImage* img = [UIImage imageWithData:[user[@"profileImage"] getData]];
-        [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
-    }
-    else {
-        UIImage* img = [UIImage imageNamed:@"playmate_logo_transparent.png"];
-        [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
-    }
+    const BOOL hasProfileImage = (user[@"profileImage"] != nil);
+    UIImage *img = hasProfileImage ? [UIImage imageWithData:[user[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
+    [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
+    
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
 }
 
 - (IBAction)cancelOutgoingRequest:(id)sender {
     
-    PFUser *user = [PFUser currentUser];
-    [user fetchIfNeeded];
+    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
     // remove user from my pending list
     PlayerConnection *connection = user[@"playerConnection"][0];
