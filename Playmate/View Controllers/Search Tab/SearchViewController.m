@@ -99,25 +99,21 @@
 
 #pragma mark - Empty table view protocol methods
 
-- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
-{
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
     return [UIImage imageNamed:@"logo_small"];
 }
 
-- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
-{
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
     NSString *text = [Constants emptyTablePlaceholderTitle];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
-- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
-{
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
     NSString *text = [Constants emptySearchPlaceholderMsg];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants descriptionAttributes]];
 }
 
-- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
-{
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
     return [Constants playmateBlue];
 }
 

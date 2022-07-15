@@ -72,20 +72,17 @@
 
 #pragma mark - Empty table view protocol methods
 
-- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return [Helpers resizeImage:[UIImage imageNamed:@"empty_friend_request"] withDimension:80];
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"logo_small"];
 }
 
-- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
-{
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
     NSString *text = [Constants emptyOutgoingRequestsPlaceholderTitle];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
-- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return [UIColor clearColor];
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
+    return [Constants playmateBlue];
 }
 
 #pragma mark - Outgoing Request cell delegate methods
