@@ -37,6 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)capacityString:(NSNumber *)occupied with:(NSNumber *)capacity;
 + (NSString *)formatDate:(NSDate *)original;
 + (NSString *)formatDateShort:(NSDate *)original;
++ (NSArray *)listOfSystemColors;
 
 // Information for profile tab
 + (NSString *)defaultBio;
@@ -71,15 +72,11 @@ NS_ASSUME_NONNULL_BEGIN
 // for empty table views
 + (NSString *)emptyTablePlaceholderMsg;
 + (NSString *)emptyTablePlaceholderTitle;
-
 + (NSString *)emptySearchPlaceholderMsg;
-
 + (NSString *)emptyListPlaceholderMsg;
 + (NSString *)emptyListPlaceholderTitle;
-
 + (NSString *)emptyIncomingRequestsPlaceholderTitle;
 + (NSString *)emptyOutgoingRequestsPlaceholderTitle;
-
 + (NSDictionary *)descriptionAttributes;
 + (NSDictionary *)titleAttributes;
 

@@ -74,6 +74,12 @@ PFUser *me;
         self.addMyselfButton.alpha = 0;
     }
 }
+- (void)immediatelyDisableAddButton {
+    self.disabledButton.text = [Constants alreadyInSessionErrorMsg];
+    self.disabledButton.textColor = [UIColor redColor];
+    [self.addMyselfButton setEnabled:NO];
+    self.addMyselfButton.alpha = 0;
+}
 
 - (void)initializeDetails {
     
@@ -108,7 +114,7 @@ PFUser *me;
     self.confettiLayer.emitterSize = CGSizeMake(self.view.bounds.size.width, 0);
     
     
-    NSArray *colors = [NSArray arrayWithObjects:[UIColor systemPinkColor], [UIColor systemRedColor], [UIColor systemBlueColor], [UIColor systemCyanColor], [UIColor systemMintColor], [UIColor systemGreenColor], [UIColor systemOrangeColor], [UIColor systemPurpleColor], [UIColor systemYellowColor], [UIColor systemGrayColor], nil];
+    NSArray *colors = [Constants listOfSystemColors];
     
     NSMutableArray *cells = [NSMutableArray arrayWithCapacity:colors.count];
     
@@ -141,6 +147,7 @@ PFUser *me;
 
 - (IBAction)addMyself:(id)sender {
     [self showConfetti];
+    [self immediatelyDisableAddButton];
     
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
 
@@ -158,8 +165,6 @@ PFUser *me;
         session[@"occupied"] = [NSNumber numberWithInt:oldOccupied];
         
         [session saveInBackground];
-        
-        [self disableAddButton];
     }];
 }
 

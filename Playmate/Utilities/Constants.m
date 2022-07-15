@@ -93,6 +93,19 @@
     return [formatter stringFromDate:date];
 }
 
++ (NSArray *)listOfSystemColors {
+    return [NSArray arrayWithObjects:[UIColor systemPinkColor],
+                                     [UIColor systemRedColor],
+                                     [UIColor systemBlueColor],
+                                     [UIColor systemCyanColor],
+                                     [UIColor systemMintColor],
+                                     [UIColor systemGreenColor],
+                                     [UIColor systemOrangeColor],
+                                     [UIColor systemPurpleColor],
+                                     [UIColor systemYellowColor],
+                                     [UIColor systemGrayColor], nil];
+}
+
 // Information for profile tab
 + (NSString *)defaultBio {
     return @"Edit profile to enter a bio!";
