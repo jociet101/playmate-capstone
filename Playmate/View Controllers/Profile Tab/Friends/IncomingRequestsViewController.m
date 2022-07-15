@@ -100,7 +100,6 @@
 
 #pragma mark - Empty table view protocol methods
 
-// TODO: add a notifications placeholder image
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
     return [Constants resizeImage:[UIImage imageNamed:@"empty_friend_request"] withDimension:80];
@@ -108,27 +107,8 @@
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
-    NSString *text = [Constants emptyRequestsPlaceholderTitle];
-    
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
-                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
-    
-    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
-}
-
-- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
-{
-    NSString *text = [Constants emptyRequestsPlaceholderMsg];
-    
-    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
-    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraph.alignment = NSTextAlignmentCenter;
-    
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
-                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
-                                 NSParagraphStyleAttributeName: paragraph};
-                                 
-    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    NSString *text = [Constants emptyIncomingRequestsPlaceholderTitle];
+    return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
 - (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView

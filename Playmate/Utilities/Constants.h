@@ -80,9 +80,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)emptyListPlaceholderMsg;
 + (NSString *)emptyListPlaceholderTitle;
 
-+ (NSString *)emptyRequestsPlaceholderMsg;
-+ (NSString *)emptyRequestsPlaceholderTitle;
++ (NSString *)emptyIncomingRequestsPlaceholderTitle;
 + (NSString *)emptyOutgoingRequestsPlaceholderTitle;
+
++ (NSDictionary *)descriptionAttributes;
++ (NSDictionary *)titleAttributes;
 
 @end
 

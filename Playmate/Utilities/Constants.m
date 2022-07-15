@@ -339,16 +339,30 @@
     return @"No Friends";
 }
 
-+ (NSString *)emptyRequestsPlaceholderMsg {
-    return @"";
-}
-
-+ (NSString *)emptyRequestsPlaceholderTitle {
++ (NSString *)emptyIncomingRequestsPlaceholderTitle {
     return @"No Incoming Friend Requests";
 }
 
 + (NSString *)emptyOutgoingRequestsPlaceholderTitle {
     return @"No Outgoing Friend Requests";
+}
+
++ (NSDictionary *)descriptionAttributes {
+    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    
+    NSDictionary *descriptionAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraphStyle};
+    
+    return descriptionAttributes;
+}
+
++ (NSDictionary *)titleAttributes {
+    NSDictionary *titleAttributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    return titleAttributes;
 }
 
 @end
