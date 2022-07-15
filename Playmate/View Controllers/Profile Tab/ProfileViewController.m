@@ -53,9 +53,9 @@
         self.profileImagePlaceholder.alpha = 0;
     }
     
-    PlayerConnection *myPc = [user[@"playerConnection"][0] fetchIfNeeded];
+    PlayerConnection *playerConnection = [Constants getPlayerConnectionForUser:user];
     
-    unsigned long numFriends = ((NSArray *)myPc[@"friendsList"]).count;
+    unsigned long numFriends = ((NSArray *)playerConnection[@"friendsList"]).count;
     
     // TODO: find out how to make font bold, look like a button
 //    [self.numberOfFriendsButton.titleLabel setFont:[UIFont fontWithName:@"Avenir" size:16.0]];

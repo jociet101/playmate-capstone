@@ -50,9 +50,9 @@
     UIImage *img = hasProfileImage ? [UIImage imageWithData:[self.user[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
     [self.profileImageView setImage:img];
     
-    PlayerConnection *thisPc = [self.user[@"playerConnection"][0] fetchIfNeeded];
+    PlayerConnection *playerConnection = [Constants getPlayerConnectionForUser:self.user];
     
-    unsigned long numFriends = ((NSArray *)thisPc[@"friendsList"]).count;
+    unsigned long numFriends = ((NSArray *)playerConnection[@"friendsList"]).count;
     
     [self.numberOfFriendsButton setTitle:[NSString stringWithFormat:@"%ld friends", numFriends] forState:UIControlStateNormal];
 }
@@ -71,26 +71,26 @@
     
     PFQuery *query = [PFQuery queryWithClassName:@"PlayerConnection"];
     [query whereKey:@"userObjectId" equalTo:me.objectId];
-    PlayerConnection *pc = [[query getFirstObject] fetchIfNeeded];
+    PlayerConnection *playerConnection = [[query getFirstObject] fetchIfNeeded];
     
-    if (pc != nil) {
+    if (playerConnection != nil) {
         // if current user is friends w this person, set title "Remove Friend"
-        if ([pc.friendsList containsObject:self.user.objectId]) {
+        if ([playerConnection.friendsList containsObject:self.user.objectId]) {
             self.isMyFriend = YES;
             [self.addFriendButton setTitle:@"Remove Friend" forState:UIControlStateNormal];
         }
         // if current user sent unseen request to this person, set as "Request Pending"
-        else if ([pc.pendingList containsObject:self.user.objectId]) {
+        else if ([playerConnection.pendingList containsObject:self.user.objectId]) {
             self.isMyFriend = NO;
             [self setRequestPendingAsState];
         }
     }
     
     [query whereKey:@"userObjectId" equalTo:self.user.objectId];
-    pc = [[query getFirstObject] fetchIfNeeded];
+    playerConnection = [[query getFirstObject] fetchIfNeeded];
     
     // if current user has request from this person, set as "Sent you a request"
-    if (pc != nil && [pc.pendingList containsObject:me.objectId]) {
+    if (playerConnection != nil && [playerConnection.pendingList containsObject:me.objectId]) {
         self.isMyFriend = NO;
         [self setSendRequestToYouAsState];
     }
@@ -128,22 +128,22 @@
         PFUser *me = [[PFUser currentUser] fetchIfNeeded];
         
         // remove self.user.objectId from my friends list
-        PlayerConnection *myPc = [me[@"playerConnection"][0] fetchIfNeeded];
+        PlayerConnection *myPlayerConnection = [me[@"playerConnection"][0] fetchIfNeeded];
         
-        NSMutableArray *tempFriendsList = (NSMutableArray *)myPc.friendsList;
+        NSMutableArray *tempFriendsList = (NSMutableArray *)myPlayerConnection.friendsList;
         [tempFriendsList removeObject:self.user.objectId];
-        myPc.friendsList = (NSArray *)tempFriendsList;
+        myPlayerConnection.friendsList = (NSArray *)tempFriendsList;
         
-        [myPc saveInBackground];
+        [myPlayerConnection saveInBackground];
         
-        // remove me.objectId from self.user.pc friends list
-        PlayerConnection *theirPc = [self.user[@"playerConnection"][0] fetchIfNeeded];
+        // remove me.objectId from self.user.playerconnect friends list
+        PlayerConnection *theirPlayerConnection = [self.user[@"playerConnection"][0] fetchIfNeeded];
         
-        tempFriendsList = (NSMutableArray *)theirPc[@"friendsList"];
+        tempFriendsList = (NSMutableArray *)theirPlayerConnection[@"friendsList"];
         [tempFriendsList removeObject:me.objectId];
-        theirPc[@"friendsList"] = (NSArray *)tempFriendsList;
+        theirPlayerConnection[@"friendsList"] = (NSArray *)tempFriendsList;
         
-        [theirPc saveInBackground];
+        [theirPlayerConnection saveInBackground];
         
         [self resetAddFriendButton];
                  
@@ -152,26 +152,26 @@
         // if add friend
         // Create FriendRequest from me to other
         [FriendRequest saveFriendRequestTo:self.user.objectId];
-        PlayerConnection *pc;
+        PlayerConnection *playerConnection;
         
         if ([user objectForKey:@"playerConnection"] == nil) {
-            pc = [PlayerConnection initializePlayerConnection];
+            playerConnection = [PlayerConnection initializePlayerConnection];
             
-            NSMutableArray *tempPendingList = (NSMutableArray *)pc.pendingList;
+            NSMutableArray *tempPendingList = (NSMutableArray *)playerConnection.pendingList;
             [tempPendingList addObject:self.user.objectId];
-            pc.pendingList = (NSArray *)tempPendingList;
+            playerConnection.pendingList = (NSArray *)tempPendingList;
         } else {
-            pc = [user[@"playerConnection"][0] fetchIfNeeded];
+            playerConnection = [user[@"playerConnection"][0] fetchIfNeeded];
             
-            NSMutableArray *tempPendingList = (NSMutableArray *)pc[@"pendingList"];
+            NSMutableArray *tempPendingList = (NSMutableArray *)playerConnection[@"pendingList"];
             [tempPendingList addObject:self.user.objectId];
-            pc[@"pendingList"] = (NSArray *)tempPendingList;
+            playerConnection[@"pendingList"] = (NSArray *)tempPendingList;
         }
         
         // Add pending friend connection from me to other
-        [pc saveInBackground];
+        [playerConnection saveInBackground];
         
-        [user addObject:pc forKey:@"playerConnection"];
+        [user addObject:playerConnection forKey:@"playerConnection"];
         
         [user saveInBackground];
         

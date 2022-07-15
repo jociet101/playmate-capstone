@@ -33,9 +33,10 @@
     self.tableView.emptyDataSetDelegate = self;
     
     [self.thisUser fetchIfNeeded];
-    PlayerConnection *thisPc = [self.thisUser[@"playerConnection"][0] fetchIfNeeded];
     
-    self.friendsList = thisPc[@"friendsList"];
+    PlayerConnection *playerConnection = [Constants getPlayerConnectionForUser:self.thisUser];
+    
+    self.friendsList = playerConnection[@"friendsList"];
     
     // set up refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];

@@ -48,9 +48,9 @@
     // fetch data for outoing request list
     PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
-    PlayerConnection *myPc = [user[@"playerConnection"][0] fetchIfNeeded];
+    PlayerConnection *playerConnection = [Constants getPlayerConnectionForUser:user];
     
-    self.outgoingRequestList = myPc[@"pendingList"];
+    self.outgoingRequestList = playerConnection[@"pendingList"];
     
     [self.refreshControl endRefreshing];
 }

@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "DateTools.h"
+#import "PlayerConnection.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 // For API
 + (NSString *)geoapifyBaseURLString;
 + (NSString *)decathalonSportsListString;
+
+// For Parse
++ (PlayerConnection *)getPlayerConnectionForUser:(PFUser *)user;
 
 // For calendar
 + (NSDate *) dateWithHour:(NSInteger)hour

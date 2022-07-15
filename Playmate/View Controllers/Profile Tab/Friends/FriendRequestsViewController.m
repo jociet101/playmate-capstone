@@ -27,13 +27,9 @@
     
     UISegmentedControl *switcher = sender;
     
-    if (switcher.selectedSegmentIndex == 0) {
-        self.incomingView.alpha = 1;
-        self.outgoingView.alpha = 0;
-    } else {
-        self.incomingView.alpha = 0;
-        self.outgoingView.alpha = 1;
-    }
+    const BOOL isSegmentZeroIndex = (switcher.selectedSegmentIndex == 0);
+    self.incomingView.alpha = isSegmentZeroIndex ? 1 : 0;
+    self.outgoingView.alpha = isSegmentZeroIndex ? 0 : 1;
     
 }
 

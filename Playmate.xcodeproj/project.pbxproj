@@ -273,14 +273,6 @@
 			isa = PBXGroup;
 			children = (
 				3C8E5396287F68F60087498B /* Friends */,
-				3C8E538D287F2D200087498B /* FriendsListViewController.h */,
-				3C8E538E287F2D200087498B /* FriendsListViewController.m */,
-				3C8E5393287F683D0087498B /* FriendRequestsViewController.h */,
-				3C8E5394287F683D0087498B /* FriendRequestsViewController.m */,
-				3CF4A5B9287CE3A9000C5E7D /* IncomingRequestsViewController.h */,
-				3CF4A5BA287CE3A9000C5E7D /* IncomingRequestsViewController.m */,
-				3C8E5397287F69170087498B /* OutgoingRequestsViewController.h */,
-				3C8E5398287F69170087498B /* OutgoingRequestsViewController.m */,
 				3C45B576287299C200EE578F /* ProfileViewController.h */,
 				3C45B577287299C200EE578F /* ProfileViewController.m */,
 				3CF4A5882878AA1A000C5E7D /* EditProfileViewController.h */,
@@ -356,6 +348,14 @@
 		3C8E5396287F68F60087498B /* Friends */ = {
 			isa = PBXGroup;
 			children = (
+				3C8E538D287F2D200087498B /* FriendsListViewController.h */,
+				3C8E538E287F2D200087498B /* FriendsListViewController.m */,
+				3C8E5393287F683D0087498B /* FriendRequestsViewController.h */,
+				3C8E5394287F683D0087498B /* FriendRequestsViewController.m */,
+				3CF4A5B9287CE3A9000C5E7D /* IncomingRequestsViewController.h */,
+				3CF4A5BA287CE3A9000C5E7D /* IncomingRequestsViewController.m */,
+				3C8E5397287F69170087498B /* OutgoingRequestsViewController.h */,
+				3C8E5398287F69170087498B /* OutgoingRequestsViewController.m */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
