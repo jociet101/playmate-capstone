@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) CLLocation *currentLocation;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGesture;
+@property (nonatomic, strong) MKPointAnnotation *selectedLocationAnnotation;
 
 @end
 
@@ -34,6 +35,8 @@ BOOL firstTime;
     [self.longPressGesture addTarget:self action:@selector(didLongPressOnMap:)];
     self.longPressGesture.delegate = self;
     [self.mapView addGestureRecognizer:self.longPressGesture];
+    
+    self.selectedLocationAnnotation = [[MKPointAnnotation alloc] init];
     
     firstTime = YES;
     
@@ -132,10 +135,9 @@ BOOL firstTime;
     MKCoordinateRegion region = MKCoordinateRegionMake(coordinate, MKCoordinateSpanMake(0.1, 0.1));
     [self.mapView setRegion:region animated:false];
     
-    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-    [annotation setCoordinate:coordinate];
-    [annotation setTitle:locationName];
-    [self.mapView addAnnotation:annotation];
+    [self.selectedLocationAnnotation setCoordinate:coordinate];
+    [self.selectedLocationAnnotation setTitle:locationName];
+    [self.mapView addAnnotation:self.selectedLocationAnnotation];
 }
 
 #pragma mark - Use current location
