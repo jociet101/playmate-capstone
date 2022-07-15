@@ -68,17 +68,6 @@
     
 }
 
-- (NSArray *)copyArray:(NSArray *)array {
-    NSMutableArray *copyTo = [[NSMutableArray alloc] init];
-    
-    for (FriendRequest *item in array) {
-        [copyTo addObject:item];
-    }
-    
-    return (NSArray *)copyTo;
-    
-}
-
 #pragma mark - Table view protocol methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -119,7 +108,6 @@
 #pragma mark - Friend Request cell delegate methods
 
 - (void)didTap:(FriendRequestCell *)cell profileImage:(PFUser *)user {
-    
     [self performSegueWithIdentifier:@"toProfile" sender:user];
 }
 
