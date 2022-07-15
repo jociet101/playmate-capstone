@@ -69,8 +69,13 @@ BOOL firstTime;
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    [self geocodeLocationWithSearch:searchBar.text];
+    [searchBar resignFirstResponder];
+}
+
+- (void)geocodeLocationWithSearch:(NSString *)searchInput {
     APIManager *manager = [APIManager new];
-    [manager getGeocodedLocation:searchBar.text withCompletion:^(Location *loc, NSError *error) {
+    [manager getGeocodedLocation:searchInput withCompletion:^(Location *loc, NSError *error) {
         
         if (error == nil) {
             
@@ -100,13 +105,14 @@ BOOL firstTime;
         }
         
     }];
-    
-    [searchBar resignFirstResponder];
 }
 
 #pragma mark - Use current location
 
 - (IBAction)didTapCurrentLocation:(id)sender {
+    
+    
+    
     Location *location = [Location new];
     CLLocationCoordinate2D current = [self.currentLocation coordinate];
     
@@ -114,44 +120,22 @@ BOOL firstTime;
     location.lng = [NSNumber numberWithDouble:current.longitude];
     
     APIManager *manager = [APIManager new];
-    [manager getReverseGeocodedLocation:location withCompletion:^(NSString * _Nonnull loc, NSError * _Nonnull error) {
+    [manager getReverseGeocodedLocation:location withCompletion:^(NSString * _Nonnull name, NSError * _Nonnull error) {
         if (error == nil) {
-            if (loc == nil) {
+            if (name == nil) {
                 [self handleAlert:nil withTitle:@"Current location not found." andOk:@"Ok"];
             }
             else {
+                location.locationName = name;
                 
+                NSLog(@"location namd %@", name);
+                
+                [self geocodeLocationWithSearch:name];
             }
+        } else {
+            [self handleAlert:error withTitle:@"Error." andOk:@"Try again."];
         }
     }];
-//
-//        if (error == nil) {
-//
-//            if (loc == nil) {
-//                [self handleAlert:nil withTitle:@"Address not found." andOk:@"Ok"];
-//            }
-//            else {
-//                // extract information from Location object
-//                // recenter map and put pin
-//
-//                CLLocationCoordinate2D centerCoord = CLLocationCoordinate2DMake([loc.lat doubleValue], [loc.lng doubleValue]);
-//
-//                MKCoordinateRegion region = MKCoordinateRegionMake(centerCoord, MKCoordinateSpanMake(0.1, 0.1));
-//                [self.mapView setRegion:region animated:false];
-//
-//                MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-//                [annotation setCoordinate:centerCoord];
-//                [annotation setTitle:loc.locationName];
-//                [self.mapView addAnnotation:annotation];
-//
-//                // send location back to filters or create view controller
-//                [self.delegate getSelectedLocation:loc];
-//            }
-//
-//        } else {
-//            [self handleAlert:error withTitle:@"Error." andOk:@"Try again."];
-//        }
-        
 }
 
 #pragma mark - Location manager delegate methods
