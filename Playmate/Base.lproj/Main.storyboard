@@ -411,7 +411,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create" id="keR-ap-y6v">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="hN1-Uf-Ofy">
+                        <barButtonItem key="leftBarButtonItem" id="hN1-Uf-Ofy">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="OOK-Sz-9kW">
                                 <rect key="frame" x="16" y="5" width="86" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -422,7 +422,7 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="uDH-Pv-KwL">
+                        <barButtonItem key="rightBarButtonItem" id="uDH-Pv-KwL">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="MAf-xw-stf">
                                 <rect key="frame" x="288" y="5" width="86" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -927,7 +927,7 @@
                                 <segue destination="A3D-b9-PHu" kind="show" id="Mzl-ju-Esa"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="cWY-AU-vad">
+                        <barButtonItem key="rightBarButtonItem" id="cWY-AU-vad">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="hka-rk-6rR">
                                 <rect key="frame" x="259.33333333333331" y="5" width="114.66666666666669" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1518,7 +1518,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Profile" id="767-42-nGF">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="Vkn-0o-mCx">
+                        <barButtonItem key="leftBarButtonItem" id="Vkn-0o-mCx">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="5xi-zB-SJV">
                                 <rect key="frame" x="16" y="5" width="86" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1529,7 +1529,7 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="2Qm-DQ-pGW">
+                        <barButtonItem key="rightBarButtonItem" id="2Qm-DQ-pGW">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="f0Q-Ys-Mke">
                                 <rect key="frame" x="288" y="5" width="86" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1690,35 +1690,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3FX-3d-5v6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5685" y="1587"/>
-        </scene>
-        <!--Messages-->
-        <scene sceneID="icH-HS-YjM">
-            <objects>
-                <viewController id="WLs-CO-nGe" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aPt-zh-BZd">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="S8c-Ay-Lab"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Messages" id="RkP-cD-VTV"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K37-5b-M2b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="i2u-fQ-eGJ">
-                    <rect key="frame" x="0.0" y="0.0" width="89" height="28"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <attributedString key="attributedText">
-                        <fragment content="Skill Level">
-                            <attributes>
-                                <font key="NSFont" size="20" name="Avenir-Medium"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
-                    <nil key="highlightedColor"/>
-                </label>
-            </objects>
-            <point key="canvasLocation" x="4435" y="2381"/>
         </scene>
         <!--Friends-->
         <scene sceneID="PwV-UB-1Ab">
@@ -1951,25 +1922,6 @@
             </objects>
             <point key="canvasLocation" x="4756.9230769230771" y="674.64454976303318"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="0j6-pd-afO">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bXN-C0-hgV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="yaD-yK-kPZ"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="WDq-vd-oEX">
-                        <rect key="frame" x="0.0" y="44" width="390" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="WLs-CO-nGe" kind="relationship" relationship="rootViewController" id="zXk-8n-uQb"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zG3-n3-hPh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3692" y="2381"/>
-        </scene>
         <!--Filters-->
         <scene sceneID="rZt-yj-apl">
             <objects>
@@ -2087,7 +2039,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Filters" id="Uza-Cp-hMM">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="BP8-T9-2DJ">
+                        <barButtonItem key="rightBarButtonItem" id="BP8-T9-2DJ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="V6g-AN-ijy">
                                 <rect key="frame" x="288" y="5" width="86" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
