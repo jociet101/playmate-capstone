@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		08F3A736C04B199B7D2918A8 /* Pods_Playmate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FD77B182A0096E02A5A865 /* Pods_Playmate.framework */; };
+		3C167B3F2881F21F00081304 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C167B3E2881F21F00081304 /* Helpers.m */; };
 		3C383FD52877416D00BC9B55 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C383FD42877416D00BC9B55 /* Constants.m */; };
 		3C383FDD28775D2A00BC9B55 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C383FDC28775D2A00BC9B55 /* APIManager.m */; };
 		3C45B565286E64EB00EE578F /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B564286E64EB00EE578F /* WelcomeViewController.m */; };
@@ -77,6 +78,8 @@
 		10B5CDD850AA6D824EFB0D44 /* Pods-PlaymateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaymateTests.debug.xcconfig"; path = "Target Support Files/Pods-PlaymateTests/Pods-PlaymateTests.debug.xcconfig"; sourceTree = "<group>"; };
 		14FD77B182A0096E02A5A865 /* Pods_Playmate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Playmate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		356830720495914AEBE45D47 /* Pods-PlaymateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaymateTests.release.xcconfig"; path = "Target Support Files/Pods-PlaymateTests/Pods-PlaymateTests.release.xcconfig"; sourceTree = "<group>"; };
+		3C167B3D2881F21F00081304 /* Helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
+		3C167B3E2881F21F00081304 /* Helpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
 		3C383FD32877416D00BC9B55 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		3C383FD42877416D00BC9B55 /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		3C383FDB28775D2A00BC9B55 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
@@ -224,6 +227,8 @@
 		3C383FDA28775CCA00BC9B55 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				3C167B3D2881F21F00081304 /* Helpers.h */,
+				3C167B3E2881F21F00081304 /* Helpers.m */,
 				3C383FD32877416D00BC9B55 /* Constants.h */,
 				3C383FD42877416D00BC9B55 /* Constants.m */,
 				3C383FDB28775D2A00BC9B55 /* APIManager.h */,
@@ -672,6 +677,7 @@
 			files = (
 				3C45B565286E64EB00EE578F /* WelcomeViewController.m in Sources */,
 				3C8E539C287F7A8D0087498B /* OutgoingRequestCell.m in Sources */,
+				3C167B3F2881F21F00081304 /* Helpers.m in Sources */,
 				3CF4A5AF287CA9D1000C5E7D /* PlayerProfileViewController.m in Sources */,
 				3C383FDD28775D2A00BC9B55 /* APIManager.m in Sources */,
 				3CF4A5B2287CD65D000C5E7D /* FriendRequest.m in Sources */,

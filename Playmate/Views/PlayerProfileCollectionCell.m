@@ -7,6 +7,7 @@
 
 #import "PlayerProfileCollectionCell.h"
 #import "Constants.h"
+#import "Helpers.h"
 
 @interface PlayerProfileCollectionCell ()
 
@@ -30,7 +31,7 @@
     
     const BOOL hasProfileImage = (user[@"profileImage"] != nil);
     UIImage *img = hasProfileImage ? [UIImage imageWithData:[user[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
-    [self.profileImageView setImage:[Constants resizeImage:img withDimension:114]];
+    [self.profileImageView setImage:[Helpers resizeImage:img withDimension:114]];
     
     // make profile image view a circle
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;

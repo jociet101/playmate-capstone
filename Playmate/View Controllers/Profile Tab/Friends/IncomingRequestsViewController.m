@@ -12,6 +12,7 @@
 #import "PlayerConnection.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
+#import "Helpers.h"
 
 @interface IncomingRequestsViewController () <UITableViewDelegate, UITableViewDataSource, FriendRequestCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -91,7 +92,7 @@
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
-    return [Constants resizeImage:[UIImage imageNamed:@"empty_friend_request"] withDimension:80];
+    return [Helpers resizeImage:[UIImage imageNamed:@"empty_friend_request"] withDimension:80];
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
