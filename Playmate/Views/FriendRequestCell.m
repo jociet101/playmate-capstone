@@ -57,7 +57,7 @@
     self.denyButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
     const BOOL hasProfileImage = (self.requester[@"profileImage"] != nil);
-    UIImage *img = hasProfileImage ? self.requester[@"profileImage"] : [Constants profileImagePlaceholder];
+    UIImage *img = hasProfileImage ? [UIImage imageWithData:[self.requester[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
     [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
     
     // set time ago timestamp

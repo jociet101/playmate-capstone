@@ -29,7 +29,7 @@
     self.detailsLabel.text = [[[Constants getAgeInYears:user[@"birthday"][0]] stringByAppendingString:@" yo "] stringByAppendingString:user[@"gender"][0]];
     
     const BOOL hasProfileImage = (user[@"profileImage"] != nil);
-    UIImage *img = hasProfileImage ? user[@"profileImage"] : [Constants profileImagePlaceholder];
+    UIImage *img = hasProfileImage ? [UIImage imageWithData:[user[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
     [self.profileImageView setImage:[Constants resizeImage:img withDimension:114]];
     
     // make profile image view a circle

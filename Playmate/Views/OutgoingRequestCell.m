@@ -43,7 +43,7 @@
     self.cancelButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
     const BOOL hasProfileImage = (user[@"profileImage"] != nil);
-    UIImage *img = hasProfileImage ? user[@"profileImage"] : [Constants profileImagePlaceholder];
+    UIImage *img = hasProfileImage ? [UIImage imageWithData:[user[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
     [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
     
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;

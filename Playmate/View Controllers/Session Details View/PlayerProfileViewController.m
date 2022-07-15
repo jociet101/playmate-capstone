@@ -47,7 +47,7 @@
     }
     
     const BOOL hasProfileImage = (self.user[@"profileImage"] != nil);
-    UIImage *img = hasProfileImage ? self.user[@"profileImage"] : [Constants profileImagePlaceholder];
+    UIImage *img = hasProfileImage ? [UIImage imageWithData:[self.user[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
     [self.profileImageView setImage:img];
     
     PlayerConnection *thisPc = [self.user[@"playerConnection"][0] fetchIfNeeded];
