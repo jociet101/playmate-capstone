@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *genderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bioField;
 @property (weak, nonatomic) IBOutlet UILabel *profileImagePlaceholder;
-@property (weak, nonatomic) IBOutlet UIImageView *backdropImageView;
 @property (weak, nonatomic) IBOutlet UIButton *numberOfFriendsButton;
 @property (weak, nonatomic) IBOutlet UIButton *settingsMenuButton;
 
@@ -52,15 +51,6 @@
         UIImage* img = [UIImage imageWithData:[user[@"profileImage"] getData]];
         [self.profileImageView setImage:img];
         self.profileImagePlaceholder.alpha = 0;
-    }
-    if (user[@"backdropImage"] != nil) {
-        // set image stuff
-        UIImage* img = [UIImage imageWithData:[user[@"backdropImage"] getData]];
-        [self.backdropImageView setImage:img];
-    }
-    else {
-        UIImage* img = [UIImage imageNamed:@"playmate_backdrop.png"];
-        [self.backdropImageView setImage:img];
     }
     
     PlayerConnection *myPc = user[@"playerConnection"][0];
