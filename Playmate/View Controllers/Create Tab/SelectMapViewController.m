@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, strong) CLLocation *currentLocation;
 
 @end
 
@@ -103,6 +104,56 @@ BOOL firstTime;
     [searchBar resignFirstResponder];
 }
 
+#pragma mark - Use current location
+
+- (IBAction)didTapCurrentLocation:(id)sender {
+    Location *location = [Location new];
+    CLLocationCoordinate2D current = [self.currentLocation coordinate];
+    
+    location.lat = [NSNumber numberWithDouble:current.latitude];
+    location.lng = [NSNumber numberWithDouble:current.longitude];
+    
+    APIManager *manager = [APIManager new];
+    [manager getReverseGeocodedLocation:location withCompletion:^(NSString * _Nonnull loc, NSError * _Nonnull error) {
+        if (error == nil) {
+            if (loc == nil) {
+                [self handleAlert:nil withTitle:@"Current location not found." andOk:@"Ok"];
+            }
+            else {
+                
+            }
+        }
+    }];
+//
+//        if (error == nil) {
+//
+//            if (loc == nil) {
+//                [self handleAlert:nil withTitle:@"Address not found." andOk:@"Ok"];
+//            }
+//            else {
+//                // extract information from Location object
+//                // recenter map and put pin
+//
+//                CLLocationCoordinate2D centerCoord = CLLocationCoordinate2DMake([loc.lat doubleValue], [loc.lng doubleValue]);
+//
+//                MKCoordinateRegion region = MKCoordinateRegionMake(centerCoord, MKCoordinateSpanMake(0.1, 0.1));
+//                [self.mapView setRegion:region animated:false];
+//
+//                MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+//                [annotation setCoordinate:centerCoord];
+//                [annotation setTitle:loc.locationName];
+//                [self.mapView addAnnotation:annotation];
+//
+//                // send location back to filters or create view controller
+//                [self.delegate getSelectedLocation:loc];
+//            }
+//
+//        } else {
+//            [self handleAlert:error withTitle:@"Error." andOk:@"Try again."];
+//        }
+        
+}
+
 #pragma mark - Location manager delegate methods
 
 - (void)locationManagerDidChangeAuthorization:(CLLocationManager *)manager {
@@ -111,6 +162,9 @@ BOOL firstTime;
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    
+    self.currentLocation = [locations lastObject];
+    
     if (firstTime == YES) {
         firstTime = NO;
         

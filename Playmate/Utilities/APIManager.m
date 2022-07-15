@@ -107,4 +107,37 @@ static NSString * geoapify;
     [task resume];
 }
 
+- (void)getReverseGeocodedLocation:(Location *)location withCompletion:(void(^)(NSString *loc, NSError *error))completion {
+    // Parse the location then into format needed for url
+    NSString *latitudeString = [NSString stringWithFormat:@"%f", [location.lat doubleValue]];
+    NSString *longitudeString = [NSString stringWithFormat:@"%f", [location.lng doubleValue]];
+    
+    NSString *queryString = [NSString stringWithFormat:@"%@/geocode/reverse?lat=%@&lon=%@&apiKey=%@", [Constants geoapifyBaseURLString], latitudeString, longitudeString, geoapify];
+    NSURL *url = [NSURL URLWithString:queryString];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error != nil) {
+            NSLog(@"%@", [error localizedDescription]);
+            completion(nil, error);
+        }
+        else {
+            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            
+            // parse dictionary
+            NSArray *results = dataDictionary[@"results"];
+            
+            if (results.count == 0) {
+                completion(nil, nil);
+            }
+            else {
+                NSDictionary *firstResult = results[0];
+                completion(firstResult[@"formatted"], nil);
+            }
+        }
+        
+    }];
+    [task resume];
+}
+
 @end

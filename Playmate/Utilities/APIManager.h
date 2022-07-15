@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)getSportsListWithCompletion:(void(^)(NSDictionary *list, NSError *error))completion;
 - (void)getGeocodedLocation:(NSString *)address withCompletion:(void(^)(Location *loc, NSError *error))completion;
+- (void)getReverseGeocodedLocation:(Location *)location withCompletion:(void(^)(NSString *loc, NSError *error))completion;
 
 @end
 
