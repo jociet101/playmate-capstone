@@ -38,8 +38,7 @@
     
     self.sessionList = [[NSMutableArray alloc] init];
     
-    PFUser *me = [PFUser currentUser];
-    [me fetchIfNeeded];
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     
     NSString *greeting;
     NSDate *now = [NSDate now];
@@ -88,8 +87,7 @@
 - (void)filterSessions:(NSArray *)sessions {
     
     NSMutableArray *tempList = (NSMutableArray *)sessions;
-    PFUser *currUser = [PFUser currentUser];
-    [currUser fetchIfNeeded];
+    PFUser *currUser = [[PFUser currentUser] fetchIfNeeded];
     
     for (Session *sesh in tempList) {
         

@@ -54,8 +54,7 @@
     
     self.sportLabel.text = [self.session.sport stringByAppendingString:[@" w/ " stringByAppendingString:playersString]];
     
-    Location *loc = self.session.location;
-    [loc fetchIfNeeded];
+    Location *loc = [self.session.location fetchIfNeeded];
     
     self.locationLabel.text = loc.locationName;
     

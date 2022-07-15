@@ -75,8 +75,7 @@
 
 - (IBAction)didTapAccept:(id)sender {
     
-    PFUser *user = [PFUser currentUser];
-    [user fetchIfNeeded];
+    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
     // add a connection from this person's side
     PlayerConnection *connection;

@@ -28,8 +28,7 @@
     
     self.saveButton.layer.cornerRadius = [Constants buttonCornerRadius];
     
-    PFUser *user = [PFUser currentUser];
-    [user fetchIfNeeded];
+    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
     self.firstNameView.text = user[@"firstName"][0];
     self.lastNameView.text = user[@"lastName"][0];
@@ -54,8 +53,7 @@
 
 - (IBAction)didTapSave:(id)sender {
     
-    PFUser *user = [PFUser currentUser];
-    [user fetchIfNeeded];
+    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
     [user removeObjectForKey:@"firstName"];
     [user addObject:self.firstNameView.text forKey:@"firstName"];

@@ -53,8 +53,7 @@
         self.profileImagePlaceholder.alpha = 0;
     }
     
-    PlayerConnection *myPc = user[@"playerConnection"][0];
-    [myPc fetchIfNeeded];
+    PlayerConnection *myPc = [user[@"playerConnection"][0] fetchIfNeeded];
     
     unsigned long numFriends = ((NSArray *)myPc[@"friendsList"]).count;
     

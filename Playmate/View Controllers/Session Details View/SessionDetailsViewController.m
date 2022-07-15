@@ -37,8 +37,7 @@ PFUser *me;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    me = [PFUser currentUser];
-    [me fetchIfNeeded];
+    me = [[PFUser currentUser] fetchIfNeeded];
 
     self.addMyselfButton.layer.cornerRadius = [Constants buttonCornerRadius];
     
@@ -90,8 +89,7 @@ PFUser *me;
     
     self.levelLabel.text = self.sessionDetails.skillLevel;
     
-    Location *loc = self.sessionDetails.location;
-    [loc fetchIfNeeded];
+    Location *loc = [self.sessionDetails.location fetchIfNeeded];
     
     self.locationLabel.text = loc.locationName;
     

@@ -35,8 +35,7 @@
     _userObjectId = userObjectId;
     
     PFQuery *query = [PFUser query];
-    PFUser *user = [query getObjectWithId:userObjectId];
-    [user fetchIfNeeded];
+    PFUser *user = [[query getObjectWithId:userObjectId] fetchIfNeeded];
     
     NSString *name = [Constants concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
     self.titleLabel.text = [@"You requested to be friends with " stringByAppendingString:name];
@@ -56,8 +55,7 @@
 
 - (IBAction)cancelOutgoingRequest:(id)sender {
     
-    PFUser *user = [PFUser currentUser];
-    [user fetchIfNeeded];
+    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
     // remove user from my pending list
     PlayerConnection *connection = user[@"playerConnection"][0];

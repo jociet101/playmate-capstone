@@ -46,11 +46,9 @@
 - (void)fetchData {
     
     // fetch data for outoing request list
-    PFUser *user = [PFUser currentUser];
-    [user fetchIfNeeded];
+    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
-    PlayerConnection *myPc = user[@"playerConnection"][0];
-    [myPc fetchIfNeeded];
+    PlayerConnection *myPc = [user[@"playerConnection"][0] fetchIfNeeded];
     
     self.outgoingRequestList = myPc[@"pendingList"];
     

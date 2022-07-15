@@ -33,8 +33,7 @@
     NSLog(@"self.thisuserid %@", self.thisUserId);
     
     PFQuery *query = [PFUser query];
-    PFUser *thisUser = [query getObjectWithId:self.thisUserId];
-    [thisUser fetchIfNeeded];
+    PFUser *thisUser = [[query getObjectWithId:self.thisUserId] fetchIfNeeded];
     
     self.nameLabel.text = thisUser.username;
     

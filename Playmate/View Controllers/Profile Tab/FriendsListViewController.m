@@ -33,8 +33,7 @@
     self.tableView.emptyDataSetDelegate = self;
     
     [self.thisUser fetchIfNeeded];
-    PlayerConnection *thisPc = self.thisUser[@"playerConnection"][0];
-    [thisPc fetchIfNeeded];
+    PlayerConnection *thisPc = [self.thisUser[@"playerConnection"][0] fetchIfNeeded];
     
     self.friendsList = thisPc[@"friendsList"];
     

@@ -49,8 +49,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"FriendRequest"];
     query.limit = 20;
     
-    PFUser *user = [PFUser currentUser];
-    [user fetchIfNeeded];
+    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
 
     [query whereKey:@"requestToId" equalTo:user.objectId];
 
