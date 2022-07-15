@@ -6,6 +6,7 @@
 //
 
 #import "Helpers.h"
+#import "Constants.h"
 
 @implementation Helpers
 
@@ -24,6 +25,28 @@
     UIGraphicsEndImageContext();
     
     return newImage;
+}
+
++ (NSString *)getTimeGivenDurationForSession:(Session *)session {
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDate *startTime = session.occursAt;
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setMinute:60*[session.duration intValue]];
+    NSDate *endTime = [gregorian dateByAddingComponents:comps toDate:startTime  options:0];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = [Constants dateFormatString];
+    
+    formatter.dateStyle = NSDateFormatterMediumStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    NSString *dateString = [formatter stringFromDate:startTime];
+    
+    formatter.dateStyle = NSDateFormatterNoStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    NSString *startTimeString = [formatter stringFromDate:startTime];
+    NSString *endTimeString = [formatter stringFromDate:endTime];
+    
+    return [dateString stringByAppendingFormat:@", %@ to %@", startTimeString, endTimeString];
 }
 
 @end

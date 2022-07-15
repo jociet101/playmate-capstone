@@ -12,6 +12,7 @@
 #import "PlayerProfileCollectionCell.h"
 #import "PlayerProfileViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Helpers.h"
 
 @interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -93,31 +94,9 @@ PFUser *me;
     
     self.locationLabel.text = loc.locationName;
     
-    [self setDate];
+    self.dateTimeLabel.text = [Helpers getTimeGivenDurationForSession:self.sessionDetails];
     
     self.createdDateLabel.text = [@"Session created at: " stringByAppendingString:[Constants formatDate:self.sessionDetails.updatedAt]];
-}
-
-- (void)setDate {
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDate *startTime = self.sessionDetails.occursAt;
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setMinute:60*[self.sessionDetails.duration intValue]];
-    NSDate *endTime = [gregorian dateByAddingComponents:comps toDate:startTime  options:0];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = [Constants dateFormatString];
-    
-    formatter.dateStyle = NSDateFormatterMediumStyle;
-    formatter.timeStyle = NSDateFormatterNoStyle;
-    NSString *dateString = [formatter stringFromDate:startTime];
-    
-    formatter.dateStyle = NSDateFormatterNoStyle;
-    formatter.timeStyle = NSDateFormatterShortStyle;
-    NSString *startTimeString = [formatter stringFromDate:startTime];
-    NSString *endTimeString = [formatter stringFromDate:endTime];
-    
-    self.dateTimeLabel.text = [dateString stringByAppendingFormat:@", %@ to %@", startTimeString, endTimeString];
 }
 
 #pragma mark - Animating confetti
