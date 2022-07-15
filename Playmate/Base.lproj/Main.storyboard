@@ -1372,7 +1372,7 @@
                                 <rect key="frame" x="202" y="151" width="172" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Current Location"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Use Current Location"/>
                                 <connections>
                                     <action selector="didTapCurrentLocation:" destination="9tI-s5-YSO" eventType="touchUpInside" id="YMc-nU-h3Z"/>
                                 </connections>
