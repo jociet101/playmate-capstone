@@ -28,15 +28,9 @@
     self.usernameLabel.text = [@"@" stringByAppendingString:user[@"username"]];
     self.detailsLabel.text = [[[Constants getAgeInYears:user[@"birthday"][0]] stringByAppendingString:@" yo "] stringByAppendingString:user[@"gender"][0]];
     
-    if (user[@"profileImage"] != nil) {
-        // set image stuff
-        UIImage* img = [UIImage imageWithData:[user[@"profileImage"] getData]];
-        [self.profileImageView setImage:[Constants resizeImage:img withDimension:114]];
-    }
-    else {
-        UIImage* img = [UIImage imageNamed:@"playmate_logo_transparent.png"];
-        [self.profileImageView setImage:[Constants resizeImage:img withDimension:114]];
-    }
+    const BOOL hasProfileImage = (user[@"profileImage"] != nil);
+    UIImage *img = hasProfileImage ? user[@"profileImage"] : [Constants profileImagePlaceholder];
+    [self.profileImageView setImage:[Constants resizeImage:img withDimension:114]];
     
     // make profile image view a circle
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;

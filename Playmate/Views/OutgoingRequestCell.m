@@ -42,14 +42,10 @@
     
     self.cancelButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
-    if (user[@"profileImage"] != nil) {
-        UIImage* img = [UIImage imageWithData:[user[@"profileImage"] getData]];
-        [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
-    }
-    else {
-        UIImage* img = [UIImage imageNamed:@"playmate_logo_transparent.png"];
-        [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
-    }
+    const BOOL hasProfileImage = (user[@"profileImage"] != nil);
+    UIImage *img = hasProfileImage ? user[@"profileImage"] : [Constants profileImagePlaceholder];
+    [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
+    
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
 }
 

@@ -46,6 +46,10 @@
         [self.profileImageView setImage:[Constants resizeImage:img withDimension:40]];
     }
     
+    const BOOL hasProfileImage = (thisUser[@"profileImage"] != nil);
+    UIImage *img = hasProfileImage ? thisUser[@"profileImage"] : [Constants profileImagePlaceholder];
+    [self.profileImageView setImage:[Constants resizeImage:img withDimension:40]];
+    
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
 }
 

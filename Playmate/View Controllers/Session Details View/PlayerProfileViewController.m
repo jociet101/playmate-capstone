@@ -46,15 +46,9 @@
         self.bioField.text = @"No biography";
     }
     
-    if (self.user[@"profileImage"] != nil) {
-        // set image stuff
-        UIImage* img = [UIImage imageWithData:[self.user[@"profileImage"] getData]];
-        [self.profileImageView setImage:img];
-    }
-    else {
-        UIImage* img = [UIImage imageNamed:@"playmate_logo_transparent.png"];
-        [self.profileImageView setImage:img];
-    }
+    const BOOL hasProfileImage = (self.user[@"profileImage"] != nil);
+    UIImage *img = hasProfileImage ? self.user[@"profileImage"] : [Constants profileImagePlaceholder];
+    [self.profileImageView setImage:img];
     
     PlayerConnection *thisPc = [self.user[@"playerConnection"][0] fetchIfNeeded];
     

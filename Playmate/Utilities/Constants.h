@@ -65,6 +65,8 @@ NS_ASSUME_NONNULL_BEGIN
 // resize image
 + (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension;
 
++ (UIImage *)profileImagePlaceholder;
+
 // for empty table views
 + (NSString *)emptyTablePlaceholderMsg;
 + (NSString *)emptyTablePlaceholderTitle;

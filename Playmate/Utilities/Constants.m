@@ -306,6 +306,12 @@
     return newImage;
 }
 
+// playmate logo placeholder profile image
+
++ (UIImage *)profileImagePlaceholder {
+    return [UIImage imageNamed:@"playmate_logo_transparent"];
+}
+
 // for empty table view
 
 + (NSString *)emptyTablePlaceholderMsg {

@@ -56,14 +56,9 @@
     self.acceptButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
     self.denyButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
-    if (self.requester[@"profileImage"] != nil) {
-        UIImage* img = [UIImage imageWithData:[self.requester[@"profileImage"] getData]];
-        [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
-    }
-    else {
-        UIImage* img = [UIImage imageNamed:@"playmate_logo_transparent.png"];
-        [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
-    }
+    const BOOL hasProfileImage = (self.requester[@"profileImage"] != nil);
+    UIImage *img = hasProfileImage ? self.requester[@"profileImage"] : [Constants profileImagePlaceholder];
+    [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
     
     // set time ago timestamp
     self.timeAgoLabel.text = [[requestInfo.updatedAt shortTimeAgoSinceNow] stringByAppendingString:@" ago"];
