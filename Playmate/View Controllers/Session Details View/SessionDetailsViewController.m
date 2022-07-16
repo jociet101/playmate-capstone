@@ -34,11 +34,14 @@
 @implementation SessionDetailsViewController
 
 PFUser *me;
+BOOL partOfSession;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     me = [[PFUser currentUser] fetchIfNeeded];
+    
+    partOfSession = NO;
 
     self.addMyselfButton.layer.cornerRadius = [Constants buttonCornerRadius];
     
@@ -53,32 +56,30 @@ PFUser *me;
 }
 
 - (void)disableAddButton {
-    
     for (PFUser *user in self.sessionDetails.playersList) {
         [user fetchIfNeeded];
-        
         if ([me.username isEqualToString:user.username]) {
-            
-            self.disabledButton.text = [Constants alreadyInSessionErrorMsg];
-            self.disabledButton.textColor = [UIColor redColor];
-            [self.addMyselfButton setEnabled:NO];
-            self.addMyselfButton.alpha = 0;
-            break;
+            [self changeAddButtonToLeave];
+            return;
         }
     }
-    
     if ([self.sessionDetails.occupied isEqual:self.sessionDetails.capacity]) {
         self.disabledButton.text = [Constants fullSessionErrorMsg];
         self.disabledButton.textColor = [UIColor redColor];
         [self.addMyselfButton setEnabled:NO];
+        partOfSession = NO;
         self.addMyselfButton.alpha = 0;
     }
 }
-- (void)immediatelyDisableAddButton {
-    self.disabledButton.text = [Constants alreadyInSessionErrorMsg];
-    self.disabledButton.textColor = [UIColor redColor];
-    [self.addMyselfButton setEnabled:NO];
-    self.addMyselfButton.alpha = 0;
+
+- (void)changeAddButtonToLeave {
+    partOfSession = YES;
+    [self.addMyselfButton setTitle:@"Leave Session" forState:UIControlStateNormal];
+}
+
+- (void)changeAddButtonToJoin {
+    partOfSession = NO;
+    [self.addMyselfButton setTitle:@"Join Session" forState:UIControlStateNormal];
 }
 
 - (void)initializeDetails {
@@ -140,25 +141,55 @@ PFUser *me;
 #pragma mark - Add to session button action
 
 - (IBAction)addMyself:(id)sender {
-    [self showConfetti];
-    [self immediatelyDisableAddButton];
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+    if (partOfSession) {
+        [self changeAddButtonToJoin];
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
 
-    // Retrieve the object by id
-    [query getObjectInBackgroundWithId:self.sessionDetails.objectId
-                                 block:^(PFObject *session, NSError *error) {
-        // Add myself to the session
-        NSMutableArray *oldPlayersList = (NSMutableArray *)session[@"playersList"];
-        [oldPlayersList addObject:me];
+        // Retrieve the object by id
+        [query getObjectInBackgroundWithId:self.sessionDetails.objectId
+                                     block:^(PFObject *session, NSError *error) {
+            // Add myself to the session
+            NSMutableArray *oldPlayersList = (NSMutableArray *)session[@"playersList"];
+            
+            PFUser * _Nullable userToRemove = nil;
+            for (PFUser *user in oldPlayersList) {
+                if ([user.objectId isEqualToString:me.objectId]) {
+                    userToRemove = user;
+                    break;
+                }
+            }
+            
+            [oldPlayersList removeObject:userToRemove];
+                        
+            session[@"playersList"] = (NSArray *)oldPlayersList;
+            
+            int oldOccupied = (int)oldPlayersList.count;
+            session[@"occupied"] = [NSNumber numberWithInt:oldOccupied];
+            
+            [session saveInBackground];
+        }];
+    } else {
+        [self showConfetti];
+        [self changeAddButtonToLeave];
         
-        session[@"playersList"] = (NSArray *)oldPlayersList;
-        
-        int oldOccupied = [session[@"occupied"] intValue] + 1;
-        session[@"occupied"] = [NSNumber numberWithInt:oldOccupied];
-        
-        [session saveInBackground];
-    }];
+        PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+
+        // Retrieve the object by id
+        [query getObjectInBackgroundWithId:self.sessionDetails.objectId
+                                     block:^(PFObject *session, NSError *error) {
+            // Add myself to the session
+            NSMutableArray *oldPlayersList = (NSMutableArray *)session[@"playersList"];
+            [oldPlayersList addObject:me];
+            
+            session[@"playersList"] = (NSArray *)oldPlayersList;
+            
+            int oldOccupied = (int)oldPlayersList.count;
+            session[@"occupied"] = [NSNumber numberWithInt:oldOccupied];
+            
+            [session saveInBackground];
+        }];
+    }
 }
 
 #pragma mark - Collection view protocol methods
@@ -182,7 +213,6 @@ PFUser *me;
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     if ([sender isMemberOfClass:[PlayerProfileCollectionCell class]]) {
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
         PFUser* data = self.sessionDetails.playersList[indexPath.row];
