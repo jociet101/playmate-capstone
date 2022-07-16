@@ -241,28 +241,24 @@
     NSMutableArray *sports = [[NSMutableArray alloc] init];
     
     // TODO: Need to debug this for getting all sports later
-    /*
-    APIManager *manager = [APIManager new];
-    [manager getSportsListWithCompletion:^(NSDictionary *list, NSError *error) {
-        if (error != nil) {
-            NSLog(@"%@", error.localizedDescription);
-        } else {
-            NSArray *data = list[@"data"];
-
-            for (NSDictionary *datum in data) {
-                NSString *sport = [NSString stringWithString:datum[@"attributes"][@"name"]];
-
-                NSString *sportType = [NSString stringWithFormat:@"%@", [sport class]];
-
-                if ([sportType isEqualToString:@"NSTaggedPointerString"]) {
-                    [sports addObject:sport];
-                }
-            }
-        }
-    }];
-
-    NSLog(@"%@", sports);
-    */
+    
+//    APIManager *manager = [APIManager new];
+//    [manager getSportsListWithCompletion:^(NSDictionary *list, NSError *error) {
+//        if (error != nil) {
+//            NSLog(@"%@", error.localizedDescription);
+//        } else {
+//            NSArray *data = list[@"data"];
+//
+//            for (NSDictionary *datum in data) {
+//                NSString *sport = [NSString stringWithString:datum[@"attributes"][@"name"]];
+//                NSString *sportString = [NSString stringWithFormat:@"%@", sport];
+//                sports addObject:sportString];
+//            }
+//        }
+//    }];
+//
+//    NSLog(@"%@", sports);
+    
     
     if (needAll) {
         [sports addObject:@"All"];
