@@ -23,6 +23,10 @@
     return @"https://sports.api.decathlon.com/sports";
 }
 
++ (NSString *)decathalonOneSportString {
+    return @"https://sports.api.decathlon.com/sports/:";
+}
+
 // For Parse
 + (PlayerConnection *)getPlayerConnectionForUser:(PFUser *)user {
     return [user[@"playerConnection"][0] fetchIfNeeded];
@@ -240,42 +244,32 @@
     
     NSMutableArray *sports = [[NSMutableArray alloc] init];
     
-    // TODO: Need to debug this for getting all sports later
+    if (needAll) [sports addObject:@"All"];
     
-//    APIManager *manager = [APIManager new];
-//    [manager getSportsListWithCompletion:^(NSDictionary *list, NSError *error) {
-//        if (error != nil) {
-//            NSLog(@"%@", error.localizedDescription);
-//        } else {
-//            NSArray *data = list[@"data"];
-//
-//            for (NSDictionary *datum in data) {
-//                NSString *sport = [NSString stringWithString:datum[@"attributes"][@"name"]];
-//                NSString *sportString = [NSString stringWithFormat:@"%@", sport];
-//                sports addObject:sportString];
-//            }
-//        }
-//    }];
-//
-//    NSLog(@"%@", sports);
+    APIManager *manager = [APIManager new];
+    [manager getSportsListWithCompletion:^(NSDictionary *list, NSError *error) {
+        if (error != nil) {
+            NSLog(@"%@", error.localizedDescription);
+        } else {
+            NSArray *data = list[@"data"];
+            
+            for (NSDictionary *datum in data) {
+                
+                NSString *sport = [NSString stringWithFormat:@"%@", datum[@"attributes"][@"name"]];
+                [sports addObject:sport];
+            }
+        }
+    }];
     
-    
-    if (needAll) {
-        [sports addObject:@"All"];
-    }
-    
-    [sports addObject:@"Tennis"];
-    [sports addObject:@"Basketball"];
-    [sports addObject:@"Golf"];
     return (NSArray *)sports;
 }
 
 + (NSArray *)skillLevelsList:(BOOL)needAll {
     NSMutableArray *skillLevels = [[NSMutableArray alloc] init];
+    if (needAll) [skillLevels addObject:@"All"];
     [skillLevels addObject:@"Leisure"];
     [skillLevels addObject:@"Amateur"];
     [skillLevels addObject:@"Competitive"];
-    if (needAll) [skillLevels addObject:@"All"];
     
     return (NSArray *)skillLevels;
 }

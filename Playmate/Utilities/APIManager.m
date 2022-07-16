@@ -38,13 +38,23 @@ static NSString * geoapify;
     return self;
 }
 
-// GET https://sports.api.decathlon.com/sports
-
 - (void)getSportsListWithCompletion:(void(^)(NSDictionary *list, NSError *error))completion {
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:[Constants decathalonSportsListString]  parameters:nil progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *list) {
+    NSDictionary *params = @{@"parents_only":@YES};
+    [manager GET:[Constants decathalonSportsListString]  parameters:params progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *list) {
         completion(list, nil);
+    } failure:^(NSURLSessionDataTask * task, NSError *error) {
+        completion(nil, error);
+    }];
+}
+
+- (void)getSportWithId:(NSString *)sportId withCompletion:(void(^)(NSDictionary *sportData, NSError *error))completion {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSString *url = [[Constants decathalonOneSportString] stringByAppendingString:sportId];
+    [manager GET:url  parameters:nil progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *sportData) {
+        completion(sportData, nil);
     } failure:^(NSURLSessionDataTask * task, NSError *error) {
         completion(nil, error);
     }];

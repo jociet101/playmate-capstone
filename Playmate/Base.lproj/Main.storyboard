@@ -416,7 +416,7 @@
                                 <rect key="frame" x="16" y="5" width="86" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Clear"/>
                                 <connections>
                                     <action selector="didTapCancel:" destination="fRy-pi-diO" eventType="touchUpInside" id="a4y-sj-QFI"/>
                                 </connections>
@@ -2257,7 +2257,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="pbU-9p-1Qp"/>
-        <segue reference="Nu6-4T-TEp"/>
+        <segue reference="jcx-uQ-feG"/>
         <segue reference="pJ2-Zv-0xr"/>
         <segue reference="xxD-Qo-Eh9"/>
         <segue reference="zis-o5-IMS"/>

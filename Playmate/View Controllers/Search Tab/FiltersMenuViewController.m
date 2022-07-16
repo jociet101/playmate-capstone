@@ -119,8 +119,6 @@
 
     Filters *filters = [Filters new];
     
-    
-    
     filters.location = self.selectedLocation;
     filters.sport = self.selectedSport;
     filters.skillLevel = self.selectedSkillLevel;

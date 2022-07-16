@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 // For API
 + (NSString *)geoapifyBaseURLString;
 + (NSString *)decathalonSportsListString;
++ (NSString *)decathalonOneSportString;
 
 // For Parse
 + (PlayerConnection *)getPlayerConnectionForUser:(PFUser *)user;
