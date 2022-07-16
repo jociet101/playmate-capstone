@@ -154,6 +154,21 @@
 + (NSString *)selectLocationPlease {
     return @"Please select a location on map.";
 }
++ (NSString *)selectDurationPlease {
+    return @"Please select a duration.";
+}
++ (NSString *)selectSportPlease {
+    return @"Please select a sport.";
+}
++ (NSString *)selectDateTimePlease {
+    return @"Please select a date and time.";
+}
++ (NSString *)selectSkillLevelPlease {
+    return @"Please select a skill level.";
+}
++ (NSString *)selectNumberOfPlayersPlease {
+    return @"Please select the number of players.";
+}
 
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row {
         

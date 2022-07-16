@@ -109,16 +109,13 @@
 
 #pragma mark - Create session action
 
-- (void)handleAlert:(NSError * _Nullable)error withTitle:(NSString *)title andOk:(NSString *)ok {
-    
-    NSString *msg = [Constants selectLocationPlease];
-    
+- (void)handleAlert:(NSError * _Nullable)error withTitle:(NSString *)title andDescription:(NSString *)msg {
     if (error != nil) {
         msg = error.localizedDescription;
     }
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:ok style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         [self viewDidLoad];
     }];
     
@@ -128,12 +125,32 @@
 
 - (IBAction)didTapCreateSession:(id)sender {
     if (self.selectedLocation == nil) {
-        [self handleAlert:nil withTitle:@"No location" andOk:@"Ok"];
+        [self handleAlert:nil withTitle:@"No location selected"
+              andDescription:[Constants selectLocationPlease]];
+        return;
+    } else if (self.selectedSport == nil) {
+        [self handleAlert:nil withTitle:@"No sport selected"
+              andDescription:[Constants selectSportPlease]];
+        return;
+    } else if (self.selectedDuration == nil) {
+        [self handleAlert:nil withTitle:@"No duration selected"
+              andDescription:[Constants selectDurationPlease]];
+        return;
+    } else if (self.selectedDateTime == nil) {
+        [self handleAlert:nil withTitle:@"No date and time selected"
+              andDescription:[Constants selectDateTimePlease]];
+        return;
+    } else if (self.selectedNumPlayers == nil) {
+        [self handleAlert:nil withTitle:@"Number of players not selected"
+              andDescription:[Constants selectNumberOfPlayersPlease]];
+        return;
+    } else if (self.selectedSkillLevel == nil) {
+        [self handleAlert:nil withTitle:@"No skill level selected"
+              andDescription:[Constants selectSkillLevelPlease]];
         return;
     }
-
+    
     [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:self.selectedSkillLevel withDate:self.selectedDateTime withDuration:self.selectedDuration withLocation:self.selectedLocation withCapacity:self.selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
-        
             if (error) {
                 NSLog(@"Error creating session: %@", error.localizedDescription);
             }

@@ -48,7 +48,14 @@ NS_ASSUME_NONNULL_BEGIN
 // Information for filters and create
 + (NSString *)createMenuTitle:(int)row;
 + (NSString *)createFiltersMenuTitle:(int)row;
+
 + (NSString *)selectLocationPlease;
++ (NSString *)selectDurationPlease;
++ (NSString *)selectSportPlease;
++ (NSString *)selectDateTimePlease;
++ (NSString *)selectSkillLevelPlease;
++ (NSString *)selectNumberOfPlayersPlease;
+
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row;
 + (NSArray * _Nullable)getFilterData:(BOOL)needAll forRow:(int)row;
 + (NSArray *)durationListShort;
