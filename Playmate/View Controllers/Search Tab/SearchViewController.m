@@ -88,7 +88,6 @@
                 }
             }
             
-            
             self.sessionList = (NSArray *)filteredSessions;
             
             [self.tableView reloadData];
@@ -228,7 +227,11 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
         if (sessions != nil) {
             
-            self.sessionList = [self filterSessions:sessions withLocation:filter.location andRadius:filter.radius];
+            if (filter.location != nil) {
+                self.sessionList = [self filterSessions:sessions withLocation:filter.location andRadius:filter.radius];
+            } else {
+                self.sessionList = sessions;
+            }
             
             [self.tableView reloadData];
         } else {
