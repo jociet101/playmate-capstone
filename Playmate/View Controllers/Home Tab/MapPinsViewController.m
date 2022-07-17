@@ -11,10 +11,9 @@
 #import "Session.h"
 #import "Location.h"
 
-@interface MapPinsViewController () <CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate>
+@interface MapPinsViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) Session *selectedSession;
 @property (nonatomic, strong) NSArray *sessionList;
 
@@ -28,8 +27,8 @@ BOOL firstTimeGettingLoc;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.searchBar.delegate = self;
     self.mapView.delegate = self;
+    self.mapView.showsUserLocation = YES;
     
     firstTimeGettingLoc = YES;
     
@@ -61,7 +60,7 @@ BOOL firstTimeGettingLoc;
         CLLocation *loc = [locations firstObject];
         
         MKCoordinateRegion region = MKCoordinateRegionMake([loc coordinate], MKCoordinateSpanMake(0.1, 0.1));
-        [self.mapView setRegion:region animated:YES];
+        [self.mapView setRegion:region animated:NO];
     }
 }
 
@@ -89,24 +88,25 @@ BOOL firstTimeGettingLoc;
 }
 
 - (void)addPins {
-    
-    NSLog(@"session list %@", self.sessionList);
-    
     for (Session *session in self.sessionList) {
         Location *location = [session[@"location"] fetchIfNeeded];
         
         CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([location.lat doubleValue], [location.lng doubleValue]);
         LocationAnnotation *point = [[LocationAnnotation alloc] init];
         point.coordinate = coordinate;
-        point.locationName = location.locationName;
-        
-        NSLog(@"adding %@ pin", point.locationName);
-        
+        NSArray *parsedLocation = [location.locationName componentsSeparatedByString:@", "];
+        point.locationName = [parsedLocation firstObject];
+        point.session = session;
+                
         [self.mapView addAnnotation:point];
     }
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    if ([annotation.title isEqualToString:@"My Location"]) {
+        return nil;
+    }
+    
      MKPinAnnotationView *annotationView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
     
     if (annotationView == nil) {
@@ -116,8 +116,6 @@ BOOL firstTimeGettingLoc;
         annotationView.annotation = annotation;
     }
     
-//    LocationAnnotation *locationAnnotationItem = annotation;
-
     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     
     return annotationView;
@@ -126,16 +124,9 @@ BOOL firstTimeGettingLoc;
 - (void)mapView:(MKMapView *)mapView
  annotationView:(MKAnnotationView *)view
 calloutAccessoryControlTapped:(UIControl *)control {
-    [self performSegueWithIdentifier:@"pinToDetailsSegue" sender:nil];
-}
-
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     LocationAnnotation *locationAnnotationItem = view.annotation;
-    
-    if ([locationAnnotationItem.title isEqualToString:@"My Location"]) {
-        NSLog(@"Maybe");
-        [self.mapView deselectAnnotation:view.annotation animated:NO];
-    }
+    self.selectedSession = locationAnnotationItem.session;
+    [self performSegueWithIdentifier:@"pinToDetailsSegue" sender:nil];
 }
 
 #pragma mark - Navigation

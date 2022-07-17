@@ -44,17 +44,11 @@ BOOL firstTime;
     
     //Create location manager
     locationManager = [[CLLocationManager alloc] init];
-    //Subscribe to location updates
     [locationManager setDelegate:self];
-    //Request always authorization
     [locationManager requestAlwaysAuthorization];
-    //Start location updates
     [locationManager startUpdatingLocation];
-    //Start heading updates
     [locationManager startUpdatingHeading];
-    //Receive all updates
     locationManager.distanceFilter = kCLDistanceFilterNone;
-    //Get best possible accuracy
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 }
 
