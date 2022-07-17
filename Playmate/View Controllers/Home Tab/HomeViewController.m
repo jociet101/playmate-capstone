@@ -14,7 +14,7 @@
 #import "CalendarViewController.h"
 #import "ProfileViewController.h"
 
-@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface HomeViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *sessionList;
@@ -30,11 +30,6 @@
 
 	self.tableView.delegate = self;
 	self.tableView.dataSource = self;
-
-	self.tableView.emptyDataSetSource = self;
-	self.tableView.emptyDataSetDelegate = self;
-
-	self.tableView.tableFooterView = [UIView new];
 
 	self.sessionList = [[NSMutableArray alloc] init];
 
@@ -104,26 +99,6 @@
 			}
 		}
 	}
-}
-
-#pragma mark - Empty table view protocol methods
-
-- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-	return [UIImage imageNamed:@"logo_small"];
-}
-
-- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-	NSString *text = [Constants emptyTablePlaceholderTitle];
-	return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
-}
-
-- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
-	NSString *text = [Constants emptyTablePlaceholderMsg];
-	return [[NSAttributedString alloc] initWithString:text attributes:[Constants descriptionAttributes]];
-}
-
-- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
-	return [Constants playmateBlue];
 }
 
 #pragma mark - Table view protocol methods
