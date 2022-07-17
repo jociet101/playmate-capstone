@@ -7,11 +7,16 @@
 
 #import "MapPinsViewController.h"
 #import "LocationAnnotation.h"
+#import "SessionDetailsViewController.h"
+#import "Session.h"
+#import "Location.h"
 
 @interface MapPinsViewController () <CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, strong) Session *selectedSession;
+@property (nonatomic, strong) NSArray *sessionList;
 
 @end
 
@@ -32,20 +37,14 @@ BOOL firstTimeGettingLoc;
     
     //Create location manager
     pinLocationManager = [[CLLocationManager alloc] init];
-    //Subscribe to location updates
     [pinLocationManager setDelegate:self];
-    //Request always authorization
     [pinLocationManager requestAlwaysAuthorization];
-    //Start location updates
     [pinLocationManager startUpdatingLocation];
-    //Start heading updates
     [pinLocationManager startUpdatingHeading];
-    //Receive all updates
     pinLocationManager.distanceFilter = kCLDistanceFilterNone;
-    //Get best possible accuracy
     pinLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
-
-    [self addPins];
+    
+    [self fetchData];
 }
 
 #pragma mark - Location manager delegate methods
@@ -62,7 +61,7 @@ BOOL firstTimeGettingLoc;
         CLLocation *loc = [locations firstObject];
         
         MKCoordinateRegion region = MKCoordinateRegionMake([loc coordinate], MKCoordinateSpanMake(0.1, 0.1));
-        [self.mapView setRegion:region animated:false];
+        [self.mapView setRegion:region animated:YES];
     }
 }
 
@@ -72,40 +71,80 @@ BOOL firstTimeGettingLoc;
 
 #pragma mark - Pin Annotation tasks
 
+- (void)fetchData {
+    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+    query.limit = 20;
+
+    [query orderByAscending:@"occursAt"];
+
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
+        if (sessions != nil) {
+            self.sessionList = sessions;
+            [self addPins];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
 - (void)addPins {
     
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(37.4275, 122.1697);
-    LocationAnnotation *point = [[LocationAnnotation alloc] init];
-    point.coordinate = coordinate;
-    point.locationName = @"Stanford University";
+    NSLog(@"session list %@", self.sessionList);
     
-    NSLog(@"adding stanford to location");
-    
-    [self.mapView addAnnotation:point];
+    for (Session *session in self.sessionList) {
+        Location *location = [session[@"location"] fetchIfNeeded];
+        
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([location.lat doubleValue], [location.lng doubleValue]);
+        LocationAnnotation *point = [[LocationAnnotation alloc] init];
+        point.coordinate = coordinate;
+        point.locationName = location.locationName;
+        
+        NSLog(@"adding %@ pin", point.locationName);
+        
+        [self.mapView addAnnotation:point];
+    }
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
      MKPinAnnotationView *annotationView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
     
     if (annotationView == nil) {
-     annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
-     annotationView.canShowCallout = true;
+        annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
+        annotationView.canShowCallout = true;
     } else {
-     annotationView.annotation = annotation;
+        annotationView.annotation = annotation;
     }
     
-    LocationAnnotation *locationAnnotationItem = annotation;
+//    LocationAnnotation *locationAnnotationItem = annotation;
 
     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     
-     return annotationView;
- }
+    return annotationView;
+}
 
-//TODO: navigation to session details
+- (void)mapView:(MKMapView *)mapView
+ annotationView:(MKAnnotationView *)view
+calloutAccessoryControlTapped:(UIControl *)control {
+    [self performSegueWithIdentifier:@"pinToDetailsSegue" sender:nil];
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    LocationAnnotation *locationAnnotationItem = view.annotation;
+    
+    if ([locationAnnotationItem.title isEqualToString:@"My Location"]) {
+        NSLog(@"Maybe");
+        [self.mapView deselectAnnotation:view.annotation animated:NO];
+    }
+}
 
 #pragma mark - Navigation
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+     if([segue.identifier isEqualToString:@"pinToDetailsSegue"]) {
+         SessionDetailsViewController *vc = segue.destinationViewController;
+         vc.sessionDetails = self.selectedSession;
+     }
 }
 
 @end
