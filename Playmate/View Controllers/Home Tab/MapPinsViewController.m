@@ -6,6 +6,7 @@
 //
 
 #import "MapPinsViewController.h"
+#import "LocationAnnotation.h"
 
 @interface MapPinsViewController () <CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate>
 
@@ -23,6 +24,7 @@ BOOL firstTimeGettingLoc;
     [super viewDidLoad];
     
     self.searchBar.delegate = self;
+    self.mapView.delegate = self;
     
     firstTimeGettingLoc = YES;
     
@@ -43,6 +45,7 @@ BOOL firstTimeGettingLoc;
     //Get best possible accuracy
     pinLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
 
+    [self addPins];
 }
 
 #pragma mark - Location manager delegate methods
@@ -66,6 +69,37 @@ BOOL firstTimeGettingLoc;
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error {
 }
+
+#pragma mark - Pin Annotation tasks
+
+- (void)addPins {
+    
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(37.4275, 122.1697);
+    LocationAnnotation *point = [[LocationAnnotation alloc] init];
+    point.coordinate = coordinate;
+    point.locationName = @"Stanford University";
+    
+    NSLog(@"adding stanford to location");
+    
+    [self.mapView addAnnotation:point];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+     MKPinAnnotationView *annotationView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
+    
+    if (annotationView == nil) {
+     annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
+     annotationView.canShowCallout = true;
+    } else {
+     annotationView.annotation = annotation;
+    }
+    
+    LocationAnnotation *locationAnnotationItem = annotation;
+
+    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    
+     return annotationView;
+ }
 
 //TODO: navigation to session details
 

@@ -10,6 +10,7 @@
 		08F3A736C04B199B7D2918A8 /* Pods_Playmate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FD77B182A0096E02A5A865 /* Pods_Playmate.framework */; };
 		3C167B3F2881F21F00081304 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C167B3E2881F21F00081304 /* Helpers.m */; };
 		3C1BC00D28820AB400D17314 /* MapPinsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BC00C28820AB400D17314 /* MapPinsViewController.m */; };
+		3C1BC0122883E94400D17314 /* LocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BC0112883E94400D17314 /* LocationAnnotation.m */; };
 		3C383FD52877416D00BC9B55 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C383FD42877416D00BC9B55 /* Constants.m */; };
 		3C383FDD28775D2A00BC9B55 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C383FDC28775D2A00BC9B55 /* APIManager.m */; };
 		3C45B565286E64EB00EE578F /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B564286E64EB00EE578F /* WelcomeViewController.m */; };
@@ -83,6 +84,8 @@
 		3C167B3E2881F21F00081304 /* Helpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
 		3C1BC00B28820AB400D17314 /* MapPinsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapPinsViewController.h; sourceTree = "<group>"; };
 		3C1BC00C28820AB400D17314 /* MapPinsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapPinsViewController.m; sourceTree = "<group>"; };
+		3C1BC0102883E94400D17314 /* LocationAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LocationAnnotation.h; path = /Users/jocelyntseng/Desktop/projects/Playmate/Playmate/Models/LocationAnnotation.h; sourceTree = "<absolute>"; };
+		3C1BC0112883E94400D17314 /* LocationAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LocationAnnotation.m; path = /Users/jocelyntseng/Desktop/projects/Playmate/Playmate/Models/LocationAnnotation.m; sourceTree = "<absolute>"; };
 		3C383FD32877416D00BC9B55 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		3C383FD42877416D00BC9B55 /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		3C383FDB28775D2A00BC9B55 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
@@ -320,6 +323,8 @@
 				3C45B58F2874BB7500EE578F /* Session.m */,
 				3C45B5912874C0ED00EE578F /* Location.h */,
 				3C45B5922874C0ED00EE578F /* Location.m */,
+				3C1BC0102883E94400D17314 /* LocationAnnotation.h */,
+				3C1BC0112883E94400D17314 /* LocationAnnotation.m */,
 				3C45B5A528760C1E00EE578F /* Filters.h */,
 				3C45B5A628760C1E00EE578F /* Filters.m */,
 				3CF4A5B0287CD65D000C5E7D /* FriendRequest.h */,
@@ -684,6 +689,7 @@
 				3C8E539C287F7A8D0087498B /* OutgoingRequestCell.m in Sources */,
 				3C167B3F2881F21F00081304 /* Helpers.m in Sources */,
 				3CF4A5AF287CA9D1000C5E7D /* PlayerProfileViewController.m in Sources */,
+				3C1BC0122883E94400D17314 /* LocationAnnotation.m in Sources */,
 				3C383FDD28775D2A00BC9B55 /* APIManager.m in Sources */,
 				3CF4A5B2287CD65D000C5E7D /* FriendRequest.m in Sources */,
 				3C45B5A728760C1E00EE578F /* Filters.m in Sources */,

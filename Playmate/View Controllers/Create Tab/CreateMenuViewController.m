@@ -132,13 +132,13 @@
         [self handleAlert:nil withTitle:@"No sport selected"
               andDescription:[Constants selectSportPlease]];
         return;
-    } else if (self.selectedDuration == nil) {
-        [self handleAlert:nil withTitle:@"No duration selected"
-              andDescription:[Constants selectDurationPlease]];
-        return;
     } else if (self.selectedDateTime == nil) {
         [self handleAlert:nil withTitle:@"No date and time selected"
               andDescription:[Constants selectDateTimePlease]];
+        return;
+    } else if (self.selectedDuration == nil) {
+        [self handleAlert:nil withTitle:@"No duration selected"
+              andDescription:[Constants selectDurationPlease]];
         return;
     } else if (self.selectedNumPlayers == nil) {
         [self handleAlert:nil withTitle:@"Number of players not selected"
