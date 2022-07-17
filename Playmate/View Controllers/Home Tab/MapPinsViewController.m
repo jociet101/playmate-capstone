@@ -59,8 +59,8 @@ BOOL firstTimeGettingLoc;
         
         CLLocation *loc = [locations firstObject];
         
-        MKCoordinateRegion region = MKCoordinateRegionMake([loc coordinate], MKCoordinateSpanMake(0.1, 0.1));
-        [self.mapView setRegion:region animated:NO];
+        MKCoordinateRegion region = MKCoordinateRegionMake([loc coordinate], MKCoordinateSpanMake(0.8, 0.8));
+        [self.mapView setRegion:region animated:YES];
     }
 }
 
