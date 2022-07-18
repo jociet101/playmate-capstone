@@ -10,7 +10,7 @@
 #import "Helpers.h"
 #import "Location.h"
 
-@interface SessionCollectionCell ()
+@interface SessionCollectionCell () <UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *sportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
@@ -18,11 +18,17 @@
 @property (weak, nonatomic) IBOutlet UILabel *skillLevelLabel;
 @property (weak, nonatomic) IBOutlet UILabel *playerListLabel;
 
+@property (nonatomic, strong) UITapGestureRecognizer *doubleTapGesture;
+
 @end
+
+BOOL viewingFront;
 
 @implementation SessionCollectionCell
 
 - (void)setSession:(Session *)session {
+    [self setUpDoubleTapGesture];
+    
     self.layer.cornerRadius = [Constants buttonCornerRadius];
     
     _session = session;
@@ -59,6 +65,48 @@
     self.skillLevelLabel.text = [self.session.skillLevel stringByAppendingString:[@", " stringByAppendingString:capacityString]];
     
     self.dateLabel.text = [Helpers getTimeGivenDurationForSession:self.session];
+    
+    [self viewFront];
+}
+
+- (void)viewFront {
+    viewingFront = YES;
+    
+    self.sportLabel.alpha = 1;
+    self.dateLabel.alpha = 1;
+    
+    self.locationLabel.alpha = 0;
+    self.skillLevelLabel.alpha = 0;
+    self.playerListLabel.alpha = 0;
+}
+
+- (void)viewBack {
+    viewingFront = NO;
+    
+    self.sportLabel.alpha = 0;
+    self.dateLabel.alpha = 0;
+    
+    self.locationLabel.alpha = 1;
+    self.skillLevelLabel.alpha = 1;
+    self.playerListLabel.alpha = 1;
+}
+
+- (void)setUpDoubleTapGesture {
+    // gesture recognizer set up
+    self.contentView.userInteractionEnabled = YES;
+    self.doubleTapGesture = [[UITapGestureRecognizer alloc] init];
+    [self.doubleTapGesture addTarget:self action:@selector(didDoubleTapCell:)];
+    self.doubleTapGesture.delegate = self;
+    [self.doubleTapGesture setNumberOfTapsRequired:2];
+    [self.contentView addGestureRecognizer:self.doubleTapGesture];
+}
+
+- (void)didDoubleTapCell:(id)sender {
+    if (viewingFront) {
+        [self viewBack];
+    } else {
+        [self viewFront];
+    }
 }
 
 @end

@@ -2310,6 +2310,7 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <gestureRecognizers/>
                                         <size key="customSize" width="369" height="409"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="Mxe-Nw-Jgk" id="6te-1o-DFw"/>
