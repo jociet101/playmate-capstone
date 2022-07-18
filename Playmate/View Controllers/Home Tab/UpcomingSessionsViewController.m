@@ -12,7 +12,7 @@
 #import "Constants.h"
 #import "HomeViewController.h"
 
-@interface UpcomingSessionsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, /*UICollectionViewDataSourcePrefetching,*/ HomeViewControllerDelegate>
+@interface UpcomingSessionsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, /*UICollectionViewDataSourcePrefetching,*/ HomeViewControllerDelegate, SessionCollectionCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *sessionList;
@@ -58,12 +58,17 @@
     SessionCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SessionCollectionCell" forIndexPath:indexPath];
     
     cell.session = self.sessionList[indexPath.row];
-
+    cell.delegate = self;
+    
     return cell;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
+}
+
+- (void)segueToFullSessionDetails:(Session *)session {
+    [self performSegueWithIdentifier:@"upcomingToSessionDetails" sender:session];
 }
 
 #pragma mark - Navigation
@@ -75,6 +80,9 @@
         Session* data = self.sessionList[indexPath.row];
         SessionDetailsViewController *vc = [segue destinationViewController];
         vc.sessionDetails = data;
+    } else if ([segue.identifier isEqualToString:@"upcomingToSessionDetails"]) {
+        SessionDetailsViewController *vc = [segue destinationViewController];
+        vc.sessionDetails = sender;
     }
 }
 

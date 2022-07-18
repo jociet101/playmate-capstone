@@ -141,7 +141,6 @@
     if ([segue.identifier isEqualToString:@"toSelectLocation"]) {
         SelectMapViewController *vc = segue.destinationViewController;
         vc.delegate = self;
-        
         self.selectLocationButton = sender;
     }
 }

@@ -11,9 +11,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol SessionCollectionCellDelegate
+
+- (void)segueToFullSessionDetails:(Session *)session;
+
+@end
+
 @interface SessionCollectionCell : UICollectionViewCell
 
 @property (nonatomic, strong) Session *session;
+@property (nonatomic, strong) id<SessionCollectionCellDelegate> delegate;
 
 - (void)setSession:(Session *)session;
 

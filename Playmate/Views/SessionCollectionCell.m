@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *skillLevelLabel;
 @property (weak, nonatomic) IBOutlet UILabel *playerListLabel;
+@property (weak, nonatomic) IBOutlet UIButton *viewFullSessionDetailsButton;
 
 @property (nonatomic, strong) UITapGestureRecognizer *doubleTapGesture;
 @property (weak, nonatomic) IBOutlet UILabel *doubleTapLabel;
@@ -35,6 +36,7 @@ BOOL viewingFront;
     [self setUpDoubleTapGesture];
     
     self.layer.cornerRadius = [Constants buttonCornerRadius];
+    self.viewFullSessionDetailsButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
     _session = session;
     
@@ -57,18 +59,12 @@ BOOL viewingFront;
         }
     }
     
-    self.playerListLabel.text = playersString;
+    self.playerListLabel.text = [@"Players: " stringByAppendingString:playersString];
     
     Location *loc = [self.session.location fetchIfNeeded];
+    self.locationLabel.text = [@"Location: " stringByAppendingString:loc.locationName];
     
-    self.locationLabel.text = loc.locationName;
-    
-    const BOOL sessionIsFull = [self.session.capacity isEqual:self.session.occupied];
-    NSString *capacityString = sessionIsFull ? [Constants noOpenSlotsErrorMsg]
-                                             : [Constants capacityString:self.session.occupied
-                                                          with:self.session.capacity];
-    
-    self.skillLevelLabel.text = [self.session.skillLevel stringByAppendingString:[@", " stringByAppendingString:capacityString]];
+    self.skillLevelLabel.text = [@"Skill Level: " stringByAppendingString:self.session.skillLevel];
     
     self.dateFrontLabel.text = [Helpers getTimeGivenDurationForSession:self.session];
     self.dateBackLabel.text = [Helpers getTimeGivenDurationForSession:self.session];
@@ -88,7 +84,9 @@ BOOL viewingFront;
     self.locationLabel.alpha = 0;
     self.skillLevelLabel.alpha = 0;
     self.playerListLabel.alpha = 0;
-    
+    self.viewFullSessionDetailsButton.alpha = 0;
+    [self.viewFullSessionDetailsButton setEnabled:NO];
+
     self.doubleTapLabel.text = @"Double Tap for Details";
 }
 
@@ -104,6 +102,8 @@ BOOL viewingFront;
     self.locationLabel.alpha = 1;
     self.skillLevelLabel.alpha = 1;
     self.playerListLabel.alpha = 1;
+    self.viewFullSessionDetailsButton.alpha = 1;
+    [self.viewFullSessionDetailsButton setEnabled:YES];
     
     self.doubleTapLabel.text = @"Double Tap to Return";
 }
@@ -124,6 +124,10 @@ BOOL viewingFront;
     } else {
         [self viewFront];
     }
+}
+
+- (IBAction)didTapFullSessionDetails:(id)sender {
+    [self.delegate segueToFullSessionDetails:self.session];
 }
 
 @end

@@ -181,11 +181,9 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-        
     if ([segue.identifier isEqualToString:@"toSelectLocation"]) {
         SelectMapViewController *vc = segue.destinationViewController;
         vc.delegate = self;
-        
         self.selectLocationButton = sender;
     }
 }
