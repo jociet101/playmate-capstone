@@ -85,10 +85,7 @@ BOOL partOfSession;
 - (void)initializeDetails {
     self.sportLabel.text = self.sessionDetails.sport;
     
-    const BOOL sessionIsFull = [self.sessionDetails.capacity isEqual:self.sessionDetails.occupied];
-    self.capacityLabel.text = sessionIsFull ? [Constants noOpenSlotsErrorMsg]
-                                            : [Constants capacityString:self.sessionDetails.occupied
-                                                         with:self.sessionDetails.capacity];
+    [self initializeCapacityString];
     
     self.levelLabel.text = self.sessionDetails.skillLevel;
     
@@ -99,6 +96,13 @@ BOOL partOfSession;
     self.dateTimeLabel.text = [Helpers getTimeGivenDurationForSession:self.sessionDetails];
     
     self.createdDateLabel.text = [@"Session created at: " stringByAppendingString:[Constants formatDate:self.sessionDetails.updatedAt]];
+}
+
+- (void)initializeCapacityString {
+    const BOOL sessionIsFull = [self.sessionDetails.capacity isEqual:self.sessionDetails.occupied];
+    self.capacityLabel.text = sessionIsFull ? [Constants noOpenSlotsErrorMsg]
+                                            : [Constants capacityString:self.sessionDetails.occupied
+                                                         with:self.sessionDetails.capacity];
 }
 
 #pragma mark - Animating confetti
@@ -141,7 +145,9 @@ BOOL partOfSession;
 #pragma mark - Add to session button action
 
 - (IBAction)addMyself:(id)sender {
+    // For leaving session
     if (partOfSession) {
+        [self updateLeaveUi];
         [self changeAddButtonToJoin];
         
         PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
@@ -164,12 +170,15 @@ BOOL partOfSession;
                         
             session[@"playersList"] = (NSArray *)oldPlayersList;
             
-            int oldOccupied = (int)oldPlayersList.count;
-            session[@"occupied"] = [NSNumber numberWithInt:oldOccupied];
+            int newOccupied = (int)oldPlayersList.count;
+            session[@"occupied"] = [NSNumber numberWithInt:newOccupied];
             
             [session saveInBackground];
         }];
-    } else {
+    }
+    // For joining session
+    else {
+        [self updateJoinUi];
         [self showConfetti];
         [self changeAddButtonToLeave];
         
@@ -184,12 +193,46 @@ BOOL partOfSession;
             
             session[@"playersList"] = (NSArray *)oldPlayersList;
             
-            int oldOccupied = (int)oldPlayersList.count;
-            session[@"occupied"] = [NSNumber numberWithInt:oldOccupied];
+            int newOccupied = (int)oldPlayersList.count;
+            session[@"occupied"] = [NSNumber numberWithInt:newOccupied];
             
             [session saveInBackground];
         }];
     }
+}
+
+- (void)updateJoinUi {
+    // Update player profile list
+    NSMutableArray *oldPlayersList = (NSMutableArray *)self.sessionDetails.playersList;
+    [oldPlayersList addObject:me];
+    self.sessionDetails.playersList = (NSArray *)oldPlayersList;
+    [self.collectionView reloadData];
+    
+    // Update player count / number of open slots
+    int newOccupied = (int)oldPlayersList.count;
+    self.sessionDetails.occupied = [NSNumber numberWithInt:newOccupied];
+    [self initializeCapacityString];
+}
+
+- (void)updateLeaveUi {
+    // Update player profile list
+    NSMutableArray *oldPlayersList = (NSMutableArray *)self.sessionDetails.playersList;
+    
+    PFUser * _Nullable userToRemove = nil;
+    for (PFUser *user in oldPlayersList) {
+        if ([user.objectId isEqualToString:me.objectId]) {
+            userToRemove = user;
+            break;
+        }
+    }
+    [oldPlayersList removeObject:userToRemove];
+    self.sessionDetails.playersList = (NSArray *)oldPlayersList;
+    [self.collectionView reloadData];
+    
+    // Update player count / number of open slots
+    int newOccupied = (int)oldPlayersList.count;
+    self.sessionDetails.occupied = [NSNumber numberWithInt:newOccupied];
+    [self initializeCapacityString];
 }
 
 #pragma mark - Collection view protocol methods
@@ -201,7 +244,7 @@ BOOL partOfSession;
 - (nonnull __kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PlayerProfileCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayerProfileCollectionCell" forIndexPath:indexPath];
     
-    cell.userProfile = self.sessionDetails.playersList[indexPath.row];
+    cell.userProfile = self.sessionDetails.playersList[self.sessionDetails.playersList.count- indexPath.row-1];
     
     return cell;
 }
