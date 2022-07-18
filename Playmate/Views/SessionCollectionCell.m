@@ -12,13 +12,18 @@
 
 @interface SessionCollectionCell () <UIGestureRecognizerDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *sportLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *frontImageView;
+@property (weak, nonatomic) IBOutlet UILabel *sportFrontLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateFrontLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *sportBackLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateBackLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *skillLevelLabel;
 @property (weak, nonatomic) IBOutlet UILabel *playerListLabel;
 
 @property (nonatomic, strong) UITapGestureRecognizer *doubleTapGesture;
+@property (weak, nonatomic) IBOutlet UILabel *doubleTapLabel;
 
 @end
 
@@ -33,7 +38,8 @@ BOOL viewingFront;
     
     _session = session;
     
-    self.sportLabel.text = self.session.sport;
+    self.sportFrontLabel.text = self.session.sport;
+    self.sportBackLabel.text = self.session.sport;
 
     NSString *playersString = @"";
     BOOL firstPerson = YES;
@@ -64,31 +70,42 @@ BOOL viewingFront;
     
     self.skillLevelLabel.text = [self.session.skillLevel stringByAppendingString:[@", " stringByAppendingString:capacityString]];
     
-    self.dateLabel.text = [Helpers getTimeGivenDurationForSession:self.session];
-    
+    self.dateFrontLabel.text = [Helpers getTimeGivenDurationForSession:self.session];
+    self.dateBackLabel.text = [Helpers getTimeGivenDurationForSession:self.session];
+
     [self viewFront];
 }
 
 - (void)viewFront {
     viewingFront = YES;
     
-    self.sportLabel.alpha = 1;
-    self.dateLabel.alpha = 1;
+    self.frontImageView.alpha = 1;
+    self.sportFrontLabel.alpha = 1;
+    self.dateFrontLabel.alpha = 1;
     
+    self.sportBackLabel.alpha = 0;
+    self.dateBackLabel.alpha = 0;
     self.locationLabel.alpha = 0;
     self.skillLevelLabel.alpha = 0;
     self.playerListLabel.alpha = 0;
+    
+    self.doubleTapLabel.text = @"Double Tap for Details";
 }
 
 - (void)viewBack {
     viewingFront = NO;
     
-    self.sportLabel.alpha = 0;
-    self.dateLabel.alpha = 0;
+    self.frontImageView.alpha = 0;
+    self.sportFrontLabel.alpha = 0;
+    self.dateFrontLabel.alpha = 0;
     
+    self.sportBackLabel.alpha = 1;
+    self.dateBackLabel.alpha = 1;
     self.locationLabel.alpha = 1;
     self.skillLevelLabel.alpha = 1;
     self.playerListLabel.alpha = 1;
+    
+    self.doubleTapLabel.text = @"Double Tap to Return";
 }
 
 - (void)setUpDoubleTapGesture {

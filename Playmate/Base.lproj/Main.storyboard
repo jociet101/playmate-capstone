@@ -2221,8 +2221,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="369" height="409"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxe-Nw-Jgk">
-                                                    <rect key="frame" x="19" y="89" width="331" height="44.666666666666657"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxe-Nw-Jgk">
+                                                    <rect key="frame" x="21" y="92" width="331" height="44.666666666666657"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Date">
                                                             <attributes>
@@ -2233,8 +2233,8 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gR-8S-b3A">
-                                                    <rect key="frame" x="21" y="151" width="330" height="65"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gR-8S-b3A">
+                                                    <rect key="frame" x="19.666666666666657" y="151" width="330" height="65"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="330" id="mdD-3R-iu3"/>
                                                     </constraints>
@@ -2273,7 +2273,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ6-Wu-R5r">
-                                                    <rect key="frame" x="19.333333333333343" y="25" width="330.33333333333326" height="45"/>
+                                                    <rect key="frame" x="19.333333333333343" y="34" width="330.33333333333326" height="45"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Tennis">
                                                             <attributes>
@@ -2284,40 +2284,96 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46n-Gu-wPC">
+                                                    <rect key="frame" x="19.333333333333343" y="245" width="330.33333333333326" height="45"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Tennis">
+                                                            <attributes>
+                                                                <font key="NSFont" size="28" name="AvenirNext-Medium"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myp-Qi-m2f">
+                                                    <rect key="frame" x="18" y="313" width="331" height="44.666666666666657"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Date">
+                                                            <attributes>
+                                                                <font key="NSFont" size="17" name="AvenirNext-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RFN-YN-pPm">
+                                                    <rect key="frame" x="83" y="22" width="207" height="203"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a42-sI-reh">
+                                                    <rect key="frame" x="230" y="384" width="120" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" red="0.29803922770000002" green="0.61960786580000005" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Double Tap for Details">
+                                                            <attributes>
+                                                                <font key="NSFont" size="12" name="Avenir-LightOblique"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="4gR-8S-b3A" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="7jQ-ih-PtS"/>
-                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="Bbi-E3-mM5"/>
-                                                <constraint firstItem="4gR-8S-b3A" firstAttribute="top" secondItem="Mxe-Nw-Jgk" secondAttribute="bottom" constant="17.666666666666657" id="G5O-gC-pXH"/>
-                                                <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="G7b-cS-YOf"/>
-                                                <constraint firstAttribute="bottom" secondItem="tsm-zi-1RR" secondAttribute="bottom" constant="24.666666666666686" id="Gko-5Q-m9B"/>
-                                                <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.895495" id="IWJ-Wq-uSD"/>
-                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897297" id="Knm-nY-tOk"/>
-                                                <constraint firstItem="4gR-8S-b3A" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.159314" id="LwX-lu-5AK"/>
-                                                <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.10866" id="RPF-Gk-FDG"/>
-                                                <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="top" secondItem="IHg-CR-hHl" secondAttribute="top" constant="25" id="SHE-wj-unc"/>
-                                                <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.110294" id="T23-vp-yvo"/>
-                                                <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897297" id="XvQ-NN-kUU"/>
-                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="top" secondItem="4gR-8S-b3A" secondAttribute="bottom" constant="21" id="bHX-0O-lu4"/>
-                                                <constraint firstItem="4gR-8S-b3A" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.891892" id="ewt-Bf-dYN"/>
-                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="top" secondItem="F6c-xy-bHi" secondAttribute="bottom" constant="18.333333333333314" id="fju-49-Jvb"/>
-                                                <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="top" secondItem="ZZ6-Wu-R5r" secondAttribute="bottom" constant="19" id="mXV-7U-srl"/>
-                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="oqE-om-gTq"/>
-                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.0727124" id="qIs-3A-q03"/>
-                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897297" id="rJY-RD-8vW"/>
-                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.241013" id="sHW-Xk-acw"/>
-                                                <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="uLN-xn-aF7"/>
+                                                <constraint firstItem="RFN-YN-pPm" firstAttribute="top" secondItem="ZZ6-Wu-R5r" secondAttribute="bottom" constant="-57" id="152-ky-5hM"/>
+                                                <constraint firstItem="RFN-YN-pPm" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.496333" id="1M2-9T-UZk"/>
+                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.110024" id="4Ot-5U-V5b"/>
+                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="top" secondItem="46n-Gu-wPC" secondAttribute="bottom" constant="-4.3333333333333144" id="6T0-gd-8QU"/>
+                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897019" id="8fO-1S-1PU"/>
+                                                <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="9jg-hR-WhK"/>
+                                                <constraint firstItem="RFN-YN-pPm" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.560976" id="ACi-F0-GnN"/>
+                                                <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.895212" id="ClB-c8-wft"/>
+                                                <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="top" secondItem="IHg-CR-hHl" secondAttribute="top" constant="34" id="GRa-Ou-kY1"/>
+                                                <constraint firstItem="myp-Qi-m2f" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="HaE-Nz-zsX"/>
+                                                <constraint firstItem="RFN-YN-pPm" firstAttribute="top" secondItem="Mxe-Nw-Jgk" secondAttribute="bottom" constant="-114.66666666666666" id="Hk2-9f-gmk"/>
+                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.0725346" id="Hw3-73-s2Y"/>
+                                                <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897019" id="Itq-Xd-Yz1"/>
+                                                <constraint firstItem="myp-Qi-m2f" firstAttribute="top" secondItem="tsm-zi-1RR" secondAttribute="bottom" constant="-71.333333333333371" id="KLw-Sc-hoe"/>
+                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="Mgk-38-vX5"/>
+                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="top" secondItem="4gR-8S-b3A" secondAttribute="bottom" constant="21.666666666666686" id="Wy2-vQ-3lm"/>
+                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="Ya9-7O-Bix"/>
+                                                <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="ZdT-5z-UIq"/>
+                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="bEy-t3-Ark"/>
+                                                <constraint firstItem="4gR-8S-b3A" firstAttribute="top" secondItem="RFN-YN-pPm" secondAttribute="bottom" constant="-74" id="dv6-Dk-dWw"/>
+                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.241239" id="eXJ-fF-hgi"/>
+                                                <constraint firstAttribute="bottom" secondItem="tsm-zi-1RR" secondAttribute="bottom" constant="24.666666666666686" id="gUQ-JB-omn"/>
+                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.895212" id="gWg-aX-pon"/>
+                                                <constraint firstItem="4gR-8S-b3A" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.158924" id="jgz-Mg-QNW"/>
+                                                <constraint firstItem="myp-Qi-m2f" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897019" id="jyp-d2-c8U"/>
+                                                <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.110024" id="lpI-od-3vh"/>
+                                                <constraint firstItem="4gR-8S-b3A" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="pst-lg-YkQ"/>
+                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="top" secondItem="F6c-xy-bHi" secondAttribute="bottom" constant="-22.333333333333371" id="qbe-cr-Nwd"/>
+                                                <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.109209" id="rM8-Tw-XtV"/>
+                                                <constraint firstItem="myp-Qi-m2f" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.109209" id="s84-lJ-yyE"/>
+                                                <constraint firstItem="4gR-8S-b3A" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.894309" id="xMk-M8-Xio"/>
+                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897019" id="yf8-ue-WLZ"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <gestureRecognizers/>
                                         <size key="customSize" width="369" height="409"/>
                                         <connections>
-                                            <outlet property="dateLabel" destination="Mxe-Nw-Jgk" id="6te-1o-DFw"/>
+                                            <outlet property="dateBackLabel" destination="Mxe-Nw-Jgk" id="xX0-ze-8cj"/>
+                                            <outlet property="dateFrontLabel" destination="myp-Qi-m2f" id="Rpo-vJ-4Zb"/>
+                                            <outlet property="doubleTapLabel" destination="a42-sI-reh" id="Olo-lx-Zv4"/>
+                                            <outlet property="frontImageView" destination="RFN-YN-pPm" id="rNh-t2-MGx"/>
                                             <outlet property="locationLabel" destination="4gR-8S-b3A" id="Nmv-7T-4mR"/>
                                             <outlet property="playerListLabel" destination="tsm-zi-1RR" id="ZGN-Kh-UlN"/>
                                             <outlet property="skillLevelLabel" destination="F6c-xy-bHi" id="qGd-hO-yHv"/>
-                                            <outlet property="sportLabel" destination="ZZ6-Wu-R5r" id="7yc-a6-kBk"/>
+                                            <outlet property="sportBackLabel" destination="ZZ6-Wu-R5r" id="q2r-gv-DpS"/>
+                                            <outlet property="sportFrontLabel" destination="46n-Gu-wPC" id="nPt-Po-V8n"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
