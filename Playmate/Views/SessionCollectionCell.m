@@ -10,6 +10,10 @@
 @interface SessionCollectionCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *sportLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *skillLevelLabel;
+@property (weak, nonatomic) IBOutlet UILabel *playerListLabel;
 
 @end
 
