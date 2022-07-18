@@ -32,6 +32,9 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
+    self.upcomingView.layer.cornerRadius = [Constants buttonCornerRadius];
+    self.suggestedView.layer.cornerRadius = [Constants buttonCornerRadius];
+    
     self.upcomingView.alpha = 1;
     self.suggestedView.alpha = 0;
 

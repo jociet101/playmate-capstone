@@ -683,14 +683,14 @@
                                 </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sgK-kd-KsI">
-                                <rect key="frame" x="0.0" y="297" width="390" height="464"/>
+                                <rect key="frame" x="12" y="315" width="367" height="429"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="UNh-fG-uFl" kind="embed" id="tNC-tR-57E"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7CG-mB-JzI">
-                                <rect key="frame" x="0.0" y="297" width="390" height="464"/>
+                                <rect key="frame" x="12" y="315" width="367" height="429"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="AKn-B5-Xno" kind="embed" identifier="homeToUpcomingSessions" id="9rq-T1-Ppy"/>
@@ -2172,7 +2172,7 @@
             <objects>
                 <viewController id="UNh-fG-uFl" customClass="SuggestedSessionsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JXi-XB-MMk">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="464"/>
+                        <rect key="frame" x="0.0" y="0.0" width="367" height="429"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eNv-vr-dy6">
@@ -2200,29 +2200,29 @@
             <objects>
                 <viewController id="AKn-B5-Xno" customClass="UpcomingSessionsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D6d-lW-P56">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="464"/>
+                        <rect key="frame" x="0.0" y="0.0" width="367" height="429"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SqT-US-3FX">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="456"/>
+                                <rect key="frame" x="0.0" y="0.0" width="367" height="429"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5bn-Ho-Qbd">
-                                    <size key="itemSize" width="390" height="446"/>
+                                    <size key="itemSize" width="369" height="409"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SessionCollectionCell" id="Bdr-Hu-nNl" customClass="SessionCollectionCell">
-                                        <rect key="frame" x="0.0" y="5" width="390" height="446"/>
+                                        <rect key="frame" x="0.0" y="10" width="369" height="409"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IHg-CR-hHl">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="446"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="369" height="409"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxe-Nw-Jgk">
-                                                    <rect key="frame" x="20" y="91.333333333333329" width="350" height="47.999999999999986"/>
+                                                    <rect key="frame" x="19" y="89" width="331" height="44.666666666666657"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Date">
                                                             <attributes>
@@ -2234,9 +2234,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gR-8S-b3A">
-                                                    <rect key="frame" x="21" y="149" width="348" height="65"/>
+                                                    <rect key="frame" x="21" y="151" width="330" height="65"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="348" id="kHs-gz-Q40"/>
+                                                        <constraint firstAttribute="width" constant="330" id="mdD-3R-iu3"/>
                                                     </constraints>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Location">
@@ -2249,10 +2249,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsm-zi-1RR">
-                                                    <rect key="frame" x="20" y="312.33333333333331" width="350" height="107.66666666666669"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="349" id="6vP-PJ-CXq"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="19" y="285.66666666666669" width="331" height="98.666666666666686"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="List of players">
                                                             <attributes>
@@ -2264,7 +2261,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6c-xy-bHi">
-                                                    <rect key="frame" x="20" y="262" width="350" height="32.333333333333314"/>
+                                                    <rect key="frame" x="19" y="237.66666666666666" width="331" height="29.666666666666657"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Skill Level">
                                                             <attributes>
@@ -2276,7 +2273,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ6-Wu-R5r">
-                                                    <rect key="frame" x="20.666666666666657" y="23.000000000000004" width="348.66666666666674" height="49.333333333333343"/>
+                                                    <rect key="frame" x="19.333333333333343" y="25" width="330.33333333333326" height="45"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Tennis">
                                                             <attributes>
@@ -2289,31 +2286,31 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="top" secondItem="4gR-8S-b3A" secondAttribute="bottom" constant="15" id="09d-dz-trN"/>
-                                                <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="top" secondItem="ZZ6-Wu-R5r" secondAttribute="bottom" constant="19" id="0X2-et-f09"/>
-                                                <constraint firstItem="4gR-8S-b3A" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897368" id="0eZ-GW-bn7"/>
-                                                <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.10804" id="2wY-PZ-5Hn"/>
-                                                <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="7S2-OB-Cnk"/>
-                                                <constraint firstItem="4gR-8S-b3A" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.163317" id="ETL-fw-2Uo"/>
-                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.241206" id="Geb-b6-LYi"/>
-                                                <constraint firstAttribute="bottom" secondItem="tsm-zi-1RR" secondAttribute="bottom" constant="26" id="HVR-oF-OCI"/>
-                                                <constraint firstItem="4gR-8S-b3A" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="LTj-Rs-fCM"/>
-                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897368" id="MUs-Zt-L4Z"/>
-                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="MsX-X3-sgk"/>
-                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.0728643" id="PlJ-eS-NFH"/>
-                                                <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="top" secondItem="IHg-CR-hHl" secondAttribute="top" constant="23" id="Ukz-Pr-rd0"/>
-                                                <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.110553" id="apH-va-bR6"/>
-                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="top" secondItem="F6c-xy-bHi" secondAttribute="bottom" constant="18" id="ikp-RQ-JGt"/>
-                                                <constraint firstItem="4gR-8S-b3A" firstAttribute="top" secondItem="Mxe-Nw-Jgk" secondAttribute="bottom" constant="20" id="kcU-FW-OZq"/>
-                                                <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="kgV-6q-x0A"/>
-                                                <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897368" id="m8U-zx-Lsj"/>
-                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897368" id="n1D-gn-Gu1"/>
-                                                <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.894737" id="rrS-bk-H7C"/>
-                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="xTW-cy-MeC"/>
+                                                <constraint firstItem="4gR-8S-b3A" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="7jQ-ih-PtS"/>
+                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="Bbi-E3-mM5"/>
+                                                <constraint firstItem="4gR-8S-b3A" firstAttribute="top" secondItem="Mxe-Nw-Jgk" secondAttribute="bottom" constant="17.666666666666657" id="G5O-gC-pXH"/>
+                                                <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="G7b-cS-YOf"/>
+                                                <constraint firstAttribute="bottom" secondItem="tsm-zi-1RR" secondAttribute="bottom" constant="24.666666666666686" id="Gko-5Q-m9B"/>
+                                                <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.895495" id="IWJ-Wq-uSD"/>
+                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897297" id="Knm-nY-tOk"/>
+                                                <constraint firstItem="4gR-8S-b3A" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.159314" id="LwX-lu-5AK"/>
+                                                <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.10866" id="RPF-Gk-FDG"/>
+                                                <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="top" secondItem="IHg-CR-hHl" secondAttribute="top" constant="25" id="SHE-wj-unc"/>
+                                                <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.110294" id="T23-vp-yvo"/>
+                                                <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897297" id="XvQ-NN-kUU"/>
+                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="top" secondItem="4gR-8S-b3A" secondAttribute="bottom" constant="21" id="bHX-0O-lu4"/>
+                                                <constraint firstItem="4gR-8S-b3A" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.891892" id="ewt-Bf-dYN"/>
+                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="top" secondItem="F6c-xy-bHi" secondAttribute="bottom" constant="18.333333333333314" id="fju-49-Jvb"/>
+                                                <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="top" secondItem="ZZ6-Wu-R5r" secondAttribute="bottom" constant="19" id="mXV-7U-srl"/>
+                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="oqE-om-gTq"/>
+                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.0727124" id="qIs-3A-q03"/>
+                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897297" id="rJY-RD-8vW"/>
+                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.241013" id="sHW-Xk-acw"/>
+                                                <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="uLN-xn-aF7"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <size key="customSize" width="390" height="446"/>
+                                        <size key="customSize" width="369" height="409"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="Mxe-Nw-Jgk" id="6te-1o-DFw"/>
                                             <outlet property="locationLabel" destination="4gR-8S-b3A" id="Nmv-7T-4mR"/>
@@ -2333,7 +2330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xTg-xz-shT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5270.7692307692305" y="-1312.3222748815165"/>
+            <point key="canvasLocation" x="5270" y="-1312.6777251184833"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

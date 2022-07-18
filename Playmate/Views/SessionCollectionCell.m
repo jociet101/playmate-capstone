@@ -23,6 +23,8 @@
 @implementation SessionCollectionCell
 
 - (void)setSession:(Session *)session {
+    self.layer.cornerRadius = [Constants buttonCornerRadius];
+    
     _session = session;
     
     self.sportLabel.text = self.session.sport;
