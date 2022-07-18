@@ -29,7 +29,7 @@
 
     self.sessionList = [[NSArray alloc] init];
 }
-g
+
 - (void)loadSessionList:(NSArray *)sessionList {
     self.sessionList = sessionList;
     [self.collectionView reloadData];

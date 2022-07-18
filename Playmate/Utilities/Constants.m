@@ -255,8 +255,7 @@
     return @"Tennis";
 }
 
-+ (NSArray *)sportsList:(BOOL)needAll {
-    
++ (NSArray *)sportsListLarge:(BOOL)needAll {
     NSMutableArray *sports = [[NSMutableArray alloc] init];
     
     if (needAll) [sports addObject:@"All"];
@@ -275,6 +274,37 @@
             }
         }
     }];
+    
+    return (NSArray *)sports;
+}
+
++ (NSArray *)sportsList:(BOOL)needAll {
+    NSMutableArray *sports = [[NSMutableArray alloc] init];
+    
+    if (needAll) {
+        [sports addObject:@"All"];
+    }
+    
+    NSArray *sportsList = [NSArray arrayWithObjects:@"American football",
+                                                    @"Badminton",
+                                                    @"Baseball",
+                                                    @"Basketball",
+                                                    @"Boxing",
+                                                    @"Bowling",
+                                                    @"Cricket",
+                                                    @"Ice Hockey",
+                                                    @"Flag Football",
+                                                    @"Field Hockey",
+                                                    @"Golf",
+                                                    @"Ice Hockey",
+                                                    @"MMA",
+                                                    @"Soccer",
+                                                    @"Table Tennis",
+                                                    @"Tennis",
+                                                    @"Volleyball",
+                                                    @"Wrestling", nil];
+    
+    [sports addObjectsFromArray:sportsList];
     
     return (NSArray *)sports;
 }

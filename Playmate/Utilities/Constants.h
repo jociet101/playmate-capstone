@@ -63,6 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSString *)defaultAll;
 + (NSString *)defaultSport;
++ (NSArray *)sportsListLarge:(BOOL)needAll;
 + (NSArray *)sportsList:(BOOL)needAll;
 + (NSArray *)skillLevelsList:(BOOL)needAll;
 + (int)defaultNumPlayers;
