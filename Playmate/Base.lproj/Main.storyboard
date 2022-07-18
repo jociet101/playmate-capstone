@@ -2178,111 +2178,14 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eNv-vr-dy6">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="456"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hDk-RJ-pqS">
                                     <size key="itemSize" width="380" height="398"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SessionCollectionCell" id="r8J-IP-YRX" customClass="SessionCollectionCell">
-                                        <rect key="frame" x="0.0" y="29" width="380" height="398"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="EDG-93-Lzr">
-                                            <rect key="frame" x="0.0" y="0.0" width="380" height="398"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1b-Yf-qn7">
-                                                    <rect key="frame" x="20" y="86" width="341" height="43"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="Date">
-                                                            <attributes>
-                                                                <font key="NSFont" size="17" name="AvenirNext-Regular"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4N-fO-p8r">
-                                                    <rect key="frame" x="21" y="149" width="341" height="65"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="Location">
-                                                            <attributes>
-                                                                <font key="NSFont" size="17" name="AvenirNext-Regular"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WlW-lN-ZQF">
-                                                    <rect key="frame" x="20" y="276" width="341" height="96"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="List of players">
-                                                            <attributes>
-                                                                <font key="NSFont" size="17" name="AvenirNext-Regular"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCD-I7-2Ct">
-                                                    <rect key="frame" x="20" y="229" width="341" height="29"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="Skill Level">
-                                                            <attributes>
-                                                                <font key="NSFont" size="17" name="AvenirNext-Regular"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gou-cC-Z6d">
-                                                    <rect key="frame" x="21" y="23" width="340" height="44"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="Tennis">
-                                                            <attributes>
-                                                                <font key="NSFont" size="28" name="AvenirNext-Medium"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="u4N-fO-p8r" firstAttribute="centerX" secondItem="EDG-93-Lzr" secondAttribute="centerX" id="D9o-GL-8Di"/>
-                                                <constraint firstItem="Gou-cC-Z6d" firstAttribute="centerX" secondItem="EDG-93-Lzr" secondAttribute="centerX" id="GaC-AL-6li"/>
-                                                <constraint firstItem="u4N-fO-p8r" firstAttribute="width" secondItem="EDG-93-Lzr" secondAttribute="width" multiplier="0.897368" id="H9p-Hu-uuc"/>
-                                                <constraint firstItem="Gou-cC-Z6d" firstAttribute="height" secondItem="EDG-93-Lzr" secondAttribute="height" multiplier="0.110553" id="MMq-8e-QcZ"/>
-                                                <constraint firstItem="NCD-I7-2Ct" firstAttribute="width" secondItem="EDG-93-Lzr" secondAttribute="width" multiplier="0.897368" id="Oab-B7-h9j"/>
-                                                <constraint firstItem="w1b-Yf-qn7" firstAttribute="height" secondItem="EDG-93-Lzr" secondAttribute="height" multiplier="0.10804" id="RTm-Hj-auQ"/>
-                                                <constraint firstItem="WlW-lN-ZQF" firstAttribute="width" secondItem="EDG-93-Lzr" secondAttribute="width" multiplier="0.897368" id="S9e-GA-BzG"/>
-                                                <constraint firstItem="NCD-I7-2Ct" firstAttribute="centerX" secondItem="EDG-93-Lzr" secondAttribute="centerX" id="ZVj-eN-bGm"/>
-                                                <constraint firstItem="u4N-fO-p8r" firstAttribute="height" secondItem="EDG-93-Lzr" secondAttribute="height" multiplier="0.163317" id="crU-4J-ncN"/>
-                                                <constraint firstItem="NCD-I7-2Ct" firstAttribute="height" secondItem="EDG-93-Lzr" secondAttribute="height" multiplier="0.0728643" id="hXz-R7-2Ub"/>
-                                                <constraint firstItem="WlW-lN-ZQF" firstAttribute="height" secondItem="EDG-93-Lzr" secondAttribute="height" multiplier="0.241206" id="jJS-GF-hrd"/>
-                                                <constraint firstItem="w1b-Yf-qn7" firstAttribute="centerX" secondItem="EDG-93-Lzr" secondAttribute="centerX" id="mUU-tb-evQ"/>
-                                                <constraint firstItem="w1b-Yf-qn7" firstAttribute="width" secondItem="EDG-93-Lzr" secondAttribute="width" multiplier="0.897368" id="qXm-3l-WHq"/>
-                                                <constraint firstItem="Gou-cC-Z6d" firstAttribute="width" secondItem="EDG-93-Lzr" secondAttribute="width" multiplier="0.894737" id="srx-Mp-Sb8"/>
-                                                <constraint firstItem="WlW-lN-ZQF" firstAttribute="centerX" secondItem="EDG-93-Lzr" secondAttribute="centerX" id="ySQ-d4-Kq5"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <size key="customSize" width="380" height="398"/>
-                                        <connections>
-                                            <outlet property="dateLabel" destination="w1b-Yf-qn7" id="8py-OK-Im5"/>
-                                            <outlet property="locationLabel" destination="u4N-fO-p8r" id="VQl-K5-FVF"/>
-                                            <outlet property="playerListLabel" destination="WlW-lN-ZQF" id="cF0-KS-xdF"/>
-                                            <outlet property="skillLevelLabel" destination="NCD-I7-2Ct" id="Ife-BG-8qz"/>
-                                            <outlet property="sportLabel" destination="Gou-cC-Z6d" id="yNl-nH-ejh"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2303,23 +2206,23 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SqT-US-3FX">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="456"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5bn-Ho-Qbd">
-                                    <size key="itemSize" width="380" height="398"/>
+                                    <size key="itemSize" width="390" height="446"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SessionCollectionCell" id="Bdr-Hu-nNl" customClass="SessionCollectionCell">
-                                        <rect key="frame" x="0.0" y="29" width="380" height="398"/>
+                                        <rect key="frame" x="0.0" y="5" width="390" height="446"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IHg-CR-hHl">
-                                            <rect key="frame" x="0.0" y="0.0" width="380" height="398"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="446"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxe-Nw-Jgk">
-                                                    <rect key="frame" x="20" y="86" width="341" height="43"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxe-Nw-Jgk">
+                                                    <rect key="frame" x="20" y="91.333333333333329" width="350" height="47.999999999999986"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Date">
                                                             <attributes>
@@ -2330,8 +2233,11 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gR-8S-b3A">
-                                                    <rect key="frame" x="21" y="149" width="341" height="65"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gR-8S-b3A">
+                                                    <rect key="frame" x="21" y="149" width="348" height="65"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="348" id="kHs-gz-Q40"/>
+                                                    </constraints>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Location">
                                                             <attributes>
@@ -2342,8 +2248,11 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsm-zi-1RR">
-                                                    <rect key="frame" x="20" y="276" width="341" height="96"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsm-zi-1RR">
+                                                    <rect key="frame" x="20" y="312.33333333333331" width="350" height="107.66666666666669"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="349" id="6vP-PJ-CXq"/>
+                                                    </constraints>
                                                     <attributedString key="attributedText">
                                                         <fragment content="List of players">
                                                             <attributes>
@@ -2354,8 +2263,8 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6c-xy-bHi">
-                                                    <rect key="frame" x="20" y="229" width="341" height="29"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6c-xy-bHi">
+                                                    <rect key="frame" x="20" y="262" width="350" height="32.333333333333314"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Skill Level">
                                                             <attributes>
@@ -2366,8 +2275,8 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ6-Wu-R5r">
-                                                    <rect key="frame" x="21" y="23" width="340" height="44"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ6-Wu-R5r">
+                                                    <rect key="frame" x="20.666666666666657" y="23.000000000000004" width="348.66666666666674" height="49.333333333333343"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Tennis">
                                                             <attributes>
@@ -2380,16 +2289,22 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="top" secondItem="4gR-8S-b3A" secondAttribute="bottom" constant="15" id="09d-dz-trN"/>
+                                                <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="top" secondItem="ZZ6-Wu-R5r" secondAttribute="bottom" constant="19" id="0X2-et-f09"/>
                                                 <constraint firstItem="4gR-8S-b3A" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897368" id="0eZ-GW-bn7"/>
                                                 <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.10804" id="2wY-PZ-5Hn"/>
                                                 <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="7S2-OB-Cnk"/>
                                                 <constraint firstItem="4gR-8S-b3A" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.163317" id="ETL-fw-2Uo"/>
                                                 <constraint firstItem="tsm-zi-1RR" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.241206" id="Geb-b6-LYi"/>
+                                                <constraint firstAttribute="bottom" secondItem="tsm-zi-1RR" secondAttribute="bottom" constant="26" id="HVR-oF-OCI"/>
                                                 <constraint firstItem="4gR-8S-b3A" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="LTj-Rs-fCM"/>
                                                 <constraint firstItem="F6c-xy-bHi" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897368" id="MUs-Zt-L4Z"/>
                                                 <constraint firstItem="F6c-xy-bHi" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="MsX-X3-sgk"/>
                                                 <constraint firstItem="F6c-xy-bHi" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.0728643" id="PlJ-eS-NFH"/>
+                                                <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="top" secondItem="IHg-CR-hHl" secondAttribute="top" constant="23" id="Ukz-Pr-rd0"/>
                                                 <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.110553" id="apH-va-bR6"/>
+                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="top" secondItem="F6c-xy-bHi" secondAttribute="bottom" constant="18" id="ikp-RQ-JGt"/>
+                                                <constraint firstItem="4gR-8S-b3A" firstAttribute="top" secondItem="Mxe-Nw-Jgk" secondAttribute="bottom" constant="20" id="kcU-FW-OZq"/>
                                                 <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="kgV-6q-x0A"/>
                                                 <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897368" id="m8U-zx-Lsj"/>
                                                 <constraint firstItem="tsm-zi-1RR" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897368" id="n1D-gn-Gu1"/>
@@ -2398,7 +2313,7 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <size key="customSize" width="380" height="398"/>
+                                        <size key="customSize" width="390" height="446"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="Mxe-Nw-Jgk" id="6te-1o-DFw"/>
                                             <outlet property="locationLabel" destination="4gR-8S-b3A" id="Nmv-7T-4mR"/>
@@ -2418,7 +2333,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xTg-xz-shT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5272" y="-1312"/>
+            <point key="canvasLocation" x="5270.7692307692305" y="-1312.3222748815165"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -2458,14 +2373,8 @@
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemMintColor">
             <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -50,7 +50,9 @@
 	self.welcomeLabel.text = [greeting stringByAppendingString:me[@"firstName"][0]];
     
     self.sessionList = [[NSMutableArray alloc] init];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     [self fetchData];
 }
 
