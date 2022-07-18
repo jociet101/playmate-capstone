@@ -13,6 +13,8 @@
 #import "CalendarViewController.h"
 #import "ProfileViewController.h"
 #import "SessionCollectionCell.h"
+#import "UpcomingSessionsViewController.h"
+#import "SuggestedSessionsViewController.h"
 
 @interface HomeViewController ()
 
@@ -20,12 +22,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (nonatomic, strong) NSMutableArray *sessionList;
 
+@property (weak, nonatomic) IBOutlet UIView *upcomingView;
+@property (weak, nonatomic) IBOutlet UIView *suggestedView;
+
 @end
 
 @implementation HomeViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    
+    self.upcomingView.alpha = 1;
+    self.suggestedView.alpha = 0;
 
 	PFUser *me = [[PFUser currentUser] fetchIfNeeded];
 
@@ -57,6 +65,7 @@
         if (sessions != nil) {
             [self.sessionList removeAllObjects];
             [self filterSessions:sessions];
+            [self.delegate loadSessionList:(NSArray *)self.sessionList];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
@@ -69,7 +78,6 @@
     PFUser *currUser = [[PFUser currentUser] fetchIfNeeded];
 
     for (Session *sesh in tempList) {
-
         for (PFUser *user in sesh[@"playersList"]) {
             [user fetchIfNeeded];
 
@@ -84,13 +92,24 @@
     }
 }
 
+- (IBAction)switchViewController:(id)sender {
+    UISegmentedControl *switcher = sender;
+    
+    const BOOL isSegmentZeroIndex = (switcher.selectedSegmentIndex == 0);
+    self.upcomingView.alpha = isSegmentZeroIndex ? 1 : 0;
+    self.suggestedView.alpha = isSegmentZeroIndex ? 0 : 1;
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:@"toCalendar"]) {
 		CalendarViewController *vc = [segue destinationViewController];
 		vc.rawSessionList = self.sessionList;
-	}
+    } else if ([segue.identifier isEqualToString:@"homeToUpcomingSessions"]) {
+        UpcomingSessionsViewController *vc = [segue destinationViewController];
+        self.delegate = (id)vc;
+    }
 }
 
 - (IBAction)goToProfile:(id)sender {

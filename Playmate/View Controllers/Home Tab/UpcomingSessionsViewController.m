@@ -10,11 +10,12 @@
 #import "SessionDetailsViewController.h"
 #import "SessionCollectionCell.h"
 #import "Constants.h"
+#import "HomeViewController.h"
 
-@interface UpcomingSessionsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface UpcomingSessionsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HomeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, strong) NSMutableArray *sessionList;
+@property (nonatomic, strong) NSArray *sessionList;
 
 @end
 
@@ -26,46 +27,12 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
 
-    self.sessionList = [[NSMutableArray alloc] init];
+    self.sessionList = [[NSArray alloc] init];
 }
 
-- (void)fetchData {
-    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
-    query.limit = 20;
-
-    [query orderByAscending:@"occursAt"];
-
-    // fetch data asynchronously
-    [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
-        if (sessions != nil) {
-            [self.sessionList removeAllObjects];
-            [self filterSessions:sessions];
-            [self.collectionView reloadData];
-        } else {
-            NSLog(@"%@", error.localizedDescription);
-        }
-    }];
-}
-
-// Filter out sessions that do not contain self
-- (void)filterSessions:(NSArray *)sessions {
-    NSMutableArray *tempList = (NSMutableArray *)sessions;
-    PFUser *currUser = [[PFUser currentUser] fetchIfNeeded];
-
-    for (Session *sesh in tempList) {
-
-        for (PFUser *user in sesh[@"playersList"]) {
-            [user fetchIfNeeded];
-
-            NSDate *now = [NSDate date];
-            NSComparisonResult result = [now compare:sesh.occursAt];
-
-            if ([currUser.username isEqualToString:user.username] && result == NSOrderedAscending) {
-                [self.sessionList addObject:sesh];
-                break;
-            }
-        }
-    }
+- (void)loadSessionList:(NSArray *)sessionList {
+    self.sessionList = sessionList;
+    [self.collectionView reloadData];
 }
 
 #pragma mark - Collection view protocol methods
