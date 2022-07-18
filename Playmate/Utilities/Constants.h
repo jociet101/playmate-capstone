@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "DateTools.h"
+#import "PlayerConnection.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 // For API
 + (NSString *)geoapifyBaseURLString;
 + (NSString *)decathalonSportsListString;
++ (NSString *)decathalonOneSportString;
+
+// For Parse
++ (PlayerConnection *)getPlayerConnectionForUser:(PFUser *)user;
 
 // For calendar
 + (NSDate *) dateWithHour:(NSInteger)hour
@@ -33,6 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)capacityString:(NSNumber *)occupied with:(NSNumber *)capacity;
 + (NSString *)formatDate:(NSDate *)original;
 + (NSString *)formatDateShort:(NSDate *)original;
++ (NSArray *)listOfSystemColors;
 
 // Information for profile tab
 + (NSString *)defaultBio;
@@ -42,7 +48,14 @@ NS_ASSUME_NONNULL_BEGIN
 // Information for filters and create
 + (NSString *)createMenuTitle:(int)row;
 + (NSString *)createFiltersMenuTitle:(int)row;
+
 + (NSString *)selectLocationPlease;
++ (NSString *)selectDurationPlease;
++ (NSString *)selectSportPlease;
++ (NSString *)selectDateTimePlease;
++ (NSString *)selectSkillLevelPlease;
++ (NSString *)selectNumberOfPlayersPlease;
+
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row;
 + (NSArray * _Nullable)getFilterData:(BOOL)needAll forRow:(int)row;
 + (NSArray *)durationListShort;
@@ -62,23 +75,18 @@ NS_ASSUME_NONNULL_BEGIN
 // Some colors
 + (UIColor *)playmateBlue;
 
-// resize image
-+ (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension;
-
 + (UIImage *)profileImagePlaceholder;
 
 // for empty table views
 + (NSString *)emptyTablePlaceholderMsg;
 + (NSString *)emptyTablePlaceholderTitle;
-
 + (NSString *)emptySearchPlaceholderMsg;
-
 + (NSString *)emptyListPlaceholderMsg;
 + (NSString *)emptyListPlaceholderTitle;
-
-+ (NSString *)emptyRequestsPlaceholderMsg;
-+ (NSString *)emptyRequestsPlaceholderTitle;
++ (NSString *)emptyIncomingRequestsPlaceholderTitle;
 + (NSString *)emptyOutgoingRequestsPlaceholderTitle;
++ (NSDictionary *)descriptionAttributes;
++ (NSDictionary *)titleAttributes;
 
 @end
 

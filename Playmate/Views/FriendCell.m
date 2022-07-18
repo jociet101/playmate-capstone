@@ -7,6 +7,7 @@
 
 #import "FriendCell.h"
 #import "Constants.h"
+#import "Helpers.h"
 
 @interface FriendCell ()
 
@@ -39,7 +40,7 @@
     
     const BOOL hasProfileImage = (thisUser[@"profileImage"] != nil);
     UIImage *img = hasProfileImage ? [UIImage imageWithData:[thisUser[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
-    [self.profileImageView setImage:[Constants resizeImage:img withDimension:40]];
+    [self.profileImageView setImage:[Helpers resizeImage:img withDimension:40]];
     
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
 }

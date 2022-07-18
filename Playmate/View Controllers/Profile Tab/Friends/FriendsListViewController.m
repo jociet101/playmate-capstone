@@ -11,6 +11,7 @@
 #import "PlayerConnection.h"
 #import "FriendCell.h"
 #import "PlayerProfileViewController.h"
+#import "Helpers.h"
 
 @interface FriendsListViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -33,13 +34,16 @@
     self.tableView.emptyDataSetDelegate = self;
     
     [self.thisUser fetchIfNeeded];
-    PlayerConnection *thisPc = [self.thisUser[@"playerConnection"][0] fetchIfNeeded];
     
-    self.friendsList = thisPc[@"friendsList"];
+    PlayerConnection *playerConnection = [Constants getPlayerConnectionForUser:self.thisUser];
+    
+    self.friendsList = playerConnection[@"friendsList"];
     
     // set up refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self
+                         action:@selector(fetchData)
+                         forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
 }
 
@@ -66,46 +70,27 @@
 
 #pragma mark - Empty table view protocol methods
 
-- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return [Constants resizeImage:[UIImage imageNamed:@"empty_friend_request"] withDimension:80];
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"logo_small"];
 }
 
-- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
-{
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
     NSString *text = [Constants emptyListPlaceholderTitle];
-    
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
-                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
-    
-    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
-- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
-{
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
     NSString *text = [Constants emptyListPlaceholderMsg];
-    
-    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
-    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraph.alignment = NSTextAlignmentCenter;
-    
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
-                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
-                                 NSParagraphStyleAttributeName: paragraph};
-                                 
-    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    return [[NSAttributedString alloc] initWithString:text attributes:[Constants descriptionAttributes]];
 }
 
-- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return [UIColor clearColor];
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
+    return [Constants playmateBlue];
 }
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     if ([segue.identifier isEqualToString:@"toProfile"]) {
         PlayerProfileViewController *vc = [segue destinationViewController];
         PFQuery *query = [PFUser query];

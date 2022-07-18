@@ -154,16 +154,15 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      
      if ([sender isMemberOfClass:[SessionCell class]]) {
          
          NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
          
          Session* data = self.sessionList[indexPath.section];
-         SessionDetailsViewController *VC = [segue destinationViewController];
-         VC.sessionDetails = data;
+         SessionDetailsViewController *vc = [segue destinationViewController];
+         vc.sessionDetails = data;
      }
      
  }

@@ -23,6 +23,15 @@
     return @"https://sports.api.decathlon.com/sports";
 }
 
++ (NSString *)decathalonOneSportString {
+    return @"https://sports.api.decathlon.com/sports/:";
+}
+
+// For Parse
++ (PlayerConnection *)getPlayerConnectionForUser:(PFUser *)user {
+    return [user[@"playerConnection"][0] fetchIfNeeded];
+}
+
 // For calendar
 
 + (NSDate *) dateWithHour:(NSInteger)hour
@@ -30,8 +39,8 @@
                   second:(NSInteger)second
                  fromDate:(NSDate *)date
 {
-   NSCalendar *calendar = [NSCalendar currentCalendar];
-   NSDateComponents *components = [calendar components: NSCalendarUnitYear|
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components: NSCalendarUnitYear|
                                                          NSCalendarUnitMonth|
                                                          NSCalendarUnitDay
                                                fromDate:date];
@@ -88,6 +97,19 @@
     return [formatter stringFromDate:date];
 }
 
++ (NSArray *)listOfSystemColors {
+    return [NSArray arrayWithObjects:[UIColor systemPinkColor],
+                                     [UIColor systemRedColor],
+                                     [UIColor systemBlueColor],
+                                     [UIColor systemCyanColor],
+                                     [UIColor systemMintColor],
+                                     [UIColor systemGreenColor],
+                                     [UIColor systemOrangeColor],
+                                     [UIColor systemPurpleColor],
+                                     [UIColor systemYellowColor],
+                                     [UIColor systemGrayColor], nil];
+}
+
 // Information for profile tab
 + (NSString *)defaultBio {
     return @"Edit profile to enter a bio!";
@@ -131,6 +153,21 @@
 
 + (NSString *)selectLocationPlease {
     return @"Please select a location on map.";
+}
++ (NSString *)selectDurationPlease {
+    return @"Please select a duration.";
+}
++ (NSString *)selectSportPlease {
+    return @"Please select a sport.";
+}
++ (NSString *)selectDateTimePlease {
+    return @"Please select a date and time.";
+}
++ (NSString *)selectSkillLevelPlease {
+    return @"Please select a skill level.";
+}
++ (NSString *)selectNumberOfPlayersPlease {
+    return @"Please select the number of players.";
 }
 
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row {
@@ -222,46 +259,32 @@
     
     NSMutableArray *sports = [[NSMutableArray alloc] init];
     
-    // TODO: Need to debug this for getting all sports later
-    /*
+    if (needAll) [sports addObject:@"All"];
+    
     APIManager *manager = [APIManager new];
     [manager getSportsListWithCompletion:^(NSDictionary *list, NSError *error) {
         if (error != nil) {
             NSLog(@"%@", error.localizedDescription);
         } else {
             NSArray *data = list[@"data"];
-
+            
             for (NSDictionary *datum in data) {
-                NSString *sport = [NSString stringWithString:datum[@"attributes"][@"name"]];
-
-                NSString *sportType = [NSString stringWithFormat:@"%@", [sport class]];
-
-                if ([sportType isEqualToString:@"NSTaggedPointerString"]) {
-                    [sports addObject:sport];
-                }
+                
+                NSString *sport = [NSString stringWithFormat:@"%@", datum[@"attributes"][@"name"]];
+                [sports addObject:sport];
             }
         }
     }];
-
-    NSLog(@"%@", sports);
-    */
     
-    if (needAll) {
-        [sports addObject:@"All"];
-    }
-    
-    [sports addObject:@"Tennis"];
-    [sports addObject:@"Basketball"];
-    [sports addObject:@"Golf"];
     return (NSArray *)sports;
 }
 
 + (NSArray *)skillLevelsList:(BOOL)needAll {
     NSMutableArray *skillLevels = [[NSMutableArray alloc] init];
+    if (needAll) [skillLevels addObject:@"All"];
     [skillLevels addObject:@"Leisure"];
     [skillLevels addObject:@"Amateur"];
     [skillLevels addObject:@"Competitive"];
-    if (needAll) [skillLevels addObject:@"All"];
     
     return (NSArray *)skillLevels;
 }
@@ -286,24 +309,6 @@
 // some colors
 + (UIColor *)playmateBlue {
     return [UIColor colorWithRed: 0.31 green: 0.78 blue: 0.94 alpha: 0.30];
-}
-
-// for resizing images
-
-+ (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension {
-    
-    CGSize size = CGSizeMake(dimension, dimension);
-    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, dimension, dimension)];
-    
-    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
-    resizeImageView.image = image;
-    
-    UIGraphicsBeginImageContext(size);
-    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
 }
 
 // playmate logo placeholder profile image
@@ -334,16 +339,30 @@
     return @"No Friends";
 }
 
-+ (NSString *)emptyRequestsPlaceholderMsg {
-    return @"";
-}
-
-+ (NSString *)emptyRequestsPlaceholderTitle {
++ (NSString *)emptyIncomingRequestsPlaceholderTitle {
     return @"No Incoming Friend Requests";
 }
 
 + (NSString *)emptyOutgoingRequestsPlaceholderTitle {
     return @"No Outgoing Friend Requests";
+}
+
++ (NSDictionary *)descriptionAttributes {
+    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    
+    NSDictionary *descriptionAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                 NSParagraphStyleAttributeName: paragraphStyle};
+    
+    return descriptionAttributes;
+}
+
++ (NSDictionary *)titleAttributes {
+    NSDictionary *titleAttributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    return titleAttributes;
 }
 
 @end

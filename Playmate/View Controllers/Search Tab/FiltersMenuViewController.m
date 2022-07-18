@@ -111,15 +111,7 @@
 }
 
 - (IBAction)didTapApply:(id)sender {
-    
-    if (self.selectedLocation == nil) {
-        [self handleAlert:nil withTitle:@"No location" andOk:@"Ok"];
-        return;
-    }
-
     Filters *filters = [Filters new];
-    
-    
     
     filters.location = self.selectedLocation;
     filters.sport = self.selectedSport;

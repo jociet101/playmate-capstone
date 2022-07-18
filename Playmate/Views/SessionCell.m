@@ -7,6 +7,7 @@
 
 #import "SessionCell.h"
 #import "Constants.h"
+#import "Helpers.h"
 
 @interface SessionCell ()
 
@@ -58,38 +59,14 @@
     
     self.locationLabel.text = loc.locationName;
     
-    // Form the fraction into a string
-    NSString *capacityString = [Constants capacityString:self.session.occupied with:self.session.capacity];
-
-    if ([self.session.capacity isEqual:self.session.occupied]) {
-        capacityString = [Constants noOpenSlotsErrorMsg];
-    }
+    const BOOL sessionIsFull = [self.session.capacity isEqual:self.session.occupied];
+    NSString *capacityString = sessionIsFull ? [Constants noOpenSlotsErrorMsg]
+                                             : [Constants capacityString:self.session.occupied
+                                                          with:self.session.capacity];
     
     self.levelCapacityLabel.text = [self.session.skillLevel stringByAppendingString:[@", " stringByAppendingString:capacityString]];
     
-    [self setDate];
-}
-
-- (void)setDate {
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDate *startTime = self.session.occursAt;
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setMinute:60*[self.session.duration intValue]];
-    NSDate *endTime = [gregorian dateByAddingComponents:comps toDate:startTime  options:0];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = [Constants dateFormatString];
-    
-    formatter.dateStyle = NSDateFormatterMediumStyle;
-    formatter.timeStyle = NSDateFormatterNoStyle;
-    NSString *dateString = [formatter stringFromDate:startTime];
-    
-    formatter.dateStyle = NSDateFormatterNoStyle;
-    formatter.timeStyle = NSDateFormatterShortStyle;
-    NSString *startTimeString = [formatter stringFromDate:startTime];
-    NSString *endTimeString = [formatter stringFromDate:endTime];
-    
-    self.dateTimeLabel.text = [dateString stringByAppendingFormat:@", %@ to %@", startTimeString, endTimeString];
+    self.dateTimeLabel.text = [Helpers getTimeGivenDurationForSession:self.session];
 }
 
 @end

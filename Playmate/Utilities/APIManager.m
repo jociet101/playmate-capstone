@@ -38,13 +38,23 @@ static NSString * geoapify;
     return self;
 }
 
-// GET https://sports.api.decathlon.com/sports
-
 - (void)getSportsListWithCompletion:(void(^)(NSDictionary *list, NSError *error))completion {
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:[Constants decathalonSportsListString]  parameters:nil progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *list) {
+    NSDictionary *params = @{@"parents_only":@YES};
+    [manager GET:[Constants decathalonSportsListString]  parameters:params progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *list) {
         completion(list, nil);
+    } failure:^(NSURLSessionDataTask * task, NSError *error) {
+        completion(nil, error);
+    }];
+}
+
+- (void)getSportWithId:(NSString *)sportId withCompletion:(void(^)(NSDictionary *sportData, NSError *error))completion {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSString *url = [[Constants decathalonOneSportString] stringByAppendingString:sportId];
+    [manager GET:url  parameters:nil progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *sportData) {
+        completion(sportData, nil);
     } failure:^(NSURLSessionDataTask * task, NSError *error) {
         completion(nil, error);
     }];
@@ -101,6 +111,31 @@ static NSString * geoapify;
                 
                 completion(loc, nil);
             }
+        }
+        
+    }];
+    [task resume];
+}
+
+- (void)getReverseGeocodedLocation:(Location *)location withCompletion:(void(^)(NSString *name, NSError *error))completion {
+    // Parse the location then into format needed for url
+    NSString *latitudeString = [NSString stringWithFormat:@"%f", [location.lat doubleValue]];
+    NSString *longitudeString = [NSString stringWithFormat:@"%f", [location.lng doubleValue]];
+    
+    NSString *queryString = [NSString stringWithFormat:@"%@/geocode/reverse?lat=%@&lon=%@&apiKey=%@", [Constants geoapifyBaseURLString], latitudeString, longitudeString, geoapify];
+    NSURL *url = [NSURL URLWithString:queryString];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error != nil) {
+            NSLog(@"%@", [error localizedDescription]);
+            completion(nil, error);
+        }
+        else {
+            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            // parse dictionary
+            NSDictionary *result = dataDictionary[@"features"][0][@"properties"];
+            completion(result[@"formatted"], nil);
         }
         
     }];

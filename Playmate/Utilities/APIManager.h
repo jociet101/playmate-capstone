@@ -12,8 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface APIManager : NSObject
 
+// Decathalon API
 - (void)getSportsListWithCompletion:(void(^)(NSDictionary *list, NSError *error))completion;
+- (void)getSportWithId:(NSString *)sportId withCompletion:(void(^)(NSDictionary *sportData, NSError *error))completion ;
+
+// Geocoding API
 - (void)getGeocodedLocation:(NSString *)address withCompletion:(void(^)(Location *loc, NSError *error))completion;
+- (void)getReverseGeocodedLocation:(Location *)location withCompletion:(void(^)(NSString *name, NSError *error))completion;
 
 @end
 

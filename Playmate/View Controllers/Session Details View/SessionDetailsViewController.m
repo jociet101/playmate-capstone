@@ -12,6 +12,7 @@
 #import "PlayerProfileCollectionCell.h"
 #import "PlayerProfileViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Helpers.h"
 
 @interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -33,11 +34,14 @@
 @implementation SessionDetailsViewController
 
 PFUser *me;
+BOOL partOfSession;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     me = [[PFUser currentUser] fetchIfNeeded];
+    
+    partOfSession = NO;
 
     self.addMyselfButton.layer.cornerRadius = [Constants buttonCornerRadius];
     
@@ -52,40 +56,36 @@ PFUser *me;
 }
 
 - (void)disableAddButton {
-    
     for (PFUser *user in self.sessionDetails.playersList) {
         [user fetchIfNeeded];
-        
         if ([me.username isEqualToString:user.username]) {
-            
-            self.disabledButton.text = [Constants alreadyInSessionErrorMsg];
-            self.disabledButton.textColor = [UIColor redColor];
-            [self.addMyselfButton setEnabled:NO];
-            self.addMyselfButton.alpha = 0;
-            break;
+            [self changeAddButtonToLeave];
+            return;
         }
     }
-    
     if ([self.sessionDetails.occupied isEqual:self.sessionDetails.capacity]) {
         self.disabledButton.text = [Constants fullSessionErrorMsg];
         self.disabledButton.textColor = [UIColor redColor];
         [self.addMyselfButton setEnabled:NO];
+        partOfSession = NO;
         self.addMyselfButton.alpha = 0;
     }
 }
 
+- (void)changeAddButtonToLeave {
+    partOfSession = YES;
+    [self.addMyselfButton setTitle:@"Leave Session" forState:UIControlStateNormal];
+}
+
+- (void)changeAddButtonToJoin {
+    partOfSession = NO;
+    [self.addMyselfButton setTitle:@"Join Session" forState:UIControlStateNormal];
+}
+
 - (void)initializeDetails {
-    
     self.sportLabel.text = self.sessionDetails.sport;
     
-    // Form the fraction into a string
-    NSString *capacityString = [Constants capacityString:self.sessionDetails.occupied with:self.sessionDetails.capacity];
-    
-    if ([self.sessionDetails.capacity isEqual:self.sessionDetails.occupied]) {
-        self.capacityLabel.text = [Constants noOpenSlotsErrorMsg];
-    } else {
-        self.capacityLabel.text = capacityString;
-    }
+    [self initializeCapacityString];
     
     self.levelLabel.text = self.sessionDetails.skillLevel;
     
@@ -93,31 +93,16 @@ PFUser *me;
     
     self.locationLabel.text = loc.locationName;
     
-    [self setDate];
+    self.dateTimeLabel.text = [Helpers getTimeGivenDurationForSession:self.sessionDetails];
     
     self.createdDateLabel.text = [@"Session created at: " stringByAppendingString:[Constants formatDate:self.sessionDetails.updatedAt]];
 }
 
-- (void)setDate {
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDate *startTime = self.sessionDetails.occursAt;
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setMinute:60*[self.sessionDetails.duration intValue]];
-    NSDate *endTime = [gregorian dateByAddingComponents:comps toDate:startTime  options:0];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = [Constants dateFormatString];
-    
-    formatter.dateStyle = NSDateFormatterMediumStyle;
-    formatter.timeStyle = NSDateFormatterNoStyle;
-    NSString *dateString = [formatter stringFromDate:startTime];
-    
-    formatter.dateStyle = NSDateFormatterNoStyle;
-    formatter.timeStyle = NSDateFormatterShortStyle;
-    NSString *startTimeString = [formatter stringFromDate:startTime];
-    NSString *endTimeString = [formatter stringFromDate:endTime];
-    
-    self.dateTimeLabel.text = [dateString stringByAppendingFormat:@", %@ to %@", startTimeString, endTimeString];
+- (void)initializeCapacityString {
+    const BOOL sessionIsFull = [self.sessionDetails.capacity isEqual:self.sessionDetails.occupied];
+    self.capacityLabel.text = sessionIsFull ? [Constants noOpenSlotsErrorMsg]
+                                            : [Constants capacityString:self.sessionDetails.occupied
+                                                         with:self.sessionDetails.capacity];
 }
 
 #pragma mark - Animating confetti
@@ -128,8 +113,7 @@ PFUser *me;
     self.confettiLayer.emitterPosition = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.origin.y);
     self.confettiLayer.emitterSize = CGSizeMake(self.view.bounds.size.width, 0);
     
-    
-    NSArray *colors = [NSArray arrayWithObjects:[UIColor systemPinkColor], [UIColor systemRedColor], [UIColor systemBlueColor], [UIColor systemCyanColor], [UIColor systemMintColor], [UIColor systemGreenColor], [UIColor systemOrangeColor], [UIColor systemPurpleColor], [UIColor systemYellowColor], [UIColor systemGrayColor], nil];
+    NSArray *colors = [Constants listOfSystemColors];
     
     NSMutableArray *cells = [NSMutableArray arrayWithCapacity:colors.count];
     
@@ -161,27 +145,94 @@ PFUser *me;
 #pragma mark - Add to session button action
 
 - (IBAction)addMyself:(id)sender {
-    [self showConfetti];
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+    // For leaving session
+    if (partOfSession) {
+        [self updateLeaveUi];
+        [self changeAddButtonToJoin];
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
 
-    // Retrieve the object by id
-    [query getObjectInBackgroundWithId:self.sessionDetails.objectId
-                                 block:^(PFObject *session, NSError *error) {
+        // Retrieve the object by id
+        [query getObjectInBackgroundWithId:self.sessionDetails.objectId
+                                     block:^(PFObject *session, NSError *error) {
+            // Add myself to the session
+            NSMutableArray *oldPlayersList = (NSMutableArray *)session[@"playersList"];
+            
+            PFUser * _Nullable userToRemove = nil;
+            for (PFUser *user in oldPlayersList) {
+                if ([user.objectId isEqualToString:me.objectId]) {
+                    userToRemove = user;
+                    break;
+                }
+            }
+            
+            [oldPlayersList removeObject:userToRemove];
+                        
+            session[@"playersList"] = (NSArray *)oldPlayersList;
+            
+            int newOccupied = (int)oldPlayersList.count;
+            session[@"occupied"] = [NSNumber numberWithInt:newOccupied];
+            
+            [session saveInBackground];
+        }];
+    }
+    // For joining session
+    else {
+        [self updateJoinUi];
+        [self showConfetti];
+        [self changeAddButtonToLeave];
         
-        // Add myself to the session
-        NSMutableArray *oldPlayersList = (NSMutableArray *)session[@"playersList"];
-        [oldPlayersList addObject:me];
-        
-        session[@"playersList"] = (NSArray *)oldPlayersList;
-        
-        int oldOccupied = [session[@"occupied"] intValue] + 1;
-        session[@"occupied"] = [NSNumber numberWithInt:oldOccupied];
-        
-        [session saveInBackground];
-        
-        [self disableAddButton];
-    }];
+        PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+
+        // Retrieve the object by id
+        [query getObjectInBackgroundWithId:self.sessionDetails.objectId
+                                     block:^(PFObject *session, NSError *error) {
+            // Add myself to the session
+            NSMutableArray *oldPlayersList = (NSMutableArray *)session[@"playersList"];
+            [oldPlayersList addObject:me];
+            
+            session[@"playersList"] = (NSArray *)oldPlayersList;
+            
+            int newOccupied = (int)oldPlayersList.count;
+            session[@"occupied"] = [NSNumber numberWithInt:newOccupied];
+            
+            [session saveInBackground];
+        }];
+    }
+}
+
+- (void)updateJoinUi {
+    // Update player profile list
+    NSMutableArray *oldPlayersList = (NSMutableArray *)self.sessionDetails.playersList;
+    [oldPlayersList addObject:me];
+    self.sessionDetails.playersList = (NSArray *)oldPlayersList;
+    [self.collectionView reloadData];
+    
+    // Update player count / number of open slots
+    int newOccupied = (int)oldPlayersList.count;
+    self.sessionDetails.occupied = [NSNumber numberWithInt:newOccupied];
+    [self initializeCapacityString];
+}
+
+- (void)updateLeaveUi {
+    // Update player profile list
+    NSMutableArray *oldPlayersList = (NSMutableArray *)self.sessionDetails.playersList;
+    
+    PFUser * _Nullable userToRemove = nil;
+    for (PFUser *user in oldPlayersList) {
+        if ([user.objectId isEqualToString:me.objectId]) {
+            userToRemove = user;
+            break;
+        }
+    }
+    [oldPlayersList removeObject:userToRemove];
+    self.sessionDetails.playersList = (NSArray *)oldPlayersList;
+    [self.collectionView reloadData];
+    
+    // Update player count / number of open slots
+    int newOccupied = (int)oldPlayersList.count;
+    self.sessionDetails.occupied = [NSNumber numberWithInt:newOccupied];
+    [self initializeCapacityString];
 }
 
 #pragma mark - Collection view protocol methods
@@ -191,10 +242,9 @@ PFUser *me;
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     PlayerProfileCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayerProfileCollectionCell" forIndexPath:indexPath];
     
-    cell.userProfile = self.sessionDetails.playersList[indexPath.row];
+    cell.userProfile = self.sessionDetails.playersList[self.sessionDetails.playersList.count- indexPath.row-1];
     
     return cell;
 }
@@ -206,12 +256,11 @@ PFUser *me;
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     if ([sender isMemberOfClass:[PlayerProfileCollectionCell class]]) {
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
         PFUser* data = self.sessionDetails.playersList[indexPath.row];
-        PlayerProfileViewController *VC = [segue destinationViewController];
-        VC.user = data;
+        PlayerProfileViewController *vc = [segue destinationViewController];
+        vc.user = data;
     }
 }
 

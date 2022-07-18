@@ -10,6 +10,7 @@
 #import "PlayerConnection.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
+#import "Helpers.h"
 
 @interface OutgoingRequestsViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, OutgoingRequestCellDelegate>
 
@@ -20,10 +21,6 @@
 @end
 
 @implementation OutgoingRequestsViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
 
 - (void)viewWillAppear:(BOOL)animated {
     
@@ -37,7 +34,9 @@
     
     // set up refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self
+                         action:@selector(fetchData)
+                         forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
     
     [self fetchData];
@@ -48,9 +47,9 @@
     // fetch data for outoing request list
     PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
-    PlayerConnection *myPc = [user[@"playerConnection"][0] fetchIfNeeded];
+    PlayerConnection *playerConnection = [Constants getPlayerConnectionForUser:user];
     
-    self.outgoingRequestList = myPc[@"pendingList"];
+    self.outgoingRequestList = playerConnection[@"pendingList"];
     
     [self.refreshControl endRefreshing];
 }
@@ -75,24 +74,17 @@
 
 #pragma mark - Empty table view protocol methods
 
-- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return [Constants resizeImage:[UIImage imageNamed:@"empty_friend_request"] withDimension:80];
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"logo_small"];
 }
 
-- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
-{
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
     NSString *text = [Constants emptyOutgoingRequestsPlaceholderTitle];
-    
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
-                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
-    
-    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
-- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return [UIColor clearColor];
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
+    return [Constants playmateBlue];
 }
 
 #pragma mark - Outgoing Request cell delegate methods

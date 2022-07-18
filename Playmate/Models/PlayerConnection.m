@@ -6,6 +6,7 @@
 //
 
 #import "PlayerConnection.h"
+#import "Constants.h"
 
 @implementation PlayerConnection
 
@@ -20,16 +21,16 @@
 
 + (PlayerConnection *)initializePlayerConnection {
     
-    PlayerConnection *pc = [PlayerConnection new];
-    
+    PlayerConnection *playerConnection = [PlayerConnection new];
+
     PFUser *me = [PFUser currentUser];
-    pc.userObjectId = me.objectId;
-    pc.connections = [NSMutableDictionary new];
-    pc.friendsList = [NSMutableArray new];
-    pc.pendingList = [NSMutableArray new];
+    playerConnection.userObjectId = me.objectId;
+    playerConnection.connections = [NSMutableDictionary new];
+    playerConnection.friendsList = [NSMutableArray new];
+    playerConnection.pendingList = [NSMutableArray new];
     
-    [pc saveInBackground];
-    return pc;
+    [playerConnection saveInBackground];
+    return playerConnection;
 }
 
 // for saving own(A) connection to someone(B) else; Save B in A's dictionary (A is me)
@@ -42,17 +43,17 @@
     
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     
-    PlayerConnection *pc = [me[@"playerConnection"][0] fetchIfNeeded];
-
+    PlayerConnection *playerConnection = [Constants getPlayerConnectionForUser:me];
+    
 //    [pc.connections setObject:cs forKey:otherObjectId];
 
     if (areFriends) {
-        NSMutableArray *tempFriendsList = (NSMutableArray *)pc[@"friendsList"];
+        NSMutableArray *tempFriendsList = (NSMutableArray *)playerConnection[@"friendsList"];
         [tempFriendsList addObject:otherObjectId];
-        pc[@"friendsList"] = (NSArray *)tempFriendsList;
+        playerConnection[@"friendsList"] = (NSArray *)tempFriendsList;
     }
     
-    [pc saveInBackground];
+    [playerConnection saveInBackground];
 }
 
 // for saving someone(B) else's connection to self(A); Save A in B's dictionary (A is me)
@@ -63,7 +64,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"PlayerConnection"];
     [query whereKey:@"userObjectId" equalTo:otherObjectId];
     
-    PlayerConnection *pc = [[query getFirstObject] fetchIfNeeded];
+    PlayerConnection *playerConnection = [[query getFirstObject] fetchIfNeeded];
     
     // TODO: use for recommender system later
 //    ConnectionState *cs = [ConnectionState new];
@@ -74,16 +75,16 @@
 
     if (areFriends) {
         
-        NSMutableArray *tempFriendsList = (NSMutableArray *)pc[@"friendsList"];
+        NSMutableArray *tempFriendsList = (NSMutableArray *)playerConnection[@"friendsList"];
         [tempFriendsList addObject:me.objectId];
-        pc[@"friendsList"] = (NSArray *)tempFriendsList;
+        playerConnection[@"friendsList"] = (NSArray *)tempFriendsList;
         
-        NSMutableArray *tempPendingList = (NSMutableArray *)pc[@"pendingList"];
+        NSMutableArray *tempPendingList = (NSMutableArray *)playerConnection[@"pendingList"];
         [tempPendingList removeObject:me.objectId];
-        pc[@"pendingList"] = (NSArray *)tempPendingList;
+        playerConnection[@"pendingList"] = (NSArray *)tempPendingList;
     }
     
-    [pc saveInBackground];
+    [playerConnection saveInBackground];
 }
 
 // if I deny someone else's friend request
@@ -93,13 +94,13 @@
     PFQuery *query = [PFQuery queryWithClassName:@"PlayerConnection"];
     [query whereKey:@"userObjectId" equalTo:otherObjectId];
     
-    PlayerConnection *pc = [query getFirstObject];
+    PlayerConnection *playerConnection = [query getFirstObject];
     
-    NSMutableArray *tempPendingList = (NSMutableArray *)pc[@"pendingList"];
+    NSMutableArray *tempPendingList = (NSMutableArray *)playerConnection[@"pendingList"];
     [tempPendingList removeObject:me.objectId];
-    pc[@"pendingList"] = (NSArray *)tempPendingList;
+    playerConnection[@"pendingList"] = (NSArray *)tempPendingList;
     
-    [pc saveInBackground];
+    [playerConnection saveInBackground];
 }
 
 @end

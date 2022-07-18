@@ -46,7 +46,9 @@
     
     // set up refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self
+                         action:@selector(fetchData)
+                         forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
 }
 
@@ -86,7 +88,6 @@
                 }
             }
             
-            
             self.sessionList = (NSArray *)filteredSessions;
             
             [self.tableView reloadData];
@@ -99,38 +100,21 @@
 
 #pragma mark - Empty table view protocol methods
 
-- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
-{
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
     return [UIImage imageNamed:@"logo_small"];
 }
 
-- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
-{
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
     NSString *text = [Constants emptyTablePlaceholderTitle];
-    
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
-                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
-    
-    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
-- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
-{
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
     NSString *text = [Constants emptySearchPlaceholderMsg];
-    
-    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
-    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraph.alignment = NSTextAlignmentCenter;
-    
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
-                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
-                                 NSParagraphStyleAttributeName: paragraph};
-                                 
-    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    return [[NSAttributedString alloc] initWithString:text attributes:[Constants descriptionAttributes]];
 }
 
-- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
-{
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
     return [Constants playmateBlue];
 }
 
@@ -243,7 +227,11 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
         if (sessions != nil) {
             
-            self.sessionList = [self filterSessions:sessions withLocation:filter.location andRadius:filter.radius];
+            if (filter.location != nil) {
+                self.sessionList = [self filterSessions:sessions withLocation:filter.location andRadius:filter.radius];
+            } else {
+                self.sessionList = sessions;
+            }
             
             [self.tableView reloadData];
         } else {
@@ -267,7 +255,6 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([sender isMemberOfClass:[SessionCell class]]) {
@@ -275,12 +262,12 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         
         Session* data = self.sessionList[indexPath.section];
-        SessionDetailsViewController *VC = [segue destinationViewController];
-        VC.sessionDetails = data;
+        SessionDetailsViewController *vc = [segue destinationViewController];
+        vc.sessionDetails = data;
     }
     if ([sender isMemberOfClass:[UIBarButtonItem class]]) {
-        FiltersMenuViewController *VC = [segue destinationViewController];
-        VC.delegate = self;
+        FiltersMenuViewController *vc = [segue destinationViewController];
+        vc.delegate = self;
     }
     
 }

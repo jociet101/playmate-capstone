@@ -12,6 +12,7 @@
 #import "PlayerConnection.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
+#import "Helpers.h"
 
 @interface IncomingRequestsViewController () <UITableViewDelegate, UITableViewDataSource, FriendRequestCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -37,7 +38,9 @@
     
     // set up refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self
+                         action:@selector(fetchData)
+                         forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
     
     [self fetchData];
@@ -68,17 +71,6 @@
     
 }
 
-- (NSArray *)copyArray:(NSArray *)array {
-    NSMutableArray *copyTo = [[NSMutableArray alloc] init];
-    
-    for (FriendRequest *item in array) {
-        [copyTo addObject:item];
-    }
-    
-    return (NSArray *)copyTo;
-    
-}
-
 #pragma mark - Table view protocol methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -100,46 +92,22 @@
 
 #pragma mark - Empty table view protocol methods
 
-// TODO: add a notifications placeholder image
-- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return [Constants resizeImage:[UIImage imageNamed:@"empty_friend_request"] withDimension:80];
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"logo_small"];
 }
 
-- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
-{
-    NSString *text = [Constants emptyRequestsPlaceholderTitle];
-    
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
-                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
-    
-    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text = [Constants emptyIncomingRequestsPlaceholderTitle];
+    return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
-- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
-{
-    NSString *text = [Constants emptyRequestsPlaceholderMsg];
-    
-    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
-    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraph.alignment = NSTextAlignmentCenter;
-    
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0f],
-                                 NSForegroundColorAttributeName: [UIColor lightGrayColor],
-                                 NSParagraphStyleAttributeName: paragraph};
-                                 
-    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
-}
-
-- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return [UIColor clearColor];
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
+    return [Constants playmateBlue];
 }
 
 #pragma mark - Friend Request cell delegate methods
 
 - (void)didTap:(FriendRequestCell *)cell profileImage:(PFUser *)user {
-    
     [self performSegueWithIdentifier:@"toProfile" sender:user];
 }
 

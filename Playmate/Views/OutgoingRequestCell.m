@@ -9,6 +9,7 @@
 #import "Constants.h"
 #import "PlayerConnection.h"
 #import "FriendRequest.h"
+#import "Helpers.h"
 
 @interface OutgoingRequestCell ()
 
@@ -44,7 +45,7 @@
     
     const BOOL hasProfileImage = (user[@"profileImage"] != nil);
     UIImage *img = hasProfileImage ? [UIImage imageWithData:[user[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
-    [self.profileImageView setImage:[Constants resizeImage:img withDimension:83]];
+    [self.profileImageView setImage:[Helpers resizeImage:img withDimension:83]];
     
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
 }
