@@ -6,17 +6,17 @@
 //
 
 #import "HomeViewController.h"
-#import "SessionCell.h"
 #import "Session.h"
 #import "SessionDetailsViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
 #import "CalendarViewController.h"
 #import "ProfileViewController.h"
+#import "SessionCollectionCell.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *sessionList;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
@@ -27,9 +27,9 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-
-	self.tableView.delegate = self;
-	self.tableView.dataSource = self;
+    
+	self.collectionView.delegate = self;
+	self.collectionView.dataSource = self;
 
 	self.sessionList = [[NSMutableArray alloc] init];
 
@@ -46,13 +46,6 @@
 	}
 
 	self.welcomeLabel.text = [greeting stringByAppendingString:me[@"firstName"][0]];
-
-	// set up refresh control
-	self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self
-                         action:@selector(fetchData)
-                         forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refreshControl];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -66,18 +59,16 @@
 	[query orderByAscending:@"occursAt"];
 
 	// fetch data asynchronously
-	[query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
-	         if (sessions != nil) {
-
-			 [self.sessionList removeAllObjects];
-			 [self filterSessions:sessions];
-
-			 [self.tableView reloadData];
-		 } else {
-			 NSLog(@"%@", error.localizedDescription);
-		 }
-	         [self.refreshControl endRefreshing];
-	 }];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
+        if (sessions != nil) {
+            [self.sessionList removeAllObjects];
+            [self filterSessions:sessions];
+            [self.collectionView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+        [self.refreshControl endRefreshing];
+    }];
 }
 
 // Filter out sessions that do not contain self
@@ -101,50 +92,30 @@
 	}
 }
 
-#pragma mark - Table view protocol methods
+#pragma mark - Collection view protocol methods
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	SessionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SessionCell"];
-	cell.session = self.sessionList[indexPath.section];
-
-	return cell;
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.sessionList.count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 1;
+- (nonnull __kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    SessionCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SessionCollectionCell" forIndexPath:indexPath];
+    cell.session = self.sessionList[indexPath.row];
+
+    return cell;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return self.sessionList.count;
-}
-
-- (CGFloat)tableView:(UITableView*)tableView
-        heightForHeaderInSection:(NSInteger)section {
-	return 5.0;
-}
-
-- (CGFloat)tableView:(UITableView*)tableView
-        heightForFooterInSection:(NSInteger)section {
-	return 5.0;
-}
-
-- (UIView*)tableView:(UITableView*)tableView
-        viewForHeaderInSection:(NSInteger)section {
-	return [[UIView alloc] initWithFrame:CGRectZero];
-}
-
-- (UIView*)tableView:(UITableView*)tableView
-        viewForFooterInSection:(NSInteger)section {
-	return [[UIView alloc] initWithFrame:CGRectZero];
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([sender isMemberOfClass:[SessionCell class]]) {
-		NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-
-		Session* data = self.sessionList[indexPath.section];
+	if ([sender isMemberOfClass:[SessionCollectionCell class]]) {
+        NSLog(@"segue to session collection cell");
+		NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
+		Session* data = self.sessionList[indexPath.row];
 		SessionDetailsViewController *vc = [segue destinationViewController];
 		vc.sessionDetails = data;
 	}
@@ -153,7 +124,6 @@
 		CalendarViewController *vc = [segue destinationViewController];
 		vc.rawSessionList = self.sessionList;
 	}
-
 }
 
 - (IBAction)goToProfile:(id)sender {

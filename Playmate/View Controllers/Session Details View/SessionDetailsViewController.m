@@ -244,7 +244,7 @@ BOOL partOfSession;
 - (nonnull __kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PlayerProfileCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayerProfileCollectionCell" forIndexPath:indexPath];
     
-    cell.userProfile = self.sessionDetails.playersList[self.sessionDetails.playersList.count- indexPath.row-1];
+    cell.userProfile = self.sessionDetails.playersList[self.sessionDetails.playersList.count-indexPath.row-1];
     
     return cell;
 }
