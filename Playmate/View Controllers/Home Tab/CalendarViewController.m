@@ -24,27 +24,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self setupCalendar];
     [self setupEventTable];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    
     [self fetchData:[NSDate now]];
 }
 
 #pragma mark - Event Table view methods and fetch data
 
 - (void)fetchData:(NSDate *)selectedDate {
-    
     NSArray *filteredSessions = [self filterSessions:self.rawSessionList forDate:selectedDate];
     self.sessionList = (NSMutableArray *)filteredSessions;
     [self.tableView reloadData];
 }
 
 - (NSArray *)filterSessions:(NSArray *)sessions forDate:(NSDate *)date {
-    
     NSMutableArray *filteredSessions = [[NSMutableArray alloc] init];
     PFUser *currUser = [[PFUser currentUser] fetchIfNeeded];
     
@@ -88,7 +84,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     return 1;
 }
 
@@ -119,7 +114,6 @@
 #pragma mark - Calendar view methods
 
 - (void)setupCalendar {
-    
     self.calendarView.delegate = self;
     self.calendarView.dataSource = self;
     
@@ -127,44 +121,32 @@
     
     UIPanGestureRecognizer *scopeGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self.calendarView action:@selector(handleScopeGesture:)];
     [self.calendarView addGestureRecognizer:scopeGesture];
-    
 }
 
-- (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated
-{
+- (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated {
     calendar.frame = (CGRect){calendar.frame.origin,bounds.size};
-    
-//    self.tableView.topAnchor
 }
 
-- (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
-{
+- (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition {
     [self fetchData:date];
 }
 
 - (NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(NSDate *)date {
-    
     if ([self filterSessions:self.rawSessionList forDate:date].count != 0) {
         return 1;
     }
-    
     return 0;
-    
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-     
      if ([sender isMemberOfClass:[SessionCell class]]) {
-         
          NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-         
          Session* data = self.sessionList[indexPath.section];
          SessionDetailsViewController *vc = [segue destinationViewController];
          vc.sessionDetails = data;
      }
-     
  }
 
 @end
