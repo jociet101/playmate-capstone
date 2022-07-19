@@ -35,15 +35,15 @@
     
     [self.thisUser fetchIfNeeded];
     
-    PlayerConnection *playerConnection = [Constants getPlayerConnectionForUser:self.thisUser];
+    PlayerConnection *playerConnection = [Helpers getPlayerConnectionForUser:self.thisUser];
     
     self.friendsList = playerConnection[@"friendsList"];
     
     // set up refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self
-                         action:@selector(fetchData)
-                         forControlEvents:UIControlEventValueChanged];
+                            action:@selector(fetchData)
+                  forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
 }
 

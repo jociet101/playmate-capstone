@@ -9,6 +9,7 @@
 #import "UIKit/UIKit.h"
 #import "AFHTTPSessionManager.h"
 #import "Constants.h"
+#import "Helpers.h"
 
 static NSString * geoapify;
 
@@ -41,10 +42,10 @@ static NSString * geoapify;
 - (void)getSportsListWithCompletion:(void(^)(NSDictionary *list, NSError *error))completion {
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSDictionary *params = @{@"parents_only":@YES};
-    [manager GET:[Constants decathalonSportsListString]  parameters:params progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *list) {
+    [manager GET:[Constants decathalonSportsListString]  parameters:nil progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *list) {
         completion(list, nil);
     } failure:^(NSURLSessionDataTask * task, NSError *error) {
+        [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         completion(nil, error);
     }];
 }
@@ -56,6 +57,7 @@ static NSString * geoapify;
     [manager GET:url  parameters:nil progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *sportData) {
         completion(sportData, nil);
     } failure:^(NSURLSessionDataTask * task, NSError *error) {
+        [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         completion(nil, error);
     }];
 }
@@ -66,11 +68,11 @@ static NSString * geoapify;
     NSArray *addyComponenets = [address componentsSeparatedByString:@" "];
     NSString *craftedLink = @"";
     
-    BOOL firstComp = YES;
+    BOOL isFirstComponenet = YES;
     
     for (NSString *component in addyComponenets) {
-        if (firstComp) {
-            firstComp = NO;
+        if (isFirstComponenet) {
+            isFirstComponenet = NO;
             craftedLink = [craftedLink stringByAppendingString:component];
         }
         else {
@@ -79,17 +81,13 @@ static NSString * geoapify;
         }
     }
     
-    NSString *queryString = [NSString stringWithFormat:@"%@/geocode/search?text=%@&format=json&apiKey=%@", [Constants geoapifyBaseURLString], craftedLink, geoapify];
+    NSString *queryString = [Helpers geoapifyGeocodingURLWithKey:geoapify andCraftedLink:craftedLink];
     NSURL *url = [NSURL URLWithString:queryString];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error != nil) {
-            NSLog(@"%@", [error localizedDescription]);
-
-            // The network request has completed, but failed.
-            // Invoke the completion block with an error.
-            // Think of invoking a block like calling a function with parameters
+            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
             completion(nil, error);
         }
         else {
@@ -119,16 +117,16 @@ static NSString * geoapify;
 
 - (void)getReverseGeocodedLocation:(Location *)location withCompletion:(void(^)(NSString *name, NSError *error))completion {
     // Parse the location then into format needed for url
-    NSString *latitudeString = [NSString stringWithFormat:@"%f", [location.lat doubleValue]];
     NSString *longitudeString = [NSString stringWithFormat:@"%f", [location.lng doubleValue]];
+    NSString *latitudeString = [NSString stringWithFormat:@"%f", [location.lat doubleValue]];
     
-    NSString *queryString = [NSString stringWithFormat:@"%@/geocode/reverse?lat=%@&lon=%@&apiKey=%@", [Constants geoapifyBaseURLString], latitudeString, longitudeString, geoapify];
+    NSString *queryString = [Helpers geoapifyReverseGeocodingURLWithKey:geoapify andLongitutde:longitudeString andLatitude:latitudeString];
     NSURL *url = [NSURL URLWithString:queryString];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error != nil) {
-            NSLog(@"%@", [error localizedDescription]);
+            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
             completion(nil, error);
         }
         else {
@@ -137,7 +135,6 @@ static NSString * geoapify;
             NSDictionary *result = dataDictionary[@"features"][0][@"properties"];
             completion(result[@"formatted"], nil);
         }
-        
     }];
     [task resume];
 }

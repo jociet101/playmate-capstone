@@ -10,6 +10,7 @@
 #import "SessionDetailsViewController.h"
 #import "Session.h"
 #import "Location.h"
+#import "Helpers.h"
 
 @interface MapPinsViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
@@ -22,7 +23,7 @@
 @implementation MapPinsViewController
 
 CLLocationManager *pinLocationManager;
-BOOL firstTimeGettingLoc;
+BOOL isFirstTimeGettingLoc;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,10 +31,16 @@ BOOL firstTimeGettingLoc;
     self.mapView.delegate = self;
     self.mapView.showsUserLocation = YES;
     
-    firstTimeGettingLoc = YES;
+    isFirstTimeGettingLoc = YES;
     
     [CLLocationManager locationServicesEnabled];
     
+    [self initPinLocationManager];
+    
+    [self fetchData];
+}
+
+- (void)initPinLocationManager {
     //Create location manager
     pinLocationManager = [[CLLocationManager alloc] init];
     [pinLocationManager setDelegate:self];
@@ -42,8 +49,6 @@ BOOL firstTimeGettingLoc;
     [pinLocationManager startUpdatingHeading];
     pinLocationManager.distanceFilter = kCLDistanceFilterNone;
     pinLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    
-    [self fetchData];
 }
 
 #pragma mark - Location manager delegate methods
@@ -54,8 +59,8 @@ BOOL firstTimeGettingLoc;
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    if (firstTimeGettingLoc == YES) {
-        firstTimeGettingLoc = NO;
+    if (isFirstTimeGettingLoc == YES) {
+        isFirstTimeGettingLoc = NO;
         
         CLLocation *loc = [locations firstObject];
         
@@ -82,7 +87,7 @@ BOOL firstTimeGettingLoc;
             self.sessionList = sessions;
             [self addPins];
         } else {
-            NSLog(@"%@", error.localizedDescription);
+            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         }
     }];
 }

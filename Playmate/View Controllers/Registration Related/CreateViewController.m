@@ -6,6 +6,7 @@
 //
 
 #import "CreateViewController.h"
+#import "Helpers.h"
 
 @interface CreateViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -162,7 +163,7 @@ NSString *selectedGender;
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
-            [self handleAlert:error withTitle:@"Error" andOk:@"Try again"];
+            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         } else {
             NSLog(@"User registered successfully");
             [self performSegueWithIdentifier:@"createToLogin" sender:nil];

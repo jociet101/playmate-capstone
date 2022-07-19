@@ -7,6 +7,7 @@
 
 #import "PlayerProfileViewController.h"
 #import "Constants.h"
+#import "Helpers.h"
 #import "FriendRequest.h"
 #import "PlayerConnection.h"
 #import "FriendsListViewController.h"
@@ -50,7 +51,7 @@
     UIImage *img = hasProfileImage ? [UIImage imageWithData:[self.user[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
     [self.profileImageView setImage:img];
     
-    PlayerConnection *playerConnection = [Constants getPlayerConnectionForUser:self.user];
+    PlayerConnection *playerConnection = [Helpers getPlayerConnectionForUser:self.user];
     
     unsigned long numFriends = ((NSArray *)playerConnection[@"friendsList"]).count;
     
@@ -125,7 +126,7 @@
     if (self.isMyFriend) {
         // if removing friend
         // remove self.user.objectId from my friends list
-        PlayerConnection *myPlayerConnection = [user[@"playerConnection"][0] fetchIfNeeded];
+        PlayerConnection *myPlayerConnection = [Helpers getPlayerConnectionForUser:user];
         
         NSMutableArray *tempFriendsList = (NSMutableArray *)myPlayerConnection.friendsList;
         [tempFriendsList removeObject:self.user.objectId];
@@ -134,7 +135,7 @@
         [myPlayerConnection saveInBackground];
         
         // remove user.objectId from self.user.playerconnect friends list
-        PlayerConnection *theirPlayerConnection = [self.user[@"playerConnection"][0] fetchIfNeeded];
+        PlayerConnection *theirPlayerConnection = [Helpers getPlayerConnectionForUser:self.user];
         
         tempFriendsList = (NSMutableArray *)theirPlayerConnection[@"friendsList"];
         [tempFriendsList removeObject:user.objectId];
@@ -157,7 +158,7 @@
             [tempPendingList addObject:self.user.objectId];
             playerConnection.pendingList = (NSArray *)tempPendingList;
         } else {
-            playerConnection = [user[@"playerConnection"][0] fetchIfNeeded];
+            playerConnection = [Helpers getPlayerConnectionForUser:user];
             
             NSMutableArray *tempPendingList = (NSMutableArray *)playerConnection[@"pendingList"];
             [tempPendingList addObject:self.user.objectId];

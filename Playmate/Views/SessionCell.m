@@ -36,7 +36,7 @@
     
     NSString *playersString = @"";
     
-    BOOL firstPerson = YES;
+    BOOL isFirstPerson = YES;
     
     for (PFUser *player in self.session.playersList) {
 
@@ -44,9 +44,9 @@
 
         NSString *playerName = player[@"firstName"][0];
         
-        if (firstPerson) {
+        if (isFirstPerson) {
             playersString = [playersString stringByAppendingString:playerName];
-            firstPerson = NO;
+            isFirstPerson = NO;
         } else {
             playersString = [playersString stringByAppendingString:[@", " stringByAppendingString:playerName]];
         }

@@ -7,10 +7,7 @@
 
 #import "Constants.h"
 #import "APIManager.h"
-
-@interface Constants ()
-
-@end
+#import "Helpers.h"
 
 @implementation Constants
 
@@ -25,11 +22,6 @@
 
 + (NSString *)decathalonOneSportString {
     return @"https://sports.api.decathlon.com/sports/:";
-}
-
-// For Parse
-+ (PlayerConnection *)getPlayerConnectionForUser:(PFUser *)user {
-    return [user[@"playerConnection"][0] fetchIfNeeded];
 }
 
 // For calendar
@@ -255,8 +247,7 @@
     return @"Tennis";
 }
 
-+ (NSArray *)sportsList:(BOOL)needAll {
-    
++ (NSArray *)sportsListLarge:(BOOL)needAll {
     NSMutableArray *sports = [[NSMutableArray alloc] init];
     
     if (needAll) [sports addObject:@"All"];
@@ -264,7 +255,7 @@
     APIManager *manager = [APIManager new];
     [manager getSportsListWithCompletion:^(NSDictionary *list, NSError *error) {
         if (error != nil) {
-            NSLog(@"%@", error.localizedDescription);
+            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         } else {
             NSArray *data = list[@"data"];
             
@@ -276,7 +267,38 @@
         }
     }];
     
-    return (NSArray *)sports;
+    return [NSArray arrayWithArray:sports];
+}
+
++ (NSArray *)sportsList:(BOOL)needAll {
+    NSMutableArray *sports = [[NSMutableArray alloc] init];
+    
+    if (needAll) {
+        [sports addObject:@"All"];
+    }
+    
+    NSArray *sportsList = [NSArray arrayWithObjects:@"American football",
+                                                    @"Badminton",
+                                                    @"Baseball",
+                                                    @"Basketball",
+                                                    @"Boxing",
+                                                    @"Bowling",
+                                                    @"Cricket",
+                                                    @"Flag Football",
+                                                    @"Field Hockey",
+                                                    @"Golf",
+                                                    @"Ice Hockey",
+                                                    @"MMA",
+                                                    @"Soccer",
+                                                    @"Table Tennis",
+                                                    @"Tennis",
+                                                    @"Ultimate Frisbee",
+                                                    @"Volleyball",
+                                                    @"Wrestling", nil];
+    
+    [sports addObjectsFromArray:sportsList];
+    
+    return [NSArray arrayWithArray:sports];
 }
 
 + (NSArray *)skillLevelsList:(BOOL)needAll {
@@ -286,7 +308,7 @@
     [skillLevels addObject:@"Amateur"];
     [skillLevels addObject:@"Competitive"];
     
-    return (NSArray *)skillLevels;
+    return [NSArray arrayWithArray:skillLevels];
 }
 
 + (int)defaultNumPlayers {
@@ -363,6 +385,32 @@
     NSDictionary *titleAttributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
                                  NSForegroundColorAttributeName: [UIColor darkGrayColor]};
     return titleAttributes;
+}
+
+// for home view
++ (NSString *)getImageNameForSport:(NSString *)sport {
+    NSArray *imageNames = [NSArray arrayWithObjects:@"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"confetti",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",nil];
+    
+    NSDictionary *sportToImageName = [[NSDictionary alloc] initWithObjects:imageNames forKeys:[Constants sportsList:NO]];
+    
+    return sportToImageName[sport];
 }
 
 @end

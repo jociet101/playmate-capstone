@@ -8,7 +8,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "DateTools.h"
-#import "PlayerConnection.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,9 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)geoapifyBaseURLString;
 + (NSString *)decathalonSportsListString;
 + (NSString *)decathalonOneSportString;
-
-// For Parse
-+ (PlayerConnection *)getPlayerConnectionForUser:(PFUser *)user;
 
 // For calendar
 + (NSDate *) dateWithHour:(NSInteger)hour
@@ -63,6 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSString *)defaultAll;
 + (NSString *)defaultSport;
++ (NSArray *)sportsListLarge:(BOOL)needAll;
 + (NSArray *)sportsList:(BOOL)needAll;
 + (NSArray *)skillLevelsList:(BOOL)needAll;
 + (int)defaultNumPlayers;
@@ -87,6 +84,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)emptyOutgoingRequestsPlaceholderTitle;
 + (NSDictionary *)descriptionAttributes;
 + (NSDictionary *)titleAttributes;
+
+// for home view
++ (NSString *)getImageNameForSport:(NSString *)sport;
 
 @end
 

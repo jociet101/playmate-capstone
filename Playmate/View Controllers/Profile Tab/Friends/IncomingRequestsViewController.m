@@ -39,8 +39,8 @@
     // set up refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self
-                         action:@selector(fetchData)
-                         forControlEvents:UIControlEventValueChanged];
+                            action:@selector(fetchData)
+                  forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
     
     [self fetchData];
@@ -64,7 +64,7 @@
             
             [self.tableView reloadData];
         } else {
-            NSLog(@"%@", error.localizedDescription);
+            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         }
         [self.refreshControl endRefreshing];
     }];
@@ -118,7 +118,6 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-     
     if ([segue.identifier isEqualToString:@"toProfile"]) {
         PlayerProfileViewController *profileVC = [segue destinationViewController];
         profileVC.user = sender;

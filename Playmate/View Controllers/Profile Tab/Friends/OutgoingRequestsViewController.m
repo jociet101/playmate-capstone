@@ -35,8 +35,8 @@
     // set up refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self
-                         action:@selector(fetchData)
-                         forControlEvents:UIControlEventValueChanged];
+                            action:@selector(fetchData)
+                  forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
     
     [self fetchData];
@@ -47,7 +47,7 @@
     // fetch data for outoing request list
     PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
-    PlayerConnection *playerConnection = [Constants getPlayerConnectionForUser:user];
+    PlayerConnection *playerConnection = [Helpers getPlayerConnectionForUser:user];
     
     self.outgoingRequestList = playerConnection[@"pendingList"];
     

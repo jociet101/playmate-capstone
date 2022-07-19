@@ -6,20 +6,25 @@
 //
 
 #import "HomeViewController.h"
-#import "SessionCell.h"
 #import "Session.h"
 #import "SessionDetailsViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
+#import "Helpers.h"
 #import "CalendarViewController.h"
 #import "ProfileViewController.h"
+#import "SessionCollectionCell.h"
+#import "UpcomingSessionsViewController.h"
+#import "SuggestedSessionsViewController.h"
 
 @interface HomeViewController ()
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *sessionList;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
+@property (nonatomic, strong) NSMutableArray *sessionList;
+
+@property (weak, nonatomic) IBOutlet UIView *upcomingView;
+@property (weak, nonatomic) IBOutlet UIView *suggestedView;
 
 @end
 
@@ -27,11 +32,12 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-
-	self.tableView.delegate = self;
-	self.tableView.dataSource = self;
-
-	self.sessionList = [[NSMutableArray alloc] init];
+    
+    self.upcomingView.layer.cornerRadius = [Constants buttonCornerRadius];
+    self.suggestedView.layer.cornerRadius = [Constants buttonCornerRadius];
+    
+    self.upcomingView.alpha = 1;
+    self.suggestedView.alpha = 0;
 
 	PFUser *me = [[PFUser currentUser] fetchIfNeeded];
 
@@ -46,114 +52,69 @@
 	}
 
 	self.welcomeLabel.text = [greeting stringByAppendingString:me[@"firstName"][0]];
-
-	// set up refresh control
-	self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self
-                         action:@selector(fetchData)
-                         forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refreshControl];
+    
+    self.sessionList = [[NSMutableArray alloc] init];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-	[self fetchData];
+- (void)viewWillAppear:(BOOL)animated {
+    [self fetchData];
 }
 
 - (void)fetchData {
-	PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
-	query.limit = 20;
+    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+    query.limit = 20;
 
-	[query orderByAscending:@"occursAt"];
+    [query orderByAscending:@"occursAt"]; 
 
-	// fetch data asynchronously
-	[query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
-	         if (sessions != nil) {
-
-			 [self.sessionList removeAllObjects];
-			 [self filterSessions:sessions];
-
-			 [self.tableView reloadData];
-		 } else {
-			 NSLog(@"%@", error.localizedDescription);
-		 }
-	         [self.refreshControl endRefreshing];
-	 }];
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
+        if (sessions != nil) {
+            [self.sessionList removeAllObjects];
+            [self filterSessions:sessions];
+            [self.delegate loadSessionList:(NSArray *)self.sessionList];
+        } else {
+            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+        }
+    }];
 }
 
 // Filter out sessions that do not contain self
 - (void)filterSessions:(NSArray *)sessions {
-	NSMutableArray *tempList = (NSMutableArray *)sessions;
-	PFUser *currUser = [[PFUser currentUser] fetchIfNeeded];
+    NSMutableArray *tempList = [NSMutableArray arrayWithArray:sessions];
+    PFUser *currUser = [[PFUser currentUser] fetchIfNeeded];
+    NSDate *now = [NSDate date];
+    
+    for (Session *session in tempList) {
+        for (PFUser *user in session[@"playersList"]) {
+            [user fetchIfNeeded];
 
-	for (Session *sesh in tempList) {
-
-		for (PFUser *user in sesh[@"playersList"]) {
-			[user fetchIfNeeded];
-
-			NSDate *now = [NSDate date];
-			NSComparisonResult result = [now compare:sesh.occursAt];
-
-			if ([currUser.username isEqualToString:user.username] && result == NSOrderedAscending) {
-				[self.sessionList addObject:sesh];
-				break;
-			}
-		}
-	}
+            NSComparisonResult result = [now compare:session.occursAt];
+            if ([currUser.username isEqualToString:user.username] && result == NSOrderedAscending) {
+                [self.sessionList addObject:session];
+                break;
+            }
+        }
+    }
 }
 
-#pragma mark - Table view protocol methods
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	SessionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SessionCell"];
-	cell.session = self.sessionList[indexPath.section];
-
-	return cell;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 1;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return self.sessionList.count;
-}
-
-- (CGFloat)tableView:(UITableView*)tableView
-        heightForHeaderInSection:(NSInteger)section {
-	return 5.0;
-}
-
-- (CGFloat)tableView:(UITableView*)tableView
-        heightForFooterInSection:(NSInteger)section {
-	return 5.0;
-}
-
-- (UIView*)tableView:(UITableView*)tableView
-        viewForHeaderInSection:(NSInteger)section {
-	return [[UIView alloc] initWithFrame:CGRectZero];
-}
-
-- (UIView*)tableView:(UITableView*)tableView
-        viewForFooterInSection:(NSInteger)section {
-	return [[UIView alloc] initWithFrame:CGRectZero];
+- (IBAction)switchViewController:(id)sender {
+    UISegmentedControl *switcher = sender;
+    
+    const BOOL isSegmentZeroIndex = (switcher.selectedSegmentIndex == 0);
+    self.upcomingView.alpha = isSegmentZeroIndex ? 1 : 0;
+    self.suggestedView.alpha = isSegmentZeroIndex ? 0 : 1;
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([sender isMemberOfClass:[SessionCell class]]) {
-		NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-
-		Session* data = self.sessionList[indexPath.section];
-		SessionDetailsViewController *vc = [segue destinationViewController];
-		vc.sessionDetails = data;
-	}
-
 	if ([segue.identifier isEqualToString:@"toCalendar"]) {
 		CalendarViewController *vc = [segue destinationViewController];
 		vc.rawSessionList = self.sessionList;
-	}
-
+    } else if ([segue.identifier isEqualToString:@"homeToUpcomingSessions"]) {
+        UpcomingSessionsViewController *vc = [segue destinationViewController];
+        self.delegate = (id)vc;
+    }
 }
 
 - (IBAction)goToProfile:(id)sender {

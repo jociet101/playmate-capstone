@@ -11,6 +11,9 @@
 		3C167B3F2881F21F00081304 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C167B3E2881F21F00081304 /* Helpers.m */; };
 		3C1BC00D28820AB400D17314 /* MapPinsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BC00C28820AB400D17314 /* MapPinsViewController.m */; };
 		3C1BC0122883E94400D17314 /* LocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BC0112883E94400D17314 /* LocationAnnotation.m */; };
+		3C1BC0152885BFA800D17314 /* SessionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BC0142885BFA800D17314 /* SessionCollectionCell.m */; };
+		3C1BC0182885CAE100D17314 /* UpcomingSessionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BC0172885CAE100D17314 /* UpcomingSessionsViewController.m */; };
+		3C1BC01B2885CAED00D17314 /* SuggestedSessionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BC01A2885CAED00D17314 /* SuggestedSessionsViewController.m */; };
 		3C383FD52877416D00BC9B55 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C383FD42877416D00BC9B55 /* Constants.m */; };
 		3C383FDD28775D2A00BC9B55 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C383FDC28775D2A00BC9B55 /* APIManager.m */; };
 		3C45B565286E64EB00EE578F /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B564286E64EB00EE578F /* WelcomeViewController.m */; };
@@ -86,6 +89,12 @@
 		3C1BC00C28820AB400D17314 /* MapPinsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapPinsViewController.m; sourceTree = "<group>"; };
 		3C1BC0102883E94400D17314 /* LocationAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LocationAnnotation.h; path = /Users/jocelyntseng/Desktop/projects/Playmate/Playmate/Models/LocationAnnotation.h; sourceTree = "<absolute>"; };
 		3C1BC0112883E94400D17314 /* LocationAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LocationAnnotation.m; path = /Users/jocelyntseng/Desktop/projects/Playmate/Playmate/Models/LocationAnnotation.m; sourceTree = "<absolute>"; };
+		3C1BC0132885BFA800D17314 /* SessionCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionCollectionCell.h; sourceTree = "<group>"; };
+		3C1BC0142885BFA800D17314 /* SessionCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionCollectionCell.m; sourceTree = "<group>"; };
+		3C1BC0162885CAE100D17314 /* UpcomingSessionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpcomingSessionsViewController.h; sourceTree = "<group>"; };
+		3C1BC0172885CAE100D17314 /* UpcomingSessionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpcomingSessionsViewController.m; sourceTree = "<group>"; };
+		3C1BC0192885CAED00D17314 /* SuggestedSessionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuggestedSessionsViewController.h; sourceTree = "<group>"; };
+		3C1BC01A2885CAED00D17314 /* SuggestedSessionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuggestedSessionsViewController.m; sourceTree = "<group>"; };
 		3C383FD32877416D00BC9B55 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		3C383FD42877416D00BC9B55 /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		3C383FDB28775D2A00BC9B55 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
@@ -278,6 +287,10 @@
 				3CF4A58C2878DFA6000C5E7D /* CalendarViewController.m */,
 				3C1BC00B28820AB400D17314 /* MapPinsViewController.h */,
 				3C1BC00C28820AB400D17314 /* MapPinsViewController.m */,
+				3C1BC0162885CAE100D17314 /* UpcomingSessionsViewController.h */,
+				3C1BC0172885CAE100D17314 /* UpcomingSessionsViewController.m */,
+				3C1BC0192885CAED00D17314 /* SuggestedSessionsViewController.h */,
+				3C1BC01A2885CAED00D17314 /* SuggestedSessionsViewController.m */,
 			);
 			path = "Home Tab";
 			sourceTree = "<group>";
@@ -356,6 +369,8 @@
 				3C8E5391287F362B0087498B /* FriendCell.m */,
 				3C8E539A287F7A8D0087498B /* OutgoingRequestCell.h */,
 				3C8E539B287F7A8D0087498B /* OutgoingRequestCell.m */,
+				3C1BC0132885BFA800D17314 /* SessionCollectionCell.h */,
+				3C1BC0142885BFA800D17314 /* SessionCollectionCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -690,7 +705,9 @@
 				3C167B3F2881F21F00081304 /* Helpers.m in Sources */,
 				3CF4A5AF287CA9D1000C5E7D /* PlayerProfileViewController.m in Sources */,
 				3C1BC0122883E94400D17314 /* LocationAnnotation.m in Sources */,
+				3C1BC0182885CAE100D17314 /* UpcomingSessionsViewController.m in Sources */,
 				3C383FDD28775D2A00BC9B55 /* APIManager.m in Sources */,
+				3C1BC01B2885CAED00D17314 /* SuggestedSessionsViewController.m in Sources */,
 				3CF4A5B2287CD65D000C5E7D /* FriendRequest.m in Sources */,
 				3C45B5A728760C1E00EE578F /* Filters.m in Sources */,
 				3C45B5932874C0ED00EE578F /* Location.m in Sources */,
@@ -711,6 +728,7 @@
 				3C45B59E2875060700EE578F /* SessionDetailsViewController.m in Sources */,
 				3C8E5392287F362B0087498B /* FriendCell.m in Sources */,
 				3CF4A5A5287B6647000C5E7D /* FiltersMenuViewController.m in Sources */,
+				3C1BC0152885BFA800D17314 /* SessionCollectionCell.m in Sources */,
 				3C45B574287297EB00EE578F /* HomeViewController.m in Sources */,
 				3CF4A5BE287CE7C8000C5E7D /* FriendRequestCell.m in Sources */,
 				3C1BC00D28820AB400D17314 /* MapPinsViewController.m in Sources */,

@@ -10,6 +10,7 @@
 #import "SceneDelegate.h"
 #import "DateTools.h"
 #import "Constants.h"
+#import "Helpers.h"
 #import "EditProfileViewController.h"
 #import "PlayerConnection.h"
 #import "FriendsListViewController.h"
@@ -53,7 +54,7 @@
         self.profileImagePlaceholder.alpha = 0;
     }
     
-    PlayerConnection *playerConnection = [Constants getPlayerConnectionForUser:user];
+    PlayerConnection *playerConnection = [Helpers getPlayerConnectionForUser:user];
     
     unsigned long numFriends = ((NSArray *)playerConnection[@"friendsList"]).count;
     

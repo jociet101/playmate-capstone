@@ -10,7 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol HomeViewControllerDelegate
+
+- (void)loadSessionList:(NSArray *)sessionList;
+
+@end
+
 @interface HomeViewController : UIViewController
+
+@property (weak, nonatomic) id<HomeViewControllerDelegate> delegate;
 
 @end
 

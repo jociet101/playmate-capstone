@@ -12,6 +12,7 @@
 #import "FiltersMenuViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
+#import "Helpers.h"
 
 @interface SearchViewController () <UITableViewDelegate, UITableViewDataSource, FiltersMenuViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -47,8 +48,8 @@
     // set up refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self
-                         action:@selector(fetchData)
-                         forControlEvents:UIControlEventValueChanged];
+                            action:@selector(fetchData)
+                  forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
 }
 
@@ -92,7 +93,7 @@
             
             [self.tableView reloadData];
         } else {
-            NSLog(@"%@", error.localizedDescription);
+            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         }
         [self.refreshControl endRefreshing];
     }];
@@ -160,6 +161,7 @@
 #pragma mark - Filter view controller configuration
 
 - (void)didApplyFilters:(Filters *)filter {
+    [self clearFilters];
     [self fetchDataWithFilters:filter];
     [self.navigationController popToViewController:self
                                                   animated:YES];
@@ -227,15 +229,13 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
         if (sessions != nil) {
             
-            if (filter.location != nil) {
-                self.sessionList = [self filterSessions:sessions withLocation:filter.location andRadius:filter.radius];
-            } else {
-                self.sessionList = sessions;
-            }
+            self.sessionList = (filter.location != nil) ? [self filterSessions:sessions
+                                                                  withLocation:filter.location
+                                                                     andRadius:filter.radius] : sessions;
             
             [self.tableView reloadData];
         } else {
-            NSLog(@"%@", error.localizedDescription);
+            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         }
         [self.refreshControl endRefreshing];
     }];
@@ -243,6 +243,10 @@
 }
 
 - (IBAction)didTapClear:(id)sender {
+    [self clearFilters];
+}
+
+- (void)clearFilters {
     if (self.appliedFilters == YES) {
         [self.clearFiltersButton setEnabled:NO];
         self.clearFiltersButton.tintColor = [UIColor lightGrayColor];
