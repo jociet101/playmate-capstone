@@ -10,6 +10,20 @@
 
 @implementation Helpers
 
+// For Parse
++ (PlayerConnection *)getPlayerConnectionForUser:(PFUser *)user {
+    return [user[@"playerConnection"][0] fetchIfNeeded];
+}
+
+// For API endpoints
++ (NSString *)geoapifyGeocodingURLWithKey:(NSString *)geoapify andCraftedLink:(NSString *)craftedLink {
+    return [NSString stringWithFormat:@"%@/geocode/search?text=%@&format=json&apiKey=%@", [Constants geoapifyBaseURLString], craftedLink, geoapify];
+}
+
++ (NSString *)geoapifyReverseGeocodingURLWithKey:(NSString *)geoapify andLongitutde:(NSString *)longitutde andLatitude:(NSString *)latitude {
+    return [NSString stringWithFormat:@"%@/geocode/reverse?lat=%@&lon=%@&apiKey=%@", [Constants geoapifyBaseURLString], latitude, longitutde, geoapify];
+}
+
 // for resizing images
 + (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension {
     

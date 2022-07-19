@@ -7,6 +7,7 @@
 
 #import "PlayerConnection.h"
 #import "Constants.h"
+#import "Helpers.h"
 
 @implementation PlayerConnection
 
@@ -43,7 +44,7 @@
     
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     
-    PlayerConnection *playerConnection = [Constants getPlayerConnectionForUser:me];
+    PlayerConnection *playerConnection = [Helpers getPlayerConnectionForUser:me];
     
 //    [pc.connections setObject:cs forKey:otherObjectId];
 

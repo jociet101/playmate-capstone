@@ -27,11 +27,6 @@
     return @"https://sports.api.decathlon.com/sports/:";
 }
 
-// For Parse
-+ (PlayerConnection *)getPlayerConnectionForUser:(PFUser *)user {
-    return [user[@"playerConnection"][0] fetchIfNeeded];
-}
-
 // For calendar
 
 + (NSDate *) dateWithHour:(NSInteger)hour

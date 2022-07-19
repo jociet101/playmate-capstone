@@ -35,7 +35,7 @@
     
     [self.thisUser fetchIfNeeded];
     
-    PlayerConnection *playerConnection = [Constants getPlayerConnectionForUser:self.thisUser];
+    PlayerConnection *playerConnection = [Helpers getPlayerConnectionForUser:self.thisUser];
     
     self.friendsList = playerConnection[@"friendsList"];
     

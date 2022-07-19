@@ -7,6 +7,7 @@
 
 #import "PlayerProfileViewController.h"
 #import "Constants.h"
+#import "Helpers.h"
 #import "FriendRequest.h"
 #import "PlayerConnection.h"
 #import "FriendsListViewController.h"
@@ -50,7 +51,7 @@
     UIImage *img = hasProfileImage ? [UIImage imageWithData:[self.user[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
     [self.profileImageView setImage:img];
     
-    PlayerConnection *playerConnection = [Constants getPlayerConnectionForUser:self.user];
+    PlayerConnection *playerConnection = [Helpers getPlayerConnectionForUser:self.user];
     
     unsigned long numFriends = ((NSArray *)playerConnection[@"friendsList"]).count;
     
