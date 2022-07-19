@@ -11,6 +11,7 @@
 #import "FriendRequest.h"
 #import "PlayerConnection.h"
 #import "FriendsListViewController.h"
+#import "ManageUserStatistics.h"
 
 @interface PlayerProfileViewController ()
 
@@ -22,6 +23,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *bioField;
 @property (weak, nonatomic) IBOutlet UIButton *addFriendButton;
 @property (weak, nonatomic) IBOutlet UIButton *numberOfFriendsButton;
+@property (weak, nonatomic) IBOutlet UILabel *numberTotalSessionsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numberDaysOnPlaymateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *firstSportLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondSportLabel;
+@property (weak, nonatomic) IBOutlet UILabel *thirdSportLabel;
 
 @property (nonatomic, assign) BOOL isMyFriend;
 
@@ -54,8 +60,11 @@
     PlayerConnection *playerConnection = [Helpers getPlayerConnectionForUser:self.user];
     
     unsigned long numFriends = ((NSArray *)playerConnection[@"friendsList"]).count;
+    NSString *numberFriendsLabel = (numFriends == 1) ? @"1 friend" : [NSString stringWithFormat:@"%ld friends", numFriends];
     
-    [self.numberOfFriendsButton setTitle:[NSString stringWithFormat:@"%ld friends", numFriends] forState:UIControlStateNormal];
+    [self.numberOfFriendsButton setTitle:numberFriendsLabel forState:UIControlStateNormal];
+    
+    [self configureDataFields];
 }
 
 -(void)manageFriendButtonUI {
@@ -97,6 +106,22 @@
     }
 }
 
+- (void)configureDataFields {
+    self.numberTotalSessionsLabel.layer.borderColor = [[Constants playmateBlue] CGColor];
+    self.numberDaysOnPlaymateLabel.layer.borderColor = [[Constants playmateBlue] CGColor];
+    self.numberTotalSessionsLabel.layer.borderWidth = 1.0;
+    self.numberDaysOnPlaymateLabel.layer.borderWidth = 1.0;
+    self.numberTotalSessionsLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
+    self.numberDaysOnPlaymateLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
+    
+    self.firstSportLabel.layer.backgroundColor = [[Constants playmateBlue] CGColor];
+    self.secondSportLabel.layer.backgroundColor = [[Constants playmateBlue] CGColor];
+    self.thirdSportLabel.layer.backgroundColor = [[Constants playmateBlue] CGColor];
+    
+    self.numberTotalSessionsLabel.text = [[NSString stringWithFormat:@"%ld", [ManageUserStatistics getNumberTotalSessionsForUser:self.user]] stringByAppendingString:@" Total Sessions"];
+    self.numberDaysOnPlaymateLabel.text = [[NSString stringWithFormat:@"%@", [ManageUserStatistics getNumberDaysOnPlaymateForUser:self.user]] stringByAppendingString:@" Days on Playmate"];
+}
+
 - (void)disableFriendButton {
     [self.addFriendButton setTitle:@"You" forState:UIControlStateNormal];
     [self.addFriendButton setEnabled:NO];
@@ -120,7 +145,6 @@
 }
 
 - (IBAction)didTapFriend:(id)sender {
-    
     PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
     if (self.isMyFriend) {
