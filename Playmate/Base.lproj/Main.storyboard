@@ -458,7 +458,16 @@
                         <viewLayoutGuide key="safeArea" id="Mn9-v2-7Ee"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Map" id="ayB-Ek-N3V"/>
+                    <navigationItem key="navigationItem" title="Map" id="ayB-Ek-N3V">
+                        <barButtonItem key="rightBarButtonItem" id="pGt-71-jO1">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="khc-vW-DWA">
+                                <rect key="frame" x="-33" y="-15" width="86" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="gearshape" catalog="system"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="TIA-0P-6Tb" id="COh-nt-Axg"/>
                         <segue destination="FoH-rZ-204" kind="show" identifier="pinToDetailsSegue" id="UBD-ub-2Jv"/>
@@ -866,7 +875,7 @@
             <objects>
                 <viewController id="FoH-rZ-204" customClass="SessionDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xae-LI-F9P">
-                        <rect key="frame" x="0.0" y="0.0" width="367" height="429"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ihn-hH-IMg">
@@ -2412,7 +2421,7 @@
         <segue reference="pbU-9p-1Qp"/>
         <segue reference="Nu6-4T-TEp"/>
         <segue reference="rXg-Fz-rtS"/>
-        <segue reference="6tu-y4-peZ"/>
+        <segue reference="UBD-ub-2Jv"/>
         <segue reference="zis-o5-IMS"/>
     </inferredMetricsTieBreakers>
     <resources>
