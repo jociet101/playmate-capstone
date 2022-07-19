@@ -166,7 +166,6 @@ NSString *selectedGender;
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
-            NSLog(@"Error: %@", error.localizedDescription);
             [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         } else {
             NSLog(@"User registered successfully");

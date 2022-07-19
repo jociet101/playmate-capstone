@@ -124,10 +124,8 @@
     PFUser *user = [PFUser currentUser];
     user[@"profileImage"] = file;
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded) {
-            NSLog(@"Profile image saved!");
-        } else {
-            NSLog(@"Error: %@", error.description);
+        if (!succeeded) {
+            [Helpers handleAlert:error withTitle:@"Could not save profile image." withMessage:nil forViewController:self];
         }
     }];
     
