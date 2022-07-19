@@ -30,7 +30,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self fetchData:[NSDate now]];
+    NSDate *dateToday = [Constants dateWithHour:0 minute:0 second:0 fromDate:[NSDate now]];
+    [self fetchData:dateToday];
 }
 
 #pragma mark - Event Table view methods and fetch data
@@ -38,6 +39,7 @@
 - (void)fetchData:(NSDate *)selectedDate {
     NSArray *filteredSessions = [self filterSessions:self.rawSessionList forDate:selectedDate];
     self.sessionList = (NSMutableArray *)filteredSessions;
+    NSLog(@"self session list %@", self.sessionList);
     [self.tableView reloadData];
 }
 
@@ -74,8 +76,6 @@
     
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
-    
-    [self fetchData:[NSDate now]];
 }
 
 #pragma mark - Table view protocol methods
@@ -128,11 +128,6 @@
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
-- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Constants emptySearchPlaceholderMsg];
-    return [[NSAttributedString alloc] initWithString:text attributes:[Constants descriptionAttributes]];
-}
-
 #pragma mark - Calendar view methods
 
 - (void)setupCalendar {
@@ -163,7 +158,7 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-     if ([sender isMemberOfClass:[SessionCell class]]) {
+     if ([segue.identifier isEqualToString:@"calendarToSessionDetails"]) {
          NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
          Session* data = self.sessionList[indexPath.section];
          SessionDetailsViewController *vc = [segue destinationViewController];

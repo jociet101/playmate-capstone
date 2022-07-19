@@ -604,7 +604,7 @@
                                             <outlet property="levelCapacityLabel" destination="kvO-sp-T5l" id="m8j-wH-9qe"/>
                                             <outlet property="locationLabel" destination="f5C-Rq-8pN" id="xZ0-Fl-Vpc"/>
                                             <outlet property="sportLabel" destination="g50-Fl-m5C" id="r44-Su-zgu"/>
-                                            <segue destination="FoH-rZ-204" kind="show" id="rNL-Fb-mXA"/>
+                                            <segue destination="FoH-rZ-204" kind="show" identifier="calendarToSessionDetails" id="rNL-Fb-mXA"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2432,7 +2432,7 @@
         <segue reference="Nu6-4T-TEp"/>
         <segue reference="rXg-Fz-rtS"/>
         <segue reference="rNL-Fb-mXA"/>
-        <segue reference="EiS-gP-Syp"/>
+        <segue reference="zis-o5-IMS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
