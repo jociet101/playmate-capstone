@@ -88,6 +88,10 @@ NS_ASSUME_NONNULL_BEGIN
 // for home view
 + (NSString *)getImageNameForSport:(NSString *)sport;
 
+// for select location help view
++ (NSArray *)addressGifImages;
++ (NSArray *)manualGifImages;
+
 @end
 
 NS_ASSUME_NONNULL_END

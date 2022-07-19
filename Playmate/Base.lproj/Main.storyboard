@@ -1498,11 +1498,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4I-Kq-qzW">
-                                <rect key="frame" x="208" y="439" width="152" height="208"/>
+                                <rect key="frame" x="208" y="439" width="166" height="208"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment>
-                                        <string key="content">Manually search for your desired location on the map. Then long press at the precise location. The map should then load and display a pin at the location.</string>
+                                        <string key="content">Manually zoom and pan to your desired location on the map. Then long press at the precise location. The map should then load and display a pin at the location.</string>
                                         <attributes>
                                             <font key="NSFont" size="14" name="Avenir-Medium"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>

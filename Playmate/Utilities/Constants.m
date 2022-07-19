@@ -413,4 +413,21 @@
     return sportToImageName[sport];
 }
 
+// for select location help view
++ (NSArray *)addressGifImages {
+    NSMutableArray *addressGifImages = [[NSMutableArray alloc] initWithCapacity:155];
+    for (int i = 0; i < 155; i++) {
+        [addressGifImages addObject:[UIImage imageNamed:[NSString stringWithFormat:@"address_%d", i]]];
+    }
+    return [NSArray arrayWithArray:addressGifImages];
+}
+
++ (NSArray *)manualGifImages {
+    NSMutableArray *manualGifImages = [[NSMutableArray alloc] initWithCapacity:93];
+    for (int i = 0; i < 93; i++) {
+        [manualGifImages addObject:[UIImage imageNamed:[NSString stringWithFormat:@"frame_%d", i]]];
+    }
+    return [NSArray arrayWithArray:manualGifImages];
+}
+
 @end
