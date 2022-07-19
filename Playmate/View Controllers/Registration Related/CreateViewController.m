@@ -7,6 +7,7 @@
 
 #import "CreateViewController.h"
 #import "Helpers.h"
+#import "Constants.h"
 
 @interface CreateViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *genderPicker;
 @property (weak, nonatomic) IBOutlet UIView *textFieldContainer;
 @property (weak, nonatomic) IBOutlet UIView *pickerContainer;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 
 @end
 
@@ -50,6 +52,8 @@ NSString *selectedGender;
     
     CGRect containerFrame = self.textFieldContainer.frame;
     originalYOrigin = containerFrame.origin.y;
+    
+    [self.logoImageView setImage:[Constants profileImagePlaceholder]];
 }
 
 #pragma mark - Text fields
