@@ -822,7 +822,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nWr-op-BUf">
-                                <rect key="frame" x="0.0" y="88" width="390" height="756"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionCell" rowHeight="133" id="qPr-0z-ErX" customClass="SessionCell">
@@ -939,7 +939,7 @@
                         <constraints>
                             <constraint firstItem="nWr-op-BUf" firstAttribute="top" secondItem="j5G-6q-w4z" secondAttribute="top" id="723-eK-3av"/>
                             <constraint firstItem="nWr-op-BUf" firstAttribute="width" secondItem="VAa-UU-vDk" secondAttribute="width" id="U2o-9R-Ehp"/>
-                            <constraint firstItem="nWr-op-BUf" firstAttribute="height" secondItem="VAa-UU-vDk" secondAttribute="height" multiplier="0.895735" id="qI4-pa-cz4"/>
+                            <constraint firstItem="nWr-op-BUf" firstAttribute="height" secondItem="VAa-UU-vDk" secondAttribute="height" multiplier="0.895735" constant="-83" id="qI4-pa-cz4"/>
                             <constraint firstItem="nWr-op-BUf" firstAttribute="centerX" secondItem="j5G-6q-w4z" secondAttribute="centerX" id="qJ2-7S-rr1"/>
                         </constraints>
                     </view>
@@ -968,7 +968,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jiI-zl-065" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5685" y="-692"/>
+            <point key="canvasLocation" x="5684.6153846153848" y="-692.41706161137438"/>
         </scene>
         <!--Session Details-->
         <scene sceneID="R2X-zK-IfK">
@@ -1025,7 +1025,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKm-Qb-2OP">
-                                <rect key="frame" x="17" y="106" width="265" height="35"/>
+                                <rect key="frame" x="17" y="106" width="348" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Basketball">
@@ -1156,7 +1156,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJ4-dX-YM6">
-                                <rect key="frame" x="26" y="628" width="330" height="24"/>
+                                <rect key="frame" x="16" y="628" width="358" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Session created at">
@@ -1169,7 +1169,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJi-gL-U58">
-                                <rect key="frame" x="17" y="301" width="141" height="39"/>
+                                <rect key="frame" x="17" y="301" width="348" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Player Profiles">
@@ -1219,7 +1219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IkE-Z8-zAi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8231" y="-1425"/>
+            <point key="canvasLocation" x="8230.7692307692305" y="-1425.3554502369668"/>
         </scene>
         <!--Player Profile-->
         <scene sceneID="bH6-Nx-3uD">
@@ -1381,18 +1381,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J4i-CP-7wF">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J4i-CP-7wF">
                                 <rect key="frame" x="0.0" y="88" width="390" height="673"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hfk-T6-Adw">
+                            <searchBar contentMode="redraw" placeholder="Enter an address" translatesAutoresizingMaskIntoConstraints="NO" id="Hfk-T6-Adw">
                                 <rect key="frame" x="0.0" y="88" width="390" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxY-cn-UCa">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxY-cn-UCa">
                                 <rect key="frame" x="175" y="151" width="199" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Use Current Location"/>
                                 <connections>
@@ -1402,6 +1399,19 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Bz-b7-4Ls"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8Bz-b7-4Ls" firstAttribute="trailing" secondItem="CxY-cn-UCa" secondAttribute="trailing" constant="16" id="Gw9-1p-xhC"/>
+                            <constraint firstItem="J4i-CP-7wF" firstAttribute="width" secondItem="UlT-mc-3y9" secondAttribute="width" id="LlJ-1F-Cbi"/>
+                            <constraint firstItem="J4i-CP-7wF" firstAttribute="trailing" secondItem="Hfk-T6-Adw" secondAttribute="trailing" id="Ooa-2v-MCF"/>
+                            <constraint firstItem="J4i-CP-7wF" firstAttribute="top" secondItem="8Bz-b7-4Ls" secondAttribute="top" id="RMT-va-6yv"/>
+                            <constraint firstItem="CxY-cn-UCa" firstAttribute="leading" secondItem="8Bz-b7-4Ls" secondAttribute="leading" constant="175" id="Vw3-Fi-JEP"/>
+                            <constraint firstItem="CxY-cn-UCa" firstAttribute="top" secondItem="8Bz-b7-4Ls" secondAttribute="top" constant="63" id="eT2-QO-u9D"/>
+                            <constraint firstItem="J4i-CP-7wF" firstAttribute="top" secondItem="Hfk-T6-Adw" secondAttribute="top" id="fme-V2-B8l"/>
+                            <constraint firstItem="J4i-CP-7wF" firstAttribute="centerX" secondItem="8Bz-b7-4Ls" secondAttribute="centerX" id="jBe-1U-AzD"/>
+                            <constraint firstItem="CxY-cn-UCa" firstAttribute="top" secondItem="Hfk-T6-Adw" secondAttribute="bottom" constant="19" id="mXB-Wm-SOa"/>
+                            <constraint firstItem="J4i-CP-7wF" firstAttribute="leading" secondItem="Hfk-T6-Adw" secondAttribute="leading" id="uZa-6B-jDG"/>
+                            <constraint firstItem="J4i-CP-7wF" firstAttribute="height" secondItem="UlT-mc-3y9" secondAttribute="height" multiplier="0.797393" id="uhD-h7-E1N"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Select Location" id="QDd-CF-ePo"/>
                     <connections>
@@ -2525,7 +2535,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="pbU-9p-1Qp"/>
         <segue reference="jcx-uQ-feG"/>
-        <segue reference="rXg-Fz-rtS"/>
+        <segue reference="pJ2-Zv-0xr"/>
         <segue reference="mqk-g0-t3s"/>
         <segue reference="EiS-gP-Syp"/>
     </inferredMetricsTieBreakers>
