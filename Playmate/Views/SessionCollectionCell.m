@@ -68,6 +68,8 @@ BOOL viewingFront;
     
     self.dateFrontLabel.text = [Helpers getTimeGivenDurationForSession:self.session];
     self.dateBackLabel.text = [Helpers getTimeGivenDurationForSession:self.session];
+    
+    [self.frontImageView setImage:[Helpers resizeImage:[UIImage imageNamed:[Constants getImageNameForSport:self.session.sport]] withDimension:208]];
 
     [self viewFront];
 }

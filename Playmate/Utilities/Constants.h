@@ -89,6 +89,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSDictionary *)descriptionAttributes;
 + (NSDictionary *)titleAttributes;
 
+// for home view
++ (NSString *)getImageNameForSport:(NSString *)sport;
+
 @end
 
 NS_ASSUME_NONNULL_END

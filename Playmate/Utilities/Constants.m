@@ -301,6 +301,7 @@
                                                     @"Soccer",
                                                     @"Table Tennis",
                                                     @"Tennis",
+                                                    @"Ultimate Frisbee",
                                                     @"Volleyball",
                                                     @"Wrestling", nil];
     
@@ -393,6 +394,33 @@
     NSDictionary *titleAttributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
                                  NSForegroundColorAttributeName: [UIColor darkGrayColor]};
     return titleAttributes;
+}
+
+// for home view
++ (NSString *)getImageNameForSport:(NSString *)sport {
+    NSArray *imageNames = [NSArray arrayWithObjects:@"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",nil];
+    
+    NSDictionary *sportToImageName = [[NSDictionary alloc] initWithObjects:imageNames forKeys:[Constants sportsList:NO]];
+    
+    return sportToImageName[sport];
 }
 
 @end

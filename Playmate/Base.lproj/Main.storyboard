@@ -623,56 +623,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4b-qd-KEq">
-                                <rect key="frame" x="16" y="88" width="358" height="64"/>
+                                <rect key="frame" x="16" y="62" width="358" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Good Afternoon, Jocelyn!">
                                         <attributes>
-                                            <font key="NSFont" size="24" name="AvenirNext-Bold"/>
+                                            <font key="NSFont" size="25" name="AvenirNext-Bold"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7U-JU-Jv3">
-                                <rect key="frame" x="39" y="160" width="78" height="78"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="systemMintColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="">
-                                    <backgroundConfiguration key="background" image="map.circle" catalog="system"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="CuJ-hg-fGS" kind="show" identifier="toMap" id="BgN-on-xPu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JN6-Oj-xVw">
-                                <rect key="frame" x="156" y="160" width="78" height="78"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="systemMintColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="">
-                                    <backgroundConfiguration key="background" image="calendar.circle" catalog="system"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="gNp-hx-eex" kind="show" identifier="toCalendar" id="JTZ-nq-x0k"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNk-vt-fc8">
-                                <rect key="frame" x="273" y="160" width="78" height="78"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="systemMintColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="">
-                                    <backgroundConfiguration key="background" image="person.circle" catalog="system"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="goToProfile:" destination="L1k-7T-xRK" eventType="touchUpInside" id="T7U-XB-uFx"/>
-                                </connections>
-                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="l8U-Tc-ERR">
-                                <rect key="frame" x="0.0" y="266" width="390" height="32"/>
+                                <rect key="frame" x="0.0" y="261" width="390" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Upcoming"/>
@@ -683,19 +647,55 @@
                                 </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sgK-kd-KsI">
-                                <rect key="frame" x="12" y="315" width="367" height="429"/>
+                                <rect key="frame" x="12" y="300" width="367" height="429"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="UNh-fG-uFl" kind="embed" id="tNC-tR-57E"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7CG-mB-JzI">
-                                <rect key="frame" x="12" y="315" width="367" height="429"/>
+                                <rect key="frame" x="12" y="300" width="367" height="429"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="AKn-B5-Xno" kind="embed" identifier="homeToUpcomingSessions" id="9rq-T1-Ppy"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7U-JU-Jv3">
+                                <rect key="frame" x="30" y="133" width="97" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemCyanColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="">
+                                    <backgroundConfiguration key="background" image="map.circle" catalog="system"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="CuJ-hg-fGS" kind="show" identifier="toMap" id="BgN-on-xPu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JN6-Oj-xVw">
+                                <rect key="frame" x="146" y="133" width="97" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemCyanColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="">
+                                    <backgroundConfiguration key="background" image="calendar.circle" catalog="system"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="gNp-hx-eex" kind="show" identifier="toCalendar" id="JTZ-nq-x0k"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNk-vt-fc8">
+                                <rect key="frame" x="263" y="133" width="97" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemCyanColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="">
+                                    <backgroundConfiguration key="background" image="person.circle" catalog="system"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="goToProfile:" destination="L1k-7T-xRK" eventType="touchUpInside" id="T7U-XB-uFx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UEK-el-5Pu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1117,7 +1117,7 @@
             <objects>
                 <viewController id="hNf-lE-ZKe" customClass="PlayerProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fFY-gZ-QLq">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gvt-Un-Kxs">
@@ -1609,7 +1609,7 @@
             <objects>
                 <viewController id="PE5-R2-Lql" customClass="FriendsListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A8l-EG-LNX">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZQy-cE-gEh">
@@ -2308,8 +2308,8 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RFN-YN-pPm">
-                                                    <rect key="frame" x="83" y="24.000000000000014" width="207" height="211.33333333333337"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RFN-YN-pPm">
+                                                    <rect key="frame" x="81" y="24" width="208" height="208"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a42-sI-reh">
                                                     <rect key="frame" x="230" y="382" width="120" height="17"/>
@@ -2338,6 +2338,7 @@
                                             <constraints>
                                                 <constraint firstItem="RFN-YN-pPm" firstAttribute="top" secondItem="ZZ6-Wu-R5r" secondAttribute="bottom" constant="-57" id="152-ky-5hM"/>
                                                 <constraint firstItem="RFN-YN-pPm" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.496333" id="1M2-9T-UZk"/>
+                                                <constraint firstItem="RFN-YN-pPm" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="1hL-PL-wB9"/>
                                                 <constraint firstItem="46n-Gu-wPC" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.110024" id="4Ot-5U-V5b"/>
                                                 <constraint firstItem="tsm-zi-1RR" firstAttribute="top" secondItem="46n-Gu-wPC" secondAttribute="bottom" constant="-4.3333333333333144" id="6T0-gd-8QU"/>
                                                 <constraint firstItem="tsm-zi-1RR" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897019" id="8fO-1S-1PU"/>
@@ -2402,7 +2403,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rqC-KX-Pok"/>
+        <segue reference="pbU-9p-1Qp"/>
         <segue reference="Nu6-4T-TEp"/>
         <segue reference="rXg-Fz-rtS"/>
         <segue reference="6tu-y4-peZ"/>
@@ -2435,11 +2436,11 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemCyanColor">
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemMintColor">
-            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
