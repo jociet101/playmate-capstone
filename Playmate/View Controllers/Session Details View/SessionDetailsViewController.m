@@ -34,14 +34,14 @@
 @implementation SessionDetailsViewController
 
 PFUser *me;
-BOOL partOfSession;
+BOOL isPartOfSession;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     me = [[PFUser currentUser] fetchIfNeeded];
     
-    partOfSession = NO;
+    isPartOfSession = NO;
 
     self.addMyselfButton.layer.cornerRadius = [Constants buttonCornerRadius];
     
@@ -67,18 +67,18 @@ BOOL partOfSession;
         self.disabledButton.text = [Constants fullSessionErrorMsg];
         self.disabledButton.textColor = [UIColor redColor];
         [self.addMyselfButton setEnabled:NO];
-        partOfSession = NO;
+        isPartOfSession = NO;
         self.addMyselfButton.alpha = 0;
     }
 }
 
 - (void)changeAddButtonToLeave {
-    partOfSession = YES;
+    isPartOfSession = YES;
     [self.addMyselfButton setTitle:@"Leave Session" forState:UIControlStateNormal];
 }
 
 - (void)changeAddButtonToJoin {
-    partOfSession = NO;
+    isPartOfSession = NO;
     [self.addMyselfButton setTitle:@"Join Session" forState:UIControlStateNormal];
 }
 
@@ -146,7 +146,7 @@ BOOL partOfSession;
 
 - (IBAction)addMyself:(id)sender {
     // For leaving session
-    if (partOfSession) {
+    if (isPartOfSession) {
         [self updateLeaveUi];
         [self changeAddButtonToJoin];
         

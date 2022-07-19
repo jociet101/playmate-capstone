@@ -80,18 +80,17 @@
 
 // Filter out sessions that do not contain self
 - (void)filterSessions:(NSArray *)sessions {
-    NSMutableArray *tempList = (NSMutableArray *)sessions;
+    NSMutableArray *tempList = [NSMutableArray arrayWithArray:sessions];
     PFUser *currUser = [[PFUser currentUser] fetchIfNeeded];
-
-    for (Session *sesh in tempList) {
-        for (PFUser *user in sesh[@"playersList"]) {
+    NSDate *now = [NSDate date];
+    
+    for (Session *session in tempList) {
+        for (PFUser *user in session[@"playersList"]) {
             [user fetchIfNeeded];
 
-            NSDate *now = [NSDate date];
-            NSComparisonResult result = [now compare:sesh.occursAt];
-
+            NSComparisonResult result = [now compare:session.occursAt];
             if ([currUser.username isEqualToString:user.username] && result == NSOrderedAscending) {
-                [self.sessionList addObject:sesh];
+                [self.sessionList addObject:session];
                 break;
             }
         }

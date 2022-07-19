@@ -23,7 +23,7 @@
 @implementation MapPinsViewController
 
 CLLocationManager *pinLocationManager;
-BOOL firstTimeGettingLoc;
+BOOL isFirstTimeGettingLoc;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,6 +35,12 @@ BOOL firstTimeGettingLoc;
     
     [CLLocationManager locationServicesEnabled];
     
+    [self initPinLocationManager];
+    
+    [self fetchData];
+}
+
+- (void)initPinLocationManager {
     //Create location manager
     pinLocationManager = [[CLLocationManager alloc] init];
     [pinLocationManager setDelegate:self];
@@ -43,8 +49,6 @@ BOOL firstTimeGettingLoc;
     [pinLocationManager startUpdatingHeading];
     pinLocationManager.distanceFilter = kCLDistanceFilterNone;
     pinLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    
-    [self fetchData];
 }
 
 #pragma mark - Location manager delegate methods

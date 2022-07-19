@@ -74,13 +74,7 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([sender isMemberOfClass:[SessionCollectionCell class]]) {
-        NSLog(@"segue to session collection cell");
-        NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
-        Session* data = self.sessionList[indexPath.row];
-        SessionDetailsViewController *vc = [segue destinationViewController];
-        vc.sessionDetails = data;
-    } else if ([segue.identifier isEqualToString:@"upcomingToSessionDetails"]) {
+    if ([segue.identifier isEqualToString:@"upcomingToSessionDetails"]) {
         SessionDetailsViewController *vc = [segue destinationViewController];
         vc.sessionDetails = sender;
     }
