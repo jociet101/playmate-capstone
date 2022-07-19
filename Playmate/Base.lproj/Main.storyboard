@@ -2188,6 +2188,7 @@
                                 <cells/>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="bC6-rx-4Mt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
@@ -2226,7 +2227,7 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="Location">
                                                             <attributes>
-                                                                <font key="NSFont" size="17" name="AvenirNext-Regular"/>
+                                                                <font key="NSFont" size="14" name="AvenirNext-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -2251,18 +2252,6 @@
                                                         <fragment content="Skill Level">
                                                             <attributes>
                                                                 <font key="NSFont" size="17" name="AvenirNext-Regular"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ6-Wu-R5r">
-                                                    <rect key="frame" x="21" y="34" width="273" height="47"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="American Football">
-                                                            <attributes>
-                                                                <font key="NSFont" size="28" name="AvenirNext-Medium"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -2310,9 +2299,8 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k34-mN-prj">
-                                                    <rect key="frame" x="39" y="73" width="236" height="23"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k34-mN-prj">
+                                                    <rect key="frame" x="39" y="75" width="236" height="23"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="tinted" title="View Full Session Details"/>
                                                     <connections>
@@ -2334,6 +2322,18 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ6-Wu-R5r">
+                                                    <rect key="frame" x="21" y="27" width="273" height="47"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="American Football">
+                                                            <attributes>
+                                                                <font key="NSFont" size="28" name="AvenirNext-Medium"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="RFN-YN-pPm" firstAttribute="top" secondItem="ZZ6-Wu-R5r" secondAttribute="bottom" constant="-57" id="152-ky-5hM"/>
@@ -2345,6 +2345,7 @@
                                                 <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="9jg-hR-WhK"/>
                                                 <constraint firstItem="RFN-YN-pPm" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.560976" id="ACi-F0-GnN"/>
                                                 <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.895212" id="ClB-c8-wft"/>
+                                                <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="top" secondItem="k34-mN-prj" secondAttribute="bottom" constant="-5" id="CsK-Hc-Dg4"/>
                                                 <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="top" secondItem="IHg-CR-hHl" secondAttribute="top" constant="34" id="GRa-Ou-kY1"/>
                                                 <constraint firstItem="myp-Qi-m2f" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="HaE-Nz-zsX"/>
                                                 <constraint firstItem="RFN-YN-pPm" firstAttribute="top" secondItem="Mxe-Nw-Jgk" secondAttribute="bottom" constant="-114.66666666666666" id="Hk2-9f-gmk"/>
@@ -2352,6 +2353,7 @@
                                                 <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897019" id="Itq-Xd-Yz1"/>
                                                 <constraint firstItem="myp-Qi-m2f" firstAttribute="top" secondItem="tsm-zi-1RR" secondAttribute="bottom" constant="-71.333333333333371" id="KLw-Sc-hoe"/>
                                                 <constraint firstItem="46n-Gu-wPC" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="Mgk-38-vX5"/>
+                                                <constraint firstItem="RFN-YN-pPm" firstAttribute="top" secondItem="k34-mN-prj" secondAttribute="bottom" constant="-78" id="UpV-Ad-iyU"/>
                                                 <constraint firstItem="F6c-xy-bHi" firstAttribute="top" secondItem="4gR-8S-b3A" secondAttribute="bottom" constant="21.666666666666686" id="Wy2-vQ-3lm"/>
                                                 <constraint firstItem="tsm-zi-1RR" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="Ya9-7O-Bix"/>
                                                 <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="ZdT-5z-UIq"/>
@@ -2363,10 +2365,13 @@
                                                 <constraint firstItem="4gR-8S-b3A" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.158924" id="jgz-Mg-QNW"/>
                                                 <constraint firstItem="myp-Qi-m2f" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897019" id="jyp-d2-c8U"/>
                                                 <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.110024" id="lpI-od-3vh"/>
+                                                <constraint firstItem="k34-mN-prj" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.749206" id="m0K-G7-3Q7"/>
                                                 <constraint firstItem="4gR-8S-b3A" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="pst-lg-YkQ"/>
                                                 <constraint firstItem="46n-Gu-wPC" firstAttribute="top" secondItem="F6c-xy-bHi" secondAttribute="bottom" constant="-22.333333333333371" id="qbe-cr-Nwd"/>
                                                 <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.109209" id="rM8-Tw-XtV"/>
                                                 <constraint firstItem="myp-Qi-m2f" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.109209" id="s84-lJ-yyE"/>
+                                                <constraint firstItem="k34-mN-prj" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="t4N-Ib-p5O"/>
+                                                <constraint firstItem="k34-mN-prj" firstAttribute="height" secondItem="IHg-CR-hHl" secondAttribute="height" multiplier="0.0539906" id="ukd-RQ-Wqo"/>
                                                 <constraint firstItem="4gR-8S-b3A" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.894309" id="xMk-M8-Xio"/>
                                                 <constraint firstItem="F6c-xy-bHi" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897019" id="yf8-ue-WLZ"/>
                                             </constraints>
@@ -2390,6 +2395,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="NR3-n6-ebC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
