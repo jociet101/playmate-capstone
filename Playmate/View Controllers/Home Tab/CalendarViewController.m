@@ -11,8 +11,9 @@
 #import "SessionCell.h"
 #import "Session.h"
 #import "SessionDetailsViewController.h"
+#import "UIScrollView+EmptyDataSet.h"
 
-@interface CalendarViewController () <FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource>
+@interface CalendarViewController () <FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet FSCalendar *calendarView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -28,7 +29,7 @@
     [self setupEventTable];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [self fetchData:[NSDate now]];
 }
 
@@ -71,8 +72,13 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
+    
     [self fetchData:[NSDate now]];
 }
+
+#pragma mark - Table view protocol methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -109,6 +115,22 @@
 - (UIView*)tableView:(UITableView*)tableView
            viewForFooterInSection:(NSInteger)section {
     return [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+#pragma mark - Empty table view protocol methods
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"logo_small"];
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text = [Constants emptyTablePlaceholderTitle];
+    return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text = [Constants emptySearchPlaceholderMsg];
+    return [[NSAttributedString alloc] initWithString:text attributes:[Constants descriptionAttributes]];
 }
 
 #pragma mark - Calendar view methods
