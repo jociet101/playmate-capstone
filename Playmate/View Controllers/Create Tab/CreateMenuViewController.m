@@ -170,7 +170,6 @@
 
 - (NSString *)fetchMostRecentSessionId {
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
-    query.limit = 1;
     [query orderByDescending:@"updatedAt"];
     
     Session *session = [[query getFirstObject] fetchIfNeeded];

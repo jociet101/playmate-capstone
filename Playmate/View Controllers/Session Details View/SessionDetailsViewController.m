@@ -272,7 +272,7 @@ BOOL isPartOfSession;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([sender isMemberOfClass:[PlayerProfileCollectionCell class]]) {
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
-        PFUser* data = self.sessionDetails.playersList[indexPath.row];
+        PFUser* data = self.sessionDetails.playersList[self.sessionDetails.playersList.count-indexPath.row-1];
         PlayerProfileViewController *vc = [segue destinationViewController];
         vc.user = data;
     }

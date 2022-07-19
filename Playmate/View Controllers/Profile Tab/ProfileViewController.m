@@ -14,6 +14,7 @@
 #import "EditProfileViewController.h"
 #import "PlayerConnection.h"
 #import "FriendsListViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate>
 
@@ -26,6 +27,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *profileImagePlaceholder;
 @property (weak, nonatomic) IBOutlet UIButton *numberOfFriendsButton;
 @property (weak, nonatomic) IBOutlet UIButton *settingsMenuButton;
+@property (weak, nonatomic) IBOutlet UILabel *numberTotalSessionsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numberDaysOnPlaymateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *firstSportLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondSportLabel;
+@property (weak, nonatomic) IBOutlet UILabel *thirdSportLabel;
 
 @end
 
@@ -62,6 +68,17 @@
 //    [self.numberOfFriendsButton.titleLabel setFont:[UIFont fontWithName:@"Avenir" size:16.0]];
     
     [self.numberOfFriendsButton setTitle:[NSString stringWithFormat:@"%ld friends", numFriends] forState:UIControlStateNormal];
+    
+    self.numberTotalSessionsLabel.layer.borderColor = [[Constants playmateBlue] CGColor];
+    self.numberDaysOnPlaymateLabel.layer.borderColor = [[Constants playmateBlue] CGColor];
+    self.numberTotalSessionsLabel.layer.borderWidth = 1.0;
+    self.numberDaysOnPlaymateLabel.layer.borderWidth = 1.0;
+    self.numberTotalSessionsLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
+    self.numberDaysOnPlaymateLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
+    
+    self.firstSportLabel.layer.backgroundColor = [[Constants playmateBlue] CGColor];
+    self.secondSportLabel.layer.backgroundColor = [[Constants playmateBlue] CGColor];
+    self.thirdSportLabel.layer.backgroundColor = [[Constants playmateBlue] CGColor];
     
     [self configureSettingsMenu];
 }
