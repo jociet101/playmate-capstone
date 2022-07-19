@@ -178,7 +178,7 @@ BOOL isPartOfSession;
     }
     // For joining session
     else {
-        [self updateJoinUi];
+        [self updateJoinUI];
         [self showConfetti];
         [self changeAddButtonToLeave];
         
@@ -201,7 +201,7 @@ BOOL isPartOfSession;
     }
 }
 
-- (void)updateJoinUi {
+- (void)updateJoinUI {
     // Update player profile list
     NSMutableArray *oldPlayersList = (NSMutableArray *)self.sessionDetails.playersList;
     [oldPlayersList addObject:me];
@@ -244,6 +244,8 @@ BOOL isPartOfSession;
 - (nonnull __kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PlayerProfileCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayerProfileCollectionCell" forIndexPath:indexPath];
     
+    // Instead of indexPath.row, using this to reverse player list
+    // to display most recently joined member first in collection view
     cell.userProfile = self.sessionDetails.playersList[self.sessionDetails.playersList.count-indexPath.row-1];
     
     return cell;
