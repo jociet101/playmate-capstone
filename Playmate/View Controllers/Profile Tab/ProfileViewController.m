@@ -27,12 +27,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *bioField;
 @property (weak, nonatomic) IBOutlet UILabel *profileImagePlaceholder;
 @property (weak, nonatomic) IBOutlet UIButton *numberOfFriendsButton;
-@property (weak, nonatomic) IBOutlet UIButton *settingsMenuButton;
 @property (weak, nonatomic) IBOutlet UILabel *numberTotalSessionsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberDaysOnPlaymateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *firstSportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *secondSportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *thirdSportLabel;
+@property (weak, nonatomic) IBOutlet UIButton *editProfileButton;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 
 @end
 
@@ -62,17 +63,14 @@
     }
     
     PlayerConnection *playerConnection = [Helpers getPlayerConnectionForUser:user];
-    
     unsigned long numFriends = ((NSArray *)playerConnection[@"friendsList"]).count;
+    [self.numberOfFriendsButton setTitle:[NSString stringWithFormat:@"%ld friends", numFriends] forState:UIControlStateNormal];
     
     // TODO: find out how to make font bold, look like a button
 //    [self.numberOfFriendsButton.titleLabel setFont:[UIFont fontWithName:@"Avenir" size:16.0]];
     
-    [self.numberOfFriendsButton setTitle:[NSString stringWithFormat:@"%ld friends", numFriends] forState:UIControlStateNormal];
-    
     [self configureDataFields];
-    
-    [self configureSettingsMenu];
+    [self configureButtonUI];
 }
 
 - (void)configureDataFields {
@@ -93,27 +91,16 @@
     self.numberDaysOnPlaymateLabel.text = [[NSString stringWithFormat:@"%@", [ManageUserStatistics getNumberDaysOnPlaymateForUser:me]] stringByAppendingString:@" Days on Playmate"];
 }
 
-- (void)configureSettingsMenu {
+- (void)configureButtonUI {
+    self.editProfileButton.layer.borderColor = [[UIColor grayColor] CGColor];
+    self.logoutButton.layer.borderColor = [[UIColor systemRedColor] CGColor];
+    self.editProfileButton.layer.borderWidth = 0.2;
+    self.logoutButton.layer.borderWidth = 0.2;
     
-    // create uiactions for menu dropdown
-    UIAction *editProfile = [UIAction actionWithTitle:@"Edit Profile"
-                                      image:nil
-                                      identifier:nil
-                                      handler:^(__kindof UIAction * _Nonnull action) {
-        [self didTapEdit];
-    }];
-    UIAction *logout = [UIAction actionWithTitle:@"Logout"
-                                 image:nil
-                                 identifier:nil
-                                 handler:^(__kindof UIAction * _Nonnull action) {
-        [self didTapLogout];
-    }];
+    self.editProfileButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
+    self.logoutButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
-    UIMenu *menu = [UIMenu menuWithTitle:@"Options" children:[NSArray arrayWithObjects:editProfile, logout, nil]];
-    
-    // set menu dropdown
-    self.settingsMenuButton.menu = menu;
-    self.settingsMenuButton.showsMenuAsPrimaryAction = YES;
+    [self.logoutButton setTintColor:[UIColor systemRedColor]];
 }
 
 #pragma mark - Uploading or taking profile image
@@ -161,7 +148,7 @@
 
 #pragma mark - Handling button or gesture actions
 
-- (void)didTapLogout {
+- (IBAction)didTapLogout:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         WelcomeViewController *welcomeViewController = [storyboard instantiateViewControllerWithIdentifier:@"WelcomeVC"];
@@ -171,7 +158,7 @@
     }];
 }
 
-- (void)didTapEdit {
+- (IBAction)didTapEdit:(id)sender {
     [self performSegueWithIdentifier:@"toEditProfile" sender:nil];
 }
 
