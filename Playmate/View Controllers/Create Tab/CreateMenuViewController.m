@@ -159,9 +159,9 @@
         }
     }];
     
-    [ManageUserStatistics updateDictionaryWithSport:self.selectedSport
-                                         forSession:sessionObjectId
-                                            andUser:me];
+    [ManageUserStatistics updateDictionaryAddSession:sessionObjectId
+                                            forSport:self.selectedSport
+                                             andUser:me];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];

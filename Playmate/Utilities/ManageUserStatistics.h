@@ -12,7 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ManageUserStatistics : NSObject
 
-+ (void)updateDictionaryWithSport:(NSString *)sport forSession:(NSString *)objectId andUser:(PFUser *)user;
++ (void)updateDictionaryAddSession:(NSString *)objectId
+                          forSport:(NSString *)sport
+                           andUser:(PFUser *)user;
+
++ (void)updateDictionaryRemoveSession:(NSString *)objectId
+                             forSport:(NSString *)sport
+                              andUser:(PFUser *)user;
 
 @end
 

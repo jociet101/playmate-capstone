@@ -10,7 +10,9 @@
 @implementation ManageUserStatistics
 
 // Add one session object id to user's session dictionary's sport array
-+ (void)updateDictionaryWithSport:(NSString *)sport forSession:(NSString *)objectId andUser:(PFUser *)user {
++ (void)updateDictionaryAddSession:(NSString *)objectId
+                          forSport:(NSString *)sport
+                           andUser:(PFUser *)user {
     
     NSMutableDictionary *sessionsDictionary = [user objectForKey:@"sessionsDictionary"];
     
@@ -35,6 +37,20 @@
         [sessionsDictionary setObject:sportListForDictionary forKey:sport];
     }
     
+    [user addObject:sessionsDictionary forKey:@"sessionsDictionary"];
+    [user saveInBackground];
+}
+
++ (void)updateDictionaryRemoveSession:(NSString *)objectId
+                             forSport:(NSString *)sport
+                              andUser:(PFUser *)user {
+    // Get dictionary, sport array from dictionary, remove object id, and save
+    NSMutableDictionary *sessionsDictionary = [user objectForKey:@"sessionsDictionary"];
+    [user removeObjectForKey:@"sessionsDictionary"];
+    NSMutableArray *sportListForDictionary = [sessionsDictionary objectForKey:sport];
+    [sessionsDictionary removeObjectForKey:sport];
+    [sportListForDictionary removeObject:objectId];
+    [sessionsDictionary setObject:sportListForDictionary forKey:sport];
     [user addObject:sessionsDictionary forKey:@"sessionsDictionary"];
     [user saveInBackground];
 }
