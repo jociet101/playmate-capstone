@@ -24,6 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension;
 + (NSString *)getTimeGivenDurationForSession:(Session *)session;
 
+// For handling alerts
++ (void)handleAlert:(NSError * _Nullable)error
+          withTitle:(NSString *)title
+        withMessage:(NSString * _Nullable)message
+  forViewController:(id)viewController;
+
 @end
 
 NS_ASSUME_NONNULL_END

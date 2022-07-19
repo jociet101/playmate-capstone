@@ -7,6 +7,7 @@
 
 #import "LoginViewController.h"
 #import "Constants.h"
+#import "Helpers.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 
@@ -48,17 +49,6 @@
 
 #pragma mark - Login user with Parse
 
-- (void)handleAlert:(NSError *)error withTitle:(NSString *)title andOk:(NSString *)ok {
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:ok style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        [self viewDidLoad];
-    }];
-    
-    [alertController addAction:okAction];
-    [self presentViewController:alertController animated: YES completion: nil];
-}
-
 - (void)loginUser {
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
@@ -66,7 +56,7 @@
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
-            [self handleAlert:error withTitle:@"Error" andOk:@"Try again"];
+            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         } else {
             NSLog(@"User logged in successfully");
             [self performSegueWithIdentifier:@"loginToTab" sender:nil];

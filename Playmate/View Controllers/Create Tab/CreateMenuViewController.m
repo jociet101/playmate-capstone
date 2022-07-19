@@ -9,6 +9,7 @@
 #import "MenuPickerCell.h"
 #import "LocationPickerCell.h"
 #import "Constants.h"
+#import "Helpers.h"
 #import "Location.h"
 #import "Session.h"
 #import "SelectMapViewController.h"
@@ -109,44 +110,42 @@
 
 #pragma mark - Create session action
 
-- (void)handleAlert:(NSError * _Nullable)error withTitle:(NSString *)title andDescription:(NSString *)msg {
-    if (error != nil) {
-        msg = error.localizedDescription;
-    }
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        [self viewDidLoad];
-    }];
-    
-    [alertController addAction:okAction];
-    [self presentViewController:alertController animated: YES completion: nil];
-}
-
 - (IBAction)didTapCreateSession:(id)sender {
     if (self.selectedLocation == nil) {
-        [self handleAlert:nil withTitle:@"No location selected"
-              andDescription:[Constants selectLocationPlease]];
+        [Helpers handleAlert:nil
+                   withTitle:@"No location selected"
+                 withMessage:[Constants selectLocationPlease]
+           forViewController:self];
         return;
     } else if (self.selectedSport == nil) {
-        [self handleAlert:nil withTitle:@"No sport selected"
-              andDescription:[Constants selectSportPlease]];
+        [Helpers handleAlert:nil
+                   withTitle:@"No sport selected"
+                 withMessage:[Constants selectSportPlease]
+           forViewController:self];
         return;
     } else if (self.selectedDateTime == nil) {
-        [self handleAlert:nil withTitle:@"No date and time selected"
-              andDescription:[Constants selectDateTimePlease]];
+        [Helpers handleAlert:nil
+                   withTitle:@"No date or time selected"
+                 withMessage:[Constants selectDateTimePlease]
+           forViewController:self];
         return;
     } else if (self.selectedDuration == nil) {
-        [self handleAlert:nil withTitle:@"No duration selected"
-              andDescription:[Constants selectDurationPlease]];
+        [Helpers handleAlert:nil
+                   withTitle:@"No duration selected"
+                 withMessage:[Constants selectDurationPlease]
+           forViewController:self];
         return;
     } else if (self.selectedNumPlayers == nil) {
-        [self handleAlert:nil withTitle:@"Number of players not selected"
-              andDescription:[Constants selectNumberOfPlayersPlease]];
+        [Helpers handleAlert:nil
+                   withTitle:@"Number of players not selected"
+                 withMessage:[Constants selectNumberOfPlayersPlease]
+           forViewController:self];
         return;
     } else if (self.selectedSkillLevel == nil) {
-        [self handleAlert:nil withTitle:@"No skill level selected"
-              andDescription:[Constants selectSkillLevelPlease]];
+        [Helpers handleAlert:nil
+                   withTitle:@"No skill level selected"
+                 withMessage:[Constants selectSkillLevelPlease]
+           forViewController:self];
         return;
     }
     

@@ -93,23 +93,6 @@
     [self.view endEditing:YES];
 }
 
-- (void)handleAlert:(NSError * _Nullable)error withTitle:(NSString *)title andOk:(NSString *)ok {
-    
-    NSString *msg = [Constants selectLocationPlease];
-    
-    if (error != nil) {
-        msg = error.localizedDescription;
-    }
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:ok style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        [self viewDidLoad];
-    }];
-    
-    [alertController addAction:okAction];
-    [self presentViewController:alertController animated: YES completion: nil];
-}
-
 - (IBAction)didTapApply:(id)sender {
     Filters *filters = [Filters new];
     

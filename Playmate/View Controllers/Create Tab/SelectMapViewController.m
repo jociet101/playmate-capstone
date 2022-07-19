@@ -8,6 +8,7 @@
 #import "SelectMapViewController.h"
 #import "APIManager.h"
 #import "Location.h"
+#import "Helpers.h"
 
 @interface SelectMapViewController () <CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate, UIGestureRecognizerDelegate>
 
@@ -64,34 +65,16 @@ BOOL firstTime;
     [manager getReverseGeocodedLocation:location withCompletion:^(NSString * _Nonnull name, NSError * _Nonnull error) {
         if (error == nil) {
             if (name == nil) {
-                [self handleAlert:nil withTitle:@"Current location not found." andOk:@"Ok"];
+                [Helpers handleAlert:nil withTitle:@"Current location not found." withMessage:@"Please enter a more specific address." forViewController:self];
             }
             else {
                 location.locationName = name;
-                [self dropPinOnMapAt:coordinate withName:name];
-                [self.delegate getSelectedLocation:location];
+                [self geocodeLocationWithSearch:name];
             }
         } else {
-            [self handleAlert:error withTitle:@"Error." andOk:@"Try again."];
+            [Helpers handleAlert:error withTitle:@"Error." withMessage:nil forViewController:self];
         }
     }];
-}
-
-- (void)handleAlert:(NSError * _Nullable)error withTitle:(NSString *)title andOk:(NSString *)ok {
-    
-    NSString *msg = @"Please enter a more specific address.";
-    
-    if (error != nil) {
-        msg = error.localizedDescription;
-    }
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:ok style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        [self viewDidLoad];
-    }];
-    
-    [alertController addAction:okAction];
-    [self presentViewController:alertController animated: YES completion: nil];
 }
 
 #pragma mark - Search bar and geocode
@@ -109,7 +92,7 @@ BOOL firstTime;
         if (error == nil) {
             
             if (loc == nil) {
-                [self handleAlert:nil withTitle:@"Address not found." andOk:@"Ok"];
+                [Helpers handleAlert:nil withTitle:@"Address not found." withMessage:@"Please enter a more specific address." forViewController:self];
             }
             else {
                 CLLocationCoordinate2D centerCoord = CLLocationCoordinate2DMake([loc.lat doubleValue], [loc.lng doubleValue]);
@@ -119,7 +102,7 @@ BOOL firstTime;
             }
             
         } else {
-            [self handleAlert:error withTitle:@"Error." andOk:@"Try again."];
+            [Helpers handleAlert:error withTitle:@"Error." withMessage:nil forViewController:self];
         }
         
     }];
@@ -147,14 +130,14 @@ BOOL firstTime;
     [manager getReverseGeocodedLocation:location withCompletion:^(NSString * _Nonnull name, NSError * _Nonnull error) {
         if (error == nil) {
             if (name == nil) {
-                [self handleAlert:nil withTitle:@"Current location not found." andOk:@"Ok"];
+                [Helpers handleAlert:nil withTitle:@"Current location not found." withMessage:@"Please enter a more specific address." forViewController:self];
             }
             else {
                 location.locationName = name;
                 [self geocodeLocationWithSearch:name];
             }
         } else {
-            [self handleAlert:error withTitle:@"Error." andOk:@"Try again."];
+            [Helpers handleAlert:error withTitle:@"Error." withMessage:nil forViewController:self];
         }
     }];
 }
