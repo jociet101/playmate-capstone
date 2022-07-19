@@ -15,6 +15,7 @@
 #import "PlayerConnection.h"
 #import "FriendsListViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ManageUserStatistics.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate>
 
@@ -69,6 +70,12 @@
     
     [self.numberOfFriendsButton setTitle:[NSString stringWithFormat:@"%ld friends", numFriends] forState:UIControlStateNormal];
     
+    [self configureDataFields];
+    
+    [self configureSettingsMenu];
+}
+
+- (void)configureDataFields {
     self.numberTotalSessionsLabel.layer.borderColor = [[Constants playmateBlue] CGColor];
     self.numberDaysOnPlaymateLabel.layer.borderColor = [[Constants playmateBlue] CGColor];
     self.numberTotalSessionsLabel.layer.borderWidth = 1.0;
@@ -80,7 +87,10 @@
     self.secondSportLabel.layer.backgroundColor = [[Constants playmateBlue] CGColor];
     self.thirdSportLabel.layer.backgroundColor = [[Constants playmateBlue] CGColor];
     
-    [self configureSettingsMenu];
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
+    
+    self.numberTotalSessionsLabel.text = [[NSString stringWithFormat:@"%ld", [ManageUserStatistics getNumberTotalSessionsForUser:me]] stringByAppendingString:@" Total Sessions"];
+    self.numberDaysOnPlaymateLabel.text = [[NSString stringWithFormat:@"%@", [ManageUserStatistics getNumberDaysOnPlaymateForUser:me]] stringByAppendingString:@" Days on Playmate"];
 }
 
 - (void)configureSettingsMenu {
@@ -120,7 +130,6 @@
         NSLog(@"Camera 🚫 available so we will use photo library instead");
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
-    
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
@@ -154,7 +163,6 @@
 
 - (void)didTapLogout {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         WelcomeViewController *welcomeViewController = [storyboard instantiateViewControllerWithIdentifier:@"WelcomeVC"];
         
@@ -176,7 +184,6 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     if ([segue.identifier isEqualToString:@"toFriendsList"]) {
         FriendsListViewController *vc = [segue destinationViewController];
         vc.thisUser = [PFUser currentUser];

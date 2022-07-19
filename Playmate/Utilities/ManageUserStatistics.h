@@ -20,6 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
                              forSport:(NSString *)sport
                               andUser:(PFUser *)user;
 
++ (long)getNumberTotalSessionsForUser:(PFUser *)user;
+
++ (NSString *)getNumberDaysOnPlaymateForUser:(PFUser *)user;
+
 @end
 
 NS_ASSUME_NONNULL_END

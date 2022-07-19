@@ -30,6 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
         withMessage:(NSString * _Nullable)message
   forViewController:(id)viewController;
 
++ (NSInteger)daysBetweenDate:(NSDate*)fromDateTime
+                     andDate:(NSDate*)toDateTime;
+
 @end
 
 NS_ASSUME_NONNULL_END

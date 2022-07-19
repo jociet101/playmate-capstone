@@ -6,6 +6,7 @@
 //
 
 #import "ManageUserStatistics.h"
+#import "Helpers.h"
 
 @implementation ManageUserStatistics
 
@@ -53,6 +54,30 @@
     [sessionsDictionary setObject:sportListForDictionary forKey:sport];
     [user addObject:sessionsDictionary forKey:@"sessionsDictionary"];
     [user saveInBackground];
+}
+
++ (long)getNumberTotalSessionsForUser:(PFUser *)user {
+    NSMutableDictionary *sessionsDictionary = [user objectForKey:@"sessionsDictionary"][0];
+    
+    if (sessionsDictionary == nil) {
+        return 0;
+    } else {
+        long count = 0;
+        NSArray *sportsKeys = [sessionsDictionary allKeys];
+        
+        for (NSString *sport in sportsKeys) {
+            NSMutableArray *sportList = sessionsDictionary[sport];
+            count += sportList.count;
+        }
+        return count;
+    }
+    return 0;
+}
+
++ (NSString *)getNumberDaysOnPlaymateForUser:(PFUser *)user {
+    NSDate *joinedDate = user.createdAt;
+    NSInteger timeAgo = [Helpers daysBetweenDate:joinedDate andDate:[NSDate now]];
+    return [NSString stringWithFormat:@"%ld", timeAgo];
 }
 
 @end
