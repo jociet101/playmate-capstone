@@ -7,10 +7,7 @@
 
 #import "Constants.h"
 #import "APIManager.h"
-
-@interface Constants ()
-
-@end
+#import "Helpers.h"
 
 @implementation Constants
 
@@ -258,7 +255,7 @@
     APIManager *manager = [APIManager new];
     [manager getSportsListWithCompletion:^(NSDictionary *list, NSError *error) {
         if (error != nil) {
-            NSLog(@"%@", error.localizedDescription);
+            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         } else {
             NSArray *data = list[@"data"];
             

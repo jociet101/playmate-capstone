@@ -10,6 +10,7 @@
 #import "SessionDetailsViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
+#import "Helpers.h"
 #import "CalendarViewController.h"
 #import "ProfileViewController.h"
 #import "SessionCollectionCell.h"
@@ -72,7 +73,7 @@
             [self filterSessions:sessions];
             [self.delegate loadSessionList:(NSArray *)self.sessionList];
         } else {
-            NSLog(@"%@", error.localizedDescription);
+            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         }
     }];
 }

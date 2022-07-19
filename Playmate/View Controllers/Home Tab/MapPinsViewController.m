@@ -10,6 +10,7 @@
 #import "SessionDetailsViewController.h"
 #import "Session.h"
 #import "Location.h"
+#import "Helpers.h"
 
 @interface MapPinsViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
@@ -82,7 +83,7 @@ BOOL firstTimeGettingLoc;
             self.sessionList = sessions;
             [self addPins];
         } else {
-            NSLog(@"%@", error.localizedDescription);
+            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         }
     }];
 }

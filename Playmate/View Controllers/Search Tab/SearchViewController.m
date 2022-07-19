@@ -12,6 +12,7 @@
 #import "FiltersMenuViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
+#import "Helpers.h"
 
 @interface SearchViewController () <UITableViewDelegate, UITableViewDataSource, FiltersMenuViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -92,7 +93,7 @@
             
             [self.tableView reloadData];
         } else {
-            NSLog(@"%@", error.localizedDescription);
+            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         }
         [self.refreshControl endRefreshing];
     }];
@@ -235,7 +236,7 @@
             
             [self.tableView reloadData];
         } else {
-            NSLog(@"%@", error.localizedDescription);
+            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         }
         [self.refreshControl endRefreshing];
     }];
