@@ -267,7 +267,7 @@
         }
     }];
     
-    return (NSArray *)sports;
+    return [NSArray arrayWithArray:sports];
 }
 
 + (NSArray *)sportsList:(BOOL)needAll {
@@ -284,7 +284,6 @@
                                                     @"Boxing",
                                                     @"Bowling",
                                                     @"Cricket",
-                                                    @"Ice Hockey",
                                                     @"Flag Football",
                                                     @"Field Hockey",
                                                     @"Golf",
@@ -299,7 +298,7 @@
     
     [sports addObjectsFromArray:sportsList];
     
-    return (NSArray *)sports;
+    return [NSArray arrayWithArray:sports];
 }
 
 + (NSArray *)skillLevelsList:(BOOL)needAll {
@@ -309,7 +308,7 @@
     [skillLevels addObject:@"Amateur"];
     [skillLevels addObject:@"Competitive"];
     
-    return (NSArray *)skillLevels;
+    return [NSArray arrayWithArray:skillLevels];
 }
 
 + (int)defaultNumPlayers {
@@ -404,8 +403,7 @@
                                                     @"playmate_logo_transparent",
                                                     @"playmate_logo_transparent",
                                                     @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
+                                                    @"confetti",
                                                     @"playmate_logo_transparent",
                                                     @"playmate_logo_transparent",
                                                     @"playmate_logo_transparent",nil];

@@ -161,6 +161,7 @@
 #pragma mark - Filter view controller configuration
 
 - (void)didApplyFilters:(Filters *)filter {
+    [self clearFilters];
     [self fetchDataWithFilters:filter];
     [self.navigationController popToViewController:self
                                                   animated:YES];
@@ -244,6 +245,10 @@
 }
 
 - (IBAction)didTapClear:(id)sender {
+    [self clearFilters];
+}
+
+- (void)clearFilters {
     if (self.appliedFilters == YES) {
         [self.clearFiltersButton setEnabled:NO];
         self.clearFiltersButton.tintColor = [UIColor lightGrayColor];
