@@ -13,6 +13,7 @@
 #import "PlayerProfileViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Helpers.h"
+#import "ManageUserStatistics.h"
 
 @interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -145,8 +146,9 @@ BOOL isPartOfSession;
 #pragma mark - Add to session button action
 
 - (IBAction)addMyself:(id)sender {
-    // For leaving session
     if (isPartOfSession) {
+        // For leaving session
+        
         [self updateLeaveUi];
         [self changeAddButtonToJoin];
         
@@ -175,9 +177,14 @@ BOOL isPartOfSession;
             
             [session saveInBackground];
         }];
-    }
-    // For joining session
-    else {
+        
+        // Remove this session from user's history
+        [ManageUserStatistics updateDictionaryRemoveSession:self.sessionDetails.objectId
+                                                   forSport:self.sessionDetails.sport
+                                                    andUser:me];
+    } else {
+        // For joining session
+        
         [self updateJoinUI];
         [self showConfetti];
         [self changeAddButtonToLeave];
@@ -198,6 +205,11 @@ BOOL isPartOfSession;
             
             [session saveInBackground];
         }];
+        
+        // Add this session to user's history
+        [ManageUserStatistics updateDictionaryAddSession:self.sessionDetails.objectId
+                                                forSport:self.sessionDetails.sport
+                                                 andUser:me];
     }
 }
 

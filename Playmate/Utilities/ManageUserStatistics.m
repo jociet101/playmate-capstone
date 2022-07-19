@@ -14,7 +14,7 @@
                           forSport:(NSString *)sport
                            andUser:(PFUser *)user {
     
-    NSMutableDictionary *sessionsDictionary = [user objectForKey:@"sessionsDictionary"];
+    NSMutableDictionary *sessionsDictionary = [user objectForKey:@"sessionsDictionary"][0];
     
     // check if user has sessions dictionary
     if (sessionsDictionary == nil) {
@@ -33,7 +33,6 @@
             [sessionsDictionary removeObjectForKey:sport];
             [sportListForDictionary addObject:objectId];
         }
-        
         [sessionsDictionary setObject:sportListForDictionary forKey:sport];
     }
     
@@ -44,8 +43,9 @@
 + (void)updateDictionaryRemoveSession:(NSString *)objectId
                              forSport:(NSString *)sport
                               andUser:(PFUser *)user {
+    
     // Get dictionary, sport array from dictionary, remove object id, and save
-    NSMutableDictionary *sessionsDictionary = [user objectForKey:@"sessionsDictionary"];
+    NSMutableDictionary *sessionsDictionary = [user objectForKey:@"sessionsDictionary"][0];
     [user removeObjectForKey:@"sessionsDictionary"];
     NSMutableArray *sportListForDictionary = [sessionsDictionary objectForKey:sport];
     [sessionsDictionary removeObjectForKey:sport];

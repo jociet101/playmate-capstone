@@ -153,15 +153,15 @@
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     
     // create SportsSession parse object and save
-    NSString *sessionObjectId = [Session createSession:me withSport:self.selectedSport withLevel:self.selectedSkillLevel withDate:self.selectedDateTime withDuration:self.selectedDuration withLocation:self.selectedLocation withCapacity:self.selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
+    [Session createSession:me withSport:self.selectedSport withLevel:self.selectedSkillLevel withDate:self.selectedDateTime withDuration:self.selectedDuration withLocation:self.selectedLocation withCapacity:self.selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
         if (error) {
             [Helpers handleAlert:error withTitle:@"Could not create session." withMessage:nil forViewController:self];
         }
     }];
     
-    [ManageUserStatistics updateDictionaryAddSession:sessionObjectId
-                                            forSport:self.selectedSport
-                                             andUser:me];
+//    [ManageUserStatistics updateDictionaryAddSession:sessionObjectId
+//                                            forSport:self.selectedSport
+//                                             andUser:me];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
