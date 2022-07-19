@@ -821,9 +821,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nWr-op-BUf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nWr-op-BUf">
                                 <rect key="frame" x="0.0" y="88" width="390" height="756"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionCell" rowHeight="133" id="qPr-0z-ErX" customClass="SessionCell">
@@ -867,7 +866,7 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="timer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hjB-Gw-La2">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="timer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hjB-Gw-La2">
                                                     <rect key="frame" x="21" y="70" width="13.666666666666664" height="19"/>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="location.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MkO-84-Rpw">
@@ -876,7 +875,7 @@
                                                         <constraint firstAttribute="height" constant="22.333333333333329" id="59R-Pv-z0u"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qda-fC-7yp">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Qda-fC-7yp">
                                                     <rect key="frame" x="20" y="100" width="15" height="21"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOR-NA-ctd">
@@ -894,6 +893,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Qda-fC-7yp" firstAttribute="leading" secondItem="DDS-Nc-Tfg" secondAttribute="leading" constant="20" symbolic="YES" id="1vw-QB-7dQ"/>
+                                                <constraint firstItem="Qda-fC-7yp" firstAttribute="height" secondItem="DDS-Nc-Tfg" secondAttribute="height" multiplier="0.155388" id="28o-B7-OF7"/>
                                                 <constraint firstItem="Qda-fC-7yp" firstAttribute="top" secondItem="hjB-Gw-La2" secondAttribute="bottom" constant="10.666666666666671" id="3SQ-Gj-zbE"/>
                                                 <constraint firstItem="etT-oE-Y4L" firstAttribute="width" secondItem="DDS-Nc-Tfg" secondAttribute="width" multiplier="0.820513" id="3n3-YK-TUg"/>
                                                 <constraint firstItem="MkO-84-Rpw" firstAttribute="top" secondItem="YhX-US-tzd" secondAttribute="bottom" constant="5.6666666666666714" id="4Bz-md-E15"/>
@@ -915,6 +915,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="AOR-NA-ctd" secondAttribute="bottom" constant="11" id="nA6-cy-P2b"/>
                                                 <constraint firstItem="AOR-NA-ctd" firstAttribute="top" secondItem="etT-oE-Y4L" secondAttribute="bottom" constant="5" id="nOu-B6-ef9"/>
                                                 <constraint firstItem="YhX-US-tzd" firstAttribute="top" secondItem="DDS-Nc-Tfg" secondAttribute="top" constant="10.999999999999998" id="naN-O4-LVH"/>
+                                                <constraint firstItem="Qda-fC-7yp" firstAttribute="width" secondItem="DDS-Nc-Tfg" secondAttribute="width" multiplier="0.0428571" id="qyD-1u-5aM"/>
                                                 <constraint firstItem="etT-oE-Y4L" firstAttribute="height" secondItem="DDS-Nc-Tfg" secondAttribute="height" multiplier="0.195489" id="twD-bQ-wzf"/>
                                                 <constraint firstAttribute="trailing" secondItem="g3G-yM-rCp" secondAttribute="trailing" constant="20" symbolic="YES" id="wTe-QX-UNf"/>
                                                 <constraint firstItem="etT-oE-Y4L" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hjB-Gw-La2" secondAttribute="trailing" constant="8" symbolic="YES" id="wbf-P8-gyz"/>
@@ -935,6 +936,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="j5G-6q-w4z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nWr-op-BUf" firstAttribute="top" secondItem="j5G-6q-w4z" secondAttribute="top" id="723-eK-3av"/>
+                            <constraint firstItem="nWr-op-BUf" firstAttribute="width" secondItem="VAa-UU-vDk" secondAttribute="width" id="U2o-9R-Ehp"/>
+                            <constraint firstItem="nWr-op-BUf" firstAttribute="height" secondItem="VAa-UU-vDk" secondAttribute="height" multiplier="0.895735" id="qI4-pa-cz4"/>
+                            <constraint firstItem="nWr-op-BUf" firstAttribute="centerX" secondItem="j5G-6q-w4z" secondAttribute="centerX" id="qJ2-7S-rr1"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="4FJ-is-IKi">
                         <barButtonItem key="leftBarButtonItem" image="gearshape" catalog="system" id="AvR-38-9Ex">
@@ -2519,7 +2526,7 @@
         <segue reference="pbU-9p-1Qp"/>
         <segue reference="jcx-uQ-feG"/>
         <segue reference="rXg-Fz-rtS"/>
-        <segue reference="UBD-ub-2Jv"/>
+        <segue reference="mqk-g0-t3s"/>
         <segue reference="EiS-gP-Syp"/>
     </inferredMetricsTieBreakers>
     <resources>
