@@ -41,12 +41,11 @@
 //    ConnectionState *cs = [ConnectionState new];
 //    cs.areFriends = areFriends;
 //    cs.relationshipWeight = weight;
+//    [pc.connections setObject:cs forKey:otherObjectId];
     
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     
     PlayerConnection *playerConnection = [Helpers getPlayerConnectionForUser:me];
-    
-//    [pc.connections setObject:cs forKey:otherObjectId];
 
     if (areFriends) {
         NSMutableArray *tempFriendsList = (NSMutableArray *)playerConnection[@"friendsList"];
