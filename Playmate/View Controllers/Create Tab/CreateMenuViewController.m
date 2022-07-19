@@ -156,16 +156,25 @@
     [Session createSession:me withSport:self.selectedSport withLevel:self.selectedSkillLevel withDate:self.selectedDateTime withDuration:self.selectedDuration withLocation:self.selectedLocation withCapacity:self.selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
         if (error) {
             [Helpers handleAlert:error withTitle:@"Could not create session." withMessage:nil forViewController:self];
+        } else {
+            [ManageUserStatistics updateDictionaryAddSession:[self fetchMostRecentSessionId]
+                                                    forSport:self.selectedSport
+                                                     andUser:me];
         }
     }];
-    
-//    [ManageUserStatistics updateDictionaryAddSession:sessionObjectId
-//                                            forSport:self.selectedSport
-//                                             andUser:me];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
     self.view.window.rootViewController = homeVC;
+}
+
+- (NSString *)fetchMostRecentSessionId {
+    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+    query.limit = 1;
+    [query orderByDescending:@"updatedAt"];
+    
+    Session *session = [[query getFirstObject] fetchIfNeeded];
+    return session.objectId;
 }
 
 - (IBAction)didTapCancel:(id)sender {
