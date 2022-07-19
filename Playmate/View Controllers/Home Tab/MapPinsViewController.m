@@ -31,7 +31,7 @@ BOOL isFirstTimeGettingLoc;
     self.mapView.delegate = self;
     self.mapView.showsUserLocation = YES;
     
-    firstTimeGettingLoc = YES;
+    isFirstTimeGettingLoc = YES;
     
     [CLLocationManager locationServicesEnabled];
     
@@ -59,8 +59,8 @@ BOOL isFirstTimeGettingLoc;
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    if (firstTimeGettingLoc == YES) {
-        firstTimeGettingLoc = NO;
+    if (isFirstTimeGettingLoc == YES) {
+        isFirstTimeGettingLoc = NO;
         
         CLLocation *loc = [locations firstObject];
         

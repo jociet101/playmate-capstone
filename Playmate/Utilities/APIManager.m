@@ -68,11 +68,11 @@ static NSString * geoapify;
     NSArray *addyComponenets = [address componentsSeparatedByString:@" "];
     NSString *craftedLink = @"";
     
-    BOOL firstComp = YES;
+    BOOL isFirstComponenet = YES;
     
     for (NSString *component in addyComponenets) {
-        if (firstComp) {
-            firstComp = NO;
+        if (isFirstComponenet) {
+            isFirstComponenet = NO;
             craftedLink = [craftedLink stringByAppendingString:component];
         }
         else {

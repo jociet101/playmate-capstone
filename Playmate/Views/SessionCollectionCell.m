@@ -28,7 +28,7 @@
 
 @end
 
-BOOL viewingFront;
+BOOL isViewingFront;
 
 @implementation SessionCollectionCell
 
@@ -44,16 +44,16 @@ BOOL viewingFront;
     self.sportBackLabel.text = self.session.sport;
 
     NSString *playersString = @"";
-    BOOL firstPerson = YES;
+    BOOL isFirstPerson = YES;
     
     for (PFUser *player in self.session.playersList) {
         [player fetchIfNeeded];
 
         NSString *playerName = player[@"firstName"][0];
         
-        if (firstPerson) {
+        if (isFirstPerson) {
             playersString = [playersString stringByAppendingString:playerName];
-            firstPerson = NO;
+            isFirstPerson = NO;
         } else {
             playersString = [playersString stringByAppendingString:[@", " stringByAppendingString:playerName]];
         }
@@ -75,7 +75,7 @@ BOOL viewingFront;
 }
 
 - (void)viewFront {
-    viewingFront = YES;
+    isViewingFront = YES;
     
     self.frontImageView.alpha = 1;
     self.sportFrontLabel.alpha = 1;
@@ -93,7 +93,7 @@ BOOL viewingFront;
 }
 
 - (void)viewBack {
-    viewingFront = NO;
+    isViewingFront = NO;
     
     self.frontImageView.alpha = 0;
     self.sportFrontLabel.alpha = 0;
@@ -121,7 +121,7 @@ BOOL viewingFront;
 }
 
 - (void)didDoubleTapCell:(id)sender {
-    if (viewingFront) {
+    if (isViewingFront) {
         [self viewBack];
     } else {
         [self viewFront];
