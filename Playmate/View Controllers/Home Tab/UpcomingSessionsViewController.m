@@ -28,6 +28,7 @@
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+//    self.collectionView
     self.collectionView.emptyDataSetSource = self;
     self.collectionView.emptyDataSetSource = self;
 //    self.collectionView.collectionViewLayout = [SnappingCollectionView new];
@@ -48,7 +49,6 @@
 
 // TODO: figure out how to prefetch!!!!!!!!!
 - (void)collectionView:(UICollectionView *)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
-    
     for (NSIndexPath *indexPath in indexPaths) {
         SessionCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SessionCollectionCell" forIndexPath:indexPath];
         
@@ -76,6 +76,40 @@
 
 - (void)segueToFullSessionDetails:(Session *)session {
     [self performSegueWithIdentifier:@"upcomingToSessionDetails" sender:session];
+}
+
+#pragma mark - Collection view snap to grid
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+//    const CGFloat dragOffset = 157.0;
+//    int itemIndex = round((*targetContentOffset).x / dragOffset);
+//    CGFloat xOffset = itemIndex * dragOffset;
+//    *targetContentOffset = CGPointMake(xOffset, 0.0);
+    
+    CGFloat minimumSnapVelocity = 0.3;
+    
+    CGFloat offsetAdjustment = CGFLOAT_MAX;
+    
+    CGFloat horizontalPosition = (*targetContentOffset).x + (self.collectionView.bounds.size.width * 0.5);
+    
+    CGRect targetRect = CGRectMake((*targetContentOffset).x, 0, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
+    NSArray *layoutAttributesArray = [self.collectionView.collectionViewLayout layoutAttributesForElementsInRect:targetRect];
+    
+    for (UICollectionViewLayoutAttributes *layoutAttributes in layoutAttributesArray) {
+        CGFloat itemHorizontalPosition = layoutAttributes.center.x;
+        
+        if (fabs(itemHorizontalPosition - horizontalPosition) < fabs(offsetAdjustment)) {
+            if (fabs(velocity.x) < minimumSnapVelocity) {
+                offsetAdjustment = itemHorizontalPosition - horizontalPosition;
+            } else if (velocity.x > 0) {
+                offsetAdjustment = itemHorizontalPosition - horizontalPosition + (layoutAttributes.bounds.size.width + 10.0);
+            } else {
+                offsetAdjustment = itemHorizontalPosition - horizontalPosition - (layoutAttributes.bounds.size.width + 10.0);
+            }
+            NSLog(@"o\n\n\n\n\n\n\n\n\n\n\nffset adjustment = %f\n\n\n\n\n\n\n\n\n\n\nf", offsetAdjustment);
+        }
+    }
+    *targetContentOffset = CGPointMake((*targetContentOffset).x + offsetAdjustment, (*targetContentOffset).y);
 }
 
 #pragma mark - Empty collection view protocol methods
