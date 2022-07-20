@@ -44,7 +44,7 @@ BOOL isPartOfSession;
     
     isPartOfSession = NO;
 
-    self.addMyselfButton.layer.cornerRadius = [Constants buttonCornerRadius];
+    [Helpers setCornerRadiusAndColorForButton:self.addMyselfButton andIsSmall:NO];
     
     [self disableAddButton];
     
@@ -57,6 +57,7 @@ BOOL isPartOfSession;
 }
 
 - (void)disableAddButton {
+    self.disabledButton.alpha = 0;
     for (PFUser *user in self.sessionDetails.playersList) {
         [user fetchIfNeeded];
         if ([me.username isEqualToString:user.username]) {
@@ -70,6 +71,7 @@ BOOL isPartOfSession;
         [self.addMyselfButton setEnabled:NO];
         isPartOfSession = NO;
         self.addMyselfButton.alpha = 0;
+        self.disabledButton.alpha = 1;
     }
 }
 

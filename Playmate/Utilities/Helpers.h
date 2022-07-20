@@ -33,6 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSInteger)daysBetweenDate:(NSDate*)fromDateTime
                      andDate:(NSDate*)toDateTime;
 
+// for buttons
++ (void)setCornerRadiusAndColorForButton:(UIButton *)button andIsSmall:(BOOL)isSmall;
+
 @end
 
 NS_ASSUME_NONNULL_END

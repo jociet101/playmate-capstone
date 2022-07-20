@@ -7,6 +7,7 @@
 
 #import "EditProfileViewController.h"
 #import "Constants.h"
+#import "Helpers.h"
 
 @interface EditProfileViewController () <UITextViewDelegate>
 
@@ -26,7 +27,7 @@
     self.lastNameView.delegate = self;
     self.bioView.delegate = self;
     
-    self.saveButton.layer.cornerRadius = [Constants buttonCornerRadius];
+    [Helpers setCornerRadiusAndColorForButton:self.saveButton andIsSmall:NO];
     
     PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     

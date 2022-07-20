@@ -41,7 +41,7 @@
     NSString *name = [Constants concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
     self.titleLabel.text = [@"You requested to be friends with " stringByAppendingString:name];
     
-    self.cancelButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
+    [Helpers setCornerRadiusAndColorForButton:self.cancelButton andIsSmall:YES];
     
     const BOOL hasProfileImage = (user[@"profileImage"] != nil);
     UIImage *img = hasProfileImage ? [UIImage imageWithData:[user[@"profileImage"] getData]] : [Constants profileImagePlaceholder];

@@ -260,16 +260,13 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     if ([sender isMemberOfClass:[SessionCell class]]) {
-        
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         
         Session* data = self.sessionList[indexPath.section];
         SessionDetailsViewController *vc = [segue destinationViewController];
         vc.sessionDetails = data;
-    }
-    if ([sender isMemberOfClass:[UIBarButtonItem class]]) {
+    } else if ([segue.identifier isEqualToString:@"searchToFilters"]) {
         FiltersMenuViewController *vc = [segue destinationViewController];
         vc.delegate = self;
     }

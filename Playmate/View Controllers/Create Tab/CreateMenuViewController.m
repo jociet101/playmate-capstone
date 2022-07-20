@@ -29,6 +29,7 @@
 @property (nonatomic, assign) NSNumber *selectedNumPlayers;
 @property (nonatomic, strong) Location *selectedLocation;
 @property (nonatomic, strong) UIButton * _Nullable selectLocationButton;
+@property (weak, nonatomic) IBOutlet UIButton *createSessionButton;
 
 @end
 
@@ -44,6 +45,8 @@
     self.tableView.backgroundColor = [Constants playmateBlue];
 
     self.tableView.layer.cornerRadius = [Constants buttonCornerRadius];
+    
+    [Helpers setCornerRadiusAndColorForButton:self.createSessionButton andIsSmall:NO];
     
     self.createMenuIdentifiers = [Constants sportsList:NO];
 

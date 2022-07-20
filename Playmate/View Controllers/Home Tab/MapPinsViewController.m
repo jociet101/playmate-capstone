@@ -11,6 +11,8 @@
 #import "Session.h"
 #import "Location.h"
 #import "Helpers.h"
+#import "MapFiltersViewController.h"
+#import "Filters.h"
 
 @interface MapPinsViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
@@ -140,6 +142,10 @@ calloutAccessoryControlTapped:(UIControl *)control {
      if([segue.identifier isEqualToString:@"pinToDetailsSegue"]) {
          SessionDetailsViewController *vc = segue.destinationViewController;
          vc.sessionDetails = self.selectedSession;
+     }
+     else if ([segue.identifier isEqualToString:@"mapPinsToMapFilters"]) {
+         MapFiltersViewController *vc = [segue destinationViewController];
+//         vc.delegate = self;
      }
 }
 

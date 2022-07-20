@@ -9,6 +9,7 @@
 #import "FiltersMenuPickerCell.h"
 #import "LocationPickerCell.h"
 #import "Constants.h"
+#import "Helpers.h"
 #import "SelectMapViewController.h"
 #import "Location.h"
 
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) NSNumber *selectedRadius;
 @property (nonatomic, strong) Location *selectedLocation;
 @property (nonatomic, strong) UIButton * _Nullable selectLocationButton;
+@property (weak, nonatomic) IBOutlet UIButton *applyFiltersButton;
 
 @end
 
@@ -42,6 +44,8 @@
     self.createMenuIdentifiers = [Constants sportsList:NO];
 
     self.selectLocationButton = nil;
+    
+    [Helpers setCornerRadiusAndColorForButton:self.applyFiltersButton andIsSmall:NO];
 }
 
 #pragma mark - Filters Menu Picker Cell and Location Picker Cell protocol methods
