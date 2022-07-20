@@ -106,7 +106,6 @@
             } else {
                 offsetAdjustment = itemHorizontalPosition - horizontalPosition - (layoutAttributes.bounds.size.width + 10.0);
             }
-            NSLog(@"o\n\n\n\n\n\n\n\n\n\n\nffset adjustment = %f\n\n\n\n\n\n\n\n\n\n\nf", offsetAdjustment);
         }
     }
     *targetContentOffset = CGPointMake((*targetContentOffset).x + offsetAdjustment, (*targetContentOffset).y);
