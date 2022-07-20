@@ -46,12 +46,8 @@
     self.genderLabel.text = [@"Identifies as " stringByAppendingString:self.user[@"gender"][0]];
     self.ageLabel.text = [[Constants getAgeInYears:self.user[@"birthday"][0]] stringByAppendingString:@" years old"];
     
-    if ([self.user objectForKey:@"biography"] != nil) {
-        self.bioField.text = self.user[@"biography"][0];
-    }
-    else {
-        self.bioField.text = @"No biography";
-    }
+    const BOOL hasBiography = ([self.user objectForKey:@"biography"] != nil);
+    self.bioField.text = hasBiography ? self.user[@"biography"][0] : @"No biography";
     
     const BOOL hasProfileImage = (self.user[@"profileImage"] != nil);
     UIImage *img = hasProfileImage ? [UIImage imageWithData:[self.user[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
@@ -114,9 +110,9 @@
     self.numberTotalSessionsLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
     self.numberDaysOnPlaymateLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
-    self.firstSportLabel.layer.backgroundColor = [[Constants playmateBlue] CGColor];
-    self.secondSportLabel.layer.backgroundColor = [[Constants playmateBlue] CGColor];
-    self.thirdSportLabel.layer.backgroundColor = [[Constants playmateBlue] CGColor];
+    self.firstSportLabel.backgroundColor = [Constants playmateBlue];
+    self.secondSportLabel.backgroundColor = [Constants playmateBlue];
+    self.thirdSportLabel.backgroundColor = [Constants playmateBlue];
     
     self.numberTotalSessionsLabel.text = [[NSString stringWithFormat:@"%ld", [ManageUserStatistics getNumberTotalSessionsForUser:self.user]] stringByAppendingString:@" Total Sessions"];
     self.numberDaysOnPlaymateLabel.text = [[NSString stringWithFormat:@"%@", [ManageUserStatistics getNumberDaysOnPlaymateForUser:self.user]] stringByAppendingString:@" Days on Playmate"];
