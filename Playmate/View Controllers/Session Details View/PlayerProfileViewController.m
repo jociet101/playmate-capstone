@@ -125,13 +125,13 @@
 - (void)disableFriendButton {
     [self.addFriendButton setTitle:@"You" forState:UIControlStateNormal];
     [self.addFriendButton setEnabled:NO];
-    self.addFriendButton.backgroundColor = [UIColor whiteColor];
+    self.addFriendButton.backgroundColor = [UIColor clearColor];
 }
 
 - (void)setSendRequestToYouAsState {
     [self.addFriendButton setTitle:@"Sent You Request" forState:UIControlStateNormal];
     [self.addFriendButton setEnabled:NO];
-    self.addFriendButton.backgroundColor = [UIColor whiteColor];
+    self.addFriendButton.backgroundColor = [UIColor clearColor];
 }
 
 - (void)setRequestPendingAsState {

@@ -20,18 +20,9 @@
 
 @implementation SessionCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 - (void)setSession:(Session *)session {
+    self.backgroundColor = [Constants playmateBlue];
+    
     _session = session;
     
     NSString *playersString = @"";

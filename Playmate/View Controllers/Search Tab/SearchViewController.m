@@ -126,7 +126,7 @@
     SessionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SessionCell"];
         
     cell.session = self.sessionList[indexPath.section];
-            
+    
     return cell;
 }
 

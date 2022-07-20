@@ -702,7 +702,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4b-qd-KEq">
-                                <rect key="frame" x="16" y="62" width="358" height="57"/>
+                                <rect key="frame" x="14" y="62" width="311.66666666666669" height="57"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Good Afternoon, Jocelyn!">
                                         <attributes>
@@ -714,19 +714,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgK-kd-KsI">
-                                <rect key="frame" x="11.666666666666657" y="300" width="367" height="429"/>
+                                <rect key="frame" x="10" y="300" width="319.66666666666669" height="429"/>
                                 <connections>
                                     <segue destination="UNh-fG-uFl" kind="embed" id="tNC-tR-57E"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7CG-mB-JzI">
-                                <rect key="frame" x="11.666666666666657" y="300" width="367" height="429"/>
+                                <rect key="frame" x="10" y="300" width="319.66666666666669" height="429"/>
                                 <connections>
                                     <segue destination="AKn-B5-Xno" kind="embed" identifier="homeToUpcomingSessions" id="9rq-T1-Ppy"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNk-vt-fc8">
-                                <rect key="frame" x="267" y="127" width="97" height="96"/>
+                                <rect key="frame" x="242.66666666666663" y="127" width="71" height="96"/>
                                 <color key="tintColor" systemColor="systemCyanColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="">
@@ -737,7 +737,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7U-JU-Jv3">
-                                <rect key="frame" x="26" y="127" width="97" height="96"/>
+                                <rect key="frame" x="25.999999999999993" y="127" width="84.333333333333314" height="96"/>
                                 <color key="tintColor" systemColor="systemCyanColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="">
@@ -748,7 +748,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JN6-Oj-xVw">
-                                <rect key="frame" x="151" y="127" width="92" height="96"/>
+                                <rect key="frame" x="138.33333333333334" y="127" width="80.333333333333343" height="96"/>
                                 <color key="tintColor" systemColor="systemCyanColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="">
@@ -759,7 +759,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="l8U-Tc-ERR">
-                                <rect key="frame" x="109.66666666666669" y="249" width="171" height="32"/>
+                                <rect key="frame" x="84.333333333333314" y="249" width="171" height="32"/>
                                 <segments>
                                     <segment title="Upcoming"/>
                                     <segment title="Suggested"/>
@@ -975,7 +975,7 @@
             <objects>
                 <viewController id="FoH-rZ-204" customClass="SessionDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xae-LI-F9P">
-                        <rect key="frame" x="0.0" y="0.0" width="367" height="429"/>
+                        <rect key="frame" x="0.0" y="0.0" width="319.66666666666669" height="429"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ihn-hH-IMg">
@@ -2727,7 +2727,7 @@
             <objects>
                 <viewController id="UNh-fG-uFl" customClass="SuggestedSessionsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JXi-XB-MMk">
-                        <rect key="frame" x="0.0" y="0.0" width="367" height="429"/>
+                        <rect key="frame" x="0.0" y="0.0" width="319.66666666666669" height="429"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eNv-vr-dy6">
@@ -2756,11 +2756,11 @@
             <objects>
                 <viewController id="AKn-B5-Xno" customClass="UpcomingSessionsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D6d-lW-P56">
-                        <rect key="frame" x="0.0" y="0.0" width="367" height="429"/>
+                        <rect key="frame" x="0.0" y="0.0" width="319.66666666666669" height="429"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SqT-US-3FX">
-                                <rect key="frame" x="0.0" y="0.0" width="367" height="429"/>
+                                <rect key="frame" x="0.0" y="0.0" width="319.66666666666669" height="429"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5bn-Ho-Qbd">
                                     <size key="itemSize" width="314" height="426"/>
@@ -2930,7 +2930,7 @@
                                                 <constraint firstItem="F6c-xy-bHi" firstAttribute="width" secondItem="IHg-CR-hHl" secondAttribute="width" multiplier="0.897019" id="yf8-ue-WLZ"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                                         <gestureRecognizers/>
                                         <size key="customSize" width="314" height="426"/>
                                         <connections>
@@ -2970,7 +2970,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="rqC-KX-Pok"/>
-        <segue reference="jcx-uQ-feG"/>
+        <segue reference="Nu6-4T-TEp"/>
         <segue reference="rXg-Fz-rtS"/>
         <segue reference="6tu-y4-peZ"/>
         <segue reference="EiS-gP-Syp"/>

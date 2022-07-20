@@ -11,6 +11,7 @@
 #import "SessionCollectionCell.h"
 #import "Constants.h"
 #import "HomeViewController.h"
+#import "SnappingCollectionView.h"
 
 @interface UpcomingSessionsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, /*UICollectionViewDataSourcePrefetching,*/ HomeViewControllerDelegate, SessionCollectionCellDelegate>
 
@@ -26,6 +27,7 @@
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+//    self.collectionView.collectionViewLayout = [SnappingCollectionView new];
     // TODO: for prefetching
 //    self.collectionView.prefetchDataSource = self;
 
@@ -69,17 +71,6 @@
 
 - (void)segueToFullSessionDetails:(Session *)session {
     [self performSegueWithIdentifier:@"upcomingToSessionDetails" sender:session];
-}
-
-#pragma mark - Have collection view cards snap to grid
-
-- (CGPoint)collectionView:(UICollectionView *)collectionView targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset {
-    
-    const CGFloat dragOffset = 157.0;
-    int itemIndex = round(proposedContentOffset.x / dragOffset);
-    CGFloat xOffset = itemIndex * dragOffset;
-    return CGPointMake(xOffset, 0.0);
-//    CGRect targetRect = CGRectMake(0, proposedContentOffset.y, <#CGFloat width#>, <#CGFloat height#>)
 }
 
 #pragma mark - Navigation

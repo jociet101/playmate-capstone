@@ -41,6 +41,7 @@
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 60;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor = [Constants playmateBlue];
 
     self.tableView.layer.cornerRadius = [Constants buttonCornerRadius];
     
@@ -83,6 +84,7 @@
     
     if (indexPath.row == 5) {
         LocationPickerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LocationPickerCell"];
+        cell.backgroundColor = [UIColor clearColor];
         return cell;
     }
     
