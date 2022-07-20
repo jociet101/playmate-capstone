@@ -139,6 +139,7 @@ calloutAccessoryControlTapped:(UIControl *)control {
 #pragma mark - Map filters delegate method
 
 - (void)didApplyFilters:(MapFilters *)filter {
+    NSLog(@"%@\n%@\n%@\n%@", filter.sport, filter.skillLevel, filter.radius, filter.sessionType);
 }
 
 #pragma mark - Navigation

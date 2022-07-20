@@ -181,7 +181,7 @@
         return [Constants sportsList:needAll];
     } else if (row == 1) {
         return [Constants skillLevelsList:needAll];
-    } else if (row == 2) {
+    } else if (row == 4) {
         return [Constants sessionTypeList];
     }
     return nil;

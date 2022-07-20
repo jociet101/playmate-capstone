@@ -619,6 +619,9 @@
                                                             </fragment>
                                                         </attributedString>
                                                     </buttonConfiguration>
+                                                    <connections>
+                                                        <segue destination="9tI-s5-YSO" kind="show" identifier="toSelectLocation" id="Enr-e1-tYc"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -633,12 +636,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="playmate_logo_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="Ik4-lA-nOB">
-                                <rect key="frame" x="127" y="88" width="137" height="125"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PJR-ke-EAR">
-                                <rect key="frame" x="124" y="613" width="142" height="46"/>
+                                <rect key="frame" x="124" y="637" width="142" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
@@ -652,6 +651,10 @@
                                     <action selector="didTapApply:" destination="Atu-dz-a3n" eventType="touchUpInside" id="uOU-80-qi8"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="playmate_logo_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="Ik4-lA-nOB">
+                                <rect key="frame" x="127" y="98" width="137" height="125"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yXK-zO-sVH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3113,7 +3116,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="pbU-9p-1Qp"/>
-        <segue reference="Nu6-4T-TEp"/>
+        <segue reference="Enr-e1-tYc"/>
         <segue reference="pJ2-Zv-0xr"/>
         <segue reference="UBD-ub-2Jv"/>
         <segue reference="EiS-gP-Syp"/>
