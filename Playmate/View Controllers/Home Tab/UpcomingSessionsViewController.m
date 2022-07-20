@@ -11,7 +11,6 @@
 #import "SessionCollectionCell.h"
 #import "Constants.h"
 #import "HomeViewController.h"
-#import "SnappingCollectionView.h"
 #import "UIScrollView+EmptyDataSet.h"
 
 @interface UpcomingSessionsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching, HomeViewControllerDelegate, SessionCollectionCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
@@ -31,7 +30,6 @@
     self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
     self.collectionView.emptyDataSetSource = self;
     self.collectionView.emptyDataSetSource = self;
-//    self.collectionView.collectionViewLayout = [SnappingCollectionView new];
     // TODO: for prefetching
     self.collectionView.prefetchDataSource = self;
     self.collectionView.prefetchingEnabled = YES;
