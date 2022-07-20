@@ -28,7 +28,7 @@
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-//    self.collectionView
+    self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
     self.collectionView.emptyDataSetSource = self;
     self.collectionView.emptyDataSetSource = self;
 //    self.collectionView.collectionViewLayout = [SnappingCollectionView new];
@@ -86,7 +86,7 @@
 //    CGFloat xOffset = itemIndex * dragOffset;
 //    *targetContentOffset = CGPointMake(xOffset, 0.0);
     
-    CGFloat minimumSnapVelocity = 0.3;
+    CGFloat minimumSnapVelocity = 1.5;
     
     CGFloat offsetAdjustment = CGFLOAT_MAX;
     
