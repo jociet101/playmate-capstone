@@ -44,8 +44,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
-    PFUser *user = [PFUser currentUser];
+    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     self.nameLabel.text = [Constants concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
     self.usernameLabel.text = [@"@" stringByAppendingString:user[@"username"]];
     self.usernameLabel.textColor = [UIColor lightGrayColor];
@@ -53,8 +54,8 @@
     self.ageLabel.text = [[Constants getAgeInYears:user[@"birthday"][0]] stringByAppendingString:@" years old"];
     
     const BOOL hasBiography = ([user objectForKey:@"biography"] != nil);
-    self.bioField.text = hasBiography ? user[@"biography"][0] : @"No biography";
-    
+    self.bioField.text = hasBiography ? [user objectForKey:@"biography"][0] : @"No biography";
+        
     if (user[@"profileImage"] != nil) {
         // set image stuff
         UIImage* img = [UIImage imageWithData:[user[@"profileImage"] getData]];
