@@ -6,10 +6,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MapFilters.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol MapFiltersViewControllerDelegate
+
+- (void)didApplyFilters:(MapFilters *)filter;
+
+@end
+
 @interface MapFiltersViewController : UIViewController
+
+@property (nonatomic, strong) id<MapFiltersViewControllerDelegate> delegate;
 
 @end
 

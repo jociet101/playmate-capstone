@@ -32,6 +32,7 @@
 		3C69D049288728BD00851E6F /* SelectMapHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C69D048288728BD00851E6F /* SelectMapHelpViewController.m */; };
 		3C69D04C28874EAB00851E6F /* ManageUserStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C69D04B28874EAB00851E6F /* ManageUserStatistics.m */; };
 		3C69D05228888A2900851E6F /* MapFiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C69D05128888A2900851E6F /* MapFiltersViewController.m */; };
+		3C69D0552888A23800851E6F /* MapFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C69D0542888A23800851E6F /* MapFilters.m */; };
 		3C8E538F287F2D200087498B /* FriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E538E287F2D200087498B /* FriendsListViewController.m */; };
 		3C8E5392287F362B0087498B /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E5391287F362B0087498B /* FriendCell.m */; };
 		3C8E5395287F683D0087498B /* FriendRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E5394287F683D0087498B /* FriendRequestsViewController.m */; };
@@ -133,6 +134,8 @@
 		3C69D04B28874EAB00851E6F /* ManageUserStatistics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManageUserStatistics.m; sourceTree = "<group>"; };
 		3C69D05028888A2900851E6F /* MapFiltersViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapFiltersViewController.h; sourceTree = "<group>"; };
 		3C69D05128888A2900851E6F /* MapFiltersViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapFiltersViewController.m; sourceTree = "<group>"; };
+		3C69D0532888A23800851E6F /* MapFilters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapFilters.h; sourceTree = "<group>"; };
+		3C69D0542888A23800851E6F /* MapFilters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapFilters.m; sourceTree = "<group>"; };
 		3C8E538D287F2D200087498B /* FriendsListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsListViewController.h; sourceTree = "<group>"; };
 		3C8E538E287F2D200087498B /* FriendsListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsListViewController.m; sourceTree = "<group>"; };
 		3C8E5390287F362B0087498B /* FriendCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
@@ -361,6 +364,8 @@
 				3CF4A5B7287CD963000C5E7D /* PlayerConnection.m */,
 				3CA1A197287DF02E00BBDB69 /* ConnectionState.h */,
 				3CA1A198287DF02E00BBDB69 /* ConnectionState.m */,
+				3C69D0532888A23800851E6F /* MapFilters.h */,
+				3C69D0542888A23800851E6F /* MapFilters.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -735,6 +740,7 @@
 				3C69D049288728BD00851E6F /* SelectMapHelpViewController.m in Sources */,
 				3C45B5682871856500EE578F /* CreateViewController.m in Sources */,
 				3CF652BA286D036700BD5EDB /* main.m in Sources */,
+				3C69D0552888A23800851E6F /* MapFilters.m in Sources */,
 				3CF4A58A2878AA1A000C5E7D /* EditProfileViewController.m in Sources */,
 				3CF4A5AB287C962D000C5E7D /* PlayerProfileCollectionCell.m in Sources */,
 				3CF4A59F287A991E000C5E7D /* LocationPickerCell.m in Sources */,

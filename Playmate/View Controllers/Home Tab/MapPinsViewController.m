@@ -14,7 +14,7 @@
 #import "MapFiltersViewController.h"
 #import "Filters.h"
 
-@interface MapPinsViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
+@interface MapPinsViewController () <CLLocationManagerDelegate, MKMapViewDelegate, MapFiltersViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) Session *selectedSession;
@@ -136,6 +136,11 @@ calloutAccessoryControlTapped:(UIControl *)control {
     [self performSegueWithIdentifier:@"pinToDetailsSegue" sender:nil];
 }
 
+#pragma mark - Map filters delegate method
+
+- (void)didApplyFilters:(MapFilters *)filter {
+}
+
 #pragma mark - Navigation
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -145,7 +150,7 @@ calloutAccessoryControlTapped:(UIControl *)control {
      }
      else if ([segue.identifier isEqualToString:@"mapPinsToMapFilters"]) {
          MapFiltersViewController *vc = [segue destinationViewController];
-//         vc.delegate = self;
+         vc.delegate = self;
      }
 }
 
