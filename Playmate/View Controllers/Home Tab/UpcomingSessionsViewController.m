@@ -12,8 +12,9 @@
 #import "Constants.h"
 #import "HomeViewController.h"
 #import "SnappingCollectionView.h"
+#import "UIScrollView+EmptyDataSet.h"
 
-@interface UpcomingSessionsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, /*UICollectionViewDataSourcePrefetching,*/ HomeViewControllerDelegate, SessionCollectionCellDelegate>
+@interface UpcomingSessionsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, /*UICollectionViewDataSourcePrefetching,*/ HomeViewControllerDelegate, SessionCollectionCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *sessionList;
@@ -27,6 +28,8 @@
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    self.collectionView.emptyDataSetSource = self;
+    self.collectionView.emptyDataSetSource = self;
 //    self.collectionView.collectionViewLayout = [SnappingCollectionView new];
     // TODO: for prefetching
 //    self.collectionView.prefetchDataSource = self;
@@ -71,6 +74,17 @@
 
 - (void)segueToFullSessionDetails:(Session *)session {
     [self performSegueWithIdentifier:@"upcomingToSessionDetails" sender:session];
+}
+
+#pragma mark - Empty collection view protocol methods
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage animatedImageWithImages:[Constants rollingPlaymateLogoGif] duration:0.5f];
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text = [Constants emptyCollectionLoadingSessionsTitle];
+    return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
 #pragma mark - Navigation

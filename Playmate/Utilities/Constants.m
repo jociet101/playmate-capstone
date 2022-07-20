@@ -336,7 +336,7 @@
 // playmate logo placeholder profile image
 
 + (UIImage *)profileImagePlaceholder {
-    return [UIImage imageNamed:@"playmate_logo_transparent"];
+    return [UIImage imageNamed:@"playmate_logo_fit"];
 }
 
 // for empty table view
@@ -367,6 +367,10 @@
 
 + (NSString *)emptyOutgoingRequestsPlaceholderTitle {
     return @"No Outgoing Friend Requests";
+}
+
++ (NSString *)emptyCollectionLoadingSessionsTitle {
+    return @"Loading Sessions ...";
 }
 
 + (NSDictionary *)descriptionAttributes {
@@ -413,7 +417,7 @@
     return sportToImageName[sport];
 }
 
-// for select location help view
+// for uiimage gifs
 + (NSArray *)addressGifImages {
     NSMutableArray *addressGifImages = [[NSMutableArray alloc] initWithCapacity:155];
     for (int i = 0; i < 155; i++) {
@@ -428,6 +432,14 @@
         [manualGifImages addObject:[UIImage imageNamed:[NSString stringWithFormat:@"frame_%d", i]]];
     }
     return [NSArray arrayWithArray:manualGifImages];
+}
+
++ (NSArray *)rollingPlaymateLogoGif {
+    NSMutableArray *rollingGifImages = [[NSMutableArray alloc] initWithCapacity:16];
+    for (int i = 0; i < 16; i++) {
+        [rollingGifImages addObject:[UIImage imageNamed:[NSString stringWithFormat:@"playmate_logo_fit_%d", i]]];
+    }
+    return [NSArray arrayWithArray:rollingGifImages];
 }
 
 @end
