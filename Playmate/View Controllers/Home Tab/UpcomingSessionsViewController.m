@@ -14,7 +14,7 @@
 #import "SnappingCollectionView.h"
 #import "UIScrollView+EmptyDataSet.h"
 
-@interface UpcomingSessionsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, /*UICollectionViewDataSourcePrefetching,*/ HomeViewControllerDelegate, SessionCollectionCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface UpcomingSessionsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching, HomeViewControllerDelegate, SessionCollectionCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *sessionList;
@@ -32,12 +32,14 @@
     self.collectionView.emptyDataSetSource = self;
 //    self.collectionView.collectionViewLayout = [SnappingCollectionView new];
     // TODO: for prefetching
-//    self.collectionView.prefetchDataSource = self;
+    self.collectionView.prefetchDataSource = self;
+    self.collectionView.prefetchingEnabled = YES;
 
     self.sessionList = [[NSArray alloc] init];
 }
 
 - (void)loadSessionList:(NSArray *)sessionList {
+    NSLog(@"load session list");
     self.sessionList = sessionList;
     [self.collectionView reloadData];
 }
@@ -45,15 +47,15 @@
 #pragma mark - Collection view protocol methods
 
 // TODO: figure out how to prefetch!!!!!!!!!
-//- (void)collectionView:(UICollectionView *)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
-//    for (NSIndexPath *indexPath in indexPaths) {
-//        Session *session = self.sessionList[indexPath.row];
-//
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//
-//        })
-//    }
-//}
+- (void)collectionView:(UICollectionView *)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
+    
+    for (NSIndexPath *indexPath in indexPaths) {
+        SessionCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SessionCollectionCell" forIndexPath:indexPath];
+        
+        cell.session = self.sessionList[indexPath.row];
+        cell.delegate = self;
+    }
+}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.sessionList.count;
