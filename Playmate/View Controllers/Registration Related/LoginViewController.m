@@ -25,7 +25,7 @@
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
     
-    self.proceedButton.layer.cornerRadius = [Constants buttonCornerRadius];
+    [Helpers setCornerRadiusAndColorForButton:self.proceedButton andIsSmall:NO];
 }
 
 #pragma mark - Text fields

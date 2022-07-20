@@ -68,7 +68,7 @@
 }
 
 -(void)manageFriendButtonUI {
-    self.addFriendButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
+    [Helpers setCornerRadiusAndColorForButton:self.addFriendButton andIsSmall:YES];
     
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     

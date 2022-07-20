@@ -7,6 +7,7 @@
 
 #import "WelcomeViewController.h"
 #import "Constants.h"
+#import "Helpers.h"
 
 @interface WelcomeViewController ()
 
@@ -21,8 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.createAccountButton.layer.cornerRadius = [Constants buttonCornerRadius];
+    [Helpers setCornerRadiusAndColorForButton:self.createAccountButton andIsSmall:NO];
 }
 
 #pragma mark - Button Actions
