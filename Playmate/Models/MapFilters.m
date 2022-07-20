@@ -9,4 +9,9 @@
 
 @implementation MapFilters
 
+@dynamic sport;
+@dynamic radius;
+@dynamic skillLevel;
+@dynamic location;
+
 @end

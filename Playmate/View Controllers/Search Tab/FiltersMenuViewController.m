@@ -16,7 +16,6 @@
 @interface FiltersMenuViewController () <UITableViewDelegate, UITableViewDataSource, FiltersMenuPickerCellDelegate, SelectMapViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray *createMenuIdentifiers;
 
 // selected session details
 @property (nonatomic, strong) NSString *selectedSport;
@@ -38,10 +37,7 @@
     self.tableView.rowHeight = 60;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [Constants playmateBlue];
-
     self.tableView.layer.cornerRadius = [Constants buttonCornerRadius];
-    
-    self.createMenuIdentifiers = [Constants sportsList:NO];
 
     self.selectLocationButton = nil;
     
@@ -106,7 +102,7 @@
     filters.sport = self.selectedSport;
     filters.skillLevel = self.selectedSkillLevel;
     filters.radius = self.selectedRadius;
-        
+    
     if ([filters.sport isEqualToString:@"All"]) {
         filters.sport = nil;
     }
@@ -126,7 +122,6 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-        
     if ([segue.identifier isEqualToString:@"toSelectLocation"]) {
         SelectMapViewController *vc = segue.destinationViewController;
         vc.delegate = self;

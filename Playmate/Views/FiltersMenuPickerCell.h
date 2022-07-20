@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setSport:(NSString *)sport;
 - (void)setSkillLevel:(NSString *)level;
 - (void)setRadius:(NSNumber *)radius;
+@optional
+- (void)setSessionType:(NSString *)type;
 
 @end
 
@@ -21,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UITextField *pickerField;
 @property (nonatomic, strong) NSNumber *rowNumber;
+@property (nonatomic, assign) BOOL isForMapFilters;
 
 - (void)setRowNumber:(NSNumber *)rowNumber;
 

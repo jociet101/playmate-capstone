@@ -139,6 +139,7 @@
     [titles addObject:@"Skill Level"];
     [titles addObject:@"Location"];
     [titles addObject:@"Radius (in miles)"];
+    [titles addObject:@"Session Scope"];
     
     return titles[row];
 }
@@ -180,6 +181,8 @@
         return [Constants sportsList:needAll];
     } else if (row == 1) {
         return [Constants skillLevelsList:needAll];
+    } else if (row == 2) {
+        return [Constants sessionTypeList];
     }
     return nil;
 }
@@ -309,6 +312,15 @@
     [skillLevels addObject:@"Competitive"];
     
     return [NSArray arrayWithArray:skillLevels];
+}
+
++ (NSArray *)sessionTypeList {
+    NSMutableArray *sessionTypes = [[NSMutableArray alloc] init];
+    [sessionTypes addObject:@"All"];
+    [sessionTypes addObject:@"Friends"];
+    [sessionTypes addObject:@"Own"];
+    
+    return [NSArray arrayWithArray:sessionTypes];
 }
 
 + (int)defaultNumPlayers {

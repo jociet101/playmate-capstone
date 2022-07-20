@@ -62,6 +62,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSArray *)sportsListLarge:(BOOL)needAll;
 + (NSArray *)sportsList:(BOOL)needAll;
 + (NSArray *)skillLevelsList:(BOOL)needAll;
++ (NSArray *)sessionTypeList;
+
 + (int)defaultNumPlayers;
 + (int)defaultSkillPickerIndex;
 
