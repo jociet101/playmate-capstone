@@ -30,15 +30,15 @@
     self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
     self.collectionView.emptyDataSetSource = self;
     self.collectionView.emptyDataSetSource = self;
+    
     // TODO: for prefetching
     self.collectionView.prefetchDataSource = self;
     self.collectionView.prefetchingEnabled = YES;
-
+    
     self.sessionList = [[NSArray alloc] init];
 }
 
 - (void)loadSessionList:(NSArray *)sessionList {
-    NSLog(@"load session list");
     self.sessionList = sessionList;
     [self.collectionView reloadData];
 }
@@ -79,15 +79,8 @@
 #pragma mark - Collection view snap to grid
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-//    const CGFloat dragOffset = 157.0;
-//    int itemIndex = round((*targetContentOffset).x / dragOffset);
-//    CGFloat xOffset = itemIndex * dragOffset;
-//    *targetContentOffset = CGPointMake(xOffset, 0.0);
-    
     CGFloat minimumSnapVelocity = 1.5;
-    
     CGFloat offsetAdjustment = CGFLOAT_MAX;
-    
     CGFloat horizontalPosition = (*targetContentOffset).x + (self.collectionView.bounds.size.width * 0.5);
     
     CGRect targetRect = CGRectMake((*targetContentOffset).x, 0, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
