@@ -11,6 +11,7 @@
 #import "SessionCollectionCell.h"
 #import "Constants.h"
 #import "HomeViewController.h"
+#import "SnappingCollectionView.h"
 
 @interface UpcomingSessionsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, /*UICollectionViewDataSourcePrefetching,*/ HomeViewControllerDelegate, SessionCollectionCellDelegate>
 
@@ -26,6 +27,7 @@
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+//    self.collectionView.collectionViewLayout = [SnappingCollectionView new];
     // TODO: for prefetching
 //    self.collectionView.prefetchDataSource = self;
 

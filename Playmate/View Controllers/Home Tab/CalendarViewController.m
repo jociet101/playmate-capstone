@@ -11,8 +11,9 @@
 #import "SessionCell.h"
 #import "Session.h"
 #import "SessionDetailsViewController.h"
+#import "UIScrollView+EmptyDataSet.h"
 
-@interface CalendarViewController () <FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource>
+@interface CalendarViewController () <FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet FSCalendar *calendarView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -28,8 +29,9 @@
     [self setupEventTable];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [self fetchData:[NSDate now]];
+- (void)viewWillAppear:(BOOL)animated {
+    NSDate *dateToday = [Constants dateWithHour:0 minute:0 second:0 fromDate:[NSDate now]];
+    [self fetchData:dateToday];
 }
 
 #pragma mark - Event Table view methods and fetch data
@@ -37,6 +39,7 @@
 - (void)fetchData:(NSDate *)selectedDate {
     NSArray *filteredSessions = [self filterSessions:self.rawSessionList forDate:selectedDate];
     self.sessionList = (NSMutableArray *)filteredSessions;
+    NSLog(@"self session list %@", self.sessionList);
     [self.tableView reloadData];
 }
 
@@ -71,8 +74,11 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    [self fetchData:[NSDate now]];
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
 }
+
+#pragma mark - Table view protocol methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -111,6 +117,17 @@
     return [[UIView alloc] initWithFrame:CGRectZero];
 }
 
+#pragma mark - Empty table view protocol methods
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"logo_small"];
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text = [Constants emptyTablePlaceholderTitle];
+    return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
+}
+
 #pragma mark - Calendar view methods
 
 - (void)setupCalendar {
@@ -141,7 +158,7 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-     if ([sender isMemberOfClass:[SessionCell class]]) {
+     if ([segue.identifier isEqualToString:@"calendarToSessionDetails"]) {
          NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
          Session* data = self.sessionList[indexPath.section];
          SessionDetailsViewController *vc = [segue destinationViewController];

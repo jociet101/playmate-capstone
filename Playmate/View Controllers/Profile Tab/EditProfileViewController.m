@@ -34,6 +34,9 @@
     self.lastNameView.text = user[@"lastName"][0];
     self.bioView.text = user[@"biography"][0];
     
+    self.firstNameView.layer.cornerRadius = [Constants buttonCornerRadius];
+    self.lastNameView.layer.cornerRadius = [Constants buttonCornerRadius];
+    self.bioView.layer.cornerRadius = [Constants buttonCornerRadius];
 }
 
 - (IBAction)editFirstName:(id)sender {

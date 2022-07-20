@@ -41,6 +41,10 @@ BOOL firstTime;
     
     firstTime = YES;
     
+    [self initLocationManager];
+}
+
+- (void)initLocationManager {
     [CLLocationManager locationServicesEnabled];
     
     //Create location manager
@@ -75,6 +79,12 @@ BOOL firstTime;
             [Helpers handleAlert:error withTitle:@"Error." withMessage:nil forViewController:self];
         }
     }];
+}
+
+#pragma mark - Help button
+
+- (IBAction)didTapHelp:(id)sender {
+    [self performSegueWithIdentifier:@"selectLocationToHelp" sender:nil];
 }
 
 #pragma mark - Search bar and geocode

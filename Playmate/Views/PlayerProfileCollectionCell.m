@@ -21,6 +21,9 @@
 @implementation PlayerProfileCollectionCell
 
 - (void)setUserProfile:(PFUser *)user {
+    self.backgroundColor = [Constants playmateBlue];
+    
+    _userProfile = user;
     
     self.layer.cornerRadius = [Constants buttonCornerRadius];
     

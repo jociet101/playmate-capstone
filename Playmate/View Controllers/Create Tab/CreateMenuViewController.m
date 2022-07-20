@@ -13,6 +13,7 @@
 #import "Location.h"
 #import "Session.h"
 #import "SelectMapViewController.h"
+#import "ManageUserStatistics.h"
 
 @interface CreateMenuViewController () <UITableViewDelegate, UITableViewDataSource, MenuPickerCellDelegate, SelectMapViewControllerDelegate>
 
@@ -40,6 +41,7 @@
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 60;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor = [Constants playmateBlue];
 
     self.tableView.layer.cornerRadius = [Constants buttonCornerRadius];
     
@@ -82,6 +84,7 @@
     
     if (indexPath.row == 5) {
         LocationPickerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LocationPickerCell"];
+        cell.backgroundColor = [UIColor clearColor];
         return cell;
     }
     
@@ -149,13 +152,17 @@
         return;
     }
     
-    [Session createSession:[PFUser currentUser] withSport:self.selectedSport withLevel:self.selectedSkillLevel withDate:self.selectedDateTime withDuration:self.selectedDuration withLocation:self.selectedLocation withCapacity:self.selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
-            if (error) {
-                NSLog(@"Error creating session: %@", error.localizedDescription);
-            }
-            else {
-                NSLog(@"Successfully created the session");
-            }
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
+    
+    // create SportsSession parse object and save
+    [Session createSession:me withSport:self.selectedSport withLevel:self.selectedSkillLevel withDate:self.selectedDateTime withDuration:self.selectedDuration withLocation:self.selectedLocation withCapacity:self.selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
+        if (error) {
+            [Helpers handleAlert:error withTitle:@"Could not create session." withMessage:nil forViewController:self];
+        } else {
+            [ManageUserStatistics updateDictionaryAddSession:[self fetchMostRecentSessionId]
+                                                    forSport:self.selectedSport
+                                                     andUser:me];
+        }
     }];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -163,8 +170,15 @@
     self.view.window.rootViewController = homeVC;
 }
 
-- (IBAction)didTapCancel:(id)sender {
+- (NSString *)fetchMostRecentSessionId {
+    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+    [query orderByDescending:@"updatedAt"];
     
+    Session *session = [[query getFirstObject] fetchIfNeeded];
+    return session.objectId;
+}
+
+- (IBAction)didTapCancel:(id)sender {
     if (self.selectLocationButton != nil) {
         self.selectedLocation = nil;
         [self.selectLocationButton setTitle:@"Select Location" forState:UIControlStateNormal];
@@ -174,7 +188,6 @@
     for (MenuPickerCell *cell in self.tableCells) {
         cell.pickerField.text = @"";
     }
-    
 }
 
 #pragma mark - Navigation

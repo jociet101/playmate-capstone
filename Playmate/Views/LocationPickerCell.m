@@ -6,7 +6,7 @@
 //
 
 #import "LocationPickerCell.h"
-#import "SelectMapViewController.h"
+#import "Constants.h"
 
 @interface LocationPickerCell ()
 
@@ -15,16 +15,5 @@
 @end
 
 @implementation LocationPickerCell
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 @end

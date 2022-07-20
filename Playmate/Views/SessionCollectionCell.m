@@ -38,6 +38,8 @@ BOOL isViewingFront;
     self.layer.cornerRadius = [Constants buttonCornerRadius];
     self.viewFullSessionDetailsButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
+    self.backgroundColor = [Constants playmateBlue];
+    
     _session = session;
     
     self.sportFrontLabel.text = self.session.sport;

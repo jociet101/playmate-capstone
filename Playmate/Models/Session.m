@@ -42,7 +42,7 @@
     newSession.capacity = cap;
     newSession.occupied = @(1);
     
-    [newSession saveInBackgroundWithBlock: completion];
+    [newSession saveInBackgroundWithBlock:completion];
 }
 
 @end

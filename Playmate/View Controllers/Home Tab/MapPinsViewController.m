@@ -23,7 +23,7 @@
 @implementation MapPinsViewController
 
 CLLocationManager *pinLocationManager;
-BOOL isFirstTimeGettingLoc;
+BOOL isFirstTimeGettingLocation;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,7 +31,7 @@ BOOL isFirstTimeGettingLoc;
     self.mapView.delegate = self;
     self.mapView.showsUserLocation = YES;
     
-    isFirstTimeGettingLoc = YES;
+    isFirstTimeGettingLocation = YES;
     
     [CLLocationManager locationServicesEnabled];
     
@@ -59,8 +59,8 @@ BOOL isFirstTimeGettingLoc;
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    if (isFirstTimeGettingLoc == YES) {
-        isFirstTimeGettingLoc = NO;
+    if (isFirstTimeGettingLocation == YES) {
+        isFirstTimeGettingLocation = NO;
         
         CLLocation *loc = [locations firstObject];
         
