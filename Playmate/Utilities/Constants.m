@@ -437,7 +437,8 @@
 + (NSArray *)rollingPlaymateLogoGif {
     NSMutableArray *rollingGifImages = [[NSMutableArray alloc] initWithCapacity:16];
     for (int i = 0; i < 16; i++) {
-        [rollingGifImages addObject:[UIImage imageNamed:[NSString stringWithFormat:@"playmate_logo_fit_%d", i]]];
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"playmate_logo_fit_%d", i]];
+        [rollingGifImages addObject:[Helpers resizeImage:image withDimension:60]];
     }
     return [NSArray arrayWithArray:rollingGifImages];
 }

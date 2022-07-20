@@ -79,7 +79,7 @@
 #pragma mark - Empty collection view protocol methods
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    return [UIImage animatedImageWithImages:[Constants rollingPlaymateLogoGif] duration:0.5f];
+    return [UIImage animatedImageWithImages:[Constants rollingPlaymateLogoGif] duration:1.8f];
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
