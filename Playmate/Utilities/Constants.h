@@ -79,6 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 // for empty table views and collection views
 + (NSString *)emptyTablePlaceholderMsg;
 + (NSString *)emptyTablePlaceholderTitle;
++ (NSString *)emptyPlayerProfilesPlaceholderTitle;
 + (NSString *)emptySearchPlaceholderMsg;
 + (NSString *)emptyListPlaceholderMsg;
 + (NSString *)emptyListPlaceholderTitle;

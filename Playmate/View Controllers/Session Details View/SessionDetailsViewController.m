@@ -14,8 +14,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Helpers.h"
 #import "ManageUserStatistics.h"
+#import "UIScrollView+EmptyDataSet.h"
 
-@interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *sportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
@@ -53,6 +54,10 @@ BOOL isPartOfSession;
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    self.collectionView.emptyDataSetSource = self;
+    self.collectionView.emptyDataSetDelegate = self;
+    
+    self.collectionView.layer.cornerRadius = [Constants buttonCornerRadius];
     
     [self.collectionView reloadData];
 }
@@ -287,6 +292,21 @@ BOOL isPartOfSession;
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
+}
+
+#pragma mark - Empty collection view protocol methods
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"logo_small"];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text = [Constants emptyPlayerProfilesPlaceholderTitle];
+    return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
+}
+
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
+    return [Constants playmateBlue];
 }
 
 #pragma mark - Navigation

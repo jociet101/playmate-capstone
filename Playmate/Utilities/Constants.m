@@ -361,6 +361,10 @@
     return @"No Sessions";
 }
 
++ (NSString *)emptyPlayerProfilesPlaceholderTitle {
+    return @"No players in this session";
+}
+
 + (NSString *)emptySearchPlaceholderMsg {
     return @"No sessions match your search. Adjust the filters or create your own session!";
 }

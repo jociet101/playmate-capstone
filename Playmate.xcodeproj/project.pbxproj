@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		08F3A736C04B199B7D2918A8 /* Pods_Playmate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FD77B182A0096E02A5A865 /* Pods_Playmate.framework */; };
 		3C167B3F2881F21F00081304 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C167B3E2881F21F00081304 /* Helpers.m */; };
+		3C19BA1B288A024000592C20 /* Invitation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19BA1A288A024000592C20 /* Invitation.m */; };
 		3C1BC00D28820AB400D17314 /* MapPinsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BC00C28820AB400D17314 /* MapPinsViewController.m */; };
 		3C1BC0122883E94400D17314 /* LocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BC0112883E94400D17314 /* LocationAnnotation.m */; };
 		3C1BC0152885BFA800D17314 /* SessionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BC0142885BFA800D17314 /* SessionCollectionCell.m */; };
@@ -89,6 +90,8 @@
 		356830720495914AEBE45D47 /* Pods-PlaymateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaymateTests.release.xcconfig"; path = "Target Support Files/Pods-PlaymateTests/Pods-PlaymateTests.release.xcconfig"; sourceTree = "<group>"; };
 		3C167B3D2881F21F00081304 /* Helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		3C167B3E2881F21F00081304 /* Helpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
+		3C19BA19288A024000592C20 /* Invitation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Invitation.h; sourceTree = "<group>"; };
+		3C19BA1A288A024000592C20 /* Invitation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Invitation.m; sourceTree = "<group>"; };
 		3C1BC00B28820AB400D17314 /* MapPinsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapPinsViewController.h; sourceTree = "<group>"; };
 		3C1BC00C28820AB400D17314 /* MapPinsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapPinsViewController.m; sourceTree = "<group>"; };
 		3C1BC0102883E94400D17314 /* LocationAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LocationAnnotation.h; path = /Users/jocelyntseng/Desktop/projects/Playmate/Playmate/Models/LocationAnnotation.h; sourceTree = "<absolute>"; };
@@ -366,6 +369,8 @@
 				3CA1A198287DF02E00BBDB69 /* ConnectionState.m */,
 				3C69D0532888A23800851E6F /* MapFilters.h */,
 				3C69D0542888A23800851E6F /* MapFilters.m */,
+				3C19BA19288A024000592C20 /* Invitation.h */,
+				3C19BA1A288A024000592C20 /* Invitation.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -736,6 +741,7 @@
 				3C45B56B2871856E00EE578F /* LoginViewController.m in Sources */,
 				3C45B59B2874D91800EE578F /* SessionCell.m in Sources */,
 				3CF4A596287A6088000C5E7D /* CreateMenuViewController.m in Sources */,
+				3C19BA1B288A024000592C20 /* Invitation.m in Sources */,
 				3C69D05228888A2900851E6F /* MapFiltersViewController.m in Sources */,
 				3C69D049288728BD00851E6F /* SelectMapHelpViewController.m in Sources */,
 				3C45B5682871856500EE578F /* CreateViewController.m in Sources */,

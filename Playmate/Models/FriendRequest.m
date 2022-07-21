@@ -17,13 +17,10 @@
 }
 
 + (void)saveFriendRequestTo:(NSString *)objectId {
-    
     FriendRequest *request = [FriendRequest new];
-    
     request.requestToId = objectId;
     
     PFUser *requester = [[PFUser currentUser] fetchIfNeeded];
-    
     request.requestFromId = requester.objectId;
     
     [request saveInBackground];
