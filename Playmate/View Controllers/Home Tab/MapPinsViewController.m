@@ -14,6 +14,7 @@
 #import "MapFiltersViewController.h"
 #import "Filters.h"
 #import "MapFilters.h"
+#import "PlayerConnection.h"
 
 @interface MapPinsViewController () <CLLocationManagerDelegate, MKMapViewDelegate, MapFiltersViewControllerDelegate>
 
@@ -229,11 +230,14 @@ BOOL isFirstTimeGettingLocation;
             }
         }
     } else {
-        NSMutableSet *friendsSet = [NSMutableSet setWithArray:me[@"friendsList"]];
-        
+        PlayerConnection *playerConnection = [Helpers getPlayerConnectionForUser:me];
+        NSMutableSet *friendsSet = [NSMutableSet setWithArray:playerConnection[@"friendsList"]];
+        [friendsSet addObject:me.objectId];
+        NSLog(@"friendset %@", friendsSet);
         // Filter to only sessions that friends are in
         for (Session *session in sessions) {
             NSMutableSet *playersSet = [Helpers getPlayerObjectIdSet:session.playersList];
+            
             [playersSet intersectSet: friendsSet];
             NSArray *resultArray = [playersSet allObjects];
             if (resultArray.count > 0) {

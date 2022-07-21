@@ -48,7 +48,6 @@
 // TODO: figure out how to prefetch!!!!!!!!!
 - (void)collectionView:(UICollectionView *)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
     for (NSIndexPath *indexPath in indexPaths) {
-        
         SessionCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SessionCollectionCell" forIndexPath:indexPath];
         
         cell.session = self.sessionList[indexPath.row];

@@ -498,7 +498,7 @@
             </objects>
             <point key="canvasLocation" x="5684.6153846153848" y="197.63033175355449"/>
         </scene>
-        <!--Map-->
+        <!--Explore Nearby-->
         <scene sceneID="0MX-nQ-hmi">
             <objects>
                 <viewController id="CuJ-hg-fGS" customClass="MapPinsViewController" sceneMemberID="viewController">
@@ -519,7 +519,7 @@
                             <constraint firstItem="TIA-0P-6Tb" firstAttribute="centerY" secondItem="Mn9-v2-7Ee" secondAttribute="centerY" id="zAX-Un-oIP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Map" id="ayB-Ek-N3V">
+                    <navigationItem key="navigationItem" title="Explore Nearby" id="ayB-Ek-N3V">
                         <barButtonItem key="rightBarButtonItem" id="pGt-71-jO1">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="khc-vW-DWA">
                                 <rect key="frame" x="288" y="5" width="86" height="34.333333333333336"/>
