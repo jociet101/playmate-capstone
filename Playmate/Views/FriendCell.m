@@ -30,9 +30,7 @@
 
 - (void)setThisUserId:(NSString *)thisUserId {
     _thisUserId = thisUserId;
-    
-    NSLog(@"self.thisuserid %@", self.thisUserId);
-    
+        
     PFQuery *query = [PFUser query];
     PFUser *thisUser = [[query getObjectWithId:self.thisUserId] fetchIfNeeded];
     

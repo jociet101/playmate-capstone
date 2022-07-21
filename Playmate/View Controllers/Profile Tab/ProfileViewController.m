@@ -113,9 +113,7 @@
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
+    } else {
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     [self presentViewController:imagePickerVC animated:YES completion:nil];

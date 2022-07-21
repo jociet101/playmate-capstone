@@ -55,10 +55,8 @@
     
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
-            NSLog(@"User log in failed: %@", error.localizedDescription);
             [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         } else {
-            NSLog(@"User logged in successfully");
             [self performSegueWithIdentifier:@"loginToTab" sender:nil];
         }
     }];
