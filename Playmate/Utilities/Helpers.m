@@ -126,8 +126,6 @@
     rotatedViewBox.transform = CGAffineTransformMakeRotation(radians);
     CGSize rotatedSize = rotatedViewBox.frame.size;
     
-    NSLog(@"degrees: %f rotated size w: %f, h: %f", degrees, rotatedSize.width, rotatedSize.height);
-
     UIGraphicsBeginImageContextWithOptions(rotatedSize, NO, [[UIScreen mainScreen] scale]);
     CGContextRef bitmap = UIGraphicsGetCurrentContext();
 

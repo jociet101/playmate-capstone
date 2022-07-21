@@ -225,11 +225,9 @@ BOOL isFirstTimeGettingLocation;
         // Filter to only sessions self is in
         for (Session *session in sessions) {
             NSMutableSet *playersSet = [Helpers getPlayerObjectIdSet:session.playersList];
-            NSLog(@"playersSet = %@", playersSet);
             [playersSet intersectSet: selfSet];
             NSArray *resultArray = [playersSet allObjects];
             if (resultArray.count > 0) {
-                NSLog(@"greater than 0 %@", resultArray);
                 [filteredSessions addObject:session];
             }
         }
