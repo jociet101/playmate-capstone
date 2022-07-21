@@ -24,6 +24,15 @@
     return [NSString stringWithFormat:@"%@/geocode/reverse?lat=%@&lon=%@&apiKey=%@", [Constants geoapifyBaseURLString], latitude, longitutde, geoapify];
 }
 
+// For other stuff
++ (NSMutableSet *)getPlayerObjectIdSet:(NSArray *)playerList {
+    NSMutableSet *playersSet = [[NSMutableSet alloc] init];
+    [playerList enumerateObjectsUsingBlock:^(PFUser *user, NSUInteger idx, BOOL * _Nonnull stop) {
+        [playersSet addObject:user.objectId];
+    }];
+    return playersSet;
+}
+
 // for resizing images
 + (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension {
     

@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 #import "Session.h"
 #import "PlayerConnection.h"
 
@@ -23,6 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension;
 + (NSString *)getTimeGivenDurationForSession:(Session *)session;
+
+// For other stuff
++ (NSMutableSet *)getPlayerObjectIdSet:(NSArray *)playerList;
 
 // For handling alerts
 + (void)handleAlert:(NSError * _Nullable)error

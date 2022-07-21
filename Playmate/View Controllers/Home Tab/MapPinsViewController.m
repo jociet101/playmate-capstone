@@ -49,7 +49,9 @@ BOOL isFirstTimeGettingLocation;
     [CLLocationManager locationServicesEnabled];
     
     [self initPinLocationManager];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     if (self.appliedFilters == YES) {
         [self fetchDataWithFilters:self.filters];
     } else {
@@ -209,7 +211,38 @@ BOOL isFirstTimeGettingLocation;
 }
 
 - (NSArray *)filterSessions:(NSArray *)sessions withSessionScope:(NSString *)scope {
-    return sessions;
+    NSMutableArray *filteredSessions = [[NSMutableArray alloc] init];
+    
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
+    
+    if ([scope isEqualToString:@"Own"]) {
+        NSMutableSet *selfSet = [NSMutableSet setWithObject:me.objectId];
+        
+        // Filter to only sessions self is in
+        for (Session *session in sessions) {
+            NSMutableSet *playersSet = [Helpers getPlayerObjectIdSet:session.playersList];
+            
+            [playersSet intersectSet: selfSet];
+            NSArray *resultArray = [playersSet allObjects];
+            if (resultArray.count > 0) {
+                [filteredSessions addObject:session];
+            }
+        }
+    } else {
+        NSMutableSet *friendsSet = [NSMutableSet setWithArray:me[@"friendsList"]];
+        
+        // Filter to only sessions that friends are in
+        for (Session *session in sessions) {
+            NSMutableSet *playersSet = [Helpers getPlayerObjectIdSet:session.playersList];
+            [playersSet intersectSet: friendsSet];
+            NSArray *resultArray = [playersSet allObjects];
+            if (resultArray.count > 0) {
+                [filteredSessions addObject:session];
+            }
+        }
+    }
+    
+    return (NSArray *)filteredSessions;
 }
 
 #pragma mark - Pin Annotation tasks
