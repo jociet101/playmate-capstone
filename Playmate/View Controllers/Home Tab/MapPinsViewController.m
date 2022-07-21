@@ -13,6 +13,7 @@
 #import "Helpers.h"
 #import "MapFiltersViewController.h"
 #import "Filters.h"
+#import "MapFilters.h"
 
 @interface MapPinsViewController () <CLLocationManagerDelegate, MKMapViewDelegate, MapFiltersViewControllerDelegate>
 
@@ -21,7 +22,7 @@
 @property (nonatomic, strong) NSArray *sessionList;
 
 @property (assign, nonatomic) BOOL appliedFilters;
-@property (nonatomic, strong) Filters * _Nullable filters;
+@property (nonatomic, strong) MapFilters * _Nullable filters;
 
 @property (nonatomic, strong) NSMutableArray *currentAnnotations;
 
@@ -123,7 +124,7 @@ BOOL isFirstTimeGettingLocation;
     }];
 }
 
-- (void)fetchDataWithFilters:(Filters *)filter {
+- (void)fetchDataWithFilters:(MapFilters *)filter {
     
     if (self.appliedFilters == NO) {
         self.filters = filter;
@@ -145,9 +146,11 @@ BOOL isFirstTimeGettingLocation;
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
         if (sessions != nil) {
-            self.sessionList = (filter.location != nil) ? [self filterSessions:sessions
+            NSArray *locationFilteredSessions = (filter.location != nil) ? [self filterSessions:sessions
                                                                   withLocation:filter.location
                                                                      andRadius:filter.radius] : sessions;
+            self.sessionList = (filter.sessionType != nil) ? [self filterSessions:locationFilteredSessions
+                                                                 withSessionScope:filter.sessionType] : locationFilteredSessions;
             [self addPins];
         } else {
             [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
@@ -203,6 +206,10 @@ BOOL isFirstTimeGettingLocation;
     }
     
     return (NSArray *)filteredSessions;
+}
+
+- (NSArray *)filterSessions:(NSArray *)sessions withSessionScope:(NSString *)scope {
+    return sessions;
 }
 
 #pragma mark - Pin Annotation tasks
