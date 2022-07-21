@@ -1393,7 +1393,7 @@
             <objects>
                 <viewController id="hNf-lE-ZKe" customClass="PlayerProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fFY-gZ-QLq">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="580"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQH-Cr-mDU">
@@ -3163,7 +3163,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="pbU-9p-1Qp"/>
         <segue reference="Enr-e1-tYc"/>
-        <segue reference="Kdh-do-hzm"/>
+        <segue reference="Of8-sX-WuS"/>
         <segue reference="UBD-ub-2Jv"/>
         <segue reference="EiS-gP-Syp"/>
     </inferredMetricsTieBreakers>

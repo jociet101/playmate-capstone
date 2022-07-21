@@ -91,8 +91,40 @@
 
 #pragma mark - Friend cell delegate method
 
-- (void)didTap:(FriendCell *)cell {
-    [self performSegueWithIdentifier:@"friendsListToProfile" sender:cell];
++ (void)handleAlert:(NSError * _Nullable)error
+          withTitle:(NSString *)title
+        withMessage:(NSString * _Nullable)message
+  forViewController:(id)viewController {
+    if (error != nil) {
+        message = error.localizedDescription;
+    }
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [viewController viewDidLoad];
+    }];
+    
+    [alertController addAction:okAction];
+    [viewController presentViewController:alertController animated:YES completion: nil];
+}
+
+- (void)didTap:(FriendCell *)cell forName:(NSString *)name {
+    if (self.isForInvitations) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Invite @%@ to session?", name]
+                                                                                 message:nil
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *inviteAction = [UIAlertAction actionWithTitle:@"Invite" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSLog(@"invite");
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
+
+        [alertController addAction:inviteAction];
+        [alertController addAction:cancelAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    } else {
+        [self performSegueWithIdentifier:@"friendsListToProfile" sender:cell];
+    }
 }
 
 #pragma mark - Navigation

@@ -17,7 +17,7 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "FriendsListViewController.h"
 
-@interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, FriendsListViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *sportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
@@ -304,6 +304,12 @@ BOOL isPartOfSession;
     return [Constants playmateBlue];
 }
 
+#pragma mark - Friend list view controller delegate method
+
+- (void)inviteToSession:(NSString *)toObjectId {
+    
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -315,6 +321,7 @@ BOOL isPartOfSession;
     } else if ([segue.identifier isEqualToString:@"sessionDetailsInvite"]) {
         FriendsListViewController *vc = [segue destinationViewController];
         vc.isForInvitations = YES;
+        vc.delegate = self;
         vc.thisUser = [[PFUser currentUser] fetchIfNeeded];
     }
 }

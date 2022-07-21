@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol FriendCellDelegate
 
-- (void)didTap:(FriendCell *)cell;
+- (void)didTap:(FriendCell *)cell forName:(NSString *)name;
 
 @end
 
