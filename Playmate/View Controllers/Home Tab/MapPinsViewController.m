@@ -231,7 +231,7 @@ BOOL isFirstTimeGettingLocation;
         return nil;
     }
     
-     MKPinAnnotationView *annotationView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
+    MKPinAnnotationView *annotationView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
     
     if (annotationView == nil) {
         annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
@@ -241,6 +241,7 @@ BOOL isFirstTimeGettingLocation;
     }
     
     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    annotationView.pinTintColor = [UIColor systemTealColor];
     
     return annotationView;
 }
