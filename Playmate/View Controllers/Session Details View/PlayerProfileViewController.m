@@ -199,9 +199,9 @@
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     if ([segue.identifier isEqualToString:@"toFriendsList"]) {
         FriendsListViewController *vc = [segue destinationViewController];
+        vc.isForInvitations = NO;
         vc.thisUser = self.user;
     }
 }

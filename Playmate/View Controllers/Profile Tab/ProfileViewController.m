@@ -173,7 +173,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"toFriendsList"]) {
         FriendsListViewController *vc = [segue destinationViewController];
-        vc.thisUser = [PFUser currentUser];
+        vc.isForInvitations = NO;
+        vc.thisUser = [[PFUser currentUser] fetchIfNeeded];
     }
 }
 

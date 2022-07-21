@@ -13,7 +13,7 @@
 #import "PlayerProfileViewController.h"
 #import "Helpers.h"
 
-@interface FriendsListViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface FriendsListViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, FriendCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *friendsList;
@@ -57,6 +57,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendCell"];
     cell.thisUserId = self.friendsList[indexPath.row];
+    cell.delegate = self;
     return cell;
 }
 
@@ -88,10 +89,16 @@
     return [Constants playmateBlue];
 }
 
+#pragma mark - Friend cell delegate method
+
+- (void)didTap:(FriendCell *)cell {
+    [self performSegueWithIdentifier:@"friendsListToProfile" sender:cell];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"toProfile"]) {
+    if ([segue.identifier isEqualToString:@"friendsListToProfile"]) {
         PlayerProfileViewController *vc = [segue destinationViewController];
         PFQuery *query = [PFUser query];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];

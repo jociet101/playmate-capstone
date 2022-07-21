@@ -20,12 +20,15 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    UITapGestureRecognizer *friendCellTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapCell:)];
+    
+    [self addGestureRecognizer:friendCellTapGesture];
+    [self setUserInteractionEnabled:YES];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)didTapCell:(UITapGestureRecognizer *)sender {
+    [self.delegate didTap:self];
 }
 
 - (void)setThisUserId:(NSString *)thisUserId {

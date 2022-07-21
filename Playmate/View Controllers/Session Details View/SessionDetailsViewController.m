@@ -15,6 +15,7 @@
 #import "Helpers.h"
 #import "ManageUserStatistics.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "FriendsListViewController.h"
 
 @interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -268,12 +269,6 @@ BOOL isPartOfSession;
     [self initializeCapacityString];
 }
 
-#pragma mark - Invite friend to session button action
-
-- (IBAction)didTapInvite:(id)sender {
-    NSLog(@"did tap invite");
-}
-
 #pragma mark - Collection view protocol methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -317,6 +312,10 @@ BOOL isPartOfSession;
         PFUser* data = self.sessionDetails.playersList[self.sessionDetails.playersList.count-indexPath.row-1];
         PlayerProfileViewController *vc = [segue destinationViewController];
         vc.user = data;
+    } else if ([segue.identifier isEqualToString:@"sessionDetailsInvite"]) {
+        FriendsListViewController *vc = [segue destinationViewController];
+        vc.isForInvitations = YES;
+        vc.thisUser = [[PFUser currentUser] fetchIfNeeded];
     }
 }
 

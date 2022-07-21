@@ -10,12 +10,22 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol FriendCellDelegate;
+
 @interface FriendCell : UITableViewCell
 
 @property (nonatomic, strong) NSString *thisUserId;
+@property id<FriendCellDelegate> delegate;
 
 - (void)setThisUserId:(NSString *)thisUserId;
 
 @end
+
+@protocol FriendCellDelegate
+
+- (void)didTap:(FriendCell *)cell;
+
+@end
+
 
 NS_ASSUME_NONNULL_END
