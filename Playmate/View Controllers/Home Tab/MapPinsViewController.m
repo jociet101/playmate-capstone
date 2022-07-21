@@ -207,6 +207,9 @@ BOOL isFirstTimeGettingLocation;
 
 #pragma mark - Pin Annotation tasks
 
+// TODO: solve bug where two pins overlap and only one is visible
+// Idea: manually change latitude and longitude by a bit if there are multiple pins in the same exact location
+
 - (void)addPins {
     [self.mapView removeAnnotations:(NSArray *)self.currentAnnotations];
     [self.currentAnnotations removeAllObjects];
