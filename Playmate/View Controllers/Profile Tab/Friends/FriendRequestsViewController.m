@@ -11,6 +11,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *incomingView;
 @property (weak, nonatomic) IBOutlet UIView *outgoingView;
+@property (weak, nonatomic) IBOutlet UIView *invitationsView;
 
 @end
 
@@ -21,16 +22,16 @@
     
     self.incomingView.alpha = 1;
     self.outgoingView.alpha = 0;
+    self.invitationsView.alpha = 0;
 }
 
 - (IBAction)switchViewController:(id)sender {
     
     UISegmentedControl *switcher = sender;
     
-    const BOOL isSegmentZeroIndex = (switcher.selectedSegmentIndex == 0);
-    self.incomingView.alpha = isSegmentZeroIndex ? 1 : 0;
-    self.outgoingView.alpha = isSegmentZeroIndex ? 0 : 1;
-    
+    self.incomingView.alpha = (switcher.selectedSegmentIndex == 0) ? 1 : 0;
+    self.outgoingView.alpha = (switcher.selectedSegmentIndex == 1) ? 1 : 0;
+    self.invitationsView.alpha = (switcher.selectedSegmentIndex == 2) ? 1 : 0;
 }
 
 @end

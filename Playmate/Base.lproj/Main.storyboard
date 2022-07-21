@@ -2427,6 +2427,13 @@
                                     <action selector="switchViewController:" destination="fyA-uy-s4Q" eventType="valueChanged" id="ZVF-I4-X8f"/>
                                 </connections>
                             </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nZc-IC-C1k">
+                                <rect key="frame" x="0.0" y="127" width="390" height="634"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="naX-HM-7m9" kind="embed" id="2vv-HN-2n0"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PIZ-n2-wk2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2434,12 +2441,13 @@
                     <navigationItem key="navigationItem" title="Friend Notifications" id="zCk-9Z-29Y"/>
                     <connections>
                         <outlet property="incomingView" destination="81E-SF-co3" id="ugL-mh-4LP"/>
+                        <outlet property="invitationsView" destination="nZc-IC-C1k" id="F0D-Ab-1E7"/>
                         <outlet property="outgoingView" destination="hEF-C6-hab" id="5qp-V4-VrW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BMj-g5-cgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6043" y="2042"/>
+            <point key="canvasLocation" x="6041.538461538461" y="2041.7061611374406"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wYN-qT-DC6">
@@ -3137,6 +3145,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xTg-xz-shT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5270" y="-1312.6777251184833"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="KTT-jK-L9H">
+            <objects>
+                <viewController id="naX-HM-7m9" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g3z-w5-nVw">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="634"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eLm-Lv-5iQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7102" y="2971"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
