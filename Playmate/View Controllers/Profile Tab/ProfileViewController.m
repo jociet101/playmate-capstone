@@ -65,7 +65,8 @@
     
     PlayerConnection *playerConnection = [Helpers getPlayerConnectionForUser:user];
     unsigned long numFriends = ((NSArray *)playerConnection[@"friendsList"]).count;
-    [self.numberOfFriendsButton setTitle:[NSString stringWithFormat:@"%ld friends", numFriends] forState:UIControlStateNormal];
+    NSString *numberFriendsLabel = (numFriends == 1) ? @"1 friend" : [NSString stringWithFormat:@"%ld friends", numFriends];
+    [self.numberOfFriendsButton setTitle:numberFriendsLabel forState:UIControlStateNormal];
     
     // TODO: find out how to make font bold, look like a button
 //    [self.numberOfFriendsButton.titleLabel setFont:[UIFont fontWithName:@"Avenir" size:16.0]];

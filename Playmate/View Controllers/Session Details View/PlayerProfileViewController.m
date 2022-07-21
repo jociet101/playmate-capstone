@@ -57,7 +57,6 @@
     
     unsigned long numFriends = ((NSArray *)playerConnection[@"friendsList"]).count;
     NSString *numberFriendsLabel = (numFriends == 1) ? @"1 friend" : [NSString stringWithFormat:@"%ld friends", numFriends];
-    
     [self.numberOfFriendsButton setTitle:numberFriendsLabel forState:UIControlStateNormal];
     
     [self configureDataFields];
