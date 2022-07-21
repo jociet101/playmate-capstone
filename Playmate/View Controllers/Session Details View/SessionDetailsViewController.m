@@ -48,7 +48,6 @@ BOOL isPartOfSession;
     [Helpers setCornerRadiusAndColorForButton:self.inviteFriendButton andIsSmall:NO];
     
     [self disableAddButton];
-    [self disableInviteButton];
     
     [self initializeDetails];
     
@@ -85,16 +84,17 @@ BOOL isPartOfSession;
         self.addMyselfButton.alpha = 0;
         self.disabledButton.alpha = 1;
     }
+    [self disableInviteButton];
 }
 
 - (void)changeAddButtonToLeave {
     isPartOfSession = YES;
-    [self enableInviteButton];
     [self.addMyselfButton setTitle:@"Leave Session" forState:UIControlStateNormal];
 }
 
 - (void)changeAddButtonToJoin {
     isPartOfSession = NO;
+    [self disableInviteButton];
     [self.addMyselfButton setTitle:@"Join Session" forState:UIControlStateNormal];
 }
 
@@ -124,7 +124,6 @@ BOOL isPartOfSession;
 #pragma mark - Animating confetti
 
 - (void)showConfetti {
-    
     self.confettiLayer = [CAEmitterLayer layer];
     self.confettiLayer.emitterPosition = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.origin.y);
     self.confettiLayer.emitterSize = CGSizeMake(self.view.bounds.size.width, 0);
@@ -166,6 +165,7 @@ BOOL isPartOfSession;
         
         [self updateLeaveUi];
         [self changeAddButtonToJoin];
+        [self disableInviteButton];
         
         PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
 
@@ -203,6 +203,7 @@ BOOL isPartOfSession;
         [self updateJoinUI];
         [self showConfetti];
         [self changeAddButtonToLeave];
+        [self enableInviteButton];
         
         PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
 
