@@ -128,7 +128,6 @@ BOOL isFirstTimeGettingLocation;
 }
 
 - (void)fetchDataWithFilters:(MapFilters *)filter {
-    
     if (self.appliedFilters == NO) {
         self.filters = filter;
         self.appliedFilters = YES;
@@ -162,6 +161,10 @@ BOOL isFirstTimeGettingLocation;
 }
 
 #pragma mark - Filters related
+
+- (IBAction)didTapClearFilters:(id)sender {
+    [self clearFilters];
+}
 
 - (void)clearFilters {
     if (self.appliedFilters == YES) {
@@ -222,10 +225,11 @@ BOOL isFirstTimeGettingLocation;
         // Filter to only sessions self is in
         for (Session *session in sessions) {
             NSMutableSet *playersSet = [Helpers getPlayerObjectIdSet:session.playersList];
-            
+            NSLog(@"playersSet = %@", playersSet);
             [playersSet intersectSet: selfSet];
             NSArray *resultArray = [playersSet allObjects];
             if (resultArray.count > 0) {
+                NSLog(@"greater than 0 %@", resultArray);
                 [filteredSessions addObject:session];
             }
         }
@@ -233,7 +237,7 @@ BOOL isFirstTimeGettingLocation;
         PlayerConnection *playerConnection = [Helpers getPlayerConnectionForUser:me];
         NSMutableSet *friendsSet = [NSMutableSet setWithArray:playerConnection[@"friendsList"]];
         [friendsSet addObject:me.objectId];
-        NSLog(@"friendset %@", friendsSet);
+        
         // Filter to only sessions that friends are in
         for (Session *session in sessions) {
             NSMutableSet *playersSet = [Helpers getPlayerObjectIdSet:session.playersList];
@@ -255,8 +259,7 @@ BOOL isFirstTimeGettingLocation;
 // Idea: manually change latitude and longitude by a bit if there are multiple pins in the same exact location
 
 - (void)addPins {
-    [self.mapView removeAnnotations:(NSArray *)self.currentAnnotations];
-    [self.currentAnnotations removeAllObjects];
+    NSMutableArray *newAnnotations = [[NSMutableArray alloc] init];
     
     for (Session *session in self.sessionList) {
         Location *location = [session[@"location"] fetchIfNeeded];
@@ -269,8 +272,11 @@ BOOL isFirstTimeGettingLocation;
         point.session = session;
                 
         [self.mapView addAnnotation:point];
-        [self.currentAnnotations addObject:point];
+        [newAnnotations addObject:point];
     }
+    
+    [self.mapView removeAnnotations:(NSArray *)self.currentAnnotations];
+    self.currentAnnotations = newAnnotations;
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
@@ -288,7 +294,7 @@ BOOL isFirstTimeGettingLocation;
     }
     
     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    annotationView.pinTintColor = [UIColor systemTealColor];
+    annotationView.pinTintColor = [UIColor systemPinkColor];
     
     return annotationView;
 }

@@ -509,6 +509,15 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIA-0P-6Tb">
                                 <rect key="frame" x="0.0" y="88" width="390" height="673"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLV-ui-OXv">
+                                <rect key="frame" x="234" y="99" width="140" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Clear Filters"/>
+                                <connections>
+                                    <action selector="didTapClearFilters:" destination="CuJ-hg-fGS" eventType="touchUpInside" id="HwK-PU-sma"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mn9-v2-7Ee"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -539,7 +548,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NrD-9U-V8S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6905" y="-2968"/>
+            <point key="canvasLocation" x="6904.6153846153848" y="-2968.0094786729856"/>
         </scene>
         <!--Map Filters-->
         <scene sceneID="XJJ-i5-EOs">
