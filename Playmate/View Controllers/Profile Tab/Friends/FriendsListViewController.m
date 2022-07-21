@@ -58,6 +58,7 @@
     FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendCell"];
     cell.thisUserId = self.friendsList[indexPath.row];
     cell.delegate = self;
+    cell.isForInvitations = self.isForInvitations;
     return cell;
 }
 
@@ -108,7 +109,7 @@
     [viewController presentViewController:alertController animated:YES completion: nil];
 }
 
-- (void)didTap:(FriendCell *)cell forName:(NSString *)name {
+- (void)didTap:(FriendCell *)cell forName:(NSString *)name andId:(NSString *)userObjectId {
     if (self.isForInvitations) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Invite @%@ to session?", name]
                                                                                  message:nil
@@ -116,6 +117,7 @@
         
         UIAlertAction *inviteAction = [UIAlertAction actionWithTitle:@"Invite" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             NSLog(@"invite");
+            [self.delegate inviteToSession:userObjectId];
         }];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
 

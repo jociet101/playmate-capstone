@@ -28,7 +28,7 @@
 }
 
 - (void)didTapCell:(UITapGestureRecognizer *)sender {
-    [self.delegate didTap:self forName:self.nameLabel.text];
+    [self.delegate didTap:self forName:self.nameLabel.text andId:self.thisUserId];
 }
 
 - (void)setThisUserId:(NSString *)thisUserId {

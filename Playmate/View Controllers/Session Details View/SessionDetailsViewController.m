@@ -16,6 +16,7 @@
 #import "ManageUserStatistics.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "FriendsListViewController.h"
+#import "Invitation.h"
 
 @interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, FriendsListViewControllerDelegate>
 
@@ -307,7 +308,7 @@ BOOL isPartOfSession;
 #pragma mark - Friend list view controller delegate method
 
 - (void)inviteToSession:(NSString *)toObjectId {
-    
+    [Invitation saveInvitationTo:toObjectId forSession:self.sessionDetails.objectId];
 }
 
 #pragma mark - Navigation

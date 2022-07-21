@@ -18,6 +18,8 @@
 }
 
 + (void)saveInvitationTo:(NSString *)objectId forSession:(NSString *)sessionId {
+    NSLog(@"SAVING INVITATION");
+    
     Invitation *invitation = [Invitation new];
     invitation.invitationToId = objectId;
     
