@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *addMyselfButton;
 @property (weak, nonatomic) IBOutlet UILabel *disabledButton;
 @property (weak, nonatomic) IBOutlet UILabel *createdDateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *inviteFriendButton;
 
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) CAEmitterLayer *confettiLayer;
@@ -43,10 +44,11 @@ BOOL isPartOfSession;
     me = [[PFUser currentUser] fetchIfNeeded];
     
     isPartOfSession = NO;
-
     [Helpers setCornerRadiusAndColorForButton:self.addMyselfButton andIsSmall:NO];
+    [Helpers setCornerRadiusAndColorForButton:self.inviteFriendButton andIsSmall:NO];
     
     [self disableAddButton];
+    [self disableInviteButton];
     
     [self initializeDetails];
     
@@ -54,6 +56,16 @@ BOOL isPartOfSession;
     self.collectionView.dataSource = self;
     
     [self.collectionView reloadData];
+}
+
+- (void)disableInviteButton {
+    self.inviteFriendButton.alpha = 0;
+    [self.inviteFriendButton setEnabled:NO];
+}
+
+- (void)enableInviteButton {
+    self.inviteFriendButton.alpha = 1;
+    [self.inviteFriendButton setEnabled:YES];
 }
 
 - (void)disableAddButton {
@@ -77,6 +89,7 @@ BOOL isPartOfSession;
 
 - (void)changeAddButtonToLeave {
     isPartOfSession = YES;
+    [self enableInviteButton];
     [self.addMyselfButton setTitle:@"Leave Session" forState:UIControlStateNormal];
 }
 
@@ -247,6 +260,12 @@ BOOL isPartOfSession;
     int newOccupied = (int)oldPlayersList.count;
     self.sessionDetails.occupied = [NSNumber numberWithInt:newOccupied];
     [self initializeCapacityString];
+}
+
+#pragma mark - Invite friend to session button action
+
+- (IBAction)didTapInvite:(id)sender {
+    NSLog(@"did tap invite");
 }
 
 #pragma mark - Collection view protocol methods

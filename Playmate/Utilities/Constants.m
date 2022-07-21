@@ -366,7 +366,7 @@
 }
 
 + (NSString *)emptyListPlaceholderMsg {
-    return @"Create or join sessions to meet your Playmates!";
+    return @"Explore sessions to meet your Playmates!";
 }
 
 + (NSString *)emptyListPlaceholderTitle {
