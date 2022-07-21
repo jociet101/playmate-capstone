@@ -9,13 +9,13 @@
 #import "FiltersMenuPickerCell.h"
 #import "LocationPickerCell.h"
 #import "Constants.h"
+#import "Helpers.h"
 #import "SelectMapViewController.h"
 #import "Location.h"
 
 @interface FiltersMenuViewController () <UITableViewDelegate, UITableViewDataSource, FiltersMenuPickerCellDelegate, SelectMapViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray *createMenuIdentifiers;
 
 // selected session details
 @property (nonatomic, strong) NSString *selectedSport;
@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSNumber *selectedRadius;
 @property (nonatomic, strong) Location *selectedLocation;
 @property (nonatomic, strong) UIButton * _Nullable selectLocationButton;
+@property (weak, nonatomic) IBOutlet UIButton *applyFiltersButton;
 
 @end
 
@@ -36,12 +37,11 @@
     self.tableView.rowHeight = 60;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [Constants playmateBlue];
-
     self.tableView.layer.cornerRadius = [Constants buttonCornerRadius];
-    
-    self.createMenuIdentifiers = [Constants sportsList:NO];
 
     self.selectLocationButton = nil;
+    
+    [Helpers setCornerRadiusAndColorForButton:self.applyFiltersButton andIsSmall:NO];
 }
 
 #pragma mark - Filters Menu Picker Cell and Location Picker Cell protocol methods
@@ -102,7 +102,7 @@
     filters.sport = self.selectedSport;
     filters.skillLevel = self.selectedSkillLevel;
     filters.radius = self.selectedRadius;
-        
+    
     if ([filters.sport isEqualToString:@"All"]) {
         filters.sport = nil;
     }
@@ -122,7 +122,6 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-        
     if ([segue.identifier isEqualToString:@"toSelectLocation"]) {
         SelectMapViewController *vc = segue.destinationViewController;
         vc.delegate = self;

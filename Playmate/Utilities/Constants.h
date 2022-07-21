@@ -62,6 +62,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSArray *)sportsListLarge:(BOOL)needAll;
 + (NSArray *)sportsList:(BOOL)needAll;
 + (NSArray *)skillLevelsList:(BOOL)needAll;
++ (NSArray *)sessionTypeList;
+
 + (int)defaultNumPlayers;
 + (int)defaultSkillPickerIndex;
 
@@ -74,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIImage *)profileImagePlaceholder;
 
-// for empty table views
+// for empty table views and collection views
 + (NSString *)emptyTablePlaceholderMsg;
 + (NSString *)emptyTablePlaceholderTitle;
 + (NSString *)emptySearchPlaceholderMsg;
@@ -82,15 +84,17 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)emptyListPlaceholderTitle;
 + (NSString *)emptyIncomingRequestsPlaceholderTitle;
 + (NSString *)emptyOutgoingRequestsPlaceholderTitle;
++ (NSString *)emptyCollectionLoadingSessionsTitle;
 + (NSDictionary *)descriptionAttributes;
 + (NSDictionary *)titleAttributes;
 
 // for home view
 + (NSString *)getImageNameForSport:(NSString *)sport;
 
-// for select location help view
+// for uiimage gifs
 + (NSArray *)addressGifImages;
 + (NSArray *)manualGifImages;
++ (NSArray *)rollingPlaymateLogoGif;
 
 @end
 

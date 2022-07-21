@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FA558A54-9B2E-464D-ACC9-CFEBC14B7ABC"
+            uuid = "A4581BE0-F8CE-4568-B020-8C504512690D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Playmate/Models/SnappingCollectionView.m"
+            filePath = "Playmate/View Controllers/Home Tab/UpcomingSessionsViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "-collectionView:targetContentOffsetForProposedContentOffset:"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-collectionView:prefetchItemsAtIndexPaths:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

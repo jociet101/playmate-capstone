@@ -44,17 +44,18 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
-    PFUser *user = [PFUser currentUser];
+    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     self.nameLabel.text = [Constants concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
     self.usernameLabel.text = [@"@" stringByAppendingString:user[@"username"]];
     self.usernameLabel.textColor = [UIColor lightGrayColor];
     self.genderLabel.text = [@"Identifies as " stringByAppendingString:user[@"gender"][0]];
     self.ageLabel.text = [[Constants getAgeInYears:user[@"birthday"][0]] stringByAppendingString:@" years old"];
     
-    if ([user objectForKey:@"biography"] != nil) {
-        self.bioField.text = user[@"biography"][0];
-    }
+    const BOOL hasBiography = ([user objectForKey:@"biography"] != nil);
+    self.bioField.text = hasBiography ? [user objectForKey:@"biography"][0] : @"No biography";
+        
     if (user[@"profileImage"] != nil) {
         // set image stuff
         UIImage* img = [UIImage imageWithData:[user[@"profileImage"] getData]];
@@ -81,9 +82,9 @@
     self.numberTotalSessionsLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
     self.numberDaysOnPlaymateLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
-    self.firstSportLabel.layer.backgroundColor = [[Constants playmateBlue] CGColor];
-    self.secondSportLabel.layer.backgroundColor = [[Constants playmateBlue] CGColor];
-    self.thirdSportLabel.layer.backgroundColor = [[Constants playmateBlue] CGColor];
+    self.firstSportLabel.backgroundColor = [Constants playmateBlue];
+    self.secondSportLabel.backgroundColor = [Constants playmateBlue];
+    self.thirdSportLabel.backgroundColor = [Constants playmateBlue];
     
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     
@@ -112,9 +113,7 @@
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
+    } else {
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     [self presentViewController:imagePickerVC animated:YES completion:nil];

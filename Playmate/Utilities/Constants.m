@@ -139,6 +139,7 @@
     [titles addObject:@"Skill Level"];
     [titles addObject:@"Location"];
     [titles addObject:@"Radius (in miles)"];
+    [titles addObject:@"Session Scope"];
     
     return titles[row];
 }
@@ -180,6 +181,8 @@
         return [Constants sportsList:needAll];
     } else if (row == 1) {
         return [Constants skillLevelsList:needAll];
+    } else if (row == 4) {
+        return [Constants sessionTypeList];
     }
     return nil;
 }
@@ -311,6 +314,15 @@
     return [NSArray arrayWithArray:skillLevels];
 }
 
++ (NSArray *)sessionTypeList {
+    NSMutableArray *sessionTypes = [[NSMutableArray alloc] init];
+    [sessionTypes addObject:@"All"];
+    [sessionTypes addObject:@"Friends"];
+    [sessionTypes addObject:@"Own"];
+    
+    return [NSArray arrayWithArray:sessionTypes];
+}
+
 + (int)defaultNumPlayers {
     return 2;
 }
@@ -336,7 +348,7 @@
 // playmate logo placeholder profile image
 
 + (UIImage *)profileImagePlaceholder {
-    return [UIImage imageNamed:@"playmate_logo_transparent"];
+    return [UIImage imageNamed:@"playmate_logo_fit"];
 }
 
 // for empty table view
@@ -367,6 +379,10 @@
 
 + (NSString *)emptyOutgoingRequestsPlaceholderTitle {
     return @"No Outgoing Friend Requests";
+}
+
++ (NSString *)emptyCollectionLoadingSessionsTitle {
+    return @"Loading Sessions ...";
 }
 
 + (NSDictionary *)descriptionAttributes {
@@ -413,7 +429,7 @@
     return sportToImageName[sport];
 }
 
-// for select location help view
+// for uiimage gifs
 + (NSArray *)addressGifImages {
     NSMutableArray *addressGifImages = [[NSMutableArray alloc] initWithCapacity:155];
     for (int i = 0; i < 155; i++) {
@@ -428,6 +444,15 @@
         [manualGifImages addObject:[UIImage imageNamed:[NSString stringWithFormat:@"frame_%d", i]]];
     }
     return [NSArray arrayWithArray:manualGifImages];
+}
+
++ (NSArray *)rollingPlaymateLogoGif {
+    NSMutableArray *rollingGifImages = [[NSMutableArray alloc] initWithCapacity:16];
+    for (int i = 0; i < 16; i++) {
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"playmate_logo_fit_%d", i]];
+        [rollingGifImages addObject:[Helpers resizeImage:image withDimension:60]];
+    }
+    return [NSArray arrayWithArray:rollingGifImages];
 }
 
 @end

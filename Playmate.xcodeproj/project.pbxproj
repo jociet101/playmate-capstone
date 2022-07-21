@@ -31,7 +31,8 @@
 		3C45B5A728760C1E00EE578F /* Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C45B5A628760C1E00EE578F /* Filters.m */; };
 		3C69D049288728BD00851E6F /* SelectMapHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C69D048288728BD00851E6F /* SelectMapHelpViewController.m */; };
 		3C69D04C28874EAB00851E6F /* ManageUserStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C69D04B28874EAB00851E6F /* ManageUserStatistics.m */; };
-		3C69D04F28877F7400851E6F /* SnappingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C69D04E28877F7400851E6F /* SnappingCollectionView.m */; };
+		3C69D05228888A2900851E6F /* MapFiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C69D05128888A2900851E6F /* MapFiltersViewController.m */; };
+		3C69D0552888A23800851E6F /* MapFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C69D0542888A23800851E6F /* MapFilters.m */; };
 		3C8E538F287F2D200087498B /* FriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E538E287F2D200087498B /* FriendsListViewController.m */; };
 		3C8E5392287F362B0087498B /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E5391287F362B0087498B /* FriendCell.m */; };
 		3C8E5395287F683D0087498B /* FriendRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E5394287F683D0087498B /* FriendRequestsViewController.m */; };
@@ -131,8 +132,10 @@
 		3C69D048288728BD00851E6F /* SelectMapHelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectMapHelpViewController.m; sourceTree = "<group>"; };
 		3C69D04A28874EAB00851E6F /* ManageUserStatistics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManageUserStatistics.h; sourceTree = "<group>"; };
 		3C69D04B28874EAB00851E6F /* ManageUserStatistics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManageUserStatistics.m; sourceTree = "<group>"; };
-		3C69D04D28877F7400851E6F /* SnappingCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnappingCollectionView.h; sourceTree = "<group>"; };
-		3C69D04E28877F7400851E6F /* SnappingCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnappingCollectionView.m; sourceTree = "<group>"; };
+		3C69D05028888A2900851E6F /* MapFiltersViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapFiltersViewController.h; sourceTree = "<group>"; };
+		3C69D05128888A2900851E6F /* MapFiltersViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapFiltersViewController.m; sourceTree = "<group>"; };
+		3C69D0532888A23800851E6F /* MapFilters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapFilters.h; sourceTree = "<group>"; };
+		3C69D0542888A23800851E6F /* MapFilters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapFilters.m; sourceTree = "<group>"; };
 		3C8E538D287F2D200087498B /* FriendsListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsListViewController.h; sourceTree = "<group>"; };
 		3C8E538E287F2D200087498B /* FriendsListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsListViewController.m; sourceTree = "<group>"; };
 		3C8E5390287F362B0087498B /* FriendCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
@@ -302,6 +305,8 @@
 				3C1BC0172885CAE100D17314 /* UpcomingSessionsViewController.m */,
 				3C1BC0192885CAED00D17314 /* SuggestedSessionsViewController.h */,
 				3C1BC01A2885CAED00D17314 /* SuggestedSessionsViewController.m */,
+				3C69D05028888A2900851E6F /* MapFiltersViewController.h */,
+				3C69D05128888A2900851E6F /* MapFiltersViewController.m */,
 			);
 			path = "Home Tab";
 			sourceTree = "<group>";
@@ -359,8 +364,8 @@
 				3CF4A5B7287CD963000C5E7D /* PlayerConnection.m */,
 				3CA1A197287DF02E00BBDB69 /* ConnectionState.h */,
 				3CA1A198287DF02E00BBDB69 /* ConnectionState.m */,
-				3C69D04D28877F7400851E6F /* SnappingCollectionView.h */,
-				3C69D04E28877F7400851E6F /* SnappingCollectionView.m */,
+				3C69D0532888A23800851E6F /* MapFilters.h */,
+				3C69D0542888A23800851E6F /* MapFilters.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -731,10 +736,11 @@
 				3C45B56B2871856E00EE578F /* LoginViewController.m in Sources */,
 				3C45B59B2874D91800EE578F /* SessionCell.m in Sources */,
 				3CF4A596287A6088000C5E7D /* CreateMenuViewController.m in Sources */,
+				3C69D05228888A2900851E6F /* MapFiltersViewController.m in Sources */,
 				3C69D049288728BD00851E6F /* SelectMapHelpViewController.m in Sources */,
 				3C45B5682871856500EE578F /* CreateViewController.m in Sources */,
-				3C69D04F28877F7400851E6F /* SnappingCollectionView.m in Sources */,
 				3CF652BA286D036700BD5EDB /* main.m in Sources */,
+				3C69D0552888A23800851E6F /* MapFilters.m in Sources */,
 				3CF4A58A2878AA1A000C5E7D /* EditProfileViewController.m in Sources */,
 				3CF4A5AB287C962D000C5E7D /* PlayerProfileCollectionCell.m in Sources */,
 				3CF4A59F287A991E000C5E7D /* LocationPickerCell.m in Sources */,

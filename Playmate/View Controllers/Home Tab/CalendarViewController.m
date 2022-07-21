@@ -39,7 +39,6 @@
 - (void)fetchData:(NSDate *)selectedDate {
     NSArray *filteredSessions = [self filterSessions:self.rawSessionList forDate:selectedDate];
     self.sessionList = (NSMutableArray *)filteredSessions;
-    NSLog(@"self session list %@", self.sessionList);
     [self.tableView reloadData];
 }
 

@@ -168,7 +168,6 @@ NSString *selectedGender;
         if (error != nil) {
             [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         } else {
-            NSLog(@"User registered successfully");
             [self performSegueWithIdentifier:@"createToLogin" sender:nil];
         }
     }];

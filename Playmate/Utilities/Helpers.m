@@ -99,4 +99,9 @@
     return [difference day];
 }
 
++ (void)setCornerRadiusAndColorForButton:(UIButton *)button andIsSmall:(BOOL)isSmall {
+    button.layer.cornerRadius = isSmall ? [Constants smallButtonCornerRadius] : [Constants buttonCornerRadius];
+    [button setBackgroundColor:[Constants playmateBlue]];
+}
+
 @end

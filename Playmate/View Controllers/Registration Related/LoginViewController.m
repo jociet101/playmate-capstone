@@ -25,7 +25,7 @@
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
     
-    self.proceedButton.layer.cornerRadius = [Constants buttonCornerRadius];
+    [Helpers setCornerRadiusAndColorForButton:self.proceedButton andIsSmall:NO];
 }
 
 #pragma mark - Text fields
@@ -55,10 +55,8 @@
     
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
-            NSLog(@"User log in failed: %@", error.localizedDescription);
             [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         } else {
-            NSLog(@"User logged in successfully");
             [self performSegueWithIdentifier:@"loginToTab" sender:nil];
         }
     }];

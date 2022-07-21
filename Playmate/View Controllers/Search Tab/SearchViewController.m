@@ -54,7 +54,6 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    
     if (self.appliedFilters == YES) {
         [self fetchDataWithFilters:self.filters];
     } else {
@@ -168,7 +167,6 @@
 }
 
 - (float)euclideanDistanceBetween:(Location *)location1 and:(Location *)location2 {
-    
     [location1 fetchIfNeeded];
     [location2 fetchIfNeeded];
     
@@ -183,7 +181,6 @@
 }
 
 - (NSArray *)filterSessions:(NSArray *)sessions withLocation:(Location *)location andRadius:(NSNumber *)radiusInMiles {
-        
     float radiusInUnits = [radiusInMiles floatValue]/69;
     
     NSMutableArray *filteredSessions = [[NSMutableArray alloc] init];
@@ -239,7 +236,6 @@
         }
         [self.refreshControl endRefreshing];
     }];
-    
 }
 
 - (IBAction)didTapClear:(id)sender {
@@ -260,16 +256,13 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     if ([sender isMemberOfClass:[SessionCell class]]) {
-        
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         
         Session* data = self.sessionList[indexPath.section];
         SessionDetailsViewController *vc = [segue destinationViewController];
         vc.sessionDetails = data;
-    }
-    if ([sender isMemberOfClass:[UIBarButtonItem class]]) {
+    } else if ([segue.identifier isEqualToString:@"searchToFilters"]) {
         FiltersMenuViewController *vc = [segue destinationViewController];
         vc.delegate = self;
     }

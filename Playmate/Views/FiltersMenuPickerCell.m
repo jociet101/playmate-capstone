@@ -19,17 +19,6 @@
 
 @implementation FiltersMenuPickerCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 - (void)setRowNumber:(NSNumber *)rowNumber {
     
     self.layer.cornerRadius = [Constants buttonCornerRadius];
@@ -40,12 +29,12 @@
     self.menuLabel.text = [Constants createFiltersMenuTitle:self.thisRow];
     
     switch (self.thisRow) {
-        case 3: // radius
+        case 3: // radius for normal filters
             [self radiusSetup];
             break;
-        default: // sport and skill level
+        default: // sport and skill level and session scope
             [self pickerViewSetup];
-        }
+    }
 }
 
 - (void)radiusSetup {
@@ -104,7 +93,10 @@
             [self.delegate setSkillLevel:self.selectedData];
             self.pickerField.text = self.selectedData;
             break;
-            
+        case 4:
+            [self.delegate setSessionType:self.selectedData];
+            self.pickerField.text = self.selectedData;
+            break;
     }
 }
 
