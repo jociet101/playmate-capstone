@@ -104,4 +104,35 @@
     [button setBackgroundColor:[Constants playmateBlue]];
 }
 
+// For rotating an image
+
++ (CGFloat)degreesToRadians:(CGFloat)degrees {
+    return M_PI * degrees / 180;
+}
+
++ (UIImage *)image:(UIImage *)image rotatedByDegrees:(CGFloat)degrees {
+    CGFloat radians = [Helpers degreesToRadians:degrees];
+
+    UIView *rotatedViewBox = [[UIView alloc] initWithFrame:CGRectMake(0,0, image.size.width, image.size.height)];
+    rotatedViewBox.transform = CGAffineTransformMakeRotation(radians);
+    CGSize rotatedSize = rotatedViewBox.frame.size;
+    
+    NSLog(@"degrees: %f rotated size w: %f, h: %f", degrees, rotatedSize.width, rotatedSize.height);
+
+    UIGraphicsBeginImageContextWithOptions(rotatedSize, NO, [[UIScreen mainScreen] scale]);
+    CGContextRef bitmap = UIGraphicsGetCurrentContext();
+
+    CGContextTranslateCTM(bitmap, rotatedSize.width / 2, rotatedSize.height / 2);
+
+    CGContextRotateCTM(bitmap, radians);
+
+    CGContextScaleCTM(bitmap, 1.0, -1.0);
+    CGContextDrawImage(bitmap, CGRectMake(-image.size.width / 2, -image.size.height / 2 , image.size.width, image.size.height), image.CGImage );
+
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    return newImage;
+}
+
 @end

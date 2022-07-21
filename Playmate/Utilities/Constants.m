@@ -453,6 +453,16 @@
         [rollingGifImages addObject:[Helpers resizeImage:image withDimension:60]];
     }
     return [NSArray arrayWithArray:rollingGifImages];
+    
+    /*
+    NSMutableArray *rollingGifImages = [[NSMutableArray alloc] initWithCapacity:24];
+    UIImage *playmateLogo = [Helpers resizeImage:[Constants profileImagePlaceholder] withDimension:70];
+    for (int deg = 0; deg < 360; deg += 15) {
+        UIImage *rotatedImage = [Helpers image:playmateLogo rotatedByDegrees:deg];
+        [rollingGifImages addObject:rotatedImage];
+    }
+    return rollingGifImages;
+     */
 }
 
 @end

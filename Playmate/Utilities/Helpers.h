@@ -36,6 +36,9 @@ NS_ASSUME_NONNULL_BEGIN
 // for buttons
 + (void)setCornerRadiusAndColorForButton:(UIButton *)button andIsSmall:(BOOL)isSmall;
 
+// For rotating an image
++ (UIImage *)image:(UIImage *)image rotatedByDegrees:(CGFloat)degrees;
+
 @end
 
 NS_ASSUME_NONNULL_END
