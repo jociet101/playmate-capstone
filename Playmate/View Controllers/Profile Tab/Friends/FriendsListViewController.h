@@ -10,18 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol FriendsListViewControllerDelegate
-
-- (void)inviteToSession:(NSString *)toObjectId;
-
-@end
-
 @interface FriendsListViewController : UIViewController
 
 @property (nonatomic, strong) PFUser *thisUser;
 @property (nonatomic, assign) BOOL isForInvitations;
-
-@property (nonatomic, strong) id<FriendsListViewControllerDelegate> delegate;
+@property (nonatomic, strong) NSString *sessionWithInvite;
 
 @end
 

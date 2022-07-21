@@ -18,7 +18,7 @@
 #import "FriendsListViewController.h"
 #import "Invitation.h"
 
-@interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, FriendsListViewControllerDelegate>
+@interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *sportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
@@ -305,12 +305,6 @@ BOOL isPartOfSession;
     return [Constants playmateBlue];
 }
 
-#pragma mark - Friend list view controller delegate method
-
-- (void)inviteToSession:(NSString *)toObjectId {
-    [Invitation saveInvitationTo:toObjectId forSession:self.sessionDetails.objectId];
-}
-
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -322,7 +316,7 @@ BOOL isPartOfSession;
     } else if ([segue.identifier isEqualToString:@"sessionDetailsInvite"]) {
         FriendsListViewController *vc = [segue destinationViewController];
         vc.isForInvitations = YES;
-        vc.delegate = self;
+        vc.sessionWithInvite = self.sessionDetails.objectId;
         vc.thisUser = [[PFUser currentUser] fetchIfNeeded];
     }
 }

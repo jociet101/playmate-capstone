@@ -12,6 +12,7 @@
 #import "FriendCell.h"
 #import "PlayerProfileViewController.h"
 #import "Helpers.h"
+#import "Invitation.h"
 
 @interface FriendsListViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, FriendCellDelegate>
 
@@ -111,13 +112,29 @@
 
 - (void)didTap:(FriendCell *)cell forName:(NSString *)name andId:(NSString *)userObjectId {
     if (self.isForInvitations) {
+        // check if this invitation already exists
+        PFQuery *query = [PFQuery queryWithClassName:@"Invitation"];
+        [query whereKey:@"sessionObjectId" equalTo:self.sessionWithInvite];
+        [query whereKey:@"invitationToId" equalTo:userObjectId];
+        [query whereKey:@"invitationFromId" equalTo:self.thisUser.objectId];
+        
+        if ([query getFirstObject] != nil) {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Already invited @%@ to session.", name]
+                                                                                     message:nil
+                                                                              preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
+
+            [alertController addAction:okAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+            return;
+        }
+        
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Invite @%@ to session?", name]
                                                                                  message:nil
                                                                           preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *inviteAction = [UIAlertAction actionWithTitle:@"Invite" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            NSLog(@"invite");
-            [self.delegate inviteToSession:userObjectId];
+            [Invitation saveInvitationTo:userObjectId forSession:self.sessionWithInvite];
         }];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
 
