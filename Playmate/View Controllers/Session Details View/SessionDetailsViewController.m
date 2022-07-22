@@ -80,6 +80,10 @@ BOOL isPartOfSession;
         [user fetchIfNeeded];
         if ([me.username isEqualToString:user.username]) {
             [self changeAddButtonToLeave];
+            if ([self.sessionDetails.occupied isEqual:self.sessionDetails.capacity]) {
+                self.inviteFriendButton.alpha = 0;
+                [self.inviteFriendButton setEnabled:NO];
+            }
             return;
         }
     }
@@ -90,6 +94,7 @@ BOOL isPartOfSession;
         isPartOfSession = NO;
         self.addMyselfButton.alpha = 0;
         self.disabledButton.alpha = 1;
+        self.inviteFriendButton.alpha = 0;
     }
     [self disableInviteButton];
 }
