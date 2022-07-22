@@ -86,6 +86,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)emptyIncomingRequestsPlaceholderTitle;
 + (NSString *)emptyOutgoingRequestsPlaceholderTitle;
 + (NSString *)emptyCollectionLoadingSessionsTitle;
++ (NSString *)emptyCalendarTableForDate:(NSDate *)date;
+
 + (NSDictionary *)descriptionAttributes;
 + (NSDictionary *)titleAttributes;
 

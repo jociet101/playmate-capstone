@@ -89,6 +89,18 @@
     return [formatter stringFromDate:date];
 }
 
++ (NSString *)formatDateNoTime:(NSDate *)original {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = [Constants dateFormatString];
+    NSString *originalDate = [formatter stringFromDate:original];
+    
+    NSDate *date = [formatter dateFromString:originalDate];
+    formatter.dateStyle = NSDateFormatterMediumStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    
+    return [formatter stringFromDate:date];
+}
+
 + (NSArray *)listOfSystemColors {
     return [NSArray arrayWithObjects:[UIColor systemPinkColor],
                                      [UIColor systemRedColor],
@@ -387,6 +399,11 @@
 
 + (NSString *)emptyCollectionLoadingSessionsTitle {
     return @"Loading Sessions ...";
+}
+
++ (NSString *)emptyCalendarTableForDate:(NSDate *)date {
+    NSString *dateString = [Constants formatDateNoTime:date];
+    return [@"No sessions on " stringByAppendingString:dateString];
 }
 
 + (NSDictionary *)descriptionAttributes {
