@@ -40,6 +40,7 @@
 - (void)radiusSetup {
     self.pickerField.tintColor = [UIColor lightGrayColor];
     self.pickerField.returnKeyType = UIReturnKeyDone;
+    self.pickerField.placeholder = @"10 (default)";
     self.pickerField.delegate = self;
     [self.pickerField setKeyboardType:UIKeyboardTypeNumberPad];
 }

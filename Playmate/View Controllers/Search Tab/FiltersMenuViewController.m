@@ -110,7 +110,7 @@
         filters.skillLevel = nil;
     }
     if (filters.radius == nil) {
-        filters.radius = [NSNumber numberWithInt:5];
+        filters.radius = [NSNumber numberWithInt:10];
     }
     
     // call delegate method so filters save on search tab vc
