@@ -59,6 +59,11 @@
     NSString *numberFriendsLabel = (numFriends == 1) ? @"1 friend" : [NSString stringWithFormat:@"%ld friends", numFriends];
     [self.numberOfFriendsButton setTitle:numberFriendsLabel forState:UIControlStateNormal];
     
+    NSArray *topSports = [Helpers getTopSportsFor:self.user];
+    self.firstSportLabel.text = topSports[0];
+    self.secondSportLabel.text = topSports[1];
+    self.thirdSportLabel.text = topSports[2];
+    
     [self configureDataFields];
 }
 

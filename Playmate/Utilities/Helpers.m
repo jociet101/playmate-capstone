@@ -33,6 +33,52 @@
     return playersSet;
 }
 
+// For getting a user's top 3 sports to display on profile
++ (NSArray *)getTopSportsFor:(PFUser *)user {
+    NSMutableDictionary *sportsCountDictionary = [[NSMutableDictionary alloc] init];
+    
+    NSMutableDictionary *sportsDictionary = user[@"sessionsDictionary"][0];
+    NSArray *sportsList = [sportsDictionary allKeys];
+    
+    for (NSString *sport in sportsList) {
+        NSNumber *count = [NSNumber numberWithLong:((NSArray *)sportsDictionary[sport]).count];
+        NSMutableArray *sportsListForCount = [sportsCountDictionary objectForKey:count];
+        if (sportsListForCount == nil) {
+            sportsListForCount = [NSMutableArray arrayWithObject:sport];
+            [sportsCountDictionary setObject:sportsListForCount forKey:count];
+        } else {
+            [sportsCountDictionary removeObjectForKey:count];
+            [sportsListForCount addObject:sport];
+            [sportsCountDictionary setObject:sportsListForCount forKey:count];
+        }
+    }
+    
+    NSArray *countKeys = [sportsCountDictionary allKeys];
+    
+    [countKeys sortedArrayUsingComparator:^NSComparisonResult(NSNumber *one, NSNumber *two) {
+        if ([one longValue] > [two longValue]) {
+            return NSOrderedAscending;
+        } else if ([one longValue] < [two longValue]) {
+            return NSOrderedDescending;
+        } else {
+            return NSOrderedSame;
+        }
+    }];
+    
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    
+    for (NSNumber *count in countKeys) {
+        if (result.count >= 3) {
+            break;
+        }
+        NSArray *sportsForThisCount = [sportsCountDictionary objectForKey:count];
+        result = (NSMutableArray *)[result arrayByAddingObjectsFromArray:sportsForThisCount];
+    }
+    
+    const long numberSportsToFetch = MAX(3, result.count);
+    return [result subarrayWithRange:NSMakeRange(0, numberSportsToFetch)];
+}
+
 // for resizing images
 + (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension {
     CGSize size = CGSizeMake(dimension, dimension);

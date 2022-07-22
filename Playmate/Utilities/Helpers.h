@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 // For other stuff
 + (NSMutableSet *)getPlayerObjectIdSet:(NSArray *)playerList;
 
++ (NSArray *)getTopSportsFor:(PFUser *)user;
+
 // For handling alerts
 + (void)handleAlert:(NSError * _Nullable)error
           withTitle:(NSString *)title

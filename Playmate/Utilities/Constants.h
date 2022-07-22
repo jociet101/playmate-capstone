@@ -8,7 +8,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "DateTools.h"
-#import <Parse/Parse.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -45,7 +44,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)defaultBio;
 + (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last;
 + (NSString *)getAgeInYears:(NSDate *)date;
-+ (void)getTopSportsFor:(PFUser *)user;
 
 // Information for filters and create
 + (NSString *)createMenuTitle:(int)row;

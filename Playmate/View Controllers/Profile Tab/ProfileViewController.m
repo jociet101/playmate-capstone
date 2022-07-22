@@ -48,8 +48,6 @@
     
     PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
-    [Constants getTopSportsFor:user];
-    
     self.nameLabel.text = [Constants concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
     self.usernameLabel.text = [@"@" stringByAppendingString:user[@"username"]];
     self.usernameLabel.textColor = [UIColor lightGrayColor];
@@ -73,6 +71,11 @@
     
     // TODO: find out how to make font bold, look like a button
 //    [self.numberOfFriendsButton.titleLabel setFont:[UIFont fontWithName:@"Avenir" size:16.0]];
+    
+    NSArray *topSports = [Helpers getTopSportsFor:user];
+    self.firstSportLabel.text = topSports[0];
+    self.secondSportLabel.text = topSports[1];
+    self.thirdSportLabel.text = topSports[2];
     
     [self configureDataFields];
     [self configureButtonUI];
