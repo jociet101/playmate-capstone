@@ -114,6 +114,15 @@
                                      [UIColor systemGrayColor], nil];
 }
 
+// Info for incoming friend notifications
++ (NSString *)acceptedConfirmationStringFor:(NSString *)name {
+    return [NSString stringWithFormat:@"You are now friends with %@", name];
+}
+
++ (NSString *)deniedConfirmationStringFor:(NSString *)name {
+    return [NSString stringWithFormat:@"You denied %@'s friend request", name];
+}
+
 // Information for profile tab
 + (NSString *)defaultBio {
     return @"Edit profile to enter a bio!";

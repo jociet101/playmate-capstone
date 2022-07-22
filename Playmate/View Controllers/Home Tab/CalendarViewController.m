@@ -122,7 +122,7 @@
     return [UIImage imageNamed:@"logo_small"];
 }
 
-- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {    
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
     NSString *text = (self.calendarView.selectedDate == nil) ? [Constants emptyCalendarTableForDate:[NSDate now]]
                                                              : [Constants emptyCalendarTableForDate:self.calendarView.selectedDate];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];

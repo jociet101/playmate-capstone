@@ -36,6 +36,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)formatDateShort:(NSDate *)original;
 + (NSArray *)listOfSystemColors;
 
+// Info for incoming friend notifications
++ (NSString *)acceptedConfirmationStringFor:(NSString *)name;
++ (NSString *)deniedConfirmationStringFor:(NSString *)name;
+
 // Information for profile tab
 + (NSString *)defaultBio;
 + (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last;

@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *denyButton;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *timeAgoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *confirmationLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *acceptedIcon;
+@property (weak, nonatomic) IBOutlet UIImageView *deniedIcon;
 
 @property (nonatomic, strong) PFUser *requester;
 
@@ -64,6 +67,21 @@
     
     // set time ago timestamp
     self.timeAgoLabel.text = [[requestInfo.updatedAt shortTimeAgoSinceNow] stringByAppendingString:@" ago"];
+    
+    [self hideConfirmationLabels];
+}
+
+- (void)hideConfirmationLabels {
+    self.acceptedIcon.alpha = 0;
+    self.deniedIcon.alpha = 0;
+    self.confirmationLabel.alpha = 0;
+}
+
+- (void)disableButtons {
+    [self.acceptButton setEnabled:NO];
+    [self.denyButton setEnabled:NO];
+    self.acceptButton.alpha = 0;
+    self.denyButton.alpha = 0;
 }
 
 - (void)deleteThisRequest {
@@ -71,6 +89,12 @@
 }
 
 - (IBAction)didTapAccept:(id)sender {
+    NSLog(@"did tap accept");
+    // Update confirmation UI
+    self.acceptedIcon.alpha = 1;
+    self.confirmationLabel.alpha = 1;
+    self.confirmationLabel.text = [Constants acceptedConfirmationStringFor:self.requester.username];
+    [self disableButtons];
     
     PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
@@ -89,17 +113,19 @@
     [PlayerConnection savePlayer:self.requestInfo.requestFromId ConnectionToMeWithStatus:YES andWeight:1];
     
     [self deleteThisRequest];
-    
-    [self.delegate didRespondToRequest];
 }
 
 - (IBAction)didTapDeny:(id)sender {
+    NSLog(@"did tap deny");
+    // Update confirmation UI
+    self.deniedIcon.alpha = 1;
+    self.confirmationLabel.alpha = 1;
+    self.confirmationLabel.text = [Constants deniedConfirmationStringFor:self.requester.username];
+    [self disableButtons];
     
     [PlayerConnection removeSelfFromPendingOf:self.requestInfo.requestFromId];
     
     [self deleteThisRequest];
-    
-    [self.delegate didRespondToRequest];
 }
 
 @end

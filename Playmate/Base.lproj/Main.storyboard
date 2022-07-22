@@ -1128,7 +1128,7 @@
             <objects>
                 <viewController id="FoH-rZ-204" customClass="SessionDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xae-LI-F9P">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="319.66666666666669" height="429"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ihn-hH-IMg">
@@ -1393,7 +1393,7 @@
             <objects>
                 <viewController id="hNf-lE-ZKe" customClass="PlayerProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fFY-gZ-QLq">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="580"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQH-Cr-mDU">
@@ -2331,7 +2331,7 @@
             <objects>
                 <viewController id="PE5-R2-Lql" customClass="FriendsListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A8l-EG-LNX">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="580"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZQy-cE-gEh">
@@ -2770,6 +2770,23 @@
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Mei-QB-MCt">
+                                                    <rect key="frame" x="111" y="81" width="20" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" systemColor="systemGreenColor"/>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="x.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lXe-Xz-CSp">
+                                                    <rect key="frame" x="111" y="81" width="20" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" systemColor="systemRedColor"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You are now friends with Billy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfL-ZI-A2F">
+                                                    <rect key="frame" x="139" y="81" width="232" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Elr-ee-QZY" firstAttribute="top" secondItem="66r-fb-0A9" secondAttribute="bottom" constant="-4" id="1gy-FS-SLK"/>
@@ -2794,6 +2811,9 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="acceptButton" destination="APg-cF-tM3" id="oFe-Uo-2hc"/>
+                                            <outlet property="acceptedIcon" destination="Mei-QB-MCt" id="aXA-ic-2aY"/>
+                                            <outlet property="confirmationLabel" destination="zfL-ZI-A2F" id="v3L-oE-Kmg"/>
+                                            <outlet property="deniedIcon" destination="lXe-Xz-CSp" id="BDw-Pb-pul"/>
                                             <outlet property="denyButton" destination="pfG-4N-Qsb" id="RRR-2s-TpO"/>
                                             <outlet property="profileImageView" destination="evp-Hi-pgx" id="Vpw-g2-ZFs"/>
                                             <outlet property="timeAgoLabel" destination="66r-fb-0A9" id="qnk-eT-Twn"/>
@@ -2813,7 +2833,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AVJ-6s-vg8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7102" y="1788"/>
+            <point key="canvasLocation" x="7101.538461538461" y="1787.914691943128"/>
         </scene>
         <!--Outgoing Requests View Controller-->
         <scene sceneID="wa6-Fn-PZl">
@@ -3150,8 +3170,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="rqC-KX-Pok"/>
         <segue reference="Nu6-4T-TEp"/>
-        <segue reference="Of8-sX-WuS"/>
-        <segue reference="rNL-Fb-mXA"/>
+        <segue reference="Kdh-do-hzm"/>
+        <segue reference="6tu-y4-peZ"/>
         <segue reference="EiS-gP-Syp"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -3160,6 +3180,7 @@
         <image name="3.circle" catalog="system" width="128" height="121"/>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="calendar.circle" catalog="system" width="128" height="121"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="house" catalog="system" width="128" height="106"/>
@@ -3175,6 +3196,7 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="questionmark.circle" catalog="system" width="128" height="121"/>
         <image name="timer" catalog="system" width="128" height="121"/>
+        <image name="x.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -3189,6 +3211,9 @@
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
