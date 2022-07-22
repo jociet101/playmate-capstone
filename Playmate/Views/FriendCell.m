@@ -20,9 +20,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
     UITapGestureRecognizer *friendCellTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapCell:)];
-    
     [self addGestureRecognizer:friendCellTapGesture];
     [self setUserInteractionEnabled:YES];
 }

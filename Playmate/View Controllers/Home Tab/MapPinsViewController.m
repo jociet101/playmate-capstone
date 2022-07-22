@@ -216,7 +216,6 @@ BOOL isFirstTimeGettingLocation;
 
 - (NSArray *)filterSessions:(NSArray *)sessions withSessionScope:(NSString *)scope {
     NSMutableArray *filteredSessions = [[NSMutableArray alloc] init];
-    
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     
     if ([scope isEqualToString:@"Own"]) {
@@ -247,7 +246,6 @@ BOOL isFirstTimeGettingLocation;
             }
         }
     }
-    
     return (NSArray *)filteredSessions;
 }
 

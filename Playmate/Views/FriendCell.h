@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *thisUserId;
 @property (nonatomic, assign) BOOL isForInvitations;
+@property (nonatomic, assign) BOOL isAlreadyInSession;
+@property (nonatomic, assign) BOOL isAlreadyInvitedToSession;
 @property id<FriendCellDelegate> delegate;
 
 - (void)setThisUserId:(NSString *)thisUserId;

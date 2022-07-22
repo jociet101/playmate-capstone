@@ -35,7 +35,6 @@
 
 // for resizing images
 + (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension {
-    
     CGSize size = CGSizeMake(dimension, dimension);
     UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, dimension, dimension)];
     
