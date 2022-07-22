@@ -81,12 +81,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendCell"];
     NSString *toUserId = self.friendsList[indexPath.row];
-    cell.thisUserId = toUserId;
-    cell.delegate = self;
-    
     cell.isForInvitations = self.isForInvitations;
     cell.isAlreadyInSession = [self isAlreadyInSession:toUserId];
     cell.isAlreadyInvitedToSession = [self doesInvitationExist:toUserId];
+    
+    cell.thisUserId = toUserId;
+    cell.delegate = self;
     
     return cell;
 }
