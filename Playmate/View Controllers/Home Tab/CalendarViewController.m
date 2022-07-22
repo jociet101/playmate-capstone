@@ -134,9 +134,6 @@
     self.calendarView.dataSource = self;
     
     self.calendarView.swipeToChooseGesture.enabled = YES;
-    
-    UIPanGestureRecognizer *scopeGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self.calendarView action:@selector(handleScopeGesture:)];
-    [self.calendarView addGestureRecognizer:scopeGesture];
 }
 
 - (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated {
