@@ -9,6 +9,7 @@
 #import "InvitationCell.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
+#import "Helpers.h"
 
 @interface InvitationsViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -27,6 +28,28 @@
     
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
+    
+    [self fetchData];
+}
+
+- (void)fetchData {
+    
+    // fetch data for friend request list
+    PFQuery *query = [PFQuery queryWithClassName:@"Invitation"];
+    query.limit = 20;
+    
+    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
+    [query whereKey:@"invitationToId" equalTo:user.objectId];
+
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *invitations, NSError *error) {
+        if (invitations != nil) {
+            self.invitationsList = invitations;
+            [self.tableView reloadData];
+        } else {
+            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+        }
+    }];
 }
 
 #pragma mark - Table view protocol methods
@@ -34,7 +57,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     InvitationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InvitationCell"];
-            
+    cell.invitation = self.invitationsList[indexPath.row];
     return cell;
 }
 
