@@ -13,6 +13,7 @@
 #import "PlayerProfileViewController.h"
 #import "Helpers.h"
 #import "Invitation.h"
+#import "Session.h"
 
 @interface FriendsListViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, FriendCellDelegate>
 
@@ -53,13 +54,40 @@
     [self.refreshControl endRefreshing];
 }
 
+- (BOOL)doesInvitationExist:(NSString *)userObjectId {
+    PFQuery *query = [PFQuery queryWithClassName:@"Invitation"];
+    [query whereKey:@"sessionObjectId" equalTo:self.sessionWithInvite];
+    [query whereKey:@"invitationToId" equalTo:userObjectId];
+    [query whereKey:@"invitationFromId" equalTo:self.thisUser.objectId];
+        
+    return [query getFirstObject] != nil;
+}
+
+- (BOOL)isAlreadyInSession:(NSString *)userObjectId {
+    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+    [query whereKey:@"objectId" equalTo:self.sessionWithInvite];
+    Session *session = [[query getFirstObject] fetchIfNeeded];
+    NSArray *playerList = session.playersList;
+    for (PFUser *user in playerList) {
+        if ([user.objectId isEqualToString:userObjectId]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 #pragma mark - Table view protocol methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendCell"];
-    cell.thisUserId = self.friendsList[indexPath.row];
+    NSString *toUserId = self.friendsList[indexPath.row];
+    cell.thisUserId = toUserId;
     cell.delegate = self;
+    
     cell.isForInvitations = self.isForInvitations;
+    cell.isAlreadyInSession = [self isAlreadyInSession:toUserId];
+    cell.isAlreadyInvitedToSession = [self doesInvitationExist:toUserId];
+    
     return cell;
 }
 
@@ -113,13 +141,11 @@
 - (void)didTap:(FriendCell *)cell forName:(NSString *)name andId:(NSString *)userObjectId {
     if (self.isForInvitations) {
         // check if this invitation already exists
-        PFQuery *query = [PFQuery queryWithClassName:@"Invitation"];
-        [query whereKey:@"sessionObjectId" equalTo:self.sessionWithInvite];
-        [query whereKey:@"invitationToId" equalTo:userObjectId];
-        [query whereKey:@"invitationFromId" equalTo:self.thisUser.objectId];
-        
-        if ([query getFirstObject] != nil) {
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Already invited @%@ to session.", name]
+        const BOOL invitationExists = [self doesInvitationExist:userObjectId];
+        const BOOL isAlreadyInSession = [self isAlreadyInSession:userObjectId];
+        NSString *alertTitle = isAlreadyInSession ? [NSString stringWithFormat:@"@%@ is already in session.", name] : [NSString stringWithFormat:@"Already invited @%@ to session.", name];
+        if (invitationExists || isAlreadyInSession) {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
                                                                                      message:nil
                                                                               preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}];
