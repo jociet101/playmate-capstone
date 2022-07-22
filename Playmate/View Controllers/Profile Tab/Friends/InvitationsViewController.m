@@ -10,8 +10,10 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
 #import "Helpers.h"
+#import "SessionDetailsViewController.h"
+#import "Session.h"
 
-@interface InvitationsViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface InvitationsViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, InvitationCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *invitationsList;
@@ -25,6 +27,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.rowHeight = 129;
     
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
@@ -58,6 +61,7 @@
 
     InvitationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InvitationCell"];
     cell.invitation = self.invitationsList[indexPath.row];
+    cell.delegate = self;
     return cell;
 }
 
@@ -89,14 +93,17 @@
     return [Constants playmateBlue];
 }
 
-/*
+- (void)viewSessionFromInvite:(Session *)session {
+    [self performSegueWithIdentifier:@"invitationToSessionDetails" sender:session];
+}
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"invitationToSessionDetails"]) {
+        SessionDetailsViewController *vc = [segue destinationViewController];
+        vc.sessionDetails = (Session *)sender;
+    }
 }
-*/
 
 @end
