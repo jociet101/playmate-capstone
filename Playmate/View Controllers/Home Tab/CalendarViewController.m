@@ -135,6 +135,14 @@
     
     self.calendarView.backgroundColor = [Constants playmateBlue];
     self.calendarView.layer.cornerRadius = [Constants buttonCornerRadius];
+        
+    if (UIScreen.mainScreen.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+        self.calendarView.appearance.headerTitleColor = [UIColor whiteColor];
+        self.calendarView.appearance.weekdayTextColor = [UIColor whiteColor];
+    } else {
+        self.calendarView.appearance.headerTitleColor = [UIColor blackColor];
+        self.calendarView.appearance.weekdayTextColor = [UIColor blackColor];
+    }
 }
 
 - (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated {
