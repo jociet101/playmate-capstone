@@ -82,8 +82,10 @@
     FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendCell"];
     NSString *toUserId = self.friendsList[indexPath.row];
     cell.isForInvitations = self.isForInvitations;
-    cell.isAlreadyInSession = [self isAlreadyInSession:toUserId];
-    cell.isAlreadyInvitedToSession = [self doesInvitationExist:toUserId];
+    if (cell.isForInvitations) {
+        cell.isAlreadyInSession = [self isAlreadyInSession:toUserId];
+        cell.isAlreadyInvitedToSession = [self doesInvitationExist:toUserId];
+    }
     
     cell.thisUserId = toUserId;
     cell.delegate = self;

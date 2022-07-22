@@ -35,7 +35,7 @@
     PFQuery *query = [PFUser query];
     PFUser *thisUser = [[query getObjectWithId:self.thisUserId] fetchIfNeeded];
     
-    NSString *userSessionStatus = self.isAlreadyInSession ? @"(Already in session)" : (self.isAlreadyInvitedToSession ? @"(Already invited)" : @"");
+    NSString *userSessionStatus = self.isAlreadyInSession ? @" (Already in session)" : (self.isAlreadyInvitedToSession ? @" (Already invited)" : @"");
     self.nameLabel.text = [thisUser.username stringByAppendingString:userSessionStatus];
     
     const BOOL hasProfileImage = (thisUser[@"profileImage"] != nil);
