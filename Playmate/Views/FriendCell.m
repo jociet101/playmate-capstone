@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *invitedStatusLabel;
 
 @end
 
@@ -35,8 +36,15 @@
     PFQuery *query = [PFUser query];
     PFUser *thisUser = [[query getObjectWithId:self.thisUserId] fetchIfNeeded];
     
-    NSString *userSessionStatus = self.isAlreadyInSession ? @" (Already in session)" : (self.isAlreadyInvitedToSession ? @" (Already invited)" : @"");
-    self.nameLabel.text = [thisUser.username stringByAppendingString:userSessionStatus];
+    if (self.isForInvitations) {
+        NSString *userSessionStatus = self.isAlreadyInSession ? @"(Already in session)" : (self.isAlreadyInvitedToSession ? @"(Already invited)" : @"");
+        self.invitedStatusLabel.text = userSessionStatus;
+    } else {
+        self.invitedStatusLabel.alpha = 0;
+    }
+    
+    
+    self.nameLabel.text = thisUser.username;
     
     const BOOL hasProfileImage = (thisUser[@"profileImage"] != nil);
     UIImage *img = hasProfileImage ? [UIImage imageWithData:[thisUser[@"profileImage"] getData]] : [Constants profileImagePlaceholder];

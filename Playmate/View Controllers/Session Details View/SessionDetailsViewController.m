@@ -64,6 +64,10 @@ BOOL isPartOfSession;
     [self.collectionView reloadData];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"poo");
+}
+
 - (void)disableInviteButton {
     self.inviteFriendButton.alpha = 0;
     [self.inviteFriendButton setEnabled:NO];
@@ -320,11 +324,16 @@ BOOL isPartOfSession;
         vc.user = data;
     } else if ([segue.identifier isEqualToString:@"sessionDetailsInvite"]) {
         [self.inviteFriendButton setBackgroundColor:[Constants playmateBlueSelected]];
+        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(resetButtonColor) userInfo:nil repeats:NO];
         FriendsListViewController *vc = [segue destinationViewController];
         vc.isForInvitations = YES;
         vc.sessionWithInvite = self.sessionDetails.objectId;
         vc.thisUser = [[PFUser currentUser] fetchIfNeeded];
     }
+}
+
+- (void)resetButtonColor {
+    [self.inviteFriendButton setBackgroundColor:[Constants playmateBlue]];
 }
 
 @end
