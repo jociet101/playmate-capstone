@@ -314,6 +314,7 @@ BOOL isPartOfSession;
         PlayerProfileViewController *vc = [segue destinationViewController];
         vc.user = data;
     } else if ([segue.identifier isEqualToString:@"sessionDetailsInvite"]) {
+        [self.inviteFriendButton setBackgroundColor:[Constants playmateBlueSelected]];
         FriendsListViewController *vc = [segue destinationViewController];
         vc.isForInvitations = YES;
         vc.sessionWithInvite = self.sessionDetails.objectId;

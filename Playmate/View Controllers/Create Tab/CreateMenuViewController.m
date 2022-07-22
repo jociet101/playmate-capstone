@@ -117,6 +117,7 @@
 #pragma mark - Create session action
 
 - (IBAction)didTapCreateSession:(id)sender {
+    [self.createSessionButton setBackgroundColor:[Constants playmateBlueSelected]];
     if (self.selectedLocation == nil) {
         [Helpers handleAlert:nil
                    withTitle:@"No location selected"

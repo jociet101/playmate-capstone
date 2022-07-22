@@ -103,6 +103,8 @@
 }
 
 - (IBAction)didTapApply:(id)sender {
+    [self.applyFiltersButton setBackgroundColor:[Constants playmateBlueSelected]];
+
     MapFilters *filters = [MapFilters new];
     
     filters.location = self.selectedLocation;

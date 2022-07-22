@@ -41,7 +41,6 @@
         } else {
             playersString = [playersString stringByAppendingString:[@", " stringByAppendingString:playerName]];
         }
-
     }
     
     self.sportLabel.text = (self.session.playersList.count == 0) ? self.session.sport : [self.session.sport stringByAppendingString:[@" w/ " stringByAppendingString:playersString]];

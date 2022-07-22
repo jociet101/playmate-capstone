@@ -80,11 +80,8 @@
 #pragma mark - Table view protocol methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     SessionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SessionCell"];
-        
     cell.session = self.sessionList[indexPath.section];
-            
     return cell;
 }
 
@@ -135,6 +132,9 @@
     self.calendarView.dataSource = self;
     
     self.calendarView.swipeToChooseGesture.enabled = YES;
+    
+    self.calendarView.backgroundColor = [Constants playmateBlue];
+    self.calendarView.layer.cornerRadius = [Constants buttonCornerRadius];
 }
 
 - (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated {

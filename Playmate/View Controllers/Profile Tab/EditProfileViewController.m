@@ -56,7 +56,8 @@
 }
 
 - (IBAction)didTapSave:(id)sender {
-    
+    [self.saveButton setBackgroundColor:[Constants playmateBlueSelected]];
+
     PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
     [user removeObjectForKey:@"firstName"];

@@ -63,6 +63,7 @@
 }
 
 - (IBAction)didTapProceed:(id)sender {
+    [self.proceedButton setBackgroundColor:[Constants playmateBlueSelected]];
     [self loginUser];
 }
 

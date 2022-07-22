@@ -121,11 +121,8 @@
 #pragma mark - Table view protocol methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     SessionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SessionCell"];
-        
     cell.session = self.sessionList[indexPath.section];
-    
     return cell;
 }
 

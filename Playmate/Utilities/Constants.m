@@ -366,6 +366,10 @@
     return [UIColor colorWithRed: 0.31 green: 0.78 blue: 0.94 alpha: 0.30];
 }
 
++ (UIColor *)playmateBlueSelected {
+    return [UIColor colorWithRed: 0.76 green: 1 blue: 1 alpha: 0.7];
+}
+
 // playmate logo placeholder profile image
 
 + (UIImage *)profileImagePlaceholder {

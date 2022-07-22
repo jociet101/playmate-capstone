@@ -77,6 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Some colors
 + (UIColor *)playmateBlue;
++ (UIColor *)playmateBlueSelected;
 
 + (UIImage *)profileImagePlaceholder;
 
