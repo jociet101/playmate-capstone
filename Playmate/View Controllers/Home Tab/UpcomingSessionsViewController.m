@@ -43,7 +43,7 @@ BOOL isLoading;
     
     isLoading = YES;
     
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(stopLoading) userInfo:nil repeats:NO];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:8 target:self selector:@selector(stopLoading) userInfo:nil repeats:NO];
 }
 
 - (void)stopLoading {
@@ -138,7 +138,7 @@ BOOL isLoading;
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
     if (!isLoading) {
         NSString *text = [Constants emptyTablePlaceholderMsg];
-        return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
+        return [[NSAttributedString alloc] initWithString:text attributes:[Constants descriptionAttributes]];
     }
     return nil;
 }

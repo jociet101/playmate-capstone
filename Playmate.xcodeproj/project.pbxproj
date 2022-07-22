@@ -10,6 +10,8 @@
 		08F3A736C04B199B7D2918A8 /* Pods_Playmate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FD77B182A0096E02A5A865 /* Pods_Playmate.framework */; };
 		3C167B3F2881F21F00081304 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C167B3E2881F21F00081304 /* Helpers.m */; };
 		3C19BA1B288A024000592C20 /* Invitation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19BA1A288A024000592C20 /* Invitation.m */; };
+		3C19BA1E288B2C3000592C20 /* InvitationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19BA1D288B2C3000592C20 /* InvitationCell.m */; };
+		3C19BA21288B2C5600592C20 /* InvitationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19BA20288B2C5600592C20 /* InvitationsViewController.m */; };
 		3C1BC00D28820AB400D17314 /* MapPinsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BC00C28820AB400D17314 /* MapPinsViewController.m */; };
 		3C1BC0122883E94400D17314 /* LocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BC0112883E94400D17314 /* LocationAnnotation.m */; };
 		3C1BC0152885BFA800D17314 /* SessionCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BC0142885BFA800D17314 /* SessionCollectionCell.m */; };
@@ -92,6 +94,10 @@
 		3C167B3E2881F21F00081304 /* Helpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
 		3C19BA19288A024000592C20 /* Invitation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Invitation.h; sourceTree = "<group>"; };
 		3C19BA1A288A024000592C20 /* Invitation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Invitation.m; sourceTree = "<group>"; };
+		3C19BA1C288B2C3000592C20 /* InvitationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvitationCell.h; sourceTree = "<group>"; };
+		3C19BA1D288B2C3000592C20 /* InvitationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvitationCell.m; sourceTree = "<group>"; };
+		3C19BA1F288B2C5600592C20 /* InvitationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvitationsViewController.h; sourceTree = "<group>"; };
+		3C19BA20288B2C5600592C20 /* InvitationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvitationsViewController.m; sourceTree = "<group>"; };
 		3C1BC00B28820AB400D17314 /* MapPinsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapPinsViewController.h; sourceTree = "<group>"; };
 		3C1BC00C28820AB400D17314 /* MapPinsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapPinsViewController.m; sourceTree = "<group>"; };
 		3C1BC0102883E94400D17314 /* LocationAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LocationAnnotation.h; path = /Users/jocelyntseng/Desktop/projects/Playmate/Playmate/Models/LocationAnnotation.h; sourceTree = "<absolute>"; };
@@ -396,6 +402,8 @@
 				3C8E539B287F7A8D0087498B /* OutgoingRequestCell.m */,
 				3C1BC0132885BFA800D17314 /* SessionCollectionCell.h */,
 				3C1BC0142885BFA800D17314 /* SessionCollectionCell.m */,
+				3C19BA1C288B2C3000592C20 /* InvitationCell.h */,
+				3C19BA1D288B2C3000592C20 /* InvitationCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -411,6 +419,8 @@
 				3CF4A5BA287CE3A9000C5E7D /* IncomingRequestsViewController.m */,
 				3C8E5397287F69170087498B /* OutgoingRequestsViewController.h */,
 				3C8E5398287F69170087498B /* OutgoingRequestsViewController.m */,
+				3C19BA1F288B2C5600592C20 /* InvitationsViewController.h */,
+				3C19BA20288B2C5600592C20 /* InvitationsViewController.m */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -757,9 +767,11 @@
 				3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */,
 				3C45B59E2875060700EE578F /* SessionDetailsViewController.m in Sources */,
 				3C8E5392287F362B0087498B /* FriendCell.m in Sources */,
+				3C19BA1E288B2C3000592C20 /* InvitationCell.m in Sources */,
 				3CF4A5A5287B6647000C5E7D /* FiltersMenuViewController.m in Sources */,
 				3C1BC0152885BFA800D17314 /* SessionCollectionCell.m in Sources */,
 				3C45B574287297EB00EE578F /* HomeViewController.m in Sources */,
+				3C19BA21288B2C5600592C20 /* InvitationsViewController.m in Sources */,
 				3CF4A5BE287CE7C8000C5E7D /* FriendRequestCell.m in Sources */,
 				3C1BC00D28820AB400D17314 /* MapPinsViewController.m in Sources */,
 				3CF4A59C287A60F0000C5E7D /* MenuPickerCell.m in Sources */,

@@ -68,7 +68,6 @@
         }
         [self.refreshControl endRefreshing];
     }];
-    
 }
 
 #pragma mark - Table view protocol methods

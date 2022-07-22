@@ -419,6 +419,14 @@
     return [@"No sessions on " stringByAppendingString:dateString];
 }
 
++ (NSString *)emptyInvitationsPlaceholderTitle {
+    return @"No invitations";
+}
+
++ (NSString *)emptyInvitationsPlaceholderMsg {
+    return @"Check back later to see if your friends invited you to join their session!";
+}
+
 + (NSDictionary *)descriptionAttributes {
     NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
