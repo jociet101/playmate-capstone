@@ -366,6 +366,14 @@
     return [UIColor colorWithRed: 0.31 green: 0.78 blue: 0.94 alpha: 0.30];
 }
 
++ (UIColor *)playmateBlueOpaque {
+    return [UIColor colorWithRed: 0.90 green: 0.96 blue: 1 alpha: 1];
+}
+
++ (UIColor *)playmateTealOpaque {
+    return [UIColor colorWithRed: 0.05 green: 0.28 blue: 0.32 alpha: 1];
+}
+
 + (UIColor *)playmateBlueSelected {
     return [UIColor colorWithRed: 0.76 green: 1 blue: 1 alpha: 0.7];
 }

@@ -34,6 +34,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *thirdSportLabel;
 @property (weak, nonatomic) IBOutlet UIButton *editProfileButton;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+@property (weak, nonatomic) IBOutlet UIView *dividerOne;
+@property (weak, nonatomic) IBOutlet UIView *dividerTwo;
+@property (weak, nonatomic) IBOutlet UIView *dividerThree;
 
 @end
 
@@ -79,6 +82,7 @@
     
     [self configureDataFields];
     [self configureButtonUI];
+    [self configureDividerUI];
 }
 
 - (void)configureDataFields {
@@ -89,9 +93,15 @@
     self.numberTotalSessionsLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
     self.numberDaysOnPlaymateLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
-    self.firstSportLabel.backgroundColor = [Constants playmateBlue];
-    self.secondSportLabel.backgroundColor = [Constants playmateBlue];
-    self.thirdSportLabel.backgroundColor = [Constants playmateBlue];
+    if (UIScreen.mainScreen.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+        self.firstSportLabel.backgroundColor = [Constants playmateTealOpaque];
+        self.secondSportLabel.backgroundColor = [Constants playmateTealOpaque];
+        self.thirdSportLabel.backgroundColor = [Constants playmateTealOpaque];
+    } else {
+        self.firstSportLabel.backgroundColor = [Constants playmateBlueOpaque];
+        self.secondSportLabel.backgroundColor = [Constants playmateBlueOpaque];
+        self.thirdSportLabel.backgroundColor = [Constants playmateBlueOpaque];
+    }
     
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     
@@ -109,6 +119,12 @@
     self.logoutButton.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
     [self.logoutButton setTintColor:[UIColor systemRedColor]];
+}
+
+- (void)configureDividerUI {
+    self.dividerOne.backgroundColor = [Constants playmateBlue];
+    self.dividerTwo.backgroundColor = [Constants playmateBlue];
+    self.dividerThree.backgroundColor = [Constants playmateBlue];
 }
 
 #pragma mark - Uploading or taking profile image

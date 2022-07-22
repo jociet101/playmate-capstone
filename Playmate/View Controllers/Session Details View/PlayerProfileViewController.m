@@ -28,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *firstSportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *secondSportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *thirdSportLabel;
+@property (weak, nonatomic) IBOutlet UIView *dividerOne;
+@property (weak, nonatomic) IBOutlet UIView *dividerTwo;
 
 @property (nonatomic, assign) BOOL isMyFriend;
 
@@ -65,6 +67,12 @@
     self.thirdSportLabel.text = topSports[2];
     
     [self configureDataFields];
+    [self configureDividerUI];
+}
+
+- (void)configureDividerUI {
+    self.dividerOne.backgroundColor = [Constants playmateBlue];
+    self.dividerTwo.backgroundColor = [Constants playmateBlue];
 }
 
 -(void)manageFriendButtonUI {
@@ -114,9 +122,15 @@
     self.numberTotalSessionsLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
     self.numberDaysOnPlaymateLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
-    self.firstSportLabel.backgroundColor = [Constants playmateBlue];
-    self.secondSportLabel.backgroundColor = [Constants playmateBlue];
-    self.thirdSportLabel.backgroundColor = [Constants playmateBlue];
+    if (UIScreen.mainScreen.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+        self.firstSportLabel.backgroundColor = [Constants playmateTealOpaque];
+        self.secondSportLabel.backgroundColor = [Constants playmateTealOpaque];
+        self.thirdSportLabel.backgroundColor = [Constants playmateTealOpaque];
+    } else {
+        self.firstSportLabel.backgroundColor = [Constants playmateBlueOpaque];
+        self.secondSportLabel.backgroundColor = [Constants playmateBlueOpaque];
+        self.thirdSportLabel.backgroundColor = [Constants playmateBlueOpaque];
+    }
     
     self.numberTotalSessionsLabel.text = [[NSString stringWithFormat:@"%ld", [ManageUserStatistics getNumberTotalSessionsForUser:self.user]] stringByAppendingString:@" Total Sessions"];
     self.numberDaysOnPlaymateLabel.text = [[NSString stringWithFormat:@"%@", [ManageUserStatistics getNumberDaysOnPlaymateForUser:self.user]] stringByAppendingString:@" Days on Playmate"];

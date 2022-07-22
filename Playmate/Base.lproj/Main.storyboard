@@ -1632,21 +1632,6 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="1.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1pD-Uc-MCr">
-                                <rect key="frame" x="125" y="580" width="14" height="13"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="2.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="CNN-qL-Kzi">
-                                <rect key="frame" x="31" y="617" width="14" height="13"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="3.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iCM-uT-P2Q">
-                                <rect key="frame" x="344" y="632" width="14" height="13"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="daK-s0-vby"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1658,6 +1643,8 @@
                         <outlet property="addFriendButton" destination="cW7-cT-o66" id="Uy9-Pr-hFM"/>
                         <outlet property="ageLabel" destination="EQO-0U-UUg" id="rGv-5U-SRb"/>
                         <outlet property="bioField" destination="usU-69-3SA" id="GOB-G0-muE"/>
+                        <outlet property="dividerOne" destination="okV-YA-gly" id="bAt-Tc-Rtk"/>
+                        <outlet property="dividerTwo" destination="Ni4-J1-Nqq" id="kkk-7d-bCr"/>
                         <outlet property="firstSportLabel" destination="3Oe-eC-He5" id="qBu-Vw-yY6"/>
                         <outlet property="genderLabel" destination="JZT-rp-sOZ" id="7Mm-dK-N3i"/>
                         <outlet property="nameLabel" destination="JIy-NP-lie" id="frT-nE-OoG"/>
@@ -1981,11 +1968,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vri-kz-evL">
-                                <rect key="frame" x="0.0" y="96" width="390" height="1"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGy-6h-mpE">
                                 <rect key="frame" x="16" y="400" width="358" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2072,21 +2054,6 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="1.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zmo-6f-pMD">
-                                <rect key="frame" x="125" y="547" width="14" height="13"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="2.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="2nR-7j-N8r">
-                                <rect key="frame" x="31" y="584" width="14" height="13"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="3.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nCp-tn-Mte">
-                                <rect key="frame" x="344" y="599" width="14" height="13"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gge-cU-hCy">
                                 <rect key="frame" x="0.0" y="665" width="390" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2176,6 +2143,9 @@
                     <connections>
                         <outlet property="ageLabel" destination="R4d-C3-bi8" id="5zj-1T-hqE"/>
                         <outlet property="bioField" destination="6tz-db-xcg" id="og0-aM-z1l"/>
+                        <outlet property="dividerOne" destination="zIk-Tw-8gW" id="FAS-KY-fac"/>
+                        <outlet property="dividerThree" destination="gge-cU-hCy" id="pzQ-c4-WYt"/>
+                        <outlet property="dividerTwo" destination="skd-9Y-Btc" id="rYC-De-Exa"/>
                         <outlet property="editProfileButton" destination="TTp-I6-hs0" id="hVd-Oj-rza"/>
                         <outlet property="firstSportLabel" destination="mCD-zE-AZr" id="S8M-YY-uBh"/>
                         <outlet property="genderLabel" destination="FbG-28-Gal" id="Fkb-o8-aju"/>
@@ -3301,9 +3271,6 @@
         <segue reference="zis-o5-IMS"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="1.circle" catalog="system" width="128" height="121"/>
-        <image name="2.circle" catalog="system" width="128" height="121"/>
-        <image name="3.circle" catalog="system" width="128" height="121"/>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="calendar.circle" catalog="system" width="128" height="121"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
