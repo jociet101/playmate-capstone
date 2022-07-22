@@ -47,6 +47,9 @@
     [super viewWillAppear:animated];
     
     PFUser *user = [[PFUser currentUser] fetchIfNeeded];
+    
+    [Constants getTopSportsFor:user];
+    
     self.nameLabel.text = [Constants concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
     self.usernameLabel.text = [@"@" stringByAppendingString:user[@"username"]];
     self.usernameLabel.textColor = [UIColor lightGrayColor];

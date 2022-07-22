@@ -139,6 +139,38 @@
     return year;
 }
 
++ (void)getTopSportsFor:(PFUser *)user {
+    NSMutableDictionary *sportsCountDictionary = [[NSMutableDictionary alloc] init];
+    
+    NSMutableDictionary *sportsDictionary = user[@"sessionsDictionary"][0];
+    NSArray *sportsList = [sportsDictionary allKeys];
+    
+    for (NSString *sport in sportsList) {
+        NSNumber *count = [NSNumber numberWithLong:((NSArray *)sportsDictionary[sport]).count];
+        NSMutableArray *sportsListForCount = [sportsCountDictionary objectForKey:count];
+        if (sportsListForCount == nil) {
+            sportsListForCount = [NSMutableArray arrayWithObject:sport];
+            [sportsCountDictionary setObject:sportsListForCount forKey:count];
+        } else {
+            [sportsCountDictionary removeObjectForKey:count];
+            [sportsListForCount addObject:sport];
+            [sportsCountDictionary setObject:sportsListForCount forKey:count];
+        }
+    }
+    
+    NSArray *countKeys = [sportsCountDictionary allKeys];
+    
+    [countKeys sortedArrayUsingComparator:^NSComparisonResult(NSNumber *one, NSNumber *two) {
+        if ([one longValue] > [two longValue]) {
+            return NSOrderedAscending;
+        } else if ([one longValue] < [two longValue]) {
+            return NSOrderedDescending;
+        } else {
+            return NSOrderedSame;
+        }
+    }];
+}
+
 // Information for filters and create
 + (NSString *)createMenuTitle:(int)row {
     NSMutableArray *titles = [[NSMutableArray alloc] init];
