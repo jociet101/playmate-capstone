@@ -61,13 +61,16 @@
     NSString *numberFriendsLabel = (numFriends == 1) ? @"1 friend" : [NSString stringWithFormat:@"%ld friends", numFriends];
     [self.numberOfFriendsButton setTitle:numberFriendsLabel forState:UIControlStateNormal];
     
-    NSArray *topSports = [Helpers getTopSportsFor:self.user];
-    self.firstSportLabel.text = topSports[0];
-    self.secondSportLabel.text = topSports[1];
-    self.thirdSportLabel.text = topSports[2];
-    
+    [self setPodiumLabels];
     [self configureDataFields];
     [self configureDividerUI];
+}
+
+- (void)setPodiumLabels {
+    NSArray *topSports = [Helpers getTopSportsFor:self.user];
+    self.firstSportLabel.text = (topSports.count > 0) ? topSports[0] : @"None";
+    self.secondSportLabel.text = (topSports.count > 1) ? topSports[1] : @"None";
+    self.thirdSportLabel.text = (topSports.count > 2) ? topSports[2] : @"None";
 }
 
 - (void)configureDividerUI {

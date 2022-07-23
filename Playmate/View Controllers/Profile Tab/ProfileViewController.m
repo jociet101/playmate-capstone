@@ -75,14 +75,17 @@
     // TODO: find out how to make font bold, look like a button
 //    [self.numberOfFriendsButton.titleLabel setFont:[UIFont fontWithName:@"Avenir" size:16.0]];
     
-    NSArray *topSports = [Helpers getTopSportsFor:user];
-    self.firstSportLabel.text = topSports[0];
-    self.secondSportLabel.text = topSports[1];
-    self.thirdSportLabel.text = topSports[2];
-    
+    [self setPodiumLabels:user];
     [self configureDataFields];
     [self configureButtonUI];
     [self configureDividerUI];
+}
+
+- (void)setPodiumLabels:(PFUser *)user {
+    NSArray *topSports = [Helpers getTopSportsFor:user];
+    self.firstSportLabel.text = (topSports.count > 0) ? topSports[0] : @"None";
+    self.secondSportLabel.text = (topSports.count > 1) ? topSports[1] : @"None";
+    self.thirdSportLabel.text = (topSports.count > 2) ? topSports[2] : @"None";
 }
 
 - (void)configureDataFields {

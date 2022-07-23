@@ -75,7 +75,8 @@
         result = (NSMutableArray *)[result arrayByAddingObjectsFromArray:sportsForThisCount];
     }
     
-    const long numberSportsToFetch = MAX(3, result.count);
+    const long numberSportsToFetch = MIN(3, result.count);
+    
     return [result subarrayWithRange:NSMakeRange(0, numberSportsToFetch)];
 }
 
