@@ -72,9 +72,6 @@
     NSString *numberFriendsLabel = (numFriends == 1) ? @"1 friend" : [NSString stringWithFormat:@"%ld friends", numFriends];
     [self.numberOfFriendsButton setTitle:numberFriendsLabel forState:UIControlStateNormal];
     
-    // TODO: find out how to make font bold, look like a button
-//    [self.numberOfFriendsButton.titleLabel setFont:[UIFont fontWithName:@"Avenir" size:16.0]];
-    
     [self setPodiumLabels:user];
     [self configureDataFields];
     [self configureButtonUI];
