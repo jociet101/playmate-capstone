@@ -14,6 +14,7 @@
 #import "Session.h"
 #import "SelectMapViewController.h"
 #import "ManageUserStatistics.h"
+#import "HomeViewController.h"
 
 @interface CreateMenuViewController () <UITableViewDelegate, UITableViewDataSource, MenuPickerCellDelegate, SelectMapViewControllerDelegate>
 
@@ -166,11 +167,17 @@
             [ManageUserStatistics updateDictionaryAddSession:[self fetchMostRecentSessionId]
                                                     forSport:self.selectedSport
                                                      andUser:me];
+            [self returnToHome];
         }
     }];
-    
+}
+
+- (void)returnToHome {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+    HomeViewController *vc = [[homeVC viewControllers][0] childViewControllers][0];
+    self.delegate = (id)vc;
+    [self.delegate reloadHomeTabSessions];
     self.view.window.rootViewController = homeVC;
 }
 

@@ -16,8 +16,9 @@
 #import "SessionCollectionCell.h"
 #import "UpcomingSessionsViewController.h"
 #import "SuggestedSessionsViewController.h"
+#import "CreateMenuViewController.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <CreateMenuViewControllerDelegate>
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
@@ -57,6 +58,10 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self fetchData];
+}
+
+- (void)reloadHomeTabSessions {
     [self fetchData];
 }
 
