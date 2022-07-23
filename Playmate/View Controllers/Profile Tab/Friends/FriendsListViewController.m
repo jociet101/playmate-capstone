@@ -117,10 +117,6 @@
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants descriptionAttributes]];
 }
 
-- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
-    return [Constants playmateBlue];
-}
-
 #pragma mark - Friend cell delegate method
 
 + (void)handleAlert:(NSError * _Nullable)error

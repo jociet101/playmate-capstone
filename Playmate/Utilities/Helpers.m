@@ -57,9 +57,7 @@
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:NO];
     countKeys = [countKeys sortedArrayUsingDescriptors:@[sortDescriptor]];
-    
-    NSLog(@"count keys %@", countKeys);
-    
+        
     NSMutableArray *result = [[NSMutableArray alloc] init];
     
     for (NSNumber *count in countKeys) {

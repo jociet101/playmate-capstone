@@ -64,10 +64,6 @@ BOOL isPartOfSession;
     [self.collectionView reloadData];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"poo");
-}
-
 - (void)disableInviteButton {
     self.inviteFriendButton.alpha = 0;
     [self.inviteFriendButton setEnabled:NO];
@@ -116,17 +112,11 @@ BOOL isPartOfSession;
 
 - (void)initializeDetails {
     self.sportLabel.text = self.sessionDetails.sport;
-    
     [self initializeCapacityString];
-    
     self.levelLabel.text = self.sessionDetails.skillLevel;
-    
     Location *loc = [self.sessionDetails.location fetchIfNeeded];
-    
     self.locationLabel.text = loc.locationName;
-    
     self.dateTimeLabel.text = [Helpers getTimeGivenDurationForSession:self.sessionDetails];
-    
     self.createdDateLabel.text = [@"Session created at: " stringByAppendingString:[Constants formatDate:self.sessionDetails.updatedAt]];
 }
 
@@ -140,6 +130,8 @@ BOOL isPartOfSession;
 #pragma mark - Animating confetti
 
 - (void)showConfetti {
+    [self stopConfetti];
+    
     self.confettiLayer = [CAEmitterLayer layer];
     self.confettiLayer.emitterPosition = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.origin.y);
     self.confettiLayer.emitterSize = CGSizeMake(self.view.bounds.size.width, 0);

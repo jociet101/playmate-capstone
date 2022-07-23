@@ -38,6 +38,10 @@
     self.firstNameView.layer.cornerRadius = [Constants buttonCornerRadius];
     self.lastNameView.layer.cornerRadius = [Constants buttonCornerRadius];
     self.bioView.layer.cornerRadius = [Constants buttonCornerRadius];
+    
+    self.firstNameView.backgroundColor = [Constants playmateBlue];
+    self.lastNameView.backgroundColor = [Constants playmateBlue];
+    self.bioView.backgroundColor = [Constants playmateBlue];
 }
 
 - (IBAction)editFirstName:(id)sender {
