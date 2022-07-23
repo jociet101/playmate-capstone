@@ -55,15 +55,10 @@
     
     NSArray *countKeys = [sportsCountDictionary allKeys];
     
-    [countKeys sortedArrayUsingComparator:^NSComparisonResult(NSNumber *one, NSNumber *two) {
-        if ([one longValue] > [two longValue]) {
-            return NSOrderedDescending;
-        } else if ([one longValue] < [two longValue]) {
-            return NSOrderedAscending;
-        } else {
-            return NSOrderedSame;
-        }
-    }];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:NO];
+    countKeys = [countKeys sortedArrayUsingDescriptors:@[sortDescriptor]];
+    
+    NSLog(@"count keys %@", countKeys);
     
     NSMutableArray *result = [[NSMutableArray alloc] init];
     
