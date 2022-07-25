@@ -30,6 +30,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)selectSkillLevelPlease;
 + (NSString *)selectNumberOfPlayersPlease;
 
+#pragma mark - Friends and Invitations
++ (NSString *)alreadyInSessionString;
++ (NSString *)alreadyInvitedString;
+
 #pragma mark - Empty Table or Collection View Messages
 + (NSString *)emptyTablePlaceholderMsg;
 + (NSString *)emptyTablePlaceholderTitle;

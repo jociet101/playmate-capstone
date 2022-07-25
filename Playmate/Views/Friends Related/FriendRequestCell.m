@@ -6,9 +6,9 @@
 //
 
 #import "FriendRequestCell.h"
-#import "Constants.h"
 #import "PlayerConnection.h"
 #import "DateTools.h"
+#import "Constants.h"
 #import "Helpers.h"
 #import "Strings.h"
 
@@ -66,8 +66,7 @@
     UIImage *img = hasProfileImage ? [UIImage imageWithData:[self.requester[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
     [self.profileImageView setImage:[Helpers resizeImage:img withDimension:83]];
     
-    // set time ago timestamp
-    self.timeAgoLabel.text = [[requestInfo.updatedAt shortTimeAgoSinceNow] stringByAppendingString:@" ago"];
+    self.timeAgoLabel.text = [Helpers appendAgoToTime:requestInfo.updatedAt];
     
     [self hideConfirmationLabels];
 }

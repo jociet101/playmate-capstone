@@ -8,6 +8,7 @@
 #import "Helpers.h"
 #import "Constants.h"
 #import "Strings.h"
+#import "DateTools.h"
 
 @implementation Helpers
 
@@ -140,6 +141,10 @@
     formatter.timeStyle = NSDateFormatterNoStyle;
     
     return [formatter stringFromDate:date];
+}
+
++ (NSString *)appendAgoToTime:(NSDate *)timeAgo {
+    return [[timeAgo shortTimeAgoSinceNow] stringByAppendingString:@" ago"];
 }
 
 #pragma mark - Profile Tab

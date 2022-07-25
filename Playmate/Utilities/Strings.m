@@ -41,7 +41,7 @@
     return @"E MMM d HH:mm:ss yyyy";
 }
 
-#pragma mark - Filters Please Messages
+#pragma mark - Filters
 
 + (NSString *)selectLocationPlease {
     return @"Please select a location on map.";
@@ -60,6 +60,15 @@
 }
 + (NSString *)selectNumberOfPlayersPlease {
     return @"Please select the number of players.";
+}
+
+#pragma mark - Friends and Invitations
++ (NSString *)alreadyInSessionString {
+    return @"(Already in session)";
+}
+
++ (NSString *)alreadyInvitedString {
+    return @"(Already invited)";
 }
 
 #pragma mark - Empty Table or Collection View Messages

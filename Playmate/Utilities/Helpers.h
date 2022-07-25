@@ -41,6 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)formatDate:(NSDate *)original;
 + (NSString *)formatDateShort:(NSDate *)original;
 + (NSString *)formatDateNoTime:(NSDate *)original;
++ (NSString *)appendAgoToTime:(NSDate *)timeAgo;
 
 #pragma mark - Profile Tab
 + (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last;

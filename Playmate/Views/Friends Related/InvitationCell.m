@@ -51,7 +51,7 @@
     
     [Helpers roundCornersOfImage:self.profileImageView];
 
-    self.timeAgoLabel.text = [[invitation.createdAt shortTimeAgoSinceNow] stringByAppendingString:@" ago"];
+    self.timeAgoLabel.text = [Helpers appendAgoToTime:invitation.createdAt];
 }
 
 - (void)disableButtons {
