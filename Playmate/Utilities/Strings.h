@@ -17,15 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)decathalonOneSportString;
 
 #pragma mark - Session Details
-// Error messages
 + (NSString *)fullSessionErrorMsg;
 + (NSString *)alreadyInSessionErrorMsg;
 + (NSString *)noOpenSlotsErrorMsg;
-// Date format
 + (NSString *)dateFormatString;
 
 #pragma mark - Filters
-
 + (NSString *)selectLocationPlease;
 + (NSString *)selectDurationPlease;
 + (NSString *)selectSportPlease;
@@ -45,6 +42,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)emptyCollectionLoadingSessionsTitle;
 + (NSString *)emptyInvitationsPlaceholderTitle;
 + (NSString *)emptyInvitationsPlaceholderMsg;
+
+#pragma mark - Defaults
++ (NSString *)defaultAll;
 
 @end
 

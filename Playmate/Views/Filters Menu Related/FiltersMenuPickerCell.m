@@ -7,6 +7,7 @@
 
 #import "FiltersMenuPickerCell.h"
 #import "Constants.h"
+#import "Helpers.h"
 
 @interface FiltersMenuPickerCell () <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
@@ -54,7 +55,7 @@
     pickerView.delegate = self;
     pickerView.dataSource = self;
     
-    self.pickerData = [Constants getFilterData:YES forRow:self.thisRow];
+    self.pickerData = [Helpers getFilterData:YES forRow:self.thisRow];
 }
 
 // returns the number of 'columns' to display

@@ -253,4 +253,28 @@
     return [@"No sessions on " stringByAppendingString:dateString];
 }
 
+#pragma mark - Retrieve Data for Filter/Create Menus
+
++ (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row {
+    if (row == 0) {
+        return [Constants sportsList:needAll];
+    }  else if (row == 2) {
+        return [Constants durationList];
+    } else if (row == 3) {
+        return [Constants skillLevelsList:needAll];
+    }
+    return nil;
+}
+
++ (NSArray * _Nullable)getFilterData:(BOOL)needAll forRow:(int)row {
+    if (row == 0) {
+        return [Constants sportsList:needAll];
+    } else if (row == 1) {
+        return [Constants skillLevelsList:needAll];
+    } else if (row == 4) {
+        return [Constants sessionTypeList];
+    }
+    return nil;
+}
+
 @end

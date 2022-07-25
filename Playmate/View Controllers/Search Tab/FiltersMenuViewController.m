@@ -10,6 +10,7 @@
 #import "LocationPickerCell.h"
 #import "Constants.h"
 #import "Helpers.h"
+#import "Strings.h"
 #import "SelectMapViewController.h"
 #import "Location.h"
 
@@ -105,10 +106,10 @@
     filters.skillLevel = self.selectedSkillLevel;
     filters.radius = self.selectedRadius;
     
-    if ([filters.sport isEqualToString:@"All"]) {
+    if ([filters.sport isEqualToString:[Strings defaultAll]]) {
         filters.sport = nil;
     }
-    if ([filters.skillLevel isEqualToString:@"All"]) {
+    if ([filters.skillLevel isEqualToString:[Strings defaultAll]]) {
         filters.skillLevel = nil;
     }
     if (filters.radius == nil) {

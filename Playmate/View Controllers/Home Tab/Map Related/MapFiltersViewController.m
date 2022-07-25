@@ -8,6 +8,7 @@
 #import "MapFiltersViewController.h"
 #import "Constants.h"
 #import "Helpers.h"
+#import "Strings.h"
 #import "FiltersMenuPickerCell.h"
 #import "LocationPickerCell.h"
 #import "SelectMapViewController.h"
@@ -113,16 +114,16 @@
     filters.radius = self.selectedRadius;
     filters.sessionType = self.selectedType;
         
-    if ([filters.sport isEqualToString:@"All"]) {
+    if ([filters.sport isEqualToString:[Strings defaultAll]]) {
         filters.sport = nil;
     }
-    if ([filters.skillLevel isEqualToString:@"All"]) {
+    if ([filters.skillLevel isEqualToString:[Strings defaultAll]]) {
         filters.skillLevel = nil;
     }
     if (filters.radius == nil) {
         filters.radius = [NSNumber numberWithInt:5];
     }
-    if ([filters.sessionType isEqualToString:@"All"]) {
+    if ([filters.sessionType isEqualToString:[Strings defaultAll]]) {
         filters.sessionType = nil;
     }
     

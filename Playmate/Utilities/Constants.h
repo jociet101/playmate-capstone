@@ -13,63 +13,52 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Constants : NSObject
 
-// For calendar
+#pragma mark - Dates
 + (NSDate *) dateWithHour:(NSInteger)hour
                   minute:(NSInteger)minute
                   second:(NSInteger)second
                  fromDate:(NSDate *)date;
 
-// Information for session details
-+ (NSArray *)listOfSystemColors;
-
-// Info for incoming friend notifications
+#pragma mark - Strings with parameters
 + (NSString *)acceptedConfirmationStringFor:(NSString *)name;
 + (NSString *)deniedConfirmationStringFor:(NSString *)name;
 
-// Information for profile tab
-+ (NSString *)defaultBio;
-
-// Information for filters and create
+#pragma mark - Filter Menu Labels
 + (NSString *)createMenuTitle:(int)row;
 + (NSString *)createFiltersMenuTitle:(int)row;
-
-+ (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row;
-+ (NSArray * _Nullable)getFilterData:(BOOL)needAll forRow:(int)row;
+// Duration
++ (NSArray *)durationList;
 + (NSArray *)durationListShort;
 + (NSNumber *)durationKeyToInteger:(int)key;
-
-+ (NSString *)defaultAll;
-+ (NSString *)defaultSport;
+// Sport
 + (NSArray *)sportsListLarge:(BOOL)needAll;
 + (NSArray *)sportsList:(BOOL)needAll;
+// Skill level
 + (NSArray *)skillLevelsList:(BOOL)needAll;
+// Session scope
 + (NSArray *)sessionTypeList;
 
-+ (int)defaultNumPlayers;
-+ (int)defaultSkillPickerIndex;
-
-// Some numbers
+#pragma mark - Numbers
 + (int)buttonCornerRadius;
 + (int)smallButtonCornerRadius;
 
-// Some colors
+#pragma mark - Colors
++ (NSArray *)listOfSystemColors;
 + (UIColor *)playmateBlue;
 + (UIColor *)playmateBlueOpaque;
 + (UIColor *)playmateTealOpaque;
 + (UIColor *)playmateBlueSelected;
 
-+ (UIImage *)profileImagePlaceholder;
-
+#pragma mark - Empty View Text Properties
 + (NSDictionary *)descriptionAttributes;
 + (NSDictionary *)titleAttributes;
 
-// for home view
-+ (NSString *)getImageNameForSport:(NSString *)sport;
-
-// for uiimage gifs
+#pragma mark - Gifs and Images
 + (NSArray *)addressGifImages;
 + (NSArray *)manualGifImages;
 + (NSArray *)rollingPlaymateLogoGif;
++ (NSString *)getImageNameForSport:(NSString *)sport;
++ (UIImage *)profileImagePlaceholder;
 
 @end
 

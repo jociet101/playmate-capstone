@@ -25,7 +25,6 @@
 
 #pragma mark - Session Details
 
-// Error messages
 + (NSString *)fullSessionErrorMsg {
     return @"Session is full";
 }
@@ -38,7 +37,6 @@
     return @"No open slots";
 }
 
-// Date formatting
 + (NSString *)dateFormatString {
     return @"E MMM d HH:mm:ss yyyy";
 }
@@ -108,6 +106,12 @@
 
 + (NSString *)emptyInvitationsPlaceholderMsg {
     return @"Check back later to see if your friends invited you to join their session!";
+}
+
+#pragma mark - Defaults
+
++ (NSString *)defaultAll {
+    return @"All";
 }
 
 @end

@@ -53,11 +53,6 @@
     return [NSString stringWithFormat:@"You denied %@'s friend request", name];
 }
 
-// Information for profile tab
-+ (NSString *)defaultBio {
-    return @"Edit profile to enter a bio!";
-}
-
 // Information for filters and create
 + (NSString *)createMenuTitle:(int)row {
     NSMutableArray *titles = [[NSMutableArray alloc] init];
@@ -82,30 +77,6 @@
     [titles addObject:@"Session Scope"];
     
     return titles[row];
-}
-
-+ (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row {
-        
-    if (row == 0) {
-        return [Constants sportsList:needAll];
-    }  else if (row == 2) {
-        return [Constants durationList];
-    } else if (row == 3) {
-        return [Constants skillLevelsList:needAll];
-    }
-    return nil;
-}
-
-+ (NSArray * _Nullable)getFilterData:(BOOL)needAll forRow:(int)row {
-        
-    if (row == 0) {
-        return [Constants sportsList:needAll];
-    } else if (row == 1) {
-        return [Constants skillLevelsList:needAll];
-    } else if (row == 4) {
-        return [Constants sessionTypeList];
-    }
-    return nil;
 }
 
 + (NSArray *)durationList {
@@ -163,18 +134,10 @@
     return durations[key];
 }
 
-+ (NSString *)defaultAll {
-    return @"All";
-}
-
-+ (NSString *)defaultSport {
-    return @"Tennis";
-}
-
 + (NSArray *)sportsListLarge:(BOOL)needAll {
     NSMutableArray *sports = [[NSMutableArray alloc] init];
     
-    if (needAll) [sports addObject:@"All"];
+    if (needAll) [sports addObject:[Strings defaultAll]];
     
     APIManager *manager = [APIManager new];
     [manager getSportsListWithCompletion:^(NSDictionary *list, NSError *error) {
@@ -198,7 +161,7 @@
     NSMutableArray *sports = [[NSMutableArray alloc] init];
     
     if (needAll) {
-        [sports addObject:@"All"];
+        [sports addObject:[Strings defaultAll]];
     }
     
     NSArray *sportsList = [NSArray arrayWithObjects:@"American football",
@@ -227,7 +190,7 @@
 
 + (NSArray *)skillLevelsList:(BOOL)needAll {
     NSMutableArray *skillLevels = [[NSMutableArray alloc] init];
-    if (needAll) [skillLevels addObject:@"All"];
+    if (needAll) [skillLevels addObject:[Strings defaultAll]];
     [skillLevels addObject:@"Leisure"];
     [skillLevels addObject:@"Amateur"];
     [skillLevels addObject:@"Competitive"];
@@ -237,19 +200,11 @@
 
 + (NSArray *)sessionTypeList {
     NSMutableArray *sessionTypes = [[NSMutableArray alloc] init];
-    [sessionTypes addObject:@"All"];
+    [sessionTypes addObject:[Strings defaultAll]];
     [sessionTypes addObject:@"Friends"];
     [sessionTypes addObject:@"Own"];
     
     return [NSArray arrayWithArray:sessionTypes];
-}
-
-+ (int)defaultNumPlayers {
-    return 2;
-}
-
-+ (int)defaultSkillPickerIndex {
-    return 3;
 }
 
 // Some numbers

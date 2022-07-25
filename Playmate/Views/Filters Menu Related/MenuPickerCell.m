@@ -100,7 +100,7 @@
     pickerView.delegate = self;
     pickerView.dataSource = self;
     
-    self.pickerData = [Constants getData:NO forRow:self.thisRow];
+    self.pickerData = [Helpers getData:NO forRow:self.thisRow];
 }
 
 // returns the number of 'columns' to display
