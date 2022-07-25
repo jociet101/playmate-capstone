@@ -278,11 +278,11 @@
 		3C45B561286E64CB00EE578F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3CDBEB8C288E7FAD00F2D739 /* Profile Related */,
+				3CDBEB8A288E7F5D00F2D739 /* Friends Related */,
 				3C45B571287297C800EE578F /* Home Tab */,
-				3CF4A5AC287CA9B6000C5E7D /* Session Details View */,
 				3C45B58628737E5500EE578F /* Create Tab */,
 				3C45B58228737E4400EE578F /* Search Tab */,
-				3C45B575287299B900EE578F /* Profile Tab */,
 				3C45B562286E64D700EE578F /* Registration Related */,
 			);
 			path = "View Controllers";
@@ -304,32 +304,14 @@
 		3C45B571287297C800EE578F /* Home Tab */ = {
 			isa = PBXGroup;
 			children = (
+				3CDBEB8D288E7FDF00F2D739 /* Sessions Related */,
+				3CDBEB8B288E7F9000F2D739 /* Map Related */,
 				3C45B572287297EB00EE578F /* HomeViewController.h */,
 				3C45B573287297EB00EE578F /* HomeViewController.m */,
 				3CF4A58B2878DFA6000C5E7D /* CalendarViewController.h */,
 				3CF4A58C2878DFA6000C5E7D /* CalendarViewController.m */,
-				3C1BC00B28820AB400D17314 /* MapPinsViewController.h */,
-				3C1BC00C28820AB400D17314 /* MapPinsViewController.m */,
-				3C1BC0162885CAE100D17314 /* UpcomingSessionsViewController.h */,
-				3C1BC0172885CAE100D17314 /* UpcomingSessionsViewController.m */,
-				3C1BC0192885CAED00D17314 /* SuggestedSessionsViewController.h */,
-				3C1BC01A2885CAED00D17314 /* SuggestedSessionsViewController.m */,
-				3C69D05028888A2900851E6F /* MapFiltersViewController.h */,
-				3C69D05128888A2900851E6F /* MapFiltersViewController.m */,
 			);
 			path = "Home Tab";
-			sourceTree = "<group>";
-		};
-		3C45B575287299B900EE578F /* Profile Tab */ = {
-			isa = PBXGroup;
-			children = (
-				3C8E5396287F68F60087498B /* Friends */,
-				3C45B576287299C200EE578F /* ProfileViewController.h */,
-				3C45B577287299C200EE578F /* ProfileViewController.m */,
-				3CF4A5882878AA1A000C5E7D /* EditProfileViewController.h */,
-				3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */,
-			);
-			path = "Profile Tab";
 			sourceTree = "<group>";
 		};
 		3C45B58228737E4400EE578F /* Search Tab */ = {
@@ -346,10 +328,10 @@
 		3C45B58628737E5500EE578F /* Create Tab */ = {
 			isa = PBXGroup;
 			children = (
-				3C45B5A2287606EF00EE578F /* SelectMapViewController.h */,
-				3C45B5A3287606EF00EE578F /* SelectMapViewController.m */,
 				3CF4A594287A6088000C5E7D /* CreateMenuViewController.h */,
 				3CF4A595287A6088000C5E7D /* CreateMenuViewController.m */,
+				3C45B5A2287606EF00EE578F /* SelectMapViewController.h */,
+				3C45B5A3287606EF00EE578F /* SelectMapViewController.m */,
 				3C69D047288728BD00851E6F /* SelectMapHelpViewController.h */,
 				3C69D048288728BD00851E6F /* SelectMapHelpViewController.m */,
 			);
@@ -361,22 +343,10 @@
 			children = (
 				3C45B58E2874BB7500EE578F /* Session.h */,
 				3C45B58F2874BB7500EE578F /* Session.m */,
-				3C45B5912874C0ED00EE578F /* Location.h */,
-				3C45B5922874C0ED00EE578F /* Location.m */,
-				3C1BC0102883E94400D17314 /* LocationAnnotation.h */,
-				3C1BC0112883E94400D17314 /* LocationAnnotation.m */,
 				3C45B5A528760C1E00EE578F /* Filters.h */,
 				3C45B5A628760C1E00EE578F /* Filters.m */,
-				3CF4A5B0287CD65D000C5E7D /* FriendRequest.h */,
-				3CF4A5B1287CD65D000C5E7D /* FriendRequest.m */,
-				3CF4A5B6287CD963000C5E7D /* PlayerConnection.h */,
-				3CF4A5B7287CD963000C5E7D /* PlayerConnection.m */,
-				3CA1A197287DF02E00BBDB69 /* ConnectionState.h */,
-				3CA1A198287DF02E00BBDB69 /* ConnectionState.m */,
-				3C69D0532888A23800851E6F /* MapFilters.h */,
-				3C69D0542888A23800851E6F /* MapFilters.m */,
-				3C19BA19288A024000592C20 /* Invitation.h */,
-				3C19BA1A288A024000592C20 /* Invitation.m */,
+				3CDBEB85288E7EC500F2D739 /* Friends Related */,
+				3CDBEB86288E7EDC00F2D739 /* Map Related */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -386,29 +356,73 @@
 			children = (
 				3C45B5992874D91800EE578F /* SessionCell.h */,
 				3C45B59A2874D91800EE578F /* SessionCell.m */,
+				3C1BC0132885BFA800D17314 /* SessionCollectionCell.h */,
+				3C1BC0142885BFA800D17314 /* SessionCollectionCell.m */,
+				3CDBEB89288E7F3A00F2D739 /* Filters Menu Related */,
+				3CDBEB87288E7EFD00F2D739 /* Friends Related */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3CDBEB85288E7EC500F2D739 /* Friends Related */ = {
+			isa = PBXGroup;
+			children = (
+				3CF4A5B0287CD65D000C5E7D /* FriendRequest.h */,
+				3CF4A5B1287CD65D000C5E7D /* FriendRequest.m */,
+				3CF4A5B6287CD963000C5E7D /* PlayerConnection.h */,
+				3CF4A5B7287CD963000C5E7D /* PlayerConnection.m */,
+				3CA1A197287DF02E00BBDB69 /* ConnectionState.h */,
+				3CA1A198287DF02E00BBDB69 /* ConnectionState.m */,
+				3C19BA19288A024000592C20 /* Invitation.h */,
+				3C19BA1A288A024000592C20 /* Invitation.m */,
+			);
+			path = "Friends Related";
+			sourceTree = "<group>";
+		};
+		3CDBEB86288E7EDC00F2D739 /* Map Related */ = {
+			isa = PBXGroup;
+			children = (
+				3C69D0532888A23800851E6F /* MapFilters.h */,
+				3C69D0542888A23800851E6F /* MapFilters.m */,
+				3C45B5912874C0ED00EE578F /* Location.h */,
+				3C45B5922874C0ED00EE578F /* Location.m */,
+				3C1BC0102883E94400D17314 /* LocationAnnotation.h */,
+				3C1BC0112883E94400D17314 /* LocationAnnotation.m */,
+			);
+			path = "Map Related";
+			sourceTree = "<group>";
+		};
+		3CDBEB87288E7EFD00F2D739 /* Friends Related */ = {
+			isa = PBXGroup;
+			children = (
+				3CF4A5A9287C962D000C5E7D /* PlayerProfileCollectionCell.h */,
+				3CF4A5AA287C962D000C5E7D /* PlayerProfileCollectionCell.m */,
+				3CF4A5BC287CE7C8000C5E7D /* FriendRequestCell.h */,
+				3CF4A5BD287CE7C8000C5E7D /* FriendRequestCell.m */,
+				3C8E539A287F7A8D0087498B /* OutgoingRequestCell.h */,
+				3C8E539B287F7A8D0087498B /* OutgoingRequestCell.m */,
+				3C8E5390287F362B0087498B /* FriendCell.h */,
+				3C8E5391287F362B0087498B /* FriendCell.m */,
+				3C19BA1C288B2C3000592C20 /* InvitationCell.h */,
+				3C19BA1D288B2C3000592C20 /* InvitationCell.m */,
+			);
+			path = "Friends Related";
+			sourceTree = "<group>";
+		};
+		3CDBEB89288E7F3A00F2D739 /* Filters Menu Related */ = {
+			isa = PBXGroup;
+			children = (
 				3CF4A59A287A60F0000C5E7D /* MenuPickerCell.h */,
 				3CF4A59B287A60F0000C5E7D /* MenuPickerCell.m */,
 				3CF4A59D287A991E000C5E7D /* LocationPickerCell.h */,
 				3CF4A59E287A991E000C5E7D /* LocationPickerCell.m */,
 				3CF4A5A6287B67B4000C5E7D /* FiltersMenuPickerCell.h */,
 				3CF4A5A7287B67B4000C5E7D /* FiltersMenuPickerCell.m */,
-				3CF4A5A9287C962D000C5E7D /* PlayerProfileCollectionCell.h */,
-				3CF4A5AA287C962D000C5E7D /* PlayerProfileCollectionCell.m */,
-				3CF4A5BC287CE7C8000C5E7D /* FriendRequestCell.h */,
-				3CF4A5BD287CE7C8000C5E7D /* FriendRequestCell.m */,
-				3C8E5390287F362B0087498B /* FriendCell.h */,
-				3C8E5391287F362B0087498B /* FriendCell.m */,
-				3C8E539A287F7A8D0087498B /* OutgoingRequestCell.h */,
-				3C8E539B287F7A8D0087498B /* OutgoingRequestCell.m */,
-				3C1BC0132885BFA800D17314 /* SessionCollectionCell.h */,
-				3C1BC0142885BFA800D17314 /* SessionCollectionCell.m */,
-				3C19BA1C288B2C3000592C20 /* InvitationCell.h */,
-				3C19BA1D288B2C3000592C20 /* InvitationCell.m */,
 			);
-			path = Views;
+			path = "Filters Menu Related";
 			sourceTree = "<group>";
 		};
-		3C8E5396287F68F60087498B /* Friends */ = {
+		3CDBEB8A288E7F5D00F2D739 /* Friends Related */ = {
 			isa = PBXGroup;
 			children = (
 				3C8E538D287F2D200087498B /* FriendsListViewController.h */,
@@ -422,18 +436,44 @@
 				3C19BA1F288B2C5600592C20 /* InvitationsViewController.h */,
 				3C19BA20288B2C5600592C20 /* InvitationsViewController.m */,
 			);
-			path = Friends;
+			path = "Friends Related";
 			sourceTree = "<group>";
 		};
-		3CF4A5AC287CA9B6000C5E7D /* Session Details View */ = {
+		3CDBEB8B288E7F9000F2D739 /* Map Related */ = {
 			isa = PBXGroup;
 			children = (
-				3C45B59C2875060700EE578F /* SessionDetailsViewController.h */,
-				3C45B59D2875060700EE578F /* SessionDetailsViewController.m */,
+				3C69D05028888A2900851E6F /* MapFiltersViewController.h */,
+				3C69D05128888A2900851E6F /* MapFiltersViewController.m */,
+				3C1BC00B28820AB400D17314 /* MapPinsViewController.h */,
+				3C1BC00C28820AB400D17314 /* MapPinsViewController.m */,
+			);
+			path = "Map Related";
+			sourceTree = "<group>";
+		};
+		3CDBEB8C288E7FAD00F2D739 /* Profile Related */ = {
+			isa = PBXGroup;
+			children = (
 				3CF4A5AD287CA9D1000C5E7D /* PlayerProfileViewController.h */,
 				3CF4A5AE287CA9D1000C5E7D /* PlayerProfileViewController.m */,
+				3C45B577287299C200EE578F /* ProfileViewController.m */,
+				3C45B576287299C200EE578F /* ProfileViewController.h */,
+				3CF4A5882878AA1A000C5E7D /* EditProfileViewController.h */,
+				3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */,
 			);
-			path = "Session Details View";
+			path = "Profile Related";
+			sourceTree = "<group>";
+		};
+		3CDBEB8D288E7FDF00F2D739 /* Sessions Related */ = {
+			isa = PBXGroup;
+			children = (
+				3C1BC0162885CAE100D17314 /* UpcomingSessionsViewController.h */,
+				3C1BC0172885CAE100D17314 /* UpcomingSessionsViewController.m */,
+				3C1BC0192885CAED00D17314 /* SuggestedSessionsViewController.h */,
+				3C1BC01A2885CAED00D17314 /* SuggestedSessionsViewController.m */,
+				3C45B59C2875060700EE578F /* SessionDetailsViewController.h */,
+				3C45B59D2875060700EE578F /* SessionDetailsViewController.m */,
+			);
+			path = "Sessions Related";
 			sourceTree = "<group>";
 		};
 		3CF6529B286D036600BD5EDB = {
