@@ -10,24 +10,26 @@
 
 @implementation ManageUserStatistics
 
-// Add one session object id to user's session dictionary's sport array
+// Add the session to the user's session history dictionary
 + (void)updateDictionaryAddSession:(NSString *)objectId
                           forSport:(NSString *)sport
                            andUser:(PFUser *)user {
     
     NSMutableDictionary *sessionsDictionary = [user objectForKey:@"sessionsDictionary"][0];
     
-    // check if user has sessions dictionary
+    // Check if user has sessions dictionary
     if (sessionsDictionary == nil) {
-        // if not, initialize dictionary and array
+        // If not, initialize dictionary and array and add session to that sport
         sessionsDictionary = [[NSMutableDictionary alloc] init];
         NSArray *sportListForDictionary = [NSArray arrayWithObject:objectId];
         [sessionsDictionary setObject:sportListForDictionary forKey:sport];
     } else {
+        // If so, retrieve dictionary
         [user removeObjectForKey:@"sessionsDictionary"];
         NSMutableArray *sportListForDictionary = [sessionsDictionary objectForKey:sport];
         
-        // check if user has participated in this sport before
+        // Check if user has participated in this sport before
+        // Then add session to sport list and to dictionary corresponding to key sport
         if (sportListForDictionary == nil) {
             sportListForDictionary = [NSMutableArray arrayWithObject:objectId];
         } else {
@@ -41,27 +43,38 @@
     [user saveInBackground];
 }
 
+// Remove the session from the user's session history dictionary
 + (void)updateDictionaryRemoveSession:(NSString *)objectId
                              forSport:(NSString *)sport
                               andUser:(PFUser *)user {
     
-    // Get dictionary, sport array from dictionary, remove object id, and save
+    // Get dictionary to be edited
     NSMutableDictionary *sessionsDictionary = [user objectForKey:@"sessionsDictionary"][0];
     [user removeObjectForKey:@"sessionsDictionary"];
+    
+    // Get array to be edited according to key sport
     NSMutableArray *sportListForDictionary = [sessionsDictionary objectForKey:sport];
     [sessionsDictionary removeObjectForKey:sport];
+    
+    // Remove the session's objectid from list
     [sportListForDictionary removeObject:objectId];
+    
+    // Reverse operations and put objects back into dictionary
     [sessionsDictionary setObject:sportListForDictionary forKey:sport];
     [user addObject:sessionsDictionary forKey:@"sessionsDictionary"];
     [user saveInBackground];
 }
 
+// Calculate total number of past and upcoming sessions user has for profile tab
 + (long)getNumberTotalSessionsForUser:(PFUser *)user {
     NSMutableDictionary *sessionsDictionary = [user objectForKey:@"sessionsDictionary"][0];
     
+    // If no sessions, return 0 automatically
     if (sessionsDictionary == nil) {
         return 0;
-    } else {
+    }
+    // Iterate through array of dictionaries and array at each sport
+    else {
         long count = 0;
         NSArray *sportsKeys = [sessionsDictionary allKeys];
         
@@ -74,6 +87,7 @@
     return 0;
 }
 
+// Calculate number of days user has been on playmate for profile tab
 + (NSString *)getNumberDaysOnPlaymateForUser:(PFUser *)user {
     NSDate *joinedDate = user.createdAt;
     NSInteger timeAgo = [Helpers daysBetweenDate:joinedDate andDate:[NSDate now]];
