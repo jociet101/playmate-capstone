@@ -169,6 +169,7 @@ BOOL isPartOfSession;
 
 - (IBAction)addMyself:(id)sender {
     if (isPartOfSession) {
+        [self stopConfetti];
         // For leaving session
         
         [self updateLeaveUi];
@@ -207,7 +208,6 @@ BOOL isPartOfSession;
                                                     andUser:me];
     } else {
         // For joining session
-        
         [self updateJoinUI];
         [self showConfetti];
         [self changeAddButtonToLeave];
