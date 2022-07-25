@@ -17,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *invitationsList;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -31,6 +32,13 @@
     
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
+    
+    // set up refresh control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self
+                            action:@selector(fetchData)
+                  forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
     
     [self fetchData];
 }
@@ -52,6 +60,7 @@
         } else {
             [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
         }
+        [self.refreshControl endRefreshing];
     }];
 }
 
