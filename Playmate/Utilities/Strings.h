@@ -47,9 +47,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)emptyInvitationsPlaceholderTitle;
 + (NSString *)emptyInvitationsPlaceholderMsg;
 
-#pragma mark - Defaults and Placeholders
+#pragma mark - Other Strings
 + (NSString *)defaultAll;
 + (NSString *)radiusPlaceholder;
++ (NSString *)doubleTapInstructionFront;
++ (NSString *)doubleTapInstructionBack;
 
 @end
 

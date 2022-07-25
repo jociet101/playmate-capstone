@@ -117,7 +117,7 @@
     return @"Check back later to see if your friends invited you to join their session!";
 }
 
-#pragma mark - Defaults and Placeholders
+#pragma mark - Other Strings
 
 + (NSString *)defaultAll {
     return @"All";
@@ -125,6 +125,14 @@
 
 + (NSString *)radiusPlaceholder {
     return @"10 (default)";
+}
+
++ (NSString *)doubleTapInstructionFront {
+    return @"Double Tap for Details";
+}
+
++ (NSString *)doubleTapInstructionBack {
+    return @"Double Tap to Return";
 }
 
 @end

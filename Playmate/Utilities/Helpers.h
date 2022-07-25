@@ -72,6 +72,9 @@ NS_ASSUME_NONNULL_BEGIN
 // String for details label on player collection cell
 + (NSString *)getDetailsLabelForPlayerCell:(PFUser *)user;
 
+// Make players string for session cell
++ (NSString *)makePlayerStringForSession:(Session *)session withWith:(BOOL)with;
+
 #pragma mark - Retrieve Data for Filter/Create Menus
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row;
 + (NSArray * _Nullable)getFilterData:(BOOL)needAll forRow:(int)row;

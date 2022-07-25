@@ -279,6 +279,31 @@
     return [[[Helpers getAgeInYears:user[@"birthday"][0]] stringByAppendingString:@" yo "] stringByAppendingString:genderString];
 }
 
+// Make players string for session cell
++ (NSString *)makePlayerStringForSession:(Session *)session withWith:(BOOL)with {
+    NSString *playersString = @"";
+    
+    if (session.playersList.count == 0) return playersString;
+    
+    BOOL isFirstPerson = YES;
+    
+    for (PFUser *player in session.playersList) {
+
+        [player fetchIfNeeded];
+
+        NSString *playerName = player[@"firstName"][0];
+        
+        if (isFirstPerson) {
+            playersString = [playersString stringByAppendingString:playerName];
+            isFirstPerson = NO;
+        } else {
+            playersString = [playersString stringByAppendingString:[@", " stringByAppendingString:playerName]];
+        }
+    }
+    
+    return with ? [@" w/ " stringByAppendingString:playersString] : playersString;
+}
+
 #pragma mark - Retrieve Data for Filter/Create Menus
 
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row {
