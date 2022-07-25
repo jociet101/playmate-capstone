@@ -10,12 +10,14 @@
 
 @implementation Helpers
 
-// For Parse
+#pragma mark - Parse Related
+
 + (PlayerConnection *)getPlayerConnectionForUser:(PFUser *)user {
     return [user[@"playerConnection"][0] fetchIfNeeded];
 }
 
-// For API endpoints
+#pragma mark - API Endpoints
+
 + (NSString *)geoapifyGeocodingURLWithKey:(NSString *)geoapify andCraftedLink:(NSString *)craftedLink {
     return [NSString stringWithFormat:@"%@/geocode/search?text=%@&format=json&apiKey=%@", [Constants geoapifyBaseURLString], craftedLink, geoapify];
 }
@@ -24,7 +26,82 @@
     return [NSString stringWithFormat:@"%@/geocode/reverse?lat=%@&lon=%@&apiKey=%@", [Constants geoapifyBaseURLString], latitude, longitutde, geoapify];
 }
 
-// For other stuff
+#pragma mark - Handling Alerts
+
++ (void)handleAlert:(NSError * _Nullable)error
+          withTitle:(NSString *)title
+        withMessage:(NSString * _Nullable)message
+  forViewController:(id)viewController {
+    if (error != nil) {
+        message = error.localizedDescription;
+    }
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [viewController viewDidLoad];
+    }];
+    
+    [alertController addAction:okAction];
+    [viewController presentViewController:alertController animated: YES completion: nil];
+}
+
+#pragma mark - Button UI
+
++ (void)setCornerRadiusAndColorForButton:(UIButton *)button andIsSmall:(BOOL)isSmall {
+    button.layer.cornerRadius = isSmall ? [Constants smallButtonCornerRadius] : [Constants buttonCornerRadius];
+    [button setBackgroundColor:[Constants playmateBlue]];
+}
+
+#pragma mark - Image Manipulation
+
+// Helper for rotating image
++ (CGFloat)degreesToRadians:(CGFloat)degrees {
+    return M_PI * degrees / 180;
+}
+
+// Rotates image by degrees given image and degrees
++ (UIImage *)image:(UIImage *)image rotatedByDegrees:(CGFloat)degrees {
+    CGFloat radians = [Helpers degreesToRadians:degrees];
+
+    UIView *rotatedViewBox = [[UIView alloc] initWithFrame:CGRectMake(0,0, image.size.width, image.size.height)];
+    rotatedViewBox.transform = CGAffineTransformMakeRotation(radians);
+    CGSize rotatedSize = rotatedViewBox.frame.size;
+    
+    UIGraphicsBeginImageContextWithOptions(rotatedSize, NO, [[UIScreen mainScreen] scale]);
+    CGContextRef bitmap = UIGraphicsGetCurrentContext();
+
+    CGContextTranslateCTM(bitmap, rotatedSize.width / 2, rotatedSize.height / 2);
+
+    CGContextRotateCTM(bitmap, radians);
+
+    CGContextScaleCTM(bitmap, 1.0, -1.0);
+    CGContextDrawImage(bitmap, CGRectMake(-image.size.width / 2, -image.size.height / 2 , image.size.width, image.size.height), image.CGImage );
+
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    return newImage;
+}
+
+// Resize image to square of dimension given
++ (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension {
+    CGSize size = CGSizeMake(dimension, dimension);
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, dimension, dimension)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
+#pragma mark - Miscellaneous Helper Methods
+
+// Given a list of players that are PFUsers, returns set of object id strings for those players
 + (NSMutableSet *)getPlayerObjectIdSet:(NSArray *)playerList {
     NSMutableSet *playersSet = [[NSMutableSet alloc] init];
     [playerList enumerateObjectsUsingBlock:^(PFUser *user, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -33,7 +110,7 @@
     return playersSet;
 }
 
-// For getting a user's top 3 sports to display on profile
+// Given a user, returns list of a max size three of most frequent sports for sessions the user attends
 + (NSArray *)getTopSportsFor:(PFUser *)user {
     NSMutableDictionary *sportsCountDictionary = [[NSMutableDictionary alloc] init];
     
@@ -73,22 +150,7 @@
     return [result subarrayWithRange:NSMakeRange(0, numberSportsToFetch)];
 }
 
-// for resizing images
-+ (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension {
-    CGSize size = CGSizeMake(dimension, dimension);
-    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, dimension, dimension)];
-    
-    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
-    resizeImageView.image = image;
-    
-    UIGraphicsBeginImageContext(size);
-    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
-
+// Returns number of days between two dates
 + (NSString *)getTimeGivenDurationForSession:(Session *)session {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDate *startTime = session.occursAt;
@@ -111,25 +173,7 @@
     return [dateString stringByAppendingFormat:@", %@ to %@", startTimeString, endTimeString];
 }
 
-// For handling alerts
-+ (void)handleAlert:(NSError * _Nullable)error
-          withTitle:(NSString *)title
-        withMessage:(NSString * _Nullable)message
-  forViewController:(id)viewController {
-    if (error != nil) {
-        message = error.localizedDescription;
-    }
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        [viewController viewDidLoad];
-    }];
-    
-    [alertController addAction:okAction];
-    [viewController presentViewController:alertController animated: YES completion: nil];
-}
-
-// For handling dates
+// Return time string interval for a session given start time and duration
 + (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime {
     NSDate *fromDate;
     NSDate *toDate;
@@ -145,40 +189,6 @@
         fromDate:fromDate toDate:toDate options:0];
 
     return [difference day];
-}
-
-+ (void)setCornerRadiusAndColorForButton:(UIButton *)button andIsSmall:(BOOL)isSmall {
-    button.layer.cornerRadius = isSmall ? [Constants smallButtonCornerRadius] : [Constants buttonCornerRadius];
-    [button setBackgroundColor:[Constants playmateBlue]];
-}
-
-// For rotating an image
-
-+ (CGFloat)degreesToRadians:(CGFloat)degrees {
-    return M_PI * degrees / 180;
-}
-
-+ (UIImage *)image:(UIImage *)image rotatedByDegrees:(CGFloat)degrees {
-    CGFloat radians = [Helpers degreesToRadians:degrees];
-
-    UIView *rotatedViewBox = [[UIView alloc] initWithFrame:CGRectMake(0,0, image.size.width, image.size.height)];
-    rotatedViewBox.transform = CGAffineTransformMakeRotation(radians);
-    CGSize rotatedSize = rotatedViewBox.frame.size;
-    
-    UIGraphicsBeginImageContextWithOptions(rotatedSize, NO, [[UIScreen mainScreen] scale]);
-    CGContextRef bitmap = UIGraphicsGetCurrentContext();
-
-    CGContextTranslateCTM(bitmap, rotatedSize.width / 2, rotatedSize.height / 2);
-
-    CGContextRotateCTM(bitmap, radians);
-
-    CGContextScaleCTM(bitmap, 1.0, -1.0);
-    CGContextDrawImage(bitmap, CGRectMake(-image.size.width / 2, -image.size.height / 2 , image.size.width, image.size.height), image.CGImage );
-
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-
-    return newImage;
 }
 
 @end

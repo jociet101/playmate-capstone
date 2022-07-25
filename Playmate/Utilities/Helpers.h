@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+
 #import "Session.h"
 #import "PlayerConnection.h"
 
@@ -15,35 +16,40 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Helpers : NSObject
 
-// For Parse
+#pragma mark - Parse Related
 + (PlayerConnection *)getPlayerConnectionForUser:(PFUser *)user;
 
-// For API endpoints
+#pragma mark - API Endpoints
 + (NSString *)geoapifyGeocodingURLWithKey:(NSString *)geoapify andCraftedLink:(NSString *)craftedLink;
 + (NSString *)geoapifyReverseGeocodingURLWithKey:(NSString *)geoapify andLongitutde:(NSString *)longitutde andLatitude:(NSString *)latitude;
 
-+ (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension;
-+ (NSString *)getTimeGivenDurationForSession:(Session *)session;
-
-// For other stuff
-+ (NSMutableSet *)getPlayerObjectIdSet:(NSArray *)playerList;
-
-+ (NSArray *)getTopSportsFor:(PFUser *)user;
-
-// For handling alerts
+#pragma mark - Handling Alerts
 + (void)handleAlert:(NSError * _Nullable)error
           withTitle:(NSString *)title
         withMessage:(NSString * _Nullable)message
   forViewController:(id)viewController;
 
+#pragma mark - Button UI
++ (void)setCornerRadiusAndColorForButton:(UIButton *)button andIsSmall:(BOOL)isSmall;
+
+#pragma mark - Image Manipulation
++ (UIImage *)image:(UIImage *)image rotatedByDegrees:(CGFloat)degrees;
++ (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension;
+
+#pragma mark - Miscellaneous Helper Methods
+
+// Given a list of players that are PFUsers, returns set of object id strings for those players
++ (NSMutableSet *)getPlayerObjectIdSet:(NSArray *)playerList;
+
+// Given a user, returns list of a max size three of most frequent sports for sessions the user attends
++ (NSArray *)getTopSportsFor:(PFUser *)user;
+
+// Returns number of days between two dates
 + (NSInteger)daysBetweenDate:(NSDate*)fromDateTime
                      andDate:(NSDate*)toDateTime;
 
-// for buttons
-+ (void)setCornerRadiusAndColorForButton:(UIButton *)button andIsSmall:(BOOL)isSmall;
-
-// For rotating an image
-+ (UIImage *)image:(UIImage *)image rotatedByDegrees:(CGFloat)degrees;
+// Return time string interval for a session given start time and duration
++ (NSString *)getTimeGivenDurationForSession:(Session *)session;
 
 @end
 
