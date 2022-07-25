@@ -20,18 +20,14 @@
 
 @implementation MenuPickerCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 - (void)setRowNumber:(NSNumber *)rowNumber {
+    // thisRow
+    // 0 : Sport
+    // 1 : Date and Time
+    // 2 : Duration
+    // 3 : Skill Level
+    // 4 : Number of Players
+    // 5 : Location
     
     self.layer.cornerRadius = [Constants buttonCornerRadius];
     self.thisRow = [rowNumber intValue];
@@ -114,16 +110,10 @@
 }
 
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    
-    if (row == 0) {
-        return @"";
-    }
-    
-    return self.pickerData[row-1];
+    return row == 0 ? @"" : self.pickerData[row-1];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    
     if (row == 0) {
         self.pickerField.text = @"";
         return;

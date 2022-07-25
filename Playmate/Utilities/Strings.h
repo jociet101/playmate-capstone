@@ -47,8 +47,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)emptyInvitationsPlaceholderTitle;
 + (NSString *)emptyInvitationsPlaceholderMsg;
 
-#pragma mark - Defaults
+#pragma mark - Defaults and Placeholders
 + (NSString *)defaultAll;
++ (NSString *)radiusPlaceholder;
 
 @end
 

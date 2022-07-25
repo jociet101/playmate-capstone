@@ -117,10 +117,14 @@
     return @"Check back later to see if your friends invited you to join their session!";
 }
 
-#pragma mark - Defaults
+#pragma mark - Defaults and Placeholders
 
 + (NSString *)defaultAll {
     return @"All";
+}
+
++ (NSString *)radiusPlaceholder {
+    return @"10 (default)";
 }
 
 @end

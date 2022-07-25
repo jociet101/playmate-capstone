@@ -90,7 +90,9 @@
 // Calculate number of days user has been on playmate for profile tab
 + (NSString *)getNumberDaysOnPlaymateForUser:(PFUser *)user {
     NSDate *joinedDate = user.createdAt;
-    NSInteger timeAgo = [Helpers daysBetweenDate:joinedDate andDate:[NSDate now]];
+    // Add 1 since we want to include current day as one day
+    // Ex. if user joins today, we want to display 1 instead of 0
+    NSInteger timeAgo = [Helpers daysBetweenDate:joinedDate andDate:[NSDate now]]+1;
     return [NSString stringWithFormat:@"%ld", timeAgo];
 }
 

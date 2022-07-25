@@ -69,6 +69,9 @@ NS_ASSUME_NONNULL_BEGIN
 // String for empty events on given date
 + (NSString *)emptyCalendarTableForDate:(NSDate *)date;
 
+// String for details label on player collection cell
++ (NSString *)getDetailsLabelForPlayerCell:(PFUser *)user;
+
 #pragma mark - Retrieve Data for Filter/Create Menus
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row;
 + (NSArray * _Nullable)getFilterData:(BOOL)needAll forRow:(int)row;

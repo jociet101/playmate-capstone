@@ -273,6 +273,12 @@
     return [@"No sessions on " stringByAppendingString:dateString];
 }
 
+// String for details label on player collection cell
++ (NSString *)getDetailsLabelForPlayerCell:(PFUser *)user {
+    NSString *genderString = [user[@"gender"][0] isEqualToString:@"Other"] ? @"" : user[@"gender"][0];
+    return [[[Helpers getAgeInYears:user[@"birthday"][0]] stringByAppendingString:@" yo "] stringByAppendingString:genderString];
+}
+
 #pragma mark - Retrieve Data for Filter/Create Menus
 
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row {
