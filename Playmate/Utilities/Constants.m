@@ -12,12 +12,11 @@
 
 @implementation Constants
 
-// For calendar
+#pragma mark - Dates
 + (NSDate *) dateWithHour:(NSInteger)hour
                   minute:(NSInteger)minute
                   second:(NSInteger)second
-                 fromDate:(NSDate *)date
-{
+                 fromDate:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components: NSCalendarUnitYear|
                                                          NSCalendarUnitMonth|
@@ -30,21 +29,8 @@
     return newDate;
 }
 
-// For confetti on session details view
-+ (NSArray *)listOfSystemColors {
-    return [NSArray arrayWithObjects:[UIColor systemPinkColor],
-                                     [UIColor systemRedColor],
-                                     [UIColor systemBlueColor],
-                                     [UIColor systemCyanColor],
-                                     [UIColor systemMintColor],
-                                     [UIColor systemGreenColor],
-                                     [UIColor systemOrangeColor],
-                                     [UIColor systemPurpleColor],
-                                     [UIColor systemYellowColor],
-                                     [UIColor systemGrayColor], nil];
-}
+#pragma mark - Strings with parameters
 
-// Info for incoming friend notifications
 + (NSString *)acceptedConfirmationStringFor:(NSString *)name {
     return [NSString stringWithFormat:@"You are now friends with %@", name];
 }
@@ -53,7 +39,9 @@
     return [NSString stringWithFormat:@"You denied %@'s friend request", name];
 }
 
-// Information for filters and create
+
+#pragma mark - Filter Menu Labels
+
 + (NSString *)createMenuTitle:(int)row {
     NSMutableArray *titles = [[NSMutableArray alloc] init];
     
@@ -79,6 +67,7 @@
     return titles[row];
 }
 
+// Duration
 + (NSArray *)durationList {
     NSMutableArray *durations = [[NSMutableArray alloc] init];
     
@@ -116,7 +105,6 @@
 }
 
 + (NSNumber *)durationKeyToInteger:(int)key {
-//    return @(((float)key)/4 + 0.5);
     NSMutableArray *durations = [[NSMutableArray alloc] init];
 
     [durations addObject:@(0.5)];
@@ -134,6 +122,7 @@
     return durations[key];
 }
 
+// Sport
 + (NSArray *)sportsListLarge:(BOOL)needAll {
     NSMutableArray *sports = [[NSMutableArray alloc] init];
     
@@ -188,6 +177,7 @@
     return [NSArray arrayWithArray:sports];
 }
 
+// Skill Level
 + (NSArray *)skillLevelsList:(BOOL)needAll {
     NSMutableArray *skillLevels = [[NSMutableArray alloc] init];
     if (needAll) [skillLevels addObject:[Strings defaultAll]];
@@ -198,6 +188,7 @@
     return [NSArray arrayWithArray:skillLevels];
 }
 
+// Session Scope
 + (NSArray *)sessionTypeList {
     NSMutableArray *sessionTypes = [[NSMutableArray alloc] init];
     [sessionTypes addObject:[Strings defaultAll]];
@@ -207,7 +198,8 @@
     return [NSArray arrayWithArray:sessionTypes];
 }
 
-// Some numbers
+#pragma mark - Numbers
+
 + (int)buttonCornerRadius {
     return 20;
 }
@@ -216,7 +208,21 @@
     return 12;
 }
 
-// some colors
+#pragma mark - Colors
+
++ (NSArray *)listOfSystemColors {
+    return [NSArray arrayWithObjects:[UIColor systemPinkColor],
+                                     [UIColor systemRedColor],
+                                     [UIColor systemBlueColor],
+                                     [UIColor systemCyanColor],
+                                     [UIColor systemMintColor],
+                                     [UIColor systemGreenColor],
+                                     [UIColor systemOrangeColor],
+                                     [UIColor systemPurpleColor],
+                                     [UIColor systemYellowColor],
+                                     [UIColor systemGrayColor], nil];
+}
+
 + (UIColor *)playmateBlue {
     return [UIColor colorWithRed: 0.31 green: 0.78 blue: 0.94 alpha: 0.30];
 }
@@ -233,11 +239,7 @@
     return [UIColor colorWithRed: 0.76 green: 1 blue: 1 alpha: 0.7];
 }
 
-// playmate logo placeholder profile image
-
-+ (UIImage *)profileImagePlaceholder {
-    return [UIImage imageNamed:@"playmate_logo_fit"];
-}
+#pragma mark - Empty View Text Properties
 
 + (NSDictionary *)descriptionAttributes {
     NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
@@ -257,7 +259,13 @@
     return titleAttributes;
 }
 
-// for home view
+
+#pragma mark - Gifs and Images
+
++ (UIImage *)profileImagePlaceholder {
+    return [UIImage imageNamed:@"playmate_logo_fit"];
+}
+
 + (NSString *)getImageNameForSport:(NSString *)sport {
     NSArray *imageNames = [NSArray arrayWithObjects:@"playmate_logo_transparent",
                                                     @"playmate_logo_transparent",
@@ -283,7 +291,6 @@
     return sportToImageName[sport];
 }
 
-// for uiimage gifs
 + (NSArray *)addressGifImages {
     NSMutableArray *addressGifImages = [[NSMutableArray alloc] initWithCapacity:155];
     for (int i = 0; i < 155; i++) {

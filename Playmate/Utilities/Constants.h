@@ -54,11 +54,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSDictionary *)titleAttributes;
 
 #pragma mark - Gifs and Images
++ (UIImage *)profileImagePlaceholder;
++ (NSString *)getImageNameForSport:(NSString *)sport;
 + (NSArray *)addressGifImages;
 + (NSArray *)manualGifImages;
 + (NSArray *)rollingPlaymateLogoGif;
-+ (NSString *)getImageNameForSport:(NSString *)sport;
-+ (UIImage *)profileImagePlaceholder;
 
 @end
 
