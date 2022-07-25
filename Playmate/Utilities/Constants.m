@@ -89,6 +89,18 @@
     return [formatter stringFromDate:date];
 }
 
++ (NSString *)formatDateNoTime:(NSDate *)original {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = [Constants dateFormatString];
+    NSString *originalDate = [formatter stringFromDate:original];
+    
+    NSDate *date = [formatter dateFromString:originalDate];
+    formatter.dateStyle = NSDateFormatterMediumStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    
+    return [formatter stringFromDate:date];
+}
+
 + (NSArray *)listOfSystemColors {
     return [NSArray arrayWithObjects:[UIColor systemPinkColor],
                                      [UIColor systemRedColor],
@@ -100,6 +112,15 @@
                                      [UIColor systemPurpleColor],
                                      [UIColor systemYellowColor],
                                      [UIColor systemGrayColor], nil];
+}
+
+// Info for incoming friend notifications
++ (NSString *)acceptedConfirmationStringFor:(NSString *)name {
+    return [NSString stringWithFormat:@"You are now friends with %@", name];
+}
+
++ (NSString *)deniedConfirmationStringFor:(NSString *)name {
+    return [NSString stringWithFormat:@"You denied %@'s friend request", name];
 }
 
 // Information for profile tab
@@ -345,6 +366,18 @@
     return [UIColor colorWithRed: 0.31 green: 0.78 blue: 0.94 alpha: 0.30];
 }
 
++ (UIColor *)playmateBlueOpaque {
+    return [UIColor colorWithRed: 0.90 green: 0.96 blue: 1 alpha: 1];
+}
+
++ (UIColor *)playmateTealOpaque {
+    return [UIColor colorWithRed: 0.05 green: 0.28 blue: 0.32 alpha: 1];
+}
+
++ (UIColor *)playmateBlueSelected {
+    return [UIColor colorWithRed: 0.76 green: 1 blue: 1 alpha: 0.7];
+}
+
 // playmate logo placeholder profile image
 
 + (UIImage *)profileImagePlaceholder {
@@ -361,12 +394,16 @@
     return @"No Sessions";
 }
 
++ (NSString *)emptyPlayerProfilesPlaceholderTitle {
+    return @"No players in this session";
+}
+
 + (NSString *)emptySearchPlaceholderMsg {
     return @"No sessions match your search. Adjust the filters or create your own session!";
 }
 
 + (NSString *)emptyListPlaceholderMsg {
-    return @"Create or join sessions to meet your Playmates!";
+    return @"Explore sessions to meet your Playmates!";
 }
 
 + (NSString *)emptyListPlaceholderTitle {
@@ -383,6 +420,19 @@
 
 + (NSString *)emptyCollectionLoadingSessionsTitle {
     return @"Loading Sessions ...";
+}
+
++ (NSString *)emptyCalendarTableForDate:(NSDate *)date {
+    NSString *dateString = [Constants formatDateNoTime:date];
+    return [@"No sessions on " stringByAppendingString:dateString];
+}
+
++ (NSString *)emptyInvitationsPlaceholderTitle {
+    return @"No invitations";
+}
+
++ (NSString *)emptyInvitationsPlaceholderMsg {
+    return @"Check back later to see if your friends invited you to join their session!";
 }
 
 + (NSDictionary *)descriptionAttributes {

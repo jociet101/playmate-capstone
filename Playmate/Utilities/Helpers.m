@@ -24,9 +24,57 @@
     return [NSString stringWithFormat:@"%@/geocode/reverse?lat=%@&lon=%@&apiKey=%@", [Constants geoapifyBaseURLString], latitude, longitutde, geoapify];
 }
 
+// For other stuff
++ (NSMutableSet *)getPlayerObjectIdSet:(NSArray *)playerList {
+    NSMutableSet *playersSet = [[NSMutableSet alloc] init];
+    [playerList enumerateObjectsUsingBlock:^(PFUser *user, NSUInteger idx, BOOL * _Nonnull stop) {
+        [playersSet addObject:user.objectId];
+    }];
+    return playersSet;
+}
+
+// For getting a user's top 3 sports to display on profile
++ (NSArray *)getTopSportsFor:(PFUser *)user {
+    NSMutableDictionary *sportsCountDictionary = [[NSMutableDictionary alloc] init];
+    
+    NSMutableDictionary *sportsDictionary = user[@"sessionsDictionary"][0];
+    NSArray *sportsList = [sportsDictionary allKeys];
+    
+    for (NSString *sport in sportsList) {
+        NSNumber *count = [NSNumber numberWithLong:((NSArray *)sportsDictionary[sport]).count];
+        NSMutableArray *sportsListForCount = [sportsCountDictionary objectForKey:count];
+        if (sportsListForCount == nil) {
+            sportsListForCount = [NSMutableArray arrayWithObject:sport];
+            [sportsCountDictionary setObject:sportsListForCount forKey:count];
+        } else {
+            [sportsCountDictionary removeObjectForKey:count];
+            [sportsListForCount addObject:sport];
+            [sportsCountDictionary setObject:sportsListForCount forKey:count];
+        }
+    }
+    
+    NSArray *countKeys = [sportsCountDictionary allKeys];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:NO];
+    countKeys = [countKeys sortedArrayUsingDescriptors:@[sortDescriptor]];
+        
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    
+    for (NSNumber *count in countKeys) {
+        if (result.count >= 3) {
+            break;
+        }
+        NSArray *sportsForThisCount = [sportsCountDictionary objectForKey:count];
+        result = (NSMutableArray *)[result arrayByAddingObjectsFromArray:sportsForThisCount];
+    }
+    
+    const long numberSportsToFetch = MIN(3, result.count);
+    
+    return [result subarrayWithRange:NSMakeRange(0, numberSportsToFetch)];
+}
+
 // for resizing images
 + (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension {
-    
     CGSize size = CGSizeMake(dimension, dimension);
     UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, dimension, dimension)];
     
@@ -102,6 +150,35 @@
 + (void)setCornerRadiusAndColorForButton:(UIButton *)button andIsSmall:(BOOL)isSmall {
     button.layer.cornerRadius = isSmall ? [Constants smallButtonCornerRadius] : [Constants buttonCornerRadius];
     [button setBackgroundColor:[Constants playmateBlue]];
+}
+
+// For rotating an image
+
++ (CGFloat)degreesToRadians:(CGFloat)degrees {
+    return M_PI * degrees / 180;
+}
+
++ (UIImage *)image:(UIImage *)image rotatedByDegrees:(CGFloat)degrees {
+    CGFloat radians = [Helpers degreesToRadians:degrees];
+
+    UIView *rotatedViewBox = [[UIView alloc] initWithFrame:CGRectMake(0,0, image.size.width, image.size.height)];
+    rotatedViewBox.transform = CGAffineTransformMakeRotation(radians);
+    CGSize rotatedSize = rotatedViewBox.frame.size;
+    
+    UIGraphicsBeginImageContextWithOptions(rotatedSize, NO, [[UIScreen mainScreen] scale]);
+    CGContextRef bitmap = UIGraphicsGetCurrentContext();
+
+    CGContextTranslateCTM(bitmap, rotatedSize.width / 2, rotatedSize.height / 2);
+
+    CGContextRotateCTM(bitmap, radians);
+
+    CGContextScaleCTM(bitmap, 1.0, -1.0);
+    CGContextDrawImage(bitmap, CGRectMake(-image.size.width / 2, -image.size.height / 2 , image.size.width, image.size.height), image.CGImage );
+
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    return newImage;
 }
 
 @end

@@ -29,6 +29,7 @@
 
 - (IBAction)didTapCreate:(id)sender {
     [self performSegueWithIdentifier:@"createSegue" sender:nil];
+    [self.createAccountButton setBackgroundColor:[Constants playmateBlueSelected]];
 }
 
 - (IBAction)didTapLogin:(id)sender {

@@ -28,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *firstSportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *secondSportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *thirdSportLabel;
+@property (weak, nonatomic) IBOutlet UIView *dividerOne;
+@property (weak, nonatomic) IBOutlet UIView *dividerTwo;
 
 @property (nonatomic, assign) BOOL isMyFriend;
 
@@ -57,10 +59,23 @@
     
     unsigned long numFriends = ((NSArray *)playerConnection[@"friendsList"]).count;
     NSString *numberFriendsLabel = (numFriends == 1) ? @"1 friend" : [NSString stringWithFormat:@"%ld friends", numFriends];
-    
     [self.numberOfFriendsButton setTitle:numberFriendsLabel forState:UIControlStateNormal];
     
+    [self setPodiumLabels];
     [self configureDataFields];
+    [self configureDividerUI];
+}
+
+- (void)setPodiumLabels {
+    NSArray *topSports = [Helpers getTopSportsFor:self.user];
+    self.firstSportLabel.text = (topSports.count > 0) ? topSports[0] : @"None";
+    self.secondSportLabel.text = (topSports.count > 1) ? topSports[1] : @"None";
+    self.thirdSportLabel.text = (topSports.count > 2) ? topSports[2] : @"None";
+}
+
+- (void)configureDividerUI {
+    self.dividerOne.backgroundColor = [Constants playmateBlue];
+    self.dividerTwo.backgroundColor = [Constants playmateBlue];
 }
 
 -(void)manageFriendButtonUI {
@@ -110,9 +125,15 @@
     self.numberTotalSessionsLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
     self.numberDaysOnPlaymateLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
     
-    self.firstSportLabel.backgroundColor = [Constants playmateBlue];
-    self.secondSportLabel.backgroundColor = [Constants playmateBlue];
-    self.thirdSportLabel.backgroundColor = [Constants playmateBlue];
+    if (UIScreen.mainScreen.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+        self.firstSportLabel.backgroundColor = [Constants playmateTealOpaque];
+        self.secondSportLabel.backgroundColor = [Constants playmateTealOpaque];
+        self.thirdSportLabel.backgroundColor = [Constants playmateTealOpaque];
+    } else {
+        self.firstSportLabel.backgroundColor = [Constants playmateBlueOpaque];
+        self.secondSportLabel.backgroundColor = [Constants playmateBlueOpaque];
+        self.thirdSportLabel.backgroundColor = [Constants playmateBlueOpaque];
+    }
     
     self.numberTotalSessionsLabel.text = [[NSString stringWithFormat:@"%ld", [ManageUserStatistics getNumberTotalSessionsForUser:self.user]] stringByAppendingString:@" Total Sessions"];
     self.numberDaysOnPlaymateLabel.text = [[NSString stringWithFormat:@"%@", [ManageUserStatistics getNumberDaysOnPlaymateForUser:self.user]] stringByAppendingString:@" Days on Playmate"];
@@ -200,9 +221,9 @@
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     if ([segue.identifier isEqualToString:@"toFriendsList"]) {
         FriendsListViewController *vc = [segue destinationViewController];
+        vc.isForInvitations = NO;
         vc.thisUser = self.user;
     }
 }

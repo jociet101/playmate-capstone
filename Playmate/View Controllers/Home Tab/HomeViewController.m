@@ -16,8 +16,9 @@
 #import "SessionCollectionCell.h"
 #import "UpcomingSessionsViewController.h"
 #import "SuggestedSessionsViewController.h"
+#import "CreateMenuViewController.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <CreateMenuViewControllerDelegate>
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
@@ -60,6 +61,10 @@
     [self fetchData];
 }
 
+- (void)reloadHomeTabSessions {
+    [self fetchData];
+}
+
 - (void)fetchData {
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
     query.limit = 20;
@@ -80,19 +85,20 @@
 
 // Filter out sessions that do not contain self
 - (void)filterSessions:(NSArray *)sessions {
-    NSMutableArray *tempList = [NSMutableArray arrayWithArray:sessions];
-    PFUser *currUser = [[PFUser currentUser] fetchIfNeeded];
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     NSDate *now = [NSDate date];
     
-    for (Session *session in tempList) {
-        for (PFUser *user in session[@"playersList"]) {
-            [user fetchIfNeeded];
-
-            NSComparisonResult result = [now compare:session.occursAt];
-            if ([currUser.username isEqualToString:user.username] && result == NSOrderedAscending) {
-                [self.sessionList addObject:session];
-                break;
-            }
+    NSMutableSet *selfSet = [NSMutableSet setWithObject:me.objectId];
+    // Filter to only sessions self is in
+    for (Session *session in sessions) {
+        NSMutableSet *playersSet = [Helpers getPlayerObjectIdSet:session.playersList];
+        
+        [playersSet intersectSet: selfSet];
+        NSArray *resultArray = [playersSet allObjects];
+        
+        NSComparisonResult result = [now compare:session.occursAt];
+        if (resultArray.count > 0 && result == NSOrderedAscending) {
+            [self.sessionList addObject:session];
         }
     }
 }

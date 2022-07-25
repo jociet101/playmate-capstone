@@ -36,6 +36,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)formatDateShort:(NSDate *)original;
 + (NSArray *)listOfSystemColors;
 
+// Info for incoming friend notifications
++ (NSString *)acceptedConfirmationStringFor:(NSString *)name;
++ (NSString *)deniedConfirmationStringFor:(NSString *)name;
+
 // Information for profile tab
 + (NSString *)defaultBio;
 + (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last;
@@ -73,18 +77,26 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Some colors
 + (UIColor *)playmateBlue;
++ (UIColor *)playmateBlueOpaque;
++ (UIColor *)playmateTealOpaque;
++ (UIColor *)playmateBlueSelected;
 
 + (UIImage *)profileImagePlaceholder;
 
 // for empty table views and collection views
 + (NSString *)emptyTablePlaceholderMsg;
 + (NSString *)emptyTablePlaceholderTitle;
++ (NSString *)emptyPlayerProfilesPlaceholderTitle;
 + (NSString *)emptySearchPlaceholderMsg;
 + (NSString *)emptyListPlaceholderMsg;
 + (NSString *)emptyListPlaceholderTitle;
 + (NSString *)emptyIncomingRequestsPlaceholderTitle;
 + (NSString *)emptyOutgoingRequestsPlaceholderTitle;
 + (NSString *)emptyCollectionLoadingSessionsTitle;
++ (NSString *)emptyCalendarTableForDate:(NSDate *)date;
++ (NSString *)emptyInvitationsPlaceholderTitle;
++ (NSString *)emptyInvitationsPlaceholderMsg;
+
 + (NSDictionary *)descriptionAttributes;
 + (NSDictionary *)titleAttributes;
 

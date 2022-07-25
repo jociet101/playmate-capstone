@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 #import "Session.h"
 #import "PlayerConnection.h"
 
@@ -24,6 +25,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension;
 + (NSString *)getTimeGivenDurationForSession:(Session *)session;
 
+// For other stuff
++ (NSMutableSet *)getPlayerObjectIdSet:(NSArray *)playerList;
+
++ (NSArray *)getTopSportsFor:(PFUser *)user;
+
 // For handling alerts
 + (void)handleAlert:(NSError * _Nullable)error
           withTitle:(NSString *)title
@@ -35,6 +41,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 // for buttons
 + (void)setCornerRadiusAndColorForButton:(UIButton *)button andIsSmall:(BOOL)isSmall;
+
+// For rotating an image
++ (UIImage *)image:(UIImage *)image rotatedByDegrees:(CGFloat)degrees;
 
 @end
 

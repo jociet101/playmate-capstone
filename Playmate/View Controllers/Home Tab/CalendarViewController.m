@@ -80,11 +80,8 @@
 #pragma mark - Table view protocol methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     SessionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SessionCell"];
-        
     cell.session = self.sessionList[indexPath.section];
-            
     return cell;
 }
 
@@ -123,7 +120,8 @@
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Constants emptyTablePlaceholderTitle];
+    NSString *text = (self.calendarView.selectedDate == nil) ? [Constants emptyCalendarTableForDate:[NSDate now]]
+                                                             : [Constants emptyCalendarTableForDate:self.calendarView.selectedDate];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
@@ -135,8 +133,16 @@
     
     self.calendarView.swipeToChooseGesture.enabled = YES;
     
-    UIPanGestureRecognizer *scopeGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self.calendarView action:@selector(handleScopeGesture:)];
-    [self.calendarView addGestureRecognizer:scopeGesture];
+    self.calendarView.backgroundColor = [Constants playmateBlue];
+    self.calendarView.layer.cornerRadius = [Constants buttonCornerRadius];
+        
+    if (UIScreen.mainScreen.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+        self.calendarView.appearance.headerTitleColor = [UIColor whiteColor];
+        self.calendarView.appearance.weekdayTextColor = [UIColor whiteColor];
+    } else {
+        self.calendarView.appearance.headerTitleColor = [UIColor blackColor];
+        self.calendarView.appearance.weekdayTextColor = [UIColor blackColor];
+    }
 }
 
 - (void)calendar:(FSCalendar *)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated {

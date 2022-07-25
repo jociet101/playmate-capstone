@@ -18,7 +18,11 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *sessionList;
 
+@property (nonatomic, strong) NSTimer *timer;
+
 @end
+
+BOOL isLoading;
 
 @implementation UpcomingSessionsViewController
 
@@ -36,6 +40,15 @@
     self.collectionView.prefetchingEnabled = YES;
     
     self.sessionList = [[NSArray alloc] init];
+    
+    isLoading = YES;
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:8 target:self selector:@selector(stopLoading) userInfo:nil repeats:NO];
+}
+
+- (void)stopLoading {
+    isLoading = NO;
+    [self.collectionView reloadData];
 }
 
 - (void)loadSessionList:(NSArray *)sessionList {
@@ -48,7 +61,6 @@
 // TODO: figure out how to prefetch!!!!!!!!!
 - (void)collectionView:(UICollectionView *)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
     for (NSIndexPath *indexPath in indexPaths) {
-        
         SessionCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SessionCollectionCell" forIndexPath:indexPath];
         
         cell.session = self.sessionList[indexPath.row];
@@ -106,12 +118,29 @@
 #pragma mark - Empty collection view protocol methods
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    return [UIImage animatedImageWithImages:[Constants rollingPlaymateLogoGif] duration:1.8f];
+    if (isLoading) {
+        return [UIImage animatedImageWithImages:[Constants rollingPlaymateLogoGif] duration:1.8f];
+    } else {
+        return [UIImage imageNamed:@"logo_small"];
+    }
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Constants emptyCollectionLoadingSessionsTitle];
+    NSString *text = [[NSString alloc] init];
+    if (isLoading) {
+        text = [Constants emptyCollectionLoadingSessionsTitle];
+    } else {
+        text = [Constants emptyTablePlaceholderTitle];
+    }
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
+    if (!isLoading) {
+        NSString *text = [Constants emptyTablePlaceholderMsg];
+        return [[NSAttributedString alloc] initWithString:text attributes:[Constants descriptionAttributes]];
+    }
+    return nil;
 }
 
 #pragma mark - Navigation

@@ -96,6 +96,8 @@
 }
 
 - (IBAction)didTapApply:(id)sender {
+    [self.applyFiltersButton setBackgroundColor:[Constants playmateBlueSelected]];
+
     Filters *filters = [Filters new];
     
     filters.location = self.selectedLocation;
@@ -110,7 +112,7 @@
         filters.skillLevel = nil;
     }
     if (filters.radius == nil) {
-        filters.radius = [NSNumber numberWithInt:5];
+        filters.radius = [NSNumber numberWithInt:10];
     }
     
     // call delegate method so filters save on search tab vc

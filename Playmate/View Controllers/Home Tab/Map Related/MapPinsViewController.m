@@ -13,6 +13,8 @@
 #import "Helpers.h"
 #import "MapFiltersViewController.h"
 #import "Filters.h"
+#import "MapFilters.h"
+#import "PlayerConnection.h"
 
 @interface MapPinsViewController () <CLLocationManagerDelegate, MKMapViewDelegate, MapFiltersViewControllerDelegate>
 
@@ -21,7 +23,7 @@
 @property (nonatomic, strong) NSArray *sessionList;
 
 @property (assign, nonatomic) BOOL appliedFilters;
-@property (nonatomic, strong) Filters * _Nullable filters;
+@property (nonatomic, strong) MapFilters * _Nullable filters;
 
 @property (nonatomic, strong) NSMutableArray *currentAnnotations;
 
@@ -48,7 +50,9 @@ BOOL isFirstTimeGettingLocation;
     [CLLocationManager locationServicesEnabled];
     
     [self initPinLocationManager];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     if (self.appliedFilters == YES) {
         [self fetchDataWithFilters:self.filters];
     } else {
@@ -123,8 +127,7 @@ BOOL isFirstTimeGettingLocation;
     }];
 }
 
-- (void)fetchDataWithFilters:(Filters *)filter {
-    
+- (void)fetchDataWithFilters:(MapFilters *)filter {
     if (self.appliedFilters == NO) {
         self.filters = filter;
         self.appliedFilters = YES;
@@ -145,9 +148,11 @@ BOOL isFirstTimeGettingLocation;
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
         if (sessions != nil) {
-            self.sessionList = (filter.location != nil) ? [self filterSessions:sessions
+            NSArray *locationFilteredSessions = (filter.location != nil) ? [self filterSessions:sessions
                                                                   withLocation:filter.location
                                                                      andRadius:filter.radius] : sessions;
+            self.sessionList = (filter.sessionType != nil) ? [self filterSessions:locationFilteredSessions
+                                                                 withSessionScope:filter.sessionType] : locationFilteredSessions;
             [self addPins];
         } else {
             [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
@@ -156,6 +161,10 @@ BOOL isFirstTimeGettingLocation;
 }
 
 #pragma mark - Filters related
+
+- (IBAction)didTapClearFilters:(id)sender {
+    [self clearFilters];
+}
 
 - (void)clearFilters {
     if (self.appliedFilters == YES) {
@@ -205,14 +214,48 @@ BOOL isFirstTimeGettingLocation;
     return (NSArray *)filteredSessions;
 }
 
+- (NSArray *)filterSessions:(NSArray *)sessions withSessionScope:(NSString *)scope {
+    NSMutableArray *filteredSessions = [[NSMutableArray alloc] init];
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
+    
+    if ([scope isEqualToString:@"Own"]) {
+        NSMutableSet *selfSet = [NSMutableSet setWithObject:me.objectId];
+        
+        // Filter to only sessions self is in
+        for (Session *session in sessions) {
+            NSMutableSet *playersSet = [Helpers getPlayerObjectIdSet:session.playersList];
+            [playersSet intersectSet: selfSet];
+            NSArray *resultArray = [playersSet allObjects];
+            if (resultArray.count > 0) {
+                [filteredSessions addObject:session];
+            }
+        }
+    } else {
+        PlayerConnection *playerConnection = [Helpers getPlayerConnectionForUser:me];
+        NSMutableSet *friendsSet = [NSMutableSet setWithArray:playerConnection[@"friendsList"]];
+        [friendsSet addObject:me.objectId];
+        
+        // Filter to only sessions that friends are in
+        for (Session *session in sessions) {
+            NSMutableSet *playersSet = [Helpers getPlayerObjectIdSet:session.playersList];
+            
+            [playersSet intersectSet: friendsSet];
+            NSArray *resultArray = [playersSet allObjects];
+            if (resultArray.count > 0) {
+                [filteredSessions addObject:session];
+            }
+        }
+    }
+    return (NSArray *)filteredSessions;
+}
+
 #pragma mark - Pin Annotation tasks
 
 // TODO: solve bug where two pins overlap and only one is visible
 // Idea: manually change latitude and longitude by a bit if there are multiple pins in the same exact location
 
 - (void)addPins {
-    [self.mapView removeAnnotations:(NSArray *)self.currentAnnotations];
-    [self.currentAnnotations removeAllObjects];
+    NSMutableArray *newAnnotations = [[NSMutableArray alloc] init];
     
     for (Session *session in self.sessionList) {
         Location *location = [session[@"location"] fetchIfNeeded];
@@ -225,8 +268,11 @@ BOOL isFirstTimeGettingLocation;
         point.session = session;
                 
         [self.mapView addAnnotation:point];
-        [self.currentAnnotations addObject:point];
+        [newAnnotations addObject:point];
     }
+    
+    [self.mapView removeAnnotations:(NSArray *)self.currentAnnotations];
+    self.currentAnnotations = newAnnotations;
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
@@ -244,7 +290,7 @@ BOOL isFirstTimeGettingLocation;
     }
     
     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    annotationView.pinTintColor = [UIColor systemTealColor];
+    annotationView.pinTintColor = [UIColor systemPinkColor];
     
     return annotationView;
 }

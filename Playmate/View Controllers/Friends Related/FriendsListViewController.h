@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FriendsListViewController : UIViewController
 
 @property (nonatomic, strong) PFUser *thisUser;
+@property (nonatomic, assign) BOOL isForInvitations;
+@property (nonatomic, strong) NSString *sessionWithInvite;
 
 @end
 

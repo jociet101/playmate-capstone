@@ -103,6 +103,8 @@
 }
 
 - (IBAction)didTapApply:(id)sender {
+    [self.applyFiltersButton setBackgroundColor:[Constants playmateBlueSelected]];
+
     MapFilters *filters = [MapFilters new];
     
     filters.location = self.selectedLocation;
@@ -120,8 +122,11 @@
     if (filters.radius == nil) {
         filters.radius = [NSNumber numberWithInt:5];
     }
+    if ([filters.sessionType isEqualToString:@"All"]) {
+        filters.sessionType = nil;
+    }
     
-    // call delegate method so filters save on search tab vc
+    // call delegate method so filters save on map tab vc
     [self.delegate didApplyFilters:filters];
     
     [self dismissViewControllerAnimated:YES completion:nil];

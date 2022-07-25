@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *invitedStatusLabel;
 
 @end
 
@@ -20,12 +21,13 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    UITapGestureRecognizer *friendCellTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapCell:)];
+    [self addGestureRecognizer:friendCellTapGesture];
+    [self setUserInteractionEnabled:YES];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)didTapCell:(UITapGestureRecognizer *)sender {
+    [self.delegate didTap:self forName:self.nameLabel.text andId:self.thisUserId];
 }
 
 - (void)setThisUserId:(NSString *)thisUserId {
@@ -33,6 +35,14 @@
         
     PFQuery *query = [PFUser query];
     PFUser *thisUser = [[query getObjectWithId:self.thisUserId] fetchIfNeeded];
+    
+    if (self.isForInvitations) {
+        NSString *userSessionStatus = self.isAlreadyInSession ? @"(Already in session)" : (self.isAlreadyInvitedToSession ? @"(Already invited)" : @"");
+        self.invitedStatusLabel.text = userSessionStatus;
+    } else {
+        self.invitedStatusLabel.alpha = 0;
+    }
+    
     
     self.nameLabel.text = thisUser.username;
     

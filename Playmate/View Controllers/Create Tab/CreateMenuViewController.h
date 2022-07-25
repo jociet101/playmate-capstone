@@ -10,7 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol CreateMenuViewControllerDelegate
+
+- (void)reloadHomeTabSessions;
+
+@end
+
 @interface CreateMenuViewController : UIViewController
+
+@property (nonatomic, strong) id<CreateMenuViewControllerDelegate> delegate;
 
 @end
 

@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MapFilters : Filters
 
-@property (nonatomic, strong) NSString *sessionType;
+@property (nonatomic, strong) NSString * _Nullable sessionType;
 
 @end
 
