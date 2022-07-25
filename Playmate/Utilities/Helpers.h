@@ -8,7 +8,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-
 #import "Session.h"
 #import "PlayerConnection.h"
 
@@ -43,9 +42,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)formatDateNoTime:(NSDate *)original;
 + (NSString *)appendAgoToTime:(NSDate *)timeAgo;
 
-#pragma mark - Profile Tab
+#pragma mark - Profile Tab and Friend Notifications
 + (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last;
 + (NSString *)getAgeInYears:(NSDate *)date;
++ (NSString *)outgoingRequestMessageFor:(PFUser *)user;
++ (NSString *)incomingRequestMessageFor:(PFUser *)user;
 
 #pragma mark - Miscellaneous Helper Methods
 

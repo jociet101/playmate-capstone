@@ -147,7 +147,8 @@
     return [[timeAgo shortTimeAgoSinceNow] stringByAppendingString:@" ago"];
 }
 
-#pragma mark - Profile Tab
+#pragma mark - Profile Tab and Friend Notifications
+
 + (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last {
     return [first stringByAppendingString:[@" " stringByAppendingString:last]];
 }
@@ -157,6 +158,16 @@
     NSArray *parsed = [rawYears componentsSeparatedByString:@" "];
     NSString *year = parsed[0];
     return year;
+}
+
++ (NSString *)outgoingRequestMessageFor:(PFUser *)user {
+    NSString *name = [Helpers concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
+    return [@"You requested to be friends with " stringByAppendingString:name];
+}
+
++ (NSString *)incomingRequestMessageFor:(PFUser *)user {
+    NSString *requesterName = [Helpers concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
+    return [requesterName stringByAppendingString:@" wants to be friends."];
 }
 
 #pragma mark - Miscellaneous Helper Methods

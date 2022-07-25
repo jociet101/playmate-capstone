@@ -32,6 +32,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    // Setup gesture recognizer so tapping on profile image leads to player profile
     UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
     
     [self.profileImageView addGestureRecognizer:profileTapGestureRecognizer];
@@ -43,21 +44,13 @@
     [self.delegate didTap:self profileImage:self.requester];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 - (void)setRequestInfo:(FriendRequest *)requestInfo {
     
     _requestInfo = requestInfo;
     
     PFQuery *query = [PFUser query];
     self.requester = [query getObjectWithId:requestInfo.requestFromId];
-            
-    NSString *requesterName = [Helpers concatenateFirstName:self.requester[@"firstName"][0] andLast:self.requester[@"lastName"][0]];
-    self.titleLabel.text = [requesterName stringByAppendingString:@" wants to be friends."];
+    self.titleLabel.text = [Helpers incomingRequestMessageFor:self.requester];
     
     [Helpers setCornerRadiusAndColorForButton:self.acceptButton andIsSmall:YES];
     [Helpers setCornerRadiusAndColorForButton:self.denyButton andIsSmall:YES];
@@ -65,9 +58,7 @@
     const BOOL hasProfileImage = (self.requester[@"profileImage"] != nil);
     UIImage *img = hasProfileImage ? [UIImage imageWithData:[self.requester[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
     [self.profileImageView setImage:[Helpers resizeImage:img withDimension:83]];
-    
     self.timeAgoLabel.text = [Helpers appendAgoToTime:requestInfo.updatedAt];
-    
     [self hideConfirmationLabels];
 }
 
@@ -89,7 +80,6 @@
 }
 
 - (IBAction)didTapAccept:(id)sender {
-    NSLog(@"did tap accept");
     // Update confirmation UI
     self.acceptedIcon.alpha = 1;
     self.confirmationLabel.alpha = 1;
@@ -98,7 +88,7 @@
     
     PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
-    // add a connection from this person's side
+    // Add a connection from this person's side
     PlayerConnection *connection;
     
     if ([user objectForKey:@"playerConnection"] == nil) {
@@ -111,12 +101,10 @@
     
     [PlayerConnection saveMyConnectionTo:self.requestInfo.requestFromId withStatus:YES andWeight:1];
     [PlayerConnection savePlayer:self.requestInfo.requestFromId ConnectionToMeWithStatus:YES andWeight:1];
-    
     [self deleteThisRequest];
 }
 
 - (IBAction)didTapDeny:(id)sender {
-    NSLog(@"did tap deny");
     // Update confirmation UI
     self.deniedIcon.alpha = 1;
     self.confirmationLabel.alpha = 1;
@@ -124,7 +112,6 @@
     [self disableButtons];
     
     [PlayerConnection removeSelfFromPendingOf:self.requestInfo.requestFromId];
-    
     [self deleteThisRequest];
 }
 

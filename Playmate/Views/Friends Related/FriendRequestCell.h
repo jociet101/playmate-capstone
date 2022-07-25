@@ -6,8 +6,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FriendRequest.h"
 #import <Parse/Parse.h>
+#import "FriendRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
