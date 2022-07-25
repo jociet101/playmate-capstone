@@ -13,27 +13,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Constants : NSObject
 
-// For API
-+ (NSString *)geoapifyBaseURLString;
-+ (NSString *)decathalonSportsListString;
-+ (NSString *)decathalonOneSportString;
-
 // For calendar
 + (NSDate *) dateWithHour:(NSInteger)hour
                   minute:(NSInteger)minute
                   second:(NSInteger)second
                  fromDate:(NSDate *)date;
 
-// Error messages for session details
-+ (NSString *)fullSessionErrorMsg;
-+ (NSString *)alreadyInSessionErrorMsg;
-+ (NSString *)noOpenSlotsErrorMsg;
-
 // Information for session details
-+ (NSString *)dateFormatString;
-+ (NSString *)capacityString:(NSNumber *)occupied with:(NSNumber *)capacity;
-+ (NSString *)formatDate:(NSDate *)original;
-+ (NSString *)formatDateShort:(NSDate *)original;
 + (NSArray *)listOfSystemColors;
 
 // Info for incoming friend notifications

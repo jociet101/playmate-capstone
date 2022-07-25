@@ -8,6 +8,7 @@
 #import "SessionCell.h"
 #import "Constants.h"
 #import "Helpers.h"
+#import "Strings.h"
 
 @interface SessionCell ()
 
@@ -50,8 +51,8 @@
     self.locationLabel.text = loc.locationName;
     
     const BOOL sessionIsFull = [self.session.capacity isEqual:self.session.occupied];
-    NSString *capacityString = sessionIsFull ? [Constants noOpenSlotsErrorMsg]
-                                             : [Constants capacityString:self.session.occupied
+    NSString *capacityString = sessionIsFull ? [Strings noOpenSlotsErrorMsg]
+                                             : [Strings capacityString:self.session.occupied
                                                           with:self.session.capacity];
     
     self.levelCapacityLabel.text = [self.session.skillLevel stringByAppendingString:[@", " stringByAppendingString:capacityString]];

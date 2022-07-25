@@ -7,6 +7,7 @@
 
 #import "Helpers.h"
 #import "Constants.h"
+#import "Strings.h"
 
 @implementation Helpers
 
@@ -19,11 +20,11 @@
 #pragma mark - API Endpoints
 
 + (NSString *)geoapifyGeocodingURLWithKey:(NSString *)geoapify andCraftedLink:(NSString *)craftedLink {
-    return [NSString stringWithFormat:@"%@/geocode/search?text=%@&format=json&apiKey=%@", [Constants geoapifyBaseURLString], craftedLink, geoapify];
+    return [NSString stringWithFormat:@"%@/geocode/search?text=%@&format=json&apiKey=%@", [Strings geoapifyBaseURLString], craftedLink, geoapify];
 }
 
 + (NSString *)geoapifyReverseGeocodingURLWithKey:(NSString *)geoapify andLongitutde:(NSString *)longitutde andLatitude:(NSString *)latitude {
-    return [NSString stringWithFormat:@"%@/geocode/reverse?lat=%@&lon=%@&apiKey=%@", [Constants geoapifyBaseURLString], latitude, longitutde, geoapify];
+    return [NSString stringWithFormat:@"%@/geocode/reverse?lat=%@&lon=%@&apiKey=%@", [Strings geoapifyBaseURLString], latitude, longitutde, geoapify];
 }
 
 #pragma mark - Handling Alerts
@@ -99,6 +100,44 @@
     return newImage;
 }
 
+#pragma mark - Date Formatting
+
++ (NSString *)formatDate:(NSDate *)original {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = [Strings dateFormatString];
+    NSString *originalDate = [formatter stringFromDate:original];
+    
+    NSDate *date = [formatter dateFromString:originalDate];
+    formatter.dateStyle = NSDateFormatterMediumStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    
+    return [formatter stringFromDate:date];
+}
+
++ (NSString *)formatDateShort:(NSDate *)original {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = [Strings dateFormatString];
+    NSString *originalDate = [formatter stringFromDate:original];
+    
+    NSDate *date = [formatter dateFromString:originalDate];
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    
+    return [formatter stringFromDate:date];
+}
+
++ (NSString *)formatDateNoTime:(NSDate *)original {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = [Strings dateFormatString];
+    NSString *originalDate = [formatter stringFromDate:original];
+    
+    NSDate *date = [formatter dateFromString:originalDate];
+    formatter.dateStyle = NSDateFormatterMediumStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    
+    return [formatter stringFromDate:date];
+}
+
 #pragma mark - Miscellaneous Helper Methods
 
 // Given a list of players that are PFUsers, returns set of object id strings for those players
@@ -159,7 +198,7 @@
     NSDate *endTime = [gregorian dateByAddingComponents:comps toDate:startTime  options:0];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = [Constants dateFormatString];
+    formatter.dateFormat = [Strings dateFormatString];
     
     formatter.dateStyle = NSDateFormatterMediumStyle;
     formatter.timeStyle = NSDateFormatterNoStyle;

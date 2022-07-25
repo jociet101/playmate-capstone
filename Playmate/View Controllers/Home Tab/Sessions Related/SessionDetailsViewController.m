@@ -13,6 +13,7 @@
 #import "PlayerProfileViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Helpers.h"
+#import "Strings.h"
 #import "ManageUserStatistics.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "FriendsListViewController.h"
@@ -88,7 +89,7 @@ BOOL isPartOfSession;
         }
     }
     if ([self.sessionDetails.occupied isEqual:self.sessionDetails.capacity]) {
-        self.disabledButton.text = [Constants fullSessionErrorMsg];
+        self.disabledButton.text = [Strings fullSessionErrorMsg];
         self.disabledButton.textColor = [UIColor redColor];
         [self.addMyselfButton setEnabled:NO];
         isPartOfSession = NO;
@@ -117,13 +118,13 @@ BOOL isPartOfSession;
     Location *loc = [self.sessionDetails.location fetchIfNeeded];
     self.locationLabel.text = loc.locationName;
     self.dateTimeLabel.text = [Helpers getTimeGivenDurationForSession:self.sessionDetails];
-    self.createdDateLabel.text = [@"Session created at: " stringByAppendingString:[Constants formatDate:self.sessionDetails.updatedAt]];
+    self.createdDateLabel.text = [@"Session created at: " stringByAppendingString:[Helpers formatDate:self.sessionDetails.updatedAt]];
 }
 
 - (void)initializeCapacityString {
     const BOOL sessionIsFull = [self.sessionDetails.capacity isEqual:self.sessionDetails.occupied];
-    self.capacityLabel.text = sessionIsFull ? [Constants noOpenSlotsErrorMsg]
-                                            : [Constants capacityString:self.sessionDetails.occupied
+    self.capacityLabel.text = sessionIsFull ? [Strings noOpenSlotsErrorMsg]
+                                            : [Strings capacityString:self.sessionDetails.occupied
                                                          with:self.sessionDetails.capacity];
 }
 

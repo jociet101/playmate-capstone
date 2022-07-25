@@ -6,26 +6,13 @@
 //
 
 #import "Constants.h"
-#import "APIManager.h"
 #import "Helpers.h"
+#import "Strings.h"
+#import "APIManager.h"
 
 @implementation Constants
 
-// For API
-+ (NSString *)geoapifyBaseURLString {
-    return @"https://api.geoapify.com/v1/";
-}
-
-+ (NSString *)decathalonSportsListString {
-    return @"https://sports.api.decathlon.com/sports";
-}
-
-+ (NSString *)decathalonOneSportString {
-    return @"https://sports.api.decathlon.com/sports/:";
-}
-
 // For calendar
-
 + (NSDate *) dateWithHour:(NSInteger)hour
                   minute:(NSInteger)minute
                   second:(NSInteger)second
@@ -43,64 +30,7 @@
     return newDate;
 }
 
-// Error messages for session details
-+ (NSString *)fullSessionErrorMsg {
-    return @"Session is full";
-}
-
-+ (NSString *)alreadyInSessionErrorMsg {
-    return @"Already in session";
-}
-
-+ (NSString *)noOpenSlotsErrorMsg {
-    return @"No open slots";
-}
-
-// Information for session details
-+ (NSString *)dateFormatString {
-    return @"E MMM d HH:mm:ss yyyy";
-}
-
-+ (NSString *)capacityString:(NSNumber *)occupied with:(NSNumber *)capacity {
-    return [[NSString stringWithFormat:@"%d", [capacity intValue] - [occupied intValue]] stringByAppendingString:[@"/" stringByAppendingString:[[NSString stringWithFormat:@"%@", capacity] stringByAppendingString:@" open slots"]]];
-}
-
-+ (NSString *)formatDate:(NSDate *)original {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = [Constants dateFormatString];
-    NSString *originalDate = [formatter stringFromDate:original];
-    
-    NSDate *date = [formatter dateFromString:originalDate];
-    formatter.dateStyle = NSDateFormatterMediumStyle;
-    formatter.timeStyle = NSDateFormatterShortStyle;
-    
-    return [formatter stringFromDate:date];
-}
-
-+ (NSString *)formatDateShort:(NSDate *)original {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = [Constants dateFormatString];
-    NSString *originalDate = [formatter stringFromDate:original];
-    
-    NSDate *date = [formatter dateFromString:originalDate];
-    formatter.dateStyle = NSDateFormatterShortStyle;
-    formatter.timeStyle = NSDateFormatterShortStyle;
-    
-    return [formatter stringFromDate:date];
-}
-
-+ (NSString *)formatDateNoTime:(NSDate *)original {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = [Constants dateFormatString];
-    NSString *originalDate = [formatter stringFromDate:original];
-    
-    NSDate *date = [formatter dateFromString:originalDate];
-    formatter.dateStyle = NSDateFormatterMediumStyle;
-    formatter.timeStyle = NSDateFormatterNoStyle;
-    
-    return [formatter stringFromDate:date];
-}
-
+// For confetti on session details view
 + (NSArray *)listOfSystemColors {
     return [NSArray arrayWithObjects:[UIColor systemPinkColor],
                                      [UIColor systemRedColor],
@@ -423,7 +353,7 @@
 }
 
 + (NSString *)emptyCalendarTableForDate:(NSDate *)date {
-    NSString *dateString = [Constants formatDateNoTime:date];
+    NSString *dateString = [Helpers formatDateNoTime:date];
     return [@"No sessions on " stringByAppendingString:dateString];
 }
 

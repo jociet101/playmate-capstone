@@ -7,6 +7,7 @@
 
 #import "MenuPickerCell.h"
 #import "Constants.h"
+#import "Helpers.h"
 
 @interface MenuPickerCell () <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
@@ -85,7 +86,7 @@
     UIDatePicker *picker = sender;
     
     NSDate *selectedDate = picker.date;
-    self.pickerField.text = [Constants formatDateShort:selectedDate];
+    self.pickerField.text = [Helpers formatDateShort:selectedDate];
     
     [self.delegate setDateTime:picker.date];
 }

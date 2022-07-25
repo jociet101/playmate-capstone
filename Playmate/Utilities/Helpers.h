@@ -36,6 +36,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIImage *)image:(UIImage *)image rotatedByDegrees:(CGFloat)degrees;
 + (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension;
 
+#pragma mark - Date Formatting
++ (NSString *)formatDate:(NSDate *)original;
++ (NSString *)formatDateShort:(NSDate *)original;
++ (NSString *)formatDateNoTime:(NSDate *)original;
+
 #pragma mark - Miscellaneous Helper Methods
 
 // Given a list of players that are PFUsers, returns set of object id strings for those players
