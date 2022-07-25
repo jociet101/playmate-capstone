@@ -13,7 +13,7 @@
 @dynamic relationshipWeight;
 
 + (nonnull NSString *)parseClassName {
-    return @"ConnectionState";
+    return NSStringFromClass([ConnectionState class]);
 }
 
 @end

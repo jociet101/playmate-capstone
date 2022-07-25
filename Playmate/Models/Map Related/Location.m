@@ -14,7 +14,7 @@
 @dynamic locationName;
 
 + (nonnull NSString *)parseClassName {
-    return @"Location";
+    return NSStringFromClass([Location class]);
 }
 
 + (void)saveLocation:(Location *)location {

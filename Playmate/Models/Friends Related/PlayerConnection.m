@@ -17,7 +17,7 @@
 @dynamic pendingList;
 
 + (nonnull NSString *)parseClassName {
-    return @"PlayerConnection";
+    return NSStringFromClass([PlayerConnection class]);
 }
 
 + (PlayerConnection *)initializePlayerConnection {
