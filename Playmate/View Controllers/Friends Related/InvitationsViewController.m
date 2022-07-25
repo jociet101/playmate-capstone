@@ -9,6 +9,7 @@
 #import "InvitationCell.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
+#import "Strings.h"
 #import "Helpers.h"
 #import "SessionDetailsViewController.h"
 #import "Session.h"
@@ -89,12 +90,12 @@
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Constants emptyInvitationsPlaceholderTitle];
+    NSString *text = [Strings emptyInvitationsPlaceholderTitle];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Constants emptyInvitationsPlaceholderMsg];
+    NSString *text = [Strings emptyInvitationsPlaceholderMsg];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants descriptionAttributes]];
 }
 

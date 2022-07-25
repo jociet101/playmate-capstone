@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Image Manipulation
 + (UIImage *)image:(UIImage *)image rotatedByDegrees:(CGFloat)degrees;
 + (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension;
++ (void)roundCornersOfImage:(UIImageView *)image;
 
 #pragma mark - Date Formatting
 + (NSString *)formatDate:(NSDate *)original;

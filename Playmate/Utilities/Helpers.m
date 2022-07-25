@@ -100,6 +100,10 @@
     return newImage;
 }
 
++ (void)roundCornersOfImage:(UIImageView *)image {
+    image.layer.cornerRadius = image.frame.size.width/2.0f;
+}
+
 #pragma mark - Date Formatting
 
 + (NSString *)formatDate:(NSDate *)original {

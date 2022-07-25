@@ -36,7 +36,7 @@
     
     [self.profileImageView addGestureRecognizer:profileTapGestureRecognizer];
     [self.profileImageView setUserInteractionEnabled:YES];
-    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
+    [Helpers roundCornersOfImage:self.profileImageView];
 }
 
 - (void)didTapUserProfile:(UITapGestureRecognizer *)sender{

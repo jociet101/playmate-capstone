@@ -270,12 +270,12 @@
 				3C167B3E2881F21F00081304 /* Helpers.m */,
 				3C383FD32877416D00BC9B55 /* Constants.h */,
 				3C383FD42877416D00BC9B55 /* Constants.m */,
+				3CDBEB8E288F195100F2D739 /* Strings.h */,
+				3CDBEB8F288F195100F2D739 /* Strings.m */,
 				3C383FDB28775D2A00BC9B55 /* APIManager.h */,
 				3C383FDC28775D2A00BC9B55 /* APIManager.m */,
 				3C69D04A28874EAB00851E6F /* ManageUserStatistics.h */,
 				3C69D04B28874EAB00851E6F /* ManageUserStatistics.m */,
-				3CDBEB8E288F195100F2D739 /* Strings.h */,
-				3CDBEB8F288F195100F2D739 /* Strings.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";

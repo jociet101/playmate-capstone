@@ -47,7 +47,7 @@
     UIImage *img = hasProfileImage ? [UIImage imageWithData:[user[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
     [self.profileImageView setImage:[Helpers resizeImage:img withDimension:83]];
     
-    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
+    [Helpers roundCornersOfImage:self.profileImageView];
 }
 
 - (IBAction)cancelOutgoingRequest:(id)sender {

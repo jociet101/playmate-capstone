@@ -8,6 +8,7 @@
 #import "CalendarViewController.h"
 #import "FSCalendar.h"
 #import "Constants.h"
+#import "Helpers.h"
 #import "SessionCell.h"
 #import "Session.h"
 #import "SessionDetailsViewController.h"
@@ -120,8 +121,8 @@
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = (self.calendarView.selectedDate == nil) ? [Constants emptyCalendarTableForDate:[NSDate now]]
-                                                             : [Constants emptyCalendarTableForDate:self.calendarView.selectedDate];
+    NSString *text = (self.calendarView.selectedDate == nil) ? [Helpers emptyCalendarTableForDate:[NSDate now]]
+                                                             : [Helpers emptyCalendarTableForDate:self.calendarView.selectedDate];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 

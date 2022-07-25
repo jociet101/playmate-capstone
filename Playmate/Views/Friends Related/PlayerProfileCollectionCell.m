@@ -36,8 +36,7 @@
     UIImage *img = hasProfileImage ? [UIImage imageWithData:[user[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
     [self.profileImageView setImage:[Helpers resizeImage:img withDimension:114]];
     
-    // make profile image view a circle
-    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
+    [Helpers roundCornersOfImage:self.profileImageView];
 }
 
 @end
