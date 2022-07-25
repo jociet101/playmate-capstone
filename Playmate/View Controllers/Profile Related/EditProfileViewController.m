@@ -74,7 +74,9 @@
         [user removeObjectForKey:@"biography"];
     }
     
-    [user addObject:self.bioView.text forKey:@"biography"];
+    if (![self.bioView.text isEqualToString:@""]) {
+        [user addObject:self.bioView.text forKey:@"biography"];
+    }
         
     [user saveInBackground];
         
