@@ -60,6 +60,8 @@
     UIImage *img = hasProfileImage ? [UIImage imageWithData:[user[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
     [self.profileImageView setImage:img];
     
+    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
+
     // set time ago timestamp
     self.timeAgoLabel.text = [[invitation.createdAt shortTimeAgoSinceNow] stringByAppendingString:@" ago"];
 }
