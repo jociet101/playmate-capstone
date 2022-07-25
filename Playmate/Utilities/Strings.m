@@ -38,13 +38,76 @@
     return @"No open slots";
 }
 
-// Strings based on value
+// Date formatting
 + (NSString *)dateFormatString {
     return @"E MMM d HH:mm:ss yyyy";
 }
 
-+ (NSString *)capacityString:(NSNumber *)occupied with:(NSNumber *)capacity {
-    return [[NSString stringWithFormat:@"%d", [capacity intValue] - [occupied intValue]] stringByAppendingString:[@"/" stringByAppendingString:[[NSString stringWithFormat:@"%@", capacity] stringByAppendingString:@" open slots"]]];
+#pragma mark - Filters Please Messages
+
++ (NSString *)selectLocationPlease {
+    return @"Please select a location on map.";
+}
++ (NSString *)selectDurationPlease {
+    return @"Please select a duration.";
+}
++ (NSString *)selectSportPlease {
+    return @"Please select a sport.";
+}
++ (NSString *)selectDateTimePlease {
+    return @"Please select a date and time.";
+}
++ (NSString *)selectSkillLevelPlease {
+    return @"Please select a skill level.";
+}
++ (NSString *)selectNumberOfPlayersPlease {
+    return @"Please select the number of players.";
+}
+
+#pragma mark - Empty Table or Collection View Messages
+
++ (NSString *)emptyTablePlaceholderMsg {
+    return @"Search for a session to join or create your own session to view them here!";
+}
+
++ (NSString *)emptyTablePlaceholderTitle {
+    return @"No Sessions";
+}
+
++ (NSString *)emptyPlayerProfilesPlaceholderTitle {
+    return @"No players in this session";
+}
+
++ (NSString *)emptySearchPlaceholderMsg {
+    return @"No sessions match your search. Adjust the filters or create your own session!";
+}
+
++ (NSString *)emptyListPlaceholderMsg {
+    return @"Explore sessions to meet your Playmates!";
+}
+
++ (NSString *)emptyListPlaceholderTitle {
+    return @"No Friends";
+}
+
++ (NSString *)emptyIncomingRequestsPlaceholderTitle {
+    return @"No Incoming Friend Requests";
+}
+
++ (NSString *)emptyOutgoingRequestsPlaceholderTitle {
+    return @"No Outgoing Friend Requests";
+}
+
++ (NSString *)emptyCollectionLoadingSessionsTitle {
+    return @"Loading Sessions ...";
+}
+
++ (NSString *)emptyInvitationsPlaceholderTitle {
+    return @"No invitations";
+}
+
++ (NSString *)emptyInvitationsPlaceholderMsg {
+    return @"Check back later to see if your friends invited you to join their session!";
 }
 
 @end

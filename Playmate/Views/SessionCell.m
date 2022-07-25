@@ -52,7 +52,7 @@
     
     const BOOL sessionIsFull = [self.session.capacity isEqual:self.session.occupied];
     NSString *capacityString = sessionIsFull ? [Strings noOpenSlotsErrorMsg]
-                                             : [Strings capacityString:self.session.occupied
+                                             : [Helpers capacityString:self.session.occupied
                                                           with:self.session.capacity];
     
     self.levelCapacityLabel.text = [self.session.skillLevel stringByAppendingString:[@", " stringByAppendingString:capacityString]];

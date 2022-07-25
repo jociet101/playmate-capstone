@@ -41,6 +41,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)formatDateShort:(NSDate *)original;
 + (NSString *)formatDateNoTime:(NSDate *)original;
 
+#pragma mark - Profile Tab
++ (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last;
++ (NSString *)getAgeInYears:(NSDate *)date;
+
 #pragma mark - Miscellaneous Helper Methods
 
 // Given a list of players that are PFUsers, returns set of object id strings for those players
@@ -55,6 +59,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Return time string interval for a session given start time and duration
 + (NSString *)getTimeGivenDurationForSession:(Session *)session;
+
+// Return capacity string fraction
++ (NSString *)capacityString:(NSNumber *)occupied with:(NSNumber *)capacity;
+
+// String for empty events on given date
++ (NSString *)emptyCalendarTableForDate:(NSDate *)date;
 
 @end
 

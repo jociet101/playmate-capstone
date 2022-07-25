@@ -58,17 +58,6 @@
     return @"Edit profile to enter a bio!";
 }
 
-+ (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last {
-    return [first stringByAppendingString:[@" " stringByAppendingString:last]];
-}
-
-+ (NSString *)getAgeInYears:(NSDate *)date {
-    NSString *rawYears = [date timeAgoSinceNow];
-    NSArray *parsed = [rawYears componentsSeparatedByString:@" "];
-    NSString *year = parsed[0];
-    return year;
-}
-
 // Information for filters and create
 + (NSString *)createMenuTitle:(int)row {
     NSMutableArray *titles = [[NSMutableArray alloc] init];
@@ -93,25 +82,6 @@
     [titles addObject:@"Session Scope"];
     
     return titles[row];
-}
-
-+ (NSString *)selectLocationPlease {
-    return @"Please select a location on map.";
-}
-+ (NSString *)selectDurationPlease {
-    return @"Please select a duration.";
-}
-+ (NSString *)selectSportPlease {
-    return @"Please select a sport.";
-}
-+ (NSString *)selectDateTimePlease {
-    return @"Please select a date and time.";
-}
-+ (NSString *)selectSkillLevelPlease {
-    return @"Please select a skill level.";
-}
-+ (NSString *)selectNumberOfPlayersPlease {
-    return @"Please select the number of players.";
 }
 
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row {
@@ -312,57 +282,6 @@
 
 + (UIImage *)profileImagePlaceholder {
     return [UIImage imageNamed:@"playmate_logo_fit"];
-}
-
-// for empty table view
-
-+ (NSString *)emptyTablePlaceholderMsg {
-    return @"Search for a session to join or create your own session to view them here!";
-}
-
-+ (NSString *)emptyTablePlaceholderTitle {
-    return @"No Sessions";
-}
-
-+ (NSString *)emptyPlayerProfilesPlaceholderTitle {
-    return @"No players in this session";
-}
-
-+ (NSString *)emptySearchPlaceholderMsg {
-    return @"No sessions match your search. Adjust the filters or create your own session!";
-}
-
-+ (NSString *)emptyListPlaceholderMsg {
-    return @"Explore sessions to meet your Playmates!";
-}
-
-+ (NSString *)emptyListPlaceholderTitle {
-    return @"No Friends";
-}
-
-+ (NSString *)emptyIncomingRequestsPlaceholderTitle {
-    return @"No Incoming Friend Requests";
-}
-
-+ (NSString *)emptyOutgoingRequestsPlaceholderTitle {
-    return @"No Outgoing Friend Requests";
-}
-
-+ (NSString *)emptyCollectionLoadingSessionsTitle {
-    return @"Loading Sessions ...";
-}
-
-+ (NSString *)emptyCalendarTableForDate:(NSDate *)date {
-    NSString *dateString = [Helpers formatDateNoTime:date];
-    return [@"No sessions on " stringByAppendingString:dateString];
-}
-
-+ (NSString *)emptyInvitationsPlaceholderTitle {
-    return @"No invitations";
-}
-
-+ (NSString *)emptyInvitationsPlaceholderMsg {
-    return @"Check back later to see if your friends invited you to join their session!";
 }
 
 + (NSDictionary *)descriptionAttributes {

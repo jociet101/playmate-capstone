@@ -28,19 +28,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Information for profile tab
 + (NSString *)defaultBio;
-+ (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last;
-+ (NSString *)getAgeInYears:(NSDate *)date;
 
 // Information for filters and create
 + (NSString *)createMenuTitle:(int)row;
 + (NSString *)createFiltersMenuTitle:(int)row;
-
-+ (NSString *)selectLocationPlease;
-+ (NSString *)selectDurationPlease;
-+ (NSString *)selectSportPlease;
-+ (NSString *)selectDateTimePlease;
-+ (NSString *)selectSkillLevelPlease;
-+ (NSString *)selectNumberOfPlayersPlease;
 
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row;
 + (NSArray * _Nullable)getFilterData:(BOOL)needAll forRow:(int)row;
@@ -68,20 +59,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIColor *)playmateBlueSelected;
 
 + (UIImage *)profileImagePlaceholder;
-
-// for empty table views and collection views
-+ (NSString *)emptyTablePlaceholderMsg;
-+ (NSString *)emptyTablePlaceholderTitle;
-+ (NSString *)emptyPlayerProfilesPlaceholderTitle;
-+ (NSString *)emptySearchPlaceholderMsg;
-+ (NSString *)emptyListPlaceholderMsg;
-+ (NSString *)emptyListPlaceholderTitle;
-+ (NSString *)emptyIncomingRequestsPlaceholderTitle;
-+ (NSString *)emptyOutgoingRequestsPlaceholderTitle;
-+ (NSString *)emptyCollectionLoadingSessionsTitle;
-+ (NSString *)emptyCalendarTableForDate:(NSDate *)date;
-+ (NSString *)emptyInvitationsPlaceholderTitle;
-+ (NSString *)emptyInvitationsPlaceholderMsg;
 
 + (NSDictionary *)descriptionAttributes;
 + (NSDictionary *)titleAttributes;

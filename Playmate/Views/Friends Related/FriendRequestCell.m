@@ -10,6 +10,7 @@
 #import "PlayerConnection.h"
 #import "DateTools.h"
 #import "Helpers.h"
+#import "Strings.h"
 
 @interface FriendRequestCell ()
 
@@ -55,7 +56,7 @@
     PFQuery *query = [PFUser query];
     self.requester = [query getObjectWithId:requestInfo.requestFromId];
             
-    NSString *requesterName = [Constants concatenateFirstName:self.requester[@"firstName"][0] andLast:self.requester[@"lastName"][0]];
+    NSString *requesterName = [Helpers concatenateFirstName:self.requester[@"firstName"][0] andLast:self.requester[@"lastName"][0]];
     self.titleLabel.text = [requesterName stringByAppendingString:@" wants to be friends."];
     
     [Helpers setCornerRadiusAndColorForButton:self.acceptButton andIsSmall:YES];

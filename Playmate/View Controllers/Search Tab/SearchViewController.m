@@ -13,6 +13,7 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
 #import "Helpers.h"
+#import "Strings.h"
 
 @interface SearchViewController () <UITableViewDelegate, UITableViewDataSource, FiltersMenuViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -105,12 +106,12 @@
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Constants emptyTablePlaceholderTitle];
+    NSString *text = [Strings emptyTablePlaceholderTitle];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Constants emptySearchPlaceholderMsg];
+    NSString *text = [Strings emptySearchPlaceholderMsg];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants descriptionAttributes]];
 }
 

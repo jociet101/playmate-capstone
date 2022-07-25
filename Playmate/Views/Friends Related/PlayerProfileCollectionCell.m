@@ -28,9 +28,9 @@
     self.layer.cornerRadius = [Constants buttonCornerRadius];
     
     [user fetchIfNeeded];
-    self.nameLabel.text = [Constants concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
+    self.nameLabel.text = [Helpers concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
     self.usernameLabel.text = [@"@" stringByAppendingString:user[@"username"]];
-    self.detailsLabel.text = [[[Constants getAgeInYears:user[@"birthday"][0]] stringByAppendingString:@" yo "] stringByAppendingString:user[@"gender"][0]];
+    self.detailsLabel.text = [[[Helpers getAgeInYears:user[@"birthday"][0]] stringByAppendingString:@" yo "] stringByAppendingString:user[@"gender"][0]];
     
     const BOOL hasProfileImage = (user[@"profileImage"] != nil);
     UIImage *img = hasProfileImage ? [UIImage imageWithData:[user[@"profileImage"] getData]] : [Constants profileImagePlaceholder];

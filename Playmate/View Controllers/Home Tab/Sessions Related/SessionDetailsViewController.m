@@ -124,7 +124,7 @@ BOOL isPartOfSession;
 - (void)initializeCapacityString {
     const BOOL sessionIsFull = [self.sessionDetails.capacity isEqual:self.sessionDetails.occupied];
     self.capacityLabel.text = sessionIsFull ? [Strings noOpenSlotsErrorMsg]
-                                            : [Strings capacityString:self.sessionDetails.occupied
+                                            : [Helpers capacityString:self.sessionDetails.occupied
                                                          with:self.sessionDetails.capacity];
 }
 
@@ -299,7 +299,7 @@ BOOL isPartOfSession;
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Constants emptyPlayerProfilesPlaceholderTitle];
+    NSString *text = [Strings emptyPlayerProfilesPlaceholderTitle];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 

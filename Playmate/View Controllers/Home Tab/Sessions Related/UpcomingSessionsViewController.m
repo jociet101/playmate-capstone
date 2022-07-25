@@ -10,6 +10,7 @@
 #import "SessionDetailsViewController.h"
 #import "SessionCollectionCell.h"
 #import "Constants.h"
+#import "Strings.h"
 #import "HomeViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
 
@@ -128,16 +129,16 @@ BOOL isLoading;
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
     NSString *text = [[NSString alloc] init];
     if (isLoading) {
-        text = [Constants emptyCollectionLoadingSessionsTitle];
+        text = [Strings emptyCollectionLoadingSessionsTitle];
     } else {
-        text = [Constants emptyTablePlaceholderTitle];
+        text = [Strings emptyTablePlaceholderTitle];
     }
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
     if (!isLoading) {
-        NSString *text = [Constants emptyTablePlaceholderMsg];
+        NSString *text = [Strings emptyTablePlaceholderMsg];
         return [[NSAttributedString alloc] initWithString:text attributes:[Constants descriptionAttributes]];
     }
     return nil;

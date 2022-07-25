@@ -11,6 +11,7 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
 #import "Helpers.h"
+#import "Strings.h"
 
 @interface OutgoingRequestsViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, OutgoingRequestCellDelegate>
 
@@ -79,7 +80,7 @@
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Constants emptyOutgoingRequestsPlaceholderTitle];
+    NSString *text = [Strings emptyOutgoingRequestsPlaceholderTitle];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 

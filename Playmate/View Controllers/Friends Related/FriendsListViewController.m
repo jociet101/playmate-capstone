@@ -14,6 +14,7 @@
 #import "Helpers.h"
 #import "Invitation.h"
 #import "Session.h"
+#import "Strings.h"
 
 @interface FriendsListViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, FriendCellDelegate>
 
@@ -108,12 +109,12 @@
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Constants emptyListPlaceholderTitle];
+    NSString *text = [Strings emptyListPlaceholderTitle];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Constants emptyListPlaceholderMsg];
+    NSString *text = [Strings emptyListPlaceholderMsg];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants descriptionAttributes]];
 }
 

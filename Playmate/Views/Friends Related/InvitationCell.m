@@ -52,7 +52,7 @@
     PFQuery *sessionQuery = [PFQuery queryWithClassName:@"SportsSession"];
     self.session = [sessionQuery getObjectWithId:invitation.sessionObjectId];
 
-    NSString *inviterName = [Constants concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
+    NSString *inviterName = [Helpers concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
     self.invitationMessage.text = [inviterName stringByAppendingString:[NSString stringWithFormat:@" invited you to join a %@ session.", self.session.sport]];
     
     // TODO: set image view to the sport icon

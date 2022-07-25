@@ -38,7 +38,7 @@
     PFQuery *query = [PFUser query];
     PFUser *user = [[query getObjectWithId:userObjectId] fetchIfNeeded];
     
-    NSString *name = [Constants concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
+    NSString *name = [Helpers concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
     self.titleLabel.text = [@"You requested to be friends with " stringByAppendingString:name];
     
     [Helpers setCornerRadiusAndColorForButton:self.cancelButton andIsSmall:YES];

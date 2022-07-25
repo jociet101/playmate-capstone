@@ -138,6 +138,18 @@
     return [formatter stringFromDate:date];
 }
 
+#pragma mark - Profile Tab
++ (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last {
+    return [first stringByAppendingString:[@" " stringByAppendingString:last]];
+}
+
++ (NSString *)getAgeInYears:(NSDate *)date {
+    NSString *rawYears = [date timeAgoSinceNow];
+    NSArray *parsed = [rawYears componentsSeparatedByString:@" "];
+    NSString *year = parsed[0];
+    return year;
+}
+
 #pragma mark - Miscellaneous Helper Methods
 
 // Given a list of players that are PFUsers, returns set of object id strings for those players
@@ -228,6 +240,17 @@
         fromDate:fromDate toDate:toDate options:0];
 
     return [difference day];
+}
+
+// Return capacity string fraction
++ (NSString *)capacityString:(NSNumber *)occupied with:(NSNumber *)capacity {
+    return [[NSString stringWithFormat:@"%d", [capacity intValue] - [occupied intValue]] stringByAppendingString:[@"/" stringByAppendingString:[[NSString stringWithFormat:@"%@", capacity] stringByAppendingString:@" open slots"]]];
+}
+
+// String for empty events on given date
++ (NSString *)emptyCalendarTableForDate:(NSDate *)date {
+    NSString *dateString = [Helpers formatDateNoTime:date];
+    return [@"No sessions on " stringByAppendingString:dateString];
 }
 
 @end
