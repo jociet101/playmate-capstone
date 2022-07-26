@@ -71,8 +71,10 @@ BOOL isPartOfSession;
 }
 
 - (void)enableInviteButton {
-    self.inviteFriendButton.alpha = 1;
-    [self.inviteFriendButton setEnabled:YES];
+    if (![self.sessionDetails.occupied isEqualToNumber:self.sessionDetails.capacity]) {
+        self.inviteFriendButton.alpha = 1;
+        [self.inviteFriendButton setEnabled:YES];
+    }
 }
 
 - (void)disableAddButton {
