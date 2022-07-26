@@ -148,11 +148,7 @@
 }
 
 + (NSDate *)removeMinutes:(int)minutes fromTime:(NSDate *)time {
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setMinute:-minutes];
-    NSDate *notificationTime = [gregorian dateByAddingComponents:comps toDate:time  options:0];
-    return notificationTime;
+    return [time dateByAddingMinutes:-minutes];
 }
 
 #pragma mark - Profile Tab and Friend Notifications
