@@ -147,6 +147,14 @@
     return [[timeAgo shortTimeAgoSinceNow] stringByAppendingString:@" ago"];
 }
 
++ (NSDate *)removeMinutes:(int)minutes fromTime:(NSDate *)time {
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setMinute:-minutes];
+    NSDate *notificationTime = [gregorian dateByAddingComponents:comps toDate:time  options:0];
+    return notificationTime;
+}
+
 #pragma mark - Profile Tab and Friend Notifications
 
 + (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last {

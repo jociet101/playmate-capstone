@@ -36,11 +36,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension;
 + (void)roundCornersOfImage:(UIImageView *)image;
 
-#pragma mark - Date Formatting
+#pragma mark - Dates
 + (NSString *)formatDate:(NSDate *)original;
 + (NSString *)formatDateShort:(NSDate *)original;
 + (NSString *)formatDateNoTime:(NSDate *)original;
 + (NSString *)appendAgoToTime:(NSDate *)timeAgo;
++ (NSDate *)removeMinutes:(int)minutes fromTime:(NSDate *)time;
 
 #pragma mark - Profile Tab and Friend Notifications
 + (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last;
