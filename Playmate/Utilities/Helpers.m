@@ -151,6 +151,16 @@
     return [time dateByAddingMinutes:-minutes];
 }
 
++ (NSDateComponents *)getComponentsFromDate:(NSDate *)date {
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    int unitFlags = (NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute );
+    NSDateComponents *dateComponents =
+                        [gregorian components:unitFlags
+                                     fromDate:date];
+    return dateComponents;
+}
+
 #pragma mark - Profile Tab and Friend Notifications
 
 + (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last {
