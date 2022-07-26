@@ -60,6 +60,7 @@
     [self.profileImageView setImage:[Helpers resizeImage:img withDimension:83]];
     self.timeAgoLabel.text = [Helpers appendAgoToTime:requestInfo.updatedAt];
     [self hideConfirmationLabels];
+    [self enableButtons];
 }
 
 - (void)hideConfirmationLabels {
@@ -73,6 +74,13 @@
     [self.denyButton setEnabled:NO];
     self.acceptButton.alpha = 0;
     self.denyButton.alpha = 0;
+}
+
+- (void)enableButtons {
+    [self.acceptButton setEnabled:YES];
+    [self.denyButton setEnabled:YES];
+    self.acceptButton.alpha = 1;
+    self.denyButton.alpha = 1;
 }
 
 - (void)deleteThisRequest {

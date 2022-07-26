@@ -52,6 +52,8 @@
     [Helpers roundCornersOfImage:self.profileImageView];
 
     self.timeAgoLabel.text = [Helpers appendAgoToTime:invitation.createdAt];
+    
+    [self enableButtons];
 }
 
 - (void)disableButtons {
@@ -59,6 +61,13 @@
     [self.viewSessionButton setEnabled:NO];
     self.deleteInviteButton.alpha = 0;
     [self.deleteInviteButton setEnabled:NO];
+}
+
+- (void)enableButtons {
+    self.viewSessionButton.alpha = 1;
+    [self.viewSessionButton setEnabled:YES];
+    self.deleteInviteButton.alpha = 1;
+    [self.deleteInviteButton setEnabled:YES];
 }
 
 - (IBAction)didTapViewSession:(id)sender {
