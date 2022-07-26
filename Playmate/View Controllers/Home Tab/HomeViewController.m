@@ -11,6 +11,7 @@
 #import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
 #import "Helpers.h"
+#import "Strings.h"
 #import "CalendarViewController.h"
 #import "ProfileViewController.h"
 #import "SessionCollectionCell.h"
@@ -77,7 +78,7 @@
             [self filterSessions:sessions];
             [self.delegate loadSessionList:(NSArray *)self.sessionList];
         } else {
-            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
     }];
 }

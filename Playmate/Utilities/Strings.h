@@ -52,6 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)radiusPlaceholder;
 + (NSString *)doubleTapInstructionFront;
 + (NSString *)doubleTapInstructionBack;
++ (NSString *)errorString;
 
 @end
 

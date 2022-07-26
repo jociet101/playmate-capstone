@@ -8,6 +8,7 @@
 #import "LoginViewController.h"
 #import "Constants.h"
 #import "Helpers.h"
+#import "Strings.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 
@@ -32,7 +33,6 @@
 
 // Resign keyboard if user presses done
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    
     if ([textField isEqual:self.usernameField]) {
         [self.passwordField becomeFirstResponder];
     } else {
@@ -55,7 +55,7 @@
     
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
-            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         } else {
             [self performSegueWithIdentifier:@"loginToTab" sender:nil];
         }

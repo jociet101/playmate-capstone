@@ -93,7 +93,7 @@
             
             [self.tableView reloadData];
         } else {
-            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
         [self.refreshControl endRefreshing];
     }];
@@ -230,7 +230,7 @@
             
             [self.tableView reloadData];
         } else {
-            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
         [self.refreshControl endRefreshing];
     }];

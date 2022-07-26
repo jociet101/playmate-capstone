@@ -135,4 +135,8 @@
     return @"Double Tap to Return";
 }
 
++ (NSString *)errorString {
+    return @"Error";
+}
+
 @end

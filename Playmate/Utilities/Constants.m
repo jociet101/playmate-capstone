@@ -131,7 +131,7 @@
     APIManager *manager = [APIManager new];
     [manager getSportsListWithCompletion:^(NSDictionary *list, NSError *error) {
         if (error != nil) {
-            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         } else {
             NSArray *data = list[@"data"];
             
@@ -204,8 +204,8 @@
     NSMutableArray *genders = [[NSMutableArray alloc] init];
     [genders addObject:@"Female"];
     [genders addObject:@"Male"];
+    [genders addObject:@"Non-binary"];
     [genders addObject:@"Other"];
-    [genders addObject:@"Prefer Not to Say"];
     
     return (NSArray *)genders;
 }
