@@ -13,97 +13,54 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Constants : NSObject
 
-// For API
-+ (NSString *)geoapifyBaseURLString;
-+ (NSString *)decathalonSportsListString;
-+ (NSString *)decathalonOneSportString;
-
-// For calendar
+#pragma mark - Dates
 + (NSDate *) dateWithHour:(NSInteger)hour
                   minute:(NSInteger)minute
                   second:(NSInteger)second
                  fromDate:(NSDate *)date;
 
-// Error messages for session details
-+ (NSString *)fullSessionErrorMsg;
-+ (NSString *)alreadyInSessionErrorMsg;
-+ (NSString *)noOpenSlotsErrorMsg;
-
-// Information for session details
-+ (NSString *)dateFormatString;
-+ (NSString *)capacityString:(NSNumber *)occupied with:(NSNumber *)capacity;
-+ (NSString *)formatDate:(NSDate *)original;
-+ (NSString *)formatDateShort:(NSDate *)original;
-+ (NSArray *)listOfSystemColors;
-
-// Info for incoming friend notifications
+#pragma mark - Strings with parameters
 + (NSString *)acceptedConfirmationStringFor:(NSString *)name;
 + (NSString *)deniedConfirmationStringFor:(NSString *)name;
 
-// Information for profile tab
-+ (NSString *)defaultBio;
-+ (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last;
-+ (NSString *)getAgeInYears:(NSDate *)date;
-
-// Information for filters and create
+#pragma mark - Filter Menu Pickers
 + (NSString *)createMenuTitle:(int)row;
 + (NSString *)createFiltersMenuTitle:(int)row;
-
-+ (NSString *)selectLocationPlease;
-+ (NSString *)selectDurationPlease;
-+ (NSString *)selectSportPlease;
-+ (NSString *)selectDateTimePlease;
-+ (NSString *)selectSkillLevelPlease;
-+ (NSString *)selectNumberOfPlayersPlease;
-
-+ (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row;
-+ (NSArray * _Nullable)getFilterData:(BOOL)needAll forRow:(int)row;
+// Duration
++ (NSArray *)durationList;
 + (NSArray *)durationListShort;
 + (NSNumber *)durationKeyToInteger:(int)key;
-
-+ (NSString *)defaultAll;
-+ (NSString *)defaultSport;
+// Sport
 + (NSArray *)sportsListLarge:(BOOL)needAll;
 + (NSArray *)sportsList:(BOOL)needAll;
+// Skill level
 + (NSArray *)skillLevelsList:(BOOL)needAll;
+// Session scope
 + (NSArray *)sessionTypeList;
 
-+ (int)defaultNumPlayers;
-+ (int)defaultSkillPickerIndex;
+#pragma mark - Create Account Pickers
++ (NSArray *)gendersList;
 
-// Some numbers
+#pragma mark - Numbers
 + (int)buttonCornerRadius;
 + (int)smallButtonCornerRadius;
++ (int)invitationsRowHeight;
 
-// Some colors
+#pragma mark - Colors
++ (NSArray *)listOfSystemColors;
 + (UIColor *)playmateBlue;
 + (UIColor *)playmateBlueOpaque;
 + (UIColor *)playmateTealOpaque;
 + (UIColor *)playmateBlueSelected;
 
-+ (UIImage *)profileImagePlaceholder;
-
-// for empty table views and collection views
-+ (NSString *)emptyTablePlaceholderMsg;
-+ (NSString *)emptyTablePlaceholderTitle;
-+ (NSString *)emptyPlayerProfilesPlaceholderTitle;
-+ (NSString *)emptySearchPlaceholderMsg;
-+ (NSString *)emptyListPlaceholderMsg;
-+ (NSString *)emptyListPlaceholderTitle;
-+ (NSString *)emptyIncomingRequestsPlaceholderTitle;
-+ (NSString *)emptyOutgoingRequestsPlaceholderTitle;
-+ (NSString *)emptyCollectionLoadingSessionsTitle;
-+ (NSString *)emptyCalendarTableForDate:(NSDate *)date;
-+ (NSString *)emptyInvitationsPlaceholderTitle;
-+ (NSString *)emptyInvitationsPlaceholderMsg;
-
+#pragma mark - Empty View Text Properties
 + (NSDictionary *)descriptionAttributes;
 + (NSDictionary *)titleAttributes;
 
-// for home view
+#pragma mark - Gifs and Images
++ (UIImage *)profileImagePlaceholder;
++ (UIImage *)smallPlaymateLogo;
 + (NSString *)getImageNameForSport:(NSString *)sport;
-
-// for uiimage gifs
 + (NSArray *)addressGifImages;
 + (NSArray *)manualGifImages;
 + (NSArray *)rollingPlaymateLogoGif;

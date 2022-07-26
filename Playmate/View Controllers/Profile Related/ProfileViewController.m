@@ -5,17 +5,17 @@
 //  Created by Jocelyn Tseng on 7/3/22.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "ProfileViewController.h"
 #import "WelcomeViewController.h"
+#import "EditProfileViewController.h"
+#import "FriendsListViewController.h"
 #import "SceneDelegate.h"
 #import "DateTools.h"
+#import "PlayerConnection.h"
+#import "ManageUserStatistics.h"
 #import "Constants.h"
 #import "Helpers.h"
-#import "EditProfileViewController.h"
-#import "PlayerConnection.h"
-#import "FriendsListViewController.h"
-#import <QuartzCore/QuartzCore.h>
-#import "ManageUserStatistics.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate>
 
@@ -51,11 +51,11 @@
     
     PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
-    self.nameLabel.text = [Constants concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
+    self.nameLabel.text = [Helpers concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
     self.usernameLabel.text = [@"@" stringByAppendingString:user[@"username"]];
     self.usernameLabel.textColor = [UIColor lightGrayColor];
     self.genderLabel.text = [@"Identifies as " stringByAppendingString:user[@"gender"][0]];
-    self.ageLabel.text = [[Constants getAgeInYears:user[@"birthday"][0]] stringByAppendingString:@" years old"];
+    self.ageLabel.text = [[Helpers getAgeInYears:user[@"birthday"][0]] stringByAppendingString:@" years old"];
     
     const BOOL hasBiography = ([user objectForKey:@"biography"] != nil);
     self.bioField.text = hasBiography ? [user objectForKey:@"biography"][0] : @"No biography";

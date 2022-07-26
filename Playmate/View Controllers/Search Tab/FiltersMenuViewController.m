@@ -6,12 +6,13 @@
 //
 
 #import "FiltersMenuViewController.h"
+#import "SelectMapViewController.h"
 #import "FiltersMenuPickerCell.h"
 #import "LocationPickerCell.h"
+#import "Location.h"
 #import "Constants.h"
 #import "Helpers.h"
-#import "SelectMapViewController.h"
-#import "Location.h"
+#import "Strings.h"
 
 @interface FiltersMenuViewController () <UITableViewDelegate, UITableViewDataSource, FiltersMenuPickerCellDelegate, SelectMapViewControllerDelegate>
 
@@ -105,10 +106,10 @@
     filters.skillLevel = self.selectedSkillLevel;
     filters.radius = self.selectedRadius;
     
-    if ([filters.sport isEqualToString:@"All"]) {
+    if ([filters.sport isEqualToString:[Strings defaultAll]]) {
         filters.sport = nil;
     }
-    if ([filters.skillLevel isEqualToString:@"All"]) {
+    if ([filters.skillLevel isEqualToString:[Strings defaultAll]]) {
         filters.skillLevel = nil;
     }
     if (filters.radius == nil) {

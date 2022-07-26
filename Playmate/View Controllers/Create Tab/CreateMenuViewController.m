@@ -6,15 +6,16 @@
 //
 
 #import "CreateMenuViewController.h"
+#import "HomeViewController.h"
+#import "SelectMapViewController.h"
 #import "MenuPickerCell.h"
 #import "LocationPickerCell.h"
-#import "Constants.h"
-#import "Helpers.h"
+#import "ManageUserStatistics.h"
 #import "Location.h"
 #import "Session.h"
-#import "SelectMapViewController.h"
-#import "ManageUserStatistics.h"
-#import "HomeViewController.h"
+#import "Constants.h"
+#import "Helpers.h"
+#import "Strings.h"
 
 @interface CreateMenuViewController () <UITableViewDelegate, UITableViewDataSource, MenuPickerCellDelegate, SelectMapViewControllerDelegate>
 
@@ -122,37 +123,37 @@
     if (self.selectedLocation == nil) {
         [Helpers handleAlert:nil
                    withTitle:@"No location selected"
-                 withMessage:[Constants selectLocationPlease]
+                 withMessage:[Strings selectLocationPlease]
            forViewController:self];
         return;
     } else if (self.selectedSport == nil) {
         [Helpers handleAlert:nil
                    withTitle:@"No sport selected"
-                 withMessage:[Constants selectSportPlease]
+                 withMessage:[Strings selectSportPlease]
            forViewController:self];
         return;
     } else if (self.selectedDateTime == nil) {
         [Helpers handleAlert:nil
                    withTitle:@"No date or time selected"
-                 withMessage:[Constants selectDateTimePlease]
+                 withMessage:[Strings selectDateTimePlease]
            forViewController:self];
         return;
     } else if (self.selectedDuration == nil) {
         [Helpers handleAlert:nil
                    withTitle:@"No duration selected"
-                 withMessage:[Constants selectDurationPlease]
+                 withMessage:[Strings selectDurationPlease]
            forViewController:self];
         return;
     } else if (self.selectedNumPlayers == nil) {
         [Helpers handleAlert:nil
                    withTitle:@"Number of players not selected"
-                 withMessage:[Constants selectNumberOfPlayersPlease]
+                 withMessage:[Strings selectNumberOfPlayersPlease]
            forViewController:self];
         return;
     } else if (self.selectedSkillLevel == nil) {
         [Helpers handleAlert:nil
                    withTitle:@"No skill level selected"
-                 withMessage:[Constants selectSkillLevelPlease]
+                 withMessage:[Strings selectSkillLevelPlease]
            forViewController:self];
         return;
     }

@@ -6,12 +6,13 @@
 //
 
 #import "UpcomingSessionsViewController.h"
-#import "Session.h"
 #import "SessionDetailsViewController.h"
-#import "SessionCollectionCell.h"
-#import "Constants.h"
 #import "HomeViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "SessionCollectionCell.h"
+#import "Session.h"
+#import "Constants.h"
+#import "Strings.h"
 
 @interface UpcomingSessionsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching, HomeViewControllerDelegate, SessionCollectionCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -121,23 +122,23 @@ BOOL isLoading;
     if (isLoading) {
         return [UIImage animatedImageWithImages:[Constants rollingPlaymateLogoGif] duration:1.8f];
     } else {
-        return [UIImage imageNamed:@"logo_small"];
+        return [Constants smallPlaymateLogo];
     }
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
     NSString *text = [[NSString alloc] init];
     if (isLoading) {
-        text = [Constants emptyCollectionLoadingSessionsTitle];
+        text = [Strings emptyCollectionLoadingSessionsTitle];
     } else {
-        text = [Constants emptyTablePlaceholderTitle];
+        text = [Strings emptyTablePlaceholderTitle];
     }
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
     if (!isLoading) {
-        NSString *text = [Constants emptyTablePlaceholderMsg];
+        NSString *text = [Strings emptyTablePlaceholderMsg];
         return [[NSAttributedString alloc] initWithString:text attributes:[Constants descriptionAttributes]];
     }
     return nil;

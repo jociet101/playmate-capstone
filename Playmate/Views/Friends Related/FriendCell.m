@@ -8,6 +8,7 @@
 #import "FriendCell.h"
 #import "Constants.h"
 #import "Helpers.h"
+#import "Strings.h"
 
 @interface FriendCell ()
 
@@ -36,21 +37,21 @@
     PFQuery *query = [PFUser query];
     PFUser *thisUser = [[query getObjectWithId:self.thisUserId] fetchIfNeeded];
     
+    // If user corresponding to this cell is already in session or invited
+    // Set string on right side of cell
     if (self.isForInvitations) {
-        NSString *userSessionStatus = self.isAlreadyInSession ? @"(Already in session)" : (self.isAlreadyInvitedToSession ? @"(Already invited)" : @"");
+        NSString *userSessionStatus = self.isAlreadyInSession ? [Strings alreadyInSessionString] : (self.isAlreadyInvitedToSession ? [Strings alreadyInvitedString] : @"");
         self.invitedStatusLabel.text = userSessionStatus;
     } else {
         self.invitedStatusLabel.alpha = 0;
     }
-    
     
     self.nameLabel.text = thisUser.username;
     
     const BOOL hasProfileImage = (thisUser[@"profileImage"] != nil);
     UIImage *img = hasProfileImage ? [UIImage imageWithData:[thisUser[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
     [self.profileImageView setImage:[Helpers resizeImage:img withDimension:40]];
-    
-    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
+    [Helpers roundCornersOfImage:self.profileImageView];
 }
 
 @end

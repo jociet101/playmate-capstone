@@ -42,11 +42,11 @@
     
     [self manageFriendButtonUI];
     
-    self.nameLabel.text = [Constants concatenateFirstName:self.user[@"firstName"][0] andLast:self.user[@"lastName"][0]];
+    self.nameLabel.text = [Helpers concatenateFirstName:self.user[@"firstName"][0] andLast:self.user[@"lastName"][0]];
     self.usernameLabel.text = [@"@" stringByAppendingString:self.user.username];
     self.usernameLabel.textColor = [UIColor lightGrayColor];
     self.genderLabel.text = [@"Identifies as " stringByAppendingString:self.user[@"gender"][0]];
-    self.ageLabel.text = [[Constants getAgeInYears:self.user[@"birthday"][0]] stringByAppendingString:@" years old"];
+    self.ageLabel.text = [[Helpers getAgeInYears:self.user[@"birthday"][0]] stringByAppendingString:@" years old"];
     
     const BOOL hasBiography = ([self.user objectForKey:@"biography"] != nil);
     self.bioField.text = hasBiography ? self.user[@"biography"][0] : @"No biography";

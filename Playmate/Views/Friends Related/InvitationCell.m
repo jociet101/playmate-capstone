@@ -6,10 +6,8 @@
 //
 
 #import "InvitationCell.h"
-#import "Invitation.h"
 #import "Helpers.h"
 #import "Constants.h"
-#import "Session.h"
 
 @interface InvitationCell ()
 
@@ -27,32 +25,23 @@
 
 @implementation InvitationCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 - (void)setInvitation:(Invitation *)invitation {
+    // Format view session and delete buttons
     [Helpers setCornerRadiusAndColorForButton:self.viewSessionButton andIsSmall:YES];
     [Helpers setCornerRadiusAndColorForButton:self.deleteInviteButton andIsSmall:YES];
-    
     self.deletedInvitationIcon.alpha = 0;
     self.deletedInvitationConfirmationLabel.alpha = 0;
     
     _invitation = invitation;
     
+    // Query the Session object the invitation is for
     PFQuery *query = [PFUser query];
     PFUser *user = [query getObjectWithId:invitation.invitationFromId];
     PFQuery *sessionQuery = [PFQuery queryWithClassName:@"SportsSession"];
     self.session = [sessionQuery getObjectWithId:invitation.sessionObjectId];
-
-    NSString *inviterName = [Constants concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
+    
+    // Create string for cell message
+    NSString *inviterName = [Helpers concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
     self.invitationMessage.text = [inviterName stringByAppendingString:[NSString stringWithFormat:@" invited you to join a %@ session.", self.session.sport]];
     
     // TODO: set image view to the sport icon
@@ -60,10 +49,9 @@
     UIImage *img = hasProfileImage ? [UIImage imageWithData:[user[@"profileImage"] getData]] : [Constants profileImagePlaceholder];
     [self.profileImageView setImage:img];
     
-    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2.0f;
+    [Helpers roundCornersOfImage:self.profileImageView];
 
-    // set time ago timestamp
-    self.timeAgoLabel.text = [[invitation.createdAt shortTimeAgoSinceNow] stringByAppendingString:@" ago"];
+    self.timeAgoLabel.text = [Helpers appendAgoToTime:invitation.createdAt];
 }
 
 - (void)disableButtons {

@@ -8,6 +8,7 @@
 #import "SessionCell.h"
 #import "Constants.h"
 #import "Helpers.h"
+#import "Strings.h"
 
 @interface SessionCell ()
 
@@ -25,33 +26,15 @@
     
     _session = session;
     
-    NSString *playersString = @"";
-    
-    BOOL isFirstPerson = YES;
-    
-    for (PFUser *player in self.session.playersList) {
-
-        [player fetchIfNeeded];
-
-        NSString *playerName = player[@"firstName"][0];
-        
-        if (isFirstPerson) {
-            playersString = [playersString stringByAppendingString:playerName];
-            isFirstPerson = NO;
-        } else {
-            playersString = [playersString stringByAppendingString:[@", " stringByAppendingString:playerName]];
-        }
-    }
-    
-    self.sportLabel.text = (self.session.playersList.count == 0) ? self.session.sport : [self.session.sport stringByAppendingString:[@" w/ " stringByAppendingString:playersString]];
+    self.sportLabel.text = [self.session.sport stringByAppendingString:[Helpers makePlayerStringForSession:self.session withWith:YES]];
     
     Location *loc = [self.session.location fetchIfNeeded];
     
     self.locationLabel.text = loc.locationName;
     
     const BOOL sessionIsFull = [self.session.capacity isEqual:self.session.occupied];
-    NSString *capacityString = sessionIsFull ? [Constants noOpenSlotsErrorMsg]
-                                             : [Constants capacityString:self.session.occupied
+    NSString *capacityString = sessionIsFull ? [Strings noOpenSlotsErrorMsg]
+                                             : [Helpers capacityString:self.session.occupied
                                                           with:self.session.capacity];
     
     self.levelCapacityLabel.text = [self.session.skillLevel stringByAppendingString:[@", " stringByAppendingString:capacityString]];

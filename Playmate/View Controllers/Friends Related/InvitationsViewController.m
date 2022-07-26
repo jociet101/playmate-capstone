@@ -6,17 +6,19 @@
 //
 
 #import "InvitationsViewController.h"
-#import "InvitationCell.h"
-#import "UIScrollView+EmptyDataSet.h"
-#import "Constants.h"
-#import "Helpers.h"
 #import "SessionDetailsViewController.h"
+#import "UIScrollView+EmptyDataSet.h"
+#import "InvitationCell.h"
 #import "Session.h"
+#import "Constants.h"
+#import "Strings.h"
+#import "Helpers.h"
 
 @interface InvitationsViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, InvitationCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *invitationsList;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -27,10 +29,17 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.rowHeight = 132;
+    self.tableView.rowHeight = [Constants invitationsRowHeight];
     
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
+    
+    // set up refresh control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self
+                            action:@selector(fetchData)
+                  forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
     
     [self fetchData];
 }
@@ -50,8 +59,9 @@
             self.invitationsList = invitations;
             [self.tableView reloadData];
         } else {
-            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
+        [self.refreshControl endRefreshing];
     }];
 }
 
@@ -76,16 +86,16 @@
 #pragma mark - Empty table view protocol methods
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    return [UIImage imageNamed:@"logo_small"];
+    return [Constants smallPlaymateLogo];
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Constants emptyInvitationsPlaceholderTitle];
+    NSString *text = [Strings emptyInvitationsPlaceholderTitle];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Constants emptyInvitationsPlaceholderMsg];
+    NSString *text = [Strings emptyInvitationsPlaceholderMsg];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants descriptionAttributes]];
 }
 

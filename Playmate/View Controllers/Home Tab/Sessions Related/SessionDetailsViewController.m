@@ -5,18 +5,19 @@
 //  Created by Jocelyn Tseng on 7/5/22.
 //
 
-#import "SessionDetailsViewController.h"
-#import "SessionCell.h"
-#import "Constants.h"
-#import "Location.h"
-#import "PlayerProfileCollectionCell.h"
-#import "PlayerProfileViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "Helpers.h"
+#import "SessionDetailsViewController.h"
+#import "PlayerProfileViewController.h"
+#import "FriendsListViewController.h"
+#import "PlayerProfileCollectionCell.h"
 #import "ManageUserStatistics.h"
 #import "UIScrollView+EmptyDataSet.h"
-#import "FriendsListViewController.h"
+#import "SessionCell.h"
+#import "Location.h"
 #import "Invitation.h"
+#import "Helpers.h"
+#import "Constants.h"
+#import "Strings.h"
 
 @interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -70,8 +71,10 @@ BOOL isPartOfSession;
 }
 
 - (void)enableInviteButton {
-    self.inviteFriendButton.alpha = 1;
-    [self.inviteFriendButton setEnabled:YES];
+    if (![self.sessionDetails.occupied isEqualToNumber:self.sessionDetails.capacity]) {
+        self.inviteFriendButton.alpha = 1;
+        [self.inviteFriendButton setEnabled:YES];
+    }
 }
 
 - (void)disableAddButton {
@@ -88,7 +91,7 @@ BOOL isPartOfSession;
         }
     }
     if ([self.sessionDetails.occupied isEqual:self.sessionDetails.capacity]) {
-        self.disabledButton.text = [Constants fullSessionErrorMsg];
+        self.disabledButton.text = [Strings fullSessionErrorMsg];
         self.disabledButton.textColor = [UIColor redColor];
         [self.addMyselfButton setEnabled:NO];
         isPartOfSession = NO;
@@ -117,13 +120,13 @@ BOOL isPartOfSession;
     Location *loc = [self.sessionDetails.location fetchIfNeeded];
     self.locationLabel.text = loc.locationName;
     self.dateTimeLabel.text = [Helpers getTimeGivenDurationForSession:self.sessionDetails];
-    self.createdDateLabel.text = [@"Session created at: " stringByAppendingString:[Constants formatDate:self.sessionDetails.updatedAt]];
+    self.createdDateLabel.text = [@"Session created at: " stringByAppendingString:[Helpers formatDate:self.sessionDetails.updatedAt]];
 }
 
 - (void)initializeCapacityString {
     const BOOL sessionIsFull = [self.sessionDetails.capacity isEqual:self.sessionDetails.occupied];
-    self.capacityLabel.text = sessionIsFull ? [Constants noOpenSlotsErrorMsg]
-                                            : [Constants capacityString:self.sessionDetails.occupied
+    self.capacityLabel.text = sessionIsFull ? [Strings noOpenSlotsErrorMsg]
+                                            : [Helpers capacityString:self.sessionDetails.occupied
                                                          with:self.sessionDetails.capacity];
 }
 
@@ -169,6 +172,7 @@ BOOL isPartOfSession;
 
 - (IBAction)addMyself:(id)sender {
     if (isPartOfSession) {
+        [self stopConfetti];
         // For leaving session
         
         [self updateLeaveUi];
@@ -207,7 +211,6 @@ BOOL isPartOfSession;
                                                     andUser:me];
     } else {
         // For joining session
-        
         [self updateJoinUI];
         [self showConfetti];
         [self changeAddButtonToLeave];
@@ -294,11 +297,11 @@ BOOL isPartOfSession;
 #pragma mark - Empty collection view protocol methods
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    return [UIImage imageNamed:@"logo_small"];
+    return [Constants smallPlaymateLogo];
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Constants emptyPlayerProfilesPlaceholderTitle];
+    NSString *text = [Strings emptyPlayerProfilesPlaceholderTitle];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 

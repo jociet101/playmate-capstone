@@ -15,35 +15,69 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Helpers : NSObject
 
-// For Parse
+#pragma mark - Parse Related
 + (PlayerConnection *)getPlayerConnectionForUser:(PFUser *)user;
 
-// For API endpoints
+#pragma mark - API Endpoints
 + (NSString *)geoapifyGeocodingURLWithKey:(NSString *)geoapify andCraftedLink:(NSString *)craftedLink;
 + (NSString *)geoapifyReverseGeocodingURLWithKey:(NSString *)geoapify andLongitutde:(NSString *)longitutde andLatitude:(NSString *)latitude;
 
-+ (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension;
-+ (NSString *)getTimeGivenDurationForSession:(Session *)session;
-
-// For other stuff
-+ (NSMutableSet *)getPlayerObjectIdSet:(NSArray *)playerList;
-
-+ (NSArray *)getTopSportsFor:(PFUser *)user;
-
-// For handling alerts
+#pragma mark - Handling Alerts
 + (void)handleAlert:(NSError * _Nullable)error
           withTitle:(NSString *)title
         withMessage:(NSString * _Nullable)message
   forViewController:(id)viewController;
 
+#pragma mark - Button UI
++ (void)setCornerRadiusAndColorForButton:(UIButton *)button andIsSmall:(BOOL)isSmall;
+
+#pragma mark - Image Manipulation
++ (UIImage *)image:(UIImage *)image rotatedByDegrees:(CGFloat)degrees;
++ (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension;
++ (void)roundCornersOfImage:(UIImageView *)image;
+
+#pragma mark - Date Formatting
++ (NSString *)formatDate:(NSDate *)original;
++ (NSString *)formatDateShort:(NSDate *)original;
++ (NSString *)formatDateNoTime:(NSDate *)original;
++ (NSString *)appendAgoToTime:(NSDate *)timeAgo;
+
+#pragma mark - Profile Tab and Friend Notifications
++ (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last;
++ (NSString *)getAgeInYears:(NSDate *)date;
++ (NSString *)outgoingRequestMessageFor:(PFUser *)user;
++ (NSString *)incomingRequestMessageFor:(PFUser *)user;
+
+#pragma mark - Miscellaneous Helper Methods
+
+// Given a list of players that are PFUsers, returns set of object id strings for those players
++ (NSMutableSet *)getPlayerObjectIdSet:(NSArray *)playerList;
+
+// Given a user, returns list of a max size three of most frequent sports for sessions the user attends
++ (NSArray *)getTopSportsFor:(PFUser *)user;
+
+// Returns number of days between two dates
 + (NSInteger)daysBetweenDate:(NSDate*)fromDateTime
                      andDate:(NSDate*)toDateTime;
 
-// for buttons
-+ (void)setCornerRadiusAndColorForButton:(UIButton *)button andIsSmall:(BOOL)isSmall;
+// Return time string interval for a session given start time and duration
++ (NSString *)getTimeGivenDurationForSession:(Session *)session;
 
-// For rotating an image
-+ (UIImage *)image:(UIImage *)image rotatedByDegrees:(CGFloat)degrees;
+// Return capacity string fraction
++ (NSString *)capacityString:(NSNumber *)occupied with:(NSNumber *)capacity;
+
+// String for empty events on given date
++ (NSString *)emptyCalendarTableForDate:(NSDate *)date;
+
+// String for details label on player collection cell
++ (NSString *)getDetailsLabelForPlayerCell:(PFUser *)user;
+
+// Make players string for session cell
++ (NSString *)makePlayerStringForSession:(Session *)session withWith:(BOOL)with;
+
+#pragma mark - Retrieve Data for Filter/Create Menus
++ (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row;
++ (NSArray * _Nullable)getFilterData:(BOOL)needAll forRow:(int)row;
 
 @end
 

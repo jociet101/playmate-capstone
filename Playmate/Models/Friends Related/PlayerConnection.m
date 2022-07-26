@@ -17,7 +17,7 @@
 @dynamic pendingList;
 
 + (nonnull NSString *)parseClassName {
-    return @"PlayerConnection";
+    return NSStringFromClass([PlayerConnection class]);
 }
 
 + (PlayerConnection *)initializePlayerConnection {
@@ -87,7 +87,7 @@
     [playerConnection saveInBackground];
 }
 
-// if I deny someone else's friend request
+// for when self (A) denies friend request of otherobjectid (B)
 + (void)removeSelfFromPendingOf:(NSString *)otherObjectId {
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     

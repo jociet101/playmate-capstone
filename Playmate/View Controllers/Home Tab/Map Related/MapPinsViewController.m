@@ -8,13 +8,14 @@
 #import "MapPinsViewController.h"
 #import "LocationAnnotation.h"
 #import "SessionDetailsViewController.h"
-#import "Session.h"
-#import "Location.h"
-#import "Helpers.h"
 #import "MapFiltersViewController.h"
-#import "Filters.h"
 #import "MapFilters.h"
 #import "PlayerConnection.h"
+#import "Session.h"
+#import "Location.h"
+#import "Filters.h"
+#import "Helpers.h"
+#import "Strings.h"
 
 @interface MapPinsViewController () <CLLocationManagerDelegate, MKMapViewDelegate, MapFiltersViewControllerDelegate>
 
@@ -122,7 +123,7 @@ BOOL isFirstTimeGettingLocation;
             
             [self addPins];
         } else {
-            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
     }];
 }
@@ -155,7 +156,7 @@ BOOL isFirstTimeGettingLocation;
                                                                  withSessionScope:filter.sessionType] : locationFilteredSessions;
             [self addPins];
         } else {
-            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
     }];
 }

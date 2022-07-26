@@ -14,7 +14,7 @@
 @dynamic sessionObjectId;
 
 + (nonnull NSString *)parseClassName {
-    return @"Invitation";
+    return NSStringFromClass([Invitation class]);
 }
 
 + (void)saveInvitationTo:(NSString *)objectId forSession:(NSString *)sessionId {

@@ -6,17 +6,18 @@
 //
 
 #import "HomeViewController.h"
-#import "Session.h"
-#import "SessionDetailsViewController.h"
-#import "UIScrollView+EmptyDataSet.h"
-#import "Constants.h"
-#import "Helpers.h"
 #import "CalendarViewController.h"
 #import "ProfileViewController.h"
-#import "SessionCollectionCell.h"
 #import "UpcomingSessionsViewController.h"
 #import "SuggestedSessionsViewController.h"
 #import "CreateMenuViewController.h"
+#import "SessionDetailsViewController.h"
+#import "UIScrollView+EmptyDataSet.h"
+#import "SessionCollectionCell.h"
+#import "Session.h"
+#import "Constants.h"
+#import "Helpers.h"
+#import "Strings.h"
 
 @interface HomeViewController () <CreateMenuViewControllerDelegate>
 
@@ -39,25 +40,24 @@
     
     self.upcomingView.alpha = 1;
     self.suggestedView.alpha = 0;
-
-	PFUser *me = [[PFUser currentUser] fetchIfNeeded];
-
-	NSString *greeting;
-	NSDate *now = [NSDate now];
-	if ([now hour] >= 17) {
-		greeting = @"Good Evening, ";
-	} else if ([now hour] >= 12) {
-		greeting = @"Good Afternoon, ";
-	} else {
-		greeting = @"Good Morning, ";
-	}
-
-	self.welcomeLabel.text = [greeting stringByAppendingString:me[@"firstName"][0]];
     
     self.sessionList = [[NSMutableArray alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    NSString *greeting;
+    NSDate *now = [NSDate now];
+    if ([now hour] >= 17) {
+        greeting = @"Good Evening, ";
+    } else if ([now hour] >= 12) {
+        greeting = @"Good Afternoon, ";
+    } else {
+        greeting = @"Good Morning, ";
+    }
+    
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
+    self.welcomeLabel.text = [greeting stringByAppendingString:me[@"firstName"][0]];
+    
     [self fetchData];
 }
 
@@ -78,7 +78,7 @@
             [self filterSessions:sessions];
             [self.delegate loadSessionList:(NSArray *)self.sessionList];
         } else {
-            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
     }];
 }

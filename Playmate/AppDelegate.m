@@ -17,6 +17,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    // Connect app with parse app id and client key
     ParseClientConfiguration *config = [ParseClientConfiguration  configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
         
         NSString *path = [[NSBundle mainBundle] pathForResource: @"Keys" ofType: @"plist"];
@@ -40,8 +41,6 @@
 
     [Parse initializeWithConfiguration:config];
 
-    return YES;
-    
     return YES;
 }
 

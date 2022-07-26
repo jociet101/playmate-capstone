@@ -13,12 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PlayerConnection : PFObject<PFSubclassing>
 
 @property (nonatomic, strong) NSString *userObjectId;
-// dictionary of ConnectionStates
 @property (nonatomic, strong) NSDictionary *connections;
 @property (nonatomic, strong) NSArray *friendsList;
 @property (nonatomic, strong) NSArray *pendingList;
-
-// methods
 
 + (PlayerConnection *)initializePlayerConnection;
 
@@ -28,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 // for saving someone(B) else's connection to self(A); Save A in B's dictionary (A is me)
 + (void)savePlayer:(NSString *)otherObjectId ConnectionToMeWithStatus:(BOOL)areFriends andWeight:(int)weight;
 
+// for when self (A) denies friend request of otherobjectid (B)
 + (void)removeSelfFromPendingOf:(NSString *)otherObjectId;
 
 @end

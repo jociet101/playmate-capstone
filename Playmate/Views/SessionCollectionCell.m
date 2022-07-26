@@ -6,16 +6,19 @@
 //
 
 #import "SessionCollectionCell.h"
+#import "Location.h"
 #import "Constants.h"
 #import "Helpers.h"
-#import "Location.h"
+#import "Strings.h"
 
 @interface SessionCollectionCell () <UIGestureRecognizerDelegate>
 
+// Front labels
 @property (weak, nonatomic) IBOutlet UIImageView *frontImageView;
 @property (weak, nonatomic) IBOutlet UILabel *sportFrontLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateFrontLabel;
 
+// Back labels
 @property (weak, nonatomic) IBOutlet UILabel *sportBackLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateBackLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
@@ -23,11 +26,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *playerListLabel;
 @property (weak, nonatomic) IBOutlet UIButton *viewFullSessionDetailsButton;
 
+// Double tap gesture
 @property (nonatomic, strong) UITapGestureRecognizer *doubleTapGesture;
 @property (weak, nonatomic) IBOutlet UILabel *doubleTapLabel;
 
 @end
 
+// Used to toggle whether to display front or back of card
 BOOL isViewingFront;
 
 @implementation SessionCollectionCell
@@ -44,24 +49,8 @@ BOOL isViewingFront;
     
     self.sportFrontLabel.text = self.session.sport;
     self.sportBackLabel.text = self.session.sport;
-
-    NSString *playersString = @"";
-    BOOL isFirstPerson = YES;
     
-    for (PFUser *player in self.session.playersList) {
-        [player fetchIfNeeded];
-
-        NSString *playerName = player[@"firstName"][0];
-        
-        if (isFirstPerson) {
-            playersString = [playersString stringByAppendingString:playerName];
-            isFirstPerson = NO;
-        } else {
-            playersString = [playersString stringByAppendingString:[@", " stringByAppendingString:playerName]];
-        }
-    }
-    
-    self.playerListLabel.text = [@"Players: " stringByAppendingString:playersString];
+    self.playerListLabel.text = [@"Players: " stringByAppendingString:[Helpers makePlayerStringForSession:self.session withWith:NO]];
     
     Location *loc = [self.session.location fetchIfNeeded];
     self.locationLabel.text = [@"Location: " stringByAppendingString:loc.locationName];
@@ -91,7 +80,7 @@ BOOL isViewingFront;
     self.viewFullSessionDetailsButton.alpha = 0;
     [self.viewFullSessionDetailsButton setEnabled:NO];
 
-    self.doubleTapLabel.text = @"Double Tap for Details";
+    self.doubleTapLabel.text = [Strings doubleTapInstructionFront];
 }
 
 - (void)viewBack {
@@ -109,7 +98,7 @@ BOOL isViewingFront;
     self.viewFullSessionDetailsButton.alpha = 1;
     [self.viewFullSessionDetailsButton setEnabled:YES];
     
-    self.doubleTapLabel.text = @"Double Tap to Return";
+    self.doubleTapLabel.text = [Strings doubleTapInstructionBack];
 }
 
 - (void)setUpDoubleTapGesture {

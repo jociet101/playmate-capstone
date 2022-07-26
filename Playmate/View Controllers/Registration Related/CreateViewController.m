@@ -8,6 +8,7 @@
 #import "CreateViewController.h"
 #import "Helpers.h"
 #import "Constants.h"
+#import "Strings.h"
 
 @interface CreateViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -26,8 +27,7 @@
 
 @implementation CreateViewController
 
-NSMutableArray *genders;
-int originalYOrigin;
+NSArray *genders;
 NSString *selectedGender;
 
 - (void)viewDidLoad {
@@ -39,19 +39,11 @@ NSString *selectedGender;
     self.lastNameField.delegate = self;
     self.emailField.delegate = self;
     
-    selectedGender = @"Female";
-    
     self.genderPicker.delegate = self;
     self.genderPicker.dataSource = self;
     
-    genders = [[NSMutableArray alloc] init];
-    [genders addObject:@"Female"];
-    [genders addObject:@"Male"];
-    [genders addObject:@"Other"];
-    [genders addObject:@"Prefer Not to Say"];
-    
-    CGRect containerFrame = self.textFieldContainer.frame;
-    originalYOrigin = containerFrame.origin.y;
+    genders = [Constants gendersList];
+    selectedGender = genders[0];
     
     [self.logoImageView setImage:[Constants profileImagePlaceholder]];
 }
@@ -131,7 +123,7 @@ NSString *selectedGender;
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
-            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         } else {
             [self performSegueWithIdentifier:@"createToLogin" sender:nil];
         }

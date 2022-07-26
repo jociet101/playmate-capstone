@@ -10,6 +10,7 @@
 #import "AFHTTPSessionManager.h"
 #import "Constants.h"
 #import "Helpers.h"
+#import "Strings.h"
 
 static NSString * geoapify;
 
@@ -42,10 +43,10 @@ static NSString * geoapify;
 - (void)getSportsListWithCompletion:(void(^)(NSDictionary *list, NSError *error))completion {
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:[Constants decathalonSportsListString]  parameters:nil progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *list) {
+    [manager GET:[Strings decathalonSportsListString]  parameters:nil progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *list) {
         completion(list, nil);
     } failure:^(NSURLSessionDataTask * task, NSError *error) {
-        [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+        [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         completion(nil, error);
     }];
 }
@@ -53,11 +54,11 @@ static NSString * geoapify;
 - (void)getSportWithId:(NSString *)sportId withCompletion:(void(^)(NSDictionary *sportData, NSError *error))completion {
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSString *url = [[Constants decathalonOneSportString] stringByAppendingString:sportId];
+    NSString *url = [[Strings decathalonOneSportString] stringByAppendingString:sportId];
     [manager GET:url  parameters:nil progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *sportData) {
         completion(sportData, nil);
     } failure:^(NSURLSessionDataTask * task, NSError *error) {
-        [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+        [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         completion(nil, error);
     }];
 }
@@ -87,7 +88,7 @@ static NSString * geoapify;
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error != nil) {
-            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
             completion(nil, error);
         }
         else {
@@ -126,7 +127,7 @@ static NSString * geoapify;
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error != nil) {
-            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
             completion(nil, error);
         }
         else {

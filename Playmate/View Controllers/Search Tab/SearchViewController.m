@@ -6,13 +6,14 @@
 //
 
 #import "SearchViewController.h"
-#import "SessionCell.h"
 #import "SessionDetailsViewController.h"
-#import "Session.h"
 #import "FiltersMenuViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "SessionCell.h"
+#import "Session.h"
 #import "Constants.h"
 #import "Helpers.h"
+#import "Strings.h"
 
 @interface SearchViewController () <UITableViewDelegate, UITableViewDataSource, FiltersMenuViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -62,7 +63,6 @@
 }
 
 - (void)fetchData {
-    
     if (self.appliedFilters == YES) {
         [self fetchDataWithFilters:self.filters];
         return;
@@ -92,7 +92,7 @@
             
             [self.tableView reloadData];
         } else {
-            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
         [self.refreshControl endRefreshing];
     }];
@@ -101,16 +101,16 @@
 #pragma mark - Empty table view protocol methods
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    return [UIImage imageNamed:@"logo_small"];
+    return [Constants smallPlaymateLogo];
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Constants emptyTablePlaceholderTitle];
+    NSString *text = [Strings emptyTablePlaceholderTitle];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Constants emptySearchPlaceholderMsg];
+    NSString *text = [Strings emptySearchPlaceholderMsg];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants descriptionAttributes]];
 }
 
@@ -229,7 +229,7 @@
             
             [self.tableView reloadData];
         } else {
-            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
         [self.refreshControl endRefreshing];
     }];
@@ -263,7 +263,6 @@
         FiltersMenuViewController *vc = [segue destinationViewController];
         vc.delegate = self;
     }
-    
 }
 
 @end

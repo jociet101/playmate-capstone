@@ -6,13 +6,14 @@
 //
 
 #import "IncomingRequestsViewController.h"
-#import "FriendRequest.h"
-#import "FriendRequestCell.h"
 #import "PlayerProfileViewController.h"
-#import "PlayerConnection.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "FriendRequestCell.h"
+#import "FriendRequest.h"
+#import "PlayerConnection.h"
 #import "Constants.h"
 #import "Helpers.h"
+#import "Strings.h"
 
 @interface IncomingRequestsViewController () <UITableViewDelegate, UITableViewDataSource, FriendRequestCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -29,7 +30,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -47,7 +47,6 @@
 }
 
 - (void)fetchData {
-    
     // fetch data for friend request list
     PFQuery *query = [PFQuery queryWithClassName:@"FriendRequest"];
     query.limit = 20;
@@ -64,7 +63,7 @@
             
             [self.tableView reloadData];
         } else {
-            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
         [self.refreshControl endRefreshing];
     }];
@@ -73,7 +72,6 @@
 #pragma mark - Table view protocol methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
     FriendRequestCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendRequestCell"];
     cell.requestInfo = self.friendRequestList[indexPath.row];
     cell.delegate = self;
@@ -92,11 +90,11 @@
 #pragma mark - Empty table view protocol methods
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    return [UIImage imageNamed:@"logo_small"];
+    return [Constants smallPlaymateLogo];
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Constants emptyIncomingRequestsPlaceholderTitle];
+    NSString *text = [Strings emptyIncomingRequestsPlaceholderTitle];
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 

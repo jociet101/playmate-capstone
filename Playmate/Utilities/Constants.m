@@ -6,31 +6,17 @@
 //
 
 #import "Constants.h"
-#import "APIManager.h"
 #import "Helpers.h"
+#import "Strings.h"
+#import "APIManager.h"
 
 @implementation Constants
 
-// For API
-+ (NSString *)geoapifyBaseURLString {
-    return @"https://api.geoapify.com/v1/";
-}
-
-+ (NSString *)decathalonSportsListString {
-    return @"https://sports.api.decathlon.com/sports";
-}
-
-+ (NSString *)decathalonOneSportString {
-    return @"https://sports.api.decathlon.com/sports/:";
-}
-
-// For calendar
-
+#pragma mark - Dates
 + (NSDate *) dateWithHour:(NSInteger)hour
                   minute:(NSInteger)minute
                   second:(NSInteger)second
-                 fromDate:(NSDate *)date
-{
+                 fromDate:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components: NSCalendarUnitYear|
                                                          NSCalendarUnitMonth|
@@ -43,78 +29,8 @@
     return newDate;
 }
 
-// Error messages for session details
-+ (NSString *)fullSessionErrorMsg {
-    return @"Session is full";
-}
+#pragma mark - Strings with parameters
 
-+ (NSString *)alreadyInSessionErrorMsg {
-    return @"Already in session";
-}
-
-+ (NSString *)noOpenSlotsErrorMsg {
-    return @"No open slots";
-}
-
-// Information for session details
-+ (NSString *)dateFormatString {
-    return @"E MMM d HH:mm:ss yyyy";
-}
-
-+ (NSString *)capacityString:(NSNumber *)occupied with:(NSNumber *)capacity {
-    return [[NSString stringWithFormat:@"%d", [capacity intValue] - [occupied intValue]] stringByAppendingString:[@"/" stringByAppendingString:[[NSString stringWithFormat:@"%@", capacity] stringByAppendingString:@" open slots"]]];
-}
-
-+ (NSString *)formatDate:(NSDate *)original {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = [Constants dateFormatString];
-    NSString *originalDate = [formatter stringFromDate:original];
-    
-    NSDate *date = [formatter dateFromString:originalDate];
-    formatter.dateStyle = NSDateFormatterMediumStyle;
-    formatter.timeStyle = NSDateFormatterShortStyle;
-    
-    return [formatter stringFromDate:date];
-}
-
-+ (NSString *)formatDateShort:(NSDate *)original {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = [Constants dateFormatString];
-    NSString *originalDate = [formatter stringFromDate:original];
-    
-    NSDate *date = [formatter dateFromString:originalDate];
-    formatter.dateStyle = NSDateFormatterShortStyle;
-    formatter.timeStyle = NSDateFormatterShortStyle;
-    
-    return [formatter stringFromDate:date];
-}
-
-+ (NSString *)formatDateNoTime:(NSDate *)original {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = [Constants dateFormatString];
-    NSString *originalDate = [formatter stringFromDate:original];
-    
-    NSDate *date = [formatter dateFromString:originalDate];
-    formatter.dateStyle = NSDateFormatterMediumStyle;
-    formatter.timeStyle = NSDateFormatterNoStyle;
-    
-    return [formatter stringFromDate:date];
-}
-
-+ (NSArray *)listOfSystemColors {
-    return [NSArray arrayWithObjects:[UIColor systemPinkColor],
-                                     [UIColor systemRedColor],
-                                     [UIColor systemBlueColor],
-                                     [UIColor systemCyanColor],
-                                     [UIColor systemMintColor],
-                                     [UIColor systemGreenColor],
-                                     [UIColor systemOrangeColor],
-                                     [UIColor systemPurpleColor],
-                                     [UIColor systemYellowColor],
-                                     [UIColor systemGrayColor], nil];
-}
-
-// Info for incoming friend notifications
 + (NSString *)acceptedConfirmationStringFor:(NSString *)name {
     return [NSString stringWithFormat:@"You are now friends with %@", name];
 }
@@ -123,23 +39,9 @@
     return [NSString stringWithFormat:@"You denied %@'s friend request", name];
 }
 
-// Information for profile tab
-+ (NSString *)defaultBio {
-    return @"Edit profile to enter a bio!";
-}
 
-+ (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last {
-    return [first stringByAppendingString:[@" " stringByAppendingString:last]];
-}
+#pragma mark - Filter Menu Pickers
 
-+ (NSString *)getAgeInYears:(NSDate *)date {
-    NSString *rawYears = [date timeAgoSinceNow];
-    NSArray *parsed = [rawYears componentsSeparatedByString:@" "];
-    NSString *year = parsed[0];
-    return year;
-}
-
-// Information for filters and create
 + (NSString *)createMenuTitle:(int)row {
     NSMutableArray *titles = [[NSMutableArray alloc] init];
     
@@ -165,49 +67,7 @@
     return titles[row];
 }
 
-+ (NSString *)selectLocationPlease {
-    return @"Please select a location on map.";
-}
-+ (NSString *)selectDurationPlease {
-    return @"Please select a duration.";
-}
-+ (NSString *)selectSportPlease {
-    return @"Please select a sport.";
-}
-+ (NSString *)selectDateTimePlease {
-    return @"Please select a date and time.";
-}
-+ (NSString *)selectSkillLevelPlease {
-    return @"Please select a skill level.";
-}
-+ (NSString *)selectNumberOfPlayersPlease {
-    return @"Please select the number of players.";
-}
-
-+ (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row {
-        
-    if (row == 0) {
-        return [Constants sportsList:needAll];
-    }  else if (row == 2) {
-        return [Constants durationList];
-    } else if (row == 3) {
-        return [Constants skillLevelsList:needAll];
-    }
-    return nil;
-}
-
-+ (NSArray * _Nullable)getFilterData:(BOOL)needAll forRow:(int)row {
-        
-    if (row == 0) {
-        return [Constants sportsList:needAll];
-    } else if (row == 1) {
-        return [Constants skillLevelsList:needAll];
-    } else if (row == 4) {
-        return [Constants sessionTypeList];
-    }
-    return nil;
-}
-
+// Duration
 + (NSArray *)durationList {
     NSMutableArray *durations = [[NSMutableArray alloc] init];
     
@@ -245,7 +105,6 @@
 }
 
 + (NSNumber *)durationKeyToInteger:(int)key {
-//    return @(((float)key)/4 + 0.5);
     NSMutableArray *durations = [[NSMutableArray alloc] init];
 
     [durations addObject:@(0.5)];
@@ -263,23 +122,16 @@
     return durations[key];
 }
 
-+ (NSString *)defaultAll {
-    return @"All";
-}
-
-+ (NSString *)defaultSport {
-    return @"Tennis";
-}
-
+// Sport
 + (NSArray *)sportsListLarge:(BOOL)needAll {
     NSMutableArray *sports = [[NSMutableArray alloc] init];
     
-    if (needAll) [sports addObject:@"All"];
+    if (needAll) [sports addObject:[Strings defaultAll]];
     
     APIManager *manager = [APIManager new];
     [manager getSportsListWithCompletion:^(NSDictionary *list, NSError *error) {
         if (error != nil) {
-            [Helpers handleAlert:error withTitle:@"Error" withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         } else {
             NSArray *data = list[@"data"];
             
@@ -298,7 +150,7 @@
     NSMutableArray *sports = [[NSMutableArray alloc] init];
     
     if (needAll) {
-        [sports addObject:@"All"];
+        [sports addObject:[Strings defaultAll]];
     }
     
     NSArray *sportsList = [NSArray arrayWithObjects:@"American football",
@@ -325,9 +177,10 @@
     return [NSArray arrayWithArray:sports];
 }
 
+// Skill Level
 + (NSArray *)skillLevelsList:(BOOL)needAll {
     NSMutableArray *skillLevels = [[NSMutableArray alloc] init];
-    if (needAll) [skillLevels addObject:@"All"];
+    if (needAll) [skillLevels addObject:[Strings defaultAll]];
     [skillLevels addObject:@"Leisure"];
     [skillLevels addObject:@"Amateur"];
     [skillLevels addObject:@"Competitive"];
@@ -335,24 +188,31 @@
     return [NSArray arrayWithArray:skillLevels];
 }
 
+// Session Scope
 + (NSArray *)sessionTypeList {
     NSMutableArray *sessionTypes = [[NSMutableArray alloc] init];
-    [sessionTypes addObject:@"All"];
+    [sessionTypes addObject:[Strings defaultAll]];
     [sessionTypes addObject:@"Friends"];
     [sessionTypes addObject:@"Own"];
     
     return [NSArray arrayWithArray:sessionTypes];
 }
 
-+ (int)defaultNumPlayers {
-    return 2;
+#pragma mark - Create Account Pickers
+
++ (NSArray *)gendersList {
+    NSMutableArray *genders = [[NSMutableArray alloc] init];
+    [genders addObject:@"Female"];
+    [genders addObject:@"Male"];
+    [genders addObject:@"Non-binary"];
+    [genders addObject:@"Other"];
+    
+    return (NSArray *)genders;
 }
 
-+ (int)defaultSkillPickerIndex {
-    return 3;
-}
 
-// Some numbers
+#pragma mark - Numbers
+
 + (int)buttonCornerRadius {
     return 20;
 }
@@ -361,7 +221,25 @@
     return 12;
 }
 
-// some colors
++ (int)invitationsRowHeight {
+    return 132;
+}
+
+#pragma mark - Colors
+
++ (NSArray *)listOfSystemColors {
+    return [NSArray arrayWithObjects:[UIColor systemPinkColor],
+                                     [UIColor systemRedColor],
+                                     [UIColor systemBlueColor],
+                                     [UIColor systemCyanColor],
+                                     [UIColor systemMintColor],
+                                     [UIColor systemGreenColor],
+                                     [UIColor systemOrangeColor],
+                                     [UIColor systemPurpleColor],
+                                     [UIColor systemYellowColor],
+                                     [UIColor systemGrayColor], nil];
+}
+
 + (UIColor *)playmateBlue {
     return [UIColor colorWithRed: 0.31 green: 0.78 blue: 0.94 alpha: 0.30];
 }
@@ -378,62 +256,7 @@
     return [UIColor colorWithRed: 0.76 green: 1 blue: 1 alpha: 0.7];
 }
 
-// playmate logo placeholder profile image
-
-+ (UIImage *)profileImagePlaceholder {
-    return [UIImage imageNamed:@"playmate_logo_fit"];
-}
-
-// for empty table view
-
-+ (NSString *)emptyTablePlaceholderMsg {
-    return @"Search for a session to join or create your own session to view them here!";
-}
-
-+ (NSString *)emptyTablePlaceholderTitle {
-    return @"No Sessions";
-}
-
-+ (NSString *)emptyPlayerProfilesPlaceholderTitle {
-    return @"No players in this session";
-}
-
-+ (NSString *)emptySearchPlaceholderMsg {
-    return @"No sessions match your search. Adjust the filters or create your own session!";
-}
-
-+ (NSString *)emptyListPlaceholderMsg {
-    return @"Explore sessions to meet your Playmates!";
-}
-
-+ (NSString *)emptyListPlaceholderTitle {
-    return @"No Friends";
-}
-
-+ (NSString *)emptyIncomingRequestsPlaceholderTitle {
-    return @"No Incoming Friend Requests";
-}
-
-+ (NSString *)emptyOutgoingRequestsPlaceholderTitle {
-    return @"No Outgoing Friend Requests";
-}
-
-+ (NSString *)emptyCollectionLoadingSessionsTitle {
-    return @"Loading Sessions ...";
-}
-
-+ (NSString *)emptyCalendarTableForDate:(NSDate *)date {
-    NSString *dateString = [Constants formatDateNoTime:date];
-    return [@"No sessions on " stringByAppendingString:dateString];
-}
-
-+ (NSString *)emptyInvitationsPlaceholderTitle {
-    return @"No invitations";
-}
-
-+ (NSString *)emptyInvitationsPlaceholderMsg {
-    return @"Check back later to see if your friends invited you to join their session!";
-}
+#pragma mark - Empty View Text Properties
 
 + (NSDictionary *)descriptionAttributes {
     NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
@@ -453,7 +276,17 @@
     return titleAttributes;
 }
 
-// for home view
+
+#pragma mark - Gifs and Images
+
++ (UIImage *)profileImagePlaceholder {
+    return [UIImage imageNamed:@"playmate_logo_fit"];
+}
+
++ (UIImage *)smallPlaymateLogo {
+    return [UIImage imageNamed:@"logo_small"];
+}
+
 + (NSString *)getImageNameForSport:(NSString *)sport {
     NSArray *imageNames = [NSArray arrayWithObjects:@"playmate_logo_transparent",
                                                     @"playmate_logo_transparent",
@@ -479,7 +312,6 @@
     return sportToImageName[sport];
 }
 
-// for uiimage gifs
 + (NSArray *)addressGifImages {
     NSMutableArray *addressGifImages = [[NSMutableArray alloc] initWithCapacity:155];
     for (int i = 0; i < 155; i++) {

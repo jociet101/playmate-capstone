@@ -7,6 +7,8 @@
 
 #import "FiltersMenuPickerCell.h"
 #import "Constants.h"
+#import "Helpers.h"
+#import "Strings.h"
 
 @interface FiltersMenuPickerCell () <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
@@ -20,6 +22,12 @@
 @implementation FiltersMenuPickerCell
 
 - (void)setRowNumber:(NSNumber *)rowNumber {
+    // thisRow
+    // 0 : Sport
+    // 1 : Skill Level
+    // 2 : Location
+    // 3 : Radius
+    // 4 : Session Scope (only for map filters menu)
     
     self.layer.cornerRadius = [Constants buttonCornerRadius];
     self.thisRow = [rowNumber intValue];
@@ -40,7 +48,7 @@
 - (void)radiusSetup {
     self.pickerField.tintColor = [UIColor lightGrayColor];
     self.pickerField.returnKeyType = UIReturnKeyDone;
-    self.pickerField.placeholder = @"10 (default)";
+    self.pickerField.placeholder = [Strings radiusPlaceholder];
     self.pickerField.delegate = self;
     [self.pickerField setKeyboardType:UIKeyboardTypeNumberPad];
 }
@@ -48,13 +56,12 @@
 #pragma mark - Picker view methods
 
 - (void)pickerViewSetup {
-    
     UIPickerView *pickerView = [UIPickerView new];
     self.pickerField.inputView = pickerView;
     pickerView.delegate = self;
     pickerView.dataSource = self;
     
-    self.pickerData = [Constants getFilterData:YES forRow:self.thisRow];
+    self.pickerData = [Helpers getFilterData:YES forRow:self.thisRow];
 }
 
 // returns the number of 'columns' to display
@@ -68,35 +75,27 @@
 }
 
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    
-    if (row == 0) {
-        return @"";
-    }
-    
-    return self.pickerData[row-1];
+    return row == 0 ? @"" : self.pickerData[row-1];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    
     if (row == 0) {
         self.pickerField.text = @"";
         return;
     }
     
     self.selectedData = self.pickerData[row-1];
+    self.pickerField.text = self.selectedData;
     
     switch (self.thisRow) {
         case 0:
             [self.delegate setSport:self.selectedData];
-            self.pickerField.text = self.selectedData;
             break;
         case 1:
             [self.delegate setSkillLevel:self.selectedData];
-            self.pickerField.text = self.selectedData;
             break;
         case 4:
             [self.delegate setSessionType:self.selectedData];
-            self.pickerField.text = self.selectedData;
             break;
     }
 }

@@ -13,7 +13,7 @@
 @dynamic requestFromId;
 
 + (nonnull NSString *)parseClassName {
-    return @"FriendRequest";
+    return NSStringFromClass([FriendRequest class]);
 }
 
 + (void)saveFriendRequestTo:(NSString *)objectId {

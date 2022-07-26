@@ -7,24 +7,172 @@
 
 #import "Helpers.h"
 #import "Constants.h"
+#import "Strings.h"
+#import "DateTools.h"
 
 @implementation Helpers
 
-// For Parse
+#pragma mark - Parse Related
+
 + (PlayerConnection *)getPlayerConnectionForUser:(PFUser *)user {
     return [user[@"playerConnection"][0] fetchIfNeeded];
 }
 
-// For API endpoints
+#pragma mark - API Endpoints
+
 + (NSString *)geoapifyGeocodingURLWithKey:(NSString *)geoapify andCraftedLink:(NSString *)craftedLink {
-    return [NSString stringWithFormat:@"%@/geocode/search?text=%@&format=json&apiKey=%@", [Constants geoapifyBaseURLString], craftedLink, geoapify];
+    return [NSString stringWithFormat:@"%@/geocode/search?text=%@&format=json&apiKey=%@", [Strings geoapifyBaseURLString], craftedLink, geoapify];
 }
 
 + (NSString *)geoapifyReverseGeocodingURLWithKey:(NSString *)geoapify andLongitutde:(NSString *)longitutde andLatitude:(NSString *)latitude {
-    return [NSString stringWithFormat:@"%@/geocode/reverse?lat=%@&lon=%@&apiKey=%@", [Constants geoapifyBaseURLString], latitude, longitutde, geoapify];
+    return [NSString stringWithFormat:@"%@/geocode/reverse?lat=%@&lon=%@&apiKey=%@", [Strings geoapifyBaseURLString], latitude, longitutde, geoapify];
 }
 
-// For other stuff
+#pragma mark - Handling Alerts
+
++ (void)handleAlert:(NSError * _Nullable)error
+          withTitle:(NSString *)title
+        withMessage:(NSString * _Nullable)message
+  forViewController:(id)viewController {
+    if (error != nil) {
+        message = error.localizedDescription;
+    }
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [viewController viewDidLoad];
+    }];
+    
+    [alertController addAction:okAction];
+    [viewController presentViewController:alertController animated: YES completion: nil];
+}
+
+#pragma mark - Button UI
+
++ (void)setCornerRadiusAndColorForButton:(UIButton *)button andIsSmall:(BOOL)isSmall {
+    button.layer.cornerRadius = isSmall ? [Constants smallButtonCornerRadius] : [Constants buttonCornerRadius];
+    [button setBackgroundColor:[Constants playmateBlue]];
+}
+
+#pragma mark - Image Manipulation
+
+// Helper for rotating image
++ (CGFloat)degreesToRadians:(CGFloat)degrees {
+    return M_PI * degrees / 180;
+}
+
+// Rotates image by degrees given image and degrees
++ (UIImage *)image:(UIImage *)image rotatedByDegrees:(CGFloat)degrees {
+    CGFloat radians = [Helpers degreesToRadians:degrees];
+
+    UIView *rotatedViewBox = [[UIView alloc] initWithFrame:CGRectMake(0,0, image.size.width, image.size.height)];
+    rotatedViewBox.transform = CGAffineTransformMakeRotation(radians);
+    CGSize rotatedSize = rotatedViewBox.frame.size;
+    
+    UIGraphicsBeginImageContextWithOptions(rotatedSize, NO, [[UIScreen mainScreen] scale]);
+    CGContextRef bitmap = UIGraphicsGetCurrentContext();
+
+    CGContextTranslateCTM(bitmap, rotatedSize.width / 2, rotatedSize.height / 2);
+
+    CGContextRotateCTM(bitmap, radians);
+
+    CGContextScaleCTM(bitmap, 1.0, -1.0);
+    CGContextDrawImage(bitmap, CGRectMake(-image.size.width / 2, -image.size.height / 2 , image.size.width, image.size.height), image.CGImage );
+
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    return newImage;
+}
+
+// Resize image to square of dimension given
++ (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension {
+    CGSize size = CGSizeMake(dimension, dimension);
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, dimension, dimension)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
++ (void)roundCornersOfImage:(UIImageView *)image {
+    image.layer.cornerRadius = image.frame.size.width/2.0f;
+}
+
+#pragma mark - Date Formatting
+
++ (NSString *)formatDate:(NSDate *)original {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = [Strings dateFormatString];
+    NSString *originalDate = [formatter stringFromDate:original];
+    
+    NSDate *date = [formatter dateFromString:originalDate];
+    formatter.dateStyle = NSDateFormatterMediumStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    
+    return [formatter stringFromDate:date];
+}
+
++ (NSString *)formatDateShort:(NSDate *)original {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = [Strings dateFormatString];
+    NSString *originalDate = [formatter stringFromDate:original];
+    
+    NSDate *date = [formatter dateFromString:originalDate];
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    
+    return [formatter stringFromDate:date];
+}
+
++ (NSString *)formatDateNoTime:(NSDate *)original {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = [Strings dateFormatString];
+    NSString *originalDate = [formatter stringFromDate:original];
+    
+    NSDate *date = [formatter dateFromString:originalDate];
+    formatter.dateStyle = NSDateFormatterMediumStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    
+    return [formatter stringFromDate:date];
+}
+
++ (NSString *)appendAgoToTime:(NSDate *)timeAgo {
+    return [[timeAgo shortTimeAgoSinceNow] stringByAppendingString:@" ago"];
+}
+
+#pragma mark - Profile Tab and Friend Notifications
+
++ (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last {
+    return [first stringByAppendingString:[@" " stringByAppendingString:last]];
+}
+
++ (NSString *)getAgeInYears:(NSDate *)date {
+    NSString *rawYears = [date timeAgoSinceNow];
+    NSArray *parsed = [rawYears componentsSeparatedByString:@" "];
+    NSString *year = parsed[0];
+    return year;
+}
+
++ (NSString *)outgoingRequestMessageFor:(PFUser *)user {
+    NSString *name = [Helpers concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
+    return [@"You requested to be friends with " stringByAppendingString:name];
+}
+
++ (NSString *)incomingRequestMessageFor:(PFUser *)user {
+    NSString *requesterName = [Helpers concatenateFirstName:user[@"firstName"][0] andLast:user[@"lastName"][0]];
+    return [requesterName stringByAppendingString:@" wants to be friends."];
+}
+
+#pragma mark - Miscellaneous Helper Methods
+
+// Given a list of players that are PFUsers, returns set of object id strings for those players
 + (NSMutableSet *)getPlayerObjectIdSet:(NSArray *)playerList {
     NSMutableSet *playersSet = [[NSMutableSet alloc] init];
     [playerList enumerateObjectsUsingBlock:^(PFUser *user, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -33,7 +181,7 @@
     return playersSet;
 }
 
-// For getting a user's top 3 sports to display on profile
+// Given a user, returns list of a max size three of most frequent sports for sessions the user attends
 + (NSArray *)getTopSportsFor:(PFUser *)user {
     NSMutableDictionary *sportsCountDictionary = [[NSMutableDictionary alloc] init];
     
@@ -73,22 +221,7 @@
     return [result subarrayWithRange:NSMakeRange(0, numberSportsToFetch)];
 }
 
-// for resizing images
-+ (UIImage *)resizeImage:(UIImage *)image withDimension:(int)dimension {
-    CGSize size = CGSizeMake(dimension, dimension);
-    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, dimension, dimension)];
-    
-    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
-    resizeImageView.image = image;
-    
-    UIGraphicsBeginImageContext(size);
-    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
-
+// Returns number of days between two dates
 + (NSString *)getTimeGivenDurationForSession:(Session *)session {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDate *startTime = session.occursAt;
@@ -97,7 +230,7 @@
     NSDate *endTime = [gregorian dateByAddingComponents:comps toDate:startTime  options:0];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = [Constants dateFormatString];
+    formatter.dateFormat = [Strings dateFormatString];
     
     formatter.dateStyle = NSDateFormatterMediumStyle;
     formatter.timeStyle = NSDateFormatterNoStyle;
@@ -111,25 +244,7 @@
     return [dateString stringByAppendingFormat:@", %@ to %@", startTimeString, endTimeString];
 }
 
-// For handling alerts
-+ (void)handleAlert:(NSError * _Nullable)error
-          withTitle:(NSString *)title
-        withMessage:(NSString * _Nullable)message
-  forViewController:(id)viewController {
-    if (error != nil) {
-        message = error.localizedDescription;
-    }
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        [viewController viewDidLoad];
-    }];
-    
-    [alertController addAction:okAction];
-    [viewController presentViewController:alertController animated: YES completion: nil];
-}
-
-// For handling dates
+// Return time string interval for a session given start time and duration
 + (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime {
     NSDate *fromDate;
     NSDate *toDate;
@@ -147,38 +262,70 @@
     return [difference day];
 }
 
-+ (void)setCornerRadiusAndColorForButton:(UIButton *)button andIsSmall:(BOOL)isSmall {
-    button.layer.cornerRadius = isSmall ? [Constants smallButtonCornerRadius] : [Constants buttonCornerRadius];
-    [button setBackgroundColor:[Constants playmateBlue]];
+// Return capacity string fraction
++ (NSString *)capacityString:(NSNumber *)occupied with:(NSNumber *)capacity {
+    return [[NSString stringWithFormat:@"%d", [capacity intValue] - [occupied intValue]] stringByAppendingString:[@"/" stringByAppendingString:[[NSString stringWithFormat:@"%@", capacity] stringByAppendingString:@" open slots"]]];
 }
 
-// For rotating an image
-
-+ (CGFloat)degreesToRadians:(CGFloat)degrees {
-    return M_PI * degrees / 180;
+// String for empty events on given date
++ (NSString *)emptyCalendarTableForDate:(NSDate *)date {
+    NSString *dateString = [Helpers formatDateNoTime:date];
+    return [@"No sessions on " stringByAppendingString:dateString];
 }
 
-+ (UIImage *)image:(UIImage *)image rotatedByDegrees:(CGFloat)degrees {
-    CGFloat radians = [Helpers degreesToRadians:degrees];
+// String for details label on player collection cell
++ (NSString *)getDetailsLabelForPlayerCell:(PFUser *)user {
+    NSString *genderString = [user[@"gender"][0] isEqualToString:@"Other"] ? @"" : user[@"gender"][0];
+    return [[[Helpers getAgeInYears:user[@"birthday"][0]] stringByAppendingString:@" yo "] stringByAppendingString:genderString];
+}
 
-    UIView *rotatedViewBox = [[UIView alloc] initWithFrame:CGRectMake(0,0, image.size.width, image.size.height)];
-    rotatedViewBox.transform = CGAffineTransformMakeRotation(radians);
-    CGSize rotatedSize = rotatedViewBox.frame.size;
+// Make players string for session cell
++ (NSString *)makePlayerStringForSession:(Session *)session withWith:(BOOL)with {
+    NSString *playersString = @"";
     
-    UIGraphicsBeginImageContextWithOptions(rotatedSize, NO, [[UIScreen mainScreen] scale]);
-    CGContextRef bitmap = UIGraphicsGetCurrentContext();
+    if (session.playersList.count == 0) return playersString;
+    
+    BOOL isFirstPerson = YES;
+    
+    for (PFUser *player in session.playersList) {
 
-    CGContextTranslateCTM(bitmap, rotatedSize.width / 2, rotatedSize.height / 2);
+        [player fetchIfNeeded];
 
-    CGContextRotateCTM(bitmap, radians);
+        NSString *playerName = player[@"firstName"][0];
+        
+        if (isFirstPerson) {
+            playersString = [playersString stringByAppendingString:playerName];
+            isFirstPerson = NO;
+        } else {
+            playersString = [playersString stringByAppendingString:[@", " stringByAppendingString:playerName]];
+        }
+    }
+    
+    return with ? [@" w/ " stringByAppendingString:playersString] : playersString;
+}
 
-    CGContextScaleCTM(bitmap, 1.0, -1.0);
-    CGContextDrawImage(bitmap, CGRectMake(-image.size.width / 2, -image.size.height / 2 , image.size.width, image.size.height), image.CGImage );
+#pragma mark - Retrieve Data for Filter/Create Menus
 
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
++ (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row {
+    if (row == 0) {
+        return [Constants sportsList:needAll];
+    }  else if (row == 2) {
+        return [Constants durationList];
+    } else if (row == 3) {
+        return [Constants skillLevelsList:needAll];
+    }
+    return nil;
+}
 
-    return newImage;
++ (NSArray * _Nullable)getFilterData:(BOOL)needAll forRow:(int)row {
+    if (row == 0) {
+        return [Constants sportsList:needAll];
+    } else if (row == 1) {
+        return [Constants skillLevelsList:needAll];
+    } else if (row == 4) {
+        return [Constants sessionTypeList];
+    }
+    return nil;
 }
 
 @end
