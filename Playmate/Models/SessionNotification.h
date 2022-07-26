@@ -13,11 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SessionNotification : PFObject<PFSubclassing>
 
 @property (nonatomic, strong) NSString *sessionObjectId;
+@property (nonatomic, strong) NSString *userObjectId;
 @property (nonatomic, strong) NSDate *tenBeforeTime;
 @property (nonatomic, strong) NSDate *thirtyBeforeTime;
 @property (nonatomic, strong) NSDate *sixtyBeforeTime;
 
-+ (void)createNotificationForSession:(NSString *)sessionId;
++ (void)createNotificationForSession:(NSString *)sessionId forUser:(NSString *)userId;
 
 @end
 

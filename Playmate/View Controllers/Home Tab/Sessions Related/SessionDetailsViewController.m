@@ -12,6 +12,7 @@
 #import "PlayerProfileCollectionCell.h"
 #import "ManageUserStatistics.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "SessionNotification.h"
 #import "SessionCell.h"
 #import "Location.h"
 #import "Invitation.h"
@@ -205,10 +206,19 @@ BOOL isPartOfSession;
             [session saveInBackground];
         }];
         
+        NSString *sessionObjectId = self.sessionDetails.objectId;
+        
         // Remove this session from user's history
-        [ManageUserStatistics updateDictionaryRemoveSession:self.sessionDetails.objectId
+        [ManageUserStatistics updateDictionaryRemoveSession:sessionObjectId
                                                    forSport:self.sessionDetails.sport
                                                     andUser:me];
+        
+        // Remove the notifications corresponding to this session and user
+        PFQuery *notificationQuery = [PFQuery queryWithClassName:@"SessionNotification"];
+        [notificationQuery whereKey:@"sessionObjectId" equalTo:sessionObjectId];
+        [notificationQuery whereKey:@"userObjectId" equalTo:me.objectId];
+        SessionNotification *notification = [notificationQuery getFirstObject];
+        [notification deleteInBackground];
     } else {
         // For joining session
         [self updateJoinUI];
@@ -233,10 +243,15 @@ BOOL isPartOfSession;
             [session saveInBackground];
         }];
         
+        NSString *sessionObjectId = self.sessionDetails.objectId;
+        
         // Add this session to user's history
-        [ManageUserStatistics updateDictionaryAddSession:self.sessionDetails.objectId
+        [ManageUserStatistics updateDictionaryAddSession:sessionObjectId
                                                 forSport:self.sessionDetails.sport
                                                  andUser:me];
+        
+        // Add the notifications coresponding to this session and user
+        [SessionNotification createNotificationForSession:sessionObjectId forUser:me.objectId];
     }
 }
 
