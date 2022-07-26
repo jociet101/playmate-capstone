@@ -5,8 +5,6 @@
 //  Created by Jocelyn Tseng on 7/3/22.
 //
 
-#import <UserNotifications/UNUserNotificationCenter.h>
-
 #import "HomeViewController.h"
 #import "CalendarViewController.h"
 #import "ProfileViewController.h"
@@ -16,6 +14,7 @@
 #import "SessionDetailsViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "SessionCollectionCell.h"
+#import "NotificationHandler.h"
 #import "Session.h"
 #import "Constants.h"
 #import "Helpers.h"
@@ -37,7 +36,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    [self setUpNotifications];
+    [NotificationHandler setUpNotifications];
     
     self.upcomingView.layer.cornerRadius = [Constants buttonCornerRadius];
     self.suggestedView.layer.cornerRadius = [Constants buttonCornerRadius];
@@ -67,14 +66,6 @@
 
 - (void)reloadHomeTabSessions {
     [self fetchData];
-}
-
-- (void)setUpNotifications {
-    UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
-    [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + UNAuthorizationOptionSound)
-       completionHandler:^(BOOL granted, NSError * _Nullable error) {
-          // Enable or disable features based on authorization.
-    }];
 }
 
 - (void)fetchData {
