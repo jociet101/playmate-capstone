@@ -6,9 +6,6 @@
 //
 
 #import "NotificationHandler.h"
-#import "SessionNotification.h"
-#import "Session.h"
-#import "Invitation.h"
 #import "FriendRequest.h"
 #import "Helpers.h"
 #import "Strings.h"
@@ -19,7 +16,20 @@
 #import <UserNotifications/UNNotificationRequest.h>
 #import <UserNotifications/UNNotificationTrigger.h>
 
+@interface NotificationHandler () <UNUserNotificationCenterDelegate>
+
+@end
+
 @implementation NotificationHandler
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+        willPresentNotification:(UNNotification *)notification
+        withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler {
+   // Update the app interface directly.
+    NSLog(@"delegate notif method called");
+    // Play a sound.
+   completionHandler(UNNotificationPresentationOptionSound);
+}
 
 + (void)setUpNotifications {
     UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
@@ -60,6 +70,13 @@
 }
 
 + (void)scheduleSessionNotification:(SessionNotification *)notification {
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    
+    [center getPendingNotificationRequestsWithCompletionHandler:^(NSArray<UNNotificationRequest *> * _Nonnull requests) {
+        NSLog(@"requests.count = %ld\n%@", requests.count, requests);
+    }];
+    
+    [center removeAllPendingNotificationRequests];
     
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
     Session *session = [query getObjectWithId:notification.sessionObjectId];
@@ -71,12 +88,13 @@
     
     content.categoryIdentifier = @"SESSION";
     
+    NSLog(@"date of notif = %@", notification.thirtyBeforeTime);
+    
     UNCalendarNotificationTrigger* trigger =  [UNCalendarNotificationTrigger
            triggerWithDateMatchingComponents:[Helpers getComponentsFromDate:notification.thirtyBeforeTime] repeats:NO];
     UNNotificationRequest* request = [UNNotificationRequest
-           requestWithIdentifier:@"Session" content:content trigger:trigger];
+           requestWithIdentifier:[NSString stringWithFormat:@"session_%@", notification.sessionObjectId] content:content trigger:trigger];
     
-    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
         if (error != nil) {
             [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];

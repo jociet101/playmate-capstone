@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSDate *sixtyBeforeTime;
 
 + (void)createNotificationForSession:(NSString *)sessionId forUser:(NSString *)userId;
++ (SessionNotification *)fetchMostRecentSessionNotification;
 
 @end
 

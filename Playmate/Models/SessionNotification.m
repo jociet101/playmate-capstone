@@ -36,5 +36,12 @@
     [notification saveInBackground];
 }
 
++ (SessionNotification *)fetchMostRecentSessionNotification {
+    PFQuery *query = [PFQuery queryWithClassName:@"SessionNotification"];
+    [query orderByDescending:@"updatedAt"];
+    
+    SessionNotification *notification = [[query getFirstObject] fetchIfNeeded];
+    return notification;
+}
 
 @end

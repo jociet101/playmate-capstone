@@ -58,7 +58,8 @@
 - (void)dateTimePickerSetup {
     UIDatePicker *pickerView = [UIDatePicker new];
     [pickerView setPreferredDatePickerStyle:UIDatePickerStyleWheels];
-    [pickerView setMinuteInterval:15];
+//    [pickerView setMinuteInterval:15];
+    [pickerView setMinuteInterval:1];
     
     // set minimum and maximum dates for picker
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];

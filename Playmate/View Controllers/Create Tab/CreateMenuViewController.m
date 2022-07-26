@@ -12,6 +12,7 @@
 #import "LocationPickerCell.h"
 #import "ManageUserStatistics.h"
 #import "SessionNotification.h"
+#import "NotificationHandler.h"
 #import "Location.h"
 #import "Session.h"
 #import "Constants.h"
@@ -171,6 +172,7 @@
                                                     forSport:self.selectedSport
                                                      andUser:me];
             [SessionNotification createNotificationForSession:sessionObjectId forUser:me.objectId];
+            [NotificationHandler scheduleSessionNotification:[SessionNotification fetchMostRecentSessionNotification]];
             [self returnToHome];
         }
     }];

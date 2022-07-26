@@ -13,6 +13,7 @@
 #import "ManageUserStatistics.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "SessionNotification.h"
+#import "NotificationHandler.h"
 #import "SessionCell.h"
 #import "Location.h"
 #import "Invitation.h"
@@ -252,6 +253,7 @@ BOOL isPartOfSession;
         
         // Add the notifications coresponding to this session and user
         [SessionNotification createNotificationForSession:sessionObjectId forUser:me.objectId];
+        [NotificationHandler scheduleSessionNotification:[SessionNotification fetchMostRecentSessionNotification]];
     }
 }
 
