@@ -6,9 +6,9 @@
 //
 
 #import "OutgoingRequestsViewController.h"
+#import "UIScrollView+EmptyDataSet.h"
 #import "OutgoingRequestCell.h"
 #import "PlayerConnection.h"
-#import "UIScrollView+EmptyDataSet.h"
 #import "Constants.h"
 #import "Helpers.h"
 #import "Strings.h"
@@ -24,7 +24,6 @@
 @implementation OutgoingRequestsViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -44,7 +43,6 @@
 }
 
 - (void)fetchData {
-    
     // fetch data for outoing request list
     PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
@@ -76,7 +74,7 @@
 #pragma mark - Empty table view protocol methods
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    return [UIImage imageNamed:@"logo_small"];
+    return [Constants smallPlaymateLogo];
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {

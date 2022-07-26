@@ -44,6 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Numbers
 + (int)buttonCornerRadius;
 + (int)smallButtonCornerRadius;
++ (int)invitationsRowHeight;
 
 #pragma mark - Colors
 + (NSArray *)listOfSystemColors;
@@ -58,6 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Gifs and Images
 + (UIImage *)profileImagePlaceholder;
++ (UIImage *)smallPlaymateLogo;
 + (NSString *)getImageNameForSport:(NSString *)sport;
 + (NSArray *)addressGifImages;
 + (NSArray *)manualGifImages;

@@ -9,6 +9,7 @@
 #import "APIManager.h"
 #import "Location.h"
 #import "Helpers.h"
+#import "Strings.h"
 
 @interface SelectMapViewController () <CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate, UIGestureRecognizerDelegate>
 
@@ -76,7 +77,7 @@ BOOL firstTime;
                 [self geocodeLocationWithSearch:name];
             }
         } else {
-            [Helpers handleAlert:error withTitle:@"Error." withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
     }];
 }
@@ -112,7 +113,7 @@ BOOL firstTime;
             }
             
         } else {
-            [Helpers handleAlert:error withTitle:@"Error." withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
         
     }];
@@ -147,7 +148,7 @@ BOOL firstTime;
                 [self geocodeLocationWithSearch:name];
             }
         } else {
-            [Helpers handleAlert:error withTitle:@"Error." withMessage:nil forViewController:self];
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
     }];
 }

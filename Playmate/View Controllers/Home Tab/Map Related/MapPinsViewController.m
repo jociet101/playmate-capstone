@@ -8,14 +8,14 @@
 #import "MapPinsViewController.h"
 #import "LocationAnnotation.h"
 #import "SessionDetailsViewController.h"
-#import "Session.h"
-#import "Location.h"
-#import "Helpers.h"
-#import "Strings.h"
 #import "MapFiltersViewController.h"
-#import "Filters.h"
 #import "MapFilters.h"
 #import "PlayerConnection.h"
+#import "Session.h"
+#import "Location.h"
+#import "Filters.h"
+#import "Helpers.h"
+#import "Strings.h"
 
 @interface MapPinsViewController () <CLLocationManagerDelegate, MKMapViewDelegate, MapFiltersViewControllerDelegate>
 

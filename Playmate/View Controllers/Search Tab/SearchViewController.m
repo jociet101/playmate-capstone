@@ -6,11 +6,11 @@
 //
 
 #import "SearchViewController.h"
-#import "SessionCell.h"
 #import "SessionDetailsViewController.h"
-#import "Session.h"
 #import "FiltersMenuViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "SessionCell.h"
+#import "Session.h"
 #import "Constants.h"
 #import "Helpers.h"
 #import "Strings.h"
@@ -63,7 +63,6 @@
 }
 
 - (void)fetchData {
-    
     if (self.appliedFilters == YES) {
         [self fetchDataWithFilters:self.filters];
         return;
@@ -102,7 +101,7 @@
 #pragma mark - Empty table view protocol methods
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    return [UIImage imageNamed:@"logo_small"];
+    return [Constants smallPlaymateLogo];
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
@@ -264,7 +263,6 @@
         FiltersMenuViewController *vc = [segue destinationViewController];
         vc.delegate = self;
     }
-    
 }
 
 @end

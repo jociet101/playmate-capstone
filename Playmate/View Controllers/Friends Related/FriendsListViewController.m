@@ -6,14 +6,14 @@
 //
 
 #import "FriendsListViewController.h"
+#import "PlayerProfileViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
-#import "Constants.h"
 #import "PlayerConnection.h"
 #import "FriendCell.h"
-#import "PlayerProfileViewController.h"
-#import "Helpers.h"
 #import "Invitation.h"
 #import "Session.h"
+#import "Constants.h"
+#import "Helpers.h"
 #import "Strings.h"
 
 @interface FriendsListViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, FriendCellDelegate>
@@ -105,7 +105,7 @@
 #pragma mark - Empty table view protocol methods
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    return [UIImage imageNamed:@"logo_small"];
+    return [Constants smallPlaymateLogo];
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {

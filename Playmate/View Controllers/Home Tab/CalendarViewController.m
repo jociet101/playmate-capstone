@@ -6,13 +6,13 @@
 //
 
 #import "CalendarViewController.h"
-#import "FSCalendar.h"
-#import "Constants.h"
-#import "Helpers.h"
-#import "SessionCell.h"
-#import "Session.h"
 #import "SessionDetailsViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "FSCalendar.h"
+#import "SessionCell.h"
+#import "Constants.h"
+#import "Helpers.h"
+#import "Session.h"
 
 @interface CalendarViewController () <FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -117,7 +117,7 @@
 #pragma mark - Empty table view protocol methods
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    return [UIImage imageNamed:@"logo_small"];
+    return [Constants smallPlaymateLogo];
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {

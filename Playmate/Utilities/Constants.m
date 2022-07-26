@@ -221,6 +221,10 @@
     return 12;
 }
 
++ (int)invitationsRowHeight {
+    return 132;
+}
+
 #pragma mark - Colors
 
 + (NSArray *)listOfSystemColors {
@@ -277,6 +281,10 @@
 
 + (UIImage *)profileImagePlaceholder {
     return [UIImage imageNamed:@"playmate_logo_fit"];
+}
+
++ (UIImage *)smallPlaymateLogo {
+    return [UIImage imageNamed:@"logo_small"];
 }
 
 + (NSString *)getImageNameForSport:(NSString *)sport {

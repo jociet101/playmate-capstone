@@ -6,18 +6,18 @@
 //
 
 #import "HomeViewController.h"
-#import "Session.h"
-#import "SessionDetailsViewController.h"
-#import "UIScrollView+EmptyDataSet.h"
-#import "Constants.h"
-#import "Helpers.h"
-#import "Strings.h"
 #import "CalendarViewController.h"
 #import "ProfileViewController.h"
-#import "SessionCollectionCell.h"
 #import "UpcomingSessionsViewController.h"
 #import "SuggestedSessionsViewController.h"
 #import "CreateMenuViewController.h"
+#import "SessionDetailsViewController.h"
+#import "UIScrollView+EmptyDataSet.h"
+#import "SessionCollectionCell.h"
+#import "Session.h"
+#import "Constants.h"
+#import "Helpers.h"
+#import "Strings.h"
 
 @interface HomeViewController () <CreateMenuViewControllerDelegate>
 

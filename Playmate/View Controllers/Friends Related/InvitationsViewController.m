@@ -6,13 +6,13 @@
 //
 
 #import "InvitationsViewController.h"
-#import "InvitationCell.h"
+#import "SessionDetailsViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "InvitationCell.h"
+#import "Session.h"
 #import "Constants.h"
 #import "Strings.h"
 #import "Helpers.h"
-#import "SessionDetailsViewController.h"
-#import "Session.h"
 
 @interface InvitationsViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, InvitationCellDelegate>
 
@@ -29,7 +29,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.rowHeight = 132;
+    self.tableView.rowHeight = [Constants invitationsRowHeight];
     
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
@@ -86,7 +86,7 @@
 #pragma mark - Empty table view protocol methods
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    return [UIImage imageNamed:@"logo_small"];
+    return [Constants smallPlaymateLogo];
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {

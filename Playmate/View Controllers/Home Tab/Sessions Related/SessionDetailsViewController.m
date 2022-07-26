@@ -5,19 +5,19 @@
 //  Created by Jocelyn Tseng on 7/5/22.
 //
 
-#import "SessionDetailsViewController.h"
-#import "SessionCell.h"
-#import "Constants.h"
-#import "Location.h"
-#import "PlayerProfileCollectionCell.h"
-#import "PlayerProfileViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "Helpers.h"
-#import "Strings.h"
+#import "SessionDetailsViewController.h"
+#import "PlayerProfileViewController.h"
+#import "FriendsListViewController.h"
+#import "PlayerProfileCollectionCell.h"
 #import "ManageUserStatistics.h"
 #import "UIScrollView+EmptyDataSet.h"
-#import "FriendsListViewController.h"
+#import "SessionCell.h"
+#import "Location.h"
 #import "Invitation.h"
+#import "Helpers.h"
+#import "Constants.h"
+#import "Strings.h"
 
 @interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -297,7 +297,7 @@ BOOL isPartOfSession;
 #pragma mark - Empty collection view protocol methods
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    return [UIImage imageNamed:@"logo_small"];
+    return [Constants smallPlaymateLogo];
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {

@@ -6,13 +6,13 @@
 //
 
 #import "FiltersMenuViewController.h"
+#import "SelectMapViewController.h"
 #import "FiltersMenuPickerCell.h"
 #import "LocationPickerCell.h"
+#import "Location.h"
 #import "Constants.h"
 #import "Helpers.h"
 #import "Strings.h"
-#import "SelectMapViewController.h"
-#import "Location.h"
 
 @interface FiltersMenuViewController () <UITableViewDelegate, UITableViewDataSource, FiltersMenuPickerCellDelegate, SelectMapViewControllerDelegate>
 

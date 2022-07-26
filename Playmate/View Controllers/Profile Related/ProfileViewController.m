@@ -5,17 +5,17 @@
 //  Created by Jocelyn Tseng on 7/3/22.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "ProfileViewController.h"
 #import "WelcomeViewController.h"
+#import "EditProfileViewController.h"
+#import "FriendsListViewController.h"
 #import "SceneDelegate.h"
 #import "DateTools.h"
+#import "PlayerConnection.h"
+#import "ManageUserStatistics.h"
 #import "Constants.h"
 #import "Helpers.h"
-#import "EditProfileViewController.h"
-#import "PlayerConnection.h"
-#import "FriendsListViewController.h"
-#import <QuartzCore/QuartzCore.h>
-#import "ManageUserStatistics.h"
 
 @interface ProfileViewController () <UIImagePickerControllerDelegate>
 

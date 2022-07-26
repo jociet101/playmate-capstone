@@ -460,8 +460,8 @@
 			children = (
 				3CF4A5AD287CA9D1000C5E7D /* PlayerProfileViewController.h */,
 				3CF4A5AE287CA9D1000C5E7D /* PlayerProfileViewController.m */,
-				3C45B577287299C200EE578F /* ProfileViewController.m */,
 				3C45B576287299C200EE578F /* ProfileViewController.h */,
+				3C45B577287299C200EE578F /* ProfileViewController.m */,
 				3CF4A5882878AA1A000C5E7D /* EditProfileViewController.h */,
 				3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */,
 			);

@@ -6,13 +6,13 @@
 //
 
 #import "UpcomingSessionsViewController.h"
-#import "Session.h"
 #import "SessionDetailsViewController.h"
-#import "SessionCollectionCell.h"
-#import "Constants.h"
-#import "Strings.h"
 #import "HomeViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "SessionCollectionCell.h"
+#import "Session.h"
+#import "Constants.h"
+#import "Strings.h"
 
 @interface UpcomingSessionsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching, HomeViewControllerDelegate, SessionCollectionCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -122,7 +122,7 @@ BOOL isLoading;
     if (isLoading) {
         return [UIImage animatedImageWithImages:[Constants rollingPlaymateLogoGif] duration:1.8f];
     } else {
-        return [UIImage imageNamed:@"logo_small"];
+        return [Constants smallPlaymateLogo];
     }
 }
 
