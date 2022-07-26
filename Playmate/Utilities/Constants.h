@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)acceptedConfirmationStringFor:(NSString *)name;
 + (NSString *)deniedConfirmationStringFor:(NSString *)name;
 
-#pragma mark - Filter Menu Labels
+#pragma mark - Filter Menu Pickers
 + (NSString *)createMenuTitle:(int)row;
 + (NSString *)createFiltersMenuTitle:(int)row;
 // Duration
@@ -37,6 +37,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSArray *)skillLevelsList:(BOOL)needAll;
 // Session scope
 + (NSArray *)sessionTypeList;
+
+#pragma mark - Create Account Pickers
++ (NSArray *)gendersList;
 
 #pragma mark - Numbers
 + (int)buttonCornerRadius;

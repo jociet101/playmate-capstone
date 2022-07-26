@@ -26,8 +26,7 @@
 
 @implementation CreateViewController
 
-NSMutableArray *genders;
-int originalYOrigin;
+NSArray *genders;
 NSString *selectedGender;
 
 - (void)viewDidLoad {
@@ -39,19 +38,11 @@ NSString *selectedGender;
     self.lastNameField.delegate = self;
     self.emailField.delegate = self;
     
-    selectedGender = @"Female";
-    
     self.genderPicker.delegate = self;
     self.genderPicker.dataSource = self;
     
-    genders = [[NSMutableArray alloc] init];
-    [genders addObject:@"Female"];
-    [genders addObject:@"Male"];
-    [genders addObject:@"Other"];
-    [genders addObject:@"Prefer Not to Say"];
-    
-    CGRect containerFrame = self.textFieldContainer.frame;
-    originalYOrigin = containerFrame.origin.y;
+    genders = [Constants gendersList];
+    selectedGender = genders[0];
     
     [self.logoImageView setImage:[Constants profileImagePlaceholder]];
 }

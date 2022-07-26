@@ -40,7 +40,7 @@
 }
 
 
-#pragma mark - Filter Menu Labels
+#pragma mark - Filter Menu Pickers
 
 + (NSString *)createMenuTitle:(int)row {
     NSMutableArray *titles = [[NSMutableArray alloc] init];
@@ -197,6 +197,19 @@
     
     return [NSArray arrayWithArray:sessionTypes];
 }
+
+#pragma mark - Create Account Pickers
+
++ (NSArray *)gendersList {
+    NSMutableArray *genders = [[NSMutableArray alloc] init];
+    [genders addObject:@"Female"];
+    [genders addObject:@"Male"];
+    [genders addObject:@"Other"];
+    [genders addObject:@"Prefer Not to Say"];
+    
+    return (NSArray *)genders;
+}
+
 
 #pragma mark - Numbers
 
