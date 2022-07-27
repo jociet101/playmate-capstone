@@ -74,13 +74,12 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     
     NSDictionary *userInfo = response.notification.request.content.userInfo;
     NSString *sessionObjectId = userInfo[@"sessionObjectId"];
-    NSLog(@"session id received %@", sessionObjectId);
     
-    if ([response.actionIdentifier isEqualToString:UNNotificationDefaultActionIdentifier]) {
-        // user swiped to unlock
-        NSLog(@"Default identifier");
-    } else if ([response.actionIdentifier isEqualToString:@"VIEW_ACTION"]) {
-        NSLog(@"View action");
+    if ([response.actionIdentifier isEqualToString:@"OPEN_MAP_ACTION"]) {
+        NSLog(@"open in map lol");
+    } else {
+        // user swiped to unlock or wants to view session details
+        [self performSegueWithIdentifier:@"homeToSessionDetails" sender:(id)sessionObjectId];
     }
     
     completionHandler();
@@ -149,6 +148,10 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     } else if ([segue.identifier isEqualToString:@"homeToUpcomingSessions"]) {
         UpcomingSessionsViewController *vc = [segue destinationViewController];
         self.delegate = (id)vc;
+    } else if ([segue.identifier isEqualToString:@"homeToSessionDetails"]) {
+        SessionDetailsViewController *vc = [segue destinationViewController];
+        PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+        vc.sessionDetails = [query getObjectWithId:(NSString *)sender];
     }
 }
 

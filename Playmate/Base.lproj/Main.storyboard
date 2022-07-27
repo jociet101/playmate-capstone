@@ -967,6 +967,7 @@
                         <outlet property="suggestedView" destination="sgK-kd-KsI" id="zcM-d2-1D9"/>
                         <outlet property="upcomingView" destination="7CG-mB-JzI" id="UWU-c3-LBV"/>
                         <outlet property="welcomeLabel" destination="z4b-qd-KEq" id="BrN-bZ-V6T"/>
+                        <segue destination="FoH-rZ-204" kind="show" identifier="homeToSessionDetails" id="PHH-oM-1pf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HGV-BW-WRc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3281,7 +3282,7 @@
         <segue reference="Ufh-DU-dAv"/>
         <segue reference="jcx-uQ-feG"/>
         <segue reference="pJ2-Zv-0xr"/>
-        <segue reference="rNL-Fb-mXA"/>
+        <segue reference="PHH-oM-1pf"/>
         <segue reference="zis-o5-IMS"/>
     </inferredMetricsTieBreakers>
     <resources>

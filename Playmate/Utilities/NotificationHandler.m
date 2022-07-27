@@ -33,39 +33,26 @@
 
 + (void)registerCategories {
     UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
-
+    
+    // Create view session and open map actions
     UNNotificationAction* viewSessionAction = [UNNotificationAction
           actionWithIdentifier:@"VIEW_ACTION"
-          title:@"View"
+          title:@"View Details"
           options:UNNotificationActionOptionForeground];
     
-//    UNNotificationAction* openInMapsAction = [UNNotificationAction
-//          actionWithIdentifier:@"OPEN_MAP_ACTION"
-//          title:@"Open in Maps"
-//          options:UNNotificationActionOptionNone];
+    UNNotificationAction* openInMapsAction = [UNNotificationAction
+          actionWithIdentifier:@"OPEN_MAP_ACTION"
+          title:@"Open in Maps"
+          options:UNNotificationActionOptionNone];
     
     UNNotificationCategory* sessionNotificationCategory = [UNNotificationCategory
          categoryWithIdentifier:@"SESSION"
-         actions:@[viewSessionAction]
+         actions:@[viewSessionAction, openInMapsAction]
          intentIdentifiers:@[]
          options:UNNotificationCategoryOptionNone];
     
     NSSet *categorySet = [[NSSet alloc] initWithObjects:sessionNotificationCategory, nil];
     [center setNotificationCategories:categorySet];
-    
-//    UNNotificationCategory* sessionInvitationCategory = [UNNotificationCategory
-//         categoryWithIdentifier:@"INVITATION"
-//         actions:@[]
-//         intentIdentifiers:@[]
-//         options:UNNotificationCategoryOptionCustomDismissAction];
-//
-//    UNNotificationCategory* friendRequestCategory = [UNNotificationCategory
-//         categoryWithIdentifier:@"FRIEND_REQUEST"
-//         actions:@[]
-//         intentIdentifiers:@[]
-//         options:UNNotificationCategoryOptionCustomDismissAction];
-    
-//    [center setNotificationCategories:[NSSet setWithObjects:sessionNotificationCategory, sessionInvitationCategory, friendRequestCategory, nil]];
 }
 
 + (void)scheduleSessionNotification:(SessionNotification *)notification {
