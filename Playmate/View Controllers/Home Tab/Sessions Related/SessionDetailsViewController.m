@@ -180,13 +180,16 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     [SessionNotification deleteNotificationsForSession:sessionId];
     [NotificationHandler unscheduleSessionNotification:sessionId];
     [self.sessionDetails deleteInBackground];
-    
+    [self returnToHome];
+}
+
+- (void)returnToHome {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
     HomeViewController *vc = [[homeVC viewControllers][0] childViewControllers][0];
     self.delegate = (id)vc;
     [self.delegate reloadHomeTabSessions];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    self.view.window.rootViewController = homeVC;
 }
 
 #pragma mark - Animating confetti
