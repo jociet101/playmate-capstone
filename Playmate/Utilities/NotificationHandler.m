@@ -66,12 +66,7 @@
 
 + (void)scheduleSessionNotification:(SessionNotification *)notification {
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-    
-    [center getPendingNotificationRequestsWithCompletionHandler:^(NSArray<UNNotificationRequest *> * _Nonnull requests) {
-        NSLog(@"requests.count = %ld\n%@", requests.count, requests);
-    }];
-    
-//    [center removeAllPendingNotificationRequests];
+    [center removeAllPendingNotificationRequests];
     
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
     Session *session = [query getObjectWithId:notification.sessionObjectId];
@@ -79,16 +74,14 @@
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
     
     content.title = @"Playmate";
-    content.body = [NSString stringWithFormat:@"You have an upcoming %@ session in 30 minutes.", session.sport];
+    content.body = [NSString stringWithFormat:@"You have an upcoming %@ session.", session.sport];
     
     content.categoryIdentifier = @"SESSION";
         
-    NSDate *newDate = [Helpers removeMinutes:-9 fromTime:notification.tenBeforeTime];
+    NSDate *newDate = [Helpers removeMinutes:-1 fromTime:session.occursAt];
     
-    UNCalendarNotificationTrigger* trigger =  [UNCalendarNotificationTrigger
-           triggerWithDateMatchingComponents:[Helpers getComponentsFromDate:newDate] repeats:NO];
-    UNNotificationRequest* request = [UNNotificationRequest
-           requestWithIdentifier:[NSString stringWithFormat:@"session_%@", notification.sessionObjectId] content:content trigger:trigger];
+    UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:[Helpers getComponentsFromDate:newDate] repeats:NO];
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:[[NSUUID UUID] UUIDString] content:content trigger:trigger];
     
     [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
         if (error != nil) {
@@ -111,15 +104,12 @@
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
     content.title = @"Playmate Notification";
     content.body = @"You have a received a playmate notification.";
-    content.categoryIdentifier = @"alarm";
-    NSDateComponents *comp = [NSDateComponents new];
-    comp.hour = 10;
-    comp.minute = 30;
-//    UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:comp repeats:YES];
-    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:5 repeats:NO];
+    UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:[Helpers getComponentsFromDate:[Helpers removeMinutes:-1 fromTime:[NSDate now]]] repeats:YES];
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:[[NSUUID UUID] UUIDString] content:content trigger:trigger];
     [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-        NSLog(@"ADDED REQUEST");
+        if (error != nil) {
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
+        }
     }];
 }
 
