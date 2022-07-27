@@ -77,13 +77,11 @@
     
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
     content.title = @"Playmate";
-    content.body = [NSString stringWithFormat:@"You have an upcoming %@ session at %@.", session.sport, location.locationName];
+    content.body = [NSString stringWithFormat:@"You have an upcoming %@ session in 10 minutes at %@.", session.sport, location.locationName];
     content.categoryIdentifier = @"SESSION";
     content.userInfo = @{@"sessionObjectId" : session.objectId};
     
-    NSDate *newDate = notification.tenBeforeTime;
-    NSLog(@"olddate = %@\nnewdate = %@", session.occursAt, newDate);
-    
+    NSDate *newDate = notification.tenBeforeTime;    
     NSString *uniqueId = [me.objectId stringByAppendingString:session.objectId];
     UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:[Helpers getComponentsFromDate:newDate] repeats:NO];
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:uniqueId content:content trigger:trigger];
