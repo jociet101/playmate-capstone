@@ -131,4 +131,8 @@
 	self.view.window.rootViewController = tabBarController;
 }
 
+- (IBAction)didTapNotif:(id)sender {
+    [NotificationHandler scheduleNotificationTesting];
+}
+
 @end

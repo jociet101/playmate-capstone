@@ -95,7 +95,6 @@
             [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
     }];
-    
 }
 
 + (void)sendInvitationNotification:(Invitation *)invitation {
@@ -104,6 +103,24 @@
 
 + (void)sendFriendRequestNotification:(FriendRequest *)request {
     
+}
+
++ (void)scheduleNotificationTesting {
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    [center removeAllPendingNotificationRequests];
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+    content.title = @"Playmate Notification";
+    content.body = @"You have a received a playmate notification.";
+    content.categoryIdentifier = @"alarm";
+    NSDateComponents *comp = [NSDateComponents new];
+    comp.hour = 10;
+    comp.minute = 30;
+//    UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:comp repeats:YES];
+    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:5 repeats:NO];
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:[[NSUUID UUID] UUIDString] content:content trigger:trigger];
+    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+        NSLog(@"ADDED REQUEST");
+    }];
 }
 
 @end
