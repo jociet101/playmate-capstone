@@ -162,6 +162,8 @@
     
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     
+    NSLog(@"self.selectedDateTime = %@", self.selectedDateTime);
+    
     // create SportsSession parse object and save
     [Session createSession:me withSport:self.selectedSport withLevel:self.selectedSkillLevel withDate:self.selectedDateTime withDuration:self.selectedDuration withLocation:self.selectedLocation withCapacity:self.selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
         if (error) {

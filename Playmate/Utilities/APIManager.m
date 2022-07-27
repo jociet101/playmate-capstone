@@ -140,4 +140,17 @@ static NSString * geoapify;
     [task resume];
 }
 
+// Apple Maps Link
++ (void)goToAddress:(Location *)location {
+    
+    NSString *appleMapsUrl = @"https://maps.apple.com/place?";
+    long longitude = [location.lng longValue];
+    long latitude = [location.lat longValue];
+    NSString *urlString = [NSString stringWithFormat:@"%@&ll=%ld%@2C%ld", appleMapsUrl, longitude, @"%", latitude];
+    NSURL *url = [NSURL URLWithString:urlString];
+    [[UIApplication sharedApplication] openURL:url
+                                       options:@{}
+                             completionHandler:^(BOOL success) {}];
+}
+
 @end

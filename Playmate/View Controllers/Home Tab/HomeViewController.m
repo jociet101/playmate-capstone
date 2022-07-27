@@ -16,6 +16,7 @@
 #import "SessionCollectionCell.h"
 #import "NotificationHandler.h"
 #import "Session.h"
+#import "APIManager.h"
 #import "Constants.h"
 #import "Helpers.h"
 #import "Strings.h"
@@ -71,12 +72,15 @@
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center
 didReceiveNotificationResponse:(UNNotificationResponse *)response
          withCompletionHandler:(void (^)(void))completionHandler {
-    
+    // Parse notification information to get session id to segue to
     NSDictionary *userInfo = response.notification.request.content.userInfo;
     NSString *sessionObjectId = userInfo[@"sessionObjectId"];
     
     if ([response.actionIdentifier isEqualToString:@"OPEN_MAP_ACTION"]) {
         NSLog(@"open in map lol");
+        PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+        Session *session = [[query getObjectWithId:sessionObjectId] fetchIfNeeded];
+        [APIManager goToAddress:session.location];
     } else {
         // user swiped to unlock or wants to view session details
         [self performSegueWithIdentifier:@"homeToSessionDetails" sender:(id)sessionObjectId];

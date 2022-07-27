@@ -69,6 +69,7 @@
     content.userInfo = @{@"sessionObjectId" : session.objectId};
     
     NSDate *newDate = [Helpers removeMinutes:10 fromTime:session.occursAt];
+    NSLog(@"new date = %@", newDate);
     
     NSString *uniqueId = [me.objectId stringByAppendingString:session.objectId];
     UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:[Helpers getComponentsFromDate:newDate] repeats:NO];
