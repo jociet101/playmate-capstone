@@ -70,9 +70,7 @@
 
 - (void)fetchData {
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
-    query.limit = 20;
-
-    [query orderByAscending:@"occursAt"]; 
+    [query orderByAscending:@"occursAt"];
 
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {

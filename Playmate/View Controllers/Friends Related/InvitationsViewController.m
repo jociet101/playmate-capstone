@@ -48,7 +48,6 @@
     
     // fetch data for friend request list
     PFQuery *query = [PFQuery queryWithClassName:@"Invitation"];
-    query.limit = 20;
     
     PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     [query whereKey:@"invitationToId" equalTo:user.objectId];

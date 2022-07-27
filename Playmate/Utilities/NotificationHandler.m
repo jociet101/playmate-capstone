@@ -9,12 +9,7 @@
 #import "FriendRequest.h"
 #import "Helpers.h"
 #import "Strings.h"
-#import <UserNotifications/UNUserNotificationCenter.h>
-#import <UserNotifications/UNNotificationCategory.h>
-#import <UserNotifications/UNNotificationAction.h>
-#import <UserNotifications/UNNotificationContent.h>
-#import <UserNotifications/UNNotificationRequest.h>
-#import <UserNotifications/UNNotificationTrigger.h>
+#import <UserNotifications/UserNotifications.h>
 
 @interface NotificationHandler () <UNUserNotificationCenterDelegate>
 
@@ -76,7 +71,7 @@
         NSLog(@"requests.count = %ld\n%@", requests.count, requests);
     }];
     
-    [center removeAllPendingNotificationRequests];
+//    [center removeAllPendingNotificationRequests];
     
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
     Session *session = [query getObjectWithId:notification.sessionObjectId];
@@ -87,11 +82,11 @@
     content.body = [NSString stringWithFormat:@"You have an upcoming %@ session in 30 minutes.", session.sport];
     
     content.categoryIdentifier = @"SESSION";
-    
-    NSLog(@"date of notif = %@", notification.thirtyBeforeTime);
+        
+    NSDate *newDate = [Helpers removeMinutes:-9 fromTime:notification.tenBeforeTime];
     
     UNCalendarNotificationTrigger* trigger =  [UNCalendarNotificationTrigger
-           triggerWithDateMatchingComponents:[Helpers getComponentsFromDate:notification.thirtyBeforeTime] repeats:NO];
+           triggerWithDateMatchingComponents:[Helpers getComponentsFromDate:newDate] repeats:NO];
     UNNotificationRequest* request = [UNNotificationRequest
            requestWithIdentifier:[NSString stringWithFormat:@"session_%@", notification.sessionObjectId] content:content trigger:trigger];
     
@@ -100,6 +95,7 @@
             [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
     }];
+    
 }
 
 + (void)sendInvitationNotification:(Invitation *)invitation {
