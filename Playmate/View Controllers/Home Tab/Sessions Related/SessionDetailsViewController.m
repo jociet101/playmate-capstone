@@ -21,7 +21,7 @@
 #import "Constants.h"
 #import "Strings.h"
 
-@interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UNUserNotificationCenterDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *sportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *disabledButton;
 @property (weak, nonatomic) IBOutlet UILabel *createdDateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *inviteFriendButton;
+@property (weak, nonatomic) IBOutlet UIButton *deleteSessionButton;
 
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) CAEmitterLayer *confettiLayer;
@@ -46,6 +47,9 @@ BOOL isPartOfSession;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate = self;
     
     me = [[PFUser currentUser] fetchIfNeeded];
     
@@ -66,6 +70,28 @@ BOOL isPartOfSession;
     
     [self.collectionView reloadData];
 }
+
+#pragma mark - Notifications Configuration
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void (^)(void))completionHandler {
+    
+    NSDictionary *userInfo = response.notification.request.content.userInfo;
+    NSString *sessionObjectId = userInfo[@"sessionObjectId"];
+    NSLog(@"session id received %@", sessionObjectId);
+    
+    if ([response.actionIdentifier isEqualToString:UNNotificationDefaultActionIdentifier]) {
+        // user swiped to unlock
+        NSLog(@"Default identifier");
+    } else if ([response.actionIdentifier isEqualToString:@"VIEW_ACTION"]) {
+        NSLog(@"View action");
+    }
+    
+    completionHandler();
+}
+
+#pragma mark - UI Configuration
 
 - (void)disableInviteButton {
     self.inviteFriendButton.alpha = 0;
@@ -102,6 +128,7 @@ BOOL isPartOfSession;
         self.inviteFriendButton.alpha = 0;
     }
     [self disableInviteButton];
+    [self toggleDeleteSessionButton];
 }
 
 - (void)changeAddButtonToLeave {
@@ -113,6 +140,18 @@ BOOL isPartOfSession;
     isPartOfSession = NO;
     [self disableInviteButton];
     [self.addMyselfButton setTitle:@"Join Session" forState:UIControlStateNormal];
+}
+
+- (void)toggleDeleteSessionButton {
+    PFUser *creator = [self.sessionDetails[@"creator"] fetchIfNeeded];
+    const BOOL isOwnerOfSession = [creator.objectId isEqualToString:me.objectId];
+    if (isOwnerOfSession) {
+        [self.deleteSessionButton setEnabled:YES];
+        self.deleteSessionButton.alpha = 1;
+    } else {
+        [self.deleteSessionButton setEnabled:NO];
+        self.deleteSessionButton.alpha = 0;
+    }
 }
 
 - (void)initializeDetails {
@@ -130,6 +169,16 @@ BOOL isPartOfSession;
     self.capacityLabel.text = sessionIsFull ? [Strings noOpenSlotsErrorMsg]
                                             : [Helpers capacityString:self.sessionDetails.occupied
                                                          with:self.sessionDetails.capacity];
+}
+
+- (IBAction)deleteSession:(id)sender {
+    NSString *sessionId = self.sessionDetails.objectId;
+    [ManageUserStatistics removeSession:sessionId
+                                ofSport:self.sessionDetails.sport
+                               fromUser:me];
+    [SessionNotification deleteNotificationsForSession:sessionId];
+    [NotificationHandler unscheduleSessionNotification:sessionId];
+    [self.sessionDetails deleteInBackground];
 }
 
 #pragma mark - Animating confetti
@@ -292,6 +341,10 @@ BOOL isPartOfSession;
     [self initializeCapacityString];
 }
 
+- (void)resetButtonColor {
+    [self.inviteFriendButton setBackgroundColor:[Constants playmateBlue]];
+}
+
 #pragma mark - Collection view protocol methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -343,10 +396,6 @@ BOOL isPartOfSession;
         vc.sessionWithInvite = self.sessionDetails.objectId;
         vc.thisUser = [[PFUser currentUser] fetchIfNeeded];
     }
-}
-
-- (void)resetButtonColor {
-    [self.inviteFriendButton setBackgroundColor:[Constants playmateBlue]];
 }
 
 @end

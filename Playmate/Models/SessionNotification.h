@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)createNotificationForSession:(NSString *)sessionId forUser:(NSString *)userId;
 + (SessionNotification *)fetchMostRecentSessionNotification;
++ (void)deleteNotificationsForSession:(NSString *)sessionId;
 
 @end
 

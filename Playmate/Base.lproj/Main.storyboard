@@ -841,7 +841,9 @@
                             <constraint firstItem="cld-2g-AHh" firstAttribute="centerX" secondItem="qoz-bY-Mur" secondAttribute="centerX" id="trk-kr-0OB"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="My Sessions" id="7CT-Rm-Vwk"/>
+                    <navigationItem key="navigationItem" title="My Sessions" id="7CT-Rm-Vwk">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="VYa-TX-8es"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="calendarView" destination="wAf-6e-Bwt" id="gPk-oI-U1B"/>
                         <outlet property="tableView" destination="cld-2g-AHh" id="9NH-rq-KyI"/>
@@ -1133,7 +1135,7 @@
             <objects>
                 <viewController id="FoH-rZ-204" customClass="SessionDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xae-LI-F9P">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="580"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ihn-hH-IMg">
@@ -1375,6 +1377,17 @@
                     </view>
                     <navigationItem key="navigationItem" title="Session Details" id="uMN-T2-O2L">
                         <barButtonItem key="backBarButtonItem" title="Back" id="czW-Iy-WFC"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="zM9-xC-AXd">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="zfL-5Y-qTm">
+                                <rect key="frame" x="288" y="5" width="86" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system"/>
+                                <connections>
+                                    <action selector="deleteSession:" destination="FoH-rZ-204" eventType="touchUpInside" id="sJM-Ks-a8J"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addMyselfButton" destination="rH5-Bb-Mnr" id="yab-sk-j3w"/>
@@ -1382,6 +1395,7 @@
                         <outlet property="collectionView" destination="7Na-OS-9iP" id="1Qw-os-QHd"/>
                         <outlet property="createdDateLabel" destination="BJ4-dX-YM6" id="KMD-Ng-EWL"/>
                         <outlet property="dateTimeLabel" destination="wRX-IS-Z3x" id="22q-UF-4gB"/>
+                        <outlet property="deleteSessionButton" destination="zfL-5Y-qTm" id="TUq-eS-n3g"/>
                         <outlet property="disabledButton" destination="E73-V5-qVL" id="0aU-XE-Jde"/>
                         <outlet property="inviteFriendButton" destination="Vwr-ry-con" id="NOy-pj-5la"/>
                         <outlet property="levelLabel" destination="q5k-vB-a1m" id="1Ls-kH-VoP"/>
@@ -1398,7 +1412,7 @@
             <objects>
                 <viewController id="hNf-lE-ZKe" customClass="PlayerProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fFY-gZ-QLq">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="580"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQH-Cr-mDU">
@@ -2306,7 +2320,7 @@
             <objects>
                 <viewController id="PE5-R2-Lql" customClass="FriendsListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A8l-EG-LNX">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZQy-cE-gEh">
@@ -3264,10 +3278,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pbU-9p-1Qp"/>
+        <segue reference="Ufh-DU-dAv"/>
         <segue reference="jcx-uQ-feG"/>
-        <segue reference="Kdh-do-hzm"/>
-        <segue reference="mvL-h4-tvc"/>
+        <segue reference="pJ2-Zv-0xr"/>
+        <segue reference="rNL-Fb-mXA"/>
         <segue reference="zis-o5-IMS"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -3289,6 +3303,7 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="questionmark.circle" catalog="system" width="128" height="121"/>
         <image name="timer" catalog="system" width="128" height="121"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <image name="trash.circle" catalog="system" width="128" height="121"/>
         <image name="x.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">

@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
+#import <UserNotifications/UserNotifications.h>
 #import "SessionNotification.h"
 #import "Session.h"
 #import "Invitation.h"
@@ -18,7 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)setUpNotifications;
 + (void)scheduleSessionNotification:(SessionNotification *)notification;
 + (void)unscheduleSessionNotification:(NSString *)sessionObjectId;
-+ (void)scheduleNotificationTesting;
 
 @end
 

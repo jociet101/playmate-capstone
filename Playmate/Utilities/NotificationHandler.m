@@ -10,59 +10,62 @@
 #import "Location.h"
 #import "Helpers.h"
 #import "Strings.h"
-#import <UserNotifications/UserNotifications.h>
 
-@interface NotificationHandler () <UNUserNotificationCenterDelegate>
+@interface NotificationHandler ()
 
 @end
 
 @implementation NotificationHandler
 
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center
-        willPresentNotification:(UNNotification *)notification
-        withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler {
-   // Update the app interface directly.
-    NSLog(@"delegate notif method called");
-    // Play a sound.
-   completionHandler(UNNotificationPresentationOptionSound);
-}
-
+// TODO: implement other types of notifications
 + (void)setUpNotifications {
     UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+    
     [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + UNAuthorizationOptionSound)
        completionHandler:^(BOOL granted, NSError * _Nullable error) {
-          // Enable or disable features based on authorization.
+        if (error != nil) {
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
+        }
     }];
     
+    [NotificationHandler registerCategories];
+}
+
++ (void)registerCategories {
+    UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+
     UNNotificationAction* viewSessionAction = [UNNotificationAction
-          actionWithIdentifier:@"VIEW_SESSION_ACTION"
-          title:@"View Session"
-          options:UNNotificationActionOptionNone];
+          actionWithIdentifier:@"VIEW_ACTION"
+          title:@"View"
+          options:UNNotificationActionOptionForeground];
     
-    UNNotificationAction* openInMapsAction = [UNNotificationAction
-          actionWithIdentifier:@"OPEN_MAP_ACTION"
-          title:@"Open in Maps"
-          options:UNNotificationActionOptionNone];
+//    UNNotificationAction* openInMapsAction = [UNNotificationAction
+//          actionWithIdentifier:@"OPEN_MAP_ACTION"
+//          title:@"Open in Maps"
+//          options:UNNotificationActionOptionNone];
     
     UNNotificationCategory* sessionNotificationCategory = [UNNotificationCategory
          categoryWithIdentifier:@"SESSION"
-         actions:@[viewSessionAction, openInMapsAction]
+         actions:@[viewSessionAction]
          intentIdentifiers:@[]
-         options:UNNotificationCategoryOptionCustomDismissAction];
+         options:UNNotificationCategoryOptionNone];
     
-    UNNotificationCategory* sessionInvitationCategory = [UNNotificationCategory
-         categoryWithIdentifier:@"INVITATION"
-         actions:@[]
-         intentIdentifiers:@[]
-         options:UNNotificationCategoryOptionCustomDismissAction];
+    NSSet *categorySet = [[NSSet alloc] initWithObjects:sessionNotificationCategory, nil];
+    [center setNotificationCategories:categorySet];
     
-    UNNotificationCategory* friendRequestCategory = [UNNotificationCategory
-         categoryWithIdentifier:@"FRIEND_REQUEST"
-         actions:@[]
-         intentIdentifiers:@[]
-         options:UNNotificationCategoryOptionCustomDismissAction];
+//    UNNotificationCategory* sessionInvitationCategory = [UNNotificationCategory
+//         categoryWithIdentifier:@"INVITATION"
+//         actions:@[]
+//         intentIdentifiers:@[]
+//         options:UNNotificationCategoryOptionCustomDismissAction];
+//
+//    UNNotificationCategory* friendRequestCategory = [UNNotificationCategory
+//         categoryWithIdentifier:@"FRIEND_REQUEST"
+//         actions:@[]
+//         intentIdentifiers:@[]
+//         options:UNNotificationCategoryOptionCustomDismissAction];
     
-    [center setNotificationCategories:[NSSet setWithObjects:sessionNotificationCategory, sessionInvitationCategory, friendRequestCategory, nil]];
+//    [center setNotificationCategories:[NSSet setWithObjects:sessionNotificationCategory, sessionInvitationCategory, friendRequestCategory, nil]];
 }
 
 + (void)scheduleSessionNotification:(SessionNotification *)notification {
@@ -76,10 +79,12 @@
     content.title = @"Playmate";
     content.body = [NSString stringWithFormat:@"You have an upcoming %@ session at %@.", session.sport, location.locationName];
     content.categoryIdentifier = @"SESSION";
+    content.userInfo = @{@"sessionObjectId" : session.objectId};
     
     NSDate *newDate = notification.tenBeforeTime;
-    NSString *uniqueId = [me.objectId stringByAppendingString:notification.sessionObjectId];
-    NSLog(@"newdate = %@", newDate);
+    NSLog(@"olddate = %@\nnewdate = %@", session.occursAt, newDate);
+    
+    NSString *uniqueId = [me.objectId stringByAppendingString:session.objectId];
     UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:[Helpers getComponentsFromDate:newDate] repeats:NO];
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:uniqueId content:content trigger:trigger];
     

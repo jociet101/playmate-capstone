@@ -28,6 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 // Calculate number of days user has been on playmate for profile tab
 + (NSString *)getNumberDaysOnPlaymateForUser:(PFUser *)user;
 
+// Used when deleting session
++ (void)removeSession:(NSString *)sessionId ofSport:(NSString *)sport fromUser:(PFUser *)user;
+
 @end
 
 NS_ASSUME_NONNULL_END
