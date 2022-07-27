@@ -81,7 +81,8 @@
     content.categoryIdentifier = @"SESSION";
     content.userInfo = @{@"sessionObjectId" : session.objectId};
     
-    NSDate *newDate = notification.tenBeforeTime;    
+    NSDate *newDate = [Helpers removeMinutes:10 fromTime:session.occursAt];
+    
     NSString *uniqueId = [me.objectId stringByAppendingString:session.objectId];
     UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:[Helpers getComponentsFromDate:newDate] repeats:NO];
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:uniqueId content:content trigger:trigger];

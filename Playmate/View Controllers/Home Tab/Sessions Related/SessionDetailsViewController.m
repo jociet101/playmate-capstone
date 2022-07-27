@@ -22,7 +22,7 @@
 #import "Constants.h"
 #import "Strings.h"
 
-@interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UNUserNotificationCenterDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *sportLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
@@ -49,9 +49,6 @@ BOOL isPartOfSession;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
-    center.delegate = self;
-    
     me = [[PFUser currentUser] fetchIfNeeded];
     
     isPartOfSession = NO;
@@ -70,26 +67,6 @@ BOOL isPartOfSession;
     self.collectionView.layer.cornerRadius = [Constants buttonCornerRadius];
     
     [self.collectionView reloadData];
-}
-
-#pragma mark - Notifications Configuration
-
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center
-didReceiveNotificationResponse:(UNNotificationResponse *)response
-         withCompletionHandler:(void (^)(void))completionHandler {
-    
-    NSDictionary *userInfo = response.notification.request.content.userInfo;
-    NSString *sessionObjectId = userInfo[@"sessionObjectId"];
-    NSLog(@"session id received %@", sessionObjectId);
-    
-    if ([response.actionIdentifier isEqualToString:UNNotificationDefaultActionIdentifier]) {
-        // user swiped to unlock
-        NSLog(@"Default identifier");
-    } else if ([response.actionIdentifier isEqualToString:@"VIEW_ACTION"]) {
-        NSLog(@"View action");
-    }
-    
-    completionHandler();
 }
 
 #pragma mark - UI Configuration
@@ -180,7 +157,9 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     [SessionNotification deleteNotificationsForSession:sessionId];
     [NotificationHandler unscheduleSessionNotification:sessionId];
     [self.sessionDetails deleteInBackground];
-    [self returnToHome];
+    [self.sessionDetails deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [self returnToHome];
+    }];
 }
 
 - (void)returnToHome {

@@ -20,7 +20,7 @@
 #import "Helpers.h"
 #import "Strings.h"
 
-@interface HomeViewController () <CreateMenuViewControllerDelegate, SessionDetailsViewControllerDelegate>
+@interface HomeViewController () <CreateMenuViewControllerDelegate, SessionDetailsViewControllerDelegate, UNUserNotificationCenterDelegate>
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
@@ -37,6 +37,8 @@
 	[super viewDidLoad];
     
     [NotificationHandler setUpNotifications];
+    UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate = self;
     
     self.upcomingView.layer.cornerRadius = [Constants buttonCornerRadius];
     self.suggestedView.layer.cornerRadius = [Constants buttonCornerRadius];
@@ -62,6 +64,32 @@
     self.welcomeLabel.text = [greeting stringByAppendingString:me[@"firstName"][0]];
     
     [self fetchData];
+}
+
+#pragma mark - Notifications Configuration
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void (^)(void))completionHandler {
+    
+    NSDictionary *userInfo = response.notification.request.content.userInfo;
+    NSString *sessionObjectId = userInfo[@"sessionObjectId"];
+    NSLog(@"session id received %@", sessionObjectId);
+    
+    if ([response.actionIdentifier isEqualToString:UNNotificationDefaultActionIdentifier]) {
+        // user swiped to unlock
+        NSLog(@"Default identifier");
+    } else if ([response.actionIdentifier isEqualToString:@"VIEW_ACTION"]) {
+        NSLog(@"View action");
+    }
+    
+    completionHandler();
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+       willPresentNotification:(UNNotification *)notification
+         withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+    
 }
 
 - (void)reloadHomeTabSessions {
