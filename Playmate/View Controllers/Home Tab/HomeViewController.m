@@ -20,7 +20,7 @@
 #import "Helpers.h"
 #import "Strings.h"
 
-@interface HomeViewController () <CreateMenuViewControllerDelegate>
+@interface HomeViewController () <CreateMenuViewControllerDelegate, SessionDetailsViewControllerDelegate>
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;

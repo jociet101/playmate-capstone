@@ -10,9 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol SessionDetailsViewControllerDelegate
+
+- (void)reloadHomeTabSessions;
+
+@end
+
 @interface SessionDetailsViewController : UIViewController
 
 @property (nonatomic, strong) Session* sessionDetails;
+
+@property (nonatomic, strong) id<SessionDetailsViewControllerDelegate> delegate;
 
 @end
 

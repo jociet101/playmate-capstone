@@ -7,6 +7,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "SessionDetailsViewController.h"
+#import "HomeViewController.h"
 #import "PlayerProfileViewController.h"
 #import "FriendsListViewController.h"
 #import "PlayerProfileCollectionCell.h"
@@ -179,6 +180,13 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     [SessionNotification deleteNotificationsForSession:sessionId];
     [NotificationHandler unscheduleSessionNotification:sessionId];
     [self.sessionDetails deleteInBackground];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+    HomeViewController *vc = [[homeVC viewControllers][0] childViewControllers][0];
+    self.delegate = (id)vc;
+    [self.delegate reloadHomeTabSessions];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Animating confetti
@@ -305,6 +313,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
         [SessionNotification createNotificationForSession:sessionObjectId forUser:me.objectId];
         [NotificationHandler scheduleSessionNotification:[SessionNotification fetchMostRecentSessionNotification]];
     }
+    [self.delegate reloadHomeTabSessions];
 }
 
 - (void)updateJoinUI {
