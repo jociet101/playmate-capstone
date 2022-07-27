@@ -220,6 +220,7 @@ BOOL isPartOfSession;
         [notificationQuery whereKey:@"userObjectId" equalTo:me.objectId];
         SessionNotification *notification = [notificationQuery getFirstObject];
         [notification deleteInBackground];
+        [NotificationHandler unscheduleSessionNotification:sessionObjectId];
     } else {
         // For joining session
         [self updateJoinUI];

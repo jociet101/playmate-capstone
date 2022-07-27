@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)setUpNotifications;
 + (void)scheduleSessionNotification:(SessionNotification *)notification;
++ (void)unscheduleSessionNotification:(NSString *)sessionObjectId;
 + (void)scheduleNotificationTesting;
 
 @end
