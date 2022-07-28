@@ -39,11 +39,10 @@ BOOL isLoading;
     self.sessionList = [[NSArray alloc] init];
     
     isLoading = YES;
-    
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:8 target:self selector:@selector(stopLoading) userInfo:nil repeats:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(stopLoading) userInfo:nil repeats:NO];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
     HomeViewController *vc = [[homeVC viewControllers][0] childViewControllers][0];
@@ -141,6 +140,7 @@ BOOL isLoading;
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    isLoading = YES;
     if ([segue.identifier isEqualToString:@"upcomingToSessionDetails"]) {
         SessionDetailsViewController *vc = [segue destinationViewController];
         vc.sessionDetails = sender;

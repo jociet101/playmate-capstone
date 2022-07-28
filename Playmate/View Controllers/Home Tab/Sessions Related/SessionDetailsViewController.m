@@ -290,7 +290,6 @@ BOOL isPartOfSession;
             if (succeeded) {
                 [self returnToHomeButStay:YES];
             } else {
-                NSLog(@"error %@", error.localizedDescription);
                 [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
             }
         }];

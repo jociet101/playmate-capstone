@@ -64,8 +64,9 @@
     
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     self.welcomeLabel.text = [greeting stringByAppendingString:me[@"firstName"][0]];
-        
-    [self.delegate loadSessionList:self.sessionList];
+    
+    [self.delegate loadSessionList:@[]];
+    [self fetchData];
 }
 
 #pragma mark - Notifications Configuration
@@ -120,26 +121,12 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
             [self.sessionList removeAllObjects];
             self.sessionList = [[NSMutableArray alloc] init];
             [self filterSessions:sessions];
-            NSLog(@"sessions = %@", self.sessionList);
-//            [self reloadUpcomingSessions];
-            NSLog(@"self.delegate = %@", self.delegate);
-//            if (self.delegate == nil) {
-//                [self performSegueWithIdentifier:@"homeToUpcomingSessions" sender:nil];
-//            }
+            
             [self.delegate loadSessionList:(NSArray *)self.sessionList];
         } else {
             [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
     }];
-}
-
-- (void)reloadUpcomingSessions {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
-//    HomeViewController *vc = [[homeVC viewControllers][0] childViewControllers][0];
-//    UpcomingSessionsViewController *upcomingVC = self.upcomingView.
-    UpcomingSessionsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"UpcomingSessionsViewController"];
-    self.delegate = (id)vc;
 }
 
 // Filter out sessions that do not contain self
