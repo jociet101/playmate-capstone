@@ -140,7 +140,6 @@ BOOL isLoading;
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    isLoading = YES;
     if ([segue.identifier isEqualToString:@"upcomingToSessionDetails"]) {
         SessionDetailsViewController *vc = [segue destinationViewController];
         vc.sessionDetails = sender;

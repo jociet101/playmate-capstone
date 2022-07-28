@@ -24,6 +24,8 @@
 @property (nonatomic, strong) Filters * _Nullable filters;
 @property (weak, nonatomic) IBOutlet UIButton *clearFiltersButton;
 
+@property (nonatomic, strong) NSTimer *timer;
+
 @end
 
 @implementation SearchViewController
@@ -40,9 +42,7 @@
     
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
-    
-    [self fetchData];
-    
+        
     [self.clearFiltersButton setEnabled:NO];
     self.clearFiltersButton.tintColor = [UIColor lightGrayColor];
     
@@ -54,7 +54,7 @@
     [self.tableView addSubview:self.refreshControl];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     if (self.appliedFilters == YES) {
         [self fetchDataWithFilters:self.filters];
     } else {
@@ -100,16 +100,25 @@
 #pragma mark - Empty table view protocol methods
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
-    return [Constants smallPlaymateLogo];
+    if (self.appliedFilters) {
+        return [Constants smallPlaymateLogo];
+    }
+    return [UIImage animatedImageWithImages:[Constants rollingPlaymateLogoGif] duration:1.8f];
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Strings emptyTablePlaceholderTitle];
+    NSString *text = [Strings emptyCollectionLoadingSessionsTitle];
+    if (self.appliedFilters) {
+        text = [Strings emptyTablePlaceholderTitle];
+    }
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants titleAttributes]];
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = [Strings emptySearchPlaceholderMsg];
+    NSString *text = [Strings emptyTablePlaceholderMsg];
+    if (self.appliedFilters) {
+        text = [Strings emptySearchPlaceholderMsg];
+    }
     return [[NSAttributedString alloc] initWithString:text attributes:[Constants descriptionAttributes]];
 }
 
@@ -220,7 +229,6 @@
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
         if (sessions != nil) {
-            
             self.sessionList = (filter.location != nil) ? [self filterSessions:sessions
                                                                   withLocation:filter.location
                                                                      andRadius:filter.radius] : sessions;
