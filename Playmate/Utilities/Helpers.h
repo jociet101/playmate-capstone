@@ -77,6 +77,9 @@ NS_ASSUME_NONNULL_BEGIN
 // Make players string for session cell
 + (NSString *)makePlayerStringForSession:(Session *)session withWith:(BOOL)with;
 
+// Create notifier label string for home tab
++ (NSString *)getNotifierLabelString;
+
 #pragma mark - Retrieve Data for Filter/Create Menus
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row;
 + (NSArray * _Nullable)getFilterData:(BOOL)needAll forRow:(int)row;

@@ -50,7 +50,7 @@
     
     self.notifierLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
     self.notifierLabel.layer.borderColor = [[Constants playmateBlue] CGColor];
-    self.notifierLabel.layer.borderWidth = 0.3;
+    self.notifierLabel.layer.borderWidth = 0.8;
     
     self.sessionList = [[NSMutableArray alloc] init];
     [self fetchData];
@@ -67,32 +67,13 @@
         greeting = @"Good Morning, ";
     }
     
-    NSString *notifierText = @" 🔔 You have %ld friend requests and %ld invitations!→";
-    self.notifierLabel.text = [NSString stringWithFormat:notifierText, [self numberIncomingFriendRequests], [self numberIncomingInvitations]];
+    self.notifierLabel.text = [Helpers getNotifierLabelString];
     
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     self.welcomeLabel.text = [greeting stringByAppendingString:me[@"firstName"][0]];
     
     [self.delegate loadSessionList:@[]];
     [self fetchData];
-}
-
-- (long)numberIncomingFriendRequests {
-    PFQuery *query = [PFQuery queryWithClassName:@"FriendRequest"];
-    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
-    [query whereKey:@"requestToId" equalTo:user.objectId];
-    
-    NSArray *requests = [query findObjects];
-    return requests.count;
-}
-
-- (long)numberIncomingInvitations {
-    PFQuery *query = [PFQuery queryWithClassName:@"Invitation"];
-    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
-    [query whereKey:@"invitationToId" equalTo:user.objectId];
-
-    NSArray *invitations = [query findObjects];
-    return invitations.count;
 }
 
 #pragma mark - Notifications Configuration

@@ -315,6 +315,40 @@
     return with ? [@" w/ " stringByAppendingString:playersString] : playersString;
 }
 
+// Create notifier label string for home tab
++ (NSString *)getNotifierLabelString {
+    long numberRequests = [Helpers numberIncomingFriendRequests];
+    long numberInvitations = [Helpers numberIncomingInvitations];
+    
+    if (numberRequests == 0 && numberInvitations == 0) {
+        return @" 🔔 No notifications ";
+    }
+    NSString *requestsText = (numberRequests == 0) ? @"no" : [NSString stringWithFormat:@"%ld", numberRequests];
+    NSString *invitationsText = (numberInvitations == 0) ? @"no" : [NSString stringWithFormat:@"%ld", numberInvitations];
+    NSString *requestPlural = (numberRequests == 1) ? @"" : @"s";
+    NSString *invitationPlural = (numberRequests == 1) ? @"" : @"s";
+    NSString *notifierText = @" 🔔 You have %@ friend request%@ and %@ invitation%@!→";
+    return [NSString stringWithFormat:notifierText, requestsText, requestPlural, invitationsText, invitationPlural];;
+}
+
++ (long)numberIncomingFriendRequests {
+    PFQuery *query = [PFQuery queryWithClassName:@"FriendRequest"];
+    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
+    [query whereKey:@"requestToId" equalTo:user.objectId];
+    
+    NSArray *requests = [query findObjects];
+    return requests.count;
+}
+
++ (long)numberIncomingInvitations {
+    PFQuery *query = [PFQuery queryWithClassName:@"Invitation"];
+    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
+    [query whereKey:@"invitationToId" equalTo:user.objectId];
+
+    NSArray *invitations = [query findObjects];
+    return invitations.count;
+}
+
 #pragma mark - Retrieve Data for Filter/Create Menus
 
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row {
