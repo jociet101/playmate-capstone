@@ -5,6 +5,7 @@
 //  Created by Jocelyn Tseng on 7/3/22.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "HomeViewController.h"
 #import "CalendarViewController.h"
 #import "ProfileViewController.h"
@@ -26,6 +27,7 @@
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (nonatomic, strong) NSMutableArray *sessionList;
+@property (weak, nonatomic) IBOutlet UILabel *notifierLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *upcomingView;
 @property (weak, nonatomic) IBOutlet UIView *suggestedView;
@@ -43,9 +45,12 @@
     
     self.upcomingView.layer.cornerRadius = [Constants buttonCornerRadius];
     self.suggestedView.layer.cornerRadius = [Constants buttonCornerRadius];
-    
     self.upcomingView.alpha = 1;
     self.suggestedView.alpha = 0;
+    
+    self.notifierLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
+    self.notifierLabel.layer.borderColor = [[Constants playmateBlue] CGColor];
+    self.notifierLabel.layer.borderWidth = 0.3;
     
     self.sessionList = [[NSMutableArray alloc] init];
     [self fetchData];
@@ -62,11 +67,32 @@
         greeting = @"Good Morning, ";
     }
     
+    NSString *notifierText = @" 🔔 You have %ld friend requests and %ld invitations!→";
+    self.notifierLabel.text = [NSString stringWithFormat:notifierText, [self numberIncomingFriendRequests], [self numberIncomingInvitations]];
+    
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     self.welcomeLabel.text = [greeting stringByAppendingString:me[@"firstName"][0]];
     
     [self.delegate loadSessionList:@[]];
     [self fetchData];
+}
+
+- (long)numberIncomingFriendRequests {
+    PFQuery *query = [PFQuery queryWithClassName:@"FriendRequest"];
+    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
+    [query whereKey:@"requestToId" equalTo:user.objectId];
+    
+    NSArray *requests = [query findObjects];
+    return requests.count;
+}
+
+- (long)numberIncomingInvitations {
+    PFQuery *query = [PFQuery queryWithClassName:@"Invitation"];
+    PFUser *user = [[PFUser currentUser] fetchIfNeeded];
+    [query whereKey:@"invitationToId" equalTo:user.objectId];
+
+    NSArray *invitations = [query findObjects];
+    return invitations.count;
 }
 
 #pragma mark - Notifications Configuration
@@ -178,6 +204,10 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 	UITabBarController *tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
 	[tabBarController setSelectedIndex:3];
 	self.view.window.rootViewController = tabBarController;
+}
+
+- (IBAction)didTapViewNotifications:(id)sender {
+    [self performSegueWithIdentifier:@"homeToFriendNotifications" sender:nil];
 }
 
 @end
