@@ -327,7 +327,7 @@
     NSString *invitationsText = (numberInvitations == 0) ? @"no" : [NSString stringWithFormat:@"%ld", numberInvitations];
     NSString *requestPlural = (numberRequests == 1) ? @"" : @"s";
     NSString *invitationPlural = (numberInvitations == 1) ? @"" : @"s";
-    NSString *notifierText = @" 🔔 You have %@ friend request%@ and %@ invitation%@!→";
+    NSString *notifierText = @" 🔔 You have %@ friend request%@ and %@ invitation%@! → ";
     return [NSString stringWithFormat:notifierText, requestsText, requestPlural, invitationsText, invitationPlural];;
 }
 

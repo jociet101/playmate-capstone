@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (nonatomic, strong) NSMutableArray *sessionList;
 @property (weak, nonatomic) IBOutlet UILabel *notifierLabel;
+@property (weak, nonatomic) IBOutlet UILabel *takeQuizLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *upcomingView;
 @property (weak, nonatomic) IBOutlet UIView *suggestedView;
