@@ -218,14 +218,10 @@ BOOL isFirstTimeGettingLocation;
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     
     if ([scope isEqualToString:@"Own"]) {
-        NSMutableSet *selfSet = [NSMutableSet setWithObject:me.objectId];
-        
         // Filter to only sessions self is in
         for (Session *session in sessions) {
             NSMutableSet *playersSet = [Helpers getPlayerObjectIdSet:session.playersList];
-            [playersSet intersectSet: selfSet];
-            NSArray *resultArray = [playersSet allObjects];
-            if (resultArray.count > 0) {
+            if ([playersSet containsObject:me.objectId]) {
                 [filteredSessions addObject:session];
             }
         }

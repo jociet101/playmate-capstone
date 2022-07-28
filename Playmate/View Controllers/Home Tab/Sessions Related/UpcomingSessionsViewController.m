@@ -14,7 +14,7 @@
 #import "Constants.h"
 #import "Strings.h"
 
-@interface UpcomingSessionsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching, HomeViewControllerDelegate, SessionCollectionCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface UpcomingSessionsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HomeViewControllerDelegate, SessionCollectionCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *sessionList;
@@ -36,15 +36,18 @@ BOOL isLoading;
     self.collectionView.emptyDataSetSource = self;
     self.collectionView.emptyDataSetSource = self;
     
-    // TODO: for prefetching
-    self.collectionView.prefetchDataSource = self;
-    self.collectionView.prefetchingEnabled = YES;
-    
     self.sessionList = [[NSArray alloc] init];
     
     isLoading = YES;
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:8 target:self selector:@selector(stopLoading) userInfo:nil repeats:NO];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+    HomeViewController *vc = [[homeVC viewControllers][0] childViewControllers][0];
+    vc.delegate = self;
 }
 
 - (void)stopLoading {
@@ -54,20 +57,11 @@ BOOL isLoading;
 
 - (void)loadSessionList:(NSArray *)sessionList {
     self.sessionList = sessionList;
+    
     [self.collectionView reloadData];
 }
 
 #pragma mark - Collection view protocol methods
-
-// TODO: figure out how to prefetch!!!!!!!!!
-- (void)collectionView:(UICollectionView *)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
-    for (NSIndexPath *indexPath in indexPaths) {
-        SessionCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SessionCollectionCell" forIndexPath:indexPath];
-        
-        cell.session = self.sessionList[indexPath.row];
-        cell.delegate = self;
-    }
-}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.sessionList.count;

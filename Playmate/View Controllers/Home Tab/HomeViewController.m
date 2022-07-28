@@ -48,6 +48,7 @@
     self.suggestedView.alpha = 0;
     
     self.sessionList = [[NSMutableArray alloc] init];
+    [self fetchData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -63,8 +64,8 @@
     
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     self.welcomeLabel.text = [greeting stringByAppendingString:me[@"firstName"][0]];
-    
-    [self fetchData];
+        
+    [self.delegate loadSessionList:self.sessionList];
 }
 
 #pragma mark - Notifications Configuration
@@ -117,7 +118,14 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
         if (sessions != nil) {
             [self.sessionList removeAllObjects];
+            self.sessionList = [[NSMutableArray alloc] init];
             [self filterSessions:sessions];
+            NSLog(@"sessions = %@", self.sessionList);
+//            [self reloadUpcomingSessions];
+            NSLog(@"self.delegate = %@", self.delegate);
+//            if (self.delegate == nil) {
+//                [self performSegueWithIdentifier:@"homeToUpcomingSessions" sender:nil];
+//            }
             [self.delegate loadSessionList:(NSArray *)self.sessionList];
         } else {
             [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
@@ -125,21 +133,25 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     }];
 }
 
+- (void)reloadUpcomingSessions {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+//    HomeViewController *vc = [[homeVC viewControllers][0] childViewControllers][0];
+//    UpcomingSessionsViewController *upcomingVC = self.upcomingView.
+    UpcomingSessionsViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"UpcomingSessionsViewController"];
+    self.delegate = (id)vc;
+}
+
 // Filter out sessions that do not contain self
 - (void)filterSessions:(NSArray *)sessions {
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     NSDate *now = [NSDate date];
     
-    NSMutableSet *selfSet = [NSMutableSet setWithObject:me.objectId];
     // Filter to only sessions self is in
     for (Session *session in sessions) {
         NSMutableSet *playersSet = [Helpers getPlayerObjectIdSet:session.playersList];
-        
-        [playersSet intersectSet: selfSet];
-        NSArray *resultArray = [playersSet allObjects];
-        
         NSComparisonResult result = [now compare:session.occursAt];
-        if (resultArray.count > 0 && result == NSOrderedAscending) {
+        if ([playersSet containsObject:me.objectId] && result == NSOrderedAscending) {
             [self.sessionList addObject:session];
         }
     }
@@ -153,6 +165,10 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     self.suggestedView.alpha = isSegmentZeroIndex ? 0 : 1;
 }
 
+- (IBAction)didTapReload:(id)sender {
+    [self fetchData];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -160,6 +176,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 		CalendarViewController *vc = [segue destinationViewController];
 		vc.rawSessionList = self.sessionList;
     } else if ([segue.identifier isEqualToString:@"homeToUpcomingSessions"]) {
+        
         UpcomingSessionsViewController *vc = [segue destinationViewController];
         self.delegate = (id)vc;
     } else if ([segue.identifier isEqualToString:@"homeToSessionDetails"]) {

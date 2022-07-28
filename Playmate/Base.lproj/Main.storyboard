@@ -928,6 +928,15 @@
                                     <action selector="switchViewController:" destination="L1k-7T-xRK" eventType="valueChanged" id="ogC-FF-FS0"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2a-dA-zqj">
+                                <rect key="frame" x="331" y="249" width="43" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise" catalog="system" title=""/>
+                                <connections>
+                                    <action selector="didTapReload:" destination="L1k-7T-xRK" eventType="touchUpInside" id="vV4-Ym-OfE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UEK-el-5Pu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2940,7 +2949,7 @@
         <!--Upcoming Sessions View Controller-->
         <scene sceneID="SPL-Ja-u87">
             <objects>
-                <viewController id="AKn-B5-Xno" customClass="UpcomingSessionsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpcomingSessionsViewController" id="AKn-B5-Xno" customClass="UpcomingSessionsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D6d-lW-P56">
                         <rect key="frame" x="0.0" y="0.0" width="319.66666666666669" height="429"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3290,6 +3299,7 @@
         <segue reference="zis-o5-IMS"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="bell" catalog="system" width="128" height="124"/>
         <image name="calendar.circle" catalog="system" width="128" height="121"/>
