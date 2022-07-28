@@ -24,11 +24,13 @@
 
 @interface HomeViewController () <CreateMenuViewControllerDelegate, SessionDetailsViewControllerDelegate, UNUserNotificationCenterDelegate>
 
+@property (nonatomic, strong) NSMutableArray *sessionList;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
-@property (nonatomic, strong) NSMutableArray *sessionList;
 @property (weak, nonatomic) IBOutlet UILabel *notifierLabel;
 @property (weak, nonatomic) IBOutlet UILabel *takeQuizLabel;
+@property (weak, nonatomic) IBOutlet UILabel *exploreBackgroundLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scheduleBackgroundLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *upcomingView;
 @property (weak, nonatomic) IBOutlet UIView *suggestedView;
@@ -49,14 +51,19 @@
     self.upcomingView.alpha = 1;
     self.suggestedView.alpha = 0;
     
-    self.notifierLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
-    self.notifierLabel.layer.borderColor = [[Constants playmateBlue] CGColor];
-    self.notifierLabel.layer.borderWidth = 2;
+    [self configureLabel:self.notifierLabel];
+    [self configureLabel:self.takeQuizLabel];
+    [self configureLabel:self.exploreBackgroundLabel];
+    [self configureLabel:self.scheduleBackgroundLabel];
     
-    self.takeQuizLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
-    self.takeQuizLabel.layer.borderColor = [[Constants playmateBlue] CGColor];
-    self.takeQuizLabel.layer.borderWidth = 2;
+    UITapGestureRecognizer *exploreTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapExploreNearby)];
     
+    [self.exploreBackgroundLabel addGestureRecognizer:exploreTapGesture];
+    
+    UITapGestureRecognizer *scheduleTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapSchedule)];
+    
+    [self.scheduleBackgroundLabel addGestureRecognizer:scheduleTapGesture];
+
     self.sessionList = [[NSMutableArray alloc] init];
     [self fetchData];
 }
@@ -67,6 +74,24 @@
     self.takeQuizLabel.text = [Helpers getQuizString];
     [self.delegate loadSessionList:@[]];
     [self fetchData];
+}
+
+- (void)configureLabel:(UILabel *)label {
+    label.layer.cornerRadius = [Constants smallButtonCornerRadius];
+    label.layer.borderColor = [[Constants playmateBlue] CGColor];
+    label.layer.borderWidth = 2;
+}
+
+#pragma mark - Gesture Recognizers
+
+- (void)didTapExploreNearby {
+    
+    [self performSegueWithIdentifier:@"homeToExploreNearby" sender:nil];
+}
+
+- (void)didTapSchedule {
+    
+    [self performSegueWithIdentifier:@"homeToSchedule" sender:nil];
 }
 
 #pragma mark - Notifications Configuration
@@ -159,11 +184,10 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([segue.identifier isEqualToString:@"toCalendar"]) {
+	if ([segue.identifier isEqualToString:@"homeToSchedule"]) {
 		CalendarViewController *vc = [segue destinationViewController];
 		vc.rawSessionList = self.sessionList;
     } else if ([segue.identifier isEqualToString:@"homeToUpcomingSessions"]) {
-        
         UpcomingSessionsViewController *vc = [segue destinationViewController];
         self.delegate = (id)vc;
     } else if ([segue.identifier isEqualToString:@"homeToSessionDetails"]) {
@@ -171,13 +195,6 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
         PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
         vc.sessionDetails = [query getObjectWithId:(NSString *)sender];
     }
-}
-
-- (IBAction)goToProfile:(id)sender {
-	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-	UITabBarController *tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
-	[tabBarController setSelectedIndex:3];
-	self.view.window.rootViewController = tabBarController;
 }
 
 - (IBAction)didTapViewNotifications:(id)sender {

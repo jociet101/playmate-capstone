@@ -690,7 +690,7 @@
             </objects>
             <point key="canvasLocation" x="8047.6923076923076" y="-2968.0094786729856"/>
         </scene>
-        <!--My Sessions-->
+        <!--My Schedule-->
         <scene sceneID="OC4-cM-Qxo">
             <objects>
                 <viewController id="gNp-hx-eex" customClass="CalendarViewController" sceneMemberID="viewController">
@@ -841,7 +841,7 @@
                             <constraint firstItem="cld-2g-AHh" firstAttribute="centerX" secondItem="qoz-bY-Mur" secondAttribute="centerX" id="trk-kr-0OB"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="My Sessions" id="7CT-Rm-Vwk">
+                    <navigationItem key="navigationItem" title="My Schedule" id="7CT-Rm-Vwk">
                         <barButtonItem key="backBarButtonItem" title="Back" id="VYa-TX-8es"/>
                     </navigationItem>
                     <connections>
@@ -862,7 +862,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4b-qd-KEq">
-                                <rect key="frame" x="14" y="62" width="360" height="57"/>
+                                <rect key="frame" x="14" y="42" width="360" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Good Afternoon, Jocelyn!">
@@ -888,41 +888,23 @@
                                     <segue destination="AKn-B5-Xno" kind="embed" identifier="homeToUpcomingSessions" id="9rq-T1-Ppy"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNk-vt-fc8">
-                                <rect key="frame" x="268" y="211" width="95" height="95"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="">
-                                    <backgroundConfiguration key="background" image="person.circle" catalog="system"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="goToProfile:" destination="L1k-7T-xRK" eventType="touchUpInside" id="T7U-XB-uFx"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7U-JU-Jv3">
-                                <rect key="frame" x="26" y="211" width="95" height="95"/>
+                                <rect key="frame" x="29" y="226" width="69" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="">
-                                    <backgroundConfiguration key="background" image="map.circle" catalog="system"/>
+                                    <backgroundConfiguration key="background" image="map.fill" catalog="system"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <segue destination="CuJ-hg-fGS" kind="show" identifier="toMap" id="BgN-on-xPu"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JN6-Oj-xVw">
-                                <rect key="frame" x="148" y="211" width="95" height="95"/>
+                                <rect key="frame" x="214" y="227" width="69" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="">
-                                    <backgroundConfiguration key="background" image="calendar.circle" catalog="system"/>
+                                    <backgroundConfiguration key="background" image="calendar" catalog="system"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <segue destination="gNp-hx-eex" kind="show" identifier="toCalendar" id="JTZ-nq-x0k"/>
-                                </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="l8U-Tc-ERR">
                                 <rect key="frame" x="61" y="325" width="267" height="32"/>
@@ -938,6 +920,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2a-dA-zqj">
                                 <rect key="frame" x="336" y="325" width="43" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise" catalog="system" title=""/>
                                 <connections>
@@ -945,7 +928,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="46s-92-sp4">
-                                <rect key="frame" x="14" y="115" width="360" height="42"/>
+                                <rect key="frame" x="14" y="110" width="360" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <attributedString key="attributedText">
@@ -962,7 +945,7 @@
                                 </connections>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="KEp-T2-ddB">
-                                <rect key="frame" x="14" y="165" width="360" height="38"/>
+                                <rect key="frame" x="14" y="160" width="360" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <attributedString key="attributedText">
@@ -978,19 +961,65 @@
                                     <outletCollection property="gestureRecognizers" destination="bU2-st-J5c" appends="YES" id="PVx-TE-UeU"/>
                                 </connections>
                             </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="dql-Mn-idX">
+                                <rect key="frame" x="291" y="239" width="71" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <attributedString key="attributedText">
+                                    <fragment content="My Schedule">
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="Avenir-Medium"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ptZ-du-KXm">
+                                <rect key="frame" x="106" y="239" width="58" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Explore Nearby">
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="Avenir-Medium"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Cs2-bb-xcW">
+                                <rect key="frame" x="14" y="219" width="164" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <attributedString key="attributedText"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="xiw-4N-bmn">
+                                <rect key="frame" x="198" y="218" width="176" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <attributedString key="attributedText"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UEK-el-5Pu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="biG-ev-HzV"/>
                     <connections>
+                        <outlet property="exploreBackgroundLabel" destination="Cs2-bb-xcW" id="mhM-qQ-Tbf"/>
                         <outlet property="notifierLabel" destination="46s-92-sp4" id="tcH-9V-MBr"/>
+                        <outlet property="scheduleBackgroundLabel" destination="xiw-4N-bmn" id="Xk2-RT-7zr"/>
                         <outlet property="suggestedView" destination="sgK-kd-KsI" id="zcM-d2-1D9"/>
                         <outlet property="takeQuizLabel" destination="KEp-T2-ddB" id="bzb-al-ihB"/>
                         <outlet property="upcomingView" destination="7CG-mB-JzI" id="UWU-c3-LBV"/>
                         <outlet property="welcomeLabel" destination="z4b-qd-KEq" id="BrN-bZ-V6T"/>
                         <segue destination="FoH-rZ-204" kind="show" identifier="homeToSessionDetails" id="PHH-oM-1pf"/>
                         <segue destination="fyA-uy-s4Q" kind="show" identifier="homeToFriendNotifications" id="cjs-AZ-4HT"/>
+                        <segue destination="gNp-hx-eex" kind="show" identifier="homeToSchedule" id="2vd-5A-dTP"/>
+                        <segue destination="CuJ-hg-fGS" kind="show" identifier="homeToExploreNearby" id="AHu-fh-hry"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HGV-BW-WRc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3327,7 +3356,7 @@
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="bell" catalog="system" width="128" height="124"/>
-        <image name="calendar.circle" catalog="system" width="128" height="121"/>
+        <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
@@ -3335,11 +3364,10 @@
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="location.circle" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="map.circle" catalog="system" width="128" height="121"/>
+        <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="number.circle" catalog="system" width="128" height="121"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person" catalog="system" width="128" height="117"/>
-        <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="playmate_logo_transparent" width="1024" height="1024"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="questionmark.circle" catalog="system" width="128" height="121"/>
