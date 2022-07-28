@@ -40,14 +40,19 @@
           title:@"View Details"
           options:UNNotificationActionOptionForeground];
     
-    UNNotificationAction* openInMapsAction = [UNNotificationAction
-          actionWithIdentifier:@"OPEN_MAP_ACTION"
-          title:@"Open in Maps"
+    UNNotificationAction* openInGoogleMapsAction = [UNNotificationAction
+          actionWithIdentifier:@"OPEN_GOOGLE_MAP_ACTION"
+          title:@"Open in Google Maps"
+          options:UNNotificationActionOptionNone];
+    
+    UNNotificationAction* openInAppleMapsAction = [UNNotificationAction
+          actionWithIdentifier:@"OPEN_APPLE_MAP_ACTION"
+          title:@"Open in Apple Maps"
           options:UNNotificationActionOptionNone];
     
     UNNotificationCategory* sessionNotificationCategory = [UNNotificationCategory
          categoryWithIdentifier:@"SESSION"
-         actions:@[viewSessionAction, openInMapsAction]
+         actions:@[viewSessionAction, openInGoogleMapsAction, openInAppleMapsAction]
          intentIdentifiers:@[]
          options:UNNotificationCategoryOptionNone];
     
@@ -68,9 +73,7 @@
     content.categoryIdentifier = @"SESSION";
     content.userInfo = @{@"sessionObjectId" : session.objectId};
     
-    NSDate *newDate = [Helpers removeMinutes:10 fromTime:session.occursAt];
-    NSLog(@"new date = %@", newDate);
-    
+    NSDate *newDate = [Helpers removeMinutes:10 fromTime:session.occursAt];    
     NSString *uniqueId = [me.objectId stringByAppendingString:session.objectId];
     UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:[Helpers getComponentsFromDate:newDate] repeats:NO];
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:uniqueId content:content trigger:trigger];

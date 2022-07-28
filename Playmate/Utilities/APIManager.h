@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getReverseGeocodedLocation:(Location *)location withCompletion:(void(^)(NSString *name, NSError *error))completion;
 
 // Apple Maps Link
-+ (void)goToAddress:(Location *)location;
++ (void)goToAddress:(Location *)location onPlatform:(NSString *)platform;
 
 @end
 

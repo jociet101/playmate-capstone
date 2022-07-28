@@ -141,16 +141,42 @@ static NSString * geoapify;
 }
 
 // Apple Maps Link
-+ (void)goToAddress:(Location *)location {
++ (void)goToAddress:(Location *)location onPlatform:(NSString *)platform {
+    NSString *mapURL = @"http://maps.apple.com/?address=";
     
-    NSString *appleMapsUrl = @"https://maps.apple.com/place?";
-    long longitude = [location.lng longValue];
-    long latitude = [location.lat longValue];
-    NSString *urlString = [NSString stringWithFormat:@"%@&ll=%ld%@2C%ld", appleMapsUrl, longitude, @"%", latitude];
+    if ([platform isEqualToString:@"Google"]) {
+        mapURL = @"https://www.google.com/maps/place/";
+    }
+    
+    // Parse the address into array then into format needed for url
+    NSArray *addyComponents = [location.locationName componentsSeparatedByString:@" "];
+    NSString *craftedLink = @"";
+    
+    BOOL isFirstComponent = YES;
+    
+    for (NSString *component in addyComponents) {
+        if (isFirstComponent) {
+            isFirstComponent = NO;
+            craftedLink = [craftedLink stringByAppendingString:component];
+        } else {
+            craftedLink = [craftedLink stringByAppendingFormat:@"+%@", component];
+        }
+    }
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", mapURL, craftedLink];
     NSURL *url = [NSURL URLWithString:urlString];
-    [[UIApplication sharedApplication] openURL:url
-                                       options:@{}
-                             completionHandler:^(BOOL success) {}];
+    const BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:url];
+
+    if (canOpen) {
+        [[UIApplication sharedApplication] openURL:url
+                                           options:@{}
+                                 completionHandler:^(BOOL success) {}];
+    } else {
+        [Helpers handleAlert:nil
+                   withTitle:@"Cannot find location"
+                 withMessage:[NSString stringWithFormat:@"Address %@ cannot be found on maps.", location.locationName]
+           forViewController:self];
+    }
 }
 
 @end

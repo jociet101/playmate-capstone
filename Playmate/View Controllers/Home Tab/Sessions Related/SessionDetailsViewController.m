@@ -18,6 +18,7 @@
 #import "SessionCell.h"
 #import "Location.h"
 #import "Invitation.h"
+#import "APIManager.h"
 #import "Helpers.h"
 #import "Constants.h"
 #import "Strings.h"
@@ -170,6 +171,10 @@ BOOL isPartOfSession;
     self.delegate = (id)vc;
     [self.delegate reloadHomeTabSessions];
     self.view.window.rootViewController = homeVC;
+}
+
+- (IBAction)goToLocation:(id)sender {
+    [APIManager goToAddress:self.sessionDetails.location onPlatform:@"Google"];
 }
 
 #pragma mark - Animating confetti

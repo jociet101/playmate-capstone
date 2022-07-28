@@ -76,11 +76,14 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     NSDictionary *userInfo = response.notification.request.content.userInfo;
     NSString *sessionObjectId = userInfo[@"sessionObjectId"];
     
-    if ([response.actionIdentifier isEqualToString:@"OPEN_MAP_ACTION"]) {
-        NSLog(@"open in map lol");
+    if ([response.actionIdentifier isEqualToString:@"OPEN_APPLE_MAP_ACTION"]) {
         PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
         Session *session = [[query getObjectWithId:sessionObjectId] fetchIfNeeded];
-        [APIManager goToAddress:session.location];
+        [APIManager goToAddress:session.location onPlatform:@"Apple"];
+    } else if ([response.actionIdentifier isEqualToString:@"OPEN_GOOGLE_MAP_ACTION"]) {
+        PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+        Session *session = [[query getObjectWithId:sessionObjectId] fetchIfNeeded];
+        [APIManager goToAddress:session.location onPlatform:@"Google"];
     } else {
         // user swiped to unlock or wants to view session details
         [self performSegueWithIdentifier:@"homeToSessionDetails" sender:(id)sessionObjectId];
