@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NotificationHandler : NSObject
 
 + (void)setUpNotifications;
-+ (void)scheduleSessionNotification:(SessionNotification *)notification;
++ (void)scheduleSessionNotification:(NSString *)sessionObjectId;
 + (void)unscheduleSessionNotification:(NSString *)sessionObjectId;
 
 @end

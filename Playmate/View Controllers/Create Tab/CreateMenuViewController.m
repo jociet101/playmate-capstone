@@ -174,7 +174,7 @@
                                                     forSport:self.selectedSport
                                                      andUser:me];
             [SessionNotification createNotificationForSession:sessionObjectId forUser:me.objectId];
-            [NotificationHandler scheduleSessionNotification:[SessionNotification fetchMostRecentSessionNotification]];
+            [NotificationHandler scheduleSessionNotification:sessionObjectId];
             [self returnToHome];
         }
     }];

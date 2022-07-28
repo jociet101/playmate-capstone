@@ -299,7 +299,7 @@ BOOL isPartOfSession;
         
         // Add the notifications coresponding to this session and user
         [SessionNotification createNotificationForSession:sessionObjectId forUser:me.objectId];
-        [NotificationHandler scheduleSessionNotification:[SessionNotification fetchMostRecentSessionNotification]];
+        [NotificationHandler scheduleSessionNotification:sessionObjectId];
     }
     [self.delegate reloadHomeTabSessions];
 }

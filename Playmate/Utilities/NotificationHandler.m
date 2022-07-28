@@ -43,12 +43,12 @@
     UNNotificationAction* openInGoogleMapsAction = [UNNotificationAction
           actionWithIdentifier:@"OPEN_GOOGLE_MAP_ACTION"
           title:@"Open in Google Maps"
-          options:UNNotificationActionOptionNone];
+          options:UNNotificationActionOptionForeground];
     
     UNNotificationAction* openInAppleMapsAction = [UNNotificationAction
           actionWithIdentifier:@"OPEN_APPLE_MAP_ACTION"
           title:@"Open in Apple Maps"
-          options:UNNotificationActionOptionNone];
+          options:UNNotificationActionOptionForeground];
     
     UNNotificationCategory* sessionNotificationCategory = [UNNotificationCategory
          categoryWithIdentifier:@"SESSION"
@@ -60,11 +60,11 @@
     [center setNotificationCategories:categorySet];
 }
 
-+ (void)scheduleSessionNotification:(SessionNotification *)notification {
++ (void)scheduleSessionNotification:(NSString *)sessionObjectId {
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
-    Session *session = [query getObjectWithId:notification.sessionObjectId];
+    Session *session = [query getObjectWithId:sessionObjectId];
     Location *location = [session.location fetchIfNeeded];
     
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
@@ -73,7 +73,9 @@
     content.categoryIdentifier = @"SESSION";
     content.userInfo = @{@"sessionObjectId" : session.objectId};
     
-    NSDate *newDate = [Helpers removeMinutes:10 fromTime:session.occursAt];    
+    NSDate *newDate = [Helpers removeMinutes:10 fromTime:session.occursAt];
+    
+    
     NSString *uniqueId = [me.objectId stringByAppendingString:session.objectId];
     UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:[Helpers getComponentsFromDate:newDate] repeats:NO];
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:uniqueId content:content trigger:trigger];
