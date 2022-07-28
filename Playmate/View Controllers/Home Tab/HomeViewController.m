@@ -29,6 +29,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *notifierLabel;
 @property (weak, nonatomic) IBOutlet UILabel *takeQuizLabel;
+@property (weak, nonatomic) IBOutlet UILabel *notifierShadow;
+@property (weak, nonatomic) IBOutlet UILabel *quizShadow;
+
 @property (weak, nonatomic) IBOutlet UILabel *exploreBackgroundLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scheduleBackgroundLabel;
 
@@ -51,10 +54,10 @@
     self.upcomingView.alpha = 1;
     self.suggestedView.alpha = 0;
     
-    [self configureLabel:self.notifierLabel];
-    [self configureLabel:self.takeQuizLabel];
-    [self configureLabel:self.exploreBackgroundLabel];
-    [self configureLabel:self.scheduleBackgroundLabel];
+    [self configureLabel:self.notifierLabel isShadow:NO];
+    [self configureLabel:self.takeQuizLabel isShadow:NO];
+    [self configureLabel:self.notifierShadow isShadow:YES];
+    [self configureLabel:self.quizShadow isShadow:YES];
     
     UITapGestureRecognizer *exploreTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapExploreNearby)];
     
@@ -76,21 +79,22 @@
     [self fetchData];
 }
 
-- (void)configureLabel:(UILabel *)label {
-    label.layer.cornerRadius = [Constants smallButtonCornerRadius];
-    label.layer.borderColor = [[Constants playmateBlue] CGColor];
-    label.layer.borderWidth = 2;
+- (void)configureLabel:(UILabel *)label isShadow:(BOOL)isShadow {
+    label.layer.cornerRadius = [Constants tinyButtonCornerRadius];
+    if (isShadow) {
+        label.layer.backgroundColor = [[UIColor systemGray4Color] CGColor];
+    } else {
+        label.layer.backgroundColor = [[UIColor systemGray6Color] CGColor];
+    }
 }
 
 #pragma mark - Gesture Recognizers
 
 - (void)didTapExploreNearby {
-    
     [self performSegueWithIdentifier:@"homeToExploreNearby" sender:nil];
 }
 
 - (void)didTapSchedule {
-    
     [self performSegueWithIdentifier:@"homeToSchedule" sender:nil];
 }
 

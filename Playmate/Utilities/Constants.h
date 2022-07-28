@@ -44,6 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Numbers
 + (int)buttonCornerRadius;
 + (int)smallButtonCornerRadius;
++ (int)tinyButtonCornerRadius;
 + (int)invitationsRowHeight;
 
 #pragma mark - Colors

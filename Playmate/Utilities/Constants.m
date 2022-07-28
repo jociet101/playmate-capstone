@@ -222,6 +222,10 @@
     return 12;
 }
 
++ (int)tinyButtonCornerRadius {
+    return 9;
+}
+
 + (int)invitationsRowHeight {
     return 132;
 }
