@@ -70,7 +70,6 @@ static NSString * geoapify;
     NSString *craftedLink = @"";
     
     BOOL isFirstComponent = YES;
-    
     for (NSString *component in addyComponents) {
         if (isFirstComponent) {
             isFirstComponent = NO;
@@ -142,6 +141,7 @@ static NSString * geoapify;
 
 // Apple Maps Link
 + (void)goToAddress:(Location *)location onPlatform:(NSString *)platform {
+    [location fetchIfNeeded];
     NSString *mapURL = @"http://maps.apple.com/?address=";
     
     if ([platform isEqualToString:@"Google"]) {
@@ -153,7 +153,6 @@ static NSString * geoapify;
     NSString *craftedLink = @"";
     
     BOOL isFirstComponent = YES;
-    
     for (NSString *component in addyComponents) {
         if (isFirstComponent) {
             isFirstComponent = NO;
