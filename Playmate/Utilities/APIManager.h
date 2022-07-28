@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getGeocodedLocation:(NSString *)address withCompletion:(void(^)(Location *loc, NSError *error))completion;
 - (void)getReverseGeocodedLocation:(Location *)location withCompletion:(void(^)(NSString *name, NSError *error))completion;
 
+// Apple Maps Link
++ (void)goToAddress:(Location *)location onPlatform:(NSString *)platform;
+
 @end
 
 NS_ASSUME_NONNULL_END

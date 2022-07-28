@@ -7,14 +7,18 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "SessionDetailsViewController.h"
+#import "HomeViewController.h"
 #import "PlayerProfileViewController.h"
 #import "FriendsListViewController.h"
 #import "PlayerProfileCollectionCell.h"
 #import "ManageUserStatistics.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "SessionNotification.h"
+#import "NotificationHandler.h"
 #import "SessionCell.h"
 #import "Location.h"
 #import "Invitation.h"
+#import "APIManager.h"
 #import "Helpers.h"
 #import "Constants.h"
 #import "Strings.h"
@@ -22,7 +26,8 @@
 @interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *sportLabel;
-@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UITextView *locationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *levelLabel;
 @property (weak, nonatomic) IBOutlet UILabel *capacityLabel;
@@ -31,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *disabledButton;
 @property (weak, nonatomic) IBOutlet UILabel *createdDateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *inviteFriendButton;
+@property (weak, nonatomic) IBOutlet UIButton *deleteSessionButton;
 
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) CAEmitterLayer *confettiLayer;
@@ -64,6 +70,8 @@ BOOL isPartOfSession;
     
     [self.collectionView reloadData];
 }
+
+#pragma mark - UI Configuration
 
 - (void)disableInviteButton {
     self.inviteFriendButton.alpha = 0;
@@ -100,6 +108,7 @@ BOOL isPartOfSession;
         self.inviteFriendButton.alpha = 0;
     }
     [self disableInviteButton];
+    [self toggleDeleteSessionButton];
 }
 
 - (void)changeAddButtonToLeave {
@@ -111,6 +120,18 @@ BOOL isPartOfSession;
     isPartOfSession = NO;
     [self disableInviteButton];
     [self.addMyselfButton setTitle:@"Join Session" forState:UIControlStateNormal];
+}
+
+- (void)toggleDeleteSessionButton {
+    PFUser *creator = [self.sessionDetails[@"creator"] fetchIfNeeded];
+    const BOOL isOwnerOfSession = [creator.objectId isEqualToString:me.objectId];
+    if (isOwnerOfSession) {
+        [self.deleteSessionButton setEnabled:YES];
+        self.deleteSessionButton.alpha = 1;
+    } else {
+        [self.deleteSessionButton setEnabled:NO];
+        self.deleteSessionButton.alpha = 0;
+    }
 }
 
 - (void)initializeDetails {
@@ -128,6 +149,32 @@ BOOL isPartOfSession;
     self.capacityLabel.text = sessionIsFull ? [Strings noOpenSlotsErrorMsg]
                                             : [Helpers capacityString:self.sessionDetails.occupied
                                                          with:self.sessionDetails.capacity];
+}
+
+- (IBAction)deleteSession:(id)sender {
+    NSString *sessionId = self.sessionDetails.objectId;
+    [ManageUserStatistics removeSession:sessionId
+                                ofSport:self.sessionDetails.sport
+                               fromUser:me];
+    [SessionNotification deleteNotificationsForSession:sessionId];
+    [NotificationHandler unscheduleSessionNotification:sessionId];
+    [self.sessionDetails deleteInBackground];
+    [self.sessionDetails deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [self returnToHome];
+    }];
+}
+
+- (void)returnToHome {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+    HomeViewController *vc = [[homeVC viewControllers][0] childViewControllers][0];
+    self.delegate = (id)vc;
+    [self.delegate reloadHomeTabSessions];
+    self.view.window.rootViewController = homeVC;
+}
+
+- (IBAction)goToLocation:(id)sender {
+    [APIManager goToAddress:self.sessionDetails.location onPlatform:@"Google"];
 }
 
 #pragma mark - Animating confetti
@@ -205,10 +252,20 @@ BOOL isPartOfSession;
             [session saveInBackground];
         }];
         
+        NSString *sessionObjectId = self.sessionDetails.objectId;
+        
         // Remove this session from user's history
-        [ManageUserStatistics updateDictionaryRemoveSession:self.sessionDetails.objectId
+        [ManageUserStatistics updateDictionaryRemoveSession:sessionObjectId
                                                    forSport:self.sessionDetails.sport
                                                     andUser:me];
+        
+        // Remove the notifications corresponding to this session and user
+        PFQuery *notificationQuery = [PFQuery queryWithClassName:@"SessionNotification"];
+        [notificationQuery whereKey:@"sessionObjectId" equalTo:sessionObjectId];
+        [notificationQuery whereKey:@"userObjectId" equalTo:me.objectId];
+        SessionNotification *notification = [notificationQuery getFirstObject];
+        [notification deleteInBackground];
+        [NotificationHandler unscheduleSessionNotification:sessionObjectId];
     } else {
         // For joining session
         [self updateJoinUI];
@@ -233,11 +290,18 @@ BOOL isPartOfSession;
             [session saveInBackground];
         }];
         
+        NSString *sessionObjectId = self.sessionDetails.objectId;
+        
         // Add this session to user's history
-        [ManageUserStatistics updateDictionaryAddSession:self.sessionDetails.objectId
+        [ManageUserStatistics updateDictionaryAddSession:sessionObjectId
                                                 forSport:self.sessionDetails.sport
                                                  andUser:me];
+        
+        // Add the notifications coresponding to this session and user
+        [SessionNotification createNotificationForSession:sessionObjectId forUser:me.objectId];
+        [NotificationHandler scheduleSessionNotification:sessionObjectId];
     }
+    [self.delegate reloadHomeTabSessions];
 }
 
 - (void)updateJoinUI {
@@ -272,6 +336,10 @@ BOOL isPartOfSession;
     int newOccupied = (int)oldPlayersList.count;
     self.sessionDetails.occupied = [NSNumber numberWithInt:newOccupied];
     [self initializeCapacityString];
+}
+
+- (void)resetButtonColor {
+    [self.inviteFriendButton setBackgroundColor:[Constants playmateBlue]];
 }
 
 #pragma mark - Collection view protocol methods
@@ -325,10 +393,6 @@ BOOL isPartOfSession;
         vc.sessionWithInvite = self.sessionDetails.objectId;
         vc.thisUser = [[PFUser currentUser] fetchIfNeeded];
     }
-}
-
-- (void)resetButtonColor {
-    [self.inviteFriendButton setBackgroundColor:[Constants playmateBlue]];
 }
 
 @end

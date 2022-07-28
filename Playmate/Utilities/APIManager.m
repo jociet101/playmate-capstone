@@ -70,7 +70,6 @@ static NSString * geoapify;
     NSString *craftedLink = @"";
     
     BOOL isFirstComponent = YES;
-    
     for (NSString *component in addyComponents) {
         if (isFirstComponent) {
             isFirstComponent = NO;
@@ -138,6 +137,45 @@ static NSString * geoapify;
         }
     }];
     [task resume];
+}
+
+// Apple Maps Link
++ (void)goToAddress:(Location *)location onPlatform:(NSString *)platform {
+    [location fetchIfNeeded];
+    NSString *mapURL = @"http://maps.apple.com/?address=";
+    
+    if ([platform isEqualToString:@"Google"]) {
+        mapURL = @"https://www.google.com/maps/place/";
+    }
+    
+    // Parse the address into array then into format needed for url
+    NSArray *addyComponents = [location.locationName componentsSeparatedByString:@" "];
+    NSString *craftedLink = @"";
+    
+    BOOL isFirstComponent = YES;
+    for (NSString *component in addyComponents) {
+        if (isFirstComponent) {
+            isFirstComponent = NO;
+            craftedLink = [craftedLink stringByAppendingString:component];
+        } else {
+            craftedLink = [craftedLink stringByAppendingFormat:@"+%@", component];
+        }
+    }
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", mapURL, craftedLink];
+    NSURL *url = [NSURL URLWithString:urlString];
+    const BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:url];
+
+    if (canOpen) {
+        [[UIApplication sharedApplication] openURL:url
+                                           options:@{}
+                                 completionHandler:^(BOOL success) {}];
+    } else {
+        [Helpers handleAlert:nil
+                   withTitle:@"Cannot find location"
+                 withMessage:[NSString stringWithFormat:@"Address %@ cannot be found on maps.", location.locationName]
+           forViewController:self];
+    }
 }
 
 @end

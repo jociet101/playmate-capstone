@@ -42,6 +42,8 @@
     [tempList addObject:[PFUser currentUser]];
     newSession.playersList = (NSArray *)tempList;
     newSession.occursAt = date;
+    
+    NSLog(@"newSession.occursAt = %@", newSession.occursAt);
     newSession.duration = duration;
     newSession.location = (Location *)loc;
     newSession.capacity = cap;

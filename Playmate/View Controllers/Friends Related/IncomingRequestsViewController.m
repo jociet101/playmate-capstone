@@ -49,7 +49,6 @@
 - (void)fetchData {
     // fetch data for friend request list
     PFQuery *query = [PFQuery queryWithClassName:@"FriendRequest"];
-    query.limit = 20;
     
     PFUser *user = [[PFUser currentUser] fetchIfNeeded];
 

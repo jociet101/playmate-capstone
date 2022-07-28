@@ -69,7 +69,6 @@
     }
     
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
-    query.limit = 20;
     
     [query orderByDescending:@"createdAt"];
 
@@ -208,7 +207,6 @@
     }
     
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
-    query.limit = 20;
     
     [query orderByDescending:@"createdAt"];
     

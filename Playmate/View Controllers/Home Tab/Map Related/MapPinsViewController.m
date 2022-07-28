@@ -103,7 +103,6 @@ BOOL isFirstTimeGettingLocation;
     }
     
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
-    query.limit = 20;
 
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
@@ -135,7 +134,6 @@ BOOL isFirstTimeGettingLocation;
     }
     
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
-    query.limit = 20;
     
     [query orderByDescending:@"createdAt"];
     

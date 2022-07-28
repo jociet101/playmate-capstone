@@ -96,4 +96,13 @@
     return [NSString stringWithFormat:@"%ld", timeAgo];
 }
 
+// Used when deleting session
++ (void)removeSession:(NSString *)sessionId ofSport:(NSString *)sport fromUser:(PFUser *)user {
+    NSMutableDictionary *sessionsDictionary = [user objectForKey:@"sessionsDictionary"][0];
+    NSMutableArray *sportArray = [sessionsDictionary objectForKey:sport];
+    [sessionsDictionary removeObjectForKey:sport];
+    [sportArray removeObject:sessionId];
+    [sessionsDictionary setObject:sportArray forKey:sport];
+}
+
 @end

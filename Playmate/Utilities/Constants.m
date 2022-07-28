@@ -153,7 +153,7 @@
         [sports addObject:[Strings defaultAll]];
     }
     
-    NSArray *sportsList = [NSArray arrayWithObjects:@"American football",
+    NSArray *sportsList = [NSArray arrayWithObjects:@"Archery",
                                                     @"Badminton",
                                                     @"Baseball",
                                                     @"Basketball",
@@ -161,6 +161,7 @@
                                                     @"Bowling",
                                                     @"Cricket",
                                                     @"Flag Football",
+                                                    @"Football",
                                                     @"Field Hockey",
                                                     @"Golf",
                                                     @"Ice Hockey",
@@ -302,10 +303,11 @@
                                                     @"playmate_logo_transparent",
                                                     @"playmate_logo_transparent",
                                                     @"playmate_logo_transparent",
-                                                    @"confetti",
                                                     @"playmate_logo_transparent",
                                                     @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",nil];
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent",
+                                                    @"playmate_logo_transparent", nil];
     
     NSDictionary *sportToImageName = [[NSDictionary alloc] initWithObjects:imageNames forKeys:[Constants sportsList:NO]];
     

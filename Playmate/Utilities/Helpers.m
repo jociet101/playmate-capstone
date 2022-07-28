@@ -147,6 +147,20 @@
     return [[timeAgo shortTimeAgoSinceNow] stringByAppendingString:@" ago"];
 }
 
++ (NSDate *)removeMinutes:(int)minutes fromTime:(NSDate *)time {
+    return [time dateByAddingMinutes:-minutes];
+}
+
++ (NSDateComponents *)getComponentsFromDate:(NSDate *)date {
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    int unitFlags = (NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute );
+    NSDateComponents *dateComponents =
+                        [gregorian components:unitFlags
+                                     fromDate:date];
+    return dateComponents;
+}
+
 #pragma mark - Profile Tab and Friend Notifications
 
 + (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last {
@@ -223,11 +237,8 @@
 
 // Returns number of days between two dates
 + (NSString *)getTimeGivenDurationForSession:(Session *)session {
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDate *startTime = session.occursAt;
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setMinute:60*[session.duration intValue]];
-    NSDate *endTime = [gregorian dateByAddingComponents:comps toDate:startTime  options:0];
+    NSDate *endTime = [startTime dateByAddingMinutes:60*[session.duration floatValue]];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = [Strings dateFormatString];

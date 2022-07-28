@@ -11,6 +11,8 @@
 #import "MenuPickerCell.h"
 #import "LocationPickerCell.h"
 #import "ManageUserStatistics.h"
+#import "SessionNotification.h"
+#import "NotificationHandler.h"
 #import "Location.h"
 #import "Session.h"
 #import "Constants.h"
@@ -160,14 +162,19 @@
     
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     
+    NSLog(@"self.selectedDateTime = %@", self.selectedDateTime);
+    
     // create SportsSession parse object and save
     [Session createSession:me withSport:self.selectedSport withLevel:self.selectedSkillLevel withDate:self.selectedDateTime withDuration:self.selectedDuration withLocation:self.selectedLocation withCapacity:self.selectedNumPlayers withCompletion:^(BOOL succeeded, NSError* error) {
         if (error) {
             [Helpers handleAlert:error withTitle:@"Could not create session." withMessage:nil forViewController:self];
         } else {
-            [ManageUserStatistics updateDictionaryAddSession:[self fetchMostRecentSessionId]
+            NSString *sessionObjectId = [self fetchMostRecentSessionId];
+            [ManageUserStatistics updateDictionaryAddSession:sessionObjectId
                                                     forSport:self.selectedSport
                                                      andUser:me];
+            [SessionNotification createNotificationForSession:sessionObjectId forUser:me.objectId];
+            [NotificationHandler scheduleSessionNotification:sessionObjectId];
             [self returnToHome];
         }
     }];

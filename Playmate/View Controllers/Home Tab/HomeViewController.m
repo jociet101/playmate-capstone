@@ -14,12 +14,14 @@
 #import "SessionDetailsViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "SessionCollectionCell.h"
+#import "NotificationHandler.h"
 #import "Session.h"
+#import "APIManager.h"
 #import "Constants.h"
 #import "Helpers.h"
 #import "Strings.h"
 
-@interface HomeViewController () <CreateMenuViewControllerDelegate>
+@interface HomeViewController () <CreateMenuViewControllerDelegate, SessionDetailsViewControllerDelegate, UNUserNotificationCenterDelegate>
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
@@ -34,6 +36,10 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    
+    [NotificationHandler setUpNotifications];
+    UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate = self;
     
     self.upcomingView.layer.cornerRadius = [Constants buttonCornerRadius];
     self.suggestedView.layer.cornerRadius = [Constants buttonCornerRadius];
@@ -61,15 +67,51 @@
     [self fetchData];
 }
 
+#pragma mark - Notifications Configuration
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void (^)(void))completionHandler {
+    // Parse notification information to get session id to segue to
+    NSDictionary *userInfo = response.notification.request.content.userInfo;
+    NSString *sessionObjectId = userInfo[@"sessionObjectId"];
+    
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
+    PFQuery *notifQuery = [PFQuery queryWithClassName:@"SessionNotification"];
+    [notifQuery whereKey:@"sessionObjectId" equalTo:sessionObjectId];
+    [notifQuery whereKey:@"userObjectId" equalTo:me.objectId];
+    SessionNotification *notification = [notifQuery getFirstObject];
+    [notification deleteInBackground];
+    
+    if ([response.actionIdentifier isEqualToString:@"OPEN_APPLE_MAP_ACTION"]) {
+        PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+        Session *session = [[query getObjectWithId:sessionObjectId] fetchIfNeeded];
+        [APIManager goToAddress:session.location onPlatform:@"Apple"];
+    } else if ([response.actionIdentifier isEqualToString:@"OPEN_GOOGLE_MAP_ACTION"]) {
+        PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+        Session *session = [[query getObjectWithId:sessionObjectId] fetchIfNeeded];
+        [APIManager goToAddress:session.location onPlatform:@"Google"];
+    } else {
+        // user swiped to unlock or wants to view session details
+        [self performSegueWithIdentifier:@"homeToSessionDetails" sender:(id)sessionObjectId];
+    }
+    
+    completionHandler();
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+       willPresentNotification:(UNNotification *)notification
+         withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+    
+}
+
 - (void)reloadHomeTabSessions {
     [self fetchData];
 }
 
 - (void)fetchData {
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
-    query.limit = 20;
-
-    [query orderByAscending:@"occursAt"]; 
+    [query orderByAscending:@"occursAt"];
 
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
@@ -120,6 +162,10 @@
     } else if ([segue.identifier isEqualToString:@"homeToUpcomingSessions"]) {
         UpcomingSessionsViewController *vc = [segue destinationViewController];
         self.delegate = (id)vc;
+    } else if ([segue.identifier isEqualToString:@"homeToSessionDetails"]) {
+        SessionDetailsViewController *vc = [segue destinationViewController];
+        PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+        vc.sessionDetails = [query getObjectWithId:(NSString *)sender];
     }
 }
 
