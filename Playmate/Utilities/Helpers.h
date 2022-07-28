@@ -80,6 +80,9 @@ NS_ASSUME_NONNULL_BEGIN
 // Create notifier label string for home tab
 + (NSString *)getNotifierLabelString;
 
+// Get greeting
++ (NSString *)getGreeting;
+
 #pragma mark - Retrieve Data for Filter/Create Menus
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row;
 + (NSArray * _Nullable)getFilterData:(BOOL)needAll forRow:(int)row;

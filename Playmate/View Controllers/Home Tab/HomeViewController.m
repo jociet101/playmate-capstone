@@ -58,21 +58,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSString *greeting;
-    NSDate *now = [NSDate now];
-    if ([now hour] >= 17) {
-        greeting = @"Good Evening, ";
-    } else if ([now hour] >= 12) {
-        greeting = @"Good Afternoon, ";
-    } else {
-        greeting = @"Good Morning, ";
-    }
-    
     self.notifierLabel.text = [Helpers getNotifierLabelString];
-    
-    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
-    self.welcomeLabel.text = [greeting stringByAppendingString:me[@"firstName"][0]];
-    
+    self.welcomeLabel.text = [Helpers getGreeting];
     [self.delegate loadSessionList:@[]];
     [self fetchData];
 }

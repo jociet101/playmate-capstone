@@ -349,6 +349,21 @@
     return invitations.count;
 }
 
+// Get greeting
++ (NSString *)getGreeting {
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
+    NSDate *now = [NSDate now];
+    NSString *greeting;
+    if ([now hour] >= 17) {
+        greeting = @"Good Evening, ";
+    } else if ([now hour] >= 12) {
+        greeting = @"Good Afternoon, ";
+    } else {
+        greeting = @"Good Morning, ";
+    }
+    return [greeting stringByAppendingString:me[@"firstName"][0]];
+}
+
 #pragma mark - Retrieve Data for Filter/Create Menus
 
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row {
