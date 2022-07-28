@@ -64,7 +64,6 @@ static NSString * geoapify;
 }
 
 - (void)getGeocodedLocation:(NSString *)address withCompletion:(void(^)(Location *loc, NSError *error))completion {
-    
     // Parse the address into array then into format needed for url
     NSArray *addyComponents = [address componentsSeparatedByString:@" "];
     NSString *craftedLink = @"";
@@ -149,11 +148,11 @@ static NSString * geoapify;
     }
     
     // Parse the address into array then into format needed for url
-    NSArray *addyComponents = [location.locationName componentsSeparatedByString:@" "];
+    NSArray *addressComponents = [location.locationName componentsSeparatedByString:@" "];
     NSString *craftedLink = @"";
     
     BOOL isFirstComponent = YES;
-    for (NSString *component in addyComponents) {
+    for (NSString *component in addressComponents) {
         if (isFirstComponent) {
             isFirstComponent = NO;
             craftedLink = [craftedLink stringByAppendingString:component];
