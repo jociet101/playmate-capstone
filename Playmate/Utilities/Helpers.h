@@ -81,7 +81,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)getNotifierLabelString;
 
 // Get greeting
-+ (NSString *)getGreeting;
++ (NSString *)getGreetingString;
+
+// Get quiz status
++ (NSString *)getQuizString;
 
 #pragma mark - Retrieve Data for Filter/Create Menus
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row;

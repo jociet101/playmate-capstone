@@ -51,7 +51,11 @@
     
     self.notifierLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
     self.notifierLabel.layer.borderColor = [[Constants playmateBlue] CGColor];
-    self.notifierLabel.layer.borderWidth = 0.8;
+    self.notifierLabel.layer.borderWidth = 2;
+    
+    self.takeQuizLabel.layer.cornerRadius = [Constants smallButtonCornerRadius];
+    self.takeQuizLabel.layer.borderColor = [[Constants playmateBlue] CGColor];
+    self.takeQuizLabel.layer.borderWidth = 2;
     
     self.sessionList = [[NSMutableArray alloc] init];
     [self fetchData];
@@ -59,7 +63,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     self.notifierLabel.text = [Helpers getNotifierLabelString];
-    self.welcomeLabel.text = [Helpers getGreeting];
+    self.welcomeLabel.text = [Helpers getGreetingString];
+    self.takeQuizLabel.text = [Helpers getQuizString];
     [self.delegate loadSessionList:@[]];
     [self fetchData];
 }
@@ -177,6 +182,10 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 
 - (IBAction)didTapViewNotifications:(id)sender {
     [self performSegueWithIdentifier:@"homeToFriendNotifications" sender:nil];
+}
+
+- (IBAction)didTapTakeQuiz:(id)sender {
+//    [self performSegueWithIdentifier:<#(nonnull NSString *)#> sender:<#(nullable id)#>]
 }
 
 @end

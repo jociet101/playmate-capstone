@@ -962,7 +962,7 @@
                                 </connections>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="KEp-T2-ddB">
-                                <rect key="frame" x="14" y="161" width="360" height="42"/>
+                                <rect key="frame" x="14" y="165" width="360" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <attributedString key="attributedText">
@@ -974,6 +974,9 @@
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="bU2-st-J5c" appends="YES" id="PVx-TE-UeU"/>
+                                </connections>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UEK-el-5Pu"/>
@@ -994,6 +997,11 @@
                 <tapGestureRecognizer id="fgd-jX-vSs">
                     <connections>
                         <action selector="didTapViewNotifications:" destination="L1k-7T-xRK" id="KIx-qK-LBI"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="bU2-st-J5c">
+                    <connections>
+                        <action selector="didTapTakeQuiz:" destination="L1k-7T-xRK" id="x02-S7-nrS"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

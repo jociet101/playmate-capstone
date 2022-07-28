@@ -327,7 +327,7 @@
     NSString *invitationsText = (numberInvitations == 0) ? @"no" : [NSString stringWithFormat:@"%ld", numberInvitations];
     NSString *requestPlural = (numberRequests == 1) ? @"" : @"s";
     NSString *invitationPlural = (numberInvitations == 1) ? @"" : @"s";
-    NSString *notifierText = @" 🔔 You have %@ friend request%@ and %@ invitation%@! → ";
+    NSString *notifierText = @" 🔔 You have %@ friend request%@ and %@ invitation%@ → ";
     return [NSString stringWithFormat:notifierText, requestsText, requestPlural, invitationsText, invitationPlural];;
 }
 
@@ -350,7 +350,7 @@
 }
 
 // Get greeting
-+ (NSString *)getGreeting {
++ (NSString *)getGreetingString {
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     NSDate *now = [NSDate now];
     NSString *greeting;
@@ -362,6 +362,16 @@
         greeting = @"Good Morning, ";
     }
     return [greeting stringByAppendingString:me[@"firstName"][0]];
+}
+
+// Get quiz status string
++ (NSString *)getQuizString {
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
+    if (me[@"hasTakenQuiz"]) {
+        return @" 📝 Retake my session preferences quiz → ";
+    } else {
+        return @" 📝 Take the session preferences quiz! → ";
+    }
 }
 
 #pragma mark - Retrieve Data for Filter/Create Menus
