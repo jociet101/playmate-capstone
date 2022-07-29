@@ -30,7 +30,7 @@
     [self.view addSubview:self.tagCollectionView];
     self.tagCollectionView.delegate = self;
     
-    // Design style
+    // Design style and selected style for the tags
     TTGTextTagStringContent *content = [TTGTextTagStringContent new];
     TTGTextTagStringContent *selectedContent = [TTGTextTagStringContent new];
     TTGTextTagStyle *style = [TTGTextTagStyle new];

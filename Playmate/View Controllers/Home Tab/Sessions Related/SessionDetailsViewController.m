@@ -248,13 +248,7 @@ BOOL isPartOfSession;
         int newOccupied = (int)oldPlayersList.count;
         session[@"occupied"] = [NSNumber numberWithInt:newOccupied];
         
-        [session saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if (succeeded) {
-                [self returnToHomeButStay:YES];
-            } else {
-                [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
-            }
-        }];
+        [self saveSession:session];
         
         // Remove this session from user's history
         [ManageUserStatistics updateDictionaryRemoveSession:sessionObjectId
@@ -286,13 +280,7 @@ BOOL isPartOfSession;
         int newOccupied = (int)oldPlayersList.count;
         session[@"occupied"] = [NSNumber numberWithInt:newOccupied];
         
-        [session saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if (succeeded) {
-                [self returnToHomeButStay:YES];
-            } else {
-                [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
-            }
-        }];
+        [self saveSession:session];
         
         // Add this session to user's history
         [ManageUserStatistics updateDictionaryAddSession:sessionObjectId
@@ -303,6 +291,16 @@ BOOL isPartOfSession;
         [SessionNotification createNotificationForSession:sessionObjectId forUser:me.objectId];
         [NotificationHandler scheduleSessionNotification:sessionObjectId];
     }
+}
+
+- (void)saveSession:(Session *)session {
+    [session saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            [self returnToHomeButStay:YES];
+        } else {
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
+        }
+    }];
 }
 
 - (void)updateJoinUI {

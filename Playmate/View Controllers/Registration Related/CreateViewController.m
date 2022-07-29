@@ -93,16 +93,6 @@ NSString *selectedGender;
 
 #pragma mark - Registration with Parse
 
-- (void)handleAlert:(NSError *)error withTitle:(NSString *)title andOk:(NSString *)ok {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:ok style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        [self viewDidLoad];
-    }];
-    
-    [alertController addAction:okAction];
-    [self presentViewController:alertController animated: YES completion: nil];
-}
-
 - (void)registerUser {
     // initialize a user object
     PFUser *newUser = [PFUser user];
