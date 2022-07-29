@@ -56,7 +56,6 @@ BOOL isLoading;
 
 - (void)loadSessionList:(NSArray *)sessionList {
     self.sessionList = sessionList;
-    
     [self.collectionView reloadData];
 }
 

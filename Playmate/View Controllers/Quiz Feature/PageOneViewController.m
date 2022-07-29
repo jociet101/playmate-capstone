@@ -6,10 +6,13 @@
 //
 
 #import "PageOneViewController.h"
+#import "TTGTextTagCollectionView.h"
+#import "Constants.h"
 
-@interface PageOneViewController ()
+@interface PageOneViewController () <TTGTextTagCollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIProgressView *progress;
+@property (nonatomic, strong) TTGTextTagCollectionView *tagCollectionView;
 
 @end
 
@@ -17,21 +20,70 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.progress setProgress:0.2 animated:YES];
+    [self setupTagCollectionView];
 }
+
+- (void)setupTagCollectionView {
+    int width = self.view.frame.size.width - 40;
+    // Create TTGTextTagCollectionView view
+    self.tagCollectionView = [[TTGTextTagCollectionView alloc] initWithFrame:CGRectMake(20, 200, width, 300)];
+    [self.view addSubview:self.tagCollectionView];
+    self.tagCollectionView.delegate = self;
+    
+    // Design style
+    TTGTextTagStringContent *content = [TTGTextTagStringContent new];
+    TTGTextTagStringContent *selectedContent = [TTGTextTagStringContent new];
+    TTGTextTagStyle *style = [TTGTextTagStyle new];
+    TTGTextTagStyle *selectedStyle = [TTGTextTagStyle new];
+    
+    content.textFont = [UIFont boldSystemFontOfSize:30.0f];
+    selectedContent.textFont = content.textFont;
+    
+    content.textColor = [UIColor blackColor];
+    selectedContent.textColor = [UIColor blackColor];
+    
+    style.backgroundColor = [UIColor whiteColor];
+    selectedStyle.backgroundColor = [UIColor systemMintColor];
+
+    style.borderColor = [UIColor blackColor];
+    style.borderWidth = 1;
+    selectedStyle.borderColor = [UIColor blackColor];
+    selectedStyle.borderWidth = 1;
+
+    style.cornerRadius = 4;
+    selectedStyle.cornerRadius = 4;
+    
+    style.extraSpace = CGSizeMake(12, 12);
+    selectedStyle.extraSpace = style.extraSpace;
+    
+    NSArray *sportsList = [Constants sportsList:NO];
+    NSMutableArray *tagList = [[NSMutableArray alloc] init];
+    for (NSString *sport in sportsList) {
+        TTGTextTag *textTag = [TTGTextTag tagWithContent:[TTGTextTagStringContent contentWithText:sport] style:[TTGTextTagStyle new]];
+        textTag.style = style;
+        textTag.selectedStyle = selectedStyle;
+        [tagList addObject:textTag];
+    }
+    
+    [self.tagCollectionView addTags:tagList];
+}
+
+#pragma mark - Text Tag Collection View Delegate Methods
 
 - (IBAction)didTapClose:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
+- (IBAction)didTapNext:(id)sender {
+    [self performSegueWithIdentifier:@"oneToTwo" sender:nil];
+}
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"oneToTwo"]) {
+        // save desired sports
+    }
 }
-*/
 
 @end

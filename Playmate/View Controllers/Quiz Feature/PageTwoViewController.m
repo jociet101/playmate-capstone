@@ -18,7 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.hidesBackButton = YES;
-    [self.progress setProgress:0.4 animated:YES];
 }
 
 - (IBAction)didTapClose:(id)sender {
