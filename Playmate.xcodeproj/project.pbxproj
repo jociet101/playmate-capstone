@@ -50,6 +50,7 @@
 		3CDBEB90288F195100F2D739 /* Strings.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDBEB8F288F195100F2D739 /* Strings.m */; };
 		3CF3568D289459370046DFCB /* QuizHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3568C289459370046DFCB /* QuizHelpers.m */; };
 		3CF3569028945D110046DFCB /* PageThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3568F28945D110046DFCB /* PageThreeViewController.m */; };
+		3CF35693289462290046DFCB /* PageFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF35692289462290046DFCB /* PageFourViewController.m */; };
 		3CF4186428765585009741FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF4186328765585009741FF /* MapKit.framework */; };
 		3CF4A58A2878AA1A000C5E7D /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */; };
 		3CF4A58D2878DFA6000C5E7D /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A58C2878DFA6000C5E7D /* CalendarViewController.m */; };
@@ -180,6 +181,8 @@
 		3CF3568C289459370046DFCB /* QuizHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuizHelpers.m; sourceTree = "<group>"; };
 		3CF3568E28945D110046DFCB /* PageThreeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageThreeViewController.h; sourceTree = "<group>"; };
 		3CF3568F28945D110046DFCB /* PageThreeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageThreeViewController.m; sourceTree = "<group>"; };
+		3CF35691289462290046DFCB /* PageFourViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageFourViewController.h; sourceTree = "<group>"; };
+		3CF35692289462290046DFCB /* PageFourViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageFourViewController.m; sourceTree = "<group>"; };
 		3CF4186328765585009741FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3CF4A5882878AA1A000C5E7D /* EditProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
@@ -405,6 +408,8 @@
 				3CA203392893A1B2005386B9 /* PageTwoViewController.m */,
 				3CF3568E28945D110046DFCB /* PageThreeViewController.h */,
 				3CF3568F28945D110046DFCB /* PageThreeViewController.m */,
+				3CF35691289462290046DFCB /* PageFourViewController.h */,
+				3CF35692289462290046DFCB /* PageFourViewController.m */,
 			);
 			path = "Quiz Feature";
 			sourceTree = "<group>";
@@ -856,6 +861,7 @@
 				3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */,
 				3CF3569028945D110046DFCB /* PageThreeViewController.m in Sources */,
 				3C45B59E2875060700EE578F /* SessionDetailsViewController.m in Sources */,
+				3CF35693289462290046DFCB /* PageFourViewController.m in Sources */,
 				3C71BDD428908760000F4A1D /* SessionNotification.m in Sources */,
 				3C8E5392287F362B0087498B /* FriendCell.m in Sources */,
 				3C19BA1E288B2C3000592C20 /* InvitationCell.m in Sources */,
