@@ -19,10 +19,10 @@ Playmate is a platform where sports players can conveniently find others to play
 ### App Evaluation
 - **Category:** Sports social networking
 - **Mobile:** Playmate will be developed for iOS.
-- **Story:** Sports players are able to connect with others and meet up to socialize and play the sport they love.
+- **Story:** Sports players are able to connect with others on the app and then meet up in real life to socialize and play the sport they love.
 - **Market:** People who play any type of sport or would like to get into sports can benefit from Playmate.
-- **Habit:** Playmate will be used when users wish to schedule a session to play a certain sport. Depending on how often a user wants to play, this app may be used on any type of basis, from daily to monthly.
-- **Scope:** To start off, Playmate will focus on the creating and joining sports sessions feature as well as personalized user profiles. Expansion may include messaging and a feed to view friends' activity.
+- **Habit:** Playmate will be used when users wish to schedule a session to play a certain sport. Depending on how often a user wants to play, this app may be used on any type of basis, from daily to monthly. 
+- **Scope:** Playmate's focus is on creating sports sessions and filtering sessions to find suitable ones to join. Playmate also supports personalized user profiles, friending between users, and session invitations to and from friends.
 
 ## Product Spec
 
@@ -32,21 +32,25 @@ Playmate is a platform where sports players can conveniently find others to play
 
 * [ ] User can create account and log in
 * [ ] User can customize their profile
-* [ ] User can set their origin location on map
-* [ ] User can see sessions on a calendar
+* [ ] User can see own sessions on a calendar
+* [ ] User can explore nearby sessions on a map
 * [ ] User can search for sessions based on filters they set
 * [ ] User can add themself to an existing session after search
+* [ ] User can remove themself from a session
 * [ ] User can create session if no existing ones match their liking
-* [ ] User can search for sports facility in map view for create session feature
-* [ ] User can add friends and view their profiles
+* [ ] User can search for location on map to set their session location
+* [ ] User can send and approve or deny friend requests
+* [ ] User can remove friend
 
 **Optional Nice-to-have Stories**
 
-* [ ] User will be notified of upcoming sessions in advance, according to their preference
-* [ ] User can delete or remove themselves from sessions
-* [ ] User can message their friends and session groups
-* [ ] User can post to a feed about their past sessions
-* [ ] User will be automatically reccommended sessions based on their past activity
+* [ ] User can edit their profile
+* [ ] User will be notified of upcoming sessions through iOS notifications
+* [ ] User can open session location in Apple or Google maps
+* [ ] User can invite friends to a session they are already in
+* [ ] User can delete a session they created
+* [ ] User can take preferences quiz to get better suggestions
+* [ ] User will be suggested sessions based on an AI heuristic
 
 ### 2. Screen Archetypes
 
@@ -65,7 +69,6 @@ Playmate is a platform where sports players can conveniently find others to play
 * Search
 * Calendar
 * Profile
-* Messages
 
 **Flow Navigation** (Screen to Screen)
 
