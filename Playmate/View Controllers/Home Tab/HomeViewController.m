@@ -190,7 +190,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:@"homeToSchedule"]) {
 		CalendarViewController *vc = [segue destinationViewController];
-		vc.rawSessionList = self.sessionList;
+        vc.rawSessionList = [self fetchAllData];
     } else if ([segue.identifier isEqualToString:@"homeToUpcomingSessions"]) {
         UpcomingSessionsViewController *vc = [segue destinationViewController];
         self.delegate = (id)vc;
@@ -199,6 +199,27 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
         PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
         vc.sessionDetails = [query getObjectWithId:(NSString *)sender];
     }
+}
+
+// Will fetch every session belonging to current user,
+// Including past sessions and upcoming sessions
+- (NSArray *)fetchAllData {
+    NSMutableArray *sessionList = [[NSMutableArray alloc] init];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+    [query orderByAscending:@"occursAt"];
+    
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
+    NSArray *unfilteredSessions = [query findObjects];
+    // Filter to only sessions self is in
+    for (Session *session in unfilteredSessions) {
+        NSMutableSet *playersSet = [Helpers getPlayerObjectIdSet:session.playersList];
+        if ([playersSet containsObject:me.objectId]) {
+            [sessionList addObject:session];
+        }
+    }
+    
+    return (NSArray *)sessionList;
 }
 
 - (IBAction)didTapViewNotifications:(id)sender {
