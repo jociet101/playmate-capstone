@@ -1214,7 +1214,7 @@
             <objects>
                 <viewController id="FoH-rZ-204" customClass="SessionDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xae-LI-F9P">
-                        <rect key="frame" x="0.0" y="0.0" width="369" height="397"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRX-IS-Z3x">
@@ -3024,25 +3024,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SqT-US-3FX">
-                                <rect key="frame" x="0.0" y="0.0" width="369" height="397"/>
+                                <rect key="frame" x="0.0" y="-16" width="369" height="424"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5bn-Ho-Qbd">
-                                    <size key="itemSize" width="320" height="387"/>
+                                    <size key="itemSize" width="322" height="405"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SessionCollectionCell" id="Bdr-Hu-nNl" customClass="SessionCollectionCell">
-                                        <rect key="frame" x="0.0" y="5" width="320" height="387"/>
+                                        <rect key="frame" x="0.0" y="9.6666666666666661" width="322" height="405"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IHg-CR-hHl">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="387"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="322" height="405"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RFN-YN-pPm">
-                                                    <rect key="frame" x="68" y="21.333333333333329" width="184" height="172.66666666666669"/>
+                                                    <rect key="frame" x="68" y="21.333333333333329" width="186" height="172.66666666666669"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="172.66666666666669" id="fuG-wA-Jed"/>
                                                     </constraints>
@@ -3055,7 +3055,7 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="Location">
                                                             <attributes>
-                                                                <font key="NSFont" size="16" name="AvenirNext-Regular"/>
+                                                                <font key="NSFont" size="14" name="AvenirNext-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -3063,11 +3063,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsm-zi-1RR">
-                                                    <rect key="frame" x="17" y="249" width="282" height="67"/>
+                                                    <rect key="frame" x="17" y="249" width="284" height="85"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="List of players">
                                                             <attributes>
-                                                                <font key="NSFont" size="16" name="AvenirNext-Regular"/>
+                                                                <font key="NSFont" size="14" name="AvenirNext-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -3075,11 +3075,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6c-xy-bHi">
-                                                    <rect key="frame" x="15" y="217" width="290" height="24.333333333333343"/>
+                                                    <rect key="frame" x="15" y="217" width="292" height="22.333333333333343"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Skill Level">
                                                             <attributes>
-                                                                <font key="NSFont" size="16" name="AvenirNext-Regular"/>
+                                                                <font key="NSFont" size="14" name="AvenirNext-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -3087,11 +3087,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46n-Gu-wPC">
-                                                    <rect key="frame" x="16" y="203" width="288" height="39"/>
+                                                    <rect key="frame" x="16" y="203" width="290" height="39"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Tennis front">
                                                             <attributes>
-                                                                <font key="NSFont" size="28" name="AvenirNext-Medium"/>
+                                                                <font key="NSFont" size="28" name="AvenirNext-Bold"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -3099,7 +3099,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myp-Qi-m2f">
-                                                    <rect key="frame" x="16" y="249" width="288" height="38"/>
+                                                    <rect key="frame" x="16" y="247" width="290" height="40"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Date front">
                                                             <attributes>
@@ -3124,7 +3124,7 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="Date">
                                                             <attributes>
-                                                                <font key="NSFont" size="17" name="AvenirNext-Regular"/>
+                                                                <font key="NSFont" size="14" name="AvenirNext-DemiBold"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -3132,11 +3132,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ6-Wu-R5r">
-                                                    <rect key="frame" x="17" y="27.000000000000004" width="286" height="38.333333333333343"/>
+                                                    <rect key="frame" x="17" y="27.000000000000004" width="288" height="38.333333333333343"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="American Football">
                                                             <attributes>
-                                                                <font key="NSFont" size="28" name="AvenirNext-Medium"/>
+                                                                <font key="NSFont" size="28" name="AvenirNext-Bold"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -3144,7 +3144,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a42-sI-reh">
-                                                    <rect key="frame" x="184" y="357" width="119.66666666666666" height="16.666666666666686"/>
+                                                    <rect key="frame" x="186.33333333333334" y="375.33333333333331" width="119.66666666666666" height="16.666666666666686"/>
                                                     <color key="tintColor" red="0.29803922770000002" green="0.61960786580000005" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Double Tap for Details">
@@ -3195,7 +3195,7 @@
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" red="0.82091478669999995" green="0.92357209929999995" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                                         <gestureRecognizers/>
-                                        <size key="customSize" width="320" height="387"/>
+                                        <size key="customSize" width="322" height="405"/>
                                         <connections>
                                             <outlet property="dateBackLabel" destination="Mxe-Nw-Jgk" id="xX0-ze-8cj"/>
                                             <outlet property="dateFrontLabel" destination="myp-Qi-m2f" id="Rpo-vJ-4Zb"/>
@@ -3358,7 +3358,7 @@
         <segue reference="pbU-9p-1Qp"/>
         <segue reference="jcx-uQ-feG"/>
         <segue reference="Kdh-do-hzm"/>
-        <segue reference="6tu-y4-peZ"/>
+        <segue reference="PHH-oM-1pf"/>
         <segue reference="EiS-gP-Syp"/>
     </inferredMetricsTieBreakers>
     <resources>
