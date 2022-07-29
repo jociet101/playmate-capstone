@@ -257,7 +257,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="progress" destination="3vL-Fo-cWB" id="qtj-k7-ujx"/>
-                        <segue destination="uZP-aU-8AS" kind="show" identifier="threeToFour" id="Evj-TY-nJi"/>
+                        <segue destination="uZP-aU-8AS" kind="show" identifier="threeToFour" animates="NO" id="Evj-TY-nJi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yYA-lL-Yj1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -316,7 +316,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="progress" destination="DLa-IL-0dP" id="CjK-YO-C1T"/>
-                        <segue destination="ByD-i6-Kxa" kind="show" identifier="fourToFive" id="XXZ-9C-OOO"/>
+                        <segue destination="ByD-i6-Kxa" kind="show" identifier="fourToFive" animates="NO" id="XXZ-9C-OOO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TeC-hm-569" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -351,7 +351,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
-                                    <action selector="didTapNext:" destination="ByD-i6-Kxa" eventType="touchUpInside" id="0FI-rV-JgP"/>
+                                    <action selector="didTapDone:" destination="ByD-i6-Kxa" eventType="touchUpInside" id="As0-EB-ihY"/>
                                 </connections>
                             </button>
                         </subviews>
