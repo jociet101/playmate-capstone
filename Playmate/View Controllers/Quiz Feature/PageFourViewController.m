@@ -6,6 +6,7 @@
 //
 
 #import "PageFourViewController.h"
+#import "PageFiveViewController.h"
 #import "TTGTextTagCollectionView.h"
 #import "Constants.h"
 #import "QuizHelpers.h"
@@ -55,23 +56,15 @@
     [self performSegueWithIdentifier:@"fourToFive" sender:nil];
 }
 
-
 #pragma mark - Navigation
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      if ([segue.identifier isEqualToString:@"fourToFive"]) {
-//         PageFiveViewController *vc = [segue destinationViewController];
-//         // Extract sports from selected tags
-//         NSArray *selectedTags = [self.tagCollectionView allSelectedTags];
-//         NSMutableArray *selectedGenders = [[NSMutableArray alloc] init];
-//         for (TTGTextTag *tag in selectedTags) {
-//             NSString *gender = [NSString stringWithFormat:@"%@", [tag.content getContentAttributedString]];
-//             [selectedGenders addObject:[gender componentsSeparatedByString:@"{"][0]];
-//         }
-//
-//         vc.dontPlaySportsList = self.dontPlaySportsList;
-//         vc.playSportsList = self.playSportsList;
-//         vc.gendersList = (NSArray *)selectedGenders;
+         PageFiveViewController *vc = [segue destinationViewController];
+         vc.dontPlaySportsList = self.dontPlaySportsList;
+         vc.playSportsList = self.playSportsList;
+         vc.gendersList = self.gendersList;
+         vc.ageGroupsList = [QuizHelpers selectedStringsForTags:[self.tagCollectionView allSelectedTags]];
      }
  }
 

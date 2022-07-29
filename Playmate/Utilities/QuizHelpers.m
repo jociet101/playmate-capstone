@@ -23,7 +23,7 @@
     [viewController presentViewController:alertController animated: YES completion: nil];
 }
 
-#pragma mark - Tag Collection View Styles
+#pragma mark - Tag Collection View
 
 + (TTGTextTagStyle *)tagCollectionStyle {
     TTGTextTagStyle *style = [TTGTextTagStyle new];
@@ -43,6 +43,15 @@
     selectedStyle.cornerRadius = 4;
     selectedStyle.extraSpace = CGSizeMake(12, 12);
     return selectedStyle;
+}
+
++ (NSArray *)selectedStringsForTags:(NSArray *)selectedTags {
+    NSMutableArray *selectedStrings = [[NSMutableArray alloc] init];
+    for (TTGTextTag *tag in selectedTags) {
+        NSString *string = [NSString stringWithFormat:@"%@", [tag.content getContentAttributedString]];
+        [selectedStrings addObject:[string componentsSeparatedByString:@"{"][0]];
+    }
+    return (NSArray *)selectedStrings;
 }
 
 @end

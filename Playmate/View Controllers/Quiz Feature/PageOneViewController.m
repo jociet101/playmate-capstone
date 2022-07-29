@@ -60,14 +60,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"oneToTwo"]) {
         PageTwoViewController *vc = [segue destinationViewController];
-        // Extract sports from selected tags
-        NSArray *selectedTags = [self.tagCollectionView allSelectedTags];
-        NSMutableArray *selectedSports = [[NSMutableArray alloc] init];
-        for (TTGTextTag *tag in selectedTags) {
-            NSString *sport = [NSString stringWithFormat:@"%@", [tag.content getContentAttributedString]];
-            [selectedSports addObject:[sport componentsSeparatedByString:@"{"][0]];
-        }
-        vc.playSportsList = (NSArray *)selectedSports;
+        vc.playSportsList = [QuizHelpers selectedStringsForTags:[self.tagCollectionView allSelectedTags]];
     }
 }
 

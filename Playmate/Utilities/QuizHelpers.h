@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)giveCloseWarningforViewController:(id)viewController;
 + (TTGTextTagStyle *)tagCollectionStyle;
 + (TTGTextTagStyle *)tagCollectionSelectedStyle;
++ (NSArray *)selectedStringsForTags:(NSArray *)selectedTags;
 
 @end
 

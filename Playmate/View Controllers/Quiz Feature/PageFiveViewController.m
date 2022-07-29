@@ -1,24 +1,23 @@
 //
-//  PageThreeViewController.m
+//  PageFiveViewController.m
 //  Playmate
 //
 //  Created by Jocelyn Tseng on 7/29/22.
 //
 
-#import "PageThreeViewController.h"
-#import "PageFourViewController.h"
+#import "PageFiveViewController.h"
 #import "TTGTextTagCollectionView.h"
 #import "Constants.h"
 #import "QuizHelpers.h"
 
-@interface PageThreeViewController () <TTGTextTagCollectionViewDelegate>
+@interface PageFiveViewController () <TTGTextTagCollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIProgressView *progress;
 @property (nonatomic, strong) TTGTextTagCollectionView *tagCollectionView;
 
 @end
 
-@implementation PageThreeViewController
+@implementation PageFiveViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,7 +27,7 @@
 
 - (void)setupTagCollectionView {
     // Create TTGTextTagCollectionView view
-    self.tagCollectionView = [[TTGTextTagCollectionView alloc] initWithFrame:CGRectMake(20, 250, self.view.frame.size.width - 40, 300)];
+    self.tagCollectionView = [[TTGTextTagCollectionView alloc] initWithFrame:CGRectMake(20, 200, self.view.frame.size.width - 40, 300)];
     [self.view addSubview:self.tagCollectionView];
     self.tagCollectionView.delegate = self;
     
@@ -53,17 +52,26 @@
 }
 
 - (IBAction)didTapNext:(id)sender {
-    [self performSegueWithIdentifier:@"threeToFour" sender:nil];
+    [self performSegueWithIdentifier:@"fourToFive" sender:nil];
 }
+
 
 #pragma mark - Navigation
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-     if ([segue.identifier isEqualToString:@"threeToFour"]) {
-         PageFourViewController *vc = [segue destinationViewController];
-         vc.dontPlaySportsList = self.dontPlaySportsList;
-         vc.playSportsList = self.playSportsList;
-         vc.gendersList = [QuizHelpers selectedStringsForTags:[self.tagCollectionView allSelectedTags]];
+     if ([segue.identifier isEqualToString:@"fourToFive"]) {
+//         PageFiveViewController *vc = [segue destinationViewController];
+//         // Extract sports from selected tags
+//         NSArray *selectedTags = [self.tagCollectionView allSelectedTags];
+//         NSMutableArray *selectedGenders = [[NSMutableArray alloc] init];
+//         for (TTGTextTag *tag in selectedTags) {
+//             NSString *gender = [NSString stringWithFormat:@"%@", [tag.content getContentAttributedString]];
+//             [selectedGenders addObject:[gender componentsSeparatedByString:@"{"][0]];
+//         }
+//
+//         vc.dontPlaySportsList = self.dontPlaySportsList;
+//         vc.playSportsList = self.playSportsList;
+//         vc.gendersList = (NSArray *)selectedGenders;
      }
  }
 

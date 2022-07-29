@@ -41,7 +41,6 @@
     NSMutableArray *tagList = [[NSMutableArray alloc] init];
     for (NSString *sport in allSportsList) {
         if (![self.playSportsList containsObject:sport]) {
-            NSLog(@"sport = %@", sport);
             TTGTextTag *textTag = [TTGTextTag tagWithContent:[TTGTextTagStringContent contentWithText:sport] style:[TTGTextTagStyle new]];
             textTag.style = style;
             textTag.selectedStyle = selectedStyle;
@@ -64,14 +63,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"twoToThree"]) {
         PageThreeViewController *vc = [segue destinationViewController];
-        // Extract sports from selected tags
-        NSArray *selectedTags = [self.tagCollectionView allSelectedTags];
-        NSMutableArray *selectedSports = [[NSMutableArray alloc] init];
-        for (TTGTextTag *tag in selectedTags) {
-            NSString *sport = [NSString stringWithFormat:@"%@", [tag.content getContentAttributedString]];
-            [selectedSports addObject:[sport componentsSeparatedByString:@"{"][0]];
-        }
-        vc.dontPlaySportsList = (NSArray *)selectedSports;
+        vc.dontPlaySportsList = [QuizHelpers selectedStringsForTags:[self.tagCollectionView allSelectedTags]];
         vc.playSportsList = self.playSportsList;
     }
 }
