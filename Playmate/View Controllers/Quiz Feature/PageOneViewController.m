@@ -8,6 +8,7 @@
 #import "PageOneViewController.h"
 #import "TTGTextTagCollectionView.h"
 #import "Constants.h"
+#import "Helpers.h"
 
 @interface PageOneViewController () <TTGTextTagCollectionViewDelegate>
 
@@ -68,10 +69,8 @@
     [self.tagCollectionView addTags:tagList];
 }
 
-#pragma mark - Text Tag Collection View Delegate Methods
-
 - (IBAction)didTapClose:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [Helpers giveCloseWarningforViewController:self];
 }
 
 - (IBAction)didTapNext:(id)sender {

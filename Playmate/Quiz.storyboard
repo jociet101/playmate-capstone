@@ -28,9 +28,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F84-1d-Qvt">
-                                <rect key="frame" x="220" y="732" width="174" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F84-1d-Qvt">
+                                <rect key="frame" x="220" y="823" width="174" height="39"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="23"/>
                                 <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -42,6 +41,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="F84-1d-Qvt" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="735" id="0Vm-0k-4fm"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="F84-1d-Qvt" secondAttribute="trailing" constant="20" id="93O-Au-qhv"/>
+                            <constraint firstItem="F84-1d-Qvt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="220" id="Qhg-0T-P3i"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="F84-1d-Qvt" secondAttribute="bottom" id="hCL-V5-d3S"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="1 of 5" id="McC-r5-g0e">
                         <barButtonItem key="backBarButtonItem" title=" " id="ZQk-Qc-0hH"/>
@@ -60,7 +65,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="progress" destination="1Rm-6d-mxm" id="hVP-xF-t8U"/>
-                        <segue destination="14n-Kq-DG2" kind="show" identifier="oneToTwo" id="d8L-hY-rbH"/>
+                        <segue destination="14n-Kq-DG2" kind="show" identifier="oneToTwo" animates="NO" id="d8L-hY-rbH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -80,13 +85,24 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What sports do you not play?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5SE-Bv-9lF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What sports do you not want to play?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5SE-Bv-9lF">
                                 <rect key="frame" x="20" y="122" width="374" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBm-pw-FDh">
+                                <rect key="frame" x="220" y="823" width="174" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="23"/>
+                                <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="didTapNext:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ulY-vi-Xcd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Tkc-wr-hgU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
