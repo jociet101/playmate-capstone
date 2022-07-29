@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (TTGTextTagStyle *)tagCollectionStyle;
 + (TTGTextTagStyle *)tagCollectionSelectedStyle;
 + (NSArray *)selectedStringsForTags:(NSArray *)selectedTags;
++ (NSArray *)ageGroupList;
 
 @end
 

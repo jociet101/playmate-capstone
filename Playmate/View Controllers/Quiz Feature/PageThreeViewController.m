@@ -28,7 +28,7 @@
 
 - (void)setupTagCollectionView {
     // Create TTGTextTagCollectionView view
-    self.tagCollectionView = [[TTGTextTagCollectionView alloc] initWithFrame:CGRectMake(20, 250, self.view.frame.size.width - 40, 300)];
+    self.tagCollectionView = [[TTGTextTagCollectionView alloc] initWithFrame:CGRectMake(20, 220, self.view.frame.size.width - 40, 300)];
     [self.view addSubview:self.tagCollectionView];
     self.tagCollectionView.delegate = self;
     

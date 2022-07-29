@@ -54,4 +54,16 @@
     return (NSArray *)selectedStrings;
 }
 
++ (NSArray *)ageGroupList {
+    return [NSArray arrayWithObjects:@"Under 12",
+            @"12-17",
+            @"18-24",
+            @"25-34",
+            @"35-44",
+            @"45-54",
+            @"55-64",
+            @"65-74",
+            @"75+", nil];
+}
+
 @end

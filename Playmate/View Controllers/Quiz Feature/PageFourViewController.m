@@ -37,10 +37,10 @@
     TTGTextTagStyle *selectedStyle = [QuizHelpers tagCollectionSelectedStyle];
     
     // Get sports list and create tags
-    NSArray *allGendersList = [Constants gendersList];
+    NSArray *allGendersList = [QuizHelpers ageGroupList];
     NSMutableArray *tagList = [[NSMutableArray alloc] init];
-    for (NSString *gender in allGendersList) {
-        TTGTextTag *textTag = [TTGTextTag tagWithContent:[TTGTextTagStringContent contentWithText:gender] style:[TTGTextTagStyle new]];
+    for (NSString *age in allGendersList) {
+        TTGTextTag *textTag = [TTGTextTag tagWithContent:[TTGTextTagStringContent contentWithText:age] style:[TTGTextTagStyle new]];
         textTag.style = style;
         textTag.selectedStyle = selectedStyle;
         [tagList addObject:textTag];
