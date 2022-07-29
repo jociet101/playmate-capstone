@@ -158,19 +158,20 @@ BOOL isPartOfSession;
                                fromUser:me];
     [SessionNotification deleteNotificationsForSession:sessionId];
     [NotificationHandler unscheduleSessionNotification:sessionId];
-    [self.sessionDetails deleteInBackground];
     [self.sessionDetails deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        [self returnToHome];
+        [self returnToHomeButStay:NO];
     }];
 }
 
-- (void)returnToHome {
+- (void)returnToHomeButStay:(BOOL)stay {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
     HomeViewController *vc = [[homeVC viewControllers][0] childViewControllers][0];
     self.delegate = (id)vc;
     [self.delegate reloadHomeTabSessions];
-    self.view.window.rootViewController = homeVC;
+    if (!stay) {
+        self.view.window.rootViewController = homeVC;
+    }
 }
 
 - (IBAction)goToLocation:(id)sender {
@@ -218,6 +219,7 @@ BOOL isPartOfSession;
 #pragma mark - Add to session button action
 
 - (IBAction)addMyself:(id)sender {
+    NSString *sessionObjectId = self.sessionDetails.objectId;
     if (isPartOfSession) {
         [self stopConfetti];
         // For leaving session
@@ -227,32 +229,32 @@ BOOL isPartOfSession;
         [self disableInviteButton];
         
         PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+        Session *session = [query getObjectWithId:self.sessionDetails.objectId];
 
-        // Retrieve the object by id
-        [query getObjectInBackgroundWithId:self.sessionDetails.objectId
-                                     block:^(PFObject *session, NSError *error) {
-            // Add myself to the session
-            NSMutableArray *oldPlayersList = (NSMutableArray *)session[@"playersList"];
-            
-            PFUser * _Nullable userToRemove = nil;
-            for (PFUser *user in oldPlayersList) {
-                if ([user.objectId isEqualToString:me.objectId]) {
-                    userToRemove = user;
-                    break;
-                }
-            }
-            
-            [oldPlayersList removeObject:userToRemove];
-                        
-            session[@"playersList"] = (NSArray *)oldPlayersList;
-            
-            int newOccupied = (int)oldPlayersList.count;
-            session[@"occupied"] = [NSNumber numberWithInt:newOccupied];
-            
-            [session saveInBackground];
-        }];
+        NSMutableArray *oldPlayersList = (NSMutableArray *)session[@"playersList"];
         
-        NSString *sessionObjectId = self.sessionDetails.objectId;
+        PFUser * _Nullable userToRemove = nil;
+        for (PFUser *user in oldPlayersList) {
+            if ([user.objectId isEqualToString:me.objectId]) {
+                userToRemove = user;
+                break;
+            }
+        }
+        
+        [oldPlayersList removeObject:userToRemove];
+                    
+        session[@"playersList"] = (NSArray *)oldPlayersList;
+        
+        int newOccupied = (int)oldPlayersList.count;
+        session[@"occupied"] = [NSNumber numberWithInt:newOccupied];
+        
+        [session saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                [self returnToHomeButStay:YES];
+            } else {
+                [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
+            }
+        }];
         
         // Remove this session from user's history
         [ManageUserStatistics updateDictionaryRemoveSession:sessionObjectId
@@ -274,23 +276,23 @@ BOOL isPartOfSession;
         [self enableInviteButton];
         
         PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+        Session *session = [query getObjectWithId:self.sessionDetails.objectId];
 
-        // Retrieve the object by id
-        [query getObjectInBackgroundWithId:self.sessionDetails.objectId
-                                     block:^(PFObject *session, NSError *error) {
-            // Add myself to the session
-            NSMutableArray *oldPlayersList = (NSMutableArray *)session[@"playersList"];
-            [oldPlayersList addObject:me];
-            
-            session[@"playersList"] = (NSArray *)oldPlayersList;
-            
-            int newOccupied = (int)oldPlayersList.count;
-            session[@"occupied"] = [NSNumber numberWithInt:newOccupied];
-            
-            [session saveInBackground];
-        }];
+        NSMutableArray *oldPlayersList = (NSMutableArray *)session[@"playersList"];
+        [oldPlayersList addObject:me];
         
-        NSString *sessionObjectId = self.sessionDetails.objectId;
+        session[@"playersList"] = (NSArray *)oldPlayersList;
+        
+        int newOccupied = (int)oldPlayersList.count;
+        session[@"occupied"] = [NSNumber numberWithInt:newOccupied];
+        
+        [session saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                [self returnToHomeButStay:YES];
+            } else {
+                [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
+            }
+        }];
         
         // Add this session to user's history
         [ManageUserStatistics updateDictionaryAddSession:sessionObjectId
@@ -301,7 +303,6 @@ BOOL isPartOfSession;
         [SessionNotification createNotificationForSession:sessionObjectId forUser:me.objectId];
         [NotificationHandler scheduleSessionNotification:sessionObjectId];
     }
-    [self.delegate reloadHomeTabSessions];
 }
 
 - (void)updateJoinUI {

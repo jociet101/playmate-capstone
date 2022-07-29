@@ -44,6 +44,9 @@
 		3C8E5399287F69170087498B /* OutgoingRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E5398287F69170087498B /* OutgoingRequestsViewController.m */; };
 		3C8E539C287F7A8D0087498B /* OutgoingRequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E539B287F7A8D0087498B /* OutgoingRequestCell.m */; };
 		3CA1A199287DF02E00BBDB69 /* ConnectionState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1A198287DF02E00BBDB69 /* ConnectionState.m */; };
+		3CA2033328938B3F005386B9 /* Quiz.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CA2033228938B3F005386B9 /* Quiz.storyboard */; };
+		3CA2033728938C18005386B9 /* PageOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA2033628938C17005386B9 /* PageOneViewController.m */; };
+		3CA2033A2893A1B2005386B9 /* PageTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA203392893A1B2005386B9 /* PageTwoViewController.m */; };
 		3CDBEB90288F195100F2D739 /* Strings.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDBEB8F288F195100F2D739 /* Strings.m */; };
 		3CF4186428765585009741FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF4186328765585009741FF /* MapKit.framework */; };
 		3CF4A58A2878AA1A000C5E7D /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */; };
@@ -164,6 +167,11 @@
 		3C8E539B287F7A8D0087498B /* OutgoingRequestCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutgoingRequestCell.m; sourceTree = "<group>"; };
 		3CA1A197287DF02E00BBDB69 /* ConnectionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionState.h; sourceTree = "<group>"; };
 		3CA1A198287DF02E00BBDB69 /* ConnectionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectionState.m; sourceTree = "<group>"; };
+		3CA2033228938B3F005386B9 /* Quiz.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Quiz.storyboard; sourceTree = "<group>"; };
+		3CA2033528938C17005386B9 /* PageOneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageOneViewController.h; sourceTree = "<group>"; };
+		3CA2033628938C17005386B9 /* PageOneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageOneViewController.m; sourceTree = "<group>"; };
+		3CA203382893A1B2005386B9 /* PageTwoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageTwoViewController.h; sourceTree = "<group>"; };
+		3CA203392893A1B2005386B9 /* PageTwoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageTwoViewController.m; sourceTree = "<group>"; };
 		3CDBEB8E288F195100F2D739 /* Strings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Strings.h; sourceTree = "<group>"; };
 		3CDBEB8F288F195100F2D739 /* Strings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Strings.m; sourceTree = "<group>"; };
 		3CF4186328765585009741FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -291,6 +299,7 @@
 		3C45B561286E64CB00EE578F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3CA2033428938BA0005386B9 /* Quiz Feature */,
 				3C45B571287297C800EE578F /* Home Tab */,
 				3CDBEB8C288E7FAD00F2D739 /* Profile Related */,
 				3CDBEB8A288E7F5D00F2D739 /* Friends Related */,
@@ -377,6 +386,17 @@
 				3CDBEB87288E7EFD00F2D739 /* Friends Related */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3CA2033428938BA0005386B9 /* Quiz Feature */ = {
+			isa = PBXGroup;
+			children = (
+				3CA2033528938C17005386B9 /* PageOneViewController.h */,
+				3CA2033628938C17005386B9 /* PageOneViewController.m */,
+				3CA203382893A1B2005386B9 /* PageTwoViewController.h */,
+				3CA203392893A1B2005386B9 /* PageTwoViewController.m */,
+			);
+			path = "Quiz Feature";
 			sourceTree = "<group>";
 		};
 		3CDBEB85288E7EC500F2D739 /* Friends Related */ = {
@@ -527,6 +547,7 @@
 				3CF652AB286D036600BD5EDB /* SceneDelegate.m */,
 				3CF652B5286D036700BD5EDB /* LaunchScreen.storyboard */,
 				3CF652B0286D036600BD5EDB /* Main.storyboard */,
+				3CA2033228938B3F005386B9 /* Quiz.storyboard */,
 				3CF652B8286D036700BD5EDB /* Info.plist */,
 				3C45B56C287285AC00EE578F /* Keys.plist */,
 				3CF652B3286D036700BD5EDB /* Assets.xcassets */,
@@ -661,6 +682,7 @@
 			files = (
 				3C45B56D287285AC00EE578F /* Keys.plist in Resources */,
 				3CF652B7286D036700BD5EDB /* LaunchScreen.storyboard in Resources */,
+				3CA2033328938B3F005386B9 /* Quiz.storyboard in Resources */,
 				3CF652B4286D036700BD5EDB /* Assets.xcassets in Resources */,
 				3CF652B2286D036600BD5EDB /* Main.storyboard in Resources */,
 			);
@@ -820,6 +842,7 @@
 				3C45B5902874BB7500EE578F /* Session.m in Sources */,
 				3C69D04C28874EAB00851E6F /* ManageUserStatistics.m in Sources */,
 				3C45B58928737E6200EE578F /* SearchViewController.m in Sources */,
+				3CA2033728938C18005386B9 /* PageOneViewController.m in Sources */,
 				3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */,
 				3C45B59E2875060700EE578F /* SessionDetailsViewController.m in Sources */,
 				3C71BDD428908760000F4A1D /* SessionNotification.m in Sources */,
@@ -829,6 +852,7 @@
 				3C1BC0152885BFA800D17314 /* SessionCollectionCell.m in Sources */,
 				3C45B574287297EB00EE578F /* HomeViewController.m in Sources */,
 				3C19BA21288B2C5600592C20 /* InvitationsViewController.m in Sources */,
+				3CA2033A2893A1B2005386B9 /* PageTwoViewController.m in Sources */,
 				3CF4A5BE287CE7C8000C5E7D /* FriendRequestCell.m in Sources */,
 				3C1BC00D28820AB400D17314 /* MapPinsViewController.m in Sources */,
 				3CDBEB90288F195100F2D739 /* Strings.m in Sources */,
@@ -1018,9 +1042,14 @@
 				DEVELOPMENT_TEAM = J9M7RNK2K7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Playmate/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need camera access to take pictures";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Playmate wants to access your location.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Playmate wants to access your location.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Need library access to upload images";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1031,7 +1060,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jocelyntseng.Playmate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1046,9 +1075,14 @@
 				DEVELOPMENT_TEAM = J9M7RNK2K7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Playmate/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need camera access to take pictures";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Playmate wants to access your location.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Playmate wants to access your location.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Need library access to upload images";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1059,7 +1093,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jocelyntseng.Playmate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

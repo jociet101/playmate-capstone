@@ -22,6 +22,7 @@ PODS:
     - Parse/Core (= 1.19.3)
   - Parse/Core (1.19.3):
     - Bolts/Tasks (= 1.9.1)
+  - TTGTagCollectionView (2.1.0)
 
 DEPENDENCIES:
   - AFNetworking
@@ -29,6 +30,7 @@ DEPENDENCIES:
   - DZNEmptyDataSet
   - FSCalendar
   - Parse
+  - TTGTagCollectionView
 
 SPEC REPOS:
   trunk:
@@ -38,6 +40,7 @@ SPEC REPOS:
     - DZNEmptyDataSet
     - FSCalendar
     - Parse
+    - TTGTagCollectionView
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
@@ -46,7 +49,8 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
+  TTGTagCollectionView: a2a8668c659b39e7a6ffd6590475ea53a7ae95f7
 
-PODFILE CHECKSUM: 6c69694b8d4a69a4f1ac104d8d83398f588245f2
+PODFILE CHECKSUM: ec4b0da92933bf788b2da46764dea4d5bb5ef57f
 
 COCOAPODS: 1.11.3

@@ -5,6 +5,7 @@
 //  Created by Jocelyn Tseng on 7/3/22.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "HomeViewController.h"
 #import "CalendarViewController.h"
 #import "ProfileViewController.h"
@@ -23,9 +24,16 @@
 
 @interface HomeViewController () <CreateMenuViewControllerDelegate, SessionDetailsViewControllerDelegate, UNUserNotificationCenterDelegate>
 
+@property (nonatomic, strong) NSMutableArray *sessionList;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
-@property (nonatomic, strong) NSMutableArray *sessionList;
+@property (weak, nonatomic) IBOutlet UILabel *notifierLabel;
+@property (weak, nonatomic) IBOutlet UILabel *takeQuizLabel;
+@property (weak, nonatomic) IBOutlet UILabel *notifierShadow;
+@property (weak, nonatomic) IBOutlet UILabel *quizShadow;
+
+@property (weak, nonatomic) IBOutlet UILabel *exploreBackgroundLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scheduleBackgroundLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *upcomingView;
 @property (weak, nonatomic) IBOutlet UIView *suggestedView;
@@ -43,28 +51,51 @@
     
     self.upcomingView.layer.cornerRadius = [Constants buttonCornerRadius];
     self.suggestedView.layer.cornerRadius = [Constants buttonCornerRadius];
-    
     self.upcomingView.alpha = 1;
     self.suggestedView.alpha = 0;
     
+    [self configureLabel:self.notifierLabel isShadow:NO];
+    [self configureLabel:self.takeQuizLabel isShadow:NO];
+    [self configureLabel:self.notifierShadow isShadow:YES];
+    [self configureLabel:self.quizShadow isShadow:YES];
+    
+    UITapGestureRecognizer *exploreTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapExploreNearby)];
+    
+    [self.exploreBackgroundLabel addGestureRecognizer:exploreTapGesture];
+    
+    UITapGestureRecognizer *scheduleTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapSchedule)];
+    
+    [self.scheduleBackgroundLabel addGestureRecognizer:scheduleTapGesture];
+
     self.sessionList = [[NSMutableArray alloc] init];
+    [self fetchData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSString *greeting;
-    NSDate *now = [NSDate now];
-    if ([now hour] >= 17) {
-        greeting = @"Good Evening, ";
-    } else if ([now hour] >= 12) {
-        greeting = @"Good Afternoon, ";
-    } else {
-        greeting = @"Good Morning, ";
-    }
-    
-    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
-    self.welcomeLabel.text = [greeting stringByAppendingString:me[@"firstName"][0]];
-    
+    self.notifierLabel.text = [Helpers getNotifierLabelString];
+    self.welcomeLabel.text = [Helpers getGreetingString];
+    self.takeQuizLabel.text = [Helpers getQuizString];
+    [self.delegate loadSessionList:@[]];
     [self fetchData];
+}
+
+- (void)configureLabel:(UILabel *)label isShadow:(BOOL)isShadow {
+    label.layer.cornerRadius = [Constants tinyButtonCornerRadius];
+    if (isShadow) {
+        label.layer.backgroundColor = [[UIColor systemGray4Color] CGColor];
+    } else {
+        label.layer.backgroundColor = [[UIColor systemGray6Color] CGColor];
+    }
+}
+
+#pragma mark - Gesture Recognizers
+
+- (void)didTapExploreNearby {
+    [self performSegueWithIdentifier:@"homeToExploreNearby" sender:nil];
+}
+
+- (void)didTapSchedule {
+    [self performSegueWithIdentifier:@"homeToSchedule" sender:nil];
 }
 
 #pragma mark - Notifications Configuration
@@ -117,7 +148,9 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
         if (sessions != nil) {
             [self.sessionList removeAllObjects];
+            self.sessionList = [[NSMutableArray alloc] init];
             [self filterSessions:sessions];
+            
             [self.delegate loadSessionList:(NSArray *)self.sessionList];
         } else {
             [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
@@ -130,16 +163,11 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     NSDate *now = [NSDate date];
     
-    NSMutableSet *selfSet = [NSMutableSet setWithObject:me.objectId];
     // Filter to only sessions self is in
     for (Session *session in sessions) {
         NSMutableSet *playersSet = [Helpers getPlayerObjectIdSet:session.playersList];
-        
-        [playersSet intersectSet: selfSet];
-        NSArray *resultArray = [playersSet allObjects];
-        
         NSComparisonResult result = [now compare:session.occursAt];
-        if (resultArray.count > 0 && result == NSOrderedAscending) {
+        if ([playersSet containsObject:me.objectId] && result == NSOrderedAscending) {
             [self.sessionList addObject:session];
         }
     }
@@ -153,12 +181,16 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     self.suggestedView.alpha = isSegmentZeroIndex ? 0 : 1;
 }
 
+- (IBAction)didTapReload:(id)sender {
+    [self fetchData];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([segue.identifier isEqualToString:@"toCalendar"]) {
+	if ([segue.identifier isEqualToString:@"homeToSchedule"]) {
 		CalendarViewController *vc = [segue destinationViewController];
-		vc.rawSessionList = self.sessionList;
+        vc.rawSessionList = [self fetchAllData];
     } else if ([segue.identifier isEqualToString:@"homeToUpcomingSessions"]) {
         UpcomingSessionsViewController *vc = [segue destinationViewController];
         self.delegate = (id)vc;
@@ -169,11 +201,33 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     }
 }
 
-- (IBAction)goToProfile:(id)sender {
-	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-	UITabBarController *tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
-	[tabBarController setSelectedIndex:3];
-	self.view.window.rootViewController = tabBarController;
+// Will fetch every session belonging to current user,
+// Including past sessions and upcoming sessions
+- (NSArray *)fetchAllData {
+    NSMutableArray *sessionList = [[NSMutableArray alloc] init];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
+    [query orderByAscending:@"occursAt"];
+    
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
+    NSArray *unfilteredSessions = [query findObjects];
+    // Filter to only sessions self is in
+    for (Session *session in unfilteredSessions) {
+        NSMutableSet *playersSet = [Helpers getPlayerObjectIdSet:session.playersList];
+        if ([playersSet containsObject:me.objectId]) {
+            [sessionList addObject:session];
+        }
+    }
+    
+    return (NSArray *)sessionList;
+}
+
+- (IBAction)didTapViewNotifications:(id)sender {
+    [self performSegueWithIdentifier:@"homeToFriendNotifications" sender:nil];
+}
+
+- (IBAction)didTapTakeQuiz:(id)sender {
+    [self performSegueWithIdentifier:@"homeToQuiz" sender:nil];
 }
 
 @end

@@ -11,6 +11,7 @@ target 'Playmate' do
   pod 'DZNEmptyDataSet'
   pod 'AFNetworking'
   pod 'FSCalendar'
+  pod 'TTGTagCollectionView'
 
   target 'PlaymateTests' do
     inherit! :search_paths
