@@ -9,13 +9,15 @@
 
 @interface PageOneViewController ()
 
+@property (weak, nonatomic) IBOutlet UIProgressView *progress;
+
 @end
 
 @implementation PageOneViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self.progress setProgress:0.2 animated:YES];
 }
 
 - (IBAction)didTapClose:(id)sender {
