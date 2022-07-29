@@ -44,6 +44,7 @@ Playmate is a platform where sports players can conveniently find others to play
 
 **Optional Nice-to-have Stories**
 
+* [ ] User can view their own sessions in a carousel card view on home tab
 * [ ] User can edit their profile
 * [ ] User will be notified of upcoming sessions through iOS notifications
 * [ ] User can open session location in Apple or Google maps
@@ -54,10 +55,10 @@ Playmate is a platform where sports players can conveniently find others to play
 
 ### 2. Screen Archetypes
 
-* [list first screen here]
+* Home
    * [list associated required story here]
    * ...
-* [list second screen here]
+* Search
    * [list associated required story here]
    * ...
 

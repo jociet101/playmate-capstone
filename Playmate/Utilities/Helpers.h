@@ -43,6 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)appendAgoToTime:(NSDate *)timeAgo;
 + (NSDate *)removeMinutes:(int)minutes fromTime:(NSDate *)time;
 + (NSDateComponents *)getComponentsFromDate:(NSDate *)date;
++ (NSString *)getTimeFromNowUntil:(NSDate *)date;
 
 #pragma mark - Profile Tab and Friend Notifications
 + (NSString *)concatenateFirstName:(NSString *)first andLast:(NSString *)last;

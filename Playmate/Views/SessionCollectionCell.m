@@ -57,7 +57,8 @@ BOOL isViewingFront;
     
     self.skillLevelLabel.text = [@"Skill Level: " stringByAppendingString:self.session.skillLevel];
     
-    self.dateFrontLabel.text = [Helpers getTimeGivenDurationForSession:self.session];
+//    self.dateFrontLabel.text = [Helpers getTimeGivenDurationForSession:self.session];
+    self.dateFrontLabel.text = [Helpers getTimeFromNowUntil:self.session.occursAt];
     self.dateBackLabel.text = [Helpers getTimeGivenDurationForSession:self.session];
     
     [self.frontImageView setImage:[Helpers resizeImage:[UIImage imageNamed:[Constants getImageNameForSport:self.session.sport]] withDimension:208]];

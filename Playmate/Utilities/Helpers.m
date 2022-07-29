@@ -105,7 +105,7 @@
     image.layer.cornerRadius = image.frame.size.width/2.0f;
 }
 
-#pragma mark - Date Formatting
+#pragma mark - Dates
 
 + (NSString *)formatDate:(NSDate *)original {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -159,6 +159,18 @@
                         [gregorian components:unitFlags
                                      fromDate:date];
     return dateComponents;
+}
+
++ (NSString *)getTimeFromNowUntil:(NSDate *)date {
+    // total seconds between
+    long interval = (long)[date timeIntervalSinceDate:[NSDate now]];
+    long days = interval / (60 * 60 * 24);
+    interval = interval % (60 * 60 * 24);
+    long hours = interval / (60 * 60);
+    interval = interval % (60 * 60);
+    long minutes = interval / 60;
+    
+    return [NSString stringWithFormat:@"Session in %ld days, %ld hours, %ld minutes", days, hours, minutes];
 }
 
 #pragma mark - Profile Tab and Friend Notifications
