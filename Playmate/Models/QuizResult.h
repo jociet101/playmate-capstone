@@ -20,7 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)saveQuizResultWithSports:(NSArray *)sports
                     andNotSports:(NSArray *)notSports
                       andGenders:(NSArray *)genders
-                         andAges:(NSArray *)ages;
+                         andAges:(NSArray *)ages
+                  withCompletion:(void(^)(BOOL success, NSError *error))completion;
 
 @end
 

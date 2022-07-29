@@ -22,7 +22,8 @@
 + (void)saveQuizResultWithSports:(NSArray *)sports
                     andNotSports:(NSArray *)notSports
                       andGenders:(NSArray *)genders
-                         andAges:(NSArray *)ages {
+                         andAges:(NSArray *)ages
+                  withCompletion:(void(^)(BOOL success, NSError *error))completion {
     QuizResult *result = [QuizResult new];
     PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     result.userObjectId = user.objectId;
@@ -31,7 +32,13 @@
     result.gendersList = genders;
     result.ageGroupsList = ages;
     
-    [result saveInBackground];
+    [result saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            completion(YES, nil);
+        } else {
+            completion(nil, error);
+        }
+    }];
 }
 
 @end
