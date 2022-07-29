@@ -367,7 +367,7 @@
 // Get quiz status string
 + (NSString *)getQuizString {
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
-    if (me[@"hasTakenQuiz"]) {
+    if ([me objectForKey:@"quizResult"] != nil) {
         return @" 📝 Retake my session preferences quiz → ";
     } else {
         return @" 📝 Take the session preferences quiz! → ";
