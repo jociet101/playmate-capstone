@@ -853,6 +853,16 @@
             </objects>
             <point key="canvasLocation" x="6905" y="-2145"/>
         </scene>
+        <!--Quiz-->
+        <scene sceneID="7bB-BC-7e4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Quiz" id="y8h-rj-i6s" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="nrE-Fm-Fsi"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iC7-kD-Lme" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6322" y="-1755"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="A7g-fS-tar">
             <objects>
@@ -1036,6 +1046,7 @@
                         <segue destination="fyA-uy-s4Q" kind="show" identifier="homeToFriendNotifications" id="cjs-AZ-4HT"/>
                         <segue destination="gNp-hx-eex" kind="show" identifier="homeToSchedule" id="2vd-5A-dTP"/>
                         <segue destination="CuJ-hg-fGS" kind="show" identifier="homeToExploreNearby" id="AHu-fh-hry"/>
+                        <segue destination="y8h-rj-i6s" kind="presentation" identifier="homeToQuiz" id="JrJ-qy-mZc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HGV-BW-WRc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

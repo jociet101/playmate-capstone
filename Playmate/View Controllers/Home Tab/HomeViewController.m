@@ -227,7 +227,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 }
 
 - (IBAction)didTapTakeQuiz:(id)sender {
-//    [self performSegueWithIdentifier:<#(nonnull NSString *)#> sender:<#(nullable id)#>]
+    [self performSegueWithIdentifier:@"homeToQuiz" sender:nil];
 }
 
 @end
