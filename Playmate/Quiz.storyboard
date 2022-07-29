@@ -28,25 +28,20 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F84-1d-Qvt">
-                                <rect key="frame" x="220" y="823" width="174" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F84-1d-Qvt">
+                                <rect key="frame" x="220" y="682" width="174" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="23"/>
                                 <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <action selector="didTapNext:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rq1-3g-9fM"/>
+                                    <action selector="didTapNext:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="amS-pA-QiO"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="F84-1d-Qvt" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="735" id="0Vm-0k-4fm"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="F84-1d-Qvt" secondAttribute="trailing" constant="20" id="93O-Au-qhv"/>
-                            <constraint firstItem="F84-1d-Qvt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="220" id="Qhg-0T-P3i"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="F84-1d-Qvt" secondAttribute="bottom" id="hCL-V5-d3S"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="1 of 5" id="McC-r5-g0e">
                         <barButtonItem key="backBarButtonItem" title=" " id="ZQk-Qc-0hH"/>
@@ -93,14 +88,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBm-pw-FDh">
-                                <rect key="frame" x="220" y="823" width="174" height="39"/>
+                                <rect key="frame" x="220" y="684" width="174" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="23"/>
                                 <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <action selector="didTapNext:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ulY-vi-Xcd"/>
+                                    <action selector="didTapNext:" destination="14n-Kq-DG2" eventType="touchUpInside" id="NlA-7R-txl"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -108,6 +103,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="2 of 5" id="n1E-3X-KBR">
+                        <barButtonItem key="backBarButtonItem" title=" " id="IcF-H3-kVF"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="c05-ts-Hki">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="NMh-ya-SNR">
                                 <rect key="frame" x="302" y="5" width="92" height="34"/>
@@ -123,11 +119,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="progress" destination="LXP-tI-Psg" id="IQx-mm-0up"/>
+                        <segue destination="abh-hi-Mn4" kind="show" identifier="twoToThree" animates="NO" id="VPd-uh-tf8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ixE-ad-AAh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1807" y="100"/>
+            <point key="canvasLocation" x="1849" y="100"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Pjf-4U-1xN">
@@ -207,6 +204,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="25m-GR-9JT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="971" y="-672"/>
+        </scene>
+        <!--3 of 5-->
+        <scene sceneID="eBM-c0-JoL">
+            <objects>
+                <viewController id="abh-hi-Mn4" customClass="PageThreeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gh9-Wm-KZL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="3vL-Fo-cWB">
+                                <rect key="frame" x="0.0" y="89" width="414" height="4"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is your preferred gender to play sports with?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBc-wX-UBR">
+                                <rect key="frame" x="20" y="122" width="374" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTM-nQ-yrY">
+                                <rect key="frame" x="220" y="684" width="174" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="23"/>
+                                <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Next"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="k9A-IV-5tY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="3 of 5" id="lhj-Uy-hIz">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="S3K-pd-Yl1">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="gA1-JK-CSW">
+                                <rect key="frame" x="302" y="5" width="92" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system" title=""/>
+                                <connections>
+                                    <action selector="didTapClose:" destination="abh-hi-Mn4" eventType="touchUpInside" id="aNn-s2-qMR"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="progress" destination="3vL-Fo-cWB" id="qtj-k7-ujx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yYA-lL-Yj1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2682.608695652174" y="99.776785714285708"/>
         </scene>
     </scenes>
     <resources>

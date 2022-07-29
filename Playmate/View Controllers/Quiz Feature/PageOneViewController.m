@@ -6,9 +6,10 @@
 //
 
 #import "PageOneViewController.h"
+#import "PageTwoViewController.h"
 #import "TTGTextTagCollectionView.h"
 #import "Constants.h"
-#import "Helpers.h"
+#import "QuizHelpers.h"
 
 @interface PageOneViewController () <TTGTextTagCollectionViewDelegate>
 
@@ -25,38 +26,16 @@
 }
 
 - (void)setupTagCollectionView {
-    int width = self.view.frame.size.width - 40;
     // Create TTGTextTagCollectionView view
-    self.tagCollectionView = [[TTGTextTagCollectionView alloc] initWithFrame:CGRectMake(20, 200, width, 300)];
+    self.tagCollectionView = [[TTGTextTagCollectionView alloc] initWithFrame:CGRectMake(20, 200, self.view.frame.size.width - 40, 300)];
     [self.view addSubview:self.tagCollectionView];
     self.tagCollectionView.delegate = self;
     
-    // Design style and selected style for the tags
-    TTGTextTagStringContent *content = [TTGTextTagStringContent new];
-    TTGTextTagStringContent *selectedContent = [TTGTextTagStringContent new];
-    TTGTextTagStyle *style = [TTGTextTagStyle new];
-    TTGTextTagStyle *selectedStyle = [TTGTextTagStyle new];
+    // Get style and selected style for the tags
+    TTGTextTagStyle *style = [QuizHelpers tagCollectionStyle];
+    TTGTextTagStyle *selectedStyle = [QuizHelpers tagCollectionSelectedStyle];
     
-    content.textFont = [UIFont boldSystemFontOfSize:30.0f];
-    selectedContent.textFont = content.textFont;
-    
-    content.textColor = [UIColor blackColor];
-    selectedContent.textColor = [UIColor blackColor];
-    
-    style.backgroundColor = [UIColor whiteColor];
-    selectedStyle.backgroundColor = [UIColor systemMintColor];
-
-    style.borderColor = [UIColor blackColor];
-    style.borderWidth = 1;
-    selectedStyle.borderColor = [UIColor blackColor];
-    selectedStyle.borderWidth = 1;
-
-    style.cornerRadius = 4;
-    selectedStyle.cornerRadius = 4;
-    
-    style.extraSpace = CGSizeMake(12, 12);
-    selectedStyle.extraSpace = style.extraSpace;
-    
+    // Get sports list and create tags
     NSArray *sportsList = [Constants sportsList:NO];
     NSMutableArray *tagList = [[NSMutableArray alloc] init];
     for (NSString *sport in sportsList) {
@@ -65,12 +44,11 @@
         textTag.selectedStyle = selectedStyle;
         [tagList addObject:textTag];
     }
-    
     [self.tagCollectionView addTags:tagList];
 }
 
 - (IBAction)didTapClose:(id)sender {
-    [Helpers giveCloseWarningforViewController:self];
+    [QuizHelpers giveCloseWarningforViewController:self];
 }
 
 - (IBAction)didTapNext:(id)sender {
@@ -81,7 +59,15 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"oneToTwo"]) {
-        // save desired sports
+        PageTwoViewController *vc = [segue destinationViewController];
+        // Extract sports from selected tags
+        NSArray *selectedTags = [self.tagCollectionView allSelectedTags];
+        NSMutableArray *selectedSports = [[NSMutableArray alloc] init];
+        for (TTGTextTag *tag in selectedTags) {
+            NSString *sport = [NSString stringWithFormat:@"%@", [tag.content getContentAttributedString]];
+            [selectedSports addObject:[sport componentsSeparatedByString:@"{"][0]];
+        }
+        vc.playSportsList = (NSArray *)selectedSports;
     }
 }
 

@@ -177,4 +177,30 @@ static NSString * geoapify;
     }
 }
 
+- (void)getCountriesList {
+    NSDictionary *headers = @{ @"X-RapidAPI-Key": @"6627b720famsh3c185e12854943dp1122afjsn5fa34a592ac5",
+                               @"X-RapidAPI-Host": @"countries-cities.p.rapidapi.com" };
+
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://countries-cities.p.rapidapi.com/location/country/list"]
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:10.0];
+    [request setHTTPMethod:@"GET"];
+    [request setAllHTTPHeaderFields:headers];
+
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            NSLog(@"%@", error);
+        } else {
+            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            NSLog(@"dataDictionary = %@", dataDictionary);
+            
+//            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+//            NSLog(@"%@", httpResponse);
+        }
+    }];
+    [task resume];
+}
+
 @end

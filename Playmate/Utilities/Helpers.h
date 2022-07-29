@@ -28,8 +28,6 @@ NS_ASSUME_NONNULL_BEGIN
         withMessage:(NSString * _Nullable)message
   forViewController:(id)viewController;
 
-+ (void)giveCloseWarningforViewController:(id)viewController;
-
 #pragma mark - Button UI
 + (void)setCornerRadiusAndColorForButton:(UIButton *)button andIsSmall:(BOOL)isSmall;
 

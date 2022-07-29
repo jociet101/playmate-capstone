@@ -47,19 +47,6 @@
     [viewController presentViewController:alertController animated: YES completion: nil];
 }
 
-+ (void)giveCloseWarningforViewController:(id)viewController {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Are you sure?" message:@"Your progress will be lost." preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *closeAction = [UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        [viewController dismissViewControllerAnimated:YES completion:nil];
-    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-    }];
-    
-    [alertController addAction:cancelAction];
-    [alertController addAction:closeAction];
-    [viewController presentViewController:alertController animated: YES completion: nil];
-}
-
 #pragma mark - Button UI
 
 + (void)setCornerRadiusAndColorForButton:(UIButton *)button andIsSmall:(BOOL)isSmall {
