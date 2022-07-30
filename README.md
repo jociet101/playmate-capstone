@@ -36,7 +36,7 @@ Playmate is a platform where sports players can conveniently find others to play
 * [x] User can see own sessions on a calendar
 * [x] User can explore nearby sessions on a map
 * [x] User can search for sessions based on filters they set
-* [x] User can add themself to an existing session after search
+* [x] User can join an existing session after search
 * [x] User can remove themself from a session
 * [x] User can create session if no existing ones match their liking
 * [x] User can search for location on map to set their session location
@@ -60,7 +60,8 @@ Playmate is a platform where sports players can conveniently find others to play
 ### 2. Screen Archetypes
 
 * Home Tab
-   * View own sessions in a carousel view on home tab
+   * View upcoming sessions in a carousel view
+   * View suggested sessions in the same way
    * Take preferences quiz to get better suggestions
 * Calendar
    * See own sessions on a calendar
@@ -68,10 +69,10 @@ Playmate is a platform where sports players can conveniently find others to play
    * Explore nearby sessions on a map
 * Session Details
    * Open session location in Apple or Google maps
-   * Can join a session
-   * Can leave a session
-   * Can delete a session they created
-   * Can invite friends to a session they are already in
+   * Join a session
+   * Leave a session
+   * Delete a session they created
+   * Invite friends to a session they are already in
 * Search Tab
    * Search for existing sessions
    * Apply filters to search for desired session properties
@@ -81,11 +82,11 @@ Playmate is a platform where sports players can conveniently find others to play
 * Profile Tab
    * Customize their profile
 * Notifications
-   * Can approve or deny friend requests
-   * Can view and accept or deny invite
+   * Approve or deny friend requests
+   * View and accept or deny invite
 * Player Profile
-   * Can send friend requests and remove friend
-   * Can view their Playmate and session statistics
+   * Send friend requests and remove friend
+   * View their Playmate and session statistics
 
 ### 3. Navigation
 
