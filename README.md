@@ -30,37 +30,62 @@ Playmate is a platform where sports players can conveniently find others to play
 
 **Required Must-have Stories**
 
-* [ ] User can create account and log in
-* [ ] User can customize their profile
-* [ ] User can see own sessions on a calendar
-* [ ] User can explore nearby sessions on a map
-* [ ] User can search for sessions based on filters they set
-* [ ] User can add themself to an existing session after search
-* [ ] User can remove themself from a session
-* [ ] User can create session if no existing ones match their liking
-* [ ] User can search for location on map to set their session location
-* [ ] User can send and approve or deny friend requests
-* [ ] User can remove friend
+* [x] User can create account and log in
+* [x] User can customize their profile
+* [x] User can view their own sessions in a carousel view on home tab
+* [x] User can see own sessions on a calendar
+* [x] User can explore nearby sessions on a map
+* [x] User can search for sessions based on filters they set
+* [x] User can add themself to an existing session after search
+* [x] User can remove themself from a session
+* [x] User can create session if no existing ones match their liking
+* [x] User can search for location on map to set their session location
+* [x] User can send and approve or deny friend requests
+* [x] User can remove friend
 
 **Optional Nice-to-have Stories**
 
-* [ ] User can view their own sessions in a carousel card view on home tab
-* [ ] User can edit their profile
-* [ ] User will be notified of upcoming sessions through iOS notifications
-* [ ] User can open session location in Apple or Google maps
-* [ ] User can invite friends to a session they are already in
-* [ ] User can delete a session they created
-* [ ] User can take preferences quiz to get better suggestions
+* [x] User can edit their profile
+* [x] User will be notified of upcoming sessions through iOS notifications
+* [x] User can open session location in Apple or Google maps
+* [x] User can invite friends to a session they are already in
+* [x] User can view and accept or deny invite
+* [x] User can delete a session they created
+* [x] User can view their Playmate and session statistics
+* [x] User can take preferences quiz to get better suggestions
 * [ ] User will be suggested sessions based on an AI heuristic
+* [ ] App has polished UI
+* [ ] User can report another user
 
 ### 2. Screen Archetypes
 
-* Home
-   * [list associated required story here]
-   * ...
-* Search
-   * [list associated required story here]
-   * ...
+* Home Tab
+   * View own sessions in a carousel view on home tab
+   * Take preferences quiz to get better suggestions
+* Calendar
+   * See own sessions on a calendar
+* Explore Nearby
+   * Explore nearby sessions on a map
+* Session Details
+   * Open session location in Apple or Google maps
+   * Can join a session
+   * Can leave a session
+   * Can delete a session they created
+   * Can invite friends to a session they are already in
+* Search Tab
+   * Search for existing sessions
+   * Apply filters to search for desired session properties
+   * Can search for location on map to set their session location
+* Create Tab
+   * Create session if no existing ones match their liking
+* Profile Tab
+   * Customize their profile
+* Notifications
+   * Can approve or deny friend requests
+   * Can view and accept or deny invite
+* Player Profile
+   * Can send friend requests and remove friend
+   * Can view their Playmate and session statistics
 
 ### 3. Navigation
 
