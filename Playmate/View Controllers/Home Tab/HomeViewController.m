@@ -107,13 +107,6 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     NSDictionary *userInfo = response.notification.request.content.userInfo;
     NSString *sessionObjectId = userInfo[@"sessionObjectId"];
     
-    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
-    PFQuery *notifQuery = [PFQuery queryWithClassName:@"SessionNotification"];
-    [notifQuery whereKey:@"sessionObjectId" equalTo:sessionObjectId];
-    [notifQuery whereKey:@"userObjectId" equalTo:me.objectId];
-    SessionNotification *notification = [notifQuery getFirstObject];
-    [notification deleteInBackground];
-    
     if ([response.actionIdentifier isEqualToString:@"OPEN_APPLE_MAP_ACTION"]) {
         PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
         Session *session = [[query getObjectWithId:sessionObjectId] fetchIfNeeded];

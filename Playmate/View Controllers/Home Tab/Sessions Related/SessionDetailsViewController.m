@@ -13,7 +13,6 @@
 #import "PlayerProfileCollectionCell.h"
 #import "ManageUserStatistics.h"
 #import "UIScrollView+EmptyDataSet.h"
-#import "SessionNotification.h"
 #import "NotificationHandler.h"
 #import "SessionCell.h"
 #import "Location.h"
@@ -156,7 +155,6 @@ BOOL isPartOfSession;
     [ManageUserStatistics removeSession:sessionId
                                 ofSport:self.sessionDetails.sport
                                fromUser:me];
-    [SessionNotification deleteNotificationsForSession:sessionId];
     [NotificationHandler unscheduleSessionNotification:sessionId];
     [self.sessionDetails deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         [self returnToHomeButStay:NO];
@@ -255,12 +253,7 @@ BOOL isPartOfSession;
                                                    forSport:self.sessionDetails.sport
                                                     andUser:me];
         
-        // Remove the notifications corresponding to this session and user
-        PFQuery *notificationQuery = [PFQuery queryWithClassName:@"SessionNotification"];
-        [notificationQuery whereKey:@"sessionObjectId" equalTo:sessionObjectId];
-        [notificationQuery whereKey:@"userObjectId" equalTo:me.objectId];
-        SessionNotification *notification = [notificationQuery getFirstObject];
-        [notification deleteInBackground];
+        // Unschedule notification for this session
         [NotificationHandler unscheduleSessionNotification:sessionObjectId];
     } else {
         // For joining session
@@ -287,8 +280,7 @@ BOOL isPartOfSession;
                                                 forSport:self.sessionDetails.sport
                                                  andUser:me];
         
-        // Add the notifications coresponding to this session and user
-        [SessionNotification createNotificationForSession:sessionObjectId forUser:me.objectId];
+        // Schedule notification for this user
         [NotificationHandler scheduleSessionNotification:sessionObjectId];
     }
 }
