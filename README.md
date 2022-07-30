@@ -103,26 +103,37 @@ Playmate is a platform where sports players can conveniently find others to play
    * If do not have account: Create Account
    * If have account: Login Screen
 * Home
-   * Calendar View
+   * Notifications View
+   * Take Quiz Views (Composed of five view controllers)
+   * Explore Nearby
+      * Map Filters View
+         * Select Location View
+   * My schedule
       * Session Details
    * Upcoming Sessions
+      * Session Details
+   * Suggested Sessions
+      * Session Details
 * Search
    * Session Details
    * Filter Settings
-   * Map View
+      * Select Location View
 * Create
-   * To select location: Map View
+   * Select Location View
+      * How to Select Location View
 * Profile
-   * Past Sessions
    * Friends List
-      * Friend's Profile
-* Messages
-   * Message Thread
+      * Player Profile View (Continues -> Friend List -> Player Profile -> ...)
+   * Notifications View
+      * Incoming Friend Requests
+      * Outgoing Friend Requests
+      * Invitations
+   * Edit Profile
 
 
 ## Wireframes
 
-### Hand-drawn Wireframe
+### Initial Hand-drawn Wireframe
 
 <img width="1139" alt="wireframe" src="https://user-images.githubusercontent.com/73032138/176614780-5b500535-2992-47ae-b191-0c4eb22b798e.png">
 
@@ -178,9 +189,19 @@ Playmate is a platform where sports players can conveniently find others to play
 
 ### External resources
 
-- Empty Table View UI [https://github.com/dzenbot/DZNEmptyDataSet]
-- Geocoding API [https://www.geoapify.com/places-api]
-- Decathalon API [https://developers.decathlon.com/products/sports]
+- CocoaPods
+    - [Parse](https://github.com/parse-community/Parse-SDK-iOS-OSX)
+    - [AFNetworking](https://github.com/AFNetworking/AFNetworking)
+    - [DateTools](https://github.com/MatthewYork/DateTools)
+    - [DZNEmptyDataSet](https://github.com/dzenbot/DZNEmptyDataSet)
+    - [FSCalendar](https://github.com/WenchaoD/FSCalendar)
+    - [TTGTagCollectionView](https://github.com/zekunyan/TTGTagCollectionView)
+- APIs
+    - [Geocoding API](https://www.geoapify.com/places-api)
+    - [Decathalon API](https://developers.decathlon.com/products/sports)
+- Websites
+    - [Apple Maps](https://www.apple.com/maps/)
+    - [Google Maps](https://www.google.com/maps)
 
 ### Demo from 7/12/22
 

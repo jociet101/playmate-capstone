@@ -160,19 +160,19 @@
                                                     @"Boxing",
                                                     @"Bowling",
                                                     @"Cricket",
+                                                    @"Cycling",
                                                     @"Flag Football",
                                                     @"Football",
                                                     @"Field Hockey",
                                                     @"Golf",
                                                     @"Ice Hockey",
-                                                    @"MMA",
                                                     @"Soccer",
                                                     @"Table Tennis",
                                                     @"Tennis",
                                                     @"Ultimate Frisbee",
                                                     @"Volleyball",
+                                                    @"Water Polo",
                                                     @"Wrestling", nil];
-    
     [sports addObjectsFromArray:sportsList];
     
     return [NSArray arrayWithArray:sports];
@@ -195,7 +195,6 @@
     [sessionTypes addObject:[Strings defaultAll]];
     [sessionTypes addObject:@"Friends"];
     [sessionTypes addObject:@"Own"];
-    
     return [NSArray arrayWithArray:sessionTypes];
 }
 
@@ -206,8 +205,6 @@
     [genders addObject:@"Female"];
     [genders addObject:@"Male"];
     [genders addObject:@"Non-binary"];
-    [genders addObject:@"Other"];
-    
     return (NSArray *)genders;
 }
 
@@ -293,29 +290,30 @@
 }
 
 + (NSString *)getImageNameForSport:(NSString *)sport {
-    NSArray *imageNames = [NSArray arrayWithObjects:@"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent",
-                                                    @"playmate_logo_transparent", nil];
-    
-    NSDictionary *sportToImageName = [[NSDictionary alloc] initWithObjects:imageNames forKeys:[Constants sportsList:NO]];
-    
-    return sportToImageName[sport];
+//    NSArray *imageNames = [NSArray arrayWithObjects:@"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent",
+//                                                    @"playmate_logo_transparent", nil];
+//
+//    NSDictionary *sportToImageName = [[NSDictionary alloc] initWithObjects:imageNames forKeys:[Constants sportsList:NO]];
+//
+//    return sportToImageName[sport];
+    return @"playmate_logo_transparent";
 }
 
 + (NSArray *)addressGifImages {
