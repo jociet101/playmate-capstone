@@ -164,17 +164,25 @@ Playmate is a platform where sports players can conveniently find others to play
 #### PlayerConnection : PFObject
   | Property        | Type              | Description |
   | --------------- | ----------------- | ------------|
-  | userObjectId    | String            | User's objectId that this object belongs to |
+  | userObjectId    | String            | objectId of the user this belongs to |
   | friendsList     | Array             | List of user objectId's of this person's friends |
   | pendingList     | Array             | List of user objectId's of people whom this user has sent friend request to and other user has not replied |
   
 #### QuizResult : PFObject
   | Property        | Type              | Description |
   | --------------- | ----------------- | ------------|
+  | userObjectId    | String            | objectId of the user this belongs to |
+  | playSportsList  | Array             | List of the sports this user said they play |
+  | dontPlaySportsList | Array          | List of sports this user said they do not want to play |
+  | gendersList     | Array             | List of preferred Playmate gender of this user |
+  | ageGroupsList   | Array             | List of preferred Playmate age groups of this user |
   
 #### Invitation : PFObject
   | Property        | Type              | Description |
   | --------------- | ----------------- | ------------|
+  | invitationToId  | String            | objectId of the user this invitation is to |
+  | invitationFromId | String           | objectId of the user this invitation is from |
+  | sessionObjectId  | String           | objectId of the session this invitation is for |
 
 #### User : PFUser : PFObject
   | Property        | Type              | Description |
