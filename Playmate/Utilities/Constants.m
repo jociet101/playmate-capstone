@@ -158,9 +158,6 @@
                                                     @"Baseball",
                                                     @"Basketball",
                                                     @"Boxing",
-                                                    @"Bowling",
-                                                    @"Cricket",
-                                                    @"Cycling",
                                                     @"Fencing",
                                                     @"Football",
                                                     @"Field Hockey",
@@ -170,7 +167,6 @@
                                                     @"Softball",
                                                     @"Table Tennis",
                                                     @"Tennis",
-                                                    @"Ultimate Frisbee",
                                                     @"Volleyball",
                                                     @"Water Polo",
                                                     @"Wrestling", nil];
@@ -291,30 +287,31 @@
 }
 
 + (NSString *)getImageNameForSport:(NSString *)sport {
-//    NSArray *imageNames = [NSArray arrayWithObjects:@"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent",
-//                                                    @"playmate_logo_transparent", nil];
-//
-//    NSDictionary *sportToImageName = [[NSDictionary alloc] initWithObjects:imageNames forKeys:[Constants sportsList:NO]];
-//
-//    return sportToImageName[sport];
-    return @"playmate_logo_transparent";
+    NSArray *imageNames = [NSArray arrayWithObjects:@"Archery",
+                                                    @"Badminton",
+                                                    @"Baseball",
+                                                    @"Basketball",
+                                                    @"Boxing",
+                                                    @"Fencing",
+                                                    @"Football",
+                                                    @"Hockey",
+                                                    @"Golf",
+                                                    @"Hockey",
+                                                    @"Soccer",
+                                                    @"Softball",
+                                                    @"TableTennis",
+                                                    @"Tennis",
+                                                    @"Volleyball",
+                                                    @"WaterPolo",
+                                                    @"Wrestling", nil];
+
+    NSDictionary *sportToImageName = [[NSDictionary alloc] initWithObjects:imageNames forKeys:[Constants sportsList:NO]];
+    
+    if ([sportToImageName objectForKey:sport] != nil) {
+        return sportToImageName[sport];
+    } else {
+        return @"playmate_logo_fit";
+    }
 }
 
 + (NSArray *)addressGifImages {

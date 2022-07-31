@@ -228,6 +228,7 @@ Playmate is a platform where sports players can conveniently find others to play
     - [Google Maps](https://www.google.com/maps)
 - Sport Logos
     - [Tokyo Olympics Pictograms](https://www.theolympicdesign.com/olympic-design/pictograms/tokyo-2020/)
+    - [Image Background Removal](https://picwish.com/upload)
 
 ### Demo from 7/12/22
 
