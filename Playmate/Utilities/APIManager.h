@@ -23,9 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
 // Apple Maps Link
 + (void)goToAddress:(Location *)location onPlatform:(NSString *)platform;
 
-// Countries list
-+ (void)getCountriesList;
-
 @end
 
 NS_ASSUME_NONNULL_END

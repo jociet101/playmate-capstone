@@ -205,12 +205,10 @@ Playmate is a platform where sports players can conveniently find others to play
 +:(default PFUser property)  
 -:(optional, nil by default)
 
-### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- APIs (APIManager methods)
-    - Geocoding
-        - 
+### Networking (TODO)
+- Network requests by screen
+- Basic snippets for each Parse network request
+- API Endpoints
 
 ### External resources
 
@@ -229,7 +227,6 @@ Playmate is a platform where sports players can conveniently find others to play
     - [Google Maps](https://www.google.com/maps)
 
 ### Demo from 7/12/22
-
 
 
 https://user-images.githubusercontent.com/73032138/178580985-f6e8705c-0ef0-4869-bef2-35446362310f.mov
