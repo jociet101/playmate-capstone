@@ -141,7 +141,7 @@ Playmate is a platform where sports players can conveniently find others to play
 
 ### Models
 
-##### SportsSession : PFObject
+#### SportsSession : PFObject
   | Property        | Type              | Description |
   | --------------- | ----------------- | ------------|
   | sport           | String            | Which sport players in this session will play |
@@ -208,8 +208,9 @@ Playmate is a platform where sports players can conveniently find others to play
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
-
+- APIs (APIManager methods)
+    - Geocoding
+        - 
 
 ### External resources
 

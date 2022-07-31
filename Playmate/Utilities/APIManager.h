@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Decathalon API
 - (void)getSportsListWithCompletion:(void(^)(NSDictionary *list, NSError *error))completion;
-- (void)getSportWithId:(NSString *)sportId withCompletion:(void(^)(NSDictionary *sportData, NSError *error))completion ;
+- (void)getSportWithId:(NSString *)sportId withCompletion:(void(^)(NSDictionary *sportData, NSError *error))completion;
 
 // Geocoding API
 - (void)getGeocodedLocation:(NSString *)address withCompletion:(void(^)(Location *loc, NSError *error))completion;
