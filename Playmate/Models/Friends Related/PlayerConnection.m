@@ -12,7 +12,6 @@
 @implementation PlayerConnection
 
 @dynamic userObjectId;
-@dynamic connections;
 @dynamic friendsList;
 @dynamic pendingList;
 
@@ -26,7 +25,6 @@
 
     PFUser *me = [PFUser currentUser];
     playerConnection.userObjectId = me.objectId;
-    playerConnection.connections = [NSMutableDictionary new];
     playerConnection.friendsList = [NSMutableArray new];
     playerConnection.pendingList = [NSMutableArray new];
     

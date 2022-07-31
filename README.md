@@ -141,14 +141,16 @@ Playmate is a platform where sports players can conveniently find others to play
 
 ### Models
 
-##### Session : PFObject
+##### SportsSession : PFObject
   | Property        | Type              | Description |
   | --------------- | ----------------- | ------------|
   | sport           | String            | Which sport players in this session will play |
-  | creator         | Pointer to PFObject(Profile) | Profile of user who created the session |
-  | players         | Array(of pointers to PFUser ) | List of users who are participating in the session |
+  | skillLevel      | String            | Skill level assigned to the session |
+  | creator         | Pointer to PFUser | Profile of user who created the session |
+  | playersList     | Array(of pointers to PFUser ) | List of users who are participating in the session |
   | occursAt        | DateTime          | Date and time of when the session occurs |
-  | location        | PFObject(Location)| Location where session occurs |
+  | duration        | Number            | Length of the session in hours and minutes |
+  | location        | Pointer to PFObject(Location)| Location where session occurs |
   | capacity        | Number            | Total number of people who can be part of the session |
   | occupied        | Number            | Current number of people who are part of the session |
   
@@ -157,29 +159,43 @@ Playmate is a platform where sports players can conveniently find others to play
   | --------------- | ----------------- | ------------|
   | longitude       | Number            | Longitude of the location on a map |
   | latitude        | Number            | Latitude of the location on a map |
-  | name            | String            | Name of the location |
-  | city            | String            | City of the location |
-  | country         | String            | Country of the location |
+  | locationName    | String            | Name of the location |
   
-#### Profile : PFObject
+#### PlayerConnection : PFObject
   | Property        | Type              | Description |
   | --------------- | ----------------- | ------------|
-  | user            | Pointer to PFUser            | User attached to this profile |
+  | userObjectId    | String            | User's objectId that this object belongs to |
+  | friendsList     | Array             | List of user objectId's of this person's friends |
+  | pendingList     | Array             | List of user objectId's of people whom this user has sent friend request to and other user has not replied |
+  
+#### QuizResult : PFObject
+  | Property        | Type              | Description |
+  | --------------- | ----------------- | ------------|
+  
+#### Invitation : PFObject
+  | Property        | Type              | Description |
+  | --------------- | ----------------- | ------------|
+
+#### User : PFUser : PFObject
+  | Property        | Type              | Description |
+  | --------------- | ----------------- | ------------|
+  | username(+)     | String            | User's username |
+  | password(+)     | String            | User's password |
+  | email(+)        | String            | User's email |
   | profileImage    | Pointer to PFFileObject      | Profile image uploaded by user |
-  | name            | String            | User's name |
+  | firstName       | String            | User's first name |
+  | lastName        | String            | User's last name |
   | birthday        | DateTime          | User's birthday |
   | gender          | String            | User's gender |
   | numFriends      | Number            | Number of friends user has |
   | friendsList     | Array(of PFUser)  | List of friends |
+  | biography(-)    | String            | User's biography |
+  | sessionsDictionary(-) | Dictionary  | User's session history where key is sport and value is array of session objectId's for that sport |
+  | playerConnection(-) | String        | objectId of user's player connection object that stores friend data |
+  | quizResult      | String            | objectId of user's quiz result object that holds quiz data after they take it |
   
-#### Message : PFObject
-  | Property        | Type              | Description |
-  | --------------- | ----------------- | ------------|
-  | sender          | Pointer to PFUser            | User the message is being sent form |
-  | recipient       | Pointer to PFUser            | User the message is being sent to |
-  | text            | String            | Text of the message |
-  | createdAt       | DateTime          | Time the message was sent |
-  
++:(default PFUser property)  
+-:(optional, nil by default)
 
 ### Networking
 - [Add list of network requests by screen ]
