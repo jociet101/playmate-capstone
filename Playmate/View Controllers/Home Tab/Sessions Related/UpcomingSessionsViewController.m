@@ -50,12 +50,17 @@ BOOL isLoading;
 }
 
 - (void)stopLoading {
-    isLoading = NO;
-    [self.collectionView reloadData];
+    if (isLoading) {
+        isLoading = NO;
+        [self.collectionView reloadData];
+    }
 }
 
 - (void)loadSessionList:(NSArray *)sessionList {
     self.sessionList = sessionList;
+    if (self.sessionList.count > 0) {
+        isLoading = NO;
+    }
     [self.collectionView reloadData];
 }
 

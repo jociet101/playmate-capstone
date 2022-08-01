@@ -30,12 +30,16 @@
 }
 
 - (IBAction)didTapDone:(id)sender {
+    
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     NSString *resultObjectId = [me objectForKey:@"quizResult"][0];
     if (resultObjectId != nil) {
-        QuizResult *result = [PFQuery getObjectOfClass:@"QuizResult" objectId:resultObjectId error:nil];
-        [result deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            [self saveQuizResult];
+        [me removeObjectForKey:@"quizResult"];
+        [me saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            QuizResult *result = [PFQuery getObjectOfClass:@"QuizResult" objectId:resultObjectId error:nil];
+            [result deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                [self saveQuizResult];
+            }];
         }];
     } else {
         [self saveQuizResult];
