@@ -39,6 +39,9 @@
 @property (weak, nonatomic) IBOutlet UIView *upcomingView;
 @property (weak, nonatomic) IBOutlet UIView *suggestedView;
 
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) CAEmitterLayer *confettiLayer;
+
 @end
 
 @implementation HomeViewController
@@ -92,6 +95,48 @@
 #pragma mark - Quiz Done
 
 - (void)quizDoneMessage {
+    [self viewWillAppear:YES];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Thanks for taking the quiz!" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *celebrateAction = [UIAlertAction actionWithTitle:@"Celebrate" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        [self showConfetti];
+    }];
+    [alertController addAction:celebrateAction];
+    [self presentViewController:alertController animated:YES completion: nil];
+}
+
+- (void)showConfetti {
+    self.confettiLayer = [CAEmitterLayer layer];
+    self.confettiLayer.emitterPosition = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.origin.y);
+    self.confettiLayer.emitterSize = CGSizeMake(self.view.bounds.size.width, 0);
+    
+    NSArray *colors = [Constants listOfSystemColors];
+    
+    NSMutableArray *cells = [NSMutableArray arrayWithCapacity:colors.count];
+    
+    [colors enumerateObjectsUsingBlock:^(UIColor *color, NSUInteger idx, BOOL *stop) {
+        CAEmitterCell *cell = [CAEmitterCell emitterCell];
+        cell.scale = 0.1;
+        cell.emissionRange = M_PI * 2;
+        cell.lifetime = 5.0;
+        cell.birthRate = 20;
+        cell.velocity = 200;
+        cell.xAcceleration = -20;
+        cell.yAcceleration = -20;
+        cell.zAcceleration = -20;
+        cell.color = [color CGColor];
+        cell.contents = (id)[[UIImage imageNamed:@"confetti"] CGImage];
+        [cells addObject:cell];
+    }];
+        
+    self.confettiLayer.emitterCells = (NSArray *)cells;
+    [self.view.layer addSublayer:self.confettiLayer];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(stopConfetti) userInfo:nil repeats:NO];
+}
+
+- (void)stopConfetti {
+    [self.confettiLayer removeFromSuperlayer];
 }
 
 #pragma mark - Gesture Recognizers

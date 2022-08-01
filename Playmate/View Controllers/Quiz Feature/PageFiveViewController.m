@@ -184,6 +184,7 @@ BOOL firstTimeLoad;
     UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
     HomeViewController *vc = [[homeVC viewControllers][0] childViewControllers][0];
     self.delegate = (id)vc;
+    
     [self.delegate quizDoneMessage];
 }
 
