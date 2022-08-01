@@ -13,6 +13,7 @@
 #import "SuggestedSessionsViewController.h"
 #import "CreateMenuViewController.h"
 #import "SessionDetailsViewController.h"
+#import "PageFiveViewController.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "SessionCollectionCell.h"
 #import "NotificationHandler.h"
@@ -22,7 +23,7 @@
 #import "Helpers.h"
 #import "Strings.h"
 
-@interface HomeViewController () <CreateMenuViewControllerDelegate, SessionDetailsViewControllerDelegate, UNUserNotificationCenterDelegate>
+@interface HomeViewController () <CreateMenuViewControllerDelegate, SessionDetailsViewControllerDelegate, UNUserNotificationCenterDelegate, QuizDoneDelegate>
 
 @property (nonatomic, strong) NSMutableArray *sessionList;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -86,6 +87,11 @@
     } else {
         label.layer.backgroundColor = [[UIColor systemGray6Color] CGColor];
     }
+}
+
+#pragma mark - Quiz Done
+
+- (void)quizDoneMessage {
 }
 
 #pragma mark - Gesture Recognizers

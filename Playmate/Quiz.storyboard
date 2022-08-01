@@ -337,8 +337,8 @@
                                 <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hw-OQ-Yyd">
-                                <rect key="frame" x="20" y="154" width="374" height="123"/>
-                                <string key="text">Lastly, we kindly ask you to select where you are located on the map. We will examine a radius of 50 miles from this location to determine which sessions to recommend to you.</string>
+                                <rect key="frame" x="20" y="154" width="374" height="98.5"/>
+                                <string key="text">Almost done! Please tap where you are located on the map. We will examine a radius of 50 miles from this location to determine which sessions to recommend to you.</string>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -353,11 +353,11 @@
                                     <action selector="didTapDone:" destination="ByD-i6-Kxa" eventType="touchUpInside" id="As0-EB-ihY"/>
                                 </connections>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XAy-Fv-Vsk">
-                                <rect key="frame" x="20" y="299" width="374" height="381"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsCompass="NO" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XAy-Fv-Vsk">
+                                <rect key="frame" x="20" y="274.5" width="374" height="405.5"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pr8-Re-9YV">
-                                <rect key="frame" x="139" y="309" width="243" height="31"/>
+                                <rect key="frame" x="139" y="284.5" width="243" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Use Current Location"/>
                                 <connections>
@@ -383,7 +383,19 @@
                             <constraint firstItem="Pr8-Re-9YV" firstAttribute="leading" secondItem="MDR-RY-Xhq" secondAttribute="leading" constant="139" id="z6d-rW-bxK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="5 of 5" id="XoI-RV-smi"/>
+                    <navigationItem key="navigationItem" title="5 of 5" id="XoI-RV-smi">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Ne9-Wy-5ul">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="zDH-Tk-qCK">
+                                <rect key="frame" x="302" y="5" width="92" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                                <connections>
+                                    <action selector="didTapClose:" destination="ByD-i6-Kxa" eventType="touchUpInside" id="13n-tn-0dc"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="XAy-Fv-Vsk" id="QWG-VL-Rfr"/>
                         <outlet property="progress" destination="OpJ-Aa-J8f" id="MjI-jV-ZZ5"/>

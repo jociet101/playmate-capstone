@@ -6,6 +6,7 @@
 //
 
 #import "PageFiveViewController.h"
+#import "HomeViewController.h"
 #import "QuizHelpers.h"
 #import "QuizResult.h"
 #import "APIManager.h"
@@ -178,10 +179,15 @@ BOOL firstTimeLoad;
         [self saveQuizResult];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+    HomeViewController *vc = [[homeVC viewControllers][0] childViewControllers][0];
+    self.delegate = (id)vc;
+    [self.delegate quizDoneMessage];
 }
 
 - (void)saveQuizResult {
-    
     [QuizResult saveQuizResultWithSports:self.playSportsList
                             andNotSports:self.dontPlaySportsList
                               andGenders:self.gendersList
@@ -202,6 +208,10 @@ BOOL firstTimeLoad;
 }
 
 #pragma mark - Navigation
+
+- (IBAction)didTapClose:(id)sender {
+    [QuizHelpers giveCloseWarningforViewController:self];
+}
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  }

@@ -10,12 +10,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol QuizDoneDelegate <NSObject>
+
+- (void)quizDoneMessage;
+
+@end
+
 @interface PageFiveViewController : UIViewController
 
 @property (nonatomic, strong) NSArray *playSportsList;
 @property (nonatomic, strong) NSArray *dontPlaySportsList;
 @property (nonatomic, strong) NSArray *gendersList;
 @property (nonatomic, strong) NSArray *ageGroupsList;
+
+@property (nonatomic, strong) id<QuizDoneDelegate> delegate;
 
 @end
 
