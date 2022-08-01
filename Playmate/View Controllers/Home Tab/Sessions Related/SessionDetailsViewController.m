@@ -13,7 +13,6 @@
 #import "PlayerProfileCollectionCell.h"
 #import "ManageUserStatistics.h"
 #import "UIScrollView+EmptyDataSet.h"
-#import "SessionNotification.h"
 #import "NotificationHandler.h"
 #import "SessionCell.h"
 #import "Location.h"
@@ -26,7 +25,6 @@
 @interface SessionDetailsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *sportLabel;
-//@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UITextView *locationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *levelLabel;
@@ -156,7 +154,6 @@ BOOL isPartOfSession;
     [ManageUserStatistics removeSession:sessionId
                                 ofSport:self.sessionDetails.sport
                                fromUser:me];
-    [SessionNotification deleteNotificationsForSession:sessionId];
     [NotificationHandler unscheduleSessionNotification:sessionId];
     [self.sessionDetails deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         [self returnToHomeButStay:NO];
@@ -248,25 +245,14 @@ BOOL isPartOfSession;
         int newOccupied = (int)oldPlayersList.count;
         session[@"occupied"] = [NSNumber numberWithInt:newOccupied];
         
-        [session saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if (succeeded) {
-                [self returnToHomeButStay:YES];
-            } else {
-                [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
-            }
-        }];
+        [self saveSession:session];
         
         // Remove this session from user's history
         [ManageUserStatistics updateDictionaryRemoveSession:sessionObjectId
                                                    forSport:self.sessionDetails.sport
                                                     andUser:me];
         
-        // Remove the notifications corresponding to this session and user
-        PFQuery *notificationQuery = [PFQuery queryWithClassName:@"SessionNotification"];
-        [notificationQuery whereKey:@"sessionObjectId" equalTo:sessionObjectId];
-        [notificationQuery whereKey:@"userObjectId" equalTo:me.objectId];
-        SessionNotification *notification = [notificationQuery getFirstObject];
-        [notification deleteInBackground];
+        // Unschedule notification for this session
         [NotificationHandler unscheduleSessionNotification:sessionObjectId];
     } else {
         // For joining session
@@ -286,23 +272,26 @@ BOOL isPartOfSession;
         int newOccupied = (int)oldPlayersList.count;
         session[@"occupied"] = [NSNumber numberWithInt:newOccupied];
         
-        [session saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if (succeeded) {
-                [self returnToHomeButStay:YES];
-            } else {
-                [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
-            }
-        }];
+        [self saveSession:session];
         
         // Add this session to user's history
         [ManageUserStatistics updateDictionaryAddSession:sessionObjectId
                                                 forSport:self.sessionDetails.sport
                                                  andUser:me];
         
-        // Add the notifications coresponding to this session and user
-        [SessionNotification createNotificationForSession:sessionObjectId forUser:me.objectId];
+        // Schedule notification for this user
         [NotificationHandler scheduleSessionNotification:sessionObjectId];
     }
+}
+
+- (void)saveSession:(Session *)session {
+    [session saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            [self returnToHomeButStay:YES];
+        } else {
+            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
+        }
+    }];
 }
 
 - (void)updateJoinUI {

@@ -11,7 +11,6 @@
 #import "MenuPickerCell.h"
 #import "LocationPickerCell.h"
 #import "ManageUserStatistics.h"
-#import "SessionNotification.h"
 #import "NotificationHandler.h"
 #import "Location.h"
 #import "Session.h"
@@ -170,7 +169,6 @@
             [ManageUserStatistics updateDictionaryAddSession:sessionObjectId
                                                     forSport:self.selectedSport
                                                      andUser:me];
-            [SessionNotification createNotificationForSession:sessionObjectId forUser:me.objectId];
             [NotificationHandler scheduleSessionNotification:sessionObjectId];
             [self returnToHome];
         }

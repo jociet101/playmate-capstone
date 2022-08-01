@@ -6,14 +6,12 @@
 //
 
 #import <Parse/Parse.h>
-#import "ConnectionState.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PlayerConnection : PFObject<PFSubclassing>
 
 @property (nonatomic, strong) NSString *userObjectId;
-@property (nonatomic, strong) NSDictionary *connections;
 @property (nonatomic, strong) NSArray *friendsList;
 @property (nonatomic, strong) NSArray *pendingList;
 

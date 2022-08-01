@@ -41,7 +41,6 @@ static NSString * geoapify;
 }
 
 - (void)getSportsListWithCompletion:(void(^)(NSDictionary *list, NSError *error))completion {
-    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:[Strings decathalonSportsListString]  parameters:nil progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *list) {
         completion(list, nil);
@@ -52,7 +51,6 @@ static NSString * geoapify;
 }
 
 - (void)getSportWithId:(NSString *)sportId withCompletion:(void(^)(NSDictionary *sportData, NSError *error))completion {
-    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *url = [[Strings decathalonOneSportString] stringByAppendingString:sportId];
     [manager GET:url  parameters:nil progress:nil success:^(NSURLSessionDataTask * task, NSDictionary *sportData) {
@@ -109,7 +107,6 @@ static NSString * geoapify;
                 completion(loc, nil);
             }
         }
-        
     }];
     [task resume];
 }

@@ -258,8 +258,7 @@ BOOL isFirstTimeGettingLocation;
         CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([location.lat doubleValue], [location.lng doubleValue]);
         LocationAnnotation *point = [[LocationAnnotation alloc] init];
         point.coordinate = coordinate;
-        NSArray *parsedLocation = [location.locationName componentsSeparatedByString:@", "];
-        point.locationName = [parsedLocation firstObject];
+        point.locationName = [NSString stringWithFormat:@"%@, %@", session[@"sport"], [Helpers capacityString:session[@"occupied"] with:session[@"capacity"]]];
         point.session = session;
                 
         [self.mapView addAnnotation:point];

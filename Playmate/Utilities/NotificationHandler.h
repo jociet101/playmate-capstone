@@ -8,7 +8,6 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 #import <UserNotifications/UserNotifications.h>
-#import "SessionNotification.h"
 #import "Session.h"
 #import "Invitation.h"
 

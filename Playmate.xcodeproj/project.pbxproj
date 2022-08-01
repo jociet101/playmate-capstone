@@ -36,18 +36,21 @@
 		3C69D04C28874EAB00851E6F /* ManageUserStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C69D04B28874EAB00851E6F /* ManageUserStatistics.m */; };
 		3C69D05228888A2900851E6F /* MapFiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C69D05128888A2900851E6F /* MapFiltersViewController.m */; };
 		3C69D0552888A23800851E6F /* MapFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C69D0542888A23800851E6F /* MapFilters.m */; };
-		3C71BDD428908760000F4A1D /* SessionNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C71BDD328908760000F4A1D /* SessionNotification.m */; };
 		3C71BDD728909701000F4A1D /* NotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C71BDD628909701000F4A1D /* NotificationHandler.m */; };
 		3C8E538F287F2D200087498B /* FriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E538E287F2D200087498B /* FriendsListViewController.m */; };
 		3C8E5392287F362B0087498B /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E5391287F362B0087498B /* FriendCell.m */; };
 		3C8E5395287F683D0087498B /* FriendRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E5394287F683D0087498B /* FriendRequestsViewController.m */; };
 		3C8E5399287F69170087498B /* OutgoingRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E5398287F69170087498B /* OutgoingRequestsViewController.m */; };
 		3C8E539C287F7A8D0087498B /* OutgoingRequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E539B287F7A8D0087498B /* OutgoingRequestCell.m */; };
-		3CA1A199287DF02E00BBDB69 /* ConnectionState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1A198287DF02E00BBDB69 /* ConnectionState.m */; };
 		3CA2033328938B3F005386B9 /* Quiz.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CA2033228938B3F005386B9 /* Quiz.storyboard */; };
 		3CA2033728938C18005386B9 /* PageOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA2033628938C17005386B9 /* PageOneViewController.m */; };
 		3CA2033A2893A1B2005386B9 /* PageTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA203392893A1B2005386B9 /* PageTwoViewController.m */; };
 		3CDBEB90288F195100F2D739 /* Strings.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDBEB8F288F195100F2D739 /* Strings.m */; };
+		3CF3568D289459370046DFCB /* QuizHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3568C289459370046DFCB /* QuizHelpers.m */; };
+		3CF3569028945D110046DFCB /* PageThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3568F28945D110046DFCB /* PageThreeViewController.m */; };
+		3CF35693289462290046DFCB /* PageFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF35692289462290046DFCB /* PageFourViewController.m */; };
+		3CF356962894637D0046DFCB /* PageFiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF356952894637D0046DFCB /* PageFiveViewController.m */; };
+		3CF35699289476DA0046DFCB /* QuizResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF35698289476DA0046DFCB /* QuizResult.m */; };
 		3CF4186428765585009741FF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF4186328765585009741FF /* MapKit.framework */; };
 		3CF4A58A2878AA1A000C5E7D /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */; };
 		3CF4A58D2878DFA6000C5E7D /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF4A58C2878DFA6000C5E7D /* CalendarViewController.m */; };
@@ -151,8 +154,6 @@
 		3C69D05128888A2900851E6F /* MapFiltersViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapFiltersViewController.m; sourceTree = "<group>"; };
 		3C69D0532888A23800851E6F /* MapFilters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapFilters.h; sourceTree = "<group>"; };
 		3C69D0542888A23800851E6F /* MapFilters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapFilters.m; sourceTree = "<group>"; };
-		3C71BDD228908760000F4A1D /* SessionNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionNotification.h; sourceTree = "<group>"; };
-		3C71BDD328908760000F4A1D /* SessionNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionNotification.m; sourceTree = "<group>"; };
 		3C71BDD528909701000F4A1D /* NotificationHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationHandler.h; sourceTree = "<group>"; };
 		3C71BDD628909701000F4A1D /* NotificationHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationHandler.m; sourceTree = "<group>"; };
 		3C8E538D287F2D200087498B /* FriendsListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsListViewController.h; sourceTree = "<group>"; };
@@ -165,8 +166,6 @@
 		3C8E5398287F69170087498B /* OutgoingRequestsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutgoingRequestsViewController.m; sourceTree = "<group>"; };
 		3C8E539A287F7A8D0087498B /* OutgoingRequestCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutgoingRequestCell.h; sourceTree = "<group>"; };
 		3C8E539B287F7A8D0087498B /* OutgoingRequestCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutgoingRequestCell.m; sourceTree = "<group>"; };
-		3CA1A197287DF02E00BBDB69 /* ConnectionState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionState.h; sourceTree = "<group>"; };
-		3CA1A198287DF02E00BBDB69 /* ConnectionState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectionState.m; sourceTree = "<group>"; };
 		3CA2033228938B3F005386B9 /* Quiz.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Quiz.storyboard; sourceTree = "<group>"; };
 		3CA2033528938C17005386B9 /* PageOneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageOneViewController.h; sourceTree = "<group>"; };
 		3CA2033628938C17005386B9 /* PageOneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageOneViewController.m; sourceTree = "<group>"; };
@@ -174,6 +173,16 @@
 		3CA203392893A1B2005386B9 /* PageTwoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageTwoViewController.m; sourceTree = "<group>"; };
 		3CDBEB8E288F195100F2D739 /* Strings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Strings.h; sourceTree = "<group>"; };
 		3CDBEB8F288F195100F2D739 /* Strings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Strings.m; sourceTree = "<group>"; };
+		3CF3568B289459370046DFCB /* QuizHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuizHelpers.h; sourceTree = "<group>"; };
+		3CF3568C289459370046DFCB /* QuizHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuizHelpers.m; sourceTree = "<group>"; };
+		3CF3568E28945D110046DFCB /* PageThreeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageThreeViewController.h; sourceTree = "<group>"; };
+		3CF3568F28945D110046DFCB /* PageThreeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageThreeViewController.m; sourceTree = "<group>"; };
+		3CF35691289462290046DFCB /* PageFourViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageFourViewController.h; sourceTree = "<group>"; };
+		3CF35692289462290046DFCB /* PageFourViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageFourViewController.m; sourceTree = "<group>"; };
+		3CF356942894637D0046DFCB /* PageFiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageFiveViewController.h; sourceTree = "<group>"; };
+		3CF356952894637D0046DFCB /* PageFiveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageFiveViewController.m; sourceTree = "<group>"; };
+		3CF35697289476DA0046DFCB /* QuizResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuizResult.h; sourceTree = "<group>"; };
+		3CF35698289476DA0046DFCB /* QuizResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuizResult.m; sourceTree = "<group>"; };
 		3CF4186328765585009741FF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3CF4A5882878AA1A000C5E7D /* EditProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		3CF4A5892878AA1A000C5E7D /* EditProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
@@ -282,6 +291,8 @@
 			children = (
 				3C167B3D2881F21F00081304 /* Helpers.h */,
 				3C167B3E2881F21F00081304 /* Helpers.m */,
+				3CF3568B289459370046DFCB /* QuizHelpers.h */,
+				3CF3568C289459370046DFCB /* QuizHelpers.m */,
 				3C383FD32877416D00BC9B55 /* Constants.h */,
 				3C383FD42877416D00BC9B55 /* Constants.m */,
 				3CDBEB8E288F195100F2D739 /* Strings.h */,
@@ -367,8 +378,8 @@
 				3C45B58F2874BB7500EE578F /* Session.m */,
 				3C45B5A528760C1E00EE578F /* Filters.h */,
 				3C45B5A628760C1E00EE578F /* Filters.m */,
-				3C71BDD228908760000F4A1D /* SessionNotification.h */,
-				3C71BDD328908760000F4A1D /* SessionNotification.m */,
+				3CF35697289476DA0046DFCB /* QuizResult.h */,
+				3CF35698289476DA0046DFCB /* QuizResult.m */,
 				3CDBEB85288E7EC500F2D739 /* Friends Related */,
 				3CDBEB86288E7EDC00F2D739 /* Map Related */,
 			);
@@ -395,6 +406,12 @@
 				3CA2033628938C17005386B9 /* PageOneViewController.m */,
 				3CA203382893A1B2005386B9 /* PageTwoViewController.h */,
 				3CA203392893A1B2005386B9 /* PageTwoViewController.m */,
+				3CF3568E28945D110046DFCB /* PageThreeViewController.h */,
+				3CF3568F28945D110046DFCB /* PageThreeViewController.m */,
+				3CF35691289462290046DFCB /* PageFourViewController.h */,
+				3CF35692289462290046DFCB /* PageFourViewController.m */,
+				3CF356942894637D0046DFCB /* PageFiveViewController.h */,
+				3CF356952894637D0046DFCB /* PageFiveViewController.m */,
 			);
 			path = "Quiz Feature";
 			sourceTree = "<group>";
@@ -406,8 +423,6 @@
 				3CF4A5B1287CD65D000C5E7D /* FriendRequest.m */,
 				3CF4A5B6287CD963000C5E7D /* PlayerConnection.h */,
 				3CF4A5B7287CD963000C5E7D /* PlayerConnection.m */,
-				3CA1A197287DF02E00BBDB69 /* ConnectionState.h */,
-				3CA1A198287DF02E00BBDB69 /* ConnectionState.m */,
 				3C19BA19288A024000592C20 /* Invitation.h */,
 				3C19BA1A288A024000592C20 /* Invitation.m */,
 			);
@@ -844,11 +859,13 @@
 				3C45B58928737E6200EE578F /* SearchViewController.m in Sources */,
 				3CA2033728938C18005386B9 /* PageOneViewController.m in Sources */,
 				3CF652AC286D036600BD5EDB /* SceneDelegate.m in Sources */,
+				3CF3569028945D110046DFCB /* PageThreeViewController.m in Sources */,
 				3C45B59E2875060700EE578F /* SessionDetailsViewController.m in Sources */,
-				3C71BDD428908760000F4A1D /* SessionNotification.m in Sources */,
+				3CF35693289462290046DFCB /* PageFourViewController.m in Sources */,
 				3C8E5392287F362B0087498B /* FriendCell.m in Sources */,
 				3C19BA1E288B2C3000592C20 /* InvitationCell.m in Sources */,
 				3CF4A5A5287B6647000C5E7D /* FiltersMenuViewController.m in Sources */,
+				3CF3568D289459370046DFCB /* QuizHelpers.m in Sources */,
 				3C1BC0152885BFA800D17314 /* SessionCollectionCell.m in Sources */,
 				3C45B574287297EB00EE578F /* HomeViewController.m in Sources */,
 				3C19BA21288B2C5600592C20 /* InvitationsViewController.m in Sources */,
@@ -859,9 +876,10 @@
 				3CF4A59C287A60F0000C5E7D /* MenuPickerCell.m in Sources */,
 				3C45B5A4287606EF00EE578F /* SelectMapViewController.m in Sources */,
 				3CF4A5A8287B67B4000C5E7D /* FiltersMenuPickerCell.m in Sources */,
-				3CA1A199287DF02E00BBDB69 /* ConnectionState.m in Sources */,
 				3C8E5399287F69170087498B /* OutgoingRequestsViewController.m in Sources */,
+				3CF35699289476DA0046DFCB /* QuizResult.m in Sources */,
 				3C8E538F287F2D200087498B /* FriendsListViewController.m in Sources */,
+				3CF356962894637D0046DFCB /* PageFiveViewController.m in Sources */,
 				3CF4A5B8287CD963000C5E7D /* PlayerConnection.m in Sources */,
 				3CF4A5BB287CE3A9000C5E7D /* IncomingRequestsViewController.m in Sources */,
 				3C8E5395287F683D0087498B /* FriendRequestsViewController.m in Sources */,

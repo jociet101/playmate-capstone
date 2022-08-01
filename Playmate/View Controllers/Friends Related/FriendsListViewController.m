@@ -120,23 +120,6 @@
 
 #pragma mark - Friend cell delegate method
 
-+ (void)handleAlert:(NSError * _Nullable)error
-          withTitle:(NSString *)title
-        withMessage:(NSString * _Nullable)message
-  forViewController:(id)viewController {
-    if (error != nil) {
-        message = error.localizedDescription;
-    }
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        [viewController viewDidLoad];
-    }];
-    
-    [alertController addAction:okAction];
-    [viewController presentViewController:alertController animated:YES completion: nil];
-}
-
 - (void)didTap:(FriendCell *)cell forName:(NSString *)name andId:(NSString *)userObjectId {
     if (self.isForInvitations) {
         // check if this invitation already exists

@@ -12,7 +12,6 @@
 @implementation PlayerConnection
 
 @dynamic userObjectId;
-@dynamic connections;
 @dynamic friendsList;
 @dynamic pendingList;
 
@@ -26,7 +25,6 @@
 
     PFUser *me = [PFUser currentUser];
     playerConnection.userObjectId = me.objectId;
-    playerConnection.connections = [NSMutableDictionary new];
     playerConnection.friendsList = [NSMutableArray new];
     playerConnection.pendingList = [NSMutableArray new];
     
@@ -36,13 +34,6 @@
 
 // for saving own(A) connection to someone(B) else; Save B in A's dictionary (A is me)
 + (void)saveMyConnectionTo:(NSString *)otherObjectId withStatus:(BOOL)areFriends andWeight:(int)weight {
-
-    // TODO: use for recommender system later
-//    ConnectionState *cs = [ConnectionState new];
-//    cs.areFriends = areFriends;
-//    cs.relationshipWeight = weight;
-//    [pc.connections setObject:cs forKey:otherObjectId];
-    
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     
     PlayerConnection *playerConnection = [Helpers getPlayerConnectionForUser:me];
@@ -65,13 +56,6 @@
     [query whereKey:@"userObjectId" equalTo:otherObjectId];
     
     PlayerConnection *playerConnection = [[query getFirstObject] fetchIfNeeded];
-    
-    // TODO: use for recommender system later
-//    ConnectionState *cs = [ConnectionState new];
-//    cs.areFriends = areFriends;
-//    cs.relationshipWeight = weight;
-
-//    [pc.connections setObject:cs forKey:me.objectId];
 
     if (areFriends) {
         

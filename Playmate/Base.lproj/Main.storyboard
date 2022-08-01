@@ -1506,7 +1506,7 @@
             <objects>
                 <viewController id="hNf-lE-ZKe" customClass="PlayerProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fFY-gZ-QLq">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="580"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQH-Cr-mDU">
@@ -1830,7 +1830,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C72-lC-ikB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7103" y="198"/>
+            <point key="canvasLocation" x="6757" y="198"/>
         </scene>
         <!--Select Map Help View Controller-->
         <scene sceneID="bXr-hM-r49">
@@ -1961,7 +1961,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hD9-i6-mbZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7867.6923076923076" y="197.63033175355449"/>
+            <point key="canvasLocation" x="6757" y="951"/>
         </scene>
         <!--Profile-->
         <scene sceneID="RmX-pb-hE9">
@@ -2278,7 +2278,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5685" y="1833"/>
+            <point key="canvasLocation" x="5685" y="1459"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="8gX-SU-NHj">
@@ -2407,7 +2407,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3FX-3d-5v6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5271" y="2721"/>
+            <point key="canvasLocation" x="5269" y="2390"/>
         </scene>
         <!--Friends-->
         <scene sceneID="PwV-UB-1Ab">
@@ -2481,7 +2481,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l0r-qF-Jhg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7102" y="1833"/>
+            <point key="canvasLocation" x="7098" y="1786"/>
         </scene>
         <!--Friend Notifications-->
         <scene sceneID="jZz-wi-K1A">
@@ -2537,7 +2537,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BMj-g5-cgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6040" y="2720"/>
+            <point key="canvasLocation" x="5822" y="3068"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wYN-qT-DC6">
@@ -2655,7 +2655,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RxP-7F-sK9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4757" y="1833"/>
+            <point key="canvasLocation" x="4757" y="1459"/>
         </scene>
         <!--Filters-->
         <scene sceneID="rZt-yj-apl">
@@ -2924,7 +2924,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AVJ-6s-vg8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7102" y="2466"/>
+            <point key="canvasLocation" x="7095" y="3583"/>
         </scene>
         <!--Outgoing Requests View Controller-->
         <scene sceneID="wa6-Fn-PZl">
@@ -3009,7 +3009,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kIY-jm-jq5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7100" y="3004"/>
+            <point key="canvasLocation" x="7100" y="3068"/>
         </scene>
         <!--Suggested Sessions View Controller-->
         <scene sceneID="oG5-ZW-JnR">
@@ -3086,7 +3086,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6c-xy-bHi">
-                                                    <rect key="frame" x="15" y="217" width="292" height="22.333333333333343"/>
+                                                    <rect key="frame" x="15" y="217" width="292" height="24.333333333333343"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Skill Level">
                                                             <attributes>
@@ -3097,24 +3097,13 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46n-Gu-wPC">
-                                                    <rect key="frame" x="16" y="203" width="290" height="39"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="Tennis front">
-                                                            <attributes>
-                                                                <font key="NSFont" size="28" name="AvenirNext-Bold"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myp-Qi-m2f">
-                                                    <rect key="frame" x="16" y="247" width="290" height="40"/>
+                                                    <rect key="frame" x="16" y="249" width="290" height="38"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Date front">
                                                             <attributes>
-                                                                <font key="NSFont" size="16" name="AvenirNext-Regular"/>
+                                                                <color key="NSColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="14" name="AvenirNext-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -3123,7 +3112,7 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k34-mN-prj">
                                                     <rect key="frame" x="47" y="67" width="235.99999999999997" height="18.666666666666671"/>
-                                                    <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="tintColor" systemColor="systemGray2Color"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="View Full Session Details"/>
                                                     <connections>
@@ -3147,6 +3136,7 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="American Football">
                                                             <attributes>
+                                                                <color key="NSColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <font key="NSFont" size="28" name="AvenirNext-Bold"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
@@ -3167,36 +3157,49 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46n-Gu-wPC">
+                                                    <rect key="frame" x="17" y="216" width="290" height="39"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Tennis front">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="28" name="AvenirNext-Bold"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="F6c-xy-bHi" firstAttribute="leading" secondItem="IHg-CR-hHl" secondAttribute="leading" constant="15" id="6ah-PS-tGi"/>
-                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="leading" secondItem="myp-Qi-m2f" secondAttribute="leading" id="73F-N3-mwH"/>
+                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="leading" secondItem="myp-Qi-m2f" secondAttribute="leading" constant="1" id="73F-N3-mwH"/>
                                                 <constraint firstItem="RFN-YN-pPm" firstAttribute="leading" secondItem="IHg-CR-hHl" secondAttribute="leading" constant="68" id="7Fv-7s-1f1"/>
-                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="top" secondItem="RFN-YN-pPm" secondAttribute="bottom" constant="8.9999999999999716" id="9WO-1J-wtE"/>
+                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="top" secondItem="RFN-YN-pPm" secondAttribute="bottom" constant="22" id="9WO-1J-wtE"/>
                                                 <constraint firstAttribute="bottom" secondItem="tsm-zi-1RR" secondAttribute="bottom" constant="71" id="B0k-Lj-0dU"/>
                                                 <constraint firstItem="4gR-8S-b3A" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" constant="-3" id="CR3-xr-8Yg"/>
                                                 <constraint firstItem="tsm-zi-1RR" firstAttribute="top" secondItem="myp-Qi-m2f" secondAttribute="bottom" constant="-38" id="EGb-a6-L5g"/>
                                                 <constraint firstItem="k34-mN-prj" firstAttribute="top" secondItem="ZZ6-Wu-R5r" secondAttribute="bottom" constant="1.6666666666666572" id="HGq-gs-sLn"/>
                                                 <constraint firstItem="tsm-zi-1RR" firstAttribute="leading" secondItem="ZZ6-Wu-R5r" secondAttribute="leading" id="JHq-WZ-Uu2"/>
                                                 <constraint firstItem="RFN-YN-pPm" firstAttribute="centerX" secondItem="Mxe-Nw-Jgk" secondAttribute="centerX" constant="2.8333333333333712" id="LXv-jY-uMf"/>
-                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="top" secondItem="4gR-8S-b3A" secondAttribute="bottom" constant="-6" id="POr-fV-XfY"/>
+                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="top" secondItem="4gR-8S-b3A" secondAttribute="bottom" constant="7" id="POr-fV-XfY"/>
                                                 <constraint firstItem="4gR-8S-b3A" firstAttribute="top" secondItem="Mxe-Nw-Jgk" secondAttribute="bottom" constant="2" id="Qne-As-Leb"/>
                                                 <constraint firstItem="myp-Qi-m2f" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="QxI-84-ats"/>
                                                 <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="top" secondItem="k34-mN-prj" secondAttribute="bottom" constant="13.333333333333329" id="R44-NS-Ijt"/>
                                                 <constraint firstItem="Mxe-Nw-Jgk" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" constant="-2.8333333333333712" id="SFW-og-5MC"/>
                                                 <constraint firstAttribute="bottom" secondItem="a42-sI-reh" secondAttribute="bottom" constant="13" id="WSN-S3-dhS"/>
                                                 <constraint firstItem="F6c-xy-bHi" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="X4x-Rv-lia"/>
-                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="leading" secondItem="4gR-8S-b3A" secondAttribute="leading" id="XPr-oM-3qI"/>
-                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="top" secondItem="46n-Gu-wPC" secondAttribute="bottom" constant="-25" id="Z0d-zQ-ArN"/>
+                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="leading" secondItem="4gR-8S-b3A" secondAttribute="leading" constant="1" id="XPr-oM-3qI"/>
+                                                <constraint firstItem="F6c-xy-bHi" firstAttribute="top" secondItem="46n-Gu-wPC" secondAttribute="bottom" constant="-38" id="Z0d-zQ-ArN"/>
                                                 <constraint firstItem="myp-Qi-m2f" firstAttribute="firstBaseline" secondItem="tsm-zi-1RR" secondAttribute="firstBaseline" id="bi4-1M-trq"/>
-                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="leading" secondItem="IHg-CR-hHl" secondAttribute="leading" constant="16" id="d2j-Rt-Sb3"/>
-                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" id="dDS-zT-0RT"/>
+                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="leading" secondItem="IHg-CR-hHl" secondAttribute="leading" constant="17" id="d2j-Rt-Sb3"/>
+                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" constant="1" id="dDS-zT-0RT"/>
                                                 <constraint firstItem="ZZ6-Wu-R5r" firstAttribute="top" secondItem="IHg-CR-hHl" secondAttribute="top" constant="27" id="fQw-PF-hqV"/>
                                                 <constraint firstAttribute="trailing" secondItem="a42-sI-reh" secondAttribute="trailing" constant="16" id="iN9-rL-Cl4"/>
                                                 <constraint firstItem="F6c-xy-bHi" firstAttribute="top" secondItem="4gR-8S-b3A" secondAttribute="bottom" constant="8" symbolic="YES" id="iNy-zd-AVF"/>
-                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="leading" secondItem="Mxe-Nw-Jgk" secondAttribute="leading" id="ig8-iL-8OO"/>
+                                                <constraint firstItem="46n-Gu-wPC" firstAttribute="leading" secondItem="Mxe-Nw-Jgk" secondAttribute="leading" constant="1" id="ig8-iL-8OO"/>
                                                 <constraint firstItem="k34-mN-prj" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" constant="7.5" id="jz6-vJ-5Xq"/>
-                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="top" secondItem="46n-Gu-wPC" secondAttribute="bottom" constant="7" id="qNG-ju-PWf"/>
+                                                <constraint firstItem="tsm-zi-1RR" firstAttribute="top" secondItem="46n-Gu-wPC" secondAttribute="bottom" constant="-6" id="qNG-ju-PWf"/>
                                                 <constraint firstItem="RFN-YN-pPm" firstAttribute="top" secondItem="IHg-CR-hHl" secondAttribute="top" constant="21.333333333333336" id="uwS-u3-owo"/>
                                                 <constraint firstItem="tsm-zi-1RR" firstAttribute="centerX" secondItem="IHg-CR-hHl" secondAttribute="centerX" constant="-2" id="v6p-fc-M1d"/>
                                                 <constraint firstItem="myp-Qi-m2f" firstAttribute="top" secondItem="F6c-xy-bHi" secondAttribute="bottom" constant="7.6666666666666572" id="vJr-zg-a4m"/>
@@ -3361,15 +3364,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eLm-Lv-5iQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7102" y="3649"/>
+            <point key="canvasLocation" x="7102" y="2522"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="cjs-AZ-4HT"/>
-        <segue reference="pbU-9p-1Qp"/>
+        <segue reference="rqC-KX-Pok"/>
         <segue reference="jcx-uQ-feG"/>
-        <segue reference="Kdh-do-hzm"/>
-        <segue reference="rNL-Fb-mXA"/>
+        <segue reference="pJ2-Zv-0xr"/>
+        <segue reference="PHH-oM-1pf"/>
         <segue reference="zis-o5-IMS"/>
     </inferredMetricsTieBreakers>
     <resources>
