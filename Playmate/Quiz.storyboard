@@ -336,16 +336,26 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Almost done! bloop blop" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hw-OQ-Yyd">
-                                <rect key="frame" x="20" y="122" width="374" height="83"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hw-OQ-Yyd">
+                                <rect key="frame" x="20" y="122" width="374" height="123"/>
+                                <string key="text">Lastly, we kindly ask you to select where you are located on the map. We will examine a radius of 50 miles from this location to determine which sessions to recommend to you.</string>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2i-pE-2Wq">
-                                <rect key="frame" x="220" y="682" width="174" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XAy-Fv-Vsk">
+                                <rect key="frame" x="20" y="279" width="374" height="401"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pr8-Re-9YV">
+                                <rect key="frame" x="139" y="292" width="243" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Use Current Location"/>
+                                <connections>
+                                    <action selector="didTapCurrentLocation:" destination="ByD-i6-Kxa" eventType="touchUpInside" id="yY1-fv-akp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2i-pE-2Wq">
+                                <rect key="frame" x="148" y="700" width="119" height="44"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="23"/>
                                 <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -357,9 +367,25 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MDR-RY-Xhq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="XAy-Fv-Vsk" firstAttribute="top" secondItem="9hw-OQ-Yyd" secondAttribute="bottom" constant="34" id="2YE-ql-UJt"/>
+                            <constraint firstItem="XAy-Fv-Vsk" firstAttribute="leading" secondItem="MDR-RY-Xhq" secondAttribute="leading" constant="20" id="9U0-dW-Guw"/>
+                            <constraint firstItem="MDR-RY-Xhq" firstAttribute="trailing" secondItem="Pr8-Re-9YV" secondAttribute="trailing" constant="32" id="Fxg-bN-3nX"/>
+                            <constraint firstItem="Pr8-Re-9YV" firstAttribute="top" secondItem="9hw-OQ-Yyd" secondAttribute="bottom" constant="47" id="QDr-h8-grO"/>
+                            <constraint firstItem="MDR-RY-Xhq" firstAttribute="trailing" secondItem="XAy-Fv-Vsk" secondAttribute="trailing" constant="20" id="QXU-DG-8LA"/>
+                            <constraint firstItem="MDR-RY-Xhq" firstAttribute="bottom" secondItem="Y2i-pE-2Wq" secondAttribute="bottom" constant="118" id="Vhh-AW-mRS"/>
+                            <constraint firstItem="Y2i-pE-2Wq" firstAttribute="top" secondItem="XAy-Fv-Vsk" secondAttribute="bottom" constant="20" id="cuJ-XM-t89"/>
+                            <constraint firstItem="9hw-OQ-Yyd" firstAttribute="top" secondItem="MDR-RY-Xhq" secondAttribute="top" constant="34" id="kgR-hJ-Uwb"/>
+                            <constraint firstItem="9hw-OQ-Yyd" firstAttribute="leading" secondItem="MDR-RY-Xhq" secondAttribute="leading" constant="20" id="nsh-KK-Sxu"/>
+                            <constraint firstItem="Y2i-pE-2Wq" firstAttribute="leading" secondItem="MDR-RY-Xhq" secondAttribute="leading" constant="148" id="oeT-Ov-2GZ"/>
+                            <constraint firstItem="MDR-RY-Xhq" firstAttribute="trailing" secondItem="9hw-OQ-Yyd" secondAttribute="trailing" constant="20" id="vkV-UJ-HIA"/>
+                            <constraint firstItem="MDR-RY-Xhq" firstAttribute="trailing" secondItem="Y2i-pE-2Wq" secondAttribute="trailing" constant="147" id="vwu-T1-sP1"/>
+                            <constraint firstItem="Pr8-Re-9YV" firstAttribute="leading" secondItem="MDR-RY-Xhq" secondAttribute="leading" constant="139" id="z6d-rW-bxK"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="5 of 5" id="XoI-RV-smi"/>
                     <connections>
+                        <outlet property="mapView" destination="XAy-Fv-Vsk" id="QWG-VL-Rfr"/>
                         <outlet property="progress" destination="OpJ-Aa-J8f" id="MjI-jV-ZZ5"/>
                     </connections>
                 </viewController>

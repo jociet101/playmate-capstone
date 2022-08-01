@@ -99,9 +99,7 @@ BOOL firstTime;
 - (void)geocodeLocationWithSearch:(NSString *)searchInput {
     APIManager *manager = [APIManager new];
     [manager getGeocodedLocation:searchInput withCompletion:^(Location *loc, NSError *error) {
-        
         if (error == nil) {
-            
             if (loc == nil) {
                 [Helpers handleAlert:nil withTitle:@"Address not found." withMessage:@"Please enter a more specific address." forViewController:self];
             }
@@ -111,11 +109,9 @@ BOOL firstTime;
                 [self dropPinOnMapAt:centerCoord withName:loc.locationName];
                 [self.delegate getSelectedLocation:loc];
             }
-            
         } else {
             [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
-        
     }];
 }
 

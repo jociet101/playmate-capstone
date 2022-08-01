@@ -14,6 +14,7 @@
 @dynamic dontPlaySportsList;
 @dynamic gendersList;
 @dynamic ageGroupsList;
+@dynamic location;
 
 + (nonnull NSString *)parseClassName {
     return NSStringFromClass([QuizResult class]);
@@ -23,6 +24,7 @@
                     andNotSports:(NSArray *)notSports
                       andGenders:(NSArray *)genders
                          andAges:(NSArray *)ages
+                      andLocation:(Location *)location
                   withCompletion:(void(^)(BOOL success, NSError *error))completion {
     QuizResult *result = [QuizResult new];
     PFUser *user = [[PFUser currentUser] fetchIfNeeded];
@@ -31,6 +33,7 @@
     result.dontPlaySportsList = notSports;
     result.gendersList = genders;
     result.ageGroupsList = ages;
+    result.location = location;
     
     [result saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
