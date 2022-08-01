@@ -33,7 +33,6 @@
           withLocation:(PFObject * _Nullable)loc
           withCapacity:(NSNumber * _Nullable)cap
         withCompletion: (PFBooleanResultBlock  _Nullable)completion {
-        
     Session *newSession = [Session new];
     newSession.sport = spt;
     newSession.skillLevel = level;
@@ -42,7 +41,6 @@
     [tempList addObject:[PFUser currentUser]];
     newSession.playersList = (NSArray *)tempList;
     newSession.occursAt = date;
-    
     newSession.duration = duration;
     newSession.location = (Location *)loc;
     newSession.capacity = cap;

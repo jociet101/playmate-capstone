@@ -1,0 +1,16 @@
+//
+//  RecommenderSystem.h
+//  Playmate
+//
+//  Created by Jocelyn Tseng on 8/1/22.
+//
+
+#import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface RecommenderSystem : NSObject
+
+@end
+
+NS_ASSUME_NONNULL_END
