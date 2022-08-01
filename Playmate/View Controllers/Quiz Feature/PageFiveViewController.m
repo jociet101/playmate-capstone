@@ -179,13 +179,6 @@ BOOL firstTimeLoad;
         [self saveQuizResult];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
-    HomeViewController *vc = [[homeVC viewControllers][0] childViewControllers][0];
-    self.delegate = (id)vc;
-    
-    [self.delegate quizDoneMessage];
 }
 
 - (void)saveQuizResult {
