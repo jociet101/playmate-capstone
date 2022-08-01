@@ -112,6 +112,7 @@ static NSString * geoapify;
 }
 
 - (void)getReverseGeocodedLocation:(Location *)location withCompletion:(void(^)(NSString *name, NSError *error))completion {
+    
     // Parse the location then into format needed for url
     NSString *longitudeString = [NSString stringWithFormat:@"%f", [location.lng doubleValue]];
     NSString *latitudeString = [NSString stringWithFormat:@"%f", [location.lat doubleValue]];
@@ -122,6 +123,7 @@ static NSString * geoapify;
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error != nil) {
+            
             [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
             completion(nil, error);
         }

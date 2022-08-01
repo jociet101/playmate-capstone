@@ -38,13 +38,17 @@
     }
     
     // Check if user just joined a multiple of five session
-    if ([data.sessionCount intValue] % 5 != 0 && !tookQuiz) {
-        return;
-    }
+//    if ([data.sessionCount intValue] % 5 != 0 && !tookQuiz) {
+//        return;
+//    }
     
     // If so, we must run recommender algorithm to keep session suggestions updated
-    data.suggestedList = [RecommenderSystem runRecommendationAlgorithm];
-    [data saveInBackground];
+    dispatch_async(
+        dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+          ^{
+              data.suggestedList = [RecommenderSystem runRecommendationAlgorithm];
+              [data saveInBackground];
+           });
 }
 
 @end
