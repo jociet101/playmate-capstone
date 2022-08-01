@@ -21,8 +21,8 @@
     
     // should have smaller pool here
     
-    // for all viable sessions
-        // get heuristic value
+    // for session in viable sessions
+        // get ranking for session
         // store somehow; dictionary? where key is value and value is list of sessions
     
     // get at most the top 8

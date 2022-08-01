@@ -13,9 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *userObjectId;
 @property (nonatomic, strong) NSArray *suggestedList;
+@property (nonatomic, strong) NSNumber *sessionCount;
 
 + (void)createRecommendationDataWithCompletion:(void(^)(BOOL success, NSError *error))completion;
-+ (void)update:(RecommendationData *)data suggestedList:(NSArray *)list;
++ (void)runRecommenderSystemJustTookQuiz:(BOOL)tookQuiz;
 
 @end
 

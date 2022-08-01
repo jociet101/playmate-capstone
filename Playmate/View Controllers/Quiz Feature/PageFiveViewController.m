@@ -7,6 +7,7 @@
 
 #import "PageFiveViewController.h"
 #import "HomeViewController.h"
+#import "RecommendationData.h"
 #import "QuizHelpers.h"
 #import "QuizResult.h"
 #import "APIManager.h"
@@ -195,6 +196,7 @@ BOOL firstTimeLoad;
             QuizResult *result = [query getFirstObject];
             [me addObject:result.objectId forKey:@"quizResult"];
             [me saveInBackground];
+            [RecommendationData runRecommenderSystemJustTookQuiz:YES];
         } else {
             [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }
