@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RecommenderSystem : NSObject
 
++ (NSArray *)runRecommendationAlgorithm;
+
 @end
 
 NS_ASSUME_NONNULL_END

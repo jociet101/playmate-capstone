@@ -187,6 +187,9 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     } else if ([segue.identifier isEqualToString:@"homeToUpcomingSessions"]) {
         UpcomingSessionsViewController *vc = [segue destinationViewController];
         self.delegate = (id)vc;
+    } else if ([segue.identifier isEqualToString:@"homeToSuggestedSessions"]) {
+        SuggestedSessionsViewController *vc = [segue destinationViewController];
+        self.delegate = (id)vc;
     } else if ([segue.identifier isEqualToString:@"homeToSessionDetails"]) {
         SessionDetailsViewController *vc = [segue destinationViewController];
         PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];

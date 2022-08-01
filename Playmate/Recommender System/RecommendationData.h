@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *userObjectId;
 @property (nonatomic, strong) NSArray *suggestedList;
 
-+ (void)createRecommendationData;
++ (void)createRecommendationDataWithCompletion:(void(^)(BOOL success, NSError *error))completion;
++ (void)update:(RecommendationData *)data suggestedList:(NSArray *)list;
 
 @end
 
