@@ -21,8 +21,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
     NSArray *sessions = [query findObjects];
     
-    // Filter out sessions the user is already part of
-    sessions = [RecommenderSystem filterOutSessions:sessions userIsInAlready:user];
+    // Create data structures needed for calculating values for heuristic
     NSMutableArray *playSports = [[NSMutableArray alloc] init];
     NSArray * _Nullable genders = nil;
     NSArray * _Nullable ageGroups = nil;
@@ -77,6 +76,9 @@
     
     NSMutableDictionary *weightToSession = [[NSMutableDictionary alloc] init];
     
+    // Filter out sessions the user is already part of
+    sessions = [RecommenderSystem filterOutSessions:sessions userIsInAlready:user];
+    
     // Iterate through all viable sessions
     for (Session *session in sessions) {
         float ranking = [RecommenderSystem getRankingForSession:session
@@ -124,8 +126,8 @@
         for (PFUser *player in playerList) {
             if ([player.objectId isEqualToString:user.objectId]) {
                 userIsIn = YES;
+                break;
             }
-            break;
         }
         if (!userIsIn) {
             [filteredSessions addObject:session];
