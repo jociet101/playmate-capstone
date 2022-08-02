@@ -20,6 +20,7 @@
     // query every single session
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
     NSArray *sessions = [query findObjects];
+    NSLog(@"ALL SESSIONS: %@", sessions);
     
     NSMutableArray *playSports = [[NSMutableArray alloc] init];
     
@@ -49,22 +50,42 @@
         [playSports addObjectsFromArray:result.playSportsList];
     }
     
+    NSLog(@"PREFERRED SPORTS: %@", playSports);
     // Viable sessions are in sessions now
     
     // find list of sports user has played in before and user says they play
-//    NSMutableDictionary *sportsCount = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *sportWeights = [[NSMutableDictionary alloc] init];
     
-    NSLog(@"PREFERRED SPORTS: %@", playSports);
+    NSMutableDictionary *sessionsDictionary = user[@"sessionsDictionary"][0];
+    
+    NSArray *sportList = [sessionsDictionary allKeys];
+    for (NSString *sport in sportList) {
+        NSArray *list = sessionsDictionary[sport];
+        long weight = list.count;
+        if ([playSports containsObject:sport]) {
+            // Give higher weight to sport if user is part of it
+            weight += 10;
+        }
+        [sportWeights setObject:[NSNumber numberWithLong:weight] forKey:sport];
+    }
     
     
     // for session in viable sessions
         // get ranking for session
         // store somehow; dictionary? where key is value and value is list of sessions
     
+    for (Session *session in sessions) {
+        
+    }
+    
     // get at most the top 8
     
     // return the array
-    return [[NSArray alloc] init];
+    return sessions;
+}
+
++ (int)getRankingForSession:(Session *)session {
+    return 0;
 }
 
 + (NSArray *)filterSessions:(NSArray *)sessions withLocation:(Location *)location andRadius:(NSNumber *)radiusInMiles {
@@ -83,10 +104,6 @@
         }
     }
     return (NSArray *)filteredSessions;
-}
-
-+ (int)getRankingForSession:(Session *)session {
-    return 0;
 }
 
 @end
