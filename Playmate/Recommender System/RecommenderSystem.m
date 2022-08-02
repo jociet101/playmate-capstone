@@ -94,37 +94,32 @@
         // Put session into dictionary with key being ranking
         NSNumber *number = [NSNumber numberWithFloat:ranking];
         if ([weightToSession objectForKey:number] == nil) {
-            [weightToSession setObject:[[NSMutableArray alloc] init] forKey:number];
+            [weightToSession setObject:[NSMutableArray arrayWithObject:session.objectId] forKey:number];
         } else {
             NSMutableArray *array = [weightToSession objectForKey:number];
             [array addObject:session.objectId];
         }
     }
     
-    NSLog(@"session and rankings = %@", weightToSession);
-    
-    return sessions;
-    
-    // TODO: fine tune heuristic
-//    // Get and sort the rankings (keys to the dictionary)
-//    NSArray *numberKeys = [weightToSession allKeys];
-//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:NO];
-//    numberKeys = [numberKeys sortedArrayUsingDescriptors:@[sortDescriptor]];
-//
-//    // Get the list of sessions
-//    NSMutableArray *result = [[NSMutableArray alloc] init];
-//    for (NSNumber *key in numberKeys) {
-//        if (result.count >= 8) {
-//            break;
-//        }
-//        NSArray *sessionsForThisKey = [weightToSession objectForKey:key];
-//        result = (NSMutableArray *)[result arrayByAddingObjectsFromArray:sessionsForThisKey];
-//    }
-//
-//    const long numberSessionsToFetch = MIN(8, result.count);
-//
-//    // return the top 8 ranked sessions
-//    return (NSArray *)[result subarrayWithRange:NSMakeRange(0, numberSessionsToFetch)];
+    // Get and sort the rankings (keys to the dictionary)
+    NSArray *numberKeys = [weightToSession allKeys];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:NO];
+    numberKeys = [numberKeys sortedArrayUsingDescriptors:@[sortDescriptor]];
+
+    // Get the list of sessions
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (NSNumber *key in numberKeys) {
+        if (result.count >= 8) {
+            break;
+        }
+        NSArray *sessionsForThisKey = [weightToSession objectForKey:key];
+        result = (NSMutableArray *)[result arrayByAddingObjectsFromArray:sessionsForThisKey];
+    }
+
+    const long numberSessionsToFetch = MIN(8, result.count);
+
+    // return the top 8 ranked sessions
+    return (NSArray *)[result subarrayWithRange:NSMakeRange(0, numberSessionsToFetch)];
 }
 
 + (NSArray *)filterOutSessions:(NSArray *)sessions userIsInAlready:(PFUser *)user {
