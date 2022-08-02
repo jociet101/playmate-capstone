@@ -62,15 +62,18 @@
     
     // Check if user just joined a multiple of five session
     // If user just took quiz run algorithm regardless of which numbered session
-    if ([data.sessionCount intValue] % 5 != 0 && !tookQuiz) {
-        return;
-    }
+//    if ([data.sessionCount intValue] % 5 != 0 && !tookQuiz) {
+//        return;
+//    }
     
     // If so, we must run recommender algorithm to keep session suggestions updated
     dispatch_async(
         dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
           ^{
               data.suggestedList = [RecommenderSystem runRecommendationAlgorithm];
+              
+              NSLog(@"data.suggestedList = %@", data.suggestedList);
+              
               [data saveInBackground];
            });
 }

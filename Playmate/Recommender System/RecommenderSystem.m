@@ -25,6 +25,8 @@
     // Filter out sessions the user is already part of
     sessions = [RecommenderSystem filterOutSessions:sessions userIsInAlready:user];
     
+    NSLog(@"USER IS NOT IN SESSIONS: %@", sessions);
+    
     NSMutableArray *playSports = [[NSMutableArray alloc] init];
     NSArray * _Nullable genders = nil;
     NSArray * _Nullable ageGroups = nil;
@@ -95,40 +97,49 @@
             [weightToSession setObject:[[NSMutableArray alloc] init] forKey:number];
         } else {
             NSMutableArray *array = [weightToSession objectForKey:number];
-            [array addObject:session];
+            [array addObject:session.objectId];
         }
     }
     
-    // Get and sort the rankings (keys to the dictionary)
-    NSArray *numberKeys = [weightToSession allKeys];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:NO];
-    numberKeys = [numberKeys sortedArrayUsingDescriptors:@[sortDescriptor]];
+    NSLog(@"session and rankings = %@", weightToSession);
     
-    // Get the list of sessions
-    NSMutableArray *result = [[NSMutableArray alloc] init];
-    for (NSNumber *key in numberKeys) {
-        if (result.count >= 8) {
-            break;
-        }
-        NSArray *sessionsForThisKey = [weightToSession objectForKey:key];
-        result = (NSMutableArray *)[result arrayByAddingObjectsFromArray:sessionsForThisKey];
-    }
+    return sessions;
     
-    const long numberSessionsToFetch = MIN(8, result.count);
-    
-    // return the top 8 ranked sessions
-    return [result subarrayWithRange:NSMakeRange(0, numberSessionsToFetch)];
+    // TODO: fine tune heuristic
+//    // Get and sort the rankings (keys to the dictionary)
+//    NSArray *numberKeys = [weightToSession allKeys];
+//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:NO];
+//    numberKeys = [numberKeys sortedArrayUsingDescriptors:@[sortDescriptor]];
+//
+//    // Get the list of sessions
+//    NSMutableArray *result = [[NSMutableArray alloc] init];
+//    for (NSNumber *key in numberKeys) {
+//        if (result.count >= 8) {
+//            break;
+//        }
+//        NSArray *sessionsForThisKey = [weightToSession objectForKey:key];
+//        result = (NSMutableArray *)[result arrayByAddingObjectsFromArray:sessionsForThisKey];
+//    }
+//
+//    const long numberSessionsToFetch = MIN(8, result.count);
+//
+//    // return the top 8 ranked sessions
+//    return (NSArray *)[result subarrayWithRange:NSMakeRange(0, numberSessionsToFetch)];
 }
 
 + (NSArray *)filterOutSessions:(NSArray *)sessions userIsInAlready:(PFUser *)user {
     NSMutableArray *filteredSessions = [[NSMutableArray alloc] init];
     for (Session *session in sessions) {
         NSArray *playerList = session.playersList;
+        BOOL userIsNotIn = YES;
         for (PFUser *player in playerList) {
             if ([player.objectId isEqualToString:user.objectId]) {
-                [filteredSessions addObject:session];
+                userIsNotIn = NO;
             }
             break;
+        }
+        if (userIsNotIn) {
+            [filteredSessions addObject:session];
         }
     }
     return (NSArray *)filteredSessions;
@@ -146,6 +157,8 @@
     
     // Calculate gender counts and age groups counts
     for (PFUser *player in playerList) {
+        [player fetchIfNeeded];
+        
         // Check if this player is a friend of user
         if ([friends containsObject:player.objectId]) {
             numberFriendsInSession += 1;
@@ -164,8 +177,7 @@
         }
     }
     
-    float ranking = 0.5 * sportWeight + 0.2 * numberFriendsInSession + 0.1 * numberPlayersInPreferredGenders + 0.2 * numberPlayersInPreferredAgeGroups;
-    
+    float ranking = 5.2 * sportWeight + 2.3 * numberFriendsInSession + 1.2 * numberPlayersInPreferredGenders + 1.9 * numberPlayersInPreferredAgeGroups;
     return ranking;
 }
 
