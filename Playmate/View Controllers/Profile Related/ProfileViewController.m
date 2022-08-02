@@ -79,7 +79,7 @@
 }
 
 - (void)setPodiumLabels:(PFUser *)user {
-    NSArray *topSports = [Helpers getTopSportsFor:user];
+    NSArray *topSports = [ManageUserStatistics getTopSportsFor:user];
     self.firstSportLabel.text = (topSports.count > 0) ? topSports[0] : @"None";
     self.secondSportLabel.text = (topSports.count > 1) ? topSports[1] : @"None";
     self.thirdSportLabel.text = (topSports.count > 2) ? topSports[2] : @"None";

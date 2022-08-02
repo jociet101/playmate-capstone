@@ -31,6 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 // Used when deleting session
 + (void)removeSession:(NSString *)sessionId ofSport:(NSString *)sport fromUser:(PFUser *)user;
 
+// Given a user, returns list of a max size three of most frequent sports for sessions the user attends
++ (NSArray *)getTopSportsFor:(PFUser *)user;
+
 @end
 
 NS_ASSUME_NONNULL_END
