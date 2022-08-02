@@ -80,6 +80,8 @@
     PlayerConnection *playerConnection = [Helpers getPlayerConnectionForUser:user];
     NSArray *friendsList = playerConnection.friendsList;
     
+    NSMutableDictionary *weightToSession = [[NSMutableDictionary alloc] init];
+    
     // Iterate through all viable sessions
     for (Session *session in sessions) {
         float ranking = [RecommenderSystem getRankingForSession:session
@@ -87,12 +89,35 @@
                                                      andGenders:genders
                                                    andAgeGroups:ageGroups
                                                      andFriends:friendsList];
-        
-        // according to ranking, put into dictionary
+        // Put session into dictionary with key being ranking
+        NSNumber *number = [NSNumber numberWithFloat:ranking];
+        if ([weightToSession objectForKey:number] == nil) {
+            [weightToSession setObject:[[NSMutableArray alloc] init] forKey:number];
+        } else {
+            NSMutableArray *array = [weightToSession objectForKey:number];
+            [array addObject:session];
+        }
     }
     
-    // return the top 8 in the array
-    return sessions;
+    // Get and sort the rankings (keys to the dictionary)
+    NSArray *numberKeys = [weightToSession allKeys];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:NO];
+    numberKeys = [numberKeys sortedArrayUsingDescriptors:@[sortDescriptor]];
+    
+    // Get the list of sessions
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (NSNumber *key in numberKeys) {
+        if (result.count >= 8) {
+            break;
+        }
+        NSArray *sessionsForThisKey = [weightToSession objectForKey:key];
+        result = (NSMutableArray *)[result arrayByAddingObjectsFromArray:sessionsForThisKey];
+    }
+    
+    const long numberSessionsToFetch = MIN(8, result.count);
+    
+    // return the top 8 ranked sessions
+    return [result subarrayWithRange:NSMakeRange(0, numberSessionsToFetch)];
 }
 
 + (NSArray *)filterOutSessions:(NSArray *)sessions userIsInAlready:(PFUser *)user {

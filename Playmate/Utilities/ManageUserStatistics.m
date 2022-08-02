@@ -126,7 +126,6 @@
     }
     
     NSArray *countKeys = [sportsCountDictionary allKeys];
-    
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:NO];
     countKeys = [countKeys sortedArrayUsingDescriptors:@[sortDescriptor]];
         
