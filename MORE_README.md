@@ -39,6 +39,7 @@ Upon assigning a value to each of the viable session options, the most highly ra
 3. How can Playmate's recommender system be improved?
 
 - user responds to each suggestion with yes or no for whether they would attend and the reason they would or would not attend it (reason = sport, skill level, location, etc)
+- dynamic adaptation, being able to refresh suggestions and get new ones --> much easier if there was more data, more sessions in the large pool to suggest
 
 
 External Resources
