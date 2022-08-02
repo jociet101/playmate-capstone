@@ -386,6 +386,21 @@
     }
 }
 
+// Get euclidean distance betwen two locations
++ (float)euclideanDistanceBetween:(Location *)location1 and:(Location *)location2 {
+    [location1 fetchIfNeeded];
+    [location2 fetchIfNeeded];
+    
+    float latitude1 = [location1.lat floatValue];
+    float latitude2 = [location2.lat floatValue];
+    float longitude1 = [location1.lng floatValue];
+    float longitude2 = [location2.lng floatValue];
+    
+    float sumSquaredDifferences = pow(latitude1-latitude2, 2) + pow(longitude1-longitude2, 2);
+    
+    return pow(sumSquaredDifferences, 0.5);
+}
+
 #pragma mark - Retrieve Data for Filter/Create Menus
 
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row {

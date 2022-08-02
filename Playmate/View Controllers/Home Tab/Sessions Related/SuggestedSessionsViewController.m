@@ -45,7 +45,7 @@
 - (void)fetchData {
     // TODO: uncomment when have suggested sessions feature implemented
 //    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
-//    RecommendationData *data = [[PFQuery getObjectOfClass:@"RecommendationData" objectId:me[@"recommendationObjectId"] error:nil] fetchIfNeeded];
+//    RecommendationData *data = [[PFQuery getObjectOfClass:@"RecommendationData" objectId:me[@"recommendationObjectId"]] fetchIfNeeded];
     
     // placeholder sessions for suggested session view
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];

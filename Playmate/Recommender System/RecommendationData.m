@@ -8,6 +8,8 @@
 #import "RecommendationData.h"
 #import "RecommenderSystem.h"
 #import "ManageUserStatistics.h"
+#import "Helpers.h"
+#import "Strings.h"
 
 @implementation RecommendationData
 
@@ -30,9 +32,30 @@
 }
 
 + (void)runRecommenderSystemJustTookQuiz:(BOOL)tookQuiz {
+    // Determine if user already has recommendation object
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
-    RecommendationData *data = [[PFQuery getObjectOfClass:@"RecommendationData" objectId:me[@"recommendationObjectId"] error:nil] fetchIfNeeded];
-    
+    if ([me objectForKey:@"recommendation"] == nil) {
+        // If not, need to create and save to user
+        [RecommendationData createRecommendationDataWithCompletion:^(BOOL success, NSError * _Nonnull error) {
+            if (error != nil) {
+                [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
+            } else {
+                PFQuery *query = [PFQuery queryWithClassName:@"RecommendationData"];
+                [query whereKey:@"userObjectId" equalTo:me.objectId];
+                RecommendationData *data = [[query getFirstObject] fetchIfNeeded];
+                [me addObject:data.objectId forKey:@"recommendation"];
+                [me saveInBackground];
+                [RecommendationData run:tookQuiz onData:data];
+            }
+        }];
+    } else {
+        // If so, fetch from user's dictionary and get object id of recommendation object
+        RecommendationData *data = [[PFQuery getObjectOfClass:@"RecommendationData" objectId:me[@"recommendation"]] fetchIfNeeded];
+        [RecommendationData run:tookQuiz onData:data];
+    }
+}
+
++ (void)run:(BOOL)tookQuiz onData:(RecommendationData *)data {
     if (!tookQuiz) {
         data.sessionCount = [NSNumber numberWithInt:([data.sessionCount intValue] + 1)];
     }

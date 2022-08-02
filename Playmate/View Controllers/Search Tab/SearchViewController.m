@@ -171,27 +171,13 @@
                                                   animated:YES];
 }
 
-- (float)euclideanDistanceBetween:(Location *)location1 and:(Location *)location2 {
-    [location1 fetchIfNeeded];
-    [location2 fetchIfNeeded];
-    
-    float latitude1 = [location1.lat floatValue];
-    float latitude2 = [location2.lat floatValue];
-    float longitude1 = [location1.lng floatValue];
-    float longitude2 = [location2.lng floatValue];
-    
-    float sumSquaredDifferences = pow(latitude1-latitude2, 2) + pow(longitude1-longitude2, 2);
-    
-    return pow(sumSquaredDifferences, 0.5);
-}
-
 - (NSArray *)filterSessions:(NSArray *)sessions withLocation:(Location *)location andRadius:(NSNumber *)radiusInMiles {
     float radiusInUnits = [radiusInMiles floatValue]/69;
     
     NSMutableArray *filteredSessions = [[NSMutableArray alloc] init];
     
     for (Session *session in sessions) {
-        float distance = [self euclideanDistanceBetween:location and:session.location];
+        float distance = [Helpers euclideanDistanceBetween:location and:session.location];
                 
         NSDate *now = [NSDate date];
         NSComparisonResult result = [now compare:session.occursAt];
@@ -200,7 +186,6 @@
             [filteredSessions addObject:session];
         }
     }
-    
     return (NSArray *)filteredSessions;
 }
 
