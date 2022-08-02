@@ -18,15 +18,8 @@
     PFUser *user = [[PFUser currentUser] fetchIfNeeded];
     
     // query every single session
-    __block NSArray *sessions;
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (error != nil) {
-            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
-        } else {
-            sessions = objects;
-        }
-    }];
+    NSArray *sessions = [query findObjects];
     
     NSMutableArray *playSports = [[NSMutableArray alloc] init];
     
@@ -50,6 +43,8 @@
         }
         sessions = (NSArray *)filteredSessions;
         
+        NSLog(@"VIABLE SESSIONS: %@", sessions);
+        
         // Add sports the user wants to play according to quiz
         [playSports addObjectsFromArray:result.playSportsList];
     }
@@ -57,7 +52,10 @@
     // Viable sessions are in sessions now
     
     // find list of sports user has played in before and user says they play
-    NSMutableDictionary *sportsCount = [[NSMutableDictionary alloc] init];
+//    NSMutableDictionary *sportsCount = [[NSMutableDictionary alloc] init];
+    
+    NSLog(@"PREFERRED SPORTS: %@", playSports);
+    
     
     // for session in viable sessions
         // get ranking for session
