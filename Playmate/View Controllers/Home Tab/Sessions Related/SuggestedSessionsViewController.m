@@ -55,9 +55,7 @@
         [temporaryList addObject:session];
     }
     self.sessionList = (NSArray *)temporaryList;
-
-    NSLog(@"poopoo %@", self.sessionList);
-
+    
     [self.collectionView reloadData];
 }
 

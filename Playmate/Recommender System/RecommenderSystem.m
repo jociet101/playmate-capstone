@@ -20,13 +20,9 @@
     // Query every single session
     PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
     NSArray *sessions = [query findObjects];
-    NSLog(@"ALL SESSIONS: %@", sessions);
     
     // Filter out sessions the user is already part of
     sessions = [RecommenderSystem filterOutSessions:sessions userIsInAlready:user];
-    
-    NSLog(@"USER IS NOT IN SESSIONS: %@", sessions);
-    
     NSMutableArray *playSports = [[NSMutableArray alloc] init];
     NSArray * _Nullable genders = nil;
     NSArray * _Nullable ageGroups = nil;
@@ -59,10 +55,7 @@
         [playSports addObjectsFromArray:result.playSportsList];
     }
     
-    NSLog(@"VIABLE SESSIONS: %@", sessions);
-    NSLog(@"PREFERRED SPORTS: %@", playSports);
     // Viable sessions are in sessions now
-    
     // Preprocessing for weights for each sport based on user history and quiz preferences
     NSMutableDictionary *sportWeights = [[NSMutableDictionary alloc] init];
     
