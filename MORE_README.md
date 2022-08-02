@@ -21,26 +21,23 @@ Playmate's Recommendation algorithm uses filtering to narrow down the pool of al
 
 Once the general filters are applied, a heuristic equation is used to assign a "ranking" to each of the viable sessions. The heuristic takes into account the quiz results, whether the user is friends with anyone in the session, and which sport and skill level sessions the user has participated in the past. The quiz results include what sports the user plays, what sports the user does not want to play, and what genders and age groups the user prefers to play sports with.
 
-(TODO: describe the heuristic i designed and the equations, etc.)
+After preprocessing and calculating certain statistics for each session, the heuristic equation:
 
-Upon assigning a value to each of the viable session options, the most highly ranked sessions are displayed as suggested sessions to the user.
+`float ranking = 5.2 * sportWeight + 2.3 * numberFriendsInSession + 1.2 * numberPlayersInPreferredGenders + 1.9 * numberPlayersInPreferredAgeGroups`
+
+is used to assign a value to each session. Upon assigning a value to each of the viable session options, session are sorted and the most highly ranked sessions are displayed as suggested sessions to the user.
 
 ### FAQs
 
 1. This algorithm, which includes filtering and ranking, seems pretty computation heavy. When do you decide to execute this algorithm to conserve resources but also keep a user's suggested sessions up to date?
 
-- after fill out quiz (under average case assumption that the user does not fill out the quiz a bunch of times in a row)
-- every third/fifth (decide a number) session a user joins
-- use grand central dispatch to do in separate thread
+Firstly, the recommendation system algorithm I designed is run every time after a user fills out the quiz to ensure their latest preferences are responded to as soon as possible. Additionally, since the total number of sessions is not yet in the thousands, we can afford to run the algorithm every third session a user joins. However, as the app scales, we would reduce the number of times the algorithm is run to conserve resources. Lastly, the entire algorithm is run on a Grand Central Dispatch queue on a separate thread, so it would not interfere with processes on the main thread managing front end and other imminent tasks.
 
-2. how to prevent repeated suggestions? if that is a problem
+2. What expansions and improvements do you have in mind for Playmate's Recommender System?
 
+- The user responds to each suggestion with a yes or no for whether they would attend the session and if not, the reason they would not attend the session. The algorithm would then take into account the reason and give a lower weight to sessions that share the similar trait. For example, if we suggest a session of the sport "Soccer" that is neither on the user's past history nor in their quiz preferences, and they tell us they would not attend the session because of the sport, we will adapt and remember to not suggest any Soccer sessions to this user.
 
-3. How can Playmate's recommender system be improved?
-
-- user responds to each suggestion with yes or no for whether they would attend and the reason they would or would not attend it (reason = sport, skill level, location, etc)
-- dynamic adaptation, being able to refresh suggestions and get new ones --> much easier if there was more data, more sessions in the large pool to suggest
-
+- Running the recommender system algorithm on a separate server would improve the quality of suggestions because they would be more up to date and dynamically adapt to what sessions the user is joining or creating. Also, we would be able to run the algorithm asynchonously as new sessions are created by other users, and suggest those to our users. Being able to run the algorithm on a backend server would also be useful as the number of users scale and therefore sessions increase.
 
 External Resources
 - [Recommendation System Design in the Real World](https://medium.com/double-pointer/system-design-interview-recommendation-system-design-as-used-by-youtube-netflix-etc-c457aaec3ab)
