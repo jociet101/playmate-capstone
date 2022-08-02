@@ -196,7 +196,7 @@ BOOL firstTimeLoad;
             QuizResult *result = [query getFirstObject];
             [me addObject:result.objectId forKey:@"quizResult"];
             [me saveInBackground];
-//            [RecommendationData runRecommenderSystemJustTookQuiz:YES];
+            [RecommendationData runRecommenderSystemJustTookQuiz:YES];
         } else {
             [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }

@@ -40,6 +40,7 @@
             if (error != nil) {
                 [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
             } else {
+                
                 PFQuery *query = [PFQuery queryWithClassName:@"RecommendationData"];
                 [query whereKey:@"userObjectId" equalTo:me.objectId];
                 RecommendationData *data = [[query getFirstObject] fetchIfNeeded];
@@ -49,8 +50,9 @@
             }
         }];
     } else {
+        
         // If so, fetch from user's dictionary and get object id of recommendation object
-        RecommendationData *data = [[PFQuery getObjectOfClass:@"RecommendationData" objectId:me[@"recommendation"]] fetchIfNeeded];
+        RecommendationData *data = [[PFQuery getObjectOfClass:@"RecommendationData" objectId:me[@"recommendation"][0]] fetchIfNeeded];
         [RecommendationData run:tookQuiz onData:data];
     }
 }
@@ -61,6 +63,7 @@
     }
     
     // Check if user just joined a multiple of five session
+    // If user just took quiz run algorithm regardless of which numbered session
 //    if ([data.sessionCount intValue] % 5 != 0 && !tookQuiz) {
 //        return;
 //    }

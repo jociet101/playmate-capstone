@@ -172,7 +172,7 @@
                                                      andUser:me];
             [NotificationHandler scheduleSessionNotification:sessionObjectId];
             // Run recommendation system
-//            [RecommendationData runRecommenderSystemJustTookQuiz:NO];
+            [RecommendationData runRecommenderSystemJustTookQuiz:NO];
             [self returnToHome];
         }
     }];
