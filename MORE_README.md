@@ -31,7 +31,12 @@ is used to assign a value to each session. Upon assigning a value to each of the
 
 1. This algorithm, which includes filtering and ranking, seems pretty computation heavy. When do you decide to execute this algorithm to conserve resources but also keep a user's suggested sessions up to date?
 
-Firstly, the recommendation system algorithm I designed is run every time after a user fills out the quiz to ensure their latest preferences are responded to as soon as possible. Additionally, since the total number of sessions is not yet in the thousands, we can afford to run the algorithm every third session a user joins. However, as the app scales, we would reduce the number of times the algorithm is run to conserve resources. Lastly, the entire algorithm is run on a Grand Central Dispatch queue on a separate thread, so it would not interfere with processes on the main thread managing front end and other imminent tasks.
+- The recommendation system algorithm I designed is run every time after a user fills out the quiz to ensure their latest preferences are responded to as soon as possible.
+
+- Since the total number of sessions is not yet in the thousands, we can afford to run the algorithm every third session a user joins. However, as the app scales, we would reduce the number of times the algorithm is run to conserve resources.
+
+- The entire algorithm is run on a Grand Central Dispatch queue on a separate thread, so it would not interfere with processes on the main thread managing front end and other imminent tasks.
+
 
 2. What expansions and improvements do you have in mind for Playmate's Recommender System?
 
