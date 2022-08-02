@@ -124,19 +124,21 @@
 
 + (NSArray *)filterOutSessions:(NSArray *)sessions userIsInAlready:(PFUser *)user {
     NSMutableArray *filteredSessions = [[NSMutableArray alloc] init];
+    
     for (Session *session in sessions) {
         NSArray *playerList = session.playersList;
-        BOOL userIsNotIn = YES;
+        BOOL userIsIn = NO;
         for (PFUser *player in playerList) {
             if ([player.objectId isEqualToString:user.objectId]) {
-                userIsNotIn = NO;
+                userIsIn = YES;
             }
             break;
         }
-        if (userIsNotIn) {
+        if (!userIsIn) {
             [filteredSessions addObject:session];
         }
     }
+    
     return (NSArray *)filteredSessions;
 }
 

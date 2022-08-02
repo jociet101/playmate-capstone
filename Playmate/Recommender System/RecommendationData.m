@@ -71,9 +71,6 @@
         dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
           ^{
               data.suggestedList = [RecommenderSystem runRecommendationAlgorithm];
-              
-              NSLog(@"data.suggestedList = %@", data.suggestedList);
-              
               [data saveInBackground];
            });
 }

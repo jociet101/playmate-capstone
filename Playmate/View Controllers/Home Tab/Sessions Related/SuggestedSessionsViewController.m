@@ -44,15 +44,20 @@
 
 - (void)fetchData {
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
-    RecommendationData *data = [[PFQuery getObjectOfClass:@"RecommendationData" objectId:me[@"recommendationObjectId"]] fetchIfNeeded];
-
+    if (me[@"recommendation"] == nil) {
+        return;
+    }
+    
+    RecommendationData *data = [[PFQuery getObjectOfClass:@"RecommendationData" objectId:me[@"recommendation"][0]] fetchIfNeeded];
     NSMutableArray *temporaryList = [[NSMutableArray alloc] init];
     for (NSString *sessionId in data.suggestedList) {
         Session *session = [PFQuery getObjectOfClass:@"SportsSession" objectId:sessionId];
         [temporaryList addObject:session];
     }
     self.sessionList = (NSArray *)temporaryList;
-    
+
+    NSLog(@"poopoo %@", self.sessionList);
+
     [self.collectionView reloadData];
 }
 
