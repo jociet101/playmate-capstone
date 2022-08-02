@@ -11,6 +11,7 @@
 #import "MenuPickerCell.h"
 #import "LocationPickerCell.h"
 #import "ManageUserStatistics.h"
+#import "RecommendationData.h"
 #import "NotificationHandler.h"
 #import "Location.h"
 #import "Session.h"
@@ -170,6 +171,8 @@
                                                     forSport:self.selectedSport
                                                      andUser:me];
             [NotificationHandler scheduleSessionNotification:sessionObjectId];
+            // Run recommendation system
+            [RecommendationData runRecommenderSystemJustTookQuiz:NO];
             [self returnToHome];
         }
     }];

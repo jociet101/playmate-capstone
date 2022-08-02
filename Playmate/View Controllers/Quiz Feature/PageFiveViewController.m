@@ -7,6 +7,7 @@
 
 #import "PageFiveViewController.h"
 #import "HomeViewController.h"
+#import "RecommendationData.h"
 #import "QuizHelpers.h"
 #import "QuizResult.h"
 #import "APIManager.h"
@@ -170,7 +171,7 @@ BOOL firstTimeLoad;
     if (resultObjectId != nil) {
         [me removeObjectForKey:@"quizResult"];
         [me saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            QuizResult *result = [PFQuery getObjectOfClass:@"QuizResult" objectId:resultObjectId error:nil];
+            QuizResult *result = [PFQuery getObjectOfClass:@"QuizResult" objectId:resultObjectId];
             [result deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 [self saveQuizResult];
             }];
@@ -179,13 +180,6 @@ BOOL firstTimeLoad;
         [self saveQuizResult];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UITabBarController *homeVC = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
-    HomeViewController *vc = [[homeVC viewControllers][0] childViewControllers][0];
-    self.delegate = (id)vc;
-    
-    [self.delegate quizDoneMessage];
 }
 
 - (void)saveQuizResult {
@@ -202,6 +196,7 @@ BOOL firstTimeLoad;
             QuizResult *result = [query getFirstObject];
             [me addObject:result.objectId forKey:@"quizResult"];
             [me saveInBackground];
+            [RecommendationData runRecommenderSystemJustTookQuiz:YES];
         } else {
             [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         }

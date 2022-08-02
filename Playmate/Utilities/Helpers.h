@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "Session.h"
+#import "Location.h"
 #import "PlayerConnection.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -86,6 +87,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Get quiz status
 + (NSString *)getQuizString;
+
+// Get euclidean distance betwen two locations
++ (float)euclideanDistanceBetween:(Location *)location1 and:(Location *)location2;
 
 #pragma mark - Retrieve Data for Filter/Create Menus
 + (NSArray * _Nullable)getData:(BOOL)needAll forRow:(int)row;

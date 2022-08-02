@@ -12,6 +12,7 @@
 #import "FriendsListViewController.h"
 #import "PlayerProfileCollectionCell.h"
 #import "ManageUserStatistics.h"
+#import "RecommendationData.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import "NotificationHandler.h"
 #import "SessionCell.h"
@@ -281,6 +282,9 @@ BOOL isPartOfSession;
         
         // Schedule notification for this user
         [NotificationHandler scheduleSessionNotification:sessionObjectId];
+        
+        // Run recommendation system
+        [RecommendationData runRecommenderSystemJustTookQuiz:NO];
     }
 }
 

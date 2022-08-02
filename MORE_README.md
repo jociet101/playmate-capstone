@@ -31,6 +31,7 @@ Upon assigning a value to each of the viable session options, the most highly ra
 
 - after fill out quiz (under average case assumption that the user does not fill out the quiz a bunch of times in a row)
 - every third/fifth (decide a number) session a user joins
+- use grand central dispatch to do in separate thread
 
 2. how to prevent repeated suggestions? if that is a problem
 
