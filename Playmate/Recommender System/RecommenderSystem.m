@@ -1,5 +1,8 @@
 //
 //  RecommenderSystem.m
+//
+//  ***Information about Playmate's Recommender System lies in MORE_README.md***
+//
 //  Playmate
 //
 //  Created by Jocelyn Tseng on 8/1/22.
@@ -117,9 +120,9 @@
     return (NSArray *)[result subarrayWithRange:NSMakeRange(0, numberSessionsToFetch)];
 }
 
+// Remove sessions that user is already in since we do not want to suggest those
 + (NSArray *)filterOutSessions:(NSArray *)sessions userIsInAlready:(PFUser *)user {
     NSMutableArray *filteredSessions = [[NSMutableArray alloc] init];
-    
     for (Session *session in sessions) {
         NSArray *playerList = session.playersList;
         BOOL userIsIn = NO;
@@ -133,10 +136,10 @@
             [filteredSessions addObject:session];
         }
     }
-    
     return (NSArray *)filteredSessions;
 }
 
+// Method for getting heuristic ranking
 + (float)getRankingForSession:(Session *)session
               withSportWeight:(int)sportWeight
                    andGenders:(NSArray * _Nullable)genders
@@ -173,6 +176,7 @@
     return ranking;
 }
 
+// Check if given age is in one one of the user's preferred groups
 + (BOOL)ageIsInAGroup:(int)age givenGroups:(NSArray *)ageGroups {
     NSString * _Nullable ageGroup = nil;
     NSArray *allAgeGroups = [QuizHelpers ageGroupList];
