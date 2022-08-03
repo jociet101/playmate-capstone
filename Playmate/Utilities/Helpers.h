@@ -57,9 +57,6 @@ NS_ASSUME_NONNULL_BEGIN
 // Given a list of players that are PFUsers, returns set of object id strings for those players
 + (NSMutableSet *)getPlayerObjectIdSet:(NSArray *)playerList;
 
-// Given a user, returns list of a max size three of most frequent sports for sessions the user attends
-+ (NSArray *)getTopSportsFor:(PFUser *)user;
-
 // Returns number of days between two dates
 + (NSInteger)daysBetweenDate:(NSDate*)fromDateTime
                      andDate:(NSDate*)toDateTime;

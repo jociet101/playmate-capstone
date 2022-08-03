@@ -43,25 +43,20 @@
 }
 
 - (void)fetchData {
-    // TODO: uncomment when have suggested sessions feature implemented
-//    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
-//    RecommendationData *data = [[PFQuery getObjectOfClass:@"RecommendationData" objectId:me[@"recommendationObjectId"]] fetchIfNeeded];
+    PFUser *me = [[PFUser currentUser] fetchIfNeeded];
+    if (me[@"recommendation"] == nil) {
+        return;
+    }
     
-    // placeholder sessions for suggested session view
-    PFQuery *query = [PFQuery queryWithClassName:@"SportsSession"];
-    [query orderByAscending:@"occursAt"];
-    [query setLimit:2];
-
-    // fetch data asynchronously
-    [query findObjectsInBackgroundWithBlock:^(NSArray *sessions, NSError *error) {
-        if (sessions != nil) {
-            self.sessionList = sessions;
-//            self.sessionList = data.suggestedList;
-            [self.collectionView reloadData];
-        } else {
-            [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
-        }
-    }];
+    RecommendationData *data = [[PFQuery getObjectOfClass:@"RecommendationData" objectId:me[@"recommendation"][0]] fetchIfNeeded];
+    NSMutableArray *temporaryList = [[NSMutableArray alloc] init];
+    for (NSString *sessionId in data.suggestedList) {
+        Session *session = [PFQuery getObjectOfClass:@"SportsSession" objectId:sessionId];
+        [temporaryList addObject:session];
+    }
+    self.sessionList = (NSArray *)temporaryList;
+    
+    [self.collectionView reloadData];
 }
 
 #pragma mark - Collection view protocol methods

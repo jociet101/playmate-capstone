@@ -1,5 +1,8 @@
 //
 //  RecommendationData.m
+//
+//  ***Information about Playmate's Recommender System lies in MORE_README.md***
+//
 //  Playmate
 //
 //  Created by Jocelyn Tseng on 8/1/22.
@@ -40,7 +43,6 @@
             if (error != nil) {
                 [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
             } else {
-                
                 PFQuery *query = [PFQuery queryWithClassName:@"RecommendationData"];
                 [query whereKey:@"userObjectId" equalTo:me.objectId];
                 RecommendationData *data = [[query getFirstObject] fetchIfNeeded];
@@ -50,7 +52,6 @@
             }
         }];
     } else {
-        
         // If so, fetch from user's dictionary and get object id of recommendation object
         RecommendationData *data = [[PFQuery getObjectOfClass:@"RecommendationData" objectId:me[@"recommendation"][0]] fetchIfNeeded];
         [RecommendationData run:tookQuiz onData:data];
@@ -62,11 +63,12 @@
         data.sessionCount = [NSNumber numberWithInt:([data.sessionCount intValue] + 1)];
     }
     
-    // Check if user just joined a multiple of five session
+    // Check if user just joined a multiple of three session
     // If user just took quiz run algorithm regardless of which numbered session
-//    if ([data.sessionCount intValue] % 5 != 0 && !tookQuiz) {
-//        return;
-//    }
+    if ([data.sessionCount intValue] % 3 != 0 && !tookQuiz) {
+        [data saveInBackground];
+        return;
+    }
     
     // If so, we must run recommender algorithm to keep session suggestions updated
     dispatch_async(

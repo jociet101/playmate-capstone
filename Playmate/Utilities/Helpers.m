@@ -207,46 +207,6 @@
     return playersSet;
 }
 
-// Given a user, returns list of a max size three of most frequent sports for sessions the user attends
-+ (NSArray *)getTopSportsFor:(PFUser *)user {
-    NSMutableDictionary *sportsCountDictionary = [[NSMutableDictionary alloc] init];
-    
-    NSMutableDictionary *sportsDictionary = user[@"sessionsDictionary"][0];
-    NSArray *sportsList = [sportsDictionary allKeys];
-    
-    for (NSString *sport in sportsList) {
-        NSNumber *count = [NSNumber numberWithLong:((NSArray *)sportsDictionary[sport]).count];
-        NSMutableArray *sportsListForCount = [sportsCountDictionary objectForKey:count];
-        if (sportsListForCount == nil) {
-            sportsListForCount = [NSMutableArray arrayWithObject:sport];
-            [sportsCountDictionary setObject:sportsListForCount forKey:count];
-        } else {
-            [sportsCountDictionary removeObjectForKey:count];
-            [sportsListForCount addObject:sport];
-            [sportsCountDictionary setObject:sportsListForCount forKey:count];
-        }
-    }
-    
-    NSArray *countKeys = [sportsCountDictionary allKeys];
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:NO];
-    countKeys = [countKeys sortedArrayUsingDescriptors:@[sortDescriptor]];
-        
-    NSMutableArray *result = [[NSMutableArray alloc] init];
-    
-    for (NSNumber *count in countKeys) {
-        if (result.count >= 3) {
-            break;
-        }
-        NSArray *sportsForThisCount = [sportsCountDictionary objectForKey:count];
-        result = (NSMutableArray *)[result arrayByAddingObjectsFromArray:sportsForThisCount];
-    }
-    
-    const long numberSportsToFetch = MIN(3, result.count);
-    
-    return [result subarrayWithRange:NSMakeRange(0, numberSportsToFetch)];
-}
-
 // Returns number of days between two dates
 + (NSString *)getTimeGivenDurationForSession:(Session *)session {
     NSDate *startTime = session.occursAt;
