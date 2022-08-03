@@ -55,8 +55,6 @@ Playmate is a platform where sports players can conveniently find others to play
 * [x] User can take preferences quiz to get better suggestions
 * [x] User will be suggested sessions based on an AI heuristic
     * Description of Playamte's recommendation system is in MORE\_README.md
-* [ ] App has polished UI
-* [ ] User can report another user
 
 ### 2. Screen Archetypes
 
