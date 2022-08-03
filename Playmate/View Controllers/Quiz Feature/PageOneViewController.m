@@ -38,6 +38,7 @@
     // Get sports list and create tags
     NSArray *sportsList = [Constants sportsList:NO];
     NSMutableArray *tagList = [[NSMutableArray alloc] init];
+    
     for (NSString *sport in sportsList) {
         TTGTextTag *textTag = [TTGTextTag tagWithContent:[TTGTextTagStringContent contentWithText:sport] style:[TTGTextTagStyle new]];
         textTag.style = style;
