@@ -174,10 +174,6 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     self.suggestedView.alpha = isSegmentZeroIndex ? 0 : 1;
 }
 
-- (IBAction)didTapReload:(id)sender {
-    [self fetchData];
-}
-
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
