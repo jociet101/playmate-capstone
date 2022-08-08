@@ -12,6 +12,7 @@ target 'Playmate' do
   pod 'AFNetworking'
   pod 'FSCalendar'
   pod 'TTGTagCollectionView'
+  pod 'CCTextFieldEffects'
 
   target 'PlaymateTests' do
     inherit! :search_paths

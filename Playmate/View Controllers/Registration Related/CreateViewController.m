@@ -6,13 +6,14 @@
 //
 
 #import "CreateViewController.h"
+#import "CCTextFieldEffects.h"
 #import "Helpers.h"
 #import "Constants.h"
 #import "Strings.h"
 
 @interface CreateViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UITextField *usernameField;
+//@property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameField;
@@ -23,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIView *pickerContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 
+@property (strong, nonatomic) YoshikoTextField *usernameField;
+
 @end
 
 @implementation CreateViewController
@@ -32,7 +35,13 @@ NSString *selectedGender;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    self.usernameField = [[YoshikoTextField alloc] initWithFrame:CGRectMake(72, 260, 250, 70)];
+    self.usernameField.placeholder = @"Username";
+    [self.usernameField setFont:[UIFont fontWithName:@"Arial" size:15]];
+    
+    [self.view addSubview:self.usernameField];
+    
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
     self.firstNameField.delegate = self;

@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
   - Bolts/Tasks (1.9.1)
+  - CCTextFieldEffects (0.1.3)
   - DateTools (2.0.0)
   - DZNEmptyDataSet (1.8.1)
   - FSCalendar (2.8.4)
@@ -26,6 +27,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - CCTextFieldEffects
   - DateTools
   - DZNEmptyDataSet
   - FSCalendar
@@ -36,6 +38,7 @@ SPEC REPOS:
   trunk:
     - AFNetworking
     - Bolts
+    - CCTextFieldEffects
     - DateTools
     - DZNEmptyDataSet
     - FSCalendar
@@ -45,12 +48,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  CCTextFieldEffects: e4203c0518bb7156b9d0e64acccc7580d75b0cd4
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
   TTGTagCollectionView: a2a8668c659b39e7a6ffd6590475ea53a7ae95f7
 
-PODFILE CHECKSUM: ec4b0da92933bf788b2da46764dea4d5bb5ef57f
+PODFILE CHECKSUM: 7261550036e06afcfcff5cd3a71e745cfd759fa9
 
 COCOAPODS: 1.11.3
