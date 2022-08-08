@@ -77,6 +77,10 @@
     
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
+            self.usernameField.text = @"";
+            self.passwordField.text = @"";
+            [self.usernameField resignFirstResponder];
+            [self.passwordField resignFirstResponder];
             [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         } else {
             [self performSegueWithIdentifier:@"loginToTab" sender:nil];
