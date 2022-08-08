@@ -25,6 +25,10 @@
     [Helpers setCornerRadiusAndColorForButton:self.createAccountButton andIsSmall:NO];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    self.createAccountButton.backgroundColor = [Constants playmateBlue];
+}
+
 #pragma mark - Button Actions
 
 - (IBAction)didTapCreate:(id)sender {
