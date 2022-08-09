@@ -57,7 +57,7 @@ BOOL isPartOfSession;
     [Helpers setCornerRadiusAndColorForButton:self.inviteFriendButton andIsSmall:NO];
     
     [self disableAddButton];
-    
+    [self toggleDeleteSessionButton];
     [self initializeDetails];
     
     self.collectionView.delegate = self;
@@ -107,7 +107,6 @@ BOOL isPartOfSession;
         self.inviteFriendButton.alpha = 0;
     }
     [self disableInviteButton];
-    [self toggleDeleteSessionButton];
 }
 
 - (void)changeAddButtonToLeave {
