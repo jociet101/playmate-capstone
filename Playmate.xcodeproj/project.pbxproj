@@ -386,8 +386,18 @@
 				3C45B5A628760C1E00EE578F /* Filters.m */,
 				3CF35697289476DA0046DFCB /* QuizResult.h */,
 				3CF35698289476DA0046DFCB /* QuizResult.m */,
-				3CDBEB85288E7EC500F2D739 /* Friends Related */,
-				3CDBEB86288E7EDC00F2D739 /* Map Related */,
+				3C69D0532888A23800851E6F /* MapFilters.h */,
+				3C69D0542888A23800851E6F /* MapFilters.m */,
+				3C45B5912874C0ED00EE578F /* Location.h */,
+				3C45B5922874C0ED00EE578F /* Location.m */,
+				3C1BC0102883E94400D17314 /* LocationAnnotation.h */,
+				3C1BC0112883E94400D17314 /* LocationAnnotation.m */,
+				3CF4A5B0287CD65D000C5E7D /* FriendRequest.h */,
+				3CF4A5B1287CD65D000C5E7D /* FriendRequest.m */,
+				3CF4A5B6287CD963000C5E7D /* PlayerConnection.h */,
+				3CF4A5B7287CD963000C5E7D /* PlayerConnection.m */,
+				3C19BA19288A024000592C20 /* Invitation.h */,
+				3C19BA1A288A024000592C20 /* Invitation.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -431,32 +441,6 @@
 				3CF356952894637D0046DFCB /* PageFiveViewController.m */,
 			);
 			path = "Quiz Feature";
-			sourceTree = "<group>";
-		};
-		3CDBEB85288E7EC500F2D739 /* Friends Related */ = {
-			isa = PBXGroup;
-			children = (
-				3CF4A5B0287CD65D000C5E7D /* FriendRequest.h */,
-				3CF4A5B1287CD65D000C5E7D /* FriendRequest.m */,
-				3CF4A5B6287CD963000C5E7D /* PlayerConnection.h */,
-				3CF4A5B7287CD963000C5E7D /* PlayerConnection.m */,
-				3C19BA19288A024000592C20 /* Invitation.h */,
-				3C19BA1A288A024000592C20 /* Invitation.m */,
-			);
-			path = "Friends Related";
-			sourceTree = "<group>";
-		};
-		3CDBEB86288E7EDC00F2D739 /* Map Related */ = {
-			isa = PBXGroup;
-			children = (
-				3C69D0532888A23800851E6F /* MapFilters.h */,
-				3C69D0542888A23800851E6F /* MapFilters.m */,
-				3C45B5912874C0ED00EE578F /* Location.h */,
-				3C45B5922874C0ED00EE578F /* Location.m */,
-				3C1BC0102883E94400D17314 /* LocationAnnotation.h */,
-				3C1BC0112883E94400D17314 /* LocationAnnotation.m */,
-			);
-			path = "Map Related";
 			sourceTree = "<group>";
 		};
 		3CDBEB87288E7EFD00F2D739 /* Friends Related */ = {
