@@ -52,7 +52,10 @@
     NSMutableArray *temporaryList = [[NSMutableArray alloc] init];
     for (NSString *sessionId in data.suggestedList) {
         Session *session = [PFQuery getObjectOfClass:@"SportsSession" objectId:sessionId];
-        [temporaryList addObject:session];
+        NSComparisonResult result = [[NSDate now] compare:session.occursAt];
+        if (result == NSOrderedAscending) {
+            [temporaryList addObject:session];
+        }
     }
     self.sessionList = (NSArray *)temporaryList;
     

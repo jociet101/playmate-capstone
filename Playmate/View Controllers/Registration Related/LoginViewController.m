@@ -6,14 +6,15 @@
 //
 
 #import "LoginViewController.h"
+#import "CCTextFieldEffects.h"
 #import "Constants.h"
 #import "Helpers.h"
 #import "Strings.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *usernameField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (strong, nonatomic) ChisatoTextField *usernameField;
+@property (strong, nonatomic) ChisatoTextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *proceedButton;
 
 @end
@@ -26,6 +27,27 @@
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
     
+    self.usernameField = [[ChisatoTextField alloc] initWithFrame:CGRectMake(72, 310, 250, 60)];
+    self.usernameField.placeholder = @"Username";
+    [self.usernameField setFont:[UIFont fontWithName:@"Avenir" size:20]];
+    self.usernameField.borderColor = [UIColor systemGray6Color];
+    self.usernameField.activeColor = [Constants playmateBlue];
+    self.usernameField.textColor = [UIColor systemGray3Color];
+    self.usernameField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.usernameField.spellCheckingType = UITextSpellCheckingTypeNo;
+    
+    self.passwordField = [[ChisatoTextField alloc] initWithFrame:CGRectMake(72, 380, 250, 60)];
+    self.passwordField.placeholder = @"Password";
+    [self.passwordField setFont:[UIFont fontWithName:@"Avenir" size:20]];
+    self.passwordField.borderColor = [UIColor systemGray6Color];
+    self.passwordField.activeColor = [Constants playmateBlue];
+    self.passwordField.secureTextEntry = YES;
+    self.passwordField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.passwordField.spellCheckingType = UITextSpellCheckingTypeNo;
+    
+    [self.view addSubview:self.usernameField];
+    [self.view addSubview:self.passwordField];
+
     [Helpers setCornerRadiusAndColorForButton:self.proceedButton andIsSmall:NO];
 }
 
@@ -55,6 +77,10 @@
     
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
+            self.usernameField.text = @"";
+            self.passwordField.text = @"";
+            [self.usernameField resignFirstResponder];
+            [self.passwordField resignFirstResponder];
             [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
         } else {
             [self performSegueWithIdentifier:@"loginToTab" sender:nil];
