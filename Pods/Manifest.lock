@@ -19,6 +19,7 @@ PODS:
   - DateTools (2.0.0)
   - DZNEmptyDataSet (1.8.1)
   - FSCalendar (2.8.4)
+  - JGProgressHUD (2.2)
   - Parse (1.19.3):
     - Parse/Core (= 1.19.3)
   - Parse/Core (1.19.3):
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - DateTools
   - DZNEmptyDataSet
   - FSCalendar
+  - JGProgressHUD
   - Parse
   - TTGTagCollectionView
 
@@ -42,6 +44,7 @@ SPEC REPOS:
     - DateTools
     - DZNEmptyDataSet
     - FSCalendar
+    - JGProgressHUD
     - Parse
     - TTGTagCollectionView
 
@@ -52,9 +55,10 @@ SPEC CHECKSUMS:
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
+  JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
   TTGTagCollectionView: a2a8668c659b39e7a6ffd6590475ea53a7ae95f7
 
-PODFILE CHECKSUM: 7261550036e06afcfcff5cd3a71e745cfd759fa9
+PODFILE CHECKSUM: 56f44c41aa3dab33d37134941bedb8030be31fc6
 
 COCOAPODS: 1.11.3

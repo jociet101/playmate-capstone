@@ -13,6 +13,7 @@ target 'Playmate' do
   pod 'FSCalendar'
   pod 'TTGTagCollectionView'
   pod 'CCTextFieldEffects'
+  pod 'JGProgressHUD'
 
   target 'PlaymateTests' do
     inherit! :search_paths
