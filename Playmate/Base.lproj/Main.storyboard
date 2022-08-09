@@ -357,7 +357,7 @@
                                 <rect key="frame" x="234" y="99" width="140" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Clear Filters"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Clear Filters"/>
                                 <connections>
                                     <action selector="didTapClearFilters:" destination="CuJ-hg-fGS" eventType="touchUpInside" id="HwK-PU-sma"/>
                                 </connections>
@@ -3403,7 +3403,7 @@
         <segue reference="rqC-KX-Pok"/>
         <segue reference="jcx-uQ-feG"/>
         <segue reference="pJ2-Zv-0xr"/>
-        <segue reference="PHH-oM-1pf"/>
+        <segue reference="UBD-ub-2Jv"/>
         <segue reference="EiS-gP-Syp"/>
     </inferredMetricsTieBreakers>
     <resources>
