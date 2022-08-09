@@ -11,8 +11,8 @@ Playmate - App Design Capstone Project, MetaU 2022
 3. [Product Spec](#Product-Spec)
 4. [Wireframes](#Wireframes)
 5. [Schema](#Schema)
-
-**Feature Walkthroughs and Demos, as well as a detailed explanation of Playmate's recommendation system, can be found in MOREREADME.md**
+6. [Demos](MORE_README.md)
+7. [Playmate's Recommendation System](MORE_README.md)
 
 ## Overview
 ### Description
