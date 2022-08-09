@@ -189,10 +189,23 @@
     return (NSArray *)filteredSessions;
 }
 
+- (NSArray *)filterSessionsByTime:(NSArray *)sessions {
+    NSMutableArray *filteredSessions = [[NSMutableArray alloc] init];
+    
+    for (Session *session in sessions) {
+        NSDate *now = [NSDate date];
+        NSComparisonResult result = [now compare:session.occursAt];
+        
+        if (result == NSOrderedAscending) {
+            [filteredSessions addObject:session];
+        }
+    }
+    return (NSArray *)filteredSessions;
+}
+
 - (void)fetchDataWithFilters:(Filters *)filter {
     
     if (self.appliedFilters == NO) {
-        
         [self.clearFiltersButton setEnabled:YES];
         self.clearFiltersButton.tintColor = [UIColor systemBlueColor];
         
@@ -216,7 +229,8 @@
         if (sessions != nil) {
             self.sessionList = (filter.location != nil) ? [self filterSessions:sessions
                                                                   withLocation:filter.location
-                                                                     andRadius:filter.radius] : sessions;
+                                                                     andRadius:filter.radius]
+                                                        : [self filterSessionsByTime:sessions];
             
             [self.tableView reloadData];
         } else {
