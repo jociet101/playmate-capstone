@@ -7,18 +7,13 @@ Playmate - App Design Capstone Project, MetaU 2022
 # Playmate
 
 ## Table of Contents
-0. [Walkthroughs](#Walkthroughs)
 1. [Overview](#Overview)
 3. [Product Spec](#Product-Spec)
 4. [Wireframes](#Wireframes)
 5. [Schema](#Schema)
+6. [Walkthroughs](#Walkthroughs)
 7. [Playmate's Recommendation System](#Recommendation-System)
 8. [External Resources](#External-Resources)
-
-## Walkthroughs
-
-hohoho
-
 
 ## Overview
 ### Description
@@ -214,8 +209,15 @@ Playmate is a platform where sports players can conveniently find others to play
 
 ### Networking (TODO)
 - Network requests by screen
+
 - Basic snippets for each Parse network request
 - API Endpoints
+
+
+## Walkthroughs
+
+(TODO)
+
 
 ## Recommendation System
 
