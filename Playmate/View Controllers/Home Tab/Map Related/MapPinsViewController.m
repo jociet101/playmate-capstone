@@ -58,6 +58,11 @@ BOOL isFirstTimeGettingLocation;
 
 - (void)viewWillAppear:(BOOL)animated {
     [self initLoadingView];
+    if (self.appliedFilters == YES) {
+        [self fetchDataWithFilters:self.filters];
+    } else {
+        [self fetchData];
+    }
 }
 
 - (void)initLoadingView {

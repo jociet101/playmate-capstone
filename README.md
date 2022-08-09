@@ -265,6 +265,7 @@ is used to assign a value to each session. Upon assigning a value to each of the
     - [FSCalendar](https://github.com/WenchaoD/FSCalendar)
     - [TTGTagCollectionView](https://github.com/zekunyan/TTGTagCollectionView)
     - [CCTextFieldEffects](https://github.com/Cokile/CCTextFieldEffects)
+    - [JGProgressHUD](https://github.com/JonasGessner/JGProgressHUD)
 - APIs
     - [Geocoding API](https://www.geoapify.com/places-api)
     - [Decathalon API](https://developers.decathlon.com/products/sports)
