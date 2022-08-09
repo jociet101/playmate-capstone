@@ -2303,12 +2303,22 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59h-Jv-WA0">
+                                <rect key="frame" x="331" y="5" width="43" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                                <connections>
+                                    <action selector="didTapClose:" destination="PE5-R2-Lql" eventType="touchUpInside" id="BIw-c5-WpQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Ig-WY-wsX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Friends" id="w05-Od-XYz"/>
                     <connections>
+                        <outlet property="closeInviteModal" destination="59h-Jv-WA0" id="Lp8-lC-L4k"/>
                         <outlet property="tableView" destination="ZQy-cE-gEh" id="XnG-eF-soI"/>
                         <segue destination="hNf-lE-ZKe" kind="show" identifier="friendsListToProfile" id="Of8-sX-WuS"/>
                     </connections>
@@ -3399,10 +3409,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cjs-AZ-4HT"/>
-        <segue reference="rqC-KX-Pok"/>
+        <segue reference="mbR-zE-Xc9"/>
+        <segue reference="pbU-9p-1Qp"/>
         <segue reference="jcx-uQ-feG"/>
-        <segue reference="pJ2-Zv-0xr"/>
+        <segue reference="Of8-sX-WuS"/>
         <segue reference="UBD-ub-2Jv"/>
         <segue reference="EiS-gP-Syp"/>
     </inferredMetricsTieBreakers>
@@ -3427,6 +3437,7 @@
         <image name="trash" catalog="system" width="121" height="128"/>
         <image name="trash.circle" catalog="system" width="128" height="121"/>
         <image name="x.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

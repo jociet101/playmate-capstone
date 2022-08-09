@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *friendsList;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIButton *closeInviteModal;
 
 @end
 
@@ -48,6 +49,13 @@
                             action:@selector(fetchData)
                   forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    if (!self.isForInvitations) {
+        [self.closeInviteModal setEnabled:NO];
+        self.closeInviteModal.alpha = 0;
+    }
 }
 
 - (void)fetchData {
@@ -152,6 +160,10 @@
     } else {
         [self performSegueWithIdentifier:@"friendsListToProfile" sender:cell];
     }
+}
+
+- (IBAction)didTapClose:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Navigation
