@@ -68,7 +68,7 @@
 
 - (void)getSelectedLocation:(Location *)location {
     self.selectedLocation = location;
-    [self.selectLocationButton setTitle:@"Selected Location" forState:UIControlStateNormal];
+    [self.selectLocationButton setTitle:@"Selected Location ✅" forState:UIControlStateNormal];
 }
 
 #pragma mark - Table view protocol methods
