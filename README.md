@@ -11,7 +11,8 @@ Playmate - App Design Capstone Project, MetaU 2022
 3. [Product Spec](#Product-Spec)
 4. [Wireframes](#Wireframes)
 5. [Schema](#Schema)
-6. [Demos](#Walkthroughs-and-Demos)
+
+**Feature Walkthroughs and Demos, as well as a detailed explanation of Playmate's recommendation system, can be found in MOREREADME.md**
 
 ## Overview
 ### Description
@@ -229,6 +230,4 @@ Playmate is a platform where sports players can conveniently find others to play
 - Sport Logos
     - [Tokyo Olympics Pictograms](https://www.theolympicdesign.com/olympic-design/pictograms/tokyo-2020/)
     - [Image Background Removal](https://picwish.com/upload)
-
-### Walkthroughs and Demos
 
