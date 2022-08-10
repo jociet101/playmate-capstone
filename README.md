@@ -211,8 +211,56 @@ Playmate is a platform where sports players can conveniently find others to play
 - Network requests by screen
 
 - Basic snippets for each Parse network request
-- API Endpoints
     - 
+- GeoAPIfy Network Requests (Endpoint: https://api.geoapify.com/v1/)
+    - Geocoding
+        ```
+        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+        NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if (error != nil) {
+                [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
+                completion(nil, error);
+            }
+            else {
+                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                
+                // parse dictionary
+                NSArray *results = dataDictionary[@"results"];
+                
+                if (results.count == 0) {
+                    completion(nil, nil);
+                }
+                else {
+                    NSDictionary *firstResult = results[0];
+                    
+                    Location *loc = [Location new];
+                    loc.lat = [NSNumber numberWithDouble:[firstResult[@"lat"] doubleValue]];
+                    loc.lng = [NSNumber numberWithDouble:[firstResult[@"lon"] doubleValue]];
+                    loc.locationName = firstResult[@"formatted"];
+                    
+                    completion(loc, nil);
+                }
+            }
+        }];
+        ```
+    - Reverse Geocoding
+        ```
+        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+        NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if (error != nil) {
+                // handle alert if need be
+                [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
+                completion(nil, error);
+            }
+            else {
+                // retrieve data
+                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                // parse dictionary
+                NSDictionary *result = dataDictionary[@"features"][0][@"properties"];
+                completion(result[@"formatted"], nil);
+            }
+        }];
+        ```
 
 
 ## Walkthroughs
