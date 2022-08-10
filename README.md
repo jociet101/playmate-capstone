@@ -212,12 +212,12 @@ Playmate is a platform where sports players can conveniently find others to play
 
 - Basic snippets for each Parse network request
 - API Endpoints
+    - 
 
 
 ## Walkthroughs
 
 (TODO)
-
 
 ## Recommendation System
 
