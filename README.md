@@ -214,7 +214,7 @@ Playmate is a platform where sports players can conveniently find others to play
     - 
 - GeoAPIfy Network Requests (Endpoint: https://api.geoapify.com/v1/)
     - Geocoding
-        ```c
+        ```objective-c
         NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
         NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             if (error != nil) {
@@ -244,7 +244,7 @@ Playmate is a platform where sports players can conveniently find others to play
         }];
         ```
     - Reverse Geocoding
-        ```c
+        ```objective-c
         NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
         NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             if (error != nil) {
