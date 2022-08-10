@@ -209,9 +209,44 @@ Playmate is a platform where sports players can conveniently find others to play
 
 ### Networking (TODO)
 - Network requests by screen
-
-- Basic snippets for each Parse network request
-    - 
+    * Welcome Screen
+        * If do not have account: Create Account
+            * (Create/POST) Create a user profile
+        * If have account: Login Screen
+            * (Read/GET) Query logged in user account
+    * Home
+        * Notifications View
+            * (Read/GET) Query Incoming FriendRequests objects, Outgoing Requests, and Invitations objects
+        * Take Quiz Views (Composed of five view controllers)
+            * (Create/POST) Create QuizResult object if is user's first time taking quiz
+            * (Update/PUT) Update QuizResult if user has existing result
+        * Explore Nearby
+            * (Read/GET) Query SportsSessions to display on map and according to filters
+        * My schedule
+            * Each Day
+                * (Read/GET) Query SportsSessions that logged in user is part of on a certain day
+        * Upcoming Sessions
+            * (Read/GET) Query this user's upcoming SportsSessions
+        * Suggested Sessions
+            * (Read/GET) Query this user's RecommendationData object and get suggested sesions list
+    * Session Details
+        * (Read/GET) Query SportsSession class object to display
+    * Search
+        * (Read/GET) Query all SportsSessions in the entire database
+        * Filter Settings
+            * Query SportsSessions according to filters
+    * Create
+        * (Create/POST) Create new SportsSession object
+    * Profile
+        * Friends List
+            * (Read/GET) Query friends list from this user's profile
+            * Player Profile View
+                * (Read/GET) Query PFUser corresponding to this profile
+        * Notifications View
+            * (Read/GET) Query Incoming FriendRequests objects, Outgoing Requests, and Invitations objects
+        * Edit Profile
+            * (Update/PUT) Add to user's profile object if changes are made
+        
 - GeoAPIfy Network Requests (Endpoint: https://api.geoapify.com/v1/)
     - Geocoding
         ```objective-c
