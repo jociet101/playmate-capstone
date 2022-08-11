@@ -23,7 +23,7 @@
 @property (nonatomic, strong) CLLocation *currentLocation;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @property (nonatomic, strong) MKPointAnnotation *selectedLocationAnnotation;
-@property (nonatomic, strong) Location *selectedLocation;
+@property (nonatomic, strong) Location * _Nullable selectedLocation;
 
 @end
 
@@ -42,6 +42,7 @@ BOOL firstTimeLoad;
     self.tapGesture.delegate = self;
     [self.mapView addGestureRecognizer:self.tapGesture];
     
+    self.selectedLocation = nil;
     self.selectedLocationAnnotation = [[MKPointAnnotation alloc] init];
     
     firstTimeLoad = YES;
@@ -166,6 +167,11 @@ BOOL firstTimeLoad;
 #pragma mark - Done action
 
 - (IBAction)didTapDone:(id)sender {
+    if (self.selectedLocation == nil) {
+        [Helpers handleAlert:nil withTitle:@"Please select a location" withMessage:nil forViewController:self];
+        return;
+    }
+    
     PFUser *me = [[PFUser currentUser] fetchIfNeeded];
     NSString *resultObjectId = [me objectForKey:@"quizResult"][0];
     if (resultObjectId != nil) {

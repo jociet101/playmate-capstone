@@ -207,16 +207,132 @@ Playmate is a platform where sports players can conveniently find others to play
 +:(default PFUser property)  
 -:(optional, nil by default)
 
-### Networking (TODO)
+### Networking
 - Network requests by screen
-
-- Basic snippets for each Parse network request
-- API Endpoints
+    * Welcome Screen
+        * If do not have account: Create Account
+            * (Create/POST) Create a user profile
+        * If have account: Login Screen
+            * (Read/GET) Query logged in user account
+    * Home
+        * Notifications View
+            * (Read/GET) Query Incoming FriendRequests objects, Outgoing Requests, and Invitations objects
+        * Take Quiz Views (Composed of five view controllers)
+            * (Create/POST) Create QuizResult object if is user's first time taking quiz
+            * (Update/PUT) Update QuizResult if user has existing result
+        * Explore Nearby
+            * (Read/GET) Query SportsSessions to display on map and according to filters
+        * My schedule
+            * Each Day
+                * (Read/GET) Query SportsSessions that logged in user is part of on a certain day
+        * Upcoming Sessions
+            * (Read/GET) Query this user's upcoming SportsSessions
+        * Suggested Sessions
+            * (Read/GET) Query this user's RecommendationData object and get suggested sesions list
+    * Session Details
+        * (Read/GET) Query SportsSession class object to display
+    * Search
+        * (Read/GET) Query all SportsSessions in the entire database
+        * Filter Settings
+            * Query SportsSessions according to filters
+    * Create
+        * (Create/POST) Create new SportsSession object
+    * Profile
+        * Friends List
+            * (Read/GET) Query friends list from this user's profile
+            * Player Profile View
+                * (Read/GET) Query PFUser corresponding to this profile
+        * Notifications View
+            * (Read/GET) Query Incoming FriendRequests objects, Outgoing Requests, and Invitations objects
+        * Edit Profile
+            * (Update/PUT) Add to user's profile object if changes are made
+        
+- GeoAPIfy Network Requests (Endpoint: https://api.geoapify.com/v1/)
+    - Geocoding
+        ```objective-c
+        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+        NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if (error != nil) {
+                [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
+                completion(nil, error);
+            }
+            else {
+                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                
+                // parse dictionary
+                NSArray *results = dataDictionary[@"results"];
+                
+                if (results.count == 0) {
+                    completion(nil, nil);
+                }
+                else {
+                    NSDictionary *firstResult = results[0];
+                    
+                    Location *loc = [Location new];
+                    loc.lat = [NSNumber numberWithDouble:[firstResult[@"lat"] doubleValue]];
+                    loc.lng = [NSNumber numberWithDouble:[firstResult[@"lon"] doubleValue]];
+                    loc.locationName = firstResult[@"formatted"];
+                    
+                    completion(loc, nil);
+                }
+            }
+        }];
+        ```
+    - Reverse Geocoding
+        ```objective-c
+        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+        NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if (error != nil) {
+                // handle alert if need be
+                [Helpers handleAlert:error withTitle:[Strings errorString] withMessage:nil forViewController:self];
+                completion(nil, error);
+            }
+            else {
+                // retrieve data
+                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                // parse dictionary
+                NSDictionary *result = dataDictionary[@"features"][0][@"properties"];
+                completion(result[@"formatted"], nil);
+            }
+        }];
+        ```
 
 
 ## Walkthroughs
+(Recommended Playback Speed: 1.5x)
 
-(TODO)
+
+https://user-images.githubusercontent.com/73032138/184195430-b5a45e88-efce-4f28-a367-ee74bd8c98de.MP4
+
+
+* Home Tab, Explore Nearby, and My Schedule
+
+
+https://user-images.githubusercontent.com/73032138/184240166-15ccd9de-69c7-4ce6-a73b-1dd06eeb4466.MP4
+
+
+* Suggested Sessions and Preferences Quiz
+
+
+https://user-images.githubusercontent.com/73032138/184240816-467ba473-591a-4981-b512-db5b04536948.MP4
+
+
+* Create, Search, and Invite
+
+
+https://user-images.githubusercontent.com/73032138/184241689-a56f5791-debc-4c31-b826-a4633021964e.MP4
+
+
+* Profile and Friend Requests
+
+
+https://user-images.githubusercontent.com/73032138/184250556-84175f29-022b-4bbe-9943-27a213c1d66c.MP4
+
+
+* Notification Feature (Session notifications are ten minutes in advance)
+
+
+https://user-images.githubusercontent.com/73032138/184251232-9ddce819-38c3-4f91-9f80-fc79043c8c9d.MP4
 
 
 ## Recommendation System
@@ -265,6 +381,7 @@ is used to assign a value to each session. Upon assigning a value to each of the
     - [FSCalendar](https://github.com/WenchaoD/FSCalendar)
     - [TTGTagCollectionView](https://github.com/zekunyan/TTGTagCollectionView)
     - [CCTextFieldEffects](https://github.com/Cokile/CCTextFieldEffects)
+    - [JGProgressHUD](https://github.com/JonasGessner/JGProgressHUD)
 - APIs
     - [Geocoding API](https://www.geoapify.com/places-api)
     - [Decathalon API](https://developers.decathlon.com/products/sports)

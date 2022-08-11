@@ -9,6 +9,7 @@
 #import "LocationAnnotation.h"
 #import "SessionDetailsViewController.h"
 #import "MapFiltersViewController.h"
+#import "JGProgressHUD.h"
 #import "MapFilters.h"
 #import "PlayerConnection.h"
 #import "Session.h"
@@ -51,14 +52,24 @@ BOOL isFirstTimeGettingLocation;
     [CLLocationManager locationServicesEnabled];
     
     [self initPinLocationManager];
+    
+    [self initLoadingView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self initLoadingView];
     if (self.appliedFilters == YES) {
         [self fetchDataWithFilters:self.filters];
     } else {
         [self fetchData];
     }
+}
+
+- (void)initLoadingView {
+    JGProgressHUD *HUD = [[JGProgressHUD alloc] init];
+    HUD.textLabel.text = @"Loading";
+    [HUD showInView:self.view];
+    [HUD dismissAfterDelay:2.0];
 }
 
 - (void)initPinLocationManager {
