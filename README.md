@@ -323,11 +323,17 @@ https://user-images.githubusercontent.com/73032138/184240816-467ba473-591a-4981-
 https://user-images.githubusercontent.com/73032138/184241689-a56f5791-debc-4c31-b826-a4633021964e.MP4
 
 
-* Profile Tab
+* Profile and Friend Requests
 
-* Notification Feature
 
-* Friend Requests
+https://user-images.githubusercontent.com/73032138/184250556-84175f29-022b-4bbe-9943-27a213c1d66c.MP4
+
+
+* Notification Feature (Session notifications are ten minutes in advance)
+
+
+https://user-images.githubusercontent.com/73032138/184251232-9ddce819-38c3-4f91-9f80-fc79043c8c9d.MP4
+
 
 ## Recommendation System
 
