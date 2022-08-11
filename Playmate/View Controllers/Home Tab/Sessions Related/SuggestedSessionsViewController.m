@@ -53,7 +53,8 @@
     for (NSString *sessionId in data.suggestedList) {
         Session *session = [PFQuery getObjectOfClass:@"SportsSession" objectId:sessionId];
         NSComparisonResult result = [[NSDate now] compare:session.occursAt];
-        if (result == NSOrderedAscending) {
+        const BOOL isFull = [session.capacity isEqualToNumber:session.occupied];
+        if (result == NSOrderedAscending && !isFull) {
             [temporaryList addObject:session];
         }
     }
