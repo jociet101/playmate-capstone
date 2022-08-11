@@ -300,7 +300,9 @@ Playmate is a platform where sports players can conveniently find others to play
 
 ## Walkthroughs
 
-(TODO)
+* Create Account and Login
+* Home Tab and Session Details
+* 
 
 ## Recommendation System
 
