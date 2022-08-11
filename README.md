@@ -207,7 +207,7 @@ Playmate is a platform where sports players can conveniently find others to play
 +:(default PFUser property)  
 -:(optional, nil by default)
 
-### Networking (TODO)
+### Networking
 - Network requests by screen
     * Welcome Screen
         * If do not have account: Create Account
@@ -300,8 +300,14 @@ Playmate is a platform where sports players can conveniently find others to play
 
 ## Walkthroughs
 
-* Create Account and Login
+* Create Account and Login (Password does not appear on screen recording)
+
+
+https://user-images.githubusercontent.com/73032138/184195430-b5a45e88-efce-4f28-a367-ee74bd8c98de.MP4
+
+
 * Home Tab and Session Details
+
 * 
 
 ## Recommendation System
