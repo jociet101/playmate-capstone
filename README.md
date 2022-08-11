@@ -299,16 +299,35 @@ Playmate is a platform where sports players can conveniently find others to play
 
 
 ## Walkthroughs
-
-* Create Account and Login (Password does not appear on screen recording)
+(Recommended Playback Speed: 1.5x)
 
 
 https://user-images.githubusercontent.com/73032138/184195430-b5a45e88-efce-4f28-a367-ee74bd8c98de.MP4
 
 
-* Home Tab and Session Details
+* Home Tab, Explore Nearby, and My Schedule
 
-* 
+
+https://user-images.githubusercontent.com/73032138/184240166-15ccd9de-69c7-4ce6-a73b-1dd06eeb4466.MP4
+
+
+* Suggested Sessions and Preferences Quiz
+
+
+https://user-images.githubusercontent.com/73032138/184240816-467ba473-591a-4981-b512-db5b04536948.MP4
+
+
+* Create, Search, and Invite
+
+
+https://user-images.githubusercontent.com/73032138/184241689-a56f5791-debc-4c31-b826-a4633021964e.MP4
+
+
+* Profile Tab
+
+* Notification Feature
+
+* Friend Requests
 
 ## Recommendation System
 
