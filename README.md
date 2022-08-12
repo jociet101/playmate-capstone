@@ -1,4 +1,4 @@
-Playmate - App Design Capstone Project, MetaU 2022
+Playmate - iOS App Capstone Project, MetaU 2022
 ===
 **Intern**: Jocelyn Tseng
 
